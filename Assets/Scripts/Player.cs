@@ -20,14 +20,16 @@ public class Player : MonoBehaviour {
     void Movement()
     {
         if (Input.GetKey(KeyCode.W))
-            movement.Move(1);
+            movement.Move(transform.forward);
         if (Input.GetKey(KeyCode.S))
-            movement.Move(-1);
-        if (Input.GetKey(KeyCode.D))
-            movement.Rotate(1);
+            movement.Move(-transform.forward);
         if (Input.GetKey(KeyCode.A))
-            movement.Rotate(-1);
+            movement.Move(-transform.right);
+        if (Input.GetKey(KeyCode.D))
+            movement.Move(transform.right);
         if (Input.GetMouseButtonDown(0))
             currentWeapon.Shot();
+
+        movement.Rotate();
     }
 }

@@ -8,7 +8,7 @@ public class Weapon : MonoBehaviour {
 
     public void Shot()
     {
-        GameObject tempBullet = Instantiate(BulletPrefab, transform.position, Quaternion.identity);
+       Instantiate(BulletPrefab, transform.position, transform.rotation);
     }
 
 }

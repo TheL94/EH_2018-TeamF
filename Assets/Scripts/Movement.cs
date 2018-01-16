@@ -13,13 +13,24 @@ public class Movement : MonoBehaviour {
         rigid = GetComponent<Rigidbody>();
 	}
 
-    public void Move(float _value)
+    public void Move(Vector3 _position)
     {
-        rigid.AddRelativeForce(Vector3.forward * MovementSpeed * _value, ForceMode.Force);
+        rigid.AddForce(MovementSpeed * _position, ForceMode.Force);
     }
 
-    public void Rotate(float _value)
+    public void Rotate()
     {
-        rigid.AddRelativeTorque(Vector3.up * RotationSpeed * _value, ForceMode.Force);
+        Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        RaycastHit floorHit;
+
+        if (Physics.Raycast(mouseRay, out floorHit))
+        {
+            Vector3 playerToMouse = floorHit.point - transform.position;
+
+            playerToMouse.y = 0;
+
+            rigid.MoveRotation(Quaternion.LookRotation(playerToMouse));
+        }
     }
 }
