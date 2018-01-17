@@ -4,18 +4,13 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour {
 
-    Rigidbody rigid;
-    public float MovementSpeed = 100;
+    public GameObject ModelToRotate;
+    public float MovementSpeed = 1;
     public float RotationSpeed = 1;
-
-	// Use this for initialization
-	void Start () {
-        rigid = GetComponent<Rigidbody>();
-	}
 
     public void Move(Vector3 _position)
     {
-        rigid.AddForce(MovementSpeed * _position, ForceMode.Force);
+        transform.position = Vector3.Lerp(transform.position, transform.position + _position, MovementSpeed);
     }
 
     public void Rotate()
@@ -30,7 +25,8 @@ public class Movement : MonoBehaviour {
 
             playerToMouse.y = 0;
 
-            rigid.MoveRotation(Quaternion.LookRotation(playerToMouse));
+            //rigid.MoveRotation(Quaternion.LookRotation(playerToMouse));
+            ModelToRotate.transform.rotation = Quaternion.LookRotation(playerToMouse);
         }
     }
 }
