@@ -5,10 +5,11 @@ using UnityEngine;
 public class Weapon : MonoBehaviour {
 
     public GameObject BulletPrefab;
-
+    public float BulletSpeed;
     public void Shot()
     {
-       Instantiate(BulletPrefab, transform.position, transform.rotation);
+       Bullet bull = Instantiate(BulletPrefab, transform.position, transform.rotation).GetComponent<Bullet>();
+       bull.Speed = BulletSpeed;
     }
 
 }

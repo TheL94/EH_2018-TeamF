@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour {
 
     Rigidbody rigid;
-    public float BulletSpeed;
+    public float Speed{ get; set; }
     public float BulletLife;
     private void Start()
     {
@@ -14,6 +14,6 @@ public class Bullet : MonoBehaviour {
     }
 
     void Update () {
-        rigid.AddRelativeForce(Vector3.up * BulletSpeed, ForceMode.Impulse);
+        rigid.AddRelativeForce(Vector3.up * Speed, ForceMode.Impulse);
 	}
 }
