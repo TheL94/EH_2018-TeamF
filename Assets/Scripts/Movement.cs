@@ -22,6 +22,7 @@ public class Movement : MonoBehaviour {
         {
             Vector3 playerToMouse = floorHit.point - transform.position;
             playerToMouse.y = 0;
+            if(Vector3.Distance(transform.position, playerToMouse) > 0.3f)
             ModelToRotate.transform.rotation = Quaternion.LookRotation(playerToMouse);
         }
     }

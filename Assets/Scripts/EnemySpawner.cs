@@ -14,7 +14,7 @@ public class EnemySpawner : MonoBehaviour
     void Update ()
     {
         time += Time.deltaTime;
-        if(time >= DelayTime)
+        if(time >= DelayTime && target.Life > 0)
         {
             Spawn(EnemyPrefab);
             time = 0;
