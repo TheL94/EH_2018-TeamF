@@ -2,18 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour {
-
+public class Player : MonoBehaviour
+{
     Movement movement;
     Weapon currentWeapon;
-    // Use this for initialization
-	void Start () {
+    public int Life;
+
+	void Start ()
+    {
         currentWeapon = GetComponentInChildren<Weapon>();
         movement = GetComponent<Movement>();
     }
 	
-	// Update is called once per frame
-	void Update () {
+	void FixedUpdate ()
+    {
         Movement();
     }
 
@@ -31,5 +33,12 @@ public class Player : MonoBehaviour {
             currentWeapon.Shot();
 
         movement.Rotate();
+    }
+
+    public void TakeDamage(int _damage)
+    {
+        Life -= _damage;
+        if (Life <= 0)
+            Destroy(gameObject);
     }
 }
