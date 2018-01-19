@@ -21,6 +21,9 @@ public class Player : MonoBehaviour
 
     void Movement()
     {
+        if (Life <= 0)
+            return;
+
         if (Input.GetKey(KeyCode.W))
             movement.Move(transform.forward);
         if (Input.GetKey(KeyCode.S))
@@ -39,6 +42,6 @@ public class Player : MonoBehaviour
     {
         Life -= _damage;
         if (Life <= 0)
-            Destroy(gameObject);
+            Destroy(movement.ModelToRotate);
     }
 }

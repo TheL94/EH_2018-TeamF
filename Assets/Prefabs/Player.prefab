@@ -21,8 +21,6 @@ GameObject:
   - component: {fileID: 4753592901252370}
   - component: {fileID: 33447311281949446}
   - component: {fileID: 23229242947780828}
-  - component: {fileID: 65999400761246426}
-  - component: {fileID: 54635794351910246}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -256,33 +254,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1766402263107386}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &54635794351910246
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1232529057928142}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!65 &65999400761246426
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1232529057928142}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!81 &81909561980210566
 AudioListener:
   m_ObjectHideFlags: 1
@@ -315,6 +286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e04875ffe7c14254d93184771cbe27a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Life: 10
 --- !u!114 &114537653086299798
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -139,3 +139,5 @@ MonoBehaviour:
   Life: 10
   MovementSpeed: 1
   Damage: 1
+  DamageRange: 2
+  DamageRate: 1
