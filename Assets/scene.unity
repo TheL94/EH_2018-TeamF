@@ -513,7 +513,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1082158458}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.6703231, y: 1.8494911, z: 0.82937866}
+  m_LocalPosition: {x: 2.6703231, y: 2.71, z: 0.82937866}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2070082026}
@@ -609,6 +609,24 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 147fcc9a9e9101345a30dc035775ffa9, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1513469420 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: 5292fe766dc37d34eb292ce4a205b27d, type: 3}
+  m_PrefabInternal: {fileID: 631666072}
+--- !u!64 &1513469423
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1513469420}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: 5292fe766dc37d34eb292ce4a205b27d, type: 3}
 --- !u!114 &1684957585 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114535251106631316, guid: 147fcc9a9e9101345a30dc035775ffa9,

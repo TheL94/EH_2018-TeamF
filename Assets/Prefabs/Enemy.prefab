@@ -137,7 +137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Life: 10
-  MovementSpeed: 1
+  MovementSpeed: 7
   Damage: 1
   DamageRange: 2
   DamageRate: 1

@@ -45,7 +45,7 @@ public class Enemy : MonoBehaviour
     void Move()
     {
         if(DamageRange <= Vector3.Distance(transform.position, target.transform.position))
-            transform.position = Vector3.Lerp(transform.position, target.transform.position, MovementSpeed * Time.deltaTime);
+            transform.position = Vector3.Lerp(transform.position, target.transform.position, (MovementSpeed * Time.deltaTime) / Vector3.Distance(transform.position, target.transform.position));
     }
 
     void Attack()
