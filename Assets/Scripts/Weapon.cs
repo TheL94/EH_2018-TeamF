@@ -6,6 +6,7 @@ public class Weapon : MonoBehaviour {
 
     public GameObject BulletPrefab;
     public GameObject Barrel;
+    public int MagCapacity;
     public float BulletSpeed;
     public float Ratio;
     public int Damage;
@@ -24,6 +25,16 @@ public class Weapon : MonoBehaviour {
         }
     }
 
+    public void AddAmmo(int _ammoToAdd)
+    {
+        if (Ammo < MagCapacity)
+        {
+            Ammo += _ammoToAdd;
+            if (Ammo > MagCapacity)
+                Ammo = MagCapacity;
+        }
+    }
+
     public void FullAutoShoot()
     {
         ratioTimer += Time.deltaTime;
@@ -33,7 +44,7 @@ public class Weapon : MonoBehaviour {
 
     public void SingleShot()
     {
-        if(Ammo > 0)
+        if (Ammo > 0)
         {
             Bullet bull = Instantiate(BulletPrefab, Barrel.transform.position, Barrel.transform.rotation).GetComponent<Bullet>();
             bull.Init(Damage, BulletSpeed);

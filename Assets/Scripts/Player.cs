@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
         movement = GetComponent<Movement>();
     }
 	
-	void FixedUpdate ()
+	void Update ()
     {
         CheckInput();
     }
@@ -34,10 +34,8 @@ public class Player : MonoBehaviour
             movement.Move(transform.right);
         if (Input.GetMouseButtonDown(0))
             currentWeapon.SingleShot();
-        if(Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0))
             currentWeapon.FullAutoShoot();
-
-        
 
         movement.Rotate();
     }
@@ -48,7 +46,7 @@ public class Player : MonoBehaviour
         AmmoCrate crate = other.GetComponent<AmmoCrate>();
         if (crate != null)
         {
-            currentWeapon.Ammo += crate.Ammo;
+            currentWeapon.AddAmmo(crate.Ammo);
             crate.DestroyAmmoCrate();
         }
     }
