@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    Rigidbody rigid;
     public float BulletLife;
     int Damage;
     float Speed;
 
     private void Start()
     {
-        rigid = GetComponent<Rigidbody>();
         Destroy(gameObject, BulletLife);
     }
 
