@@ -14,7 +14,11 @@ public class Weapon : MonoBehaviour {
     public int Ammo
     {
         get { return _ammo; }
-        set { _ammo = value; }
+        set
+        {
+            _ammo = value;
+
+        }
     }
 
 
