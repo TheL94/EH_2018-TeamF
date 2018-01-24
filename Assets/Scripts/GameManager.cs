@@ -11,8 +11,6 @@ public class GameManager : MonoBehaviour
     public FlowState CurrentState { get { return flowMng.CurrentState; } }
 
     FlowManager flowMng;
-
-    public UI_GameplayController UI_gameplayeCrtl;
         
     void Awake()
     {
