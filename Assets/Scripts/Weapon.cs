@@ -7,6 +7,7 @@ public class Weapon : MonoBehaviour {
     public GameObject BulletPrefab;
     public float BulletSpeed;
     public float Ratio;
+    public int Damage;
 
     private int _ammo = 10;
 
@@ -22,7 +23,7 @@ public class Weapon : MonoBehaviour {
         if(Ammo > 0)
         {
             Bullet bull = Instantiate(BulletPrefab, transform.position, transform.rotation).GetComponent<Bullet>();
-            bull.Speed = BulletSpeed;
+            bull.Init(Damage, BulletSpeed);
             Ammo--;
         }
     }

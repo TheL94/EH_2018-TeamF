@@ -5,9 +5,9 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     Rigidbody rigid;
-    public float Speed;
     public float BulletLife;
-    public int Damage;
+    int Damage;
+    float Speed;
 
     private void Start()
     {
@@ -17,7 +17,22 @@ public class Bullet : MonoBehaviour
 
     void FixedUpdate ()
     {
-        rigid.AddRelativeForce(Vector3.up * Speed, ForceMode.Impulse);
+        Move();
+    }
+
+    #region API
+
+    public void Init(int _damage, float _speed)
+    {
+        Damage = _damage;
+        Speed = _speed;
+    }
+
+    #endregion
+
+    void Move()
+    {
+        transform.Translate(-transform.forward * Speed); 
     }
 
     private void OnTriggerEnter(Collider other)
