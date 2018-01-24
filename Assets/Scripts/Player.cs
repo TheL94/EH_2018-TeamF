@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     Movement movement;
     Weapon currentWeapon;
     public int Life;
+    float ratioTimer = 0;
 
 	void Start ()
     {
@@ -16,10 +17,10 @@ public class Player : MonoBehaviour
 	
 	void FixedUpdate ()
     {
-        Movement();
+        CheckInput();
     }
 
-    void Movement()
+    void CheckInput()
     {
         if (Life <= 0)
             return;
@@ -34,8 +35,31 @@ public class Player : MonoBehaviour
             movement.Move(transform.right);
         if (Input.GetMouseButtonDown(0))
             currentWeapon.Shot();
+        if(Input.GetMouseButton(0))
+        {
+            ratioTimer += Time.deltaTime;
+            if(ratioTimer >= currentWeapon.Ratio)
+            {
+                currentWeapon.Shot();
+                ratioTimer = 0;
+            }
+        }
+
+        if (Input.GetMouseButtonUp(0))
+            ratioTimer = 0;
 
         movement.Rotate();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Collision");
+        AmmoCrate crate = other.GetComponent<AmmoCrate>();
+        if (crate != null)
+        {
+            currentWeapon.Ammo += crate.Ammo;
+            crate.DestroyAmmoCrate();
+        }
     }
 
     public void TakeDamage(int _damage)
