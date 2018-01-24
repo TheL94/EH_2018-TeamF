@@ -5,9 +5,12 @@ using UnityEngine;
 public class Weapon : MonoBehaviour {
 
     public GameObject BulletPrefab;
+    public GameObject Barrel;
     public float BulletSpeed;
     public float Ratio;
     public int Damage;
+
+    float ratioTimer;
 
     private int _ammo = 10;
 
@@ -17,17 +20,24 @@ public class Weapon : MonoBehaviour {
         set
         {
             _ammo = value;
-
+            GameManager.I.UI_gameplayController.UpdateAmmo(_ammo);
         }
     }
 
+    public void FullAutoShoot()
+    {
+        ratioTimer += Time.deltaTime;
+        if (ratioTimer >= Ratio)
+            SingleShot();
+    }
 
-    public void Shot()
+    public void SingleShot()
     {
         if(Ammo > 0)
         {
-            Bullet bull = Instantiate(BulletPrefab, transform.position, transform.rotation).GetComponent<Bullet>();
+            Bullet bull = Instantiate(BulletPrefab, Barrel.transform.position, Barrel.transform.rotation).GetComponent<Bullet>();
             bull.Init(Damage, BulletSpeed);
+            ratioTimer = 0;
             Ammo--;
         }
     }

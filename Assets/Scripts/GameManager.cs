@@ -11,7 +11,11 @@ public class GameManager : MonoBehaviour
     public FlowState CurrentState { get { return flowMng.CurrentState; } }
 
     FlowManager flowMng;
-        
+
+    public GameObject UI_gameplayControllerPrefab;
+    [HideInInspector]
+    public UI_GameplayController UI_gameplayController;
+
     void Awake()
     {
         //Singleton paradigm
@@ -25,6 +29,7 @@ public class GameManager : MonoBehaviour
     {
         flowMng = GetComponent<FlowManager>();
         ChageFlowState(FlowState.Loading);
+        UI_gameplayController = Instantiate(UI_gameplayControllerPrefab, transform).GetComponentInChildren<UI_GameplayController>();
     }
 
     #region API

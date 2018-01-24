@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class UI_GameplayController : MonoBehaviour {
 
-    Text ammoText;
+    public Text AmmoText;
 
-	public void UpdateAmmo()
+	public void UpdateAmmo(int _ammoValue)
     {
-
+        AmmoText.text = "Ammo: " + _ammoValue;
     }
 
 }

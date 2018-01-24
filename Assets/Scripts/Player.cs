@@ -7,7 +7,6 @@ public class Player : MonoBehaviour
     Movement movement;
     Weapon currentWeapon;
     public int Life;
-    float ratioTimer = 0;
 
 	void Start ()
     {
@@ -34,19 +33,11 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.D))
             movement.Move(transform.right);
         if (Input.GetMouseButtonDown(0))
-            currentWeapon.Shot();
+            currentWeapon.SingleShot();
         if(Input.GetMouseButton(0))
-        {
-            ratioTimer += Time.deltaTime;
-            if(ratioTimer >= currentWeapon.Ratio)
-            {
-                currentWeapon.Shot();
-                ratioTimer = 0;
-            }
-        }
+            currentWeapon.FullAutoShoot();
 
-        if (Input.GetMouseButtonUp(0))
-            ratioTimer = 0;
+        
 
         movement.Rotate();
     }
