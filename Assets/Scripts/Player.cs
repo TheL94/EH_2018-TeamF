@@ -66,6 +66,9 @@ public class Player : MonoBehaviour
     {
         Life -= _damage;
         if (Life <= 0)
+        {
             Destroy(movement.ModelToRotate);
+            GameManager.I.ChageFlowState(FlowState.EndGame);
+        }
     }
 }

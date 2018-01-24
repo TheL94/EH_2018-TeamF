@@ -18,12 +18,11 @@ public class Movement : MonoBehaviour {
         Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit floorHit;
 
-        if (Physics.Raycast(mouseRay, out floorHit))
+        if (Physics.Raycast(mouseRay, out floorHit, float.PositiveInfinity, 1 << LayerMask.NameToLayer("MouseRaycast")))
         {
             Vector3 playerToMouse = floorHit.point - transform.position;
             playerToMouse.y = 0;
-            if(Vector3.Distance(transform.position, playerToMouse) > 0.3f)
-            ModelToRotate.transform.rotation = Quaternion.LookRotation(playerToMouse);
+            ModelToRotate.transform.rotation = Quaternion.Slerp(ModelToRotate.transform.rotation, Quaternion.LookRotation(playerToMouse, transform.up), RotationSpeed * Time.deltaTime);
         }
     }
 }
