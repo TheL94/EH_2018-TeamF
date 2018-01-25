@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4349041301842156}
   m_Layer: 0
-  m_Name: GameObject (2)
+  m_Name: EnemySpawn (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51,7 +51,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4276250981836290}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: EnemySpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66,7 +66,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4527232466968318}
   m_Layer: 0
-  m_Name: GameObject (1)
+  m_Name: EnemySpawn (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -141,7 +141,7 @@ MonoBehaviour:
   target: {fileID: 0}
   EnemyPrefab: {fileID: 114887375225381206, guid: 1de843c21c57ee345b5b37547ec9ab91,
     type: 2}
-  DelayTime: 2
+  DelayTime: 5
   SpawnPoints:
   - {fileID: 1571679233519686}
   - {fileID: 1967110735343324}
