@@ -52,9 +52,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80373d0a1126d53489f437408e0a7729, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI_gameplayControllerPrefab: {fileID: 1784264425848098, guid: 786bc380dcf915c418d04c91b3b47d86,
+  EnemySpn: {fileID: 0}
+  PlayerPrefab: {fileID: 1533697916002696, guid: 147fcc9a9e9101345a30dc035775ffa9,
     type: 2}
-  UI_gameplayController: {fileID: 0}
+  UIMng: {fileID: 0}
+  UIManagerPrefab: {fileID: 1784264425848098, guid: 786bc380dcf915c418d04c91b3b47d86,
+    type: 2}
 --- !u!114 &114912419347863562
 MonoBehaviour:
   m_ObjectHideFlags: 1

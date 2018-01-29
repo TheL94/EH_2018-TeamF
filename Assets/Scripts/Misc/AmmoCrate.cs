@@ -8,7 +8,7 @@ public class AmmoCrate : MonoBehaviour {
 
     public void DestroyAmmoCrate()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
 }

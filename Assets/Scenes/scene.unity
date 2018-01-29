@@ -51,7 +51,7 @@ LightmapSettings:
     m_AlbedoBoost: 1
     m_TemporalCoherenceThreshold: 1
     m_EnvironmentLightingMode: 0
-    m_EnableBakedLightmaps: 1
+    m_EnableBakedLightmaps: 0
     m_EnableRealtimeLightmaps: 1
   m_LightmapEditorSettings:
     serializedVersion: 9
@@ -453,6 +453,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 659673796}
+  - component: {fileID: 659673797}
   m_Layer: 0
   m_Name: AmmoContainer
   m_TagString: Untagged
@@ -482,6 +483,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &659673797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 659673795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11930252ffbe80b4b90f9f884adbee15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &751472391
 Prefab:
   m_ObjectHideFlags: 0
@@ -577,6 +589,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114100090815372252, guid: 024de7879b837ef4a834cdd88112491f,
+        type: 2}
+      propertyPath: EnemySpn
+      value: 
+      objectReference: {fileID: 1481763297}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 024de7879b837ef4a834cdd88112491f, type: 2}
   m_IsPrefabParent: 0
@@ -666,6 +683,11 @@ Prefab:
       propertyPath: target
       value: 
       objectReference: {fileID: 1684957585}
+    - target: {fileID: 114351761636212556, guid: 76d180b297851954a9c83fcb639eb653,
+        type: 2}
+      propertyPath: DelayTime
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 76d180b297851954a9c83fcb639eb653, type: 2}
   m_IsPrefabParent: 0
@@ -727,6 +749,12 @@ Prefab:
     - {fileID: 65967074113252508, guid: 147fcc9a9e9101345a30dc035775ffa9, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 147fcc9a9e9101345a30dc035775ffa9, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1481763297 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114351761636212556, guid: 76d180b297851954a9c83fcb639eb653,
+    type: 2}
+  m_PrefabInternal: {fileID: 1242333674}
+  m_Script: {fileID: 11500000, guid: ba017b4ce6de6a04a82f4705ad3d623b, type: 3}
 --- !u!1001 &1497197890
 Prefab:
   m_ObjectHideFlags: 0
@@ -890,7 +918,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
   m_ColorTemperature: 6570

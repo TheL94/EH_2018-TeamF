@@ -10,12 +10,17 @@ public class Enemy : MonoBehaviour
     public float DamageRange;
     public float DamageRate;
 
+    public string SpecificID { get; set; }
+
+    EnemySpawner spawner;
     Player target;
     float time;
 
-    public void Init(Player _target)
+    public void Init(Player _target, EnemySpawner _spawner, string _id)
     {
         target = _target;
+        spawner = _spawner;
+        SpecificID = _id;
     }
 
     private void FixedUpdate()
@@ -33,7 +38,10 @@ public class Enemy : MonoBehaviour
     {
         Life -= _damage;
         if (Life <= 0)
+        {
+            spawner.DeleteSpecificEnemy(SpecificID);
             Destroy(gameObject);
+        }
     }
 
     void CheckmovementConstrains()

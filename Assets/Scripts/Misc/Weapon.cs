@@ -21,7 +21,7 @@ public class Weapon : MonoBehaviour {
         set
         {
             _ammo = value;
-            GameManager.I.UI_gameplayController.UpdateAmmo(_ammo);
+            GameManager.I.UIMng.UI_GameplayCtrl.UpdateAmmo(_ammo);
         }
     }
 
