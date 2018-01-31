@@ -53,7 +53,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1575645825793740}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.239, z: 4.97}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4493750753957172}
@@ -67,8 +67,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1359373734478906}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0.119, z: 0}
-  m_LocalScale: {x: 0.09660906, y: 0.13917011, z: 0.08285973}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4415021905856860}
   m_RootOrder: 0
@@ -140,7 +140,7 @@ MonoBehaviour:
   Life: 10
   MovementSpeed: 7
   Damage: 1
-  DamageRange: 1.5
+  DamageRange: 3
   DamageRate: 1
 --- !u!195 &195933199287426206
 NavMeshAgent:
@@ -151,7 +151,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 5.3
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120

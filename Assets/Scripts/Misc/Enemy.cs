@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
     public float DamageRate;
 
     public string SpecificID { get; set; }
-
+    NavMeshAgent navMesh;
     EnemySpawner spawner;
     Player target;
     float time;
@@ -23,6 +23,8 @@ public class Enemy : MonoBehaviour
         target = _target;
         spawner = _spawner;
         SpecificID = _id;
+        navMesh = GetComponent<NavMeshAgent>();
+        navMesh.stoppingDistance = DamageRange;
     }
 
     private void FixedUpdate()
@@ -30,7 +32,7 @@ public class Enemy : MonoBehaviour
         if (target == null)
             return;
 
-        GetComponent<NavMeshAgent>().destination = target.transform.position;
+        navMesh.destination = target.transform.position;
 
         CheckmovementConstrains();
         //Move();
