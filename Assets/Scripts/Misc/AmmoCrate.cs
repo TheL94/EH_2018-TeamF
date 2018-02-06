@@ -2,13 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AmmoCrate : MonoBehaviour {
-
-    public int Ammo;
-
-    public void DestroyAmmoCrate()
+namespace TeamF
+{
+    public class AmmoCrate : MonoBehaviour
     {
-        gameObject.SetActive(false);
-    }
 
+        public int Ammo;
+
+        public void DestroyAmmoCrate()
+        {
+            gameObject.SetActive(false);
+        }
+
+    }
 }

@@ -2,43 +2,46 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IMenu
+namespace TeamF
 {
-    int CurrentIndexSelected { get; set; }
+    public interface IMenu
+    {
+        int CurrentIndexSelected { get; set; }
 
-    List<ISelectable> SelectableButtons { get; set; }
+        List<ISelectable> SelectableButtons { get; set; }
 
-    /// <summary>
-    /// Select the current selection
-    /// </summary>
-    void Select();
+        /// <summary>
+        /// Select the current selection
+        /// </summary>
+        void Select();
 
-    /// <summary>
-    /// Sposta l'indice della selezione in alto.
-    /// </summary>
-    void GoUpInMenu();
+        /// <summary>
+        /// Sposta l'indice della selezione in alto.
+        /// </summary>
+        void GoUpInMenu();
 
-    /// <summary>
-    /// Sposta l'indice della selezione in basso.
-    /// </summary>
-    void GoDownInMenu();
+        /// <summary>
+        /// Sposta l'indice della selezione in basso.
+        /// </summary>
+        void GoDownInMenu();
 
-    /// <summary>
-    /// Sposta l'indice della selezione a destra.
-    /// </summary>
-    void GoRightInMenu();
+        /// <summary>
+        /// Sposta l'indice della selezione a destra.
+        /// </summary>
+        void GoRightInMenu();
 
-    /// <summary>
-    /// Sposta l'indice della selezione a sinistra.
-    /// </summary>
-    void GoLeftInMenu();
+        /// <summary>
+        /// Sposta l'indice della selezione a sinistra.
+        /// </summary>
+        void GoLeftInMenu();
 
-}
+    }
 
-public interface ISelectable
-{
-    int Index { get; set; }
-    bool IsSelected { get; set; }
-    void SetIndex(int _index);
-    void ChangeImageIfSelected(bool _isSelected);
+    public interface ISelectable
+    {
+        int Index { get; set; }
+        bool IsSelected { get; set; }
+        void SetIndex(int _index);
+        void ChangeImageIfSelected(bool _isSelected);
+    }
 }

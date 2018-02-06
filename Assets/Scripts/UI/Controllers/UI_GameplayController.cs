@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UI_GameplayController : MonoBehaviour {
-
-    public Text AmmoText;
-
-	public void UpdateAmmo(int _ammoValue)
+namespace TeamF
+{
+    public class UI_GameplayController : MonoBehaviour
     {
-        AmmoText.text = "Ammo: " + _ammoValue;
-    }
 
+        public Text AmmoText;
+
+        public void UpdateAmmo(int _ammoValue)
+        {
+            AmmoText.text = "Ammo: " + _ammoValue;
+        }
+
+    }
 }

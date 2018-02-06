@@ -2,85 +2,88 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MenuBase : MonoBehaviour, IMenu
+namespace TeamF
 {
-    int _currentIndexSelected;
-    public int CurrentIndexSelected
+    public class MenuBase : MonoBehaviour, IMenu
     {
-        get { return _currentIndexSelected; }
-        set
+        int _currentIndexSelected;
+        public int CurrentIndexSelected
         {
-            _currentIndexSelected = value;
-            for (int i = 0; i < SelectableButtons.Count; i++)
+            get { return _currentIndexSelected; }
+            set
             {
-                if (SelectableButtons[i].Index == value)
-                    SelectableButtons[i].IsSelected = true;
-                else
-                    SelectableButtons[i].IsSelected = false;
+                _currentIndexSelected = value;
+                for (int i = 0; i < SelectableButtons.Count; i++)
+                {
+                    if (SelectableButtons[i].Index == value)
+                        SelectableButtons[i].IsSelected = true;
+                    else
+                        SelectableButtons[i].IsSelected = false;
+                }
             }
         }
-    }
 
-    List<ISelectable> _selectableButtons = new List<ISelectable>();
+        List<ISelectable> _selectableButtons = new List<ISelectable>();
 
-    public List<ISelectable> SelectableButtons
-    {
-        get { return _selectableButtons; }
-        set { _selectableButtons = value; }
-    }
-
-    /// <summary>
-    /// Cerca tutti i selectable button figli e se li salva in un lista
-    /// </summary>
-    public virtual void FindISelectableObects()
-    {
-        if (SelectableButtons.Count > 0)
-            SelectableButtons.Clear();
-
-        foreach (ISelectable item in GetComponentsInChildren<ISelectable>())
+        public List<ISelectable> SelectableButtons
         {
-            SelectableButtons.Add(item);
+            get { return _selectableButtons; }
+            set { _selectableButtons = value; }
         }
 
-        for (int i = 0; i < SelectableButtons.Count; i++)
+        /// <summary>
+        /// Cerca tutti i selectable button figli e se li salva in un lista
+        /// </summary>
+        public virtual void FindISelectableObects()
         {
-            SelectableButtons[i].SetIndex(i);
+            if (SelectableButtons.Count > 0)
+                SelectableButtons.Clear();
+
+            foreach (ISelectable item in GetComponentsInChildren<ISelectable>())
+            {
+                SelectableButtons.Add(item);
+            }
+
+            for (int i = 0; i < SelectableButtons.Count; i++)
+            {
+                SelectableButtons[i].SetIndex(i);
+            }
         }
+
+        #region Menu Actions
+
+        public virtual void GoDownInMenu()
+        {
+            if (SelectableButtons.Count > 0)
+                CurrentIndexSelected++;
+            if (CurrentIndexSelected > SelectableButtons.Count - 1)
+                CurrentIndexSelected = 0;
+        }
+
+        public virtual void GoUpInMenu()
+        {
+            if (SelectableButtons.Count > 0)
+                CurrentIndexSelected--;
+            if (CurrentIndexSelected < 0)
+                CurrentIndexSelected = SelectableButtons.Count - 1;
+        }
+
+        public virtual void GoLeftInMenu()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public virtual void GoRightInMenu()
+        {
+            throw new System.NotImplementedException();
+        }
+
+
+        public virtual void Select()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        #endregion
     }
-    
-    #region Menu Actions
-
-    public virtual void GoDownInMenu()
-    {
-        if (SelectableButtons.Count > 0)
-            CurrentIndexSelected++;
-        if (CurrentIndexSelected > SelectableButtons.Count - 1)
-            CurrentIndexSelected = 0;
-    }
-
-    public virtual void GoUpInMenu()
-    {
-        if (SelectableButtons.Count > 0)
-            CurrentIndexSelected--;
-        if (CurrentIndexSelected < 0)
-            CurrentIndexSelected = SelectableButtons.Count - 1;
-    }
-
-    public virtual void GoLeftInMenu()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public virtual void GoRightInMenu()
-    {
-        throw new System.NotImplementedException();
-    }
-
-
-    public virtual void Select()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    #endregion
 }

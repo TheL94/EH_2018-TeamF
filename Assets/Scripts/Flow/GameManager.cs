@@ -3,85 +3,90 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-[RequireComponent(typeof(FlowManager))]
-public class GameManager : MonoBehaviour
-{
-    public static GameManager I;
-
-    public FlowState CurrentState { get { return flowMng.CurrentState; } }
-
-    FlowManager flowMng;
-
-    public EnemySpawner EnemySpn;
-    public GameObject PlayerPrefab;
-
-    [HideInInspector]
-    public UIManager UIMng;
-
-    public GameObject UIManagerPrefab;
-
-    void Awake()
+namespace TeamF {
+    [RequireComponent(typeof(FlowManager))]
+    public class GameManager : MonoBehaviour
     {
-        //Singleton paradigm
-        if (I == null)
-            I = this;
-        else
-            DestroyImmediate(gameObject);
-    }
+        public static GameManager I;
 
-    void Start()
-    {
-        flowMng = GetComponent<FlowManager>();
-        UIMng = Instantiate(UIManagerPrefab, transform).GetComponentInChildren<UIManager>();
-        ChangeFlowState(FlowState.Loading);
-    }
+        public FlowState CurrentState { get { return flowMng.CurrentState; } }
 
-    void ClearScene()
-    {
-        //EnemySpn.DeleteAllEnemy();
-    }
+        FlowManager flowMng;
 
-    #region API
+        public EnemySpawner EnemySpn;
+        public GameObject PlayerPrefab;
 
-    public void Init()
-    {
-        Instantiate(PlayerPrefab, transform.position, Quaternion.identity);
-    }
+        [HideInInspector]
+        public UIManager UIMng;
 
-    #region Game Flow
-    /// <summary>
-    /// Funzione che innesca il cambio di stato
-    /// </summary>
-    public void ChangeFlowState(FlowState _stateToSet)
-    {
-        flowMng.ChageState(_stateToSet);
-    }
+        public GameObject UIManagerPrefab;
 
-    public void LoadingActions()
-    {
-        ChangeFlowState(FlowState.Menu);
-    }
+        public Player player;
 
-    public void MenuActions()
-    {
-        UIMng.MainMenuActions();
-    }
+        void Awake()
+        {
+            //Singleton paradigm
+            if (I == null)
+                I = this;
+            else
+                DestroyImmediate(gameObject);
+        }
 
-    public void GameplayActions()
-    {
-        UIMng.GameplayActions();
-    }
+        void Start()
+        {
+            flowMng = GetComponent<FlowManager>();
+            UIMng = Instantiate(UIManagerPrefab, transform).GetComponentInChildren<UIManager>();
+            //Instantiate(player,)
+            ChangeFlowState(FlowState.Loading);
+        }
 
-    public void EndGameActions()
-    {
-        UIMng.GameOverActions();
-        ClearScene();
-    }
+        void ClearScene()
+        {
+            //EnemySpn.DeleteAllEnemy();
+        }
 
-    public void CloseApplicationActions()
-    {
-        Application.Quit();
+        #region API
+
+        public void Init()
+        {
+            Instantiate(PlayerPrefab, transform.position, Quaternion.identity);
+        }
+
+        #region Game Flow
+        /// <summary>
+        /// Funzione che innesca il cambio di stato
+        /// </summary>
+        public void ChangeFlowState(FlowState _stateToSet)
+        {
+            flowMng.ChageState(_stateToSet);
+        }
+
+        public void LoadingActions()
+        {
+            ChangeFlowState(FlowState.Menu);
+        }
+
+        public void MenuActions()
+        {
+            UIMng.MainMenuActions();
+        }
+
+        public void GameplayActions()
+        {
+            UIMng.GameplayActions();
+        }
+
+        public void EndGameActions()
+        {
+            UIMng.GameOverActions();
+            ClearScene();
+        }
+
+        public void CloseApplicationActions()
+        {
+            Application.Quit();
+        }
+        #endregion
+        #endregion
     }
-    #endregion
-    #endregion
 }

@@ -2,46 +2,47 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+namespace TeamF
 {
-    public float BulletLife;
-    int Damage;
-    float Speed;
-
-    private void Start()
+    public class Bullet : MonoBehaviour
     {
-        Destroy(gameObject, BulletLife);
-    }
+        public float BulletLife;
+        int Damage;
+        float Speed;
 
-    void FixedUpdate ()
-    {
-        Move();
-    }
-
-    #region API
-
-    public void Init(int _damage, float _speed)
-    {
-        Damage = _damage;
-        Speed = _speed;
-    }
-
-    #endregion
-
-    void Move()
-    {
-        transform.Translate(-transform.forward * Speed); 
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        Enemy enemyHit = other.GetComponent<Enemy>();
-        if(enemyHit != null)
+        private void Start()
         {
-            enemyHit.TakeDamage(Damage);
+            Destroy(gameObject, BulletLife);
+        }
+
+        void FixedUpdate()
+        {
+            Move();
+        }
+
+        #region API
+
+        public void Init(int _damage, float _speed)
+        {
+            Damage = _damage;
+            Speed = _speed;
+        }
+
+        #endregion
+
+        void Move()
+        {
+            transform.Translate(-transform.forward * Speed);
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            IDamageable damageable = other.GetComponent<IDamageable>();
+            if (damageable != null)
+            {
+                damageable.TakeDamage(Damage);
+            }
             Destroy(gameObject);
         }
-        else
-            Destroy(gameObject);
     }
 }

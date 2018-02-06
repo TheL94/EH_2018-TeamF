@@ -2,74 +2,54 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+namespace TeamF
 {
-    Movement movement;
-    Weapon currentWeapon;
-    public int Life;
+    public class Player : MonoBehaviour
+    {
+        AvatarController avatar;
 
-	void Start ()
-    {
-        currentWeapon = GetComponentInChildren<Weapon>();
-        movement = GetComponent<Movement>();
-    }
-	
-	void Update ()
-    {
-        CheckInput();
-    }
-
-    void CheckInput()
-    {
-        if (GameManager.I.CurrentState == FlowState.Gameplay)
+        void Start()
         {
-            if (Life <= 0)
-                return;
-
-            if (Input.GetKey(KeyCode.W))
-                movement.Move(transform.forward);
-            if (Input.GetKey(KeyCode.S))
-                movement.Move(-transform.forward);
-            if (Input.GetKey(KeyCode.A))
-                movement.Move(-transform.right);
-            if (Input.GetKey(KeyCode.D))
-                movement.Move(transform.right);
-            if (Input.GetMouseButtonDown(0))
-                currentWeapon.SingleShot();
-            if (Input.GetMouseButton(0))
-                currentWeapon.FullAutoShoot();
-
-            movement.Rotate(); 
+            avatar = GetComponent<AvatarController>();
+            avatar.Init(this);
         }
-        if(GameManager.I.CurrentState != FlowState.Gameplay)
-        {
-            if (Input.GetKeyDown(KeyCode.UpArrow))
-                GameManager.I.UIMng.CurrentMenu.GoUpInMenu();
-            if (Input.GetKeyDown(KeyCode.DownArrow))
-                GameManager.I.UIMng.CurrentMenu.GoDownInMenu();
-            if (Input.GetKeyDown(KeyCode.Space))
-                GameManager.I.UIMng.CurrentMenu.Select();
-        }
-    }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log("Collision");
-        AmmoCrate crate = other.GetComponent<AmmoCrate>();
-        if (crate != null)
+        void Update()
         {
-            currentWeapon.AddAmmo(crate.Ammo);
-            crate.DestroyAmmoCrate();
+            CheckInput();
         }
-    }
 
-    public void TakeDamage(int _damage)
-    {
-        Life -= _damage;
-        if (Life <= 0)
+        void CheckInput()
         {
-            Destroy(movement.ModelToRotate);
-            GameManager.I.ChangeFlowState(FlowState.EndGame);
+            if (GameManager.I.CurrentState == FlowState.Gameplay)
+            {
+                if (avatar.Life <= 0)
+                    return;
+
+                if (Input.GetKey(KeyCode.W))
+                    avatar.movement.Move(transform.forward);
+                if (Input.GetKey(KeyCode.S))
+                    avatar.movement.Move(-transform.forward);
+                if (Input.GetKey(KeyCode.A))
+                    avatar.movement.Move(-transform.right);
+                if (Input.GetKey(KeyCode.D))
+                    avatar.movement.Move(transform.right);
+                if (Input.GetMouseButtonDown(0))
+                    avatar.Shot();
+                if (Input.GetMouseButton(0))
+                    avatar.FullAutoShot();
+
+                avatar.movement.Rotate();
+            }
+            if (GameManager.I.CurrentState != FlowState.Gameplay)
+            {
+                if (Input.GetKeyDown(KeyCode.UpArrow))
+                    GameManager.I.UIMng.CurrentMenu.GoUpInMenu();
+                if (Input.GetKeyDown(KeyCode.DownArrow))
+                    GameManager.I.UIMng.CurrentMenu.GoDownInMenu();
+                if (Input.GetKeyDown(KeyCode.Space))
+                    GameManager.I.UIMng.CurrentMenu.Select();
+            }
         }
     }
 }

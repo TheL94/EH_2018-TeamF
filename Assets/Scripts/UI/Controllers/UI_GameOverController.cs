@@ -4,23 +4,27 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
-public class UI_GameOverController : MenuBase {
-
-    public void Init()
+namespace TeamF
+{
+    public class UI_GameOverController : MenuBase
     {
-        GameManager.I.UIMng.CurrentMenu = this;
-        FindISelectableObects();
-        SelectableButtons[0].IsSelected = true;
-    }
 
-    public override void Select()
-    {
-        switch (CurrentIndexSelected)
+        public void Init()
         {
-            case 0:
-                //GameManager.I.ChangeFlowState(FlowState.Menu);
-                SceneManager.LoadScene(0);
-                break;
+            GameManager.I.UIMng.CurrentMenu = this;
+            FindISelectableObects();
+            SelectableButtons[0].IsSelected = true;
+        }
+
+        public override void Select()
+        {
+            switch (CurrentIndexSelected)
+            {
+                case 0:
+                    //GameManager.I.ChangeFlowState(FlowState.Menu);
+                    SceneManager.LoadScene(0);
+                    break;
+            }
         }
     }
 }

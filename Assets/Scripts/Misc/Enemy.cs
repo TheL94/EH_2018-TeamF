@@ -3,81 +3,89 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-
-public class Enemy : MonoBehaviour
+namespace TeamF
 {
-    public int Life;
-    public float MovementSpeed;
-    public int Damage;
-    public float DamageRange;
-    public float DamageRate;
-
-    public string SpecificID { get; set; }
-    NavMeshAgent navMesh;
-    EnemySpawner spawner;
-    Player target;
-    float time;
-
-    public void Init(Player _target, EnemySpawner _spawner, string _id)
+    public class Enemy : MonoBehaviour, IDamageable
     {
-        target = _target;
-        spawner = _spawner;
-        SpecificID = _id;
-        navMesh = GetComponent<NavMeshAgent>();
-        navMesh.stoppingDistance = DamageRange;
-    }
+        public int Life;
+        public float MovementSpeed;
+        public int Damage;
+        public float DamageRange;
+        public float DamageRate;
 
-    private void FixedUpdate()
-    {
-        if (target == null)
-            return;
+        public string SpecificID { get; set; }
+        NavMeshAgent navMesh;
+        EnemySpawner spawner;
+        AvatarController target;
+        float time;
 
-        navMesh.destination = target.transform.position;
-
-        CheckmovementConstrains();
-        //Move();
-        //Rotate();
-        Attack();
-    }
-
-    public void TakeDamage(int _damage)
-    {
-        Life -= _damage;
-        if (Life <= 0)
+        public void Init(AvatarController _target, EnemySpawner _spawner, string _id)
         {
-            spawner.DeleteSpecificEnemy(SpecificID);
-            Destroy(gameObject);
+            target = _target;
+            spawner = _spawner;
+            SpecificID = _id;
+            navMesh = GetComponent<NavMeshAgent>();
+            navMesh.stoppingDistance = DamageRange;
         }
-    }
 
-    void CheckmovementConstrains()
-    {
-        if (transform.rotation.x != 0 || transform.rotation.z != 0)
-            transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
-    }
-
-    void Move()
-    {
-        if(DamageRange <= Vector3.Distance(transform.position, target.transform.position))
-            transform.position = Vector3.Lerp(transform.position, target.transform.position, (MovementSpeed * Time.deltaTime) / Vector3.Distance(transform.position, target.transform.position));
-    }
-
-    void Attack()
-    {
-        time += Time.deltaTime;
-        if (time >= DamageRate)
+        private void FixedUpdate()
         {
-            if (DamageRange >= Vector3.Distance(transform.position, target.transform.position))
+            if (target == null)
+                return;
+
+            navMesh.destination = target.transform.position;
+
+            CheckmovementConstrains();
+            //Move();
+            //Rotate();
+            Attack();
+        }
+
+        public void TakeDamage(int _damage)
+        {
+            Life -= _damage;
+            if (Life <= 0)
             {
-                target.TakeDamage(Damage);
-                time = 0;
+                spawner.DeleteSpecificEnemy(SpecificID);
+                Destroy(gameObject);
             }
         }
-        
-    }
 
-    void Rotate()
-    {
-        Quaternion.LookRotation(transform.position - target.transform.position);
+        void CheckmovementConstrains()
+        {
+            if (transform.rotation.x != 0 || transform.rotation.z != 0)
+                transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
+        }
+
+        /// <summary>
+        /// [deprecata]
+        /// </summary>
+        void Move()
+        {
+            if (DamageRange <= Vector3.Distance(transform.position, target.transform.position))
+                transform.position = Vector3.Lerp(transform.position, target.transform.position, (MovementSpeed * Time.deltaTime) / Vector3.Distance(transform.position, target.transform.position));
+        }
+
+        void Attack()
+        {
+            time += Time.deltaTime;
+            if (time >= DamageRate)
+            {
+                if (DamageRange >= Vector3.Distance(transform.position, target.transform.position))
+                {
+                    target.TakeDamage(Damage);
+                    time = 0;
+                }
+            }
+
+        }
+
+        /// <summary>
+        /// [deprecata]
+        /// </summary>
+        void Rotate()
+        {
+            Quaternion.LookRotation(transform.position - target.transform.position);
+        }
     }
 }
