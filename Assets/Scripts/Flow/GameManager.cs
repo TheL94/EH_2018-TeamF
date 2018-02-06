@@ -15,13 +15,11 @@ namespace TeamF {
 
         public EnemySpawner EnemySpn;
         public GameObject PlayerPrefab;
-
+        public AmmoCratesController AmmoController;
         [HideInInspector]
         public UIManager UIMng;
 
         public GameObject UIManagerPrefab;
-
-        public Player player;
 
         void Awake()
         {
@@ -36,7 +34,6 @@ namespace TeamF {
         {
             flowMng = GetComponent<FlowManager>();
             UIMng = Instantiate(UIManagerPrefab, transform).GetComponentInChildren<UIManager>();
-            //Instantiate(player,)
             ChangeFlowState(FlowState.Loading);
         }
 
@@ -74,6 +71,8 @@ namespace TeamF {
         public void GameplayActions()
         {
             UIMng.GameplayActions();
+            AmmoController.Init();
+
         }
 
         public void EndGameActions()

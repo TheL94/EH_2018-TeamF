@@ -12,6 +12,13 @@ namespace TeamF
         public void Init()
         {
             Crates = GetComponentsInChildren<AmmoCrate>();
+            if (Crates.Length > 0)
+            {
+                foreach (AmmoCrate crate in Crates)
+                {
+                    crate.Init();
+                } 
+            }
         }
 
         public void ReinitAmmoCrates()
@@ -21,5 +28,13 @@ namespace TeamF
                 Crates[i].gameObject.SetActive(true);
             }
         }
+    }
+
+    public enum AmmoType
+    {
+        Fire = 0,
+        Water = 1,
+        Poison = 2,
+        Thunder = 3
     }
 }

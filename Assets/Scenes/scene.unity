@@ -337,12 +337,12 @@ Transform:
   m_PrefabParentObject: {fileID: 4961196553941782, guid: 467d5f63c301fc841a4c9d62e2cf3c3f,
     type: 2}
   m_PrefabInternal: {fileID: 373695734}
---- !u!114 &502194520 stripped
+--- !u!114 &427700602 stripped
 MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114535251106631316, guid: 147fcc9a9e9101345a30dc035775ffa9,
+  m_PrefabParentObject: {fileID: 114614664107629650, guid: 147fcc9a9e9101345a30dc035775ffa9,
     type: 2}
   m_PrefabInternal: {fileID: 583246584}
-  m_Script: {fileID: 11500000, guid: e04875ffe7c14254d93184771cbe27a9, type: 3}
+  m_Script: {fileID: 11500000, guid: 26a2e13c2445e044e9624cd6a1822518, type: 3}
 --- !u!1001 &554483740
 Prefab:
   m_ObjectHideFlags: 0
@@ -761,6 +761,11 @@ Prefab:
       propertyPath: EnemySpn
       value: 
       objectReference: {fileID: 1481763297}
+    - target: {fileID: 114100090815372252, guid: 024de7879b837ef4a834cdd88112491f,
+        type: 2}
+      propertyPath: AmmoController
+      value: 
+      objectReference: {fileID: 659673797}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 024de7879b837ef4a834cdd88112491f, type: 2}
   m_IsPrefabParent: 0
@@ -807,7 +812,7 @@ Prefab:
         type: 2}
       propertyPath: target
       value: 
-      objectReference: {fileID: 502194520}
+      objectReference: {fileID: 427700602}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 76d180b297851954a9c83fcb639eb653, type: 2}
   m_IsPrefabParent: 0

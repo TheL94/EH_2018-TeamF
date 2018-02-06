@@ -16,27 +16,6 @@ namespace TeamF
 
         float ratioTimer;
 
-        private int _ammo = 10;
-
-        public int Ammo
-        {
-            get { return _ammo; }
-            set
-            {
-                _ammo = value;
-                GameManager.I.UIMng.UI_GameplayCtrl.UpdateAmmo(_ammo);
-            }
-        }
-
-        public void AddAmmo(int _ammoToAdd)
-        {
-            if (Ammo < MagCapacity)
-            {
-                Ammo += _ammoToAdd;
-                if (Ammo > MagCapacity)
-                    Ammo = MagCapacity;
-            }
-        }
 
         public void FullAutoShoot()
         {
@@ -47,13 +26,9 @@ namespace TeamF
 
         public void SingleShot()
         {
-            if (Ammo > 0)
-            {
-                Bullet bull = Instantiate(BulletPrefab, Barrel.transform.position, Barrel.transform.rotation).GetComponent<Bullet>();
-                bull.Init(Damage, BulletSpeed);
-                ratioTimer = 0;
-                Ammo--;
-            }
+            Bullet bull = Instantiate(BulletPrefab, Barrel.transform.position, Barrel.transform.rotation).GetComponent<Bullet>();
+            bull.Init(Damage, BulletSpeed);
+            ratioTimer = 0;
         }
 
     }

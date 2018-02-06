@@ -8,6 +8,7 @@ namespace TeamF
     {
 
         Player player;
+        public ElementalAmmo AmmoInventory;
         public int Life;
         [HideInInspector]
         public Movement movement;
@@ -18,6 +19,7 @@ namespace TeamF
             player = _player;
             currentWeapon = GetComponentInChildren<Weapon>();
             movement = GetComponent<Movement>();
+            AmmoInventory = new ElementalAmmo();
         }
 
         /// <summary>
@@ -52,10 +54,33 @@ namespace TeamF
             AmmoCrate crate = other.GetComponent<AmmoCrate>();
             if (crate != null)
             {
-                currentWeapon.AddAmmo(crate.Ammo);
+                switch (crate.Type)
+                {
+                    case AmmoType.Fire:
+                        AmmoInventory.FireAmmo += crate.Ammo;
+                        break;
+                    case AmmoType.Water:
+                        AmmoInventory.WaterAmmo += crate.Ammo;
+                        break;
+                    case AmmoType.Poison:
+                        AmmoInventory.PoisonAmmo += crate.Ammo;
+                        break;
+                    case AmmoType.Thunder:
+                        AmmoInventory.ThunderAmmo += crate.Ammo;
+                        break;
+                }
+                GameManager.I.UIMng.UI_GameplayCtrl.UpdateAmmo(AmmoInventory, crate.Type);
                 crate.DestroyAmmoCrate();
             }
         }
 
     }
+}
+
+public struct ElementalAmmo
+{
+    public int FireAmmo;
+    public int WaterAmmo;
+    public int PoisonAmmo;
+    public int ThunderAmmo;
 }
