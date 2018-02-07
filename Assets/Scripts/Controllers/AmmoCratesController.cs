@@ -35,6 +35,7 @@ namespace TeamF
         Fire = 0,
         Water = 1,
         Poison = 2,
-        Thunder = 3
+        Thunder = 3,
+        None = 4
     }
 }

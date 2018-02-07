@@ -13,26 +13,35 @@ namespace TeamF
         public Text PoisonAmmo;
         public Text ThunderAmmo;
 
-
-        public void UpdateAmmo(ElementalAmmo _ammoValues, AmmoType _type)
+        private void OnEnable()
         {
-            switch (_type)
+            EventManager.OnAmmoChanged += UpdateAmmo;
+        }
+
+        public void UpdateAmmo(ElementalAmmo _ammoValues)
+        {
+            switch (_ammoValues.AmmoType)
             {
                 case AmmoType.Fire:
-                    FireAmmo.text = "Fire: " + _ammoValues.FireAmmo;
+                    FireAmmo.text = "1 - Fire: " + _ammoValues.Ammo;
                     break;
                 case AmmoType.Water:
-                    WaterAmmo.text = "Water: " + _ammoValues.WaterAmmo;
+                    WaterAmmo.text = "2 - Water: " + _ammoValues.Ammo;
                     break;
                 case AmmoType.Poison:
-                    PoisonAmmo.text = "Poison: " + _ammoValues.PoisonAmmo;
+                    PoisonAmmo.text = "3 - Poison: " + _ammoValues.Ammo;
                     break;
                 case AmmoType.Thunder:
-                    ThunderAmmo.text = "Thunder: " + _ammoValues.ThunderAmmo;
+                    ThunderAmmo.text = "4 - Thunder: " + _ammoValues.Ammo;
                     break;
                 default:
                     break;
             }
+        }
+
+        private void OnDisable()
+        {
+            EventManager.OnAmmoChanged -= UpdateAmmo;
         }
 
     }

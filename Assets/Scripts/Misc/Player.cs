@@ -39,6 +39,25 @@ namespace TeamF
                 if (Input.GetMouseButton(0))
                     avatar.FullAutoShot();
 
+                if (Input.GetKeyDown(KeyCode.Alpha1)) {
+                    avatar.SetActiveAmmo(AmmoType.Fire);
+                }
+
+                if (Input.GetKeyDown(KeyCode.Alpha2)) {
+                    avatar.SetActiveAmmo(AmmoType.Water);
+                }
+
+                if (Input.GetKeyDown(KeyCode.Alpha3)) {
+                    avatar.SetActiveAmmo(AmmoType.Poison);
+                }
+
+                if (Input.GetKeyDown(KeyCode.Alpha4)) {
+                    avatar.SetActiveAmmo(AmmoType.Thunder);
+                }
+                if (Input.GetKeyDown(KeyCode.Alpha5))
+                {
+                    avatar.SetActiveAmmo(AmmoType.None);
+                }
                 avatar.movement.Rotate();
             }
             if (GameManager.I.CurrentState != FlowState.Gameplay)

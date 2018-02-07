@@ -6,7 +6,7 @@ namespace TeamF
 {
     public class Weapon : MonoBehaviour
     {
-
+        AvatarController avatar;
         public GameObject BulletPrefab;
         public GameObject Barrel;
         public int MagCapacity;
@@ -16,20 +16,45 @@ namespace TeamF
 
         float ratioTimer;
 
+        public void Init(AvatarController _avatar)
+        {
+            avatar = _avatar;
+        }
 
-        public void FullAutoShoot()
+        public ElementalAmmo FullAutoShoot(ElementalAmmo _selectedAmmo)
         {
             ratioTimer += Time.deltaTime;
             if (ratioTimer >= Ratio)
-                SingleShot();
+                _selectedAmmo = SingleShot(_selectedAmmo);
+            return _selectedAmmo;
         }
 
-        public void SingleShot()
+        /// <summary>
+        /// Controlla se ci sono abbastanza munizioni o sono sotto zero (le munizioni standard) per chiamare la funzione per istanziare il proiettile.
+        /// Se le munizioni sono maggiori di zero le scala.
+        /// </summary>
+        public ElementalAmmo SingleShot(ElementalAmmo _selectedAmmo)
+        {
+            if (_selectedAmmo.Ammo != 0)
+            {
+                CreateBullet();
+                if(_selectedAmmo.Ammo > 0)
+                {
+                    _selectedAmmo.Ammo--;
+                }
+            }
+            return _selectedAmmo;
+        }
+
+        /// <summary>
+        /// Istanzia il proiettile e ne chiama l'init
+        /// </summary>
+        void CreateBullet()
         {
             Bullet bull = Instantiate(BulletPrefab, Barrel.transform.position, Barrel.transform.rotation).GetComponent<Bullet>();
             bull.Init(Damage, BulletSpeed);
             ratioTimer = 0;
-        }
 
+        }
     }
 }
