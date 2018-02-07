@@ -35,6 +35,7 @@ namespace TeamF
                     ThunderAmmo.text = "4 - Thunder: " + _ammoValues.Ammo;
                     break;
                 default:
+                    print("Default");
                     break;
             }
         }

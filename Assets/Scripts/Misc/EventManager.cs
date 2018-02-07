@@ -9,7 +9,10 @@ namespace TeamF
 
         public static void AmmoChange(ElementalAmmo _elementalAmmo)
         {
-            OnAmmoChanged(_elementalAmmo);
+            if (OnAmmoChanged != null)
+            {
+                OnAmmoChanged(_elementalAmmo); 
+            }
         }
 
         public delegate void UIAction(ElementalAmmo _elementalAmmo);

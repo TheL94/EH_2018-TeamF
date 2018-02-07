@@ -21,7 +21,10 @@ namespace TeamF
             set
             {
                 _selectedAmmo = value;
-                EventManager.AmmoChange(_selectedAmmo);
+                if (_selectedAmmo.AmmoType != AmmoType.None)
+                {
+                    EventManager.AmmoChange(_selectedAmmo); 
+                }
             }
         }
 
