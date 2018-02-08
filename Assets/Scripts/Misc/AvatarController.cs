@@ -14,16 +14,16 @@ namespace TeamF
         public Movement movement;
         Weapon currentWeapon;
 
-        int SelectedAmmoIndex;
+        int selectedAmmoIndex;
         public ElementalAmmo SelectedAmmo
         {
-            get { return AllElementalAmmo[SelectedAmmoIndex]; }
+            get { return AllElementalAmmo[selectedAmmoIndex]; }
             set
             {
-                AllElementalAmmo[SelectedAmmoIndex] = value;
-                if (AllElementalAmmo[SelectedAmmoIndex].AmmoType != ElementalType.None)
+                AllElementalAmmo[selectedAmmoIndex] = value;
+                if (AllElementalAmmo[selectedAmmoIndex].AmmoType != ElementalType.None)
                 {
-                    EventManager.AmmoChange(AllElementalAmmo[SelectedAmmoIndex]); 
+                    EventManager.AmmoChange(AllElementalAmmo[selectedAmmoIndex]); 
                 }
             }
         }
@@ -40,7 +40,7 @@ namespace TeamF
                 else
                     AllElementalAmmo[i] = new ElementalAmmo { AmmoType = (ElementalType)i, Ammo = 0 };
             }
-            SelectedAmmo = AllElementalAmmo[AllElementalAmmo.Length - 1];
+            selectedAmmoIndex = AllElementalAmmo.Length - 1;
         }
 
         /// <summary>
@@ -85,7 +85,6 @@ namespace TeamF
                     {
                         //Aggiungi le munizioni a questo tipo;
                         AllElementalAmmo[i].Ammo += crate.Ammo;
-                        //GameManager.I.UIMng.UI_GameplayCtrl.UpdateAmmo(AllElementalAmmo[i]);
                         EventManager.AmmoChange(AllElementalAmmo[i]);
                         crate.DestroyAmmoCrate();
                         return;
@@ -103,19 +102,19 @@ namespace TeamF
             switch (_type)
             {
                 case ElementalType.Fire:
-                    SelectedAmmoIndex = 0;
+                    selectedAmmoIndex = 0;
                     break;
                 case ElementalType.Water:
-                    SelectedAmmoIndex = 1;
+                    selectedAmmoIndex = 1;
                     break;
                 case ElementalType.Poison:
-                    SelectedAmmoIndex = 2;
+                    selectedAmmoIndex = 2;
                     break;
                 case ElementalType.Thunder:
-                    SelectedAmmoIndex = 3;
+                    selectedAmmoIndex = 3;
                     break;
                 case ElementalType.None:
-                    SelectedAmmoIndex = 4;
+                    selectedAmmoIndex = 4;
                     break;
             }
         }

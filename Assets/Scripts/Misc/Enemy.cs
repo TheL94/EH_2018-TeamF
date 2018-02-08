@@ -43,15 +43,20 @@ namespace TeamF
             Attack();
         }
 
-        public void TakeDamage(int _damage, ElementalType _type)
+        /// <summary>
+        /// Funzione per prendere danno;
+        /// </summary>
+        /// <param name="_damage">Il valore da sottrarre alla vita</param>
+        /// <param name="_bulletType">Il tipo del proiettile</param>
+        public void TakeDamage(int _damage, ElementalType _bulletType)
         {
-            if (enemyType == _type)
+            if (enemyType == _bulletType)
             {
                 print("Immune");
             }
             else
             {
-                switch (_type)
+                switch (_bulletType)
                 {
                     case ElementalType.Fire:
                         print("In Fiamme");
@@ -90,6 +95,9 @@ namespace TeamF
                 transform.position = Vector3.Lerp(transform.position, target.transform.position, (MovementSpeed * Time.deltaTime) / Vector3.Distance(transform.position, target.transform.position));
         }
 
+        /// <summary>
+        /// provoca danno alla vita del target se è alla distanza corretta
+        /// </summary>
         void Attack()
         {
             time += Time.deltaTime;

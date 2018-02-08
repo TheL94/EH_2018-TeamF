@@ -6,7 +6,10 @@ namespace TeamF
 {
     public class EventManager
     {
-
+        /// <summary>
+        /// Chiama l'evento per aggiornare le munizioni in UI
+        /// </summary>
+        /// <param name="_elementalAmmo"></param>
         public static void AmmoChange(ElementalAmmo _elementalAmmo)
         {
             if (OnAmmoChanged != null)

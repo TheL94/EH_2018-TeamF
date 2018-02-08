@@ -18,7 +18,11 @@ namespace TeamF
             EventManager.OnAmmoChanged += UpdateAmmo;
         }
 
-        public void UpdateAmmo(ElementalAmmo _ammoValues)
+        /// <summary>
+        /// Funzione per Aggiornare il numero di munizioni in UI
+        /// </summary>
+        /// <param name="_ammoValues"></param>
+        void UpdateAmmo(ElementalAmmo _ammoValues)
         {
             switch (_ammoValues.AmmoType)
             {
