@@ -822,7 +822,7 @@ Prefab:
     - target: {fileID: 114351761636212556, guid: 76d180b297851954a9c83fcb639eb653,
         type: 2}
       propertyPath: DelayTime
-      value: 100
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 76d180b297851954a9c83fcb639eb653, type: 2}
