@@ -30,7 +30,7 @@ namespace TeamF
         }
     }
 
-    public enum AmmoType
+    public enum ElementalType
     {
         Fire = 0,
         Water = 1,

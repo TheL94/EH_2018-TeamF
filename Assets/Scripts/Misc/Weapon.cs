@@ -37,7 +37,7 @@ namespace TeamF
         {
             if (_selectedAmmo.Ammo != 0)
             {
-                CreateBullet();
+                CreateBullet(_selectedAmmo.AmmoType);
                 if(_selectedAmmo.Ammo > 0)
                 {
                     _selectedAmmo.Ammo--;
@@ -49,10 +49,10 @@ namespace TeamF
         /// <summary>
         /// Istanzia il proiettile e ne chiama l'init
         /// </summary>
-        void CreateBullet()
+        void CreateBullet(ElementalType _ammoType)
         {
             Bullet bull = Instantiate(BulletPrefab, Barrel.transform.position, Barrel.transform.rotation).GetComponent<Bullet>();
-            bull.Init(Damage, BulletSpeed);
+            bull.Init(Damage, BulletSpeed, _ammoType);
             ratioTimer = 0;
 
         }

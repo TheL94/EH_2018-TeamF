@@ -7,6 +7,7 @@ namespace TeamF
 {
     public class Enemy : MonoBehaviour, IDamageable
     {
+        ElementalType enemyType;
         public int Life;
         public float MovementSpeed;
         public int Damage;
@@ -19,11 +20,12 @@ namespace TeamF
         AvatarController target;
         float time;
 
-        public void Init(AvatarController _target, EnemySpawner _spawner, string _id)
+        public void Init(AvatarController _target, EnemySpawner _spawner, string _id, ElementalType _type)
         {
             target = _target;
             spawner = _spawner;
             SpecificID = _id;
+            enemyType = _type;
             navMesh = GetComponent<NavMeshAgent>();
             navMesh.stoppingDistance = DamageRange;
         }
@@ -41,13 +43,35 @@ namespace TeamF
             Attack();
         }
 
-        public void TakeDamage(int _damage)
+        public void TakeDamage(int _damage, ElementalType _type)
         {
-            Life -= _damage;
-            if (Life <= 0)
+            if (enemyType == _type)
             {
-                spawner.DeleteSpecificEnemy(SpecificID);
-                Destroy(gameObject);
+                print("Immune");
+            }
+            else
+            {
+                switch (_type)
+                {
+                    case ElementalType.Fire:
+                        print("In Fiamme");
+                        break;
+                    case ElementalType.Water:
+                        print("Bagnato");
+                        break;
+                    case ElementalType.Poison:
+                        print("Avvelenato");
+                        break;
+                    case ElementalType.Thunder:
+                        print("Elettrificato");
+                        break;
+                }
+                Life -= _damage;
+                if (Life <= 0)
+                {
+                    spawner.DeleteSpecificEnemy(SpecificID);
+                    Destroy(gameObject);
+                }
             }
         }
 
@@ -73,7 +97,7 @@ namespace TeamF
             {
                 if (DamageRange >= Vector3.Distance(transform.position, target.transform.position))
                 {
-                    target.TakeDamage(Damage);
+                    target.TakeDamage(Damage, enemyType);
                     time = 0;
                 }
             }

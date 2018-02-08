@@ -33,8 +33,13 @@ namespace TeamF
                 SpawnPoints.Add(gameObject);
             Enemy newEnemy = Instantiate(_enemyPrefab, SpawnPoints[Random.Range(0, SpawnPoints.Count)].transform.position, Quaternion.identity);
             enemiesSpawned.Add(newEnemy);
-            newEnemy.Init(target, this, "Enemy" + idCounter);
+            newEnemy.Init(target, this, "Enemy" + idCounter, ChoiseRandomElement());
             idCounter++;
+        }
+
+        ElementalType ChoiseRandomElement()
+        {
+            return (ElementalType)Random.Range(0, 4);
         }
 
         #region API

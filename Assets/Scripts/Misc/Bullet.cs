@@ -6,6 +6,7 @@ namespace TeamF
 {
     public class Bullet : MonoBehaviour
     {
+        ElementalType bulletType;
         public float BulletLife;
         int Damage;
         float Speed;
@@ -22,10 +23,11 @@ namespace TeamF
 
         #region API
 
-        public void Init(int _damage, float _speed)
+        public void Init(int _damage, float _speed, ElementalType _ammoType)
         {
             Damage = _damage;
             Speed = _speed;
+            bulletType = _ammoType;
         }
 
         #endregion
@@ -40,7 +42,7 @@ namespace TeamF
             IDamageable damageable = other.GetComponent<IDamageable>();
             if (damageable != null)
             {
-                damageable.TakeDamage(Damage);
+                damageable.TakeDamage(Damage, bulletType);
             }
             Destroy(gameObject);
         }

@@ -6,12 +6,12 @@ namespace TeamF
 {
     public class AmmoCrate : MonoBehaviour
     {
-        public AmmoType Type { get; set; }
+        public ElementalType Type { get; set; }
         public int Ammo;
 
         public void Init()
         {
-            Type = (AmmoType)Random.Range(0, 4);
+            Type = (ElementalType)Random.Range(0, 4);
         }
 
         public void DestroyAmmoCrate()

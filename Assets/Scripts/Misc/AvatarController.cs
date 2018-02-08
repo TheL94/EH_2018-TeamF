@@ -14,16 +14,16 @@ namespace TeamF
         public Movement movement;
         Weapon currentWeapon;
 
-        ElementalAmmo _selectedAmmo;
+        int SelectedAmmoIndex;
         public ElementalAmmo SelectedAmmo
         {
-            get { return _selectedAmmo; }
+            get { return AllElementalAmmo[SelectedAmmoIndex]; }
             set
             {
-                _selectedAmmo = value;
-                if (_selectedAmmo.AmmoType != AmmoType.None)
+                AllElementalAmmo[SelectedAmmoIndex] = value;
+                if (AllElementalAmmo[SelectedAmmoIndex].AmmoType != ElementalType.None)
                 {
-                    EventManager.AmmoChange(_selectedAmmo); 
+                    EventManager.AmmoChange(AllElementalAmmo[SelectedAmmoIndex]); 
                 }
             }
         }
@@ -36,9 +36,9 @@ namespace TeamF
             for (int i = 0; i < AllElementalAmmo.Length; i++)
             {
                 if(i == AllElementalAmmo.Length - 1)
-                    AllElementalAmmo[i] = new ElementalAmmo { AmmoType = (AmmoType)i, Ammo = -1 };
+                    AllElementalAmmo[i] = new ElementalAmmo { AmmoType = (ElementalType)i, Ammo = -1 };
                 else
-                    AllElementalAmmo[i] = new ElementalAmmo { AmmoType = (AmmoType)i, Ammo = 0 };
+                    AllElementalAmmo[i] = new ElementalAmmo { AmmoType = (ElementalType)i, Ammo = 0 };
             }
             SelectedAmmo = AllElementalAmmo[AllElementalAmmo.Length - 1];
         }
@@ -59,7 +59,12 @@ namespace TeamF
             SelectedAmmo = currentWeapon.FullAutoShoot(SelectedAmmo);
         }
 
-        public void TakeDamage(int _damage)
+        /// <summary>
+        /// Provoca danno al player e cambia stato se la vita dell'avatar raggiunge lo zero.
+        /// </summary>
+        /// <param name="_damage">Valore da scalare alla vita dell'avatar</param>
+        /// <param name="_type">Tipo del nemico che attacca, per triggherare azioni particolari del player a seconda del tipo di nemico</param>
+        public void TakeDamage(int _damage, ElementalType _type)
         {
             Life -= _damage;
             if (Life <= 0)
@@ -79,8 +84,9 @@ namespace TeamF
                     if (crate.Type == AllElementalAmmo[i].AmmoType)
                     {
                         //Aggiungi le munizioni a questo tipo;
-                        AllElementalAmmo[i].Ammo = crate.Ammo;
-                        GameManager.I.UIMng.UI_GameplayCtrl.UpdateAmmo(AllElementalAmmo[i]);
+                        AllElementalAmmo[i].Ammo += crate.Ammo;
+                        //GameManager.I.UIMng.UI_GameplayCtrl.UpdateAmmo(AllElementalAmmo[i]);
+                        EventManager.AmmoChange(AllElementalAmmo[i]);
                         crate.DestroyAmmoCrate();
                         return;
                     }
@@ -92,24 +98,24 @@ namespace TeamF
         /// Setta le munizioni da utilizzare per sparare
         /// </summary>
         /// <param name="_type"></param>
-        public void SetActiveAmmo(AmmoType _type)
+        public void SetActiveAmmo(ElementalType _type)
         {
             switch (_type)
             {
-                case AmmoType.Fire:
-                    SelectedAmmo = AllElementalAmmo[0];
+                case ElementalType.Fire:
+                    SelectedAmmoIndex = 0;
                     break;
-                case AmmoType.Water:
-                    SelectedAmmo = AllElementalAmmo[1];
+                case ElementalType.Water:
+                    SelectedAmmoIndex = 1;
                     break;
-                case AmmoType.Poison:
-                    SelectedAmmo = AllElementalAmmo[2];
+                case ElementalType.Poison:
+                    SelectedAmmoIndex = 2;
                     break;
-                case AmmoType.Thunder:
-                    SelectedAmmo = AllElementalAmmo[3];
+                case ElementalType.Thunder:
+                    SelectedAmmoIndex = 3;
                     break;
-                case AmmoType.None:
-                    SelectedAmmo = AllElementalAmmo[4];
+                case ElementalType.None:
+                    SelectedAmmoIndex = 4;
                     break;
             }
         }
@@ -118,7 +124,7 @@ namespace TeamF
 
     public struct ElementalAmmo
     {
-        public AmmoType AmmoType { get; set; }
+        public ElementalType AmmoType { get; set; }
         public int Ammo { get; set; }
     }
 }

@@ -40,23 +40,23 @@ namespace TeamF
                     avatar.FullAutoShot();
 
                 if (Input.GetKeyDown(KeyCode.Alpha1)) {
-                    avatar.SetActiveAmmo(AmmoType.Fire);
+                    avatar.SetActiveAmmo(ElementalType.Fire);
                 }
 
                 if (Input.GetKeyDown(KeyCode.Alpha2)) {
-                    avatar.SetActiveAmmo(AmmoType.Water);
+                    avatar.SetActiveAmmo(ElementalType.Water);
                 }
 
                 if (Input.GetKeyDown(KeyCode.Alpha3)) {
-                    avatar.SetActiveAmmo(AmmoType.Poison);
+                    avatar.SetActiveAmmo(ElementalType.Poison);
                 }
 
                 if (Input.GetKeyDown(KeyCode.Alpha4)) {
-                    avatar.SetActiveAmmo(AmmoType.Thunder);
+                    avatar.SetActiveAmmo(ElementalType.Thunder);
                 }
                 if (Input.GetKeyDown(KeyCode.Alpha5))
                 {
-                    avatar.SetActiveAmmo(AmmoType.None);
+                    avatar.SetActiveAmmo(ElementalType.None);
                 }
                 avatar.movement.Rotate();
             }
