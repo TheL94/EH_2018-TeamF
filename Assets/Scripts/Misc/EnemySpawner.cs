@@ -96,7 +96,7 @@ namespace TeamF
         {
             if (SpawnPoints.Count == 0)
                 SpawnPoints.Add(transform);
-            Enemy newEnemy = Instantiate(_enemyPrefab, _spawnPoint.transform.position, Quaternion.identity);
+            Enemy newEnemy = Instantiate(_enemyPrefab, _spawnPoint.transform.position, Quaternion.identity, transform);
             enemiesSpawned.Add(newEnemy);
 
             if (SpawnElementalEnemy)
