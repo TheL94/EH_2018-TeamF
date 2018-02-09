@@ -42,31 +42,17 @@ namespace TeamF
         {
             List<Transform> spawnAvailable = new List<Transform>();
 
-            //TODO: da rivedere per migliorare
-            for (int i = 0; i < SpawnPoints.Count / 2; i++)
+            int spawnIndexToExclude = Random.Range(0, SpawnPoints.Count);
+
+            for (int i = 0; i < SpawnPoints.Count; i++)
             {
-                int spawnIndex = Random.Range(0, SpawnPoints.Count);
+                if (i == spawnIndexToExclude)
+                    continue;
 
-                if(Vector3.Distance(SpawnPoints[spawnIndex].position, target.transform.position) >= MinDistanceSpawn && !spawnAvailable.Contains(SpawnPoints[spawnIndex]))
-                    spawnAvailable.Add(SpawnPoints[spawnIndex]);
+                if (Vector3.Distance(SpawnPoints[i].position, target.transform.position) >= MinDistanceSpawn)
+                    spawnAvailable.Add(SpawnPoints[i]);
                 else
-                {
-                    if(spawnIndex + 1 > SpawnPoints.Count)
-                        spawnIndex--;
-                    else
-                        spawnIndex++;
-
-                    if (SpawnPoints[spawnIndex] == null)
-                        return;
-                    if (Vector3.Distance(SpawnPoints[spawnIndex].position, target.transform.position) >= MinDistanceSpawn && !spawnAvailable.Contains(SpawnPoints[spawnIndex]))
-                        spawnAvailable.Add(SpawnPoints[spawnIndex]);
-                }
-
-                //while (Vector3.Distance(SpawnPoints[spawnIndex].position, target.transform.position) <= 50 || !spawnAvailable.Contains(SpawnPoints[spawnIndex]))
-                //{
-                //    spawnIndex = Random.Range(0, SpawnPoints.Count);
-                //}
-
+                    spawnAvailable.Add(SpawnPoints[spawnIndexToExclude]);
             }
 
             foreach (Transform spawn in spawnAvailable)
