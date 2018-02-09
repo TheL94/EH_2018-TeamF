@@ -8,30 +8,76 @@ namespace TeamF
     {
         public AvatarController target;
         public Enemy EnemyPrefab;
-        public float DelayTime;
-        public List<GameObject> SpawnPoints = new List<GameObject>();
+        public float StartDelayTime;
+        public float DelayHordes;
+        public float MinDistanceSpawn;
+        public bool CanSpawn { get; set; }
+
+        public int MaxHordeNumber;
+        public int MinHordeNumber;
+
+        public List<Transform> SpawnPoints = new List<Transform>();
         List<Enemy> enemiesSpawned = new List<Enemy>();
         int idCounter;
+
         float time;
 
         void Update()
         {
-            if (GameManager.I.CurrentState != FlowState.Gameplay)
+            if (!CanSpawn)
                 return;
 
             time += Time.deltaTime;
-            if (time >= DelayTime && target.Life > 0)
+            if (time >= DelayHordes && target.Life > 0)
             {
-                Spawn(EnemyPrefab);
+                SpawnHorde(EnemyPrefab);
                 time = 0;
             }
         }
 
-        void Spawn(Enemy _enemyPrefab)
+        void SpawnHorde(Enemy _enemyPrefab)
+        {
+            List<Transform> spawnAvailable = new List<Transform>();
+
+            //TODO: da rivedere per migliorare
+            for (int i = 0; i < SpawnPoints.Count / 2; i++)
+            {
+                int spawnIndex = Random.Range(0, SpawnPoints.Count);
+
+                if(Vector3.Distance(SpawnPoints[spawnIndex].position, target.transform.position) >= MinDistanceSpawn && !spawnAvailable.Contains(SpawnPoints[spawnIndex]))
+                    spawnAvailable.Add(SpawnPoints[spawnIndex]);
+                else
+                {
+                    spawnIndex++;
+                    if (SpawnPoints[spawnIndex] == null)
+                        return;
+                    if (Vector3.Distance(SpawnPoints[spawnIndex].position, target.transform.position) >= MinDistanceSpawn && !spawnAvailable.Contains(SpawnPoints[spawnIndex]))
+                        spawnAvailable.Add(SpawnPoints[spawnIndex]);
+                }
+
+                //while (Vector3.Distance(SpawnPoints[spawnIndex].position, target.transform.position) <= 50 || !spawnAvailable.Contains(SpawnPoints[spawnIndex]))
+                //{
+                //    spawnIndex = Random.Range(0, SpawnPoints.Count);
+                //}
+
+            }
+
+            foreach (Transform spawn in spawnAvailable)
+            {
+                int hordeNumber = Random.Range(MinHordeNumber, MaxHordeNumber + 1);
+                print(hordeNumber);
+                for (int i = 0; i < hordeNumber; i++)
+                {
+                    Spawn(_enemyPrefab, spawn);
+                }
+            }
+        }
+
+        void Spawn(Enemy _enemyPrefab, Transform _spawnPoint)
         {
             if (SpawnPoints.Count == 0)
-                SpawnPoints.Add(gameObject);
-            Enemy newEnemy = Instantiate(_enemyPrefab, SpawnPoints[Random.Range(0, SpawnPoints.Count)].transform.position, Quaternion.identity);
+                SpawnPoints.Add(transform);
+            Enemy newEnemy = Instantiate(_enemyPrefab, _spawnPoint.transform.position, Quaternion.identity);
             enemiesSpawned.Add(newEnemy);
             newEnemy.Init(target, this, "Enemy" + idCounter, ChoiseRandomElement());
             idCounter++;
@@ -42,7 +88,19 @@ namespace TeamF
             return (ElementalType)Random.Range(0, 4);
         }
 
+        IEnumerator FirstSpawn()
+        {
+            yield return new WaitForSeconds(StartDelayTime);
+            SpawnHorde(EnemyPrefab);
+            CanSpawn = true;
+        }
+
         #region API
+
+        public void Init()
+        {
+            StartCoroutine(FirstSpawn());
+        }
 
         public void DeleteSpecificEnemy(string _idEnemy)
         {

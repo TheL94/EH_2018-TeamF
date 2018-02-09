@@ -72,13 +72,14 @@ namespace TeamF {
         {
             UIMng.GameplayActions();
             AmmoController.Init();
-
+            EnemySpn.Init();
         }
 
         public void EndGameActions()
         {
             UIMng.GameOverActions();
             ClearScene();
+            EnemySpn.CanSpawn = false;
         }
 
         public void CloseApplicationActions()
