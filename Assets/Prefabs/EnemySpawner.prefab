@@ -291,6 +291,8 @@ MonoBehaviour:
   MinDistanceSpawn: 20
   MaxHordeNumber: 8
   MinHordeNumber: 5
+  MaxElementalsEnemies: 2
+  MinElementalsEnemies: 0
   SpawnPoints:
   - {fileID: 4124812044813388}
   - {fileID: 4358930786240342}

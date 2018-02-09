@@ -20,7 +20,7 @@ namespace TeamF
         AvatarController target;
         float time;
 
-        public void Init(AvatarController _target, EnemySpawner _spawner, string _id, ElementalType _type)
+        public void Init(AvatarController _target, EnemySpawner _spawner, string _id, ElementalType _type = ElementalType.None)
         {
             target = _target;
             spawner = _spawner;

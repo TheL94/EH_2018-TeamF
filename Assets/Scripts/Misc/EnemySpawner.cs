@@ -16,6 +16,9 @@ namespace TeamF
         public int MaxHordeNumber;
         public int MinHordeNumber;
 
+        public int MaxElementalsEnemies;
+        public int MinElementalsEnemies;
+
         public List<Transform> SpawnPoints = new List<Transform>();
         List<Enemy> enemiesSpawned = new List<Enemy>();
         int idCounter;
@@ -48,7 +51,11 @@ namespace TeamF
                     spawnAvailable.Add(SpawnPoints[spawnIndex]);
                 else
                 {
-                    spawnIndex++;
+                    if(spawnIndex + 1 > SpawnPoints.Count)
+                        spawnIndex--;
+                    else
+                        spawnIndex++;
+
                     if (SpawnPoints[spawnIndex] == null)
                         return;
                     if (Vector3.Distance(SpawnPoints[spawnIndex].position, target.transform.position) >= MinDistanceSpawn && !spawnAvailable.Contains(SpawnPoints[spawnIndex]))
@@ -65,21 +72,38 @@ namespace TeamF
             foreach (Transform spawn in spawnAvailable)
             {
                 int hordeNumber = Random.Range(MinHordeNumber, MaxHordeNumber + 1);
-                print(hordeNumber);
-                for (int i = 0; i < hordeNumber; i++)
+                int elementalsEnemies = Random.Range(MinElementalsEnemies, MaxElementalsEnemies + 1);
+
+                for (int i = 0; i < elementalsEnemies; i++)
+                {
+                    Spawn(_enemyPrefab, spawn, true);
+                }
+
+                for (int i = 0; i < hordeNumber - elementalsEnemies; i++)
                 {
                     Spawn(_enemyPrefab, spawn);
                 }
             }
         }
 
-        void Spawn(Enemy _enemyPrefab, Transform _spawnPoint)
+        /// <summary>
+        /// Instanza un nuovo nemico e ne chiama l'Init
+        /// </summary>
+        /// <param name="_enemyPrefab">Il prefab del nemico da utilizzare</param>
+        /// <param name="_spawnPoint">Lo spawn point dove far spawnare il nemico</param>
+        /// <param name="SpawnElementalEnemy">True se il nemico da spawnare è elementale</param>
+        void Spawn(Enemy _enemyPrefab, Transform _spawnPoint, bool SpawnElementalEnemy = false)
         {
             if (SpawnPoints.Count == 0)
                 SpawnPoints.Add(transform);
             Enemy newEnemy = Instantiate(_enemyPrefab, _spawnPoint.transform.position, Quaternion.identity);
             enemiesSpawned.Add(newEnemy);
-            newEnemy.Init(target, this, "Enemy" + idCounter, ChoiseRandomElement());
+
+            if (SpawnElementalEnemy)
+                newEnemy.Init(target, this, "Enemy" + idCounter, ChoiseRandomElement()); 
+            else
+                newEnemy.Init(target, this, "Enemy" + idCounter);
+
             idCounter++;
         }
 

@@ -140,7 +140,7 @@ MonoBehaviour:
   Life: 10
   MovementSpeed: 7
   Damage: 2
-  DamageRange: 3
+  DamageRange: 1.7
   DamageRate: 1
 --- !u!195 &195933199287426206
 NavMeshAgent:
