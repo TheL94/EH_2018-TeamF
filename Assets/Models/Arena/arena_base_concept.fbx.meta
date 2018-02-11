@@ -1,17 +1,16 @@
 fileFormatVersion: 2
-guid: f5df519dbcf8b3846896f91d7e4f11a0
-timeCreated: 1517564947
+guid: 35d5874dca42842449bd419473ab565b
+timeCreated: 1518268020
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: default_mat
+    2100000: lambert1
     2300000: //RootNode
     3300000: //RootNode
-    4300000: base_arena
-    6400000: //RootNode
+    4300000: polySurface3
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -44,11 +43,11 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 1
+    addColliders: 0
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 1
-    importLights: 1
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
