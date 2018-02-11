@@ -221,6 +221,11 @@ Prefab:
       propertyPath: target
       value: 
       objectReference: {fileID: 427700602}
+    - target: {fileID: 114351761636212556, guid: 76d180b297851954a9c83fcb639eb653,
+        type: 2}
+      propertyPath: PointsToWin
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 76d180b297851954a9c83fcb639eb653, type: 2}
   m_IsPrefabParent: 0

@@ -140,8 +140,9 @@ MonoBehaviour:
   Life: 10
   MovementSpeed: 7
   Damage: 2
-  DamageRange: 1.7
+  DamageRange: 1
   DamageRate: 1
+  EnemyValue: 1
 --- !u!195 &195933199287426206
 NavMeshAgent:
   m_ObjectHideFlags: 1

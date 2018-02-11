@@ -14,6 +14,8 @@ namespace TeamF
         public float DamageRange;
         public float DamageRate;
 
+        public float EnemyValue;
+
         public string SpecificID { get; set; }
         NavMeshAgent navMesh;
         EnemySpawner spawner;
@@ -74,7 +76,7 @@ namespace TeamF
                 Life -= _damage;
                 if (Life <= 0)
                 {
-                    spawner.DeleteSpecificEnemy(SpecificID);
+                    spawner.KillEnemy(this);
                     Destroy(gameObject);
                 }
             }

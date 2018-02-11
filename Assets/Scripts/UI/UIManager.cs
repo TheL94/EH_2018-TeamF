@@ -28,11 +28,11 @@ namespace TeamF
             UI_GameOverCtrl.gameObject.SetActive(false);
         }
 
-        public void GameOverActions()
+        public void GameOverActions(bool _isWin)
         {
             UI_MainMenuCtrl.gameObject.SetActive(false);
             UI_GameOverCtrl.gameObject.SetActive(true);
-            UI_GameOverCtrl.Init();
+            UI_GameOverCtrl.Init(_isWin);
         }
     }
 }

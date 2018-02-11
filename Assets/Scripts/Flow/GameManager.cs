@@ -21,6 +21,8 @@ namespace TeamF {
 
         public GameObject UIManagerPrefab;
 
+        bool _isWin;
+
         void Awake()
         {
             //Singleton paradigm
@@ -39,7 +41,7 @@ namespace TeamF {
 
         void ClearScene()
         {
-            //EnemySpn.DeleteAllEnemy();
+            EnemySpn.EndGameActions();
         }
 
         #region API
@@ -47,6 +49,11 @@ namespace TeamF {
         public void Init()
         {
             Instantiate(PlayerPrefab, transform.position, Quaternion.identity);
+        }
+
+        public void VictoryActions()
+        {
+            ChangeFlowState(FlowState.EndGame);
         }
 
         #region Game Flow
@@ -70,6 +77,7 @@ namespace TeamF {
 
         public void GameplayActions()
         {
+            _isWin = false;
             UIMng.GameplayActions();
             AmmoController.Init();
             EnemySpn.Init();
@@ -77,9 +85,8 @@ namespace TeamF {
 
         public void EndGameActions()
         {
-            UIMng.GameOverActions();
+            UIMng.GameOverActions(_isWin);
             ClearScene();
-            EnemySpn.CanSpawn = false;
         }
 
         public void CloseApplicationActions()

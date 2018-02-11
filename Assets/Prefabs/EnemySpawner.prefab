@@ -317,11 +317,12 @@ MonoBehaviour:
     type: 2}
   StartDelayTime: 5
   DelayHordes: 20
-  MinDistanceSpawn: 20
+  MinDistanceSpawn: 15
   MaxHordeNumber: 8
   MinHordeNumber: 5
   MaxElementalsEnemies: 2
   MinElementalsEnemies: 0
+  PointsToWin: 10
   SpawnPoints:
   - {fileID: 4124812044813388}
   - {fileID: 4358930786240342}
