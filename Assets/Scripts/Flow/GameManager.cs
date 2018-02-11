@@ -53,6 +53,7 @@ namespace TeamF {
 
         public void VictoryActions()
         {
+            _isWin = true;
             ChangeFlowState(FlowState.EndGame);
         }
 

@@ -18,8 +18,18 @@ namespace TeamF
             }
         }
 
-        public delegate void UIAction(ElementalAmmo _elementalAmmo);
+        public delegate void UIAmmoAction(ElementalAmmo _elementalAmmo);
 
-        public static event UIAction OnAmmoChanged;
+        public static event UIAmmoAction OnAmmoChanged;
+
+        public delegate void UIKillPointsUpdate(float _currentPoints, float _pointsToWin);
+
+        public static event UIKillPointsUpdate OnPointsChanged;
+
+        public static void KillPointsChanged(float _currentPoints, float _pointsToWin)
+        {
+            if (OnPointsChanged != null)
+                OnPointsChanged(_currentPoints, _pointsToWin);
+        }
     }
 }

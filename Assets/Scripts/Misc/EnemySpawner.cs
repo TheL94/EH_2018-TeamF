@@ -120,6 +120,7 @@ namespace TeamF
         {
             roundPoints += _enemyKilled.EnemyValue;
             DeleteSpecificEnemy(_enemyKilled.SpecificID);
+            EventManager.KillPointsChanged(roundPoints, PointsToWin);
             if (CheckVictory())
             {
                 GameManager.I.VictoryActions();
