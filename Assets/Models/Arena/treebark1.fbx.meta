@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: c39ef40a89795434f9a37864168aec08
-timeCreated: 1517842131
+guid: cc6fe79dc82bda34c862203802143039
+timeCreated: 1518363195
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -10,7 +10,7 @@ ModelImporter:
     2100000: lambert1
     2300000: //RootNode
     3300000: //RootNode
-    4300000: pCube451
+    4300000: polySurface16
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -41,13 +41,13 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 50
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 1
-    importLights: 1
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1

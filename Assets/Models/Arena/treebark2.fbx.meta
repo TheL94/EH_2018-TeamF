@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: 4f917a3d86f917b4ab528b85dc1862ac
-timeCreated: 1517842131
+guid: d4690196d6eb06a4d992975ce4c65aba
+timeCreated: 1518364993
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: default_mat
+    2100000: lambert1
     2300000: //RootNode
     3300000: //RootNode
-    4300000: base_arena
+    4300000: polySurface16
   externalObjects: {}
   materials:
     importMaterials: 1
