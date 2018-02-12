@@ -39,6 +39,12 @@ namespace TeamF {
             ChangeFlowState(FlowState.Loading);
         }
 
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+                CloseApplicationActions();
+        }
+
         void ClearScene()
         {
             EnemySpn.EndGameActions();
