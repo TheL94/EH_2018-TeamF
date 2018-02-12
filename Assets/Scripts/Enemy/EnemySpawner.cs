@@ -41,36 +41,42 @@ namespace TeamF
             }
         }
 
+        /// <summary>
+        /// Determina quale spawn point è il più vicino al player e lo esclude, spawna i nemici sugli spawn points rimasti
+        /// </summary>
+        /// <param name="_enemyPrefab"></param>
         void SpawnHorde(Enemy _enemyPrefab)
         {
-            List<Transform> spawnAvailable = new List<Transform>();
+            int spawnIndexToExclude = 0;
 
-            int spawnIndexToExclude = Random.Range(0, SpawnPoints.Count);
+            float _distance = 100000;
+
+            for (int i = 0; i < SpawnPoints.Count; i++)
+            {
+                float _spawnDistance = Vector3.Distance(SpawnPoints[i].position, target.transform.position);
+                if (_spawnDistance < _distance)
+                {
+                    spawnIndexToExclude = i;
+                    _distance = _spawnDistance;
+                }
+            }
 
             for (int i = 0; i < SpawnPoints.Count; i++)
             {
                 if (i == spawnIndexToExclude)
                     continue;
 
-                if (Vector3.Distance(SpawnPoints[i].position, target.transform.position) >= MinDistanceSpawn)
-                    spawnAvailable.Add(SpawnPoints[i]);
-                else
-                    spawnAvailable.Add(SpawnPoints[spawnIndexToExclude]);
-            }
-
-            foreach (Transform spawn in spawnAvailable)
-            {
                 int hordeNumber = Random.Range(MinHordeNumber, MaxHordeNumber + 1);
                 int elementalsEnemies = Random.Range(MinElementalsEnemies, MaxElementalsEnemies + 1);
 
-                for (int i = 0; i < elementalsEnemies; i++)
+                for (int j = 0; j < elementalsEnemies; j++)
                 {
-                    Spawn(_enemyPrefab, spawn, true);
+                    Spawn(_enemyPrefab, SpawnPoints[i], true);
                 }
 
-                for (int i = 0; i < hordeNumber - elementalsEnemies; i++)
+                for (int j = 0; j < hordeNumber - elementalsEnemies; j++)
                 {
-                    Spawn(_enemyPrefab, spawn);
+                    Spawn(_enemyPrefab, SpawnPoints[i]);
                 }
             }
         }
@@ -116,6 +122,11 @@ namespace TeamF
             StartCoroutine(FirstSpawn());
         }
 
+        /// <summary>
+        /// Cancella il nemico dalla lista di nemici spawnati, aggiunge il valore del nemico al contatore dei nemici uccisi, 
+        /// se la partita è vinta avvisa il gamemanager
+        /// </summary>
+        /// <param name="_enemyKilled"></param>
         public void KillEnemy(Enemy _enemyKilled)
         {
             roundPoints += _enemyKilled.EnemyValue;
@@ -127,6 +138,9 @@ namespace TeamF
             }
         }
 
+        /// <summary>
+        /// Blocca lo spawn di altri nemici e cancella quelli presenti in scena
+        /// </summary>
         public void EndGameActions()
         {
             CanSpawn = false;
@@ -160,6 +174,7 @@ namespace TeamF
             {
                 Destroy(enemiesSpawned[i].gameObject);
             }
+            enemiesSpawned.Clear();
         }
     }
 }
