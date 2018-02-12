@@ -159,15 +159,15 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1533697916002696}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.6, y: 0, z: 34.5}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: -12.38, y: 1, z: -21.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4034026977732338}
   - {fileID: 4417492357735972}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!20 &20241393259480060
 Camera:
   m_ObjectHideFlags: 1
@@ -296,10 +296,10 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 116
+  m_Constraints: 112
   m_CollisionDetection: 2
 --- !u!81 &81909561980210566
 AudioListener:
@@ -337,7 +337,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e04875ffe7c14254d93184771cbe27a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Life: 10
 --- !u!114 &114537653086299798
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -363,6 +362,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26a2e13c2445e044e9624cd6a1822518, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Life: 10
+  movement: {fileID: 0}
 --- !u!124 &124318486787011044
 Behaviour:
   m_ObjectHideFlags: 1

@@ -11541,7 +11541,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 150, y: 1, z: 200}
+  m_Size: {x: 150, y: 0, z: 200}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!108 &108536155684860948
 Light:
@@ -11585,7 +11585,7 @@ TerrainCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1518914663861572}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 36c535f80ad715045bfb0b2bc5791884, type: 2}
   m_Enabled: 1
   m_TerrainData: {fileID: 15600000, guid: b7627ab04b4f6224a93990c9d352182b, type: 2}
   m_EnableTreeColliders: 0
