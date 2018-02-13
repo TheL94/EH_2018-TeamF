@@ -18,14 +18,14 @@ namespace TeamF
 
         public string SpecificID { get; set; }
         NavMeshAgent navMesh;
-        EnemySpawner spawner;
+        EnemyController controller;
         AvatarController target;
         float time;
 
-        public void Init(AvatarController _target, EnemySpawner _spawner, string _id, ElementalType _type = ElementalType.None)
+        public void Init(AvatarController _target, EnemyController _controller, string _id, ElementalType _type = ElementalType.None)
         {
             target = _target;
-            spawner = _spawner;
+            controller = _controller;
             SpecificID = _id;
             enemyType = _type;
             navMesh = GetComponent<NavMeshAgent>();
@@ -39,9 +39,7 @@ namespace TeamF
 
             navMesh.destination = target.transform.position;
 
-            CheckmovementConstrains();
-            //Move();
-            //Rotate();
+            CheckMovementConstrains();
             Attack();
         }
 
@@ -76,25 +74,16 @@ namespace TeamF
                 Life -= _damage;
                 if (Life <= 0)
                 {
-                    spawner.KillEnemy(this);
+                    controller.KillEnemy(this);
                     Destroy(gameObject);
                 }
             }
         }
 
-        void CheckmovementConstrains()
+        void CheckMovementConstrains()
         {
             if (transform.rotation.x != 0 || transform.rotation.z != 0)
                 transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
-        }
-
-        /// <summary>
-        /// [deprecata]
-        /// </summary>
-        void Move()
-        {
-            if (DamageRange <= Vector3.Distance(transform.position, target.transform.position))
-                transform.position = Vector3.Lerp(transform.position, target.transform.position, (MovementSpeed * Time.deltaTime) / Vector3.Distance(transform.position, target.transform.position));
         }
 
         /// <summary>
@@ -111,15 +100,6 @@ namespace TeamF
                     time = 0;
                 }
             }
-
-        }
-
-        /// <summary>
-        /// [deprecata]
-        /// </summary>
-        void Rotate()
-        {
-            Quaternion.LookRotation(transform.position - target.transform.position);
         }
     }
 }

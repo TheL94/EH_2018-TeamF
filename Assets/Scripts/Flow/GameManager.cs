@@ -13,7 +13,7 @@ namespace TeamF {
 
         FlowManager flowMng;
 
-        public EnemySpawner EnemySpn;
+        public EnemyController EnemyCtrl;
         public GameObject PlayerPrefab;
         public AmmoCratesController AmmoController;
         [HideInInspector]
@@ -47,7 +47,7 @@ namespace TeamF {
 
         void ClearScene()
         {
-            EnemySpn.EndGameActions();
+            EnemyCtrl.EndGameActions();
         }
 
         #region API
@@ -87,7 +87,7 @@ namespace TeamF {
             _isWin = false;
             UIMng.GameplayActions();
             AmmoController.Init();
-            EnemySpn.Init();
+            EnemyCtrl.Init();
         }
 
         public void EndGameActions()

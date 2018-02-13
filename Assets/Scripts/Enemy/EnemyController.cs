@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace TeamF
 {
-    public class EnemySpawner : MonoBehaviour
+    public class EnemyController : MonoBehaviour
     {
         public AvatarController target;
         public Enemy EnemyPrefab;
