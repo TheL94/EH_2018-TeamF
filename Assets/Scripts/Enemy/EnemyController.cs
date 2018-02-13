@@ -19,8 +19,7 @@ namespace TeamF
         public int MaxElementalsEnemies;
         public int MinElementalsEnemies;
 
-        public float PointsToWin;
-        float roundPoints;
+        LevelManager levelMng;
 
         public List<Transform> SpawnPoints = new List<Transform>();
         List<Enemy> enemiesSpawned = new List<Enemy>();
@@ -115,10 +114,9 @@ namespace TeamF
         }
 
         #region API
-
-        public void Init()
+        public void Init(LevelManager _levelMng)
         {
-            roundPoints = 0;
+            levelMng = _levelMng;
             StartCoroutine(FirstSpawn());
         }
 
@@ -129,32 +127,19 @@ namespace TeamF
         /// <param name="_enemyKilled"></param>
         public void KillEnemy(Enemy _enemyKilled)
         {
-            roundPoints += _enemyKilled.EnemyValue;
+            levelMng.UpdateRoundPoints(_enemyKilled.EnemyValue);
             DeleteSpecificEnemy(_enemyKilled.SpecificID);
-            EventManager.KillPointsChanged(roundPoints, PointsToWin);
-            if (CheckVictory())
-            {
-                GameManager.I.VictoryActions();
-            }
         }
 
         /// <summary>
         /// Blocca lo spawn di altri nemici e cancella quelli presenti in scena
         /// </summary>
-        public void EndGameActions()
+        public void EndGameplayActions()
         {
             CanSpawn = false;
             DeleteAllEnemies();
         }
         #endregion
-
-        bool CheckVictory()
-        {
-            if (roundPoints >= PointsToWin)
-                return true;
-            else
-                return false;
-        }
 
         void DeleteSpecificEnemy(string _idEnemy)
         {

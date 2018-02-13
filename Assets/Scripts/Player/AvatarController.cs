@@ -6,7 +6,7 @@ namespace TeamF
 {
     public class AvatarController : MonoBehaviour, IDamageable
     {
-
+        LevelManager levelMng;
         Player player;
         public ElementalAmmo[] AllElementalAmmo = new ElementalAmmo[5];
         public int Life;
@@ -28,9 +28,10 @@ namespace TeamF
             }
         }
 
-        public void Init(Player _player)
+        public void Init(Player _player, LevelManager _levelMng)
         {
             player = _player;
+            levelMng = _levelMng;
             currentWeapon = GetComponentInChildren<Weapon>();
             movement = GetComponent<Movement>();
             for (int i = 0; i < AllElementalAmmo.Length; i++)
@@ -72,7 +73,8 @@ namespace TeamF
             if (Life <= 0)
             {
                 //Destroy(movement.ModelToRotate);
-                GameManager.I.ChangeFlowState(FlowState.EndGame);
+                //levelMng.GameLost();
+                GameManager.I.LevelMng.GameLost();
             }
         }
 

@@ -12,16 +12,15 @@ namespace TeamF {
         public FlowState CurrentState { get { return flowMng.CurrentState; } }
 
         FlowManager flowMng;
-
+        public LevelManager LevelMng;
         public EnemyController EnemyCtrl;
+
         public GameObject PlayerPrefab;
         public AmmoCratesController AmmoController;
+
         [HideInInspector]
         public UIManager UIMng;
-
         public GameObject UIManagerPrefab;
-
-        bool _isWin;
 
         void Awake()
         {
@@ -35,7 +34,6 @@ namespace TeamF {
         void Start()
         {
             flowMng = GetComponent<FlowManager>();
-            UIMng = Instantiate(UIManagerPrefab, transform).GetComponentInChildren<UIManager>();
             ChangeFlowState(FlowState.Loading);
         }
 
@@ -47,20 +45,13 @@ namespace TeamF {
 
         void ClearScene()
         {
-            EnemyCtrl.EndGameActions();
+            EnemyCtrl.EndGameplayActions();
         }
 
         #region API
-
         public void Init()
         {
             Instantiate(PlayerPrefab, transform.position, Quaternion.identity);
-        }
-
-        public void VictoryActions()
-        {
-            _isWin = true;
-            ChangeFlowState(FlowState.EndGame);
         }
 
         #region Game Flow
@@ -74,6 +65,7 @@ namespace TeamF {
 
         public void LoadingActions()
         {
+            UIMng = Instantiate(UIManagerPrefab, transform).GetComponentInChildren<UIManager>();
             ChangeFlowState(FlowState.Menu);
         }
 
@@ -84,15 +76,16 @@ namespace TeamF {
 
         public void GameplayActions()
         {
-            _isWin = false;
+            LevelMng = new LevelManager(this ,30f);
+
             UIMng.GameplayActions();
             AmmoController.Init();
-            EnemyCtrl.Init();
+            EnemyCtrl.Init(LevelMng);
         }
 
         public void EndGameActions()
         {
-            UIMng.GameOverActions(_isWin);
+            UIMng.GameOverActions(LevelMng.IsGameWon);
             ClearScene();
         }
 

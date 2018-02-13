@@ -11,7 +11,7 @@ namespace TeamF
         void Start()
         {
             avatar = GetComponent<AvatarController>();
-            avatar.Init(this);
+            avatar.Init(this, GameManager.I.LevelMng);
         }
 
         void Update()
