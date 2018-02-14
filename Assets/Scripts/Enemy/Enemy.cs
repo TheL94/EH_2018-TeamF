@@ -50,7 +50,7 @@ namespace TeamF
         /// <param name="_bulletType">Il tipo del proiettile</param>
         public void TakeDamage(int _damage, ElementalType _bulletType)
         {
-            if (enemyType == _bulletType)
+            if (_bulletType != ElementalType.None && enemyType == _bulletType)
             {
                 print("Immune");
             }
