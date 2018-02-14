@@ -27,13 +27,13 @@ namespace TeamF
                     return;
 
                 if (Input.GetKey(KeyCode.W))
-                    avatar.movement.Move(transform.forward);
-                if (Input.GetKey(KeyCode.S))
-                    avatar.movement.Move(-transform.forward);
-                if (Input.GetKey(KeyCode.A))
-                    avatar.movement.Move(-transform.right);
-                if (Input.GetKey(KeyCode.D))
                     avatar.movement.Move(transform.right);
+                if (Input.GetKey(KeyCode.S))
+                    avatar.movement.Move(-transform.right);
+                if (Input.GetKey(KeyCode.A))
+                    avatar.movement.Move(transform.forward);
+                if (Input.GetKey(KeyCode.D))
+                    avatar.movement.Move(-transform.forward);
                 if (Input.GetMouseButtonDown(0))
                     avatar.Shot();
                 if (Input.GetMouseButton(0))

@@ -37,13 +37,12 @@ namespace TeamF
             for (int i = 0; i < AllElementalAmmo.Length; i++)
             {
                 ///Pezzi da scommentare quando e se sul documento di design riappariranno le munizioni standard infinite
-                //if(i == AllElementalAmmo.Length - 1)
-                //    AllElementalAmmo[i] = new ElementalAmmo { AmmoType = (ElementalType)i, Ammo = -1 };
-                //else
-                AllElementalAmmo[i] = new ElementalAmmo { AmmoType = (ElementalType)i, Ammo = 0 };
+                if (i == AllElementalAmmo.Length - 1)
+                    AllElementalAmmo[i] = new ElementalAmmo { AmmoType = (ElementalType)i, Ammo = -1 };
+                else
+                    AllElementalAmmo[i] = new ElementalAmmo { AmmoType = (ElementalType)i, Ammo = 0 };
             }
-            selectedAmmoIndex = 1;
-            //selectedAmmoIndex = AllElementalAmmo.Length - 1;      //Pezzo da scommentare quando e se sul documento di design riappariranno le munizioni standard infinite
+            selectedAmmoIndex = AllElementalAmmo.Length - 1;     
         }
 
         /// <summary>
