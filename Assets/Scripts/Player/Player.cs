@@ -21,7 +21,7 @@ namespace TeamF
 
         void CheckInput()
         {
-            if (GameManager.I.CurrentState == FlowState.EnterGameplay)
+            if (GameManager.I.CurrentState == FlowState.Gameplay)
             {
                 if (avatar.Life <= 0)
                     return;
