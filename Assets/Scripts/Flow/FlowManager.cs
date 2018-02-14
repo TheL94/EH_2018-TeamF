@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace TeamF
 {
-    public class FlowManager : MonoBehaviour
+    public class FlowManager
     {
         private FlowState _currentState = FlowState.None;
         public FlowState CurrentState
@@ -29,16 +29,27 @@ namespace TeamF
                     GameManager.I.LoadingActions();
                     break;
                 case FlowState.Menu:
-                    if (_oldState == FlowState.Loading || _oldState == FlowState.EndGame)
+                    if (_oldState == FlowState.Loading || _oldState == FlowState.ExitGameplay)
                         GameManager.I.MenuActions();
                     break;
-                case FlowState.Gameplay:
+                case FlowState.EnterGameplay:
                     if (_oldState == FlowState.Menu)
-                        GameManager.I.GameplayActions();
+                        GameManager.I.EnterGameplayActions();
                     break;
-                case FlowState.EndGame:
-                    if (_oldState == FlowState.Gameplay)
-                        GameManager.I.EndGameActions();
+                case FlowState.Gameplay:
+                    break;
+                case FlowState.Pause:
+                    GameManager.I.PauseActions();
+                    break;
+                case FlowState.GameWon:
+                    GameManager.I.GameWonActions();
+                    break;
+                case FlowState.GameLost:
+                    GameManager.I.GameWonActions();
+                    break;
+                case FlowState.ExitGameplay:
+                    if (_oldState == FlowState.GameWon || _oldState == FlowState.GameLost)
+                        GameManager.I.ExitGameplayActions();
                     break;
             }
         }
@@ -54,7 +65,11 @@ namespace TeamF
         None,
         Loading,
         Menu,
+        EnterGameplay,
         Gameplay,
-        EndGame
+        Pause,
+        GameWon,
+        GameLost,
+        ExitGameplay,
     }
 }

@@ -21,7 +21,7 @@ namespace TeamF
 
         void CheckInput()
         {
-            if (GameManager.I.CurrentState == FlowState.Gameplay)
+            if (GameManager.I.CurrentState == FlowState.EnterGameplay)
             {
                 if (avatar.Life <= 0)
                     return;
@@ -60,7 +60,7 @@ namespace TeamF
                 }
                 avatar.movement.Rotate();
             }
-            if (GameManager.I.CurrentState != FlowState.Gameplay)
+            if (GameManager.I.CurrentState != FlowState.EnterGameplay)
             {
                 if (Input.GetKeyDown(KeyCode.UpArrow))
                     GameManager.I.UIMng.CurrentMenu.GoUpInMenu();

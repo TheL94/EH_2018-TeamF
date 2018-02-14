@@ -20,7 +20,7 @@ namespace TeamF
             {
                 case 0:
                     //Start game;
-                    GameManager.I.ChangeFlowState(FlowState.Gameplay);
+                    GameManager.I.ChangeFlowState(FlowState.EnterGameplay);
                     break;
                 case 1:
                     //ExitGame;

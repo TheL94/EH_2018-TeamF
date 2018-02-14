@@ -6,8 +6,6 @@ namespace TeamF
 {
     public class LevelManager
     {
-        public bool IsGameWon { get; private set; }
-
         public float PointsToWin;
         float roundPoints;
 
@@ -27,21 +25,20 @@ namespace TeamF
             CheckVictory();              
         }
 
-        public void GameWon()
+        public void GoToGameWon()
         {
-            IsGameWon = true;
-            gameMng.ChangeFlowState(FlowState.EndGame);
+            gameMng.ChangeFlowState(FlowState.GameWon);
         }
 
-        public void GameLost()
+        public void GoToGameLost()
         {
-            gameMng.ChangeFlowState(FlowState.EndGame);
+            gameMng.ChangeFlowState(FlowState.GameLost);
         }
 
         void CheckVictory()
         {
             if (roundPoints >= PointsToWin)
-                GameWon();
+                GoToGameWon();
         }
     }
 }

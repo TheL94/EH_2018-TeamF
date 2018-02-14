@@ -74,7 +74,7 @@ namespace TeamF
             {
                 //Destroy(movement.ModelToRotate);
                 //levelMng.GameLost();
-                GameManager.I.LevelMng.GameLost();
+                GameManager.I.LevelMng.GoToGameLost();
             }
         }
 

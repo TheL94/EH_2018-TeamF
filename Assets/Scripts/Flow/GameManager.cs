@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace TeamF {
-    [RequireComponent(typeof(FlowManager))]
+namespace TeamF
+{
     public class GameManager : MonoBehaviour
     {
         public static GameManager I;
@@ -33,7 +33,7 @@ namespace TeamF {
 
         void Start()
         {
-            flowMng = GetComponent<FlowManager>();
+            flowMng = new FlowManager();
             ChangeFlowState(FlowState.Loading);
         }
 
@@ -74,18 +74,35 @@ namespace TeamF {
             UIMng.MainMenuActions();
         }
 
-        public void GameplayActions()
+        public void EnterGameplayActions()
         {
             LevelMng = new LevelManager(this ,30f);
 
             UIMng.GameplayActions();
             AmmoController.Init();
             EnemyCtrl.Init(LevelMng);
+            ChangeFlowState(FlowState.Gameplay);
         }
 
-        public void EndGameActions()
+        public void PauseActions()
         {
-            UIMng.GameOverActions(LevelMng.IsGameWon);
+
+        }
+
+        public void GameWonActions()
+        {
+            UIMng.GameOverActions(true);
+            ChangeFlowState(FlowState.ExitGameplay);
+        }
+
+        public void GameLostActions()
+        {
+            UIMng.GameOverActions(false);
+            ChangeFlowState(FlowState.ExitGameplay);
+        }
+
+        public void ExitGameplayActions()
+        {
             ClearScene();
         }
 
