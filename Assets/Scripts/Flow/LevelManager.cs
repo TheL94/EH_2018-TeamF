@@ -9,11 +9,8 @@ namespace TeamF
         public float PointsToWin;
         float roundPoints;
 
-        GameManager gameMng; 
-
-        public LevelManager(GameManager _gameMng, float _pointsToWin)
+        public LevelManager(float _pointsToWin)
         {
-            gameMng = _gameMng;
             PointsToWin = _pointsToWin;
         }
 
@@ -27,12 +24,12 @@ namespace TeamF
 
         public void GoToGameWon()
         {
-            gameMng.ChangeFlowState(FlowState.GameWon);
+            GameManager.I.ChangeFlowState(FlowState.GameWon);
         }
 
         public void GoToGameLost()
         {
-            gameMng.ChangeFlowState(FlowState.GameLost);
+            GameManager.I.ChangeFlowState(FlowState.GameLost);
         }
 
         void CheckVictory()

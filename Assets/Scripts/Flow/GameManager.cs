@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace TeamF
@@ -76,7 +75,7 @@ namespace TeamF
 
         public void EnterGameplayActions()
         {
-            LevelMng = new LevelManager(this ,30f);
+            LevelMng = new LevelManager(30f);
 
             UIMng.GameplayActions();
             AmmoController.Init();
