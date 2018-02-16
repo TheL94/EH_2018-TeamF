@@ -8,6 +8,11 @@ namespace TeamF
     {
         AvatarController avatar;
 
+        public void AvatarDeath()
+        {
+            GameManager.I.LevelMng.GoToGameLost();
+        }
+
         void Start()
         {
             avatar = GetComponent<AvatarController>();
