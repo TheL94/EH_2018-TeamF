@@ -6,7 +6,7 @@ namespace TeamF
 {
     public class EnemyController : MonoBehaviour
     {
-        public AvatarController target;
+        public Character target;
         public Enemy EnemyPrefab;
         public float StartDelayTime;
         public float DelayHordes;

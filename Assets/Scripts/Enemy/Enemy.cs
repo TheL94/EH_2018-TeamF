@@ -18,12 +18,12 @@ namespace TeamF
         public string SpecificID { get; set; }
         NavMeshAgent navMesh;
         EnemyController controller;
-        AvatarController target;
+        Character target;
         float time;
 
         IEnemyBehaviour currentBehaviour;
 
-        public void Init(AvatarController _target, EnemyController _controller, string _id, IEnemyBehaviour _behaviour)
+        public void Init(Character _target, EnemyController _controller, string _id, IEnemyBehaviour _behaviour)
         {
             target = _target;
             controller = _controller;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace TeamF
 {
-    public class AvatarController : MonoBehaviour, IDamageable
+    public class Character : MonoBehaviour, IDamageable
     {
         Player player;
         public ElementalAmmo[] AllElementalAmmo = new ElementalAmmo[5];
@@ -27,6 +27,7 @@ namespace TeamF
             }
         }
 
+        #region API
         public void Init(Player _player)
         {
             player = _player;
@@ -70,26 +71,7 @@ namespace TeamF
             if (Life <= 0)
             {
                 //Destroy(movement.ModelToRotate);
-                GameManager.I.LevelMng.GoToGameLost();
-            }
-        }
-
-        private void OnTriggerEnter(Collider other)
-        {
-            AmmoCrate crate = other.GetComponent<AmmoCrate>();
-            if (crate != null)
-            {
-                for (int i = 0; i < AllElementalAmmo.Length; i++)
-                {
-                    if (crate.Type == AllElementalAmmo[i].AmmoType)
-                    {
-                        //Aggiungi le munizioni a questo tipo;
-                        AllElementalAmmo[i].Ammo += crate.Ammo;
-                        EventManager.AmmoChange(AllElementalAmmo[i]);
-                        crate.DestroyAmmoCrate();
-                        return;
-                    }
-                }
+                player.AvatarDeath();
             }
         }
 
@@ -118,8 +100,27 @@ namespace TeamF
                     break;
             }
         }
-    }
+        #endregion
 
+        private void OnTriggerEnter(Collider other)
+        {
+            AmmoCrate crate = other.GetComponent<AmmoCrate>();
+            if (crate != null)
+            {
+                for (int i = 0; i < AllElementalAmmo.Length; i++)
+                {
+                    if (crate.Type == AllElementalAmmo[i].AmmoType)
+                    {
+                        //Aggiungi le munizioni a questo tipo;
+                        AllElementalAmmo[i].Ammo += crate.Ammo;
+                        EventManager.AmmoChange(AllElementalAmmo[i]);
+                        crate.DestroyAmmoCrate();
+                        return;
+                    }
+                }
+            }
+        }
+    }
 
     public struct ElementalAmmo
     {
