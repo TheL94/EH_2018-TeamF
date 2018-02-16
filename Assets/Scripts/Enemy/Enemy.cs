@@ -19,10 +19,10 @@ namespace TeamF
         public string SpecificID { get; set; }
         NavMeshAgent navMesh;
         EnemyController controller;
-        AvatarController target;
+        Character target;
         float time;
 
-        public void Init(AvatarController _target, EnemyController _controller, string _id, ElementalType _type = ElementalType.None)
+        public void Init(Character _target, EnemyController _controller, string _id, ElementalType _type = ElementalType.None)
         {
             target = _target;
             controller = _controller;

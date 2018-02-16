@@ -6,7 +6,7 @@ namespace TeamF
 {
     public class Weapon : MonoBehaviour
     {
-        AvatarController avatar;
+        Character character;
         public GameObject BulletPrefab;
         public GameObject Barrel;
         public int MagCapacity;
@@ -16,9 +16,9 @@ namespace TeamF
 
         float ratioTimer;
 
-        public void Init(AvatarController _avatar)
+        public void Init(Character _character)
         {
-            avatar = _avatar;
+            character = _character;
         }
 
         public ElementalAmmo FullAutoShoot(ElementalAmmo _selectedAmmo)

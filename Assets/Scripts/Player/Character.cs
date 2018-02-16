@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace TeamF
 {
-    public class AvatarController : MonoBehaviour, IDamageable
+    public class Character : MonoBehaviour, IDamageable
     {
         Player player;
         public ElementalAmmo[] AllElementalAmmo = new ElementalAmmo[5];
