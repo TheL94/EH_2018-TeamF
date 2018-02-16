@@ -12,7 +12,6 @@ namespace TeamF
         public int MagCapacity;
         public float BulletSpeed;
         public float Ratio;
-        public int Damage;
 
         float ratioTimer;
 
@@ -37,7 +36,7 @@ namespace TeamF
         {
             if (_selectedAmmo.Ammo != 0)
             {
-                CreateBullet(_selectedAmmo.AmmoType);
+                CreateBullet(_selectedAmmo);
                 if(_selectedAmmo.Ammo > 0)
                 {
                     _selectedAmmo.Ammo--;
@@ -49,10 +48,10 @@ namespace TeamF
         /// <summary>
         /// Istanzia il proiettile e ne chiama l'init
         /// </summary>
-        void CreateBullet(ElementalType _ammoType)
+        void CreateBullet(ElementalAmmo _currentAmmo)
         {
             Bullet bull = Instantiate(BulletPrefab, Barrel.transform.position, Barrel.transform.rotation).GetComponent<Bullet>();
-            bull.Init(Damage, BulletSpeed, _ammoType);
+            bull.Init(_currentAmmo.Damage, BulletSpeed, _currentAmmo.AmmoType);
             ratioTimer = 0;
 
         }

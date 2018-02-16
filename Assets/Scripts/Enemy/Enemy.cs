@@ -49,7 +49,7 @@ namespace TeamF
         /// </summary>
         /// <param name="_damage">Il valore da sottrarre alla vita</param>
         /// <param name="_bulletType">Il tipo del proiettile</param>
-        public void TakeDamage(int _damage, ElementalType _bulletType)
+        public void TakeDamage(float _damage, ElementalType _bulletType)
         {
             currentBehaviour.TakeDamage(this, _damage, _bulletType);
 

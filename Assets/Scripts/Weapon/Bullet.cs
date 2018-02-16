@@ -8,7 +8,7 @@ namespace TeamF
     {
         ElementalType bulletType;
         public float BulletLife;
-        int Damage;
+        float Damage;
         float Speed;
 
         private void Start()
@@ -23,7 +23,7 @@ namespace TeamF
 
         #region API
 
-        public void Init(int _damage, float _speed, ElementalType _ammoType)
+        public void Init(float _damage, float _speed, ElementalType _ammoType)
         {
             Damage = _damage;
             Speed = _speed;

@@ -8,7 +8,7 @@ namespace TeamF
     {
         Player player;
         public ElementalAmmo[] AllElementalAmmo = new ElementalAmmo[5];
-        public int Life;
+        public float Life;
         [HideInInspector]
         public Movement movement;
         Weapon currentWeapon;
@@ -33,14 +33,8 @@ namespace TeamF
             player = _player;
             currentWeapon = GetComponentInChildren<Weapon>();
             movement = GetComponent<Movement>();
-            for (int i = 0; i < AllElementalAmmo.Length; i++)
-            {
-                ///Pezzi da scommentare quando e se sul documento di design riappariranno le munizioni standard infinite
-                if (i == AllElementalAmmo.Length - 1)
-                    AllElementalAmmo[i] = new ElementalAmmo { AmmoType = (ElementalType)i, Ammo = -1 };
-                else
-                    AllElementalAmmo[i] = new ElementalAmmo { AmmoType = (ElementalType)i, Ammo = 0 };
-            }
+            AllElementalAmmo[AllElementalAmmo.Length - 1].Ammo = -1;
+            
             selectedAmmoIndex = AllElementalAmmo.Length - 1;     
         }
 
@@ -65,7 +59,7 @@ namespace TeamF
         /// </summary>
         /// <param name="_damage">Valore da scalare alla vita dell'avatar</param>
         /// <param name="_type">Tipo del nemico che attacca, per triggherare azioni particolari del player a seconda del tipo di nemico</param>
-        public void TakeDamage(int _damage, ElementalType _type = ElementalType.None)
+        public void TakeDamage(float _damage, ElementalType _type = ElementalType.None)
         {
             Life -= _damage;
             if (Life <= 0)
@@ -121,10 +115,11 @@ namespace TeamF
             }
         }
     }
-
+    [System.Serializable]
     public struct ElementalAmmo
     {
-        public ElementalType AmmoType { get; set; }
-        public int Ammo { get; set; }
+        public ElementalType AmmoType;
+        public float Damage;
+        public int Ammo;
     }
 }
