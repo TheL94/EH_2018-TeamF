@@ -54,14 +54,20 @@ namespace TeamF
                 if (character.Life <= 0)
                     return;
 
+                Vector3 finalDirection = new Vector3();
+
                 if (Input.GetKey(KeyCode.W))
-                    character.movement.Move(transform.right);
+                    finalDirection += transform.right;
                 if (Input.GetKey(KeyCode.S))
-                    character.movement.Move(-transform.right);
+                    finalDirection += -transform.right;
                 if (Input.GetKey(KeyCode.A))
-                    character.movement.Move(transform.forward);
+                    finalDirection += transform.forward;
                 if (Input.GetKey(KeyCode.D))
-                    character.movement.Move(-transform.forward);
+                    finalDirection += -transform.forward;
+
+                character.movement.Move(finalDirection.normalized);
+
+
                 if (Input.GetMouseButtonDown(0))
                     character.Shot();
                 if (Input.GetMouseButton(0))
