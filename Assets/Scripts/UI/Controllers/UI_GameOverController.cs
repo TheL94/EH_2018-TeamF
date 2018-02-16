@@ -14,7 +14,7 @@ namespace TeamF
         public void Init(bool _isWin)
         {
             if (_isWin)
-                GameOverText.text = "RoundWon";
+                GameOverText.text = "Round Won";
             else
                 GameOverText.text = "Game Over";
 

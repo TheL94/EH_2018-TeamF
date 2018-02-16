@@ -45,7 +45,7 @@ namespace TeamF
                     GameManager.I.GameWonActions();
                     break;
                 case FlowState.GameLost:
-                    GameManager.I.GameWonActions();
+                    GameManager.I.GameLostActions();
                     break;
                 case FlowState.ExitGameplay:
                     if (_oldState == FlowState.GameWon || _oldState == FlowState.GameLost)

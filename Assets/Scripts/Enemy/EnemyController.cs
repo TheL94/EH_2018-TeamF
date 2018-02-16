@@ -80,27 +80,6 @@ namespace TeamF
             }
         }
 
-        /// <summary>
-        /// Instanza un nuovo nemico e ne chiama l'Init
-        /// </summary>
-        /// <param name="_enemyPrefab">Il prefab del nemico da utilizzare</param>
-        /// <param name="_spawnPoint">Lo spawn point dove far spawnare il nemico</param>
-        /// <param name="SpawnElementalEnemy">True se il nemico da spawnare è elementale</param>
-        void Spawn(Enemy _enemyPrefab, Transform _spawnPoint, bool SpawnElementalEnemy = false)
-        {
-            if (SpawnPoints.Count == 0)
-                SpawnPoints.Add(transform);
-            Enemy newEnemy = Instantiate(_enemyPrefab, _spawnPoint.transform.position, Quaternion.identity, transform);
-            enemiesSpawned.Add(newEnemy);
-
-            if (SpawnElementalEnemy)
-                newEnemy.Init(target, this, "Enemy" + idCounter, ChoiseRandomElement()); 
-            else
-                newEnemy.Init(target, this, "Enemy" + idCounter, new EnemyBehaviourBase());
-
-            idCounter++;
-        }
-
         IEnemyBehaviour ChoiseRandomElement()
         {
             int rand = Random.Range(0, 4);
@@ -146,6 +125,27 @@ namespace TeamF
         {
             CanSpawn = false;
             DeleteAllEnemies();
+        }
+
+        /// <summary>
+        /// Instanza un nuovo nemico e ne chiama l'Init
+        /// </summary>
+        /// <param name="_enemyPrefab">Il prefab del nemico da utilizzare</param>
+        /// <param name="_spawnPoint">Lo spawn point dove far spawnare il nemico</param>
+        /// <param name="SpawnElementalEnemy">True se il nemico da spawnare è elementale</param>
+        public void Spawn(Enemy _enemyPrefab, Transform _spawnPoint, bool SpawnElementalEnemy = false)
+        {
+            if (SpawnPoints.Count == 0)
+                SpawnPoints.Add(transform);
+            Enemy newEnemy = Instantiate(_enemyPrefab, _spawnPoint.transform.position, Quaternion.identity, transform);
+            enemiesSpawned.Add(newEnemy);
+
+            if (SpawnElementalEnemy)
+                newEnemy.Init(target, this, "Enemy" + idCounter, ChoiseRandomElement());
+            else
+                newEnemy.Init(target, this, "Enemy" + idCounter, new EnemyBehaviourBase());
+
+            idCounter++;
         }
         #endregion
 
