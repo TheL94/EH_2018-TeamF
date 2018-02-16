@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity_Framework.ControllerInput;
 
 namespace TeamF
 {
     public class Player : MonoBehaviour
     {
         Character character;
+        ControllerInput controllerInput;
 
         public void AvatarDeath()
         {
@@ -15,8 +17,7 @@ namespace TeamF
 
         void Start()
         {
-            character = GetComponent<Character>();
-            character.Init(this);
+            Init();
         }
 
         void Update()
@@ -24,21 +25,49 @@ namespace TeamF
             CheckInput();
         }
 
+        public void Init()
+        {
+            controllerInput = new ControllerInput(0);
+            character = GetComponent<Character>();
+            character.Init(this);
+        }
+
         void CheckInput()
+        {
+            InputStatus status = controllerInput.GetPlayerInputStatus();
+
+            if (status.IsConnected)
+                CheckControllerInput();
+            else
+                CheckKeyboardInput();
+        }
+
+        void CheckControllerInput()
+        {
+
+        }
+
+        void CheckKeyboardInput()
         {
             if (GameManager.I.CurrentState == FlowState.Gameplay)
             {
                 if (character.Life <= 0)
                     return;
 
+                Vector3 finalDirection = new Vector3();
+
                 if (Input.GetKey(KeyCode.W))
-                    character.movement.Move(transform.right);
+                    finalDirection += transform.right;
                 if (Input.GetKey(KeyCode.S))
-                    character.movement.Move(-transform.right);
+                    finalDirection += -transform.right;
                 if (Input.GetKey(KeyCode.A))
-                    character.movement.Move(transform.forward);
+                    finalDirection += transform.forward;
                 if (Input.GetKey(KeyCode.D))
-                    character.movement.Move(-transform.forward);
+                    finalDirection += -transform.forward;
+
+                character.movement.Move(finalDirection.normalized);
+
+
                 if (Input.GetMouseButtonDown(0))
                     character.Shot();
                 if (Input.GetMouseButton(0))

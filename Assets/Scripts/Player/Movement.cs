@@ -6,7 +6,6 @@ namespace TeamF
 {
     public class Movement : MonoBehaviour
     {
-
         public GameObject ModelToRotate;
         public float MovementSpeed = 1;
         public float RotationSpeed = 1;
