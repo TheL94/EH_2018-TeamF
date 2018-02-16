@@ -96,14 +96,22 @@ namespace TeamF
             if (SpawnElementalEnemy)
                 newEnemy.Init(target, this, "Enemy" + idCounter, ChoiseRandomElement()); 
             else
-                newEnemy.Init(target, this, "Enemy" + idCounter);
+                newEnemy.Init(target, this, "Enemy" + idCounter, new EnemyBehaviourBase());
 
             idCounter++;
         }
 
-        ElementalType ChoiseRandomElement()
+        IEnemyBehaviour ChoiseRandomElement()
         {
-            return (ElementalType)Random.Range(0, 4);
+            int rand = Random.Range(0, 4);
+            switch (rand)
+            {
+                case 0:
+                    return new FireBehaviour();
+                
+                default:
+                    return new EnemyBehaviourBase();
+            }
         }
 
         IEnumerator FirstSpawn()

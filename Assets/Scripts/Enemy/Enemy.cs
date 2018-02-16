@@ -7,8 +7,7 @@ namespace TeamF
 {
     public class Enemy : MonoBehaviour, IDamageable
     {
-        ElementalType enemyType;
-        public int Life;
+        public float Life;
         public float MovementSpeed;
         public int Damage;
         public float DamageRange;
@@ -22,12 +21,14 @@ namespace TeamF
         AvatarController target;
         float time;
 
-        public void Init(AvatarController _target, EnemyController _controller, string _id, ElementalType _type = ElementalType.None)
+        IEnemyBehaviour currentBehaviour;
+
+        public void Init(AvatarController _target, EnemyController _controller, string _id, IEnemyBehaviour _behaviour)
         {
             target = _target;
             controller = _controller;
             SpecificID = _id;
-            enemyType = _type;
+            currentBehaviour = _behaviour;
             navMesh = GetComponent<NavMeshAgent>();
             navMesh.stoppingDistance = DamageRange;
         }
@@ -50,34 +51,14 @@ namespace TeamF
         /// <param name="_bulletType">Il tipo del proiettile</param>
         public void TakeDamage(int _damage, ElementalType _bulletType)
         {
-            if (_bulletType != ElementalType.None && enemyType == _bulletType)
-            {
-                print("Immune");
-            }
-            else
-            {
-                switch (_bulletType)
-                {
-                    case ElementalType.Fire:
-                        print("In Fiamme");
-                        break;
-                    case ElementalType.Water:
-                        print("Bagnato");
-                        break;
-                    case ElementalType.Poison:
-                        print("Avvelenato");
-                        break;
-                    case ElementalType.Thunder:
-                        print("Elettrificato");
-                        break;
-                }
-                Life -= _damage;
+            currentBehaviour.TakeDamage(this, _damage, _bulletType);
+
                 if (Life <= 0)
                 {
                     controller.KillEnemy(this);
+                    currentBehaviour.DoDeath();
                     Destroy(gameObject);
                 }
-            }
         }
 
         void CheckMovementConstrains()
@@ -96,7 +77,7 @@ namespace TeamF
             {
                 if (DamageRange >= Vector3.Distance(transform.position, target.transform.position))
                 {
-                    target.TakeDamage(Damage, enemyType);
+                    target.TakeDamage(Damage);
                     time = 0;
                 }
             }

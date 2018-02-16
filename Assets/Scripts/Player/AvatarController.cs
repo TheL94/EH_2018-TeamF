@@ -64,7 +64,7 @@ namespace TeamF
         /// </summary>
         /// <param name="_damage">Valore da scalare alla vita dell'avatar</param>
         /// <param name="_type">Tipo del nemico che attacca, per triggherare azioni particolari del player a seconda del tipo di nemico</param>
-        public void TakeDamage(int _damage, ElementalType _type)
+        public void TakeDamage(int _damage, ElementalType _type = ElementalType.None)
         {
             Life -= _damage;
             if (Life <= 0)

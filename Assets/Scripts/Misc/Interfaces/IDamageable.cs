@@ -7,7 +7,7 @@ namespace TeamF
     public interface IDamageable
     {
 
-        void TakeDamage(int _damage, ElementalType _type);
+        void TakeDamage(int _damage, ElementalType _type = ElementalType.None);
 
     }
 }
