@@ -51,7 +51,7 @@ namespace TeamF
         void CreateBullet(ElementalAmmo _currentAmmo)
         {
             Bullet bull = Instantiate(BulletPrefab, Barrel.transform.position, Barrel.transform.rotation).GetComponent<Bullet>();
-            bull.Init(_currentAmmo.Damage, BulletSpeed, _currentAmmo.AmmoType);
+            bull.Init(_currentAmmo, BulletSpeed);
             ratioTimer = 0;
 
         }

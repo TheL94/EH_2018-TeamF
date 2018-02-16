@@ -18,10 +18,10 @@ namespace TeamF
         public string SpecificID { get; set; }
         NavMeshAgent navMesh;
         EnemyController controller;
-        Character target;
+        public Character target { get; set; }
         float time;
 
-        IEnemyBehaviour currentBehaviour;
+        public IEnemyBehaviour currentBehaviour;
 
         public void Init(Character _target, EnemyController _controller, string _id, IEnemyBehaviour _behaviour)
         {
@@ -53,12 +53,12 @@ namespace TeamF
         {
             currentBehaviour.TakeDamage(this, _damage, _bulletType);
 
-                if (Life <= 0)
-                {
-                    controller.KillEnemy(this);
-                    currentBehaviour.DoDeath();
-                    Destroy(gameObject);
-                }
+            if (Life <= 0)
+            {
+                controller.KillEnemy(this);
+                currentBehaviour.DoDeath();
+                Destroy(gameObject);
+            }
         }
 
         void CheckMovementConstrains()

@@ -6,9 +6,8 @@ namespace TeamF
 {
     public class Bullet : MonoBehaviour
     {
-        ElementalType bulletType;
+        ElementalAmmo ammo;
         public float BulletLife;
-        float Damage;
         float Speed;
 
         private void Start()
@@ -23,11 +22,10 @@ namespace TeamF
 
         #region API
 
-        public void Init(float _damage, float _speed, ElementalType _ammoType)
+        public void Init(ElementalAmmo _currentAmmo, float _speed)
         {
-            Damage = _damage;
+            ammo = _currentAmmo;
             Speed = _speed;
-            bulletType = _ammoType;
         }
 
         #endregion
@@ -42,8 +40,33 @@ namespace TeamF
             IDamageable damageable = other.GetComponent<IDamageable>();
             if (damageable != null)
             {
-                damageable.TakeDamage(Damage, bulletType);
+                damageable.TakeDamage(ammo.Damage, ammo.AmmoType);
+                Enemy enemy = other.GetComponent<Enemy>();
+                if (enemy != null)
+                {
+                    ElementalBehaviour _effect = other.gameObject.GetComponent<ElementalBehaviour>();
+                    switch (ammo.AmmoType)
+                    {
+                        case ElementalType.Fire:
+                            _effect.Init(new ElementalBehaviourFire(), enemy, ammo.Data);
+                            break;
+                        case ElementalType.Water:
+                            _effect.Init(new ElementalBehaviourWater(), enemy, ammo.Data);
+                            break;
+                        case ElementalType.Poison:
+                            _effect.Init(new ElementalBehaviourPoison(), enemy, ammo.Data);
+                            break;
+                        case ElementalType.Thunder:
+                            _effect.Init(new ElementalBehaviourThunder(), enemy, ammo.Data);
+                            break;
+                        case ElementalType.None:
+                            break;
+                    } 
+                }
             }
+            
+            
+
             Destroy(gameObject);
         }
     }

@@ -121,5 +121,14 @@ namespace TeamF
         public ElementalType AmmoType;
         public float Damage;
         public int Ammo;
+        public ElementalEffectData Data;
+        
+    }
+    [System.Serializable]
+    public struct ElementalEffectData
+    {
+        public float EffectDamage;
+        public float TimeOfEffect;
+        public float TimeFraction;
     }
 }

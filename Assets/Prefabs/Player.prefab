@@ -365,18 +365,38 @@ MonoBehaviour:
   - AmmoType: 0
     Damage: 5
     Ammo: 0
+    Data:
+      EffectDamage: 5
+      TimeOfEffect: 3
+      TimeFraction: 1
   - AmmoType: 1
     Damage: 4
     Ammo: 0
+    Data:
+      EffectDamage: 0
+      TimeOfEffect: 5
+      TimeFraction: 1
   - AmmoType: 2
     Damage: 4
     Ammo: 0
+    Data:
+      EffectDamage: 5
+      TimeOfEffect: 3
+      TimeFraction: 1
   - AmmoType: 3
     Damage: 4
     Ammo: 0
+    Data:
+      EffectDamage: 0
+      TimeOfEffect: 5
+      TimeFraction: 1
   - AmmoType: 4
     Damage: 1
     Ammo: 0
+    Data:
+      EffectDamage: 0
+      TimeOfEffect: 0
+      TimeFraction: 0
   Life: 10
   movement: {fileID: 0}
 --- !u!124 &124737006046693908
