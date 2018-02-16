@@ -48,11 +48,6 @@ namespace TeamF
         }
 
         #region API
-        public void Init()
-        {
-            Instantiate(PlayerPrefab, transform.position, Quaternion.identity);
-        }
-
         #region Game Flow
         /// <summary>
         /// Funzione che innesca il cambio di stato
