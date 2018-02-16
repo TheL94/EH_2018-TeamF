@@ -137,7 +137,6 @@ namespace Unity_Framework.ControllerInput
             // Left Trigger as button
             if (_inputStatus.LeftTriggerAxis <= 0.1f)
             {
-                // rilasciato
                 leftTriggerOldState = _inputStatus.LeftTrigger = ButtonState.Released;
             }
             else

@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity_Framework.ControllerInput;
 
 namespace TeamF
 {
     public class Player : MonoBehaviour
     {
         Character character;
+        ControllerInput controllerInput;
 
         public void AvatarDeath()
         {
@@ -15,8 +17,7 @@ namespace TeamF
 
         void Start()
         {
-            character = GetComponent<Character>();
-            character.Init(this);
+            Init();
         }
 
         void Update()
@@ -24,7 +25,29 @@ namespace TeamF
             CheckInput();
         }
 
+        public void Init()
+        {
+            controllerInput = new ControllerInput(0);
+            character = GetComponent<Character>();
+            character.Init(this);
+        }
+
         void CheckInput()
+        {
+            InputStatus status = controllerInput.GetPlayerInputStatus();
+
+            if (status.IsConnected)
+                CheckControllerInput();
+            else
+                CheckKeyboardInput();
+        }
+
+        void CheckControllerInput()
+        {
+
+        }
+
+        void CheckKeyboardInput()
         {
             if (GameManager.I.CurrentState == FlowState.Gameplay)
             {
