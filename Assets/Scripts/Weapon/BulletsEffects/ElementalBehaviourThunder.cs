@@ -8,16 +8,16 @@ namespace TeamF
 {
     public class ElementalBehaviourThunder : IBulletEffectBehaviour
     {
-        Character enemyTarget;
         Enemy enemy;
         ElementalEffectData elementalData;
+        NavMeshAgent navMesh;
 
         public void DoInit(Enemy _enemy, ElementalEffectData _data)
         {
             enemy = _enemy;
             elementalData = _data;
-            enemyTarget = enemy.target;
-            enemy.target = null;
+            navMesh = enemy.GetComponent<NavMeshAgent>();
+            navMesh.isStopped = true;
         }
 
         public bool DoUpdate()
@@ -25,7 +25,6 @@ namespace TeamF
             elementalData.TimeOfEffect -= Time.deltaTime;
             if(elementalData.TimeOfEffect <= 0)
             {
-                enemy.target = enemyTarget;
                 return true;
             }
             return false;
@@ -33,7 +32,7 @@ namespace TeamF
 
         public void DoStopEffect()
         {
-            enemy.target = enemyTarget;
+            navMesh.isStopped = false;
         }
 
     }

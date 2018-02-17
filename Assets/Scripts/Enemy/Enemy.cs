@@ -8,7 +8,7 @@ namespace TeamF
     public class Enemy : MonoBehaviour, IDamageable
     {
         public float Life;
-        public float MovementSpeed;
+        public float MovementSpeed { get { return navMesh.speed; } set { navMesh.speed = value; } }
         public int Damage;
         public float DamageRange;
         public float DamageRate;

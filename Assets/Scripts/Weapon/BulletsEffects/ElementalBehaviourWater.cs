@@ -22,12 +22,14 @@ namespace TeamF {
             elementalData.TimeOfEffect -= Time.deltaTime;
             if (elementalData.TimeOfEffect <= 0)
             {
-                enemy.MovementSpeed = initialSlowdown;
                 return true;
             }
             return false;
         }
 
-        public void DoStopEffect() { }
+        public void DoStopEffect()
+        {
+            enemy.MovementSpeed = initialSlowdown;
+        }
     }
 }

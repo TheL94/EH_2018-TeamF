@@ -348,7 +348,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ModelToRotate: {fileID: 1025563587877978}
-  MovementSpeed: 5
+  MovementSpeed: 5.5
   RotationSpeed: 5
 --- !u!114 &114614664107629650
 MonoBehaviour:
@@ -366,37 +366,37 @@ MonoBehaviour:
     Damage: 5
     Ammo: 0
     Data:
-      EffectDamage: 5
+      EffectValue: 7
       TimeOfEffect: 3
       TimeFraction: 1
   - AmmoType: 1
     Damage: 4
     Ammo: 0
     Data:
-      EffectDamage: 0
+      EffectValue: 2
       TimeOfEffect: 5
       TimeFraction: 1
   - AmmoType: 2
     Damage: 4
     Ammo: 0
     Data:
-      EffectDamage: 5
+      EffectValue: 5
       TimeOfEffect: 3
       TimeFraction: 1
   - AmmoType: 3
     Damage: 4
     Ammo: 0
     Data:
-      EffectDamage: 0
+      EffectValue: 0
       TimeOfEffect: 5
       TimeFraction: 1
   - AmmoType: 4
     Damage: 1
     Ammo: 0
     Data:
-      EffectDamage: 0
-      TimeOfEffect: 0
-      TimeFraction: 0
+      EffectValue: 0
+      TimeOfEffect: 8
+      TimeFraction: 1
   Life: 10
   movement: {fileID: 0}
 --- !u!124 &124737006046693908
