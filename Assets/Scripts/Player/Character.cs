@@ -127,7 +127,7 @@ namespace TeamF
     [System.Serializable]
     public struct ElementalEffectData
     {
-        public float EffectDamage;
+        public float EffectValue;
         public float TimeOfEffect;
         public float TimeFraction;
     }

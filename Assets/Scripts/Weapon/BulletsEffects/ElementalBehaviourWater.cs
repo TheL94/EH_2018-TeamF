@@ -5,17 +5,27 @@ using UnityEngine;
 namespace TeamF {
     public class ElementalBehaviourWater : IBulletEffectBehaviour {
 
-        float slowdown = 3;
+        float initialSlowdown;
         Enemy enemy;
-        public void DoInit(Enemy _enemy, float _value)
+        ElementalEffectData elementalData;
+
+        public void DoInit(Enemy _enemy, ElementalEffectData _data)
         {
             enemy = _enemy;
-            slowdown = _value;
+            elementalData = _data;
+            initialSlowdown = enemy.MovementSpeed;
+            enemy.MovementSpeed -= _data.EffectValue;
         }
 
-        public void DoEffect()
+        public bool DoUpdate()
         {
-            enemy.MovementSpeed -= slowdown;
+            elementalData.TimeOfEffect -= Time.deltaTime;
+            if (elementalData.TimeOfEffect <= 0)
+            {
+                enemy.MovementSpeed = initialSlowdown;
+                return true;
+            }
+            return false;
         }
 
         public void DoStopEffect() { }

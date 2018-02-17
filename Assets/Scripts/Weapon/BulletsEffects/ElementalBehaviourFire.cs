@@ -5,24 +5,33 @@ using UnityEngine;
 namespace TeamF {
     public class ElementalBehaviourFire : IBulletEffectBehaviour {
 
-        float damage;
         Enemy enemy;
+        ElementalEffectData elementalData;
+        float timer;
 
-        public void DoInit(Enemy _enemy, float _value)
+        public void DoInit(Enemy _enemy, ElementalEffectData _data)
         {
             enemy = _enemy;
-            damage = _value;
+            elementalData = _data;
         }
 
-        public void DoEffect()
+        public bool DoUpdate()
         {
-            if (damage > 0)
+            elementalData.TimeOfEffect -= Time.deltaTime;
+            if (elementalData.TimeOfEffect <= timer)
             {
-                enemy.TakeDamage(damage, ElementalType.Fire);
-                damage -= 1;
-                if (damage < 0)
-                    damage = 0; 
+                if (elementalData.EffectValue > 0)
+                {
+                    enemy.TakeDamage(elementalData.EffectValue, ElementalType.Fire);
+                    elementalData.EffectValue -= 1;
+                    if (elementalData.EffectValue < 0)
+                        elementalData.EffectValue = 0;
+                }
             }
+            if (elementalData.TimeOfEffect <= 0)
+                return true;
+            else
+                return false;
         }
 
         public void DoStopEffect() { }

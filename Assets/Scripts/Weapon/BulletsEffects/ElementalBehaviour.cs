@@ -17,14 +17,8 @@ namespace TeamF
             if (!isInitialized)
                 return;
 
-            elementalData.TimeOfEffect -= Time.deltaTime;
-            if(elementalData.TimeOfEffect <= timer)
-            {
-                bulletBehaviour.DoEffect();
-                timer -= elementalData.TimeFraction;
-            }
-
-            if (elementalData.TimeOfEffect <= 0)
+            //bulletBehaviour.DoUpdate();
+            if (bulletBehaviour.DoUpdate())
                 StopEffect();
         }
 
@@ -36,7 +30,7 @@ namespace TeamF
         {
             bulletBehaviour = _behaviour;
             elementalData = _elementalData;
-            bulletBehaviour.DoInit(_enemy, _elementalData.EffectDamage);
+            bulletBehaviour.DoInit(_enemy, _elementalData);
             if (CheckEffect(_behaviour, _enemy))
                 isInitialized = true;
         }

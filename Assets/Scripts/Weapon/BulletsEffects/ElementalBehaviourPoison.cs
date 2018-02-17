@@ -6,21 +6,30 @@ namespace TeamF
 {
     public class ElementalBehaviourPoison : IBulletEffectBehaviour
     {
-        float damage;
         Enemy enemy;
+        ElementalEffectData elementalData;
+        float timer;
 
-        public void DoInit(Enemy _enemy, float _value)
+        public void DoInit(Enemy _enemy, ElementalEffectData _data)
         {
             enemy = _enemy;
-            damage = _value;
+            elementalData = _data;
         }
 
-        public void DoEffect()
+        public bool DoUpdate()
         {
-            if (damage > 0)
+            elementalData.TimeOfEffect -= Time.deltaTime;
+            if (elementalData.TimeOfEffect <= timer)
             {
-                enemy.TakeDamage(damage, ElementalType.Poison);
+                if (elementalData.EffectValue > 0)
+                    enemy.TakeDamage(elementalData.EffectValue, ElementalType.Poison);
+
+                timer -= elementalData.TimeFraction;
             }
+            if (elementalData.TimeOfEffect <= 0)
+                return true;
+            else
+                return false;
         }
 
 

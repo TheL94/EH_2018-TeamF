@@ -6,8 +6,12 @@ namespace TeamF
 {
     public interface IBulletEffectBehaviour
     {
-        void DoInit(Enemy _enemy, float _value);
-        void DoEffect();
+        void DoInit(Enemy _enemy, ElementalEffectData _data);
+        /// <summary>
+        /// Funzione dove viene eseguito il comportamento specifico dell'elemento
+        /// </summary>
+        /// <returns>Ritorna true se il Timer all'interno dell'azione è terminato quindi deve essere chiamato lo stop dell'effetto</returns>
+        bool DoUpdate();
         void DoStopEffect();
     }
 }
