@@ -54,7 +54,7 @@ namespace TeamF
         /// <param name="_bulletType">Il tipo del proiettile</param>
         public void TakeDamage(float _damage, ElementalType _bulletType)
         {
-            currentBehaviour.TakeDamage(this, _damage, _bulletType);
+            currentBehaviour.DoTakeDamage(this, _damage, _bulletType);
 
             if (Life <= 0)
             {

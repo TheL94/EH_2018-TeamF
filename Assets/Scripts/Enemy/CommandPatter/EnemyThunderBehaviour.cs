@@ -17,13 +17,13 @@ namespace TeamF
             base.DoAttack();
         }
 
-        public override void TakeDamage(Enemy _enemy, float _damage, ElementalType _type)
+        public override void DoTakeDamage(Enemy _enemy, float _damage, ElementalType _type)
         {
             if (_type == ElementalType.Poison)
                 _damage *= 1.5f;
             if (_type == ElementalType.Thunder)
                 _damage = 0;
-            base.TakeDamage(_enemy, _damage, _type);
+            base.DoTakeDamage(_enemy, _damage, _type);
         }
     }
 }

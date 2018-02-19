@@ -8,7 +8,7 @@ namespace TeamF
     {
         public virtual void DoInit()
         {
-            throw new System.NotImplementedException();
+            
         }
 
         public virtual void DoAttack()
@@ -16,7 +16,7 @@ namespace TeamF
             // Attacco base del nemico
         }
 
-        public virtual void TakeDamage(Enemy _enemy, float _damage, ElementalType _type)
+        public virtual void DoTakeDamage(Enemy _enemy, float _damage, ElementalType _type)
         {
             //Take damage base
             _enemy.Life -= _damage;
