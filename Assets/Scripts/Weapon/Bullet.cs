@@ -44,20 +44,20 @@ namespace TeamF
                 Enemy enemy = other.GetComponent<Enemy>();
                 if (enemy != null)
                 {
-                    ElementalBehaviour _effect = other.gameObject.GetComponent<ElementalBehaviour>();
+                    ElementalEffect _effect = other.gameObject.GetComponent<ElementalEffect>();
                     switch (ammo.AmmoType)
                     {
                         case ElementalType.Fire:
-                            _effect.Init(new ElementalBehaviourFire(), enemy, ammo.Data);
+                            _effect.Init(new ElementalEffectFire(), enemy, ammo.Data);
                             break;
                         case ElementalType.Water:
-                            _effect.Init(new ElementalBehaviourWater(), enemy, ammo.Data);
+                            _effect.Init(new ElementalEffectWater(), enemy, ammo.Data);
                             break;
                         case ElementalType.Poison:
-                            _effect.Init(new ElementalBehaviourPoison(), enemy, ammo.Data);
+                            _effect.Init(new ElementalEffectPoison(), enemy, ammo.Data);
                             break;
                         case ElementalType.Thunder:
-                            _effect.Init(new ElementalBehaviourThunder(), enemy, ammo.Data);
+                            _effect.Init(new ElementalEffectThunder(), enemy, ammo.Data);
                             break;
                         case ElementalType.None:
                             break;

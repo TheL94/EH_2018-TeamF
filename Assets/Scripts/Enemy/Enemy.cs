@@ -28,7 +28,10 @@ namespace TeamF
             target = _target;
             controller = _controller;
             SpecificID = _id;
+
             currentBehaviour = _behaviour;
+            currentBehaviour.DoInit();
+
             navMesh = GetComponent<NavMeshAgent>();
             navMesh.stoppingDistance = DamageRange;
         }

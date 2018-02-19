@@ -6,6 +6,10 @@ namespace TeamF
 {
     public class EnemyBehaviourBase : IEnemyBehaviour
     {
+        public virtual void DoInit()
+        {
+            throw new System.NotImplementedException();
+        }
 
         public virtual void DoAttack()
         {

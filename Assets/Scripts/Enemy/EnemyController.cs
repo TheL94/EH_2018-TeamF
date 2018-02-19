@@ -86,7 +86,7 @@ namespace TeamF
             switch (rand)
             {
                 case 0:
-                    return new FireBehaviour();
+                    return new EnemyFireBehaviour();
                 
                 default:
                     return new EnemyBehaviourBase();
@@ -127,13 +127,14 @@ namespace TeamF
             DeleteAllEnemies();
         }
 
+        #endregion
         /// <summary>
         /// Instanza un nuovo nemico e ne chiama l'Init
         /// </summary>
         /// <param name="_enemyPrefab">Il prefab del nemico da utilizzare</param>
         /// <param name="_spawnPoint">Lo spawn point dove far spawnare il nemico</param>
         /// <param name="SpawnElementalEnemy">True se il nemico da spawnare è elementale</param>
-        public void Spawn(Enemy _enemyPrefab, Transform _spawnPoint, bool SpawnElementalEnemy = false)
+        void Spawn(Enemy _enemyPrefab, Transform _spawnPoint, bool SpawnElementalEnemy = false)
         {
             if (SpawnPoints.Count == 0)
                 SpawnPoints.Add(transform);
@@ -147,7 +148,6 @@ namespace TeamF
 
             idCounter++;
         }
-        #endregion
 
         void DeleteSpecificEnemy(string _idEnemy)
         {

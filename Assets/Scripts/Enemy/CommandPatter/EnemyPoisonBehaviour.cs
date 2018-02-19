@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace TeamF
 {
-    public class PoisonBehaviour : EnemyBehaviourBase
+    public class EnemyPoisonBehaviour : EnemyBehaviourBase
     {
         public override void DoAttack()
         {

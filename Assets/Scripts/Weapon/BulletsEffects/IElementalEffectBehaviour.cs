@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace TeamF
 {
-    public interface IBulletEffectBehaviour
+    public interface IElementalEffectBehaviour
     {
         void DoInit(Enemy _enemy, ElementalEffectData _data);
         /// <summary>

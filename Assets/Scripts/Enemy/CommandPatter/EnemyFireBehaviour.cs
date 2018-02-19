@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace TeamF
 {
-    public class ThunderBehaviour : EnemyBehaviourBase
+    public class EnemyFireBehaviour : EnemyBehaviourBase
     {
         public override void DoAttack()
         {
@@ -13,9 +13,9 @@ namespace TeamF
 
         public override void TakeDamage(Enemy _enemy, float _damage, ElementalType _type)
         {
-            if (_type == ElementalType.Poison)
+            if (_type == ElementalType.Water)
                 _damage *= 1.5f;
-            if (_type == ElementalType.Thunder)
+            if (_type == ElementalType.Fire)
                 _damage = 0;
             base.TakeDamage(_enemy, _damage, _type);
         }

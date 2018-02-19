@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace TeamF
 {
-    public class WaterBehaviour : EnemyBehaviourBase
+    public class EnemyWaterBehaviour : EnemyBehaviourBase
     {
         public override void DoAttack()
         {
