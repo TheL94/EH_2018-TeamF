@@ -42,7 +42,7 @@ namespace TeamF
         IButtonController Controller { get; set; }
         int Index { get; set; }
         bool IsSelected { get; set; }
-        void Init(int _index);
+        void Init(int _index, IButtonController _controller);
         void ChangeImageIfSelected(bool _isSelected);
     }
 }

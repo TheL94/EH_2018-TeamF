@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace TeamF
 {
-    public class MenuBase : MonoBehaviour, IMenu
+    public class MenuBase : MonoBehaviour, IMenu, IButtonController
     {
         int _currentIndexSelected;
         public int CurrentIndexSelected
@@ -46,8 +46,18 @@ namespace TeamF
 
             for (int i = 0; i < SelectableButtons.Count; i++)
             {
-                SelectableButtons[i].Init(i);
+                SelectableButtons[i].Init(i, this);
             }
+        }
+
+        /// <summary>
+        /// Called by the selectable button.. select himself and call the select
+        /// </summary>
+        /// <param name="_buttonID"></param>
+        public void ButtonClick(int _buttonID)
+        {
+            CurrentIndexSelected = _buttonID;
+            Select();
         }
 
         #region Menu Actions

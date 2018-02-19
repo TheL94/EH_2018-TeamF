@@ -4,7 +4,6 @@ using UnityEngine;
 
 public interface IButtonController {
 
-    void SetSelectablesController();
     void ButtonClick(int _buttonID);
 
 }

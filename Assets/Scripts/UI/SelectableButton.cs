@@ -24,9 +24,10 @@ namespace TeamF
             }
         }
 
-        public void Init(int _index)
+        public void Init(int _index, IButtonController _controller)
         {
             Index = _index;
+            Controller = _controller;
         }
 
         public void ChangeImageIfSelected(bool _isSelected)
