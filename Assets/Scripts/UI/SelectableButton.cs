@@ -1,13 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace TeamF
 {
-    public class SelectableButton : MonoBehaviour, ISelectable
+    public class SelectableButton : MonoBehaviour, ISelectable, IPointerClickHandler
     {
         public int Index { get; set; }
+
+        public IButtonController Controller { get; set; }
 
         bool _isSelected;
 
@@ -21,6 +24,11 @@ namespace TeamF
             }
         }
 
+        public void Init(int _index)
+        {
+            Index = _index;
+        }
+
         public void ChangeImageIfSelected(bool _isSelected)
         {
             Image img = GetComponent<Image>();
@@ -31,9 +39,9 @@ namespace TeamF
 
         }
 
-        public void SetIndex(int _index)
+        public void OnPointerClick(PointerEventData eventData)
         {
-            Index = _index;
+            Controller.ButtonClick(Index);
         }
     }
 }

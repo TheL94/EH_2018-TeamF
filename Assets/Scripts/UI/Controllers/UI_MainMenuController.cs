@@ -4,13 +4,15 @@ using UnityEngine;
 
 namespace TeamF
 {
-    public class UI_MainMenuController : MenuBase
+    public class UI_MainMenuController : MenuBase, IButtonController
     {
+        
 
         public void Init()
         {
             GameManager.I.UIMng.CurrentMenu = this;
             FindISelectableObects();
+            SetSelectablesController();
             SelectableButtons[0].IsSelected = true;
         }
 
@@ -26,6 +28,20 @@ namespace TeamF
                     //ExitGame;
                     GameManager.I.CloseApplicationActions();
                     break;
+            }
+        }
+
+        public void ButtonClick(int _buttonID)
+        {
+            CurrentIndexSelected = _buttonID;
+            Select();
+        }
+
+        public void SetSelectablesController()
+        {
+            for (int i = 0; i < SelectableButtons.Count; i++)
+            {
+                SelectableButtons[i].Controller = this;
             }
         }
     }

@@ -39,9 +39,10 @@ namespace TeamF
 
     public interface ISelectable
     {
+        IButtonController Controller { get; set; }
         int Index { get; set; }
         bool IsSelected { get; set; }
-        void SetIndex(int _index);
+        void Init(int _index);
         void ChangeImageIfSelected(bool _isSelected);
     }
 }

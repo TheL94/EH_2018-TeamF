@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace TeamF
 {
-    public class UI_GameOverController : MenuBase
+    public class UI_GameOverController : MenuBase, IButtonController
     {
         public Text GameOverText;
 
@@ -20,6 +20,7 @@ namespace TeamF
 
             GameManager.I.UIMng.CurrentMenu = this;
             FindISelectableObects();
+            SetSelectablesController();
             SelectableButtons[0].IsSelected = true;
         }
 
@@ -31,6 +32,20 @@ namespace TeamF
                     //GameManager.I.ChangeFlowState(FlowState.Menu);
                     SceneManager.LoadScene(0);
                     break;
+            }
+        }
+
+        public void ButtonClick(int _buttonID)
+        {
+            CurrentIndexSelected = _buttonID;
+            Select();
+        }
+
+        public void SetSelectablesController()
+        {
+            for (int i = 0; i < SelectableButtons.Count; i++)
+            {
+                SelectableButtons[i].Controller = this;
             }
         }
     }

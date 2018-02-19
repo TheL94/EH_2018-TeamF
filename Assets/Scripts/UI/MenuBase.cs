@@ -46,7 +46,7 @@ namespace TeamF
 
             for (int i = 0; i < SelectableButtons.Count; i++)
             {
-                SelectableButtons[i].SetIndex(i);
+                SelectableButtons[i].Init(i);
             }
         }
 
