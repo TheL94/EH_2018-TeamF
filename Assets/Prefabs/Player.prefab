@@ -349,7 +349,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ModelToRotate: {fileID: 1025563587877978}
   MovementSpeed: 5.5
-  RotationSpeed: 5
+  RotationSpeed: 7
 --- !u!114 &114614664107629650
 MonoBehaviour:
   m_ObjectHideFlags: 1
