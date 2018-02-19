@@ -315,11 +315,11 @@ MonoBehaviour:
   target: {fileID: 0}
   EnemyPrefab: {fileID: 114887375225381206, guid: 1de843c21c57ee345b5b37547ec9ab91,
     type: 2}
-  StartDelayTime: 7
-  DelayHordes: 20
+  StartDelayTime: 4
+  DelayHordes: 35
   MinDistanceSpawn: 15
   MaxHordeNumber: 8
-  MinHordeNumber: 5
+  MinHordeNumber: 3
   MaxElementalsEnemies: 2
   MinElementalsEnemies: 0
   SpawnPoints:
