@@ -6,6 +6,12 @@ namespace TeamF
 {
     public class EnemyPoisonBehaviour : EnemyBehaviourBase
     {
+        public override void DoInit(Enemy _myEnemy)
+        {
+            base.DoInit(_myEnemy);
+            _myEnemy.GetComponentInChildren<MeshRenderer>().material.color = Color.green;
+        }
+
         public override void DoTakeDamage(Enemy _enemy, float _damage, ElementalType _type)
         {
             if(_type == ElementalType.Fire)

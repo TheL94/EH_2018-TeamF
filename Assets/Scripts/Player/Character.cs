@@ -33,9 +33,9 @@ namespace TeamF
             player = _player;
             currentWeapon = GetComponentInChildren<Weapon>();
             movement = GetComponent<Movement>();
-            AllElementalAmmo[AllElementalAmmo.Length - 1].Ammo = -1;
+            AllElementalAmmo[0].Ammo = -1;
             
-            selectedAmmoIndex = AllElementalAmmo.Length - 1;     
+            selectedAmmoIndex = 0;     
         }
 
         /// <summary>

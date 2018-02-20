@@ -14,13 +14,13 @@ namespace TeamF
 
         public virtual void DoAttack()
         {
-            myEnemy.target.TakeDamage(myEnemy.Damage);
+            myEnemy.target.TakeDamage(myEnemy.data.Damage);
         }
 
         public virtual void DoTakeDamage(Enemy _enemy, float _damage, ElementalType _type)
         {
             //Take damage base
-            _enemy.Life -= _damage;
+            _enemy.data.Life -= _damage;
             
         }
 

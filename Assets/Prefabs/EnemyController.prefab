@@ -313,15 +313,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  EnemyPrefab: {fileID: 114887375225381206, guid: 1de843c21c57ee345b5b37547ec9ab91,
+  EnemyPrefab: {fileID: 114581156254199516, guid: 25dfe3bec1371e14d87332e9234c5ef8,
     type: 2}
-  StartDelayTime: 7
-  DelayHordes: 20
-  MinDistanceSpawn: 15
-  MaxHordeNumber: 8
-  MinHordeNumber: 5
-  MaxElementalsEnemies: 2
-  MinElementalsEnemies: 0
+  SpawnerData: {fileID: 11400000, guid: 2b29839e03dee27488e8dd89f3f66dbc, type: 2}
   SpawnPoints:
   - {fileID: 4657042593965776}
   - {fileID: 4885242544672662}

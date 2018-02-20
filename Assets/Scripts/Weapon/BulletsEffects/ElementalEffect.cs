@@ -43,13 +43,13 @@ namespace TeamF
 
         bool CheckEffect(IElementalEffectBehaviour _behaviour, Enemy _enemy)
         {
-            if (_behaviour.GetType() == typeof(ElementalEffectFire) && _enemy.currentBehaviour.GetType() == typeof(EnemyFireBehaviour))
+            if (_behaviour.GetType() == typeof(ElementalEffectFire) && _enemy.CurrentBehaviour.GetType() == typeof(EnemyFireBehaviour))
                 return false;
-            if (_behaviour.GetType() == typeof(ElementalEffectPoison) && _enemy.currentBehaviour.GetType() == typeof(EnemyPoisonBehaviour))
+            if (_behaviour.GetType() == typeof(ElementalEffectPoison) && _enemy.CurrentBehaviour.GetType() == typeof(EnemyPoisonBehaviour))
                 return false;
-            if (_behaviour.GetType() == typeof(ElementalEffectWater) && _enemy.currentBehaviour.GetType() == typeof(EnemyWaterBehaviour))
+            if (_behaviour.GetType() == typeof(ElementalEffectWater) && _enemy.CurrentBehaviour.GetType() == typeof(EnemyWaterBehaviour))
                 return false;
-            if (_behaviour.GetType() == typeof(ElementalEffectThunder) && _enemy.currentBehaviour.GetType() == typeof(EnemyThunderBehaviour))
+            if (_behaviour.GetType() == typeof(ElementalEffectThunder) && _enemy.CurrentBehaviour.GetType() == typeof(EnemyThunderBehaviour))
                 return false;
             return true;
         }

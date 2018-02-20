@@ -6,6 +6,12 @@ namespace TeamF
 {
     public class EnemyWaterBehaviour : EnemyBehaviourBase
     {
+        public override void DoInit(Enemy _myEnemy)
+        {
+            base.DoInit(_myEnemy);
+            _myEnemy.GetComponentInChildren<MeshRenderer>().material.color = Color.blue;
+        }
+
         public override void DoTakeDamage(Enemy _enemy, float _damage, ElementalType _type)
         {
             if (_type == ElementalType.Thunder)
