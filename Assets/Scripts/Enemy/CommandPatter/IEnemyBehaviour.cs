@@ -6,7 +6,7 @@ namespace TeamF
 {
     public interface IEnemyBehaviour
     {
-        void DoInit(Enemy myEnemy);
+        void DoInit(Enemy _myEnemy);
         void DoTakeDamage(Enemy _enemy, float _damage, ElementalType _type);
         void DoAttack();
         void DoDeath();
