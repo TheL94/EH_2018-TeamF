@@ -8,10 +8,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: FireEnemyData 1
-  m_EditorClassIdentifier: Assembly-CSharp:TeamF:EnemyData
-  EnemyType: 0
+  m_Script: {fileID: 11500000, guid: 761ff678fe32dff46beefa12330fe2ec, type: 3}
+  m_Name: EnemyDataThunder 4
+  m_EditorClassIdentifier: 
+  EnemyType: 4
   ModelPrefab: {fileID: 1030758615841798, guid: 63a0e7e88b49e0540822eab879ed3a97,
     type: 2}
   Life: 10
