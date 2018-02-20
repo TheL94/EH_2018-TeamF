@@ -176,7 +176,6 @@ namespace TeamF
     {
         public float StartDelayTime;
         public float DelayHordes;
-        public float MinDistanceSpawn;
 
         public int MaxHordeNumber;
         public int MinHordeNumber;
