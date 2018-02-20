@@ -14,6 +14,26 @@ namespace TeamF
         {
             controller = _controller;
             Type = (ElementalType)Random.Range(1, 5);
+            MeshRenderer render = GetComponent<MeshRenderer>();
+            switch (Type)
+            {
+                case ElementalType.None:
+                    break;
+                case ElementalType.Fire:
+                    render.material.color = Color.red;
+                    break;
+                case ElementalType.Water:
+                    render.material.color = Color.blue;
+                    break;
+                case ElementalType.Poison:
+                    render.material.color = Color.green;
+                    break;
+                case ElementalType.Thunder:
+                    render.material.color = Color.magenta;
+                    break;
+                default:
+                    break;
+            }
         }
 
         /// <summary>
