@@ -96,25 +96,30 @@ namespace TeamF
         }
         #endregion
 
-        private void OnTriggerEnter(Collider other)
+        void PickupAmmo(AmmoCrate _crate)
         {
-            AmmoCrate crate = other.GetComponent<AmmoCrate>();
-            if (crate != null)
+            if (_crate != null)
             {
                 for (int i = 0; i < AllElementalAmmo.Length; i++)
                 {
-                    if (crate.Type == AllElementalAmmo[i].AmmoType)
+                    if (_crate.Type == AllElementalAmmo[i].AmmoType)
                     {
                         //Aggiungi le munizioni a questo tipo;
-                        AllElementalAmmo[i].Ammo += crate.Ammo;
+                        AllElementalAmmo[i].Ammo += _crate.Ammo;
                         EventManager.AmmoChange(AllElementalAmmo[i]);
-                        crate.DestroyAmmoCrate();
+                        _crate.DestroyAmmoCrate();
                         return;
                     }
                 }
             }
         }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            PickupAmmo(other.GetComponent<AmmoCrate>());
+        }
     }
+
     [System.Serializable]
     public struct ElementalAmmo
     {
@@ -124,6 +129,7 @@ namespace TeamF
         public ElementalEffectData Data;
         
     }
+
     [System.Serializable]
     public struct ElementalEffectData
     {
