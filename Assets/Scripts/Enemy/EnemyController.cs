@@ -8,6 +8,7 @@ namespace TeamF
     {
         public Character target;
         public Enemy EnemyPrefab;
+        public Enemy ElementalEnemyPrefab;
         public float StartDelayTime;
         public float DelayHordes;
         public float MinDistanceSpawn;
@@ -35,7 +36,7 @@ namespace TeamF
             time += Time.deltaTime;
             if (time >= DelayHordes && target.Life > 0)
             {
-                SpawnHorde(EnemyPrefab);
+                SpawnHorde();
                 time = 0;
             }
         }
@@ -44,7 +45,7 @@ namespace TeamF
         /// Determina quale spawn point è il più vicino al player e lo esclude, spawna i nemici sugli spawn points rimasti
         /// </summary>
         /// <param name="_enemyPrefab"></param>
-        void SpawnHorde(Enemy _enemyPrefab)
+        void SpawnHorde()
         {
             int spawnIndexToExclude = 0;
 
@@ -70,12 +71,12 @@ namespace TeamF
 
                 for (int j = 0; j < elementalsEnemies; j++)
                 {
-                    Spawn(_enemyPrefab, SpawnPoints[i], true);
+                    Spawn(EnemyPrefab, SpawnPoints[i], true);
                 }
 
                 for (int j = 0; j < hordeNumber - elementalsEnemies; j++)
                 {
-                    Spawn(_enemyPrefab, SpawnPoints[i]);
+                    Spawn(ElementalEnemyPrefab, SpawnPoints[i]);
                 }
             }
         }
@@ -96,7 +97,7 @@ namespace TeamF
         IEnumerator FirstSpawn()
         {
             yield return new WaitForSeconds(StartDelayTime);
-            SpawnHorde(EnemyPrefab);
+            SpawnHorde();
             CanSpawn = true;
         }
 

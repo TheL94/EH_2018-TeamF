@@ -30,7 +30,7 @@ namespace TeamF
             SpecificID = _id;
 
             currentBehaviour = _behaviour;
-            currentBehaviour.DoInit();
+            currentBehaviour.DoInit(this);
 
             navMesh = GetComponent<NavMeshAgent>();
             navMesh.stoppingDistance = DamageRange;
@@ -80,7 +80,7 @@ namespace TeamF
             {
                 if (DamageRange >= Vector3.Distance(transform.position, target.transform.position))
                 {
-                    target.TakeDamage(Damage);
+                    currentBehaviour.DoAttack();
                     time = 0;
                 }
             }

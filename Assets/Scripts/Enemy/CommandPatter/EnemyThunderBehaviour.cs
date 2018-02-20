@@ -6,17 +6,6 @@ namespace TeamF
 {
     public class EnemyThunderBehaviour : EnemyBehaviourBase
     {
-        public override void DoInit()
-        {
-            base.DoInit();
-            // Istanzia il modello del nemico tuono
-        }
-
-        public override void DoAttack()
-        {
-            base.DoAttack();
-        }
-
         public override void DoTakeDamage(Enemy _enemy, float _damage, ElementalType _type)
         {
             if (_type == ElementalType.Poison)

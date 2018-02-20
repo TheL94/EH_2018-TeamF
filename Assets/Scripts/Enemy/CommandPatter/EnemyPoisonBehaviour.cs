@@ -6,11 +6,6 @@ namespace TeamF
 {
     public class EnemyPoisonBehaviour : EnemyBehaviourBase
     {
-        public override void DoAttack()
-        {
-            base.DoAttack();
-        }
-
         public override void DoTakeDamage(Enemy _enemy, float _damage, ElementalType _type)
         {
             if(_type == ElementalType.Fire)
