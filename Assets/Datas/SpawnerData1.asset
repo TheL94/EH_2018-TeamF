@@ -19,8 +19,8 @@ MonoBehaviour:
   MaxElementalsEnemies: 2
   MinElementalsEnemies: 0
   EnemiesData:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: ac610c6f0ff5a6c42adffa0b1be14d80, type: 2}
+  - {fileID: 11400000, guid: 29ac0e0e1046a6b4fba99113b8051cd7, type: 2}
+  - {fileID: 11400000, guid: 80d129261d2d43748867d8b3ba4d13fc, type: 2}
+  - {fileID: 11400000, guid: 813e4181e5c9b7c4e9ae18f55c62d6d1, type: 2}
+  - {fileID: 11400000, guid: 52155cab7fbd69d4cb059a8171c94624, type: 2}

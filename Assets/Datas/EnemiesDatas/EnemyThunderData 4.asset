@@ -9,12 +9,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
-  m_Name: EnemyBaseData 4
+  m_Name: EnemyThunderData 4
   m_EditorClassIdentifier: Assembly-CSharp:TeamF:EnemyData
-  EnemyType: 0
-  ModelPrefab: {fileID: 0}
-  Life: 0
-  Damage: 0
-  DamageRange: 0
-  DamageRate: 0
-  EnemyValue: 0
+  EnemyType: 4
+  ModelPrefab: {fileID: 1030758615841798, guid: 63a0e7e88b49e0540822eab879ed3a97,
+    type: 2}
+  Life: 10
+  Damage: 2
+  DamageRange: 1
+  DamageRate: 1
+  EnemyValue: 1
