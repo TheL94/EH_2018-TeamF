@@ -8,16 +8,10 @@ namespace TeamF
     {
         public Character target;
         public Enemy EnemyPrefab;
-        public float StartDelayTime;
-        public float DelayHordes;
-        public float MinDistanceSpawn;
+        
         public bool CanSpawn { get; set; }
 
-        public int MaxHordeNumber;
-        public int MinHordeNumber;
-
-        public int MaxElementalsEnemies;
-        public int MinElementalsEnemies;
+        public EnemySpawnerData SpawnerData;
 
         LevelManager levelMng;
 
@@ -33,9 +27,9 @@ namespace TeamF
                 return;
 
             time += Time.deltaTime;
-            if (time >= DelayHordes && target.Life > 0)
+            if (time >= SpawnerData.DelayHordes && target.Life > 0)
             {
-                SpawnHorde(EnemyPrefab);
+                SpawnHorde();
                 time = 0;
             }
         }
@@ -44,11 +38,11 @@ namespace TeamF
         /// Determina quale spawn point è il più vicino al player e lo esclude, spawna i nemici sugli spawn points rimasti
         /// </summary>
         /// <param name="_enemyPrefab"></param>
-        void SpawnHorde(Enemy _enemyPrefab)
+        void SpawnHorde()
         {
             int spawnIndexToExclude = 0;
 
-            float _distance = 100000;
+            float _distance = 100000;                   // Distanza improbabile, la prima distanza di riferimento è enorme
 
             for (int i = 0; i < SpawnPoints.Count; i++)
             {
@@ -65,38 +59,44 @@ namespace TeamF
                 if (i == spawnIndexToExclude)
                     continue;
 
-                int hordeNumber = Random.Range(MinHordeNumber, MaxHordeNumber + 1);
-                int elementalsEnemies = Random.Range(MinElementalsEnemies, MaxElementalsEnemies + 1);
+                int hordeNumber = Random.Range(SpawnerData.MinHordeNumber, SpawnerData.MaxHordeNumber + 1);
+                int elementalsEnemies = Random.Range(SpawnerData.MinElementalsEnemies, SpawnerData.MaxElementalsEnemies + 1);
 
                 for (int j = 0; j < elementalsEnemies; j++)
                 {
-                    Spawn(_enemyPrefab, SpawnPoints[i], true);
+                    Spawn(EnemyPrefab, SpawnPoints[i], true);
                 }
 
                 for (int j = 0; j < hordeNumber - elementalsEnemies; j++)
                 {
-                    Spawn(_enemyPrefab, SpawnPoints[i]);
+                    Spawn(EnemyPrefab, SpawnPoints[i]);
                 }
             }
         }
 
-        IEnemyBehaviour ChoiseRandomElement()
+        EnemyData ChoiseRandomElement()
         {
             int rand = Random.Range(0, 4);
             switch (rand)
             {
                 case 0:
-                    return new FireBehaviour();
-                
+                    return SpawnerData.EnemiesData[1];
+                case 1:
+                    return SpawnerData.EnemiesData[2];
+                case 2:
+                    return SpawnerData.EnemiesData[3];
+                case 3:
+                    return SpawnerData.EnemiesData[4];
+
                 default:
-                    return new EnemyBehaviourBase();
+                    return SpawnerData.EnemiesData[0];
             }
         }
 
         IEnumerator FirstSpawn()
         {
-            yield return new WaitForSeconds(StartDelayTime);
-            SpawnHorde(EnemyPrefab);
+            yield return new WaitForSeconds(SpawnerData.StartDelayTime);
+            SpawnHorde();
             CanSpawn = true;
         }
 
@@ -114,7 +114,7 @@ namespace TeamF
         /// <param name="_enemyKilled"></param>
         public void KillEnemy(Enemy _enemyKilled)
         {
-            levelMng.UpdateRoundPoints(_enemyKilled.EnemyValue);
+            levelMng.UpdateRoundPoints(_enemyKilled.data.EnemyValue);
             DeleteSpecificEnemy(_enemyKilled.SpecificID);
         }
 
@@ -127,13 +127,14 @@ namespace TeamF
             DeleteAllEnemies();
         }
 
+        #endregion
         /// <summary>
         /// Instanza un nuovo nemico e ne chiama l'Init
         /// </summary>
         /// <param name="_enemyPrefab">Il prefab del nemico da utilizzare</param>
         /// <param name="_spawnPoint">Lo spawn point dove far spawnare il nemico</param>
         /// <param name="SpawnElementalEnemy">True se il nemico da spawnare è elementale</param>
-        public void Spawn(Enemy _enemyPrefab, Transform _spawnPoint, bool SpawnElementalEnemy = false)
+        void Spawn(Enemy _enemyPrefab, Transform _spawnPoint, bool SpawnElementalEnemy = false)
         {
             if (SpawnPoints.Count == 0)
                 SpawnPoints.Add(transform);
@@ -143,11 +144,10 @@ namespace TeamF
             if (SpawnElementalEnemy)
                 newEnemy.Init(target, this, "Enemy" + idCounter, ChoiseRandomElement());
             else
-                newEnemy.Init(target, this, "Enemy" + idCounter, new EnemyBehaviourBase());
+                newEnemy.Init(target, this, "Enemy" + idCounter, SpawnerData.EnemiesData[0]);
 
             idCounter++;
         }
-        #endregion
 
         void DeleteSpecificEnemy(string _idEnemy)
         {
@@ -170,4 +170,21 @@ namespace TeamF
             enemiesSpawned.Clear();
         }
     }
+
+    [CreateAssetMenu(fileName = "SpawnerData", menuName = "EnemySpawner/SpawnerData", order = 1)]
+    public class EnemySpawnerData : ScriptableObject
+    {
+        public float StartDelayTime;
+        public float DelayHordes;
+        public float MinDistanceSpawn;
+
+        public int MaxHordeNumber;
+        public int MinHordeNumber;
+
+        public int MaxElementalsEnemies;
+        public int MinElementalsEnemies;
+
+        public List<EnemyData> EnemiesData;
+    }
+
 }

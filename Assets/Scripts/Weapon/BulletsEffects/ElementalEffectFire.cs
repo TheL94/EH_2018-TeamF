@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace TeamF {
-    public class ElementalBehaviourFire : IBulletEffectBehaviour {
+    public class ElementalEffectFire : IElementalEffectBehaviour {
 
         Enemy enemy;
         ElementalEffectData elementalData;

@@ -403,7 +403,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '3 - Poison: 0'
+  m_Text: '4 - Poison: 0'
 --- !u!114 &114085531343712090
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -496,7 +496,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 5 - Default
+  m_Text: 1 - Default
 --- !u!114 &114282818593188176
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -773,7 +773,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '1 - Fire: 0'
+  m_Text: '2 - Fire: 0'
 --- !u!114 &114562974683518742
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -914,7 +914,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '4 - Thunder: 0'
+  m_Text: '5 - Thunder: 0'
 --- !u!114 &114800131646492168
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -985,7 +985,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '2 - Water: 0'
+  m_Text: '3 - Water: 0'
 --- !u!114 &114925929670186150
 MonoBehaviour:
   m_ObjectHideFlags: 1

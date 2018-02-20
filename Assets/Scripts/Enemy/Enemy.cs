@@ -7,13 +7,9 @@ namespace TeamF
 {
     public class Enemy : MonoBehaviour, IDamageable
     {
-        public float Life;
         public float MovementSpeed { get { return navMesh.speed; } set { navMesh.speed = value; } }
-        public int Damage;
-        public float DamageRange;
-        public float DamageRate;
 
-        public float EnemyValue;
+        public EnemyData data { get; set; }
 
         public string SpecificID { get; set; }
         NavMeshAgent navMesh;
@@ -21,16 +17,23 @@ namespace TeamF
         public Character target { get; set; }
         float time;
 
-        public IEnemyBehaviour currentBehaviour;
+        public IEnemyBehaviour CurrentBehaviour { get; set; }
 
-        public void Init(Character _target, EnemyController _controller, string _id, IEnemyBehaviour _behaviour)
+        public void Init(Character _target, EnemyController _controller, string _id, EnemyData _data)
         {
             target = _target;
             controller = _controller;
             SpecificID = _id;
-            currentBehaviour = _behaviour;
-            navMesh = GetComponent<NavMeshAgent>();
-            navMesh.stoppingDistance = DamageRange;
+
+            data = _data;
+            DeterminateBehaviourFromType();
+
+            Instantiate(data.ModelPrefab, transform);           // Instanza il modello
+
+            CurrentBehaviour.DoInit(this);
+
+            navMesh = GetComponentInChildren<NavMeshAgent>();
+            navMesh.stoppingDistance = data.DamageRange;
         }
 
         private void FixedUpdate()
@@ -51,12 +54,12 @@ namespace TeamF
         /// <param name="_bulletType">Il tipo del proiettile</param>
         public void TakeDamage(float _damage, ElementalType _bulletType)
         {
-            currentBehaviour.TakeDamage(this, _damage, _bulletType);
+            CurrentBehaviour.DoTakeDamage(this, _damage, _bulletType);
 
-            if (Life <= 0)
+            if (data.Life <= 0)
             {
                 controller.KillEnemy(this);
-                currentBehaviour.DoDeath();
+                CurrentBehaviour.DoDeath();
                 Destroy(gameObject);
             }
         }
@@ -73,14 +76,54 @@ namespace TeamF
         void Attack()
         {
             time += Time.deltaTime;
-            if (time >= DamageRate)
+            if (time >= data.DamageRate)
             {
-                if (DamageRange >= Vector3.Distance(transform.position, target.transform.position))
+                if (data.DamageRange >= Vector3.Distance(transform.position, target.transform.position))
                 {
-                    target.TakeDamage(Damage);
+                    CurrentBehaviour.DoAttack();
                     time = 0;
                 }
             }
         }
+
+        void DeterminateBehaviourFromType()
+        {
+            switch (data.EnemyType)
+            {
+                case ElementalType.None:
+                    CurrentBehaviour = new EnemyBehaviourBase();
+                    break;
+                case ElementalType.Fire:
+                    CurrentBehaviour = new EnemyFireBehaviour();
+                    break;
+                case ElementalType.Water:
+                    CurrentBehaviour = new EnemyWaterBehaviour();
+                    break;
+                case ElementalType.Poison:
+                    CurrentBehaviour = new EnemyPoisonBehaviour();
+                    break;
+                case ElementalType.Thunder:
+                    CurrentBehaviour = new EnemyThunderBehaviour();
+                    break;
+                default:
+                    CurrentBehaviour = new EnemyBehaviourBase();
+                    break;
+            }
+        }
+    }
+
+    [CreateAssetMenu(fileName = "EnemyData", menuName ="Enemy/EnemyData")]
+    public class EnemyData : ScriptableObject
+    {
+        public ElementalType EnemyType;
+        public GameObject ModelPrefab;
+
+        public float Life;
+
+        public int Damage;
+        public float DamageRange;
+        public float DamageRate;
+
+        public float EnemyValue;
     }
 }

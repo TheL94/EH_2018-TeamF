@@ -30,19 +30,18 @@ namespace TeamF
             switch (_ammoValues.AmmoType)
             {
                 case ElementalType.Fire:
-                    FireAmmo.text = "1 - Fire: " + _ammoValues.Ammo;
+                    FireAmmo.text = "2 - Fire: " + _ammoValues.Ammo;
                     break;
                 case ElementalType.Water:
-                    WaterAmmo.text = "2 - Water: " + _ammoValues.Ammo;
+                    WaterAmmo.text = "3 - Water: " + _ammoValues.Ammo;
                     break;
                 case ElementalType.Poison:
-                    PoisonAmmo.text = "3 - Poison: " + _ammoValues.Ammo;
+                    PoisonAmmo.text = "4 - Poison: " + _ammoValues.Ammo;
                     break;
                 case ElementalType.Thunder:
-                    ThunderAmmo.text = "4 - Thunder: " + _ammoValues.Ammo;
+                    ThunderAmmo.text = "5 - Thunder: " + _ammoValues.Ammo;
                     break;
                 default:
-                    print("Default");
                     break;
             }
         }

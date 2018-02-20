@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace TeamF {
-    public class ElementalBehaviourWater : IBulletEffectBehaviour {
+    public class ElementalEffectWater : IElementalEffectBehaviour {
 
         float initialSlowdown;
         Enemy enemy;

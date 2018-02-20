@@ -6,16 +6,21 @@ namespace TeamF
 {
     public class EnemyBehaviourBase : IEnemyBehaviour
     {
+        Enemy myEnemy;
+        public virtual void DoInit(Enemy _myEnemy)
+        {
+            myEnemy = _myEnemy;
+        }
 
         public virtual void DoAttack()
         {
-            // Attacco base del nemico
+            myEnemy.target.TakeDamage(myEnemy.data.Damage);
         }
 
-        public virtual void TakeDamage(Enemy _enemy, float _damage, ElementalType _type)
+        public virtual void DoTakeDamage(Enemy _enemy, float _damage, ElementalType _type)
         {
             //Take damage base
-            _enemy.Life -= _damage;
+            _enemy.data.Life -= _damage;
             
         }
 

@@ -88,10 +88,10 @@ namespace TeamF
 
     public enum ElementalType
     {
-        Fire = 0,
-        Water = 1,
-        Poison = 2,
-        Thunder = 3,
-        None = 4
+        None = 0,
+        Fire = 1,
+        Water = 2,
+        Poison = 3,
+        Thunder = 4
     }
 }

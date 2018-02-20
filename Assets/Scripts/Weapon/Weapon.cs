@@ -24,7 +24,10 @@ namespace TeamF
         {
             ratioTimer += Time.deltaTime;
             if (ratioTimer >= Ratio)
+            {
                 _selectedAmmo = SingleShot(_selectedAmmo);
+                ratioTimer = 0;
+            }
             return _selectedAmmo;
         }
 
@@ -52,8 +55,6 @@ namespace TeamF
         {
             Bullet bull = Instantiate(BulletPrefab, Barrel.transform.position, Barrel.transform.rotation).GetComponent<Bullet>();
             bull.Init(_currentAmmo, BulletSpeed);
-            ratioTimer = 0;
-
         }
     }
 }

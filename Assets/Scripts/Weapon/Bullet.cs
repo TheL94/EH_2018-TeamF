@@ -35,38 +35,43 @@ namespace TeamF
             transform.Translate(-transform.forward * Speed);
         }
 
-        private void OnTriggerEnter(Collider other)
+        void DoDamage(IDamageable _damageable)
         {
-            IDamageable damageable = other.GetComponent<IDamageable>();
-            if (damageable != null)
+            if (_damageable != null)
             {
-                damageable.TakeDamage(ammo.Damage, ammo.AmmoType);
-                Enemy enemy = other.GetComponent<Enemy>();
-                if (enemy != null)
+                _damageable.TakeDamage(ammo.Damage, ammo.AmmoType);              
+            }
+        }
+
+        void ApplyElementalEffect(Enemy _enemy)
+        {
+            if (_enemy != null)
+            {
+                ElementalEffect _effect = _enemy.GetComponent<ElementalEffect>();
+                switch (ammo.AmmoType)
                 {
-                    ElementalBehaviour _effect = other.gameObject.GetComponent<ElementalBehaviour>();
-                    switch (ammo.AmmoType)
-                    {
-                        case ElementalType.Fire:
-                            _effect.Init(new ElementalBehaviourFire(), enemy, ammo.Data);
-                            break;
-                        case ElementalType.Water:
-                            _effect.Init(new ElementalBehaviourWater(), enemy, ammo.Data);
-                            break;
-                        case ElementalType.Poison:
-                            _effect.Init(new ElementalBehaviourPoison(), enemy, ammo.Data);
-                            break;
-                        case ElementalType.Thunder:
-                            _effect.Init(new ElementalBehaviourThunder(), enemy, ammo.Data);
-                            break;
-                        case ElementalType.None:
-                            break;
-                    } 
+                    case ElementalType.Fire:
+                        _effect.Init(new ElementalEffectFire(), _enemy, ammo.Data);
+                        break;
+                    case ElementalType.Water:
+                        _effect.Init(new ElementalEffectWater(), _enemy, ammo.Data);
+                        break;
+                    case ElementalType.Poison:
+                        _effect.Init(new ElementalEffectPoison(), _enemy, ammo.Data);
+                        break;
+                    case ElementalType.Thunder:
+                        _effect.Init(new ElementalEffectThunder(), _enemy, ammo.Data);
+                        break;
+                    case ElementalType.None:
+                        break;
                 }
             }
-            
-            
+        }
 
+        private void OnTriggerEnter(Collider other)
+        {
+            DoDamage(other.GetComponent<IDamageable>());
+            ApplyElementalEffect(other.GetComponent<Enemy>());
             Destroy(gameObject);
         }
     }

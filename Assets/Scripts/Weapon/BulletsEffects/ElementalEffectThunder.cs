@@ -1,38 +1,42 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.AI;
 using UnityEngine;
+
 
 namespace TeamF
 {
-    public class ElementalBehaviourPoison : IBulletEffectBehaviour
+    public class ElementalEffectThunder : IElementalEffectBehaviour
     {
         Enemy enemy;
         ElementalEffectData elementalData;
-        float timer;
+        NavMeshAgent navMesh;
 
         public void DoInit(Enemy _enemy, ElementalEffectData _data)
         {
             enemy = _enemy;
             elementalData = _data;
+            navMesh = enemy.GetComponent<NavMeshAgent>();
+            if (navMesh.isActiveAndEnabled)
+            {
+                navMesh.isStopped = true; 
+            }
         }
 
         public bool DoUpdate()
         {
             elementalData.TimeOfEffect -= Time.deltaTime;
-            if (elementalData.TimeOfEffect <= timer)
+            if(elementalData.TimeOfEffect <= 0)
             {
-                if (elementalData.EffectValue > 0)
-                    enemy.TakeDamage(elementalData.EffectValue, ElementalType.Poison);
-
-                timer -= elementalData.TimeFraction;
-            }
-            if (elementalData.TimeOfEffect <= 0)
                 return true;
-            else
-                return false;
+            }
+            return false;
         }
 
+        public void DoStopEffect()
+        {
+            navMesh.isStopped = false;
+        }
 
-        public void DoStopEffect() { }
     }
 }

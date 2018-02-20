@@ -13,7 +13,7 @@ namespace TeamF
         public void Init(AmmoCratesController _controller)
         {
             controller = _controller;
-            Type = (ElementalType)Random.Range(0, 4);
+            Type = (ElementalType)Random.Range(1, 5);
         }
 
         /// <summary>
