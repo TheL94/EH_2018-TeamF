@@ -72,7 +72,7 @@ namespace TeamF
         {
             DoDamage(other.GetComponent<IDamageable>());
             ApplyElementalEffect(other.GetComponent<Enemy>());
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
     }
 }

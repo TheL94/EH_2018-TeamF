@@ -10,24 +10,26 @@ namespace TeamF
         Enemy myEnemy;
 
         Transform shootingPoint;
+        ElementalAmmo ammo;
 
         public void DoInit(Enemy _myEnemy)
         {
             myEnemy = _myEnemy;
             shootingPoint = FindShootingPoint("ShootingPoint");
+            ammo = new ElementalAmmo();
+            ammo.AmmoType = ElementalType.None;
+            ammo.Damage = myEnemy.data.Damage;
         }
 
         public virtual void DoAttack()
         {
-            //Bullet bull = GameObject.Instantiate(BulletPrefab, shootingPoint.position, shootingPoint.rotation).GetComponent<Bullet>();
-            //bull.Init(_currentAmmo, BulletSpeed);
+            Bullet bull = GameObject.Instantiate(Resources.Load("BulletTemp") as GameObject, shootingPoint.position, shootingPoint.rotation).GetComponent<Bullet>();
+            bull.Init(ammo, 0.1f); 
         }
 
         public virtual void DoTakeDamage(Enemy _enemy, float _damage, ElementalType _type)
         {
-            //Take damage base
-            _enemy.data.Life -= _damage;
-            
+            _enemy.data.Life -= _damage;          
         }
 
         public virtual void DoDeath()

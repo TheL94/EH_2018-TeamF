@@ -10,6 +10,5 @@ namespace TeamF
         void DoTakeDamage(Enemy _enemy, float _damage, ElementalType _type);
         void DoAttack();
         void DoDeath();
-
     }
 }

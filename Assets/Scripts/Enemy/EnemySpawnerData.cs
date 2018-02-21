@@ -16,6 +16,9 @@ namespace TeamF
         public int MaxElementalsEnemies;
         public int MinElementalsEnemies;
 
+        public int MaxRangedEnemies;
+        public int MinRangedEnemies;
+
         public List<EnemyData> EnemiesData;
     }
 }

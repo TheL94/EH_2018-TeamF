@@ -7,7 +7,8 @@ namespace TeamF
     [CreateAssetMenu(fileName = "EnemyData", menuName = "Enemy/EnemyData")]
     public class EnemyData : ScriptableObject
     {
-        public ElementalType EnemyType;
+        public EnemyType EnemyType;
+        public ElementalType ElementalType;
         public GameObject ModelPrefab;
 
         public float Life;

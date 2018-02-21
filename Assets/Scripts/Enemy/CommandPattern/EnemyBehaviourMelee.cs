@@ -4,9 +4,10 @@ using UnityEngine;
 
 namespace TeamF
 {
-    public class EnemyBehaviourBase : IEnemyBehaviour
+    public class EnemyBehaviourMelee : IEnemyBehaviour
     {
         Enemy myEnemy;
+
         public virtual void DoInit(Enemy _myEnemy)
         {
             myEnemy = _myEnemy;
@@ -19,14 +20,12 @@ namespace TeamF
 
         public virtual void DoTakeDamage(Enemy _enemy, float _damage, ElementalType _type)
         {
-            //Take damage base
-            _enemy.data.Life -= _damage;
-            
+            _enemy.data.Life -= _damage;         
         }
 
         public virtual void DoDeath()
         {
-            // Azzioni da compiere alla morte
+            // Azioni da compiere alla morte
         }
     }
 }

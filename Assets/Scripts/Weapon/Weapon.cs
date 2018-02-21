@@ -6,7 +6,6 @@ namespace TeamF
 {
     public class Weapon : MonoBehaviour
     {
-        Character character;
         public GameObject BulletPrefab;
         public GameObject Barrel;
         public int MagCapacity;
@@ -14,11 +13,6 @@ namespace TeamF
         public float Ratio;
 
         float ratioTimer;
-
-        public void Init(Character _character)
-        {
-            character = _character;
-        }
 
         public ElementalAmmo FullAutoShoot(ElementalAmmo _selectedAmmo)
         {

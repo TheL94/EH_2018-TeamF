@@ -26,7 +26,7 @@ namespace TeamF
             SpecificID = _id;
 
             data = _data;
-            DeterminateBehaviourFromType();
+            DeterminateBehaviourFromType(data);
 
             Instantiate(data.ModelPrefab, transform);           // Instanza il modello
 
@@ -86,29 +86,66 @@ namespace TeamF
             }
         }
 
-        void DeterminateBehaviourFromType()
+        void DeterminateBehaviourFromType(EnemyData _data)
         {
-            switch (data.EnemyType)
+            switch (_data.EnemyType)
             {
-                case ElementalType.None:
-                    CurrentBehaviour = new EnemyBehaviourBase();
+                case EnemyType.Melee:
+                    switch (_data.ElementalType)
+                    {
+                        case ElementalType.None:
+                            CurrentBehaviour = new EnemyBehaviourMelee();
+                            break;
+                        case ElementalType.Fire:
+                            CurrentBehaviour = new EnemyFireBehaviour();
+                            break;
+                        case ElementalType.Water:
+                            CurrentBehaviour = new EnemyWaterBehaviour();
+                            break;
+                        case ElementalType.Poison:
+                            CurrentBehaviour = new EnemyPoisonBehaviour();
+                            break;
+                        case ElementalType.Thunder:
+                            CurrentBehaviour = new EnemyThunderBehaviour();
+                            break;
+                    }
                     break;
-                case ElementalType.Fire:
-                    CurrentBehaviour = new EnemyFireBehaviour();
-                    break;
-                case ElementalType.Water:
-                    CurrentBehaviour = new EnemyWaterBehaviour();
-                    break;
-                case ElementalType.Poison:
-                    CurrentBehaviour = new EnemyPoisonBehaviour();
-                    break;
-                case ElementalType.Thunder:
-                    CurrentBehaviour = new EnemyThunderBehaviour();
-                    break;
-                default:
-                    CurrentBehaviour = new EnemyBehaviourBase();
+                case EnemyType.Ranged:
+                    switch (_data.ElementalType)
+                    {
+                        case ElementalType.None:
+                            CurrentBehaviour = new EnemyBehaviourRanged();
+                            break;
+                        case ElementalType.Fire:
+                            CurrentBehaviour = new EnemyFireBehaviour();
+                            break;
+                        case ElementalType.Water:
+                            CurrentBehaviour = new EnemyWaterBehaviour();
+                            break;
+                        case ElementalType.Poison:
+                            CurrentBehaviour = new EnemyPoisonBehaviour();
+                            break;
+                        case ElementalType.Thunder:
+                            CurrentBehaviour = new EnemyThunderBehaviour();
+                            break;
+                    }
                     break;
             }
         }
+    }
+
+    public enum EnemyType
+    {
+        Melee = 0,
+        Ranged
+    }
+
+    public enum ElementalType
+    {
+        None = 0,
+        Fire = 1,
+        Water = 2,
+        Poison = 3,
+        Thunder = 4
     }
 }
