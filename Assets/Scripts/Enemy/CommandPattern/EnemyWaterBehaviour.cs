@@ -20,5 +20,11 @@ namespace TeamF
                 _damage = 0;
             base.DoTakeDamage(_enemy, _damage, _type);
         }
+
+        public override void DoDeath(ElementalType _bulletType)
+        {
+            if (_bulletType == ElementalType.Poison)
+                GameObject.Instantiate(Resources.Load("ElementalCombo/SlowingCloud"), myEnemy.transform.position, Quaternion.identity);
+        }
     }
 }
