@@ -43,6 +43,7 @@ namespace TeamF
             isInitialized = false;
         }
 
+        /// TODO: Luca che cazzo fa questa funzione? un cavolo di commento lo mettiamo?
         bool CheckEffect(IElementalEffectBehaviour _behaviour, Enemy _enemy)
         {
             if (_behaviour.GetType() == typeof(ElementalEffectFire) && _enemy.CurrentBehaviour.GetType() == typeof(EnemyFireBehaviour))
