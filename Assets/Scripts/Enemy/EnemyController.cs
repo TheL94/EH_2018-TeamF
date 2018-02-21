@@ -98,10 +98,10 @@ namespace TeamF
                     InitEnemy(SpawnEnemy(EnemyPrefab, SpawnPoints[i]), FindEnemyDataByTypeAndElement(EnemyType.Melee, (ElementalType)Random.Range(1, 5)));
                 }
 
-                for (int j = 0; j < rangedEnemies; j++)
-                {
-                    InitEnemy(SpawnEnemy(EnemyPrefab, SpawnPoints[i]), FindEnemyDataByTypeAndElement(EnemyType.Ranged, ElementalType.None));
-                }
+                //for (int j = 0; j < rangedEnemies; j++)
+                //{
+                //    InitEnemy(SpawnEnemy(EnemyPrefab, SpawnPoints[i]), FindEnemyDataByTypeAndElement(EnemyType.Ranged, ElementalType.None));
+                //}
 
                 for (int j = 0; j < hordeNumber - elementalsEnemies; j++)
                 {
