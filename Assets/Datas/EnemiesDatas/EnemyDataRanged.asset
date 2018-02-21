@@ -16,7 +16,7 @@ MonoBehaviour:
   ModelPrefab: {fileID: 1030758615841798, guid: 40d572fdbbbdea24290dfbd230ed7593,
     type: 2}
   Life: 10
-  Damage: 2
+  Damage: 1
   DamageRange: 5
   DamageRate: 1
   EnemyValue: 1

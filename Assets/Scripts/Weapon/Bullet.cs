@@ -6,8 +6,10 @@ namespace TeamF
 {
     public class Bullet : MonoBehaviour
     {
-        ElementalAmmo ammo;
         public float BulletLife;
+
+        BulletOwner owner;
+        ElementalAmmo ammo;
         float Speed;
 
         private void Start()
@@ -22,10 +24,11 @@ namespace TeamF
 
         #region API
 
-        public void Init(ElementalAmmo _currentAmmo, float _speed)
+        public void Init(ElementalAmmo _currentAmmo, float _speed, BulletOwner _owner)
         {
             ammo = _currentAmmo;
             Speed = _speed;
+            owner = _owner;
         }
 
         #endregion
@@ -70,9 +73,26 @@ namespace TeamF
 
         private void OnTriggerEnter(Collider other)
         {
-            DoDamage(other.GetComponent<IDamageable>());
-            ApplyElementalEffect(other.GetComponent<Enemy>());
-            //Destroy(gameObject);
+            if(owner == BulletOwner.Character)
+            {
+                DoDamage(other.GetComponent<IDamageable>());
+                ApplyElementalEffect(other.GetComponent<Enemy>());
+                Destroy(gameObject);
+            }
+            else
+            {
+                if(other.GetComponent<Enemy>() == null)
+                {
+                    DoDamage(other.GetComponent<IDamageable>());
+                    Destroy(gameObject);
+                }          
+            }
         }
+    }
+
+    public enum BulletOwner
+    {
+        Character,
+        Enemy
     }
 }
