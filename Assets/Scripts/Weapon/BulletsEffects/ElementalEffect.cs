@@ -30,9 +30,11 @@ namespace TeamF
         {
             bulletBehaviour = _behaviour;
             elementalData = _elementalData;
-            bulletBehaviour.DoInit(_enemy, _elementalData);
             if (CheckEffect(_behaviour, _enemy))
+            {
+                bulletBehaviour.DoInit(_enemy, _elementalData);
                 isInitialized = true;
+            }
         }
 
         void StopEffect()

@@ -191,7 +191,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1533697916002696}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.38, y: 1, z: -6.06}
+  m_LocalPosition: {x: -12.38, y: 1, z: -21.85}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4093385644648234}
@@ -435,39 +435,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AllElementalAmmo:
   - AmmoType: 0
-    Damage: 5
+    Damage: 1
+    Ammo: 0
+    Data:
+      EffectValue: 0
+      TimeOfEffect: 0
+      TimeFraction: 0
+  - AmmoType: 1
+    Damage: 4
     Ammo: 0
     Data:
       EffectValue: 7
       TimeOfEffect: 3
       TimeFraction: 1
-  - AmmoType: 1
-    Damage: 4
-    Ammo: 0
-    Data:
-      EffectValue: 2
-      TimeOfEffect: 5
-      TimeFraction: 1
   - AmmoType: 2
     Damage: 4
     Ammo: 0
     Data:
-      EffectValue: 5
+      EffectValue: 3
       TimeOfEffect: 3
       TimeFraction: 1
   - AmmoType: 3
     Damage: 4
     Ammo: 0
     Data:
-      EffectValue: 0
-      TimeOfEffect: 5
+      EffectValue: 5
+      TimeOfEffect: 3
       TimeFraction: 1
   - AmmoType: 4
-    Damage: 1
+    Damage: 2
     Ammo: 0
     Data:
       EffectValue: 0
-      TimeOfEffect: 8
+      TimeOfEffect: 5
       TimeFraction: 1
   Life: 10
   movement: {fileID: 0}

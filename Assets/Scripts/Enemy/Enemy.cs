@@ -59,7 +59,7 @@ namespace TeamF
             if (data.Life <= 0)
             {
                 controller.KillEnemy(this);
-                CurrentBehaviour.DoDeath();
+                CurrentBehaviour.DoDeath(_bulletType);
                 Destroy(gameObject);
             }
         }

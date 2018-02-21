@@ -23,7 +23,7 @@ namespace TeamF
             _enemy.data.Life -= _damage;         
         }
 
-        public virtual void DoDeath()
+        public virtual void DoDeath(ElementalType _bulletType)
         {
             // Azioni da compiere alla morte
         }
