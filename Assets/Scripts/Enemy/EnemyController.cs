@@ -65,6 +65,10 @@ namespace TeamF
         }
 
         #region Spawner
+        /// <summary>
+        /// Chiama lo spawn della prima orda
+        /// </summary>
+        /// <returns></returns>
         IEnumerator FirstSpawn()
         {
             yield return new WaitForSeconds(SpawnerData.StartDelayTime);
@@ -91,21 +95,25 @@ namespace TeamF
 
                 for (int j = 0; j < elementalsEnemies; j++)
                 {
-                    InitEnemy(SpawnEnemy(EnemyPrefab, SpawnPoints[i]), FindDataByTypeAndElement(EnemyType.Melee, (ElementalType)Random.Range(1, 5)));
+                    InitEnemy(SpawnEnemy(EnemyPrefab, SpawnPoints[i]), FindEnemyDataByTypeAndElement(EnemyType.Melee, (ElementalType)Random.Range(1, 5)));
                 }
 
                 for (int j = 0; j < rangedEnemies; j++)
                 {
-                    InitEnemy(SpawnEnemy(EnemyPrefab, SpawnPoints[i]), FindDataByTypeAndElement(EnemyType.Ranged, ElementalType.None));
+                    InitEnemy(SpawnEnemy(EnemyPrefab, SpawnPoints[i]), FindEnemyDataByTypeAndElement(EnemyType.Ranged, ElementalType.None));
                 }
 
                 for (int j = 0; j < hordeNumber - elementalsEnemies; j++)
                 {
-                    InitEnemy(SpawnEnemy(EnemyPrefab, SpawnPoints[i]), FindDataByTypeAndElement(EnemyType.Melee, ElementalType.None));
+                    InitEnemy(SpawnEnemy(EnemyPrefab, SpawnPoints[i]), FindEnemyDataByTypeAndElement(EnemyType.Melee, ElementalType.None));
                 }
             }
         }
 
+        /// <summary>
+        /// Sceglie lo spawn point da disattivare, cercando quello più vicino al player
+        /// </summary>
+        /// <returns></returns>
         int ChooseSpawnPointToExclude()
         {
             int spawnIndexToExclude = 0;
@@ -125,7 +133,7 @@ namespace TeamF
         }
 
         /// <summary>
-        /// Instanza un nuovo nemico e ne chiama l'Init
+        /// Instanza un nuovo nemico
         /// </summary>
         /// <param name="_enemyPrefab">Il prefab del nemico da utilizzare</param>
         /// <param name="_spawnPoint">Lo spawn point dove far spawnare il nemico</param>
@@ -139,22 +147,39 @@ namespace TeamF
             return newEnemy;
         }
 
+        /// <summary>
+        /// Inizializza nemico
+        /// </summary>
+        /// <param name="_enemy"></param>
+        /// <param name="_data"></param>
         void InitEnemy(Enemy _enemy, EnemyData _data)
         {
             _enemy.Init(target, this, "Enemy" + idCounter, _data);
         }
 
-        EnemyData FindDataByTypeAndElement(EnemyType _type, ElementalType _element)
+        /// <summary>
+        /// Ritorna un EnemyData che corrisponde ai parametri passati, se esiste
+        /// </summary>
+        /// <param name="_type"></param>
+        /// <param name="_element"></param>
+        /// <returns></returns>
+        EnemyData FindEnemyDataByTypeAndElement(EnemyType _type, ElementalType _element)
         {
             List<EnemyData> sortedByType = SpawnerData.EnemiesData.Where(d => d.EnemyType == _type).ToList();
             List<EnemyData> sortedByElement = new List<EnemyData>();
 
             if (sortedByType.Count == 1)
+            {
                 return sortedByType[0];
+            }
             else
+            {
                 sortedByElement = sortedByType.Where(d => d.ElementalType == _element).ToList();
+                if (sortedByElement.Count == 1)
+                    return sortedByElement[0];
+            }
 
-            return sortedByElement[0];
+            return null;
         }
         #endregion
 
