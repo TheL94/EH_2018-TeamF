@@ -6,7 +6,7 @@ namespace TeamF
 {
     public class EnemyBehaviourMelee : IEnemyBehaviour
     {
-        Enemy myEnemy;
+        public  Enemy myEnemy;
 
         public virtual void DoInit(Enemy _myEnemy)
         {

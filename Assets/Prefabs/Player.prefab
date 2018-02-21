@@ -463,7 +463,7 @@ MonoBehaviour:
       TimeOfEffect: 3
       TimeFraction: 1
   - AmmoType: 4
-    Damage: 2
+    Damage: 5
     Ammo: 0
     Data:
       EffectValue: 0
