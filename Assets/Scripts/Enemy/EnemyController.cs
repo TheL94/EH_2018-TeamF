@@ -170,13 +170,13 @@ namespace TeamF
 
             if (sortedByType.Count == 1)
             {
-                return sortedByType[0];
+                return Instantiate(sortedByType[0]);
             }
             else
             {
                 sortedByElement = sortedByType.Where(d => d.ElementalType == _element).ToList();
                 if (sortedByElement.Count == 1)
-                    return sortedByElement[0];
+                    return Instantiate(sortedByElement[0]);
             }
 
             return null;
