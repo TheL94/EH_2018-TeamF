@@ -36,7 +36,7 @@ namespace TeamF
             navMesh.stoppingDistance = data.DamageRange;
         }
 
-        private void FixedUpdate()
+        private void Update()
         {
             if (target == null)
                 return;
