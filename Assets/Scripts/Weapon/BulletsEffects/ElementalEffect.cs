@@ -11,7 +11,6 @@ namespace TeamF
         float timer;
         IElementalEffectBehaviour bulletBehaviour;
 
-        // Update is called once per frame
         void Update()
         {
             if (!isInitialized)
@@ -30,7 +29,7 @@ namespace TeamF
         {
             bulletBehaviour = _behaviour;
             elementalData = _elementalData;
-            if (CheckEffect(_behaviour, _enemy))
+            if (CheckIfEffectCanBeApplied(_behaviour, _enemy.CurrentBehaviour))
             {
                 bulletBehaviour.DoInit(_enemy, _elementalData);
                 isInitialized = true;
@@ -43,16 +42,21 @@ namespace TeamF
             isInitialized = false;
         }
 
-        /// TODO: Luca che cazzo fa questa funzione? un cavolo di commento lo mettiamo?
-        bool CheckEffect(IElementalEffectBehaviour _behaviour, Enemy _enemy)
+        /// <summary>
+        /// Funzione che ritorna true se l'effetto elementale può essere applicato per il tipo di nemico, altrimenti ritorna false
+        /// </summary>
+        /// <param name="_behaviour"></param>
+        /// <param name="_enemy"></param>
+        /// <returns></returns>
+        bool CheckIfEffectCanBeApplied(IElementalEffectBehaviour _behaviour, IEnemyBehaviour _enemyBehaviour)
         {
-            if (_behaviour.GetType() == typeof(ElementalEffectFire) && _enemy.CurrentBehaviour.GetType() == typeof(EnemyFireBehaviour))
+            if (_behaviour.GetType() == typeof(ElementalEffectFire) && _enemyBehaviour.GetType() == typeof(EnemyFireBehaviour))
                 return false;
-            if (_behaviour.GetType() == typeof(ElementalEffectPoison) && _enemy.CurrentBehaviour.GetType() == typeof(EnemyPoisonBehaviour))
+            if (_behaviour.GetType() == typeof(ElementalEffectPoison) && _enemyBehaviour.GetType() == typeof(EnemyPoisonBehaviour))
                 return false;
-            if (_behaviour.GetType() == typeof(ElementalEffectWater) && _enemy.CurrentBehaviour.GetType() == typeof(EnemyWaterBehaviour))
+            if (_behaviour.GetType() == typeof(ElementalEffectWater) && _enemyBehaviour.GetType() == typeof(EnemyWaterBehaviour))
                 return false;
-            if (_behaviour.GetType() == typeof(ElementalEffectThunder) && _enemy.CurrentBehaviour.GetType() == typeof(EnemyThunderBehaviour))
+            if (_behaviour.GetType() == typeof(ElementalEffectThunder) && _enemyBehaviour.GetType() == typeof(EnemyThunderBehaviour))
                 return false;
             return true;
         }
