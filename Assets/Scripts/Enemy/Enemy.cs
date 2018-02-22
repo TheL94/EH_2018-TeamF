@@ -8,16 +8,14 @@ namespace TeamF
     public class Enemy : MonoBehaviour, IDamageable
     {
         public float MovementSpeed { get { return navMesh.speed; } set { navMesh.speed = value; } }
-
         public EnemyData data { get; set; }
-
+        public IEnemyBehaviour CurrentBehaviour { get; set; }
         public string SpecificID { get; set; }
+        public Character target { get; set; }
+
         NavMeshAgent navMesh;
         EnemyController controller;
-        public Character target { get; set; }
-        float time;
-
-        public IEnemyBehaviour CurrentBehaviour { get; set; }
+        float attackTimeCounter;
 
         public void Init(Character _target, EnemyController _controller, string _id, EnemyData _data)
         {
@@ -28,23 +26,24 @@ namespace TeamF
             data = _data;
             DeterminateBehaviourFromType(data);
 
-            Instantiate(data.ModelPrefab, transform);           // Instanza il modello
-
-            CurrentBehaviour.DoInit(this);
+            Instantiate(data.ModelPrefab, transform.position, transform.rotation, transform);           // Instanza il modello
 
             navMesh = GetComponentInChildren<NavMeshAgent>();
             navMesh.stoppingDistance = data.DamageRange;
+
+            CurrentBehaviour.DoInit(this);
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
             if (target == null)
                 return;
 
             navMesh.destination = target.transform.position;
 
-            CheckMovementConstrains();
             Attack();
+
+            CheckMovementConstrains();
         }
 
         /// <summary>
@@ -75,13 +74,13 @@ namespace TeamF
         /// </summary>
         void Attack()
         {
-            time += Time.deltaTime;
-            if (time >= data.DamageRate)
+            attackTimeCounter += Time.deltaTime;
+            if (attackTimeCounter >= data.DamageRate)
             {
                 if (data.DamageRange >= Vector3.Distance(transform.position, target.transform.position))
                 {
                     CurrentBehaviour.DoAttack();
-                    time = 0;
+                    attackTimeCounter = 0;
                 }
             }
         }
