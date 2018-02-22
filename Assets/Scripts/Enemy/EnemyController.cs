@@ -12,7 +12,7 @@ namespace TeamF
         
         public bool CanSpawn { get; set; }
 
-        public EnemySpawnerData SpawnerData;
+        public EnemyControllerData SpawnerData;
 
         LevelManager levelMng;
 

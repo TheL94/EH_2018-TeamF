@@ -5,7 +5,7 @@ using UnityEngine;
 namespace TeamF
 {
     [CreateAssetMenu(fileName = "SpawnerData", menuName = "EnemySpawner/SpawnerData", order = 1)]
-    public class EnemySpawnerData : ScriptableObject
+    public class EnemyControllerData : ScriptableObject
     {
         public float StartDelayTime;
         public float DelayHordes;
