@@ -30,7 +30,6 @@ namespace TeamF
             Instantiate(data.ModelPrefab, transform.position, transform.rotation, transform);           // Instanza il modello
 
             agent = GetComponentInChildren<NavMeshAgent>();
-            agent.stoppingDistance = data.DamageRange;
 
             CurrentBehaviour.DoInit(this);
         }
