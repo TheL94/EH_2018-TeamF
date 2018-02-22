@@ -8,19 +8,16 @@ namespace TeamF
     public class EnemyController : MonoBehaviour
     {
         public Character target;
-        public Enemy EnemyPrefab;
-        
+        public Enemy EnemyPrefab;     
         public bool CanSpawn { get; set; }
-
         public EnemyControllerData SpawnerData;
+        public List<Transform> SpawnPoints = new List<Transform>();
+        public int MaxEnemiesInScene;
 
         LevelManager levelMng;
-
-        public List<Transform> SpawnPoints = new List<Transform>();
         List<Enemy> enemiesSpawned = new List<Enemy>();
         int idCounter;
-
-        float time;
+        float spawnTime;
 
         #region API
         public void Init(LevelManager _levelMng)
@@ -56,11 +53,11 @@ namespace TeamF
             if (!CanSpawn)
                 return;
 
-            time += Time.deltaTime;
-            if (time >= SpawnerData.DelayHordes && target.Life > 0)
+            spawnTime += Time.deltaTime;
+            if (spawnTime >= SpawnerData.DelayHordes && target.Life > 0)
             {
                 SpawnHorde();
-                time = 0;
+                spawnTime = 0;
             }
         }
 
@@ -82,6 +79,9 @@ namespace TeamF
         /// <param name="_enemyPrefab"></param>
         void SpawnHorde()
         {
+            if (enemiesSpawned.Count >= MaxEnemiesInScene)
+                return;
+
             int spawnIndexToExclude = ChooseSpawnPointToExclude();
 
             int hordeNumber = Random.Range(SpawnerData.MinHordeNumber, SpawnerData.MaxHordeNumber + 1);

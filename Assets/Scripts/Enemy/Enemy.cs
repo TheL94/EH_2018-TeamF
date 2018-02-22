@@ -7,15 +7,16 @@ namespace TeamF
 {
     public class Enemy : MonoBehaviour, IDamageable
     {
-        public float MovementSpeed { get { return navMesh.speed; } set { navMesh.speed = value; } }
+        public float MovementSpeed { get { return agent.speed; } set { agent.speed = value; } }
         public EnemyData data { get; set; }
         public IEnemyBehaviour CurrentBehaviour { get; set; }
         public string SpecificID { get; set; }
         public Character target { get; set; }
 
-        NavMeshAgent navMesh;
+        NavMeshAgent agent;
         EnemyController controller;
         float attackTimeCounter;
+        float agentTimeCounter;
 
         public void Init(Character _target, EnemyController _controller, string _id, EnemyData _data)
         {
@@ -28,8 +29,8 @@ namespace TeamF
 
             Instantiate(data.ModelPrefab, transform.position, transform.rotation, transform);           // Instanza il modello
 
-            navMesh = GetComponentInChildren<NavMeshAgent>();
-            navMesh.stoppingDistance = data.DamageRange;
+            agent = GetComponentInChildren<NavMeshAgent>();
+            agent.stoppingDistance = data.DamageRange;
 
             CurrentBehaviour.DoInit(this);
         }
@@ -39,9 +40,15 @@ namespace TeamF
             if (target == null)
                 return;
 
-            navMesh.destination = target.transform.position;
+            agentTimeCounter += Time.deltaTime;
+            if (agentTimeCounter >= 0.3f)
+            {
+                agent.destination = target.transform.position;
+                agentTimeCounter = 0;
+            }
 
-            Attack();
+            if(agent.isStopped)
+                Attack();
 
             CheckMovementConstrains();
         }
