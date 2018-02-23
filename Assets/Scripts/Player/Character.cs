@@ -65,6 +65,7 @@ namespace TeamF
         /// <param name="_type">Tipo del nemico che attacca, per triggherare azioni particolari del player a seconda del tipo di nemico</param>
         public void TakeDamage(float _damage, ElementalType _type = ElementalType.None)
         {
+            _damage += _damage * DamageMultiplier;
             Life -= _damage;
             if (Life <= 0)
             {
