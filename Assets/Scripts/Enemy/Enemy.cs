@@ -30,6 +30,8 @@ namespace TeamF
             Instantiate(data.ModelPrefab, transform.position, transform.rotation, transform);           // Instanza il modello
 
             agent = GetComponentInChildren<NavMeshAgent>();
+            agent.stoppingDistance = data.DamageRange;
+            agent.SetDestination(target.transform.position);
 
             CurrentBehaviour.DoInit(this);
         }
@@ -39,17 +41,25 @@ namespace TeamF
             if (target == null)
                 return;
 
+            Attack();
+            Move();
+
+            CheckMovementConstrains();
+        }
+
+        void Move()
+        {
             agentTimeCounter += Time.deltaTime;
             if (agentTimeCounter >= 0.3f)
             {
-                agent.destination = target.transform.position;
+                agent.SetDestination(target.transform.position);
                 agentTimeCounter = 0;
             }
+        }
 
-            if(agent.isStopped)
-                Attack();
-
-            CheckMovementConstrains();
+        void RotateTowards(Vector3 _pointToLook)
+        {
+            transform.rotation = Quaternion.LookRotation(_pointToLook - transform.position, Vector3.up);
         }
 
         #region IDamageable
@@ -106,8 +116,9 @@ namespace TeamF
             attackTimeCounter += Time.deltaTime;
             if (attackTimeCounter >= data.DamageRate)
             {
-                if (data.DamageRange >= Vector3.Distance(transform.position, target.transform.position))
+                if (Vector3.Distance(agent.destination, transform.position) <= agent.stoppingDistance)
                 {
+                    RotateTowards(target.transform.position);
                     CurrentBehaviour.DoAttack();
                     attackTimeCounter = 0;
                 }
