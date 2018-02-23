@@ -9,19 +9,19 @@ namespace TeamF
         public float MultiplierPercentage;
         protected override void OnEnteringCollider(Collider other)
         {
-            IEnemyBehaviour enemy = other.GetComponent<IEnemyBehaviour>();
+            IDamageable enemy = other.GetComponent<IDamageable>();
             if(enemy != null)
             {
-                enemy.Multiplier = MultiplierPercentage;
+                enemy.DamageMultiplier = MultiplierPercentage;
             }
         }
 
         protected override void OnExitCollider(Collider other)
         {
-            IEnemyBehaviour enemy = other.GetComponent<IEnemyBehaviour>();
+            IDamageable enemy = other.GetComponent<IDamageable>();
             if (enemy != null)
             {
-                enemy.Multiplier = 1;
+                enemy.DamageMultiplier = 1;
             }
         }
     }

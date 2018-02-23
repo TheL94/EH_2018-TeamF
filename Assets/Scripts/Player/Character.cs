@@ -27,6 +27,7 @@ namespace TeamF
             }
         }
 
+
         #region API
         public void Init(Player _player)
         {
@@ -54,6 +55,9 @@ namespace TeamF
             SelectedAmmo = currentWeapon.FullAutoShoot(SelectedAmmo);
         }
 
+        #region IDamageable
+        public float DamageMultiplier { get; set; }
+
         /// <summary>
         /// Provoca danno al player e cambia stato se la vita dell'avatar raggiunge lo zero.
         /// </summary>
@@ -68,6 +72,7 @@ namespace TeamF
                 player.AvatarDeath();
             }
         }
+        #endregion
 
         /// <summary>
         /// Setta le munizioni da utilizzare per sparare
