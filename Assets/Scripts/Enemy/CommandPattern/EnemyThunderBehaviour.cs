@@ -25,8 +25,8 @@ namespace TeamF
         {
             if(_bulletType == ElementalType.Fire)
                 GameObject.Instantiate(Resources.Load("ElementalCombo/BlackHole"), myEnemy.transform.position, Quaternion.identity);
-            if (_bulletType == ElementalType.Water)
-                GameObject.Instantiate(Resources.Load("ElementalCombo/ParalyzingCloud"), myEnemy.transform.position, Quaternion.identity);
+            //if (_bulletType == ElementalType.Water)
+            //    GameObject.Instantiate(Resources.Load("ElementalCombo/ParalyzingCloud"), myEnemy.transform.position, Quaternion.identity);    Effetto da spostare nel nemico d'acqua se colpito dal tuono
 
             base.DoDeath(_bulletType);
         }

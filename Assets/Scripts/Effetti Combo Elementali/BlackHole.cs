@@ -25,10 +25,13 @@ namespace TeamF {
 
         protected override void OnEndEffect()
         {
-            foreach (NavMeshAgent nav in enemyCaught)
+            for (int i = 0; i < enemyCaught.Count; i++)
             {
-                nav.isStopped = false;
+                enemyCaught.Remove(enemyCaught[i]);
+                if (enemyCaught[i].isActiveAndEnabled)
+                    enemyCaught[i].isStopped = false;
             }
+            base.OnEndEffect();
         }
     }
 }

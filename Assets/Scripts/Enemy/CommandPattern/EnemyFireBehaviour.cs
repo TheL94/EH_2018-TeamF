@@ -26,8 +26,8 @@ namespace TeamF
             if(_bulletType == ElementalType.Thunder)
                 GameObject.Instantiate(Resources.Load("ElementalCombo/BlackHole"), myEnemy.transform.position, Quaternion.identity);
 
-            else if(_bulletType == ElementalType.Poison)
-                GameObject.Instantiate(Resources.Load("ElementalCombo/FireExplosion"), myEnemy.transform.position, Quaternion.identity);
+            else if(_bulletType == ElementalType.Water)
+                GameObject.Instantiate(Resources.Load("ElementalCombo/SlowingCloud"), myEnemy.transform.position, Quaternion.identity);
 
         }
     }
