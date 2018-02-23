@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace TeamF
 {
-    public class Character : MonoBehaviour, IDamageable
+    public class Character : MonoBehaviour, IDamageable, IParalyzable
     {
         Player player;
         public ElementalAmmo[] AllElementalAmmo = new ElementalAmmo[5];
@@ -94,6 +94,24 @@ namespace TeamF
                     break;
             }
         }
+
+        #region Interface IParalyzable
+        /// <summary>
+        /// Setta la variabile booleana isParalized nel player
+        /// </summary>
+        /// <param name="_isParalized">Valore da assegnare alla variabile nel player; True: vengono bloccati i movimenti; False: vengono attivati</param>
+        public void Paralize(float _timeOfParalysis)
+        {
+            player.IsParalized = true;
+            StartCoroutine(DisableParalysis(_timeOfParalysis));
+        }
+
+        IEnumerator DisableParalysis(float _secodns)
+        {
+            yield return new WaitForSeconds(_secodns);
+            player.IsParalized = false;
+        }
+        #endregion
         #endregion
 
         void PickupAmmo(AmmoCrate _crate)

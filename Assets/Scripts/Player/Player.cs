@@ -7,6 +7,11 @@ namespace TeamF
 {
     public class Player : MonoBehaviour
     {
+        /// <summary>
+        /// Se il player ha attraversato una nube paralizzante, viene settata questa variabile che blocca gli input.
+        /// </summary>
+        public bool IsParalized { get; set; }
+
         Character character;
         ControllerInput controllerInput;
 
@@ -18,6 +23,7 @@ namespace TeamF
         void Start()
         {
             Init();
+            IsParalized = false;
         }
 
         void Update()
@@ -52,6 +58,8 @@ namespace TeamF
             if (GameManager.I.CurrentState == FlowState.Gameplay)
             {
                 if (character.Life <= 0)
+                    return;
+                if (IsParalized)
                     return;
 
                 Vector3 finalDirection = new Vector3();

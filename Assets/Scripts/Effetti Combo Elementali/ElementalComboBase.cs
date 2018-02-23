@@ -20,6 +20,7 @@ namespace TeamF
         // Update is called once per frame
         void Update()
         {
+            OnUpdate();
             timer -= Time.deltaTime;
             if (timer <= 0)
             {
@@ -29,15 +30,23 @@ namespace TeamF
 
         private void OnTriggerEnter(Collider other)
         {
-            ComboEffect(other);
+            OnEnteringCollider(other);
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            OnExitCollider(other);
         }
 
         protected virtual void DoInit() { }
+
+        protected virtual void OnUpdate() { }
+        
         /// <summary>
         /// L'effetto che combiono le classi che ereditano da questa classe
         /// </summary>
         /// <param name="other"></param>
-        protected virtual void ComboEffect(Collider other) { }
+        protected virtual void OnEnteringCollider(Collider other) { }
 
         /// <summary>
         /// Le azioni da svolegere una volta scaduto il timer
@@ -46,5 +55,7 @@ namespace TeamF
         {
             Destroy(gameObject);
         }
+
+        protected virtual void OnExitCollider(Collider other) { }
     }
 }

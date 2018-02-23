@@ -8,7 +8,7 @@ namespace TeamF
     {
         public float ReductionPercentage;
         float enemySpeed;
-        protected override void ComboEffect(Collider other)
+        protected override void OnEnteringCollider(Collider other)
         {
             Enemy enemy = other.GetComponent<Enemy>();
             if (enemy != null)
@@ -18,7 +18,7 @@ namespace TeamF
             }
         }
 
-        private void OnTriggerExit(Collider other)
+        protected override void OnExitCollider(Collider other)
         {
             Enemy enemy = other.GetComponent<Enemy>();
             if (enemy != null)

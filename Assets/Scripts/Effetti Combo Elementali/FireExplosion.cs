@@ -13,7 +13,7 @@ namespace TeamF
             transform.DOScale(3, 2);
         }
 
-        protected override void ComboEffect(Collider other)
+        protected override void OnEnteringCollider(Collider other)
         {
             IDamageable damageable = other.GetComponent<IDamageable>();
             if(damageable != null)

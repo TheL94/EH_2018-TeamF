@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 namespace TeamF
 {
-    public class Enemy : MonoBehaviour, IDamageable
+    public class Enemy : MonoBehaviour, IDamageable, IParalyzable
     {
         public float MovementSpeed { get { return agent.speed; } set { agent.speed = value; } }
         public EnemyData data { get; set; }
@@ -67,6 +67,25 @@ namespace TeamF
                 CurrentBehaviour.DoDeath(_bulletType);
                 Destroy(gameObject);
             }
+        }
+
+        /// <summary>
+        /// Chiamata dalla combo elementale paralizzante, 
+        /// </summary>
+        /// <param name="_isParalize"></param>
+        public void Paralize(float _timeOfParalysis)
+        {
+            if (agent.isActiveAndEnabled)
+            {
+                agent.isStopped = true;
+                StartCoroutine(DisableParalysis(_timeOfParalysis));
+            }
+        }
+
+        IEnumerator DisableParalysis(float _secodns)
+        {
+            yield return new WaitForSeconds(_secodns);
+            agent.isStopped = false;
         }
 
         void CheckMovementConstrains()
@@ -137,6 +156,8 @@ namespace TeamF
                     break;
             }
         }
+
+        
     }
 
     public enum EnemyType

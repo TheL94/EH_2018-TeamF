@@ -12,6 +12,9 @@ namespace TeamF
         Transform shootingPoint;
         ElementalAmmo ammo;
 
+        float multiplier = 1;
+        public float Multiplier { get; set; }
+
         public void DoInit(Enemy _myEnemy)
         {
             myEnemy = _myEnemy;
@@ -29,6 +32,7 @@ namespace TeamF
 
         public virtual void DoTakeDamage(Enemy _enemy, float _damage, ElementalType _type)
         {
+            _damage += (Multiplier * _damage) / 100;
             _enemy.data.Life -= _damage;          
         }
 
