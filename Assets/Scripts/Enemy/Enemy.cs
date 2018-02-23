@@ -52,6 +52,9 @@ namespace TeamF
             CheckMovementConstrains();
         }
 
+        #region IDamageable
+        public float DamageMultiplier { get; set; }
+
         /// <summary>
         /// Funzione per prendere danno;
         /// </summary>
@@ -68,6 +71,7 @@ namespace TeamF
                 Destroy(gameObject);
             }
         }
+        #endregion
 
         /// <summary>
         /// Chiamata dalla combo elementale paralizzante, 

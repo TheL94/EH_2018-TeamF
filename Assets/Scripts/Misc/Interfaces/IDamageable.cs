@@ -6,8 +6,7 @@ namespace TeamF
 {
     public interface IDamageable
     {
-
+        float DamageMultiplier { get; set; }
         void TakeDamage(float _damage, ElementalType _type = ElementalType.None);
-
     }
 }
