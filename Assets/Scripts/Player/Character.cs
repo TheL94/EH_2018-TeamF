@@ -7,8 +7,15 @@ namespace TeamF
     public class Character : MonoBehaviour, IDamageable, IParalyzable
     {
         Player player;
+
+        float life = 10;
+        public float Life { get { return life; } set { life = value; } }
+        public Vector3 Position
+        {
+            get { return transform.position; }
+            set { transform.position = value; }
+        }
         public ElementalAmmo[] AllElementalAmmo = new ElementalAmmo[5];
-        public float Life;
         [HideInInspector]
         public Movement movement;
         Weapon currentWeapon;

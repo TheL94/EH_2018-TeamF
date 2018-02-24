@@ -7,11 +7,17 @@ namespace TeamF
 {
     public class Enemy : MonoBehaviour, IDamageable, IParalyzable
     {
+        public float Life { get { return data.Life; } set { data.Life = value; } }
+        public Vector3 Position
+        {
+            get { return transform.position; }
+            set { transform.position = value; }
+        }
         public float MovementSpeed { get { return agent.speed; } set { agent.speed = value; } }
         public EnemyData data { get; set; }
         public IEnemyBehaviour CurrentBehaviour { get; set; }
         public string SpecificID { get; set; }
-        public Character target { get; set; }
+        public IDamageable target { get; set; }
 
         NavMeshAgent agent;
         EnemyController controller;
@@ -41,22 +47,26 @@ namespace TeamF
             MovementSpeed += (MovementSpeed * _movement) / 100;
         }
 
-        /// Da rivedere la definizione di target. (dovrebbe essere un idamageable MA una volta ucciso il nemico preso come nuovo target,
-        /// 1 - come fa a determinare se è morto. IDamageable non ha un riferimento alla vita.
-        /// 2 - il nav mesh usa target.transform.position l'IDamageable non ha la posizione.
-
-        //public void ChangeMyTarget()
-        //{
-        //    target = controller.GetCloserTarget(this);
-        //}
+        /// <summary>
+        /// Setta il nuovo target con l'idamageable più vicino a se
+        /// </summary>
+        public void ChangeMyTarget()
+        {
+            target = controller.GetCloserTarget(this);
+        }
 
         private void FixedUpdate()
         {
             if (target == null)
                 return;
 
-            Attack();
-            Move();
+            if (target.Life > 0)
+            {
+                Move();
+                Attack(); 
+            }
+            else
+                ChangeMyTarget();
 
             CheckMovementConstrains();
         }
@@ -66,7 +76,7 @@ namespace TeamF
             agentTimeCounter += Time.deltaTime;
             if (agentTimeCounter >= 0.3f)
             {
-                agent.SetDestination(target.transform.position);
+                agent.SetDestination(target.Position);
                 agentTimeCounter = 0;
             }
         }
@@ -83,18 +93,7 @@ namespace TeamF
             set { _damageMultiplyer = value; }
         }
 
-        public Vector3 Position
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-
-            set
-            {
-                throw new System.NotImplementedException();
-            }
-        }
+        
 
         /// <summary>
         /// Funzione per prendere danno;
@@ -146,9 +145,12 @@ namespace TeamF
             {
                 if (Vector3.Distance(agent.destination, transform.position) <= agent.stoppingDistance)
                 {
-                    RotateTowards(target.transform.position);
-                    CurrentBehaviour.DoAttack();
-                    attackTimeCounter = 0;
+                    if (target.Life > 0)
+                    {
+                        RotateTowards(target.Position);
+                        CurrentBehaviour.DoAttack();
+                        attackTimeCounter = 0;
+                    }
                 }
             }
         }

@@ -15,13 +15,12 @@ namespace TeamF
             enemy = _enemy;
             elementalData = _data;
             myTarget = enemy.target;
-            //enemy.ChangeMyTarget();
-            Debug.Log(myTarget + " / " + enemy.target);
+            enemy.ChangeMyTarget();
         }
 
         public void DoStopEffect()
         {
-            //enemy.target = myTarget;
+            enemy.target = myTarget;
         }
 
         public bool DoUpdate()
