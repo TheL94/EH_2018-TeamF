@@ -54,16 +54,16 @@ namespace TeamF
                 switch (ammo.AmmoType)
                 {
                     case ElementalType.Fire:
-                        _effect.Init(new ElementalEffectFire(), _enemy, ammo.Data);
+                        _effect.InitEffect(new ElementalEffectFire(), _enemy, ammo.Data);
                         break;
                     case ElementalType.Water:
-                        _effect.Init(new ElementalEffectWater(), _enemy, ammo.Data);
+                        _effect.InitEffect(new ElementalEffectWater(), _enemy, ammo.Data);
                         break;
                     case ElementalType.Poison:
-                        _effect.Init(new ElementalEffectPoison(), _enemy, ammo.Data);
+                        _effect.InitEffect(new ElementalEffectPoison(), _enemy, ammo.Data);
                         break;
                     case ElementalType.Thunder:
-                        _effect.Init(new ElementalEffectThunder(), _enemy, ammo.Data);
+                        _effect.InitEffect(new ElementalEffectThunder(), _enemy, ammo.Data);
                         break;
                     case ElementalType.None:
                         break;
@@ -75,9 +75,13 @@ namespace TeamF
         {
             if(owner == BulletOwner.Character)
             {
-                DoDamage(other.GetComponent<IDamageable>());
-                ApplyElementalEffect(other.GetComponent<Enemy>());
-                Destroy(gameObject);
+                IDamageable damageable = other.GetComponent<IDamageable>();
+                if (damageable != null)
+                {
+                    DoDamage(damageable);
+                    ApplyElementalEffect(other.GetComponent<Enemy>());
+                    Destroy(gameObject); 
+                }
             }
             else
             {

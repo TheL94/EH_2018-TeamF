@@ -25,6 +25,8 @@ namespace TeamF
         {
             if(_bulletType == ElementalType.Fire)
                 GameObject.Instantiate(Resources.Load("ElementalCombo/FireExplosion"), myEnemy.transform.position, Quaternion.identity);
+            if (_bulletType == ElementalType.Water  )
+                GameObject.Instantiate(Resources.Load("ElementalCombo/IncreaseDamage"), myEnemy.transform.position, Quaternion.identity);
 
             base.DoDeath(_bulletType);
         }

@@ -24,7 +24,7 @@ namespace TeamF
         public override void DoDeath(ElementalType _bulletType)
         {
             if (_bulletType == ElementalType.Poison)
-                GameObject.Instantiate(Resources.Load("ElementalCombo/SlowingCloud"), myEnemy.transform.position, Quaternion.identity);
+                GameObject.Instantiate(Resources.Load("ElementalCombo/IncreaseDamage"), myEnemy.transform.position, Quaternion.identity);
         }
     }
 }

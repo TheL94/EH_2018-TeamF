@@ -6,21 +6,14 @@ namespace TeamF
 {
     public class ParalyzingCloud : ElementalComboBase
     {
-        public float TimeOfEffect = 4f;
-        List<IParalyzable> paralizedElement = new List<IParalyzable>();
-
-        protected override void OnUpdate()
-        {
-            
-        }
+        public ElementalEffectData EffectData;        
 
         protected override void OnEnteringCollider(Collider other)
         {
-            IParalyzable paralized = other.GetComponent<IParalyzable>();
-            if(paralized != null)
+            ElementalEffect effect = other.GetComponent<ElementalEffect>();
+            if(effect != null)
             {
-                paralized.Paralize(TimeOfEffect);
-                paralizedElement.Add(paralized);
+                effect.InitEffect(new ParalizeEffect(), other.GetComponent<Enemy>(), EffectData, true);
             }
         }
     }

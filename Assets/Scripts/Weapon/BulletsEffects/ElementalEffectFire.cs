@@ -13,6 +13,7 @@ namespace TeamF {
         {
             enemy = _enemy;
             elementalData = _data;
+            timer = _data.TimeFraction;
         }
 
         public bool DoUpdate()
@@ -27,6 +28,7 @@ namespace TeamF {
                     if (elementalData.EffectValue < 0)
                         elementalData.EffectValue = 0;
                 }
+                timer -= elementalData.TimeFraction;
             }
             if (elementalData.TimeOfEffect <= 0)
                 return true;

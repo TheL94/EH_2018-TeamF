@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace TeamF
 {
-    public class IncreaseDamage : ElementalComboBase
+    public class ConfusionCloud : ElementalComboBase
     {
         public ElementalEffectData EffectData;
 
@@ -14,8 +14,9 @@ namespace TeamF
             ElementalEffect _effect = other.GetComponent<ElementalEffect>();
             if (_effect != null && _enemy != null)
             {
-                _effect.InitEffect(new IncreaseDamageEffect(), _enemy, EffectData, true);
+                _effect.InitEffect(new ConfusionEffect(), _enemy, EffectData, true);
             }
         }
+
     }
 }

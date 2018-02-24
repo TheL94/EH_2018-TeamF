@@ -6,40 +6,62 @@ namespace TeamF
 {
     public class ElementalEffect : MonoBehaviour
     {
-        ElementalEffectData elementalData;
-        bool isInitialized;
-        float timer;
+        bool isBulletBehaviourInitialized;
+        bool isComboInitialized;
+
         IElementalEffectBehaviour bulletBehaviour;
+        IElementalEffectBehaviour comboBehaviour;
 
         void Update()
         {
-            if (!isInitialized)
-                return;
+            if (isBulletBehaviourInitialized)
+            {
+                //bulletBehaviour.DoUpdate();
+                if (bulletBehaviour.DoUpdate())
+                    StopBulletEffect();
+            }
+            if (isComboInitialized)
+            {
+                if(comboBehaviour.DoUpdate())
+                    StopComboEffect();
+            }
+                
 
-            //bulletBehaviour.DoUpdate();
-            if (bulletBehaviour.DoUpdate())
-                StopEffect();
         }
 
         /// <summary>
         /// Set the time of effect with the float passed
         /// </summary>
         /// <param name="_timeOfEffect"></param>
-        public void Init(IElementalEffectBehaviour _behaviour, Enemy _enemy, ElementalEffectData _elementalData)
+        public void InitEffect(IElementalEffectBehaviour _behaviour, Enemy _enemy, ElementalEffectData _elementalData, bool _isComboEffect = false)
         {
-            bulletBehaviour = _behaviour;
-            elementalData = _elementalData;
-            if (CheckIfEffectCanBeApplied(_behaviour, _enemy.CurrentBehaviour))
+            if (!_isComboEffect)
             {
-                bulletBehaviour.DoInit(_enemy, _elementalData);
-                isInitialized = true;
+                bulletBehaviour = _behaviour;
+                if (CheckIfEffectCanBeApplied(_behaviour, _enemy.CurrentBehaviour))
+                {
+                    bulletBehaviour.DoInit(_enemy, _elementalData);
+                    isBulletBehaviourInitialized = true;
+                } 
+            }
+            else
+            {
+                comboBehaviour = _behaviour;
+                comboBehaviour.DoInit(_enemy, _elementalData);
+                isComboInitialized = true;
             }
         }
 
-        void StopEffect()
+        void StopBulletEffect()
         {
             bulletBehaviour.DoStopEffect();
-            isInitialized = false;
+            isBulletBehaviourInitialized = false;
+        }
+
+        void StopComboEffect()
+        {
+            comboBehaviour.DoStopEffect();
+            isComboInitialized = false;
         }
 
         /// <summary>

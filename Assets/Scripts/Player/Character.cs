@@ -101,22 +101,16 @@ namespace TeamF
             }
         }
 
-        #region Interface IParalyzable
+        #region IParalyzable
         /// <summary>
         /// Setta la variabile booleana isParalized nel player
         /// </summary>
         /// <param name="_isParalized">Valore da assegnare alla variabile nel player; True: vengono bloccati i movimenti; False: vengono attivati</param>
-        public void Paralize(float _timeOfParalysis)
+        public void Paralize(bool _isParalized)
         {
-            player.IsParalized = true;
-            StartCoroutine(DisableParalysis(_timeOfParalysis));
+            player.IsParalized = _isParalized;
         }
 
-        IEnumerator DisableParalysis(float _secodns)
-        {
-            yield return new WaitForSeconds(_secodns);
-            player.IsParalized = false;
-        }
         #endregion
         #endregion
 

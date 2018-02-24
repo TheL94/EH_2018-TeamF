@@ -31,10 +31,24 @@ namespace TeamF
 
             agent = GetComponentInChildren<NavMeshAgent>();
             agent.stoppingDistance = data.DamageRange;
-            agent.SetDestination(target.transform.position);
+            agent.SetDestination(_target.transform.position);
 
             CurrentBehaviour.DoInit(this);
         }
+
+        public void SetPercentageOfMovementSpeed(float _movement)
+        {
+            MovementSpeed += (MovementSpeed * _movement) / 100;
+        }
+
+        /// Da rivedere la definizione di target. (dovrebbe essere un idamageable MA una volta ucciso il nemico preso come nuovo target,
+        /// 1 - come fa a determinare se è morto. IDamageable non ha un riferimento alla vita.
+        /// 2 - il nav mesh usa target.transform.position l'IDamageable non ha la posizione.
+
+        //public void ChangeMyTarget()
+        //{
+        //    target = controller.GetCloserTarget(this);
+        //}
 
         private void FixedUpdate()
         {
@@ -63,7 +77,24 @@ namespace TeamF
         }
 
         #region IDamageable
-        public float DamageMultiplier { get; set; }
+        float _damageMultiplyer = 100;
+        public float DamageMultiplier {
+            get { return _damageMultiplyer; }
+            set { _damageMultiplyer = value; }
+        }
+
+        public Vector3 Position
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+
+            set
+            {
+                throw new System.NotImplementedException();
+            }
+        }
 
         /// <summary>
         /// Funzione per prendere danno;
@@ -72,6 +103,7 @@ namespace TeamF
         /// <param name="_bulletType">Il tipo del proiettile</param>
         public void TakeDamage(float _damage, ElementalType _bulletType)
         {
+            _damage += (_damage * DamageMultiplier) / 100;
             CurrentBehaviour.DoTakeDamage(this, _damage, _bulletType);
 
             if (data.Life <= 0)
@@ -83,24 +115,20 @@ namespace TeamF
         }
         #endregion
 
+        #region IParalizer
         /// <summary>
         /// Chiamata dalla combo elementale paralizzante, 
         /// </summary>
         /// <param name="_isParalize"></param>
-        public void Paralize(float _timeOfParalysis)
+        public void Paralize(bool _isParalized)
         {
             if (agent.isActiveAndEnabled)
             {
-                agent.isStopped = true;
-                StartCoroutine(DisableParalysis(_timeOfParalysis));
+                agent.isStopped = _isParalized;
             }
         }
 
-        IEnumerator DisableParalysis(float _secodns)
-        {
-            yield return new WaitForSeconds(_secodns);
-            agent.isStopped = false;
-        }
+        #endregion
 
         void CheckMovementConstrains()
         {

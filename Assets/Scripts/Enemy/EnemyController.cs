@@ -46,6 +46,30 @@ namespace TeamF
             DeleteAllEnemies();
         }
 
+        /// <summary>
+        /// Torna il nemico più vicino al nemico che lo richiede.
+        /// </summary>
+        /// <param name="_enemy">Il nemico che richiede il calcolo</param>
+        /// <returns></returns>
+        public Enemy GetCloserTarget(Enemy _enemy)
+        {
+            float referanceDistance = 1000;
+            Enemy enemyCloser = null;
+
+            foreach (Enemy enemy in enemiesSpawned)
+            {
+                if (_enemy.SpecificID == enemy.SpecificID)
+                    continue;
+
+                float distance = Vector3.Distance(_enemy.transform.position, enemy.transform.position);
+                if (distance < referanceDistance)
+                {
+                    enemyCloser = enemy;
+                    referanceDistance = distance;
+                }
+            }
+            return enemyCloser;
+        }
         #endregion
 
         void Update()

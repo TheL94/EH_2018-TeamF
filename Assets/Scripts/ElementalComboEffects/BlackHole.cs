@@ -27,9 +27,12 @@ namespace TeamF {
         {
             for (int i = 0; i < enemyCaught.Count; i++)
             {
+                if (enemyCaught[i] != null)
+                {
+                    if (enemyCaught[i].isActiveAndEnabled)
+                        enemyCaught[i].isStopped = false; 
+                }
                 enemyCaught.Remove(enemyCaught[i]);
-                if (enemyCaught[i].isActiveAndEnabled)
-                    enemyCaught[i].isStopped = false;
             }
             base.OnEndEffect();
         }
