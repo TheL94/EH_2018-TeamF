@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Timer: 20
-  Data:
+  EffectData:
     EffectValue: 0
     TimeOfEffect: 5
     TimeFraction: 0
