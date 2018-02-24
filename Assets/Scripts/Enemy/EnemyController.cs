@@ -108,14 +108,14 @@ namespace TeamF
 
             int spawnIndexToExclude = ChooseSpawnPointToExclude();
 
-            int hordeNumber = Random.Range(SpawnerData.MinHordeNumber, SpawnerData.MaxHordeNumber + 1);
-            int elementalsEnemies = Random.Range(SpawnerData.MinElementalsEnemies, SpawnerData.MaxElementalsEnemies + 1);
-            int rangedEnemies = Random.Range(SpawnerData.MinRangedEnemies, SpawnerData.MaxRangedEnemies + 1);
-
             for (int i = 0; i < SpawnPoints.Count; i++)
             {
                 if (i == spawnIndexToExclude)
                     continue;
+
+                int hordeNumber = Random.Range(SpawnerData.MinHordeNumber, SpawnerData.MaxHordeNumber + 1);
+                int elementalsEnemies = Random.Range(SpawnerData.MinElementalsEnemies, SpawnerData.MaxElementalsEnemies + 1);
+                int rangedEnemies = Random.Range(SpawnerData.MinRangedEnemies, SpawnerData.MaxRangedEnemies + 1);
 
                 for (int j = 0; j < elementalsEnemies; j++)
                 {
