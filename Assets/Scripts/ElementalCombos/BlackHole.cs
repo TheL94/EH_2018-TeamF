@@ -30,10 +30,10 @@ namespace TeamF {
                 if (enemyCaught[i] != null)
                 {
                     if (enemyCaught[i].isActiveAndEnabled)
-                        enemyCaught[i].isStopped = false; 
+                        enemyCaught[i].isStopped = false;  
                 }
-                enemyCaught.Remove(enemyCaught[i]);
             }
+            enemyCaught.Clear();
             base.OnEndEffect();
         }
     }
