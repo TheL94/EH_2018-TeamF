@@ -17,8 +17,8 @@ MonoBehaviour:
   MinHordeNumber: 5
   MaxElementalsEnemies: 3
   MinElementalsEnemies: 1
-  MaxRangedEnemies: 1
-  MinRangedEnemies: 0
+  MaxRangedEnemies: 3
+  MinRangedEnemies: 1
   EnemiesData:
   - {fileID: 11400000, guid: 5a6fea14b75e31644a1ea7dad9334747, type: 2}
   - {fileID: 11400000, guid: b87b82b560d7be7478495298387e24bc, type: 2}
