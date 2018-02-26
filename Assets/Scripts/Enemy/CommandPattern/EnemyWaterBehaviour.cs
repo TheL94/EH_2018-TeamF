@@ -25,6 +25,8 @@ namespace TeamF
         {
             if (_bulletType == ElementalType.Poison)
                 GameObject.Instantiate(Resources.Load("ElementalCombo/IncreaseDamage"), myEnemy.transform.position, Quaternion.identity);
+            if (_bulletType == ElementalType.Thunder)
+                GameObject.Instantiate(Resources.Load("ElementalCombo/ParalyzingCloud"), myEnemy.transform.position, Quaternion.identity);
         }
     }
 }
