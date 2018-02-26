@@ -27,7 +27,7 @@ namespace TeamF
         public virtual void DoAttack()
         {
             Bullet bull = GameObject.Instantiate(Resources.Load("Bullet") as GameObject, shootingPoint.position, shootingPoint.rotation).GetComponent<Bullet>();
-            bull.Init(ammo, 1f, BulletOwner.Enemy); 
+            bull.Init(ammo, .5f, BulletOwner.Enemy); 
         }
 
         public virtual void DoTakeDamage(Enemy _enemy, float _damage, ElementalType _type)
