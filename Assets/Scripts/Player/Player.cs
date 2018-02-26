@@ -102,7 +102,7 @@ namespace TeamF
                 }
                 character.movement.Rotate();
             }
-            if (GameManager.I.CurrentState != FlowState.EnterGameplay)
+            if (GameManager.I.CurrentState != FlowState.EnterGameplay && GameManager.I.CurrentState != FlowState.Gameplay)
             {
                 if (Input.GetKeyDown(KeyCode.UpArrow))
                     GameManager.I.UIMng.CurrentMenu.GoUpInMenu();
