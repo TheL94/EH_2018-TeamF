@@ -6,11 +6,12 @@ namespace TeamF
 {
     public class AmmoCratesController : MonoBehaviour
     {
-
-        List<AmmoCrate> Crates = new List<AmmoCrate>();
         public GameObject AmmoCratePrefab;
         public float TimeToSpawnCrate;
+        public int AmmoPerCrate;
         public List<Transform> AmmoSpawnPoints = new List<Transform>();
+
+        List<AmmoCrate> Crates = new List<AmmoCrate>();
 
         public void Init()
         {
@@ -27,6 +28,7 @@ namespace TeamF
                 Destroy(Crates[i].gameObject);
                 Crates.Remove(Crates[i]);
             }
+
             Init();
         }
 
@@ -46,6 +48,7 @@ namespace TeamF
                 if (_crate.transform.position == transf.position)
                     spanwerPosition = transf;
             }
+
             if (spanwerPosition != null)
                 StartCoroutine(CreateAmmoCrateAfterTime(spanwerPosition)); 
         }
@@ -58,7 +61,7 @@ namespace TeamF
             foreach (Transform pos in AmmoSpawnPoints)
             {
                 AmmoCrate temp = Instantiate(AmmoCratePrefab, pos.position, Quaternion.identity, pos).GetComponent<AmmoCrate>();
-                temp.Init(this);
+                temp.Init(this, AmmoPerCrate);
                 Crates.Add(temp);
             }
         }
@@ -70,7 +73,7 @@ namespace TeamF
         void CreateAmmoCrate(Transform _pos)
         {
             AmmoCrate temp = Instantiate(AmmoCratePrefab, _pos.position, Quaternion.identity, _pos).GetComponent<AmmoCrate>();
-            temp.Init(this);
+            temp.Init(this, AmmoPerCrate);
             Crates.Add(temp);
         }
 

@@ -6,13 +6,16 @@ namespace TeamF
 {
     public class AmmoCrate : MonoBehaviour
     {
-        AmmoCratesController controller;
         public ElementalType Type { get; set; }
-        public int Ammo;
 
-        public void Init(AmmoCratesController _controller)
+        [HideInInspector]
+        public int Ammo;
+        AmmoCratesController controller;
+
+        public void Init(AmmoCratesController _controller, int _ammo)
         {
             controller = _controller;
+            Ammo = _ammo;
             Type = (ElementalType)Random.Range(1, 5);
             MeshRenderer render = GetComponent<MeshRenderer>();
             switch (Type)
@@ -44,6 +47,5 @@ namespace TeamF
         {
             controller.DeleteAmmoCrateFromList(this);
         }
-
     }
 }
