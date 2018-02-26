@@ -70,7 +70,7 @@ namespace TeamF
 
         public void EnterGameplayActions()
         {
-            LevelMng = new LevelManager(30f);
+            LevelMng = new LevelManager(50f);
 
             UIMng.GameplayActions();
             AmmoController.Init();
