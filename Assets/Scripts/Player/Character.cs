@@ -15,12 +15,41 @@ namespace TeamF
             get { return transform.position; }
             set { transform.position = value; }
         }
+        public MeshRenderer BackPackRenderer;
         public ElementalAmmo[] AllElementalAmmo = new ElementalAmmo[5];
         [HideInInspector]
         public Movement movement;
         Weapon currentWeapon;
 
-        int selectedAmmoIndex;
+        int _selectedAmmoIndex;
+        int selectedAmmoIndex {
+            get { return _selectedAmmoIndex; }
+            set
+            {
+                _selectedAmmoIndex = value;
+                switch (_selectedAmmoIndex)
+                {
+                    case 0:
+                        BackPackRenderer.material.color = Color.grey;
+                        break;
+                    case 1:
+                        BackPackRenderer.material.color = Color.red;
+                        break;
+                    case 2:
+                        BackPackRenderer.material.color = Color.blue;
+                        break;
+                    case 3:
+                        BackPackRenderer.material.color = Color.green;
+                        break;
+                    case 4:
+                        BackPackRenderer.material.color = Color.magenta;
+                        break;
+                    default:
+                        BackPackRenderer.material.color = Color.grey;
+                        break;
+                }
+            }
+        }
         public ElementalAmmo SelectedAmmo
         {
             get { return AllElementalAmmo[selectedAmmoIndex]; }
