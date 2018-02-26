@@ -71,7 +71,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4245583102144236}
   m_Layer: 0
-  m_Name: PS_proiettile_F
+  m_Name: PS_proiettile_Veleno
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
