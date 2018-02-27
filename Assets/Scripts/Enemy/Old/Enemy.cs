@@ -9,7 +9,6 @@ namespace TeamF.Old
     {
         
         float attackTimeCounter;
-        float agentTimeCounter;
 
 
 
@@ -43,8 +42,6 @@ namespace TeamF.Old
         {
             transform.rotation = Quaternion.LookRotation(_pointToLook - transform.position, Vector3.up);
         }
-
-
 
         void CheckMovementConstrains()
         {

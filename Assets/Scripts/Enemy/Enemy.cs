@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using Framework.AI;
+using TeamF.AI;
 
 namespace TeamF
 {
-    [RequireComponent(typeof(NavMeshAgent), typeof(AI_Controller))]
+    [RequireComponent(typeof(NavMeshAgent), typeof(AI_Enemy))]
     public class Enemy : MonoBehaviour, IDamageable, IParalyzable
     {
         public EnemyData Data { get; private set; }
@@ -17,8 +18,8 @@ namespace TeamF
         #region API
         public void Init(IDamageable _target, EnemyController _controller, EnemyData _data, string _id)
         {
-            agent = GetComponent<NavMeshAgent>();
-            ai_Controller = GetComponent<AI_Controller>();
+            Agent = GetComponent<NavMeshAgent>();
+            ai_Enemy = GetComponent<AI_Enemy>();
 
             Target = _target;
             controller = _controller;
@@ -29,21 +30,24 @@ namespace TeamF
 
             Instantiate(Data.ModelPrefab, transform.position, transform.rotation, transform);
 
-            agent.stoppingDistance = Data.DamageRange;
-            agent.SetDestination(Target.Position);
+            Agent.stoppingDistance = Data.DamageRange;
+            Agent.SetDestination(Target.Position);
 
             CurrentBehaviour.DoInit(this);
+
+            ai_Enemy.IsActive = true;
         }
         #endregion
 
         #region Nav Mesh Agent
-        NavMeshAgent agent;
+        public NavMeshAgent Agent { get; private set; }
 
         IDamageable _target;
         public IDamageable Target
         {
             get { return _target; }
-            set {
+            set
+            {
                 if (value == null) // Se target è nullo chiede come target al controller il più vicino
                     _target = controller.GetClosestTarget(this);
                 else
@@ -53,7 +57,7 @@ namespace TeamF
         #endregion
 
         #region AI Controller
-        AI_Controller ai_Controller;
+        AI_Enemy ai_Enemy;
         AI_State currentState;
         #endregion
 
@@ -112,8 +116,8 @@ namespace TeamF
         #region Effects
         public float MovementSpeed
         {
-            get { return agent.speed; }
-            set { agent.speed += (agent.speed * value) / 100; }
+            get { return Agent.speed; }
+            set { Agent.speed += (Agent.speed * value) / 100; }
         }
         #endregion
 
@@ -149,9 +153,9 @@ namespace TeamF
         /// <param name="_isParalize"></param>
         public void Paralize(bool _isParalized)
         {
-            if (agent.isActiveAndEnabled)
+            if (Agent.isActiveAndEnabled)
             {
-                agent.isStopped = _isParalized;
+                Agent.isStopped = _isParalized;
             }
         }
 
