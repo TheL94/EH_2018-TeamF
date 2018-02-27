@@ -211,7 +211,7 @@ Transform:
   m_GameObject: {fileID: 1086182891860224}
   m_LocalRotation: {x: -0.8087757, y: -0, z: -0, w: 0.5881172}
   m_LocalPosition: {x: 0, y: 0, z: 6.94}
-  m_LocalScale: {x: 2, y: 0, z: 2}
+  m_LocalScale: {x: 4, y: 0, z: 2}
   m_Children: []
   m_Father: {fileID: 4093385644648234}
   m_RootOrder: 0
@@ -464,12 +464,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85b0a010cf84f284bbd00f840ab5da0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BulletPrefab: {fileID: 1096078678018924, guid: aed0c6b0c1afa4a4ca5d68d6e3bccfab,
-    type: 2}
   Barrel: {fileID: 1313148412620624}
-  MagCapacity: 30
-  BulletSpeed: 1
-  Ratio: 0.5
 --- !u!114 &114535251106631316
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -493,8 +488,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ModelToRotate: {fileID: 1025563587877978}
-  MovementSpeed: 5.5
-  RotationSpeed: 7
 --- !u!114 &114614664107629650
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -506,43 +499,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26a2e13c2445e044e9624cd6a1822518, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CharacterData: {fileID: 11400000, guid: 4f9d691242ecf8c4eb44614dec4c41e8, type: 2}
   BackPackRenderer: {fileID: 23171740124067216}
-  AllElementalAmmo:
-  - AmmoType: 0
-    Damage: 1
-    Ammo: 0
-    Data:
-      EffectValue: 0
-      TimeOfEffect: 0
-      TimeFraction: 0
-  - AmmoType: 1
-    Damage: 4
-    Ammo: 0
-    Data:
-      EffectValue: 7
-      TimeOfEffect: 3
-      TimeFraction: 1
-  - AmmoType: 2
-    Damage: 4
-    Ammo: 0
-    Data:
-      EffectValue: 3
-      TimeOfEffect: 3
-      TimeFraction: 1
-  - AmmoType: 3
-    Damage: 4
-    Ammo: 0
-    Data:
-      EffectValue: 5
-      TimeOfEffect: 3
-      TimeFraction: 1
-  - AmmoType: 4
-    Damage: 5
-    Ammo: 0
-    Data:
-      EffectValue: 0
-      TimeOfEffect: 5
-      TimeFraction: 1
   movement: {fileID: 0}
 --- !u!124 &124737006046693908
 Behaviour:

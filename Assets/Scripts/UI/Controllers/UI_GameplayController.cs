@@ -14,11 +14,13 @@ namespace TeamF
         public Text ThunderAmmo;
 
         public Slider KillPointsSlider;
+        public Slider LifeSlider;
 
         private void OnEnable()
         {
             EventManager.OnAmmoChanged += UpdateAmmo;
             EventManager.OnPointsChanged += UpdareKillPoints;
+            EventManager.OnLifeChanged += UpdateLifeSlider;
         }
 
         /// <summary>
@@ -51,11 +53,16 @@ namespace TeamF
             KillPointsSlider.value = _points / _pointsToWin;
         }
 
+        void UpdateLifeSlider(float _life, float _totalLife)
+        {
+            LifeSlider.value = _life / _totalLife;
+        }
+
         private void OnDisable()
         {
             EventManager.OnAmmoChanged -= UpdateAmmo;
             EventManager.OnPointsChanged -= UpdareKillPoints;
-
+            EventManager.OnLifeChanged -= UpdateLifeSlider;
         }
 
     }

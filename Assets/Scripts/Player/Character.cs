@@ -7,16 +7,24 @@ namespace TeamF
     public class Character : MonoBehaviour, IDamageable, IParalyzable
     {
         Player player;
+        public CharacterData CharacterData;
+        CharacterData data;
+        public float Life
+        {
+            get { return data.Life; }
+            set
+            {
+                data.Life = value;
+                EventManager.LifeChanged(data.Life, CharacterData.Life);
+            }
+        }
 
-        float life = 10;
-        public float Life { get { return life; } set { life = value; } }
         public Vector3 Position
         {
             get { return transform.position; }
             set { transform.position = value; }
         }
         public MeshRenderer BackPackRenderer;
-        public ElementalAmmo[] AllElementalAmmo = new ElementalAmmo[5];
         [HideInInspector]
         public Movement movement;
         Weapon currentWeapon;
@@ -52,13 +60,13 @@ namespace TeamF
         }
         public ElementalAmmo SelectedAmmo
         {
-            get { return AllElementalAmmo[selectedAmmoIndex]; }
+            get { return data.AllElementalAmmo[selectedAmmoIndex]; }
             set
             {
-                AllElementalAmmo[selectedAmmoIndex] = value;
-                if (AllElementalAmmo[selectedAmmoIndex].AmmoType != ElementalType.None)
+                data.AllElementalAmmo[selectedAmmoIndex] = value;
+                if (data.AllElementalAmmo[selectedAmmoIndex].AmmoType != ElementalType.None)
                 {
-                    EventManager.AmmoChange(AllElementalAmmo[selectedAmmoIndex]); 
+                    EventManager.AmmoChange(data.AllElementalAmmo[selectedAmmoIndex]); 
                 }
             }
         }
@@ -70,8 +78,8 @@ namespace TeamF
             player = _player;
             currentWeapon = GetComponentInChildren<Weapon>();
             movement = GetComponent<Movement>();
-            AllElementalAmmo[0].Ammo = -1;
-            
+            InitOfTheData();
+            data.AllElementalAmmo[0].Ammo = -1;
             selectedAmmoIndex = 0;     
         }
 
@@ -150,17 +158,24 @@ namespace TeamF
         #endregion
         #endregion
 
+        void InitOfTheData()
+        {
+            data = Instantiate(CharacterData);
+            movement.Init(data.MovementSpeed, data.RotationSpeed);
+            currentWeapon.Init(data.BulletSpeed, data.Ratio, data.MagCapacity, data.BulletPrefab);
+        }
+
         void PickupAmmo(AmmoCrate _crate)
         {
             if (_crate != null)
             {
-                for (int i = 0; i < AllElementalAmmo.Length; i++)
+                for (int i = 0; i < data.AllElementalAmmo.Length; i++)
                 {
-                    if (_crate.Type == AllElementalAmmo[i].AmmoType)
+                    if (_crate.Type == data.AllElementalAmmo[i].AmmoType)
                     {
                         //Aggiungi le munizioni a questo tipo;
-                        AllElementalAmmo[i].Ammo += _crate.Ammo;
-                        EventManager.AmmoChange(AllElementalAmmo[i]);
+                        data.AllElementalAmmo[i].Ammo += _crate.Ammo;
+                        EventManager.AmmoChange(data.AllElementalAmmo[i]);
                         _crate.DestroyAmmoCrate();
                         return;
                     }
