@@ -8,19 +8,19 @@ namespace TeamF
     {
         Enemy enemy;
         ElementalEffectData elementalData;
-        IDamageable myTarget;
+        IDamageable previousTarget;
 
         public void DoInit(Enemy _enemy, ElementalEffectData _data)
         {
             enemy = _enemy;
             elementalData = _data;
-            myTarget = enemy.target;
-            enemy.ChangeMyTarget();
+            previousTarget = enemy.Target;
+            enemy.Target = null;
         }
 
         public void DoStopEffect()
         {
-            enemy.target = myTarget;
+            enemy.Target = previousTarget;
         }
 
         public bool DoUpdate()

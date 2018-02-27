@@ -21,7 +21,7 @@ namespace TeamF
             shootingPoint = FindShootingPoint("ShootingPoint");
             ammo = new ElementalAmmo();
             ammo.AmmoType = ElementalType.None;
-            ammo.Damage = myEnemy.data.Damage;
+            ammo.Damage = myEnemy.Data.Damage;
         }
 
         public virtual void DoAttack()
@@ -33,7 +33,7 @@ namespace TeamF
         public virtual void DoTakeDamage(Enemy _enemy, float _damage, ElementalType _type)
         {
             _damage += (Multiplier * _damage) / 100;
-            _enemy.data.Life -= _damage;          
+            _enemy.Data.Life -= _damage;          
         }
 
         public virtual void DoDeath(ElementalType _bulletType)

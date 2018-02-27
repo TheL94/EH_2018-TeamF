@@ -33,8 +33,8 @@ namespace TeamF
         /// <param name="_enemyKilled"></param>
         public void KillEnemy(Enemy _enemyKilled)
         {
-            levelMng.UpdateRoundPoints(_enemyKilled.data.EnemyValue);
-            DeleteSpecificEnemy(_enemyKilled.SpecificID);
+            levelMng.UpdateRoundPoints(_enemyKilled.Data.EnemyValue);
+            DeleteSpecificEnemy(_enemyKilled.ID);
         }
 
         /// <summary>
@@ -51,14 +51,14 @@ namespace TeamF
         /// </summary>
         /// <param name="_enemy">Il nemico che richiede il calcolo</param>
         /// <returns></returns>
-        public Enemy GetCloserTarget(Enemy _enemy)
+        public Enemy GetClosestTarget(Enemy _enemy)
         {
             float referanceDistance = 1000;
             Enemy enemyCloser = null;
 
             foreach (Enemy enemy in enemiesSpawned)
             {
-                if (_enemy.SpecificID == enemy.SpecificID)
+                if (_enemy.ID == enemy.ID)
                     continue;
 
                 float distance = Vector3.Distance(_enemy.transform.position, enemy.transform.position);
@@ -178,7 +178,7 @@ namespace TeamF
         /// <param name="_data"></param>
         void InitEnemy(Enemy _enemy, EnemyData _data)
         {
-            _enemy.Init(target, this, "Enemy" + idCounter, _data);
+            _enemy.Init(target, this, _data, "Enemy" + idCounter);
         }
 
         /// <summary>
@@ -211,7 +211,7 @@ namespace TeamF
         {
             for (int i = 0; i < enemiesSpawned.Count; i++)
             {
-                if (enemiesSpawned[i].SpecificID == _idEnemy)
+                if (enemiesSpawned[i].ID == _idEnemy)
                 {
                     enemiesSpawned.Remove(enemiesSpawned[i]);
                     return;

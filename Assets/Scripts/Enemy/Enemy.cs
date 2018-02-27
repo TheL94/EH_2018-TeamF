@@ -2,158 +2,63 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Framework.AI;
 
 namespace TeamF
 {
+    [RequireComponent(typeof(NavMeshAgent), typeof(AI_Controller))]
     public class Enemy : MonoBehaviour, IDamageable, IParalyzable
     {
-        public float Life { get { return data.Life; } set { data.Life = value; } }
-        public Vector3 Position
-        {
-            get { return transform.position; }
-            set { transform.position = value; }
-        }
-        public float MovementSpeed { get { return agent.speed; } set { agent.speed = value; } }
-        public EnemyData data { get; set; }
-        public IEnemyBehaviour CurrentBehaviour { get; set; }
-        public string SpecificID { get; set; }
-        public IDamageable target { get; set; }
+        public EnemyData Data { get; private set; }
+        public string ID { get; private set; }
 
-        NavMeshAgent agent;
         EnemyController controller;
-        float attackTimeCounter;
-        float agentTimeCounter;
 
-        public void Init(Character _target, EnemyController _controller, string _id, EnemyData _data)
+        #region API
+        public void Init(IDamageable _target, EnemyController _controller, EnemyData _data, string _id)
         {
-            target = _target;
+            agent = GetComponent<NavMeshAgent>();
+            ai_Controller = GetComponent<AI_Controller>();
+
+            Target = _target;
             controller = _controller;
-            SpecificID = _id;
+            Data = _data;
+            ID = _id;
 
-            data = _data;
-            DeterminateBehaviourFromType(data);
+            DeterminateBehaviourFromType(Data);
 
-            Instantiate(data.ModelPrefab, transform.position, transform.rotation, transform);           // Instanza il modello
+            Instantiate(Data.ModelPrefab, transform.position, transform.rotation, transform);
 
-            agent = GetComponentInChildren<NavMeshAgent>();
-            agent.stoppingDistance = data.DamageRange;
-            agent.SetDestination(_target.transform.position);
+            agent.stoppingDistance = Data.DamageRange;
+            agent.SetDestination(Target.Position);
 
             CurrentBehaviour.DoInit(this);
         }
+        #endregion
 
-        public void SetPercentageOfMovementSpeed(float _movement)
+        #region Nav Mesh Agent
+        NavMeshAgent agent;
+
+        IDamageable _target;
+        public IDamageable Target
         {
-            MovementSpeed += (MovementSpeed * _movement) / 100;
-        }
-
-        /// <summary>
-        /// Setta il nuovo target con l'idamageable più vicino a se
-        /// </summary>
-        public void ChangeMyTarget()
-        {
-            target = controller.GetCloserTarget(this);
-        }
-
-        private void FixedUpdate()
-        {
-            if (target == null)
-                return;
-
-            if (target.Life > 0)
-            {
-                Move();
-                Attack(); 
-            }
-            else
-                ChangeMyTarget();
-
-            CheckMovementConstrains();
-        }
-
-        void Move()
-        {
-            agentTimeCounter += Time.deltaTime;
-            if (agentTimeCounter >= 0.3f)
-            {
-                agent.SetDestination(target.Position);
-                agentTimeCounter = 0;
-            }
-        }
-
-        void RotateTowards(Vector3 _pointToLook)
-        {
-            transform.rotation = Quaternion.LookRotation(_pointToLook - transform.position, Vector3.up);
-        }
-
-        #region IDamageable
-        float _damageMultiplyer = 100;
-        public float DamageMultiplier {
-            get { return _damageMultiplyer; }
-            set { _damageMultiplyer = value; }
-        }
-
-        
-
-        /// <summary>
-        /// Funzione per prendere danno;
-        /// </summary>
-        /// <param name="_damage">Il valore da sottrarre alla vita</param>
-        /// <param name="_bulletType">Il tipo del proiettile</param>
-        public void TakeDamage(float _damage, ElementalType _bulletType)
-        {
-            _damage += (_damage * DamageMultiplier) / 100;
-            CurrentBehaviour.DoTakeDamage(this, _damage, _bulletType);
-
-            if (data.Life <= 0)
-            {
-                controller.KillEnemy(this);
-                CurrentBehaviour.DoDeath(_bulletType);
-                Destroy(gameObject);
+            get { return _target; }
+            set {
+                if (value == null) // Se target è nullo chiede come target al controller il più vicino
+                    _target = controller.GetClosestTarget(this);
+                else
+                    _target = value;
             }
         }
         #endregion
 
-        #region IParalizer
-        /// <summary>
-        /// Chiamata dalla combo elementale paralizzante, 
-        /// </summary>
-        /// <param name="_isParalize"></param>
-        public void Paralize(bool _isParalized)
-        {
-            if (agent.isActiveAndEnabled)
-            {
-                agent.isStopped = _isParalized;
-            }
-        }
-
+        #region AI Controller
+        AI_Controller ai_Controller;
+        AI_State currentState;
         #endregion
 
-        void CheckMovementConstrains()
-        {
-            if (transform.rotation.x != 0 || transform.rotation.z != 0)
-                transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
-        }
-
-        /// <summary>
-        /// provoca danno alla vita del target se è alla distanza corretta
-        /// </summary>
-        void Attack()
-        {
-            attackTimeCounter += Time.deltaTime;
-            if (attackTimeCounter >= data.DamageRate)
-            {
-                if (Vector3.Distance(agent.destination, transform.position) <= agent.stoppingDistance)
-                {
-                    if (target.Life > 0)
-                    {
-                        RotateTowards(target.Position);
-                        CurrentBehaviour.DoAttack();
-                        attackTimeCounter = 0;
-                    }
-                }
-            }
-        }
+        #region Enemy Behaviour
+        public IEnemyBehaviour CurrentBehaviour { get; private set; }
 
         void DeterminateBehaviourFromType(EnemyData _data)
         {
@@ -202,7 +107,55 @@ namespace TeamF
             }
         }
 
-        
+        #endregion
+
+        #region Effects
+        public float MovementSpeed
+        {
+            get { return agent.speed; }
+            set { agent.speed += (agent.speed * value) / 100; }
+        }
+        #endregion
+
+        #region IDamageable
+        public float Life { get { return Data.Life; } private set { Data.Life = value; } }
+
+        public Vector3 Position { get { return transform.position; } }
+
+        float _damageMultiplyer = 100;
+        public float DamagePercentage
+        {
+            get { return _damageMultiplyer; }
+            set { _damageMultiplyer = value; }
+        }
+
+        public void TakeDamage(float _damage, ElementalType _type = ElementalType.None)
+        {
+            _damage += (_damage * DamagePercentage) / 100;
+            CurrentBehaviour.DoTakeDamage(this, _damage, _type);
+
+            if (Data.Life <= 0)
+            {
+                CurrentBehaviour.DoDeath(_type);
+                // distrggere l'oggetto e avvisare il controller
+            }
+        }
+        #endregion
+
+        #region IParalyzable
+        /// <summary>
+        /// Chiamata dalla combo elementale paralizzante, 
+        /// </summary>
+        /// <param name="_isParalize"></param>
+        public void Paralize(bool _isParalized)
+        {
+            if (agent.isActiveAndEnabled)
+            {
+                agent.isStopped = _isParalized;
+            }
+        }
+
+        #endregion
     }
 
     public enum EnemyType
@@ -220,3 +173,4 @@ namespace TeamF
         Thunder = 4
     }
 }
+

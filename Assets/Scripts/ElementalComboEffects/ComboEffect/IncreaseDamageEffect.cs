@@ -14,13 +14,13 @@ namespace TeamF
         {
             enemy = _enemy;
             elementalData = _data;
-            startMultiplyer = enemy.DamageMultiplier;
-            enemy.DamageMultiplier = _data.EffectValue;
+            startMultiplyer = enemy.DamagePercentage;
+            enemy.DamagePercentage = _data.EffectValue;
         }
 
         public void DoStopEffect()
         {
-            enemy.DamageMultiplier = startMultiplyer;
+            enemy.DamagePercentage = startMultiplyer;
         }
 
         public bool DoUpdate()
