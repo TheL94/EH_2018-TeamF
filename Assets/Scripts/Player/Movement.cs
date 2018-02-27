@@ -7,8 +7,14 @@ namespace TeamF
     public class Movement : MonoBehaviour
     {
         public GameObject ModelToRotate;
-        public float MovementSpeed = 1;
-        public float RotationSpeed = 1;
+        float MovementSpeed;
+        float RotationSpeed;
+
+        public void Init(float _movementSpeed, float _rotationSpeed)
+        {
+            MovementSpeed = _movementSpeed;
+            RotationSpeed = _rotationSpeed;
+        }
 
         public void Move(Vector3 _position)
         {

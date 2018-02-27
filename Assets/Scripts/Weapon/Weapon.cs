@@ -6,18 +6,26 @@ namespace TeamF
 {
     public class Weapon : MonoBehaviour
     {
-        public GameObject BulletPrefab;
         public GameObject Barrel;
-        public int MagCapacity;
-        public float BulletSpeed;
-        public float Ratio;
+        GameObject BulletPrefab;
+        float bulletSpeed;
+        float ratio;
+        int magCapacity;
 
         float ratioTimer;
+
+        public void Init(float _bulletSpeed, float _ratio, int _magCapacity, GameObject _bulletPrefab)
+        {
+            bulletSpeed = _bulletSpeed;
+            ratio = _ratio;
+            magCapacity = _magCapacity;
+            BulletPrefab = _bulletPrefab;
+        }
 
         public ElementalAmmo FullAutoShoot(ElementalAmmo _selectedAmmo)
         {
             ratioTimer += Time.deltaTime;
-            if (ratioTimer >= Ratio)
+            if (ratioTimer >= ratio)
             {
                 _selectedAmmo = SingleShot(_selectedAmmo);
                 ratioTimer = 0;
@@ -48,7 +56,7 @@ namespace TeamF
         void CreateBullet(ElementalAmmo _currentAmmo)
         {
             Bullet bull = Instantiate(BulletPrefab, Barrel.transform.position, Barrel.transform.rotation).GetComponent<Bullet>();
-            bull.Init(_currentAmmo, BulletSpeed, BulletOwner.Character);
+            bull.Init(_currentAmmo, bulletSpeed, BulletOwner.Character);
         }
     }
 }
