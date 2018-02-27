@@ -73,6 +73,16 @@ namespace TeamF
                 if (Input.GetKey(KeyCode.D))
                     finalDirection += -transform.forward;
 
+                if (Input.GetAxis("Mouse ScrollWheel") < 0f || Input.GetKeyDown(KeyCode.E))
+                {
+                    character.SelectPreviousAmmo();
+
+                }
+                else if (Input.GetAxis("Mouse ScrollWheel") > 0f || Input.GetKeyDown(KeyCode.Q))
+                {
+                    character.SelectNextAmmo();
+                }
+
                 character.movement.Move(finalDirection.normalized);
 
 
@@ -81,25 +91,6 @@ namespace TeamF
                 if (Input.GetMouseButton(0))
                     character.FullAutoShot();
 
-                if (Input.GetKeyDown(KeyCode.Alpha1)) {
-                    character.SetActiveAmmo(ElementalType.Fire);
-                }
-
-                if (Input.GetKeyDown(KeyCode.Alpha2)) {
-                    character.SetActiveAmmo(ElementalType.Water);
-                }
-
-                if (Input.GetKeyDown(KeyCode.Alpha3)) {
-                    character.SetActiveAmmo(ElementalType.Poison);
-                }
-
-                if (Input.GetKeyDown(KeyCode.Alpha4)) {
-                    character.SetActiveAmmo(ElementalType.Thunder);
-                }
-                if (Input.GetKeyDown(KeyCode.Alpha5))
-                {
-                    character.SetActiveAmmo(ElementalType.None);
-                }
                 character.movement.Rotate();
             }
             if (GameManager.I.CurrentState != FlowState.EnterGameplay && GameManager.I.CurrentState != FlowState.Gameplay)

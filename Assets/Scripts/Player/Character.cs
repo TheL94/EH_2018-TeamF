@@ -119,32 +119,18 @@ namespace TeamF
         }
         #endregion
 
-        /// <summary>
-        /// Setta le munizioni da utilizzare per sparare
-        /// </summary>
-        /// <param name="_type"></param>
-        public void SetActiveAmmo(ElementalType _type)
+        public void SelectPreviousAmmo()
         {
-            switch (_type)
-            {
-                case ElementalType.Fire:
-                    selectedAmmoIndex = 0;
-                    break;
-                case ElementalType.Water:
-                    selectedAmmoIndex = 1;
-                    break;
-                case ElementalType.Poison:
-                    selectedAmmoIndex = 2;
-                    break;
-                case ElementalType.Thunder:
-                    selectedAmmoIndex = 3;
-                    break;
-                case ElementalType.None:
-                    selectedAmmoIndex = 4;
-                    break;
-            }
+            selectedAmmoIndex++;
+            if (selectedAmmoIndex > data.AllElementalAmmo.Length - 1)
+                selectedAmmoIndex = 0;
         }
-
+        public void SelectNextAmmo()
+        {
+            selectedAmmoIndex--;
+            if (selectedAmmoIndex < 0)
+                selectedAmmoIndex = data.AllElementalAmmo.Length - 1;
+        }
         #region IParalyzable
         /// <summary>
         /// Setta la variabile booleana isParalized nel player
