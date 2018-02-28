@@ -18,9 +18,9 @@ namespace TeamF
 
         private void OnEnable()
         {
-            EventManager.OnAmmoChanged += UpdateAmmo;
-            EventManager.OnPointsChanged += UpdareKillPoints;
-            EventManager.OnLifeChanged += UpdateLifeSlider;
+            Events_UIController.OnAmmoChanged += UpdateAmmo;
+            Events_UIController.OnPointsChanged += UpdareKillPoints;
+            Events_UIController.OnLifeChanged += UpdateLifeSlider;
         }
 
         /// <summary>
@@ -60,9 +60,9 @@ namespace TeamF
 
         private void OnDisable()
         {
-            EventManager.OnAmmoChanged -= UpdateAmmo;
-            EventManager.OnPointsChanged -= UpdareKillPoints;
-            EventManager.OnLifeChanged -= UpdateLifeSlider;
+            Events_UIController.OnAmmoChanged -= UpdateAmmo;
+            Events_UIController.OnPointsChanged -= UpdareKillPoints;
+            Events_UIController.OnLifeChanged -= UpdateLifeSlider;
         }
 
     }

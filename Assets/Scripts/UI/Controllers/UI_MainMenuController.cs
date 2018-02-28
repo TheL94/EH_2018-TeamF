@@ -24,6 +24,10 @@ namespace TeamF
                     GameManager.I.ChangeFlowState(FlowState.EnterGameplay);
                     break;
                 case 1:
+                    //Scena test
+                    GameManager.I.EnterTestScene();
+                    break;
+                case 2:
                     //ExitGame;
                     GameManager.I.CloseApplicationActions();
                     break;

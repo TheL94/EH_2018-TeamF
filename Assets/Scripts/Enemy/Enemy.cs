@@ -8,7 +8,6 @@ namespace TeamF
 {
     public class Enemy : MonoBehaviour, IDamageable, IParalyzable
     {
-        Color startColor;
         public float Life
         {
             get { return data.Life; }
@@ -52,7 +51,6 @@ namespace TeamF
             agent.SetDestination(_target.transform.position);
 
             render = GetComponentInChildren<MeshRenderer>();
-            startColor = render.material.color;
 
             CurrentBehaviour.DoInit(this);
         }
@@ -120,7 +118,7 @@ namespace TeamF
             _damage += (_damage * DamageMultiplier) / 100;
             CurrentBehaviour.DoTakeDamage(this, _damage, _bulletType);
 
-            if (data.Life <= 0)
+            if (Life <= 0)
             {
                 controller.KillEnemy(this);
                 CurrentBehaviour.DoDeath(_bulletType);

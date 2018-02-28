@@ -20,12 +20,6 @@ namespace TeamF
             GameManager.I.LevelMng.GoToGameLost();
         }
 
-        void Start()
-        {
-            Init();
-            IsParalized = false;
-        }
-
         void Update()
         {
             CheckInput();
@@ -35,13 +29,23 @@ namespace TeamF
         {
             controllerInput = new ControllerInput(0);
             character = GetComponent<Character>();
-            character.Init(this);
+            IsParalized = false;
+        }
+
+        /// <summary>
+        /// Chiama l'init per il character
+        /// </summary>
+        /// <param name="_isTestScene">Se true, il character deve essere inizializzato per la scena di test, altrimenti per una scena di gioco normale</param>
+        public void CharacterInit(bool _isTestScene = false)
+        {
+            character.Init(this, _isTestScene);
         }
 
         void CheckInput()
         {
             InputStatus status = controllerInput.GetPlayerInputStatus();
-
+            if (IsParalized)
+                return;
             if (status.IsConnected)
                 CheckControllerInput();
             else
@@ -58,8 +62,6 @@ namespace TeamF
             if (GameManager.I.CurrentState == FlowState.Gameplay)
             {
                 if (character.Life <= 0)
-                    return;
-                if (IsParalized)
                     return;
 
                 Vector3 finalDirection = new Vector3();

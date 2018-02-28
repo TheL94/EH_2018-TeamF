@@ -17,7 +17,7 @@ namespace TeamF
             {
                 data.Life = value;
                 CharacterRenderer.material.DOColor(Color.white, .1f).OnComplete(() => { CharacterRenderer.material.DORewind(); });
-                EventManager.LifeChanged(data.Life, CharacterData.Life);
+                Events_UIController.LifeChanged(data.Life, CharacterData.Life);
             }
         }
 
@@ -69,24 +69,30 @@ namespace TeamF
                 data.AllElementalAmmo[selectedAmmoIndex] = value;
                 if (data.AllElementalAmmo[selectedAmmoIndex].AmmoType != ElementalType.None)
                 {
-                    EventManager.AmmoChange(data.AllElementalAmmo[selectedAmmoIndex]); 
+                    Events_UIController.AmmoChange(data.AllElementalAmmo[selectedAmmoIndex]); 
                 }
             }
         }
-
-        Color startColor;
-
-
+        bool isInvincible;
         #region API
-        public void Init(Player _player)
+        public void Init(Player _player, bool _isTestScene = false)
         {
             player = _player;
             currentWeapon = GetComponentInChildren<Weapon>();
             movement = GetComponent<Movement>();
             InitOfTheData();
-            data.AllElementalAmmo[0].Ammo = -1;
+
+            if (!_isTestScene)
+                data.AllElementalAmmo[0].Ammo = -1;
+            else
+            {
+                isInvincible = _isTestScene;
+                for (int i = 0; i < data.AllElementalAmmo.Length; i++)
+                {
+                    data.AllElementalAmmo[i].Ammo = -1;
+                }
+            }
             selectedAmmoIndex = 0;
-            startColor = CharacterRenderer.material.color;
 
         }
 
@@ -116,6 +122,8 @@ namespace TeamF
         /// <param name="_type">Tipo del nemico che attacca, per triggherare azioni particolari del player a seconda del tipo di nemico</param>
         public void TakeDamage(float _damage, ElementalType _type = ElementalType.None)
         {
+            if (isInvincible)
+                return;
             _damage += _damage * DamageMultiplier;
             Life -= _damage;
             if (Life <= 0)
@@ -168,7 +176,7 @@ namespace TeamF
                     {
                         //Aggiungi le munizioni a questo tipo;
                         data.AllElementalAmmo[i].Ammo += _crate.Ammo;
-                        EventManager.AmmoChange(data.AllElementalAmmo[i]);
+                        Events_UIController.AmmoChange(data.AllElementalAmmo[i]);
                         _crate.DestroyAmmoCrate();
                         return;
                     }

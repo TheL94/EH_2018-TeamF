@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace TeamF
 {
-    public class EventManager
+    public class Events_UIController
     {
         #region Update Ammo Event
         public delegate void UIAmmoAction(ElementalAmmo _elementalAmmo);
