@@ -2,12 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using DG.Tweening;
 
 namespace TeamF
 {
     public class Enemy : MonoBehaviour, IDamageable, IParalyzable
     {
-        public float Life { get { return data.Life; } set { data.Life = value; } }
+        Color startColor;
+        public float Life
+        {
+            get { return data.Life; }
+            set
+            {
+                data.Life = value;
+                render.material.DOColor(Color.white, .1f).OnComplete(() => { render.material.DORewind(); });
+                
+            }
+        }
         public Vector3 Position
         {
             get { return transform.position; }
@@ -21,6 +32,7 @@ namespace TeamF
 
         NavMeshAgent agent;
         EnemyController controller;
+        MeshRenderer render;
         float attackTimeCounter;
         float agentTimeCounter;
 
@@ -38,6 +50,9 @@ namespace TeamF
             agent = GetComponentInChildren<NavMeshAgent>();
             agent.stoppingDistance = data.DamageRange;
             agent.SetDestination(_target.transform.position);
+
+            render = GetComponentInChildren<MeshRenderer>();
+            startColor = render.material.color;
 
             CurrentBehaviour.DoInit(this);
         }

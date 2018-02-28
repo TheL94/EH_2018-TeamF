@@ -33,7 +33,7 @@ namespace TeamF
         public virtual void DoTakeDamage(Enemy _enemy, float _damage, ElementalType _type)
         {
             _damage += (Multiplier * _damage) / 100;
-            _enemy.data.Life -= _damage;          
+            _enemy.Life-= _damage;          
         }
 
         public virtual void DoDeath(ElementalType _bulletType)
