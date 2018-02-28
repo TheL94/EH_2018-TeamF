@@ -54,7 +54,7 @@ namespace TeamF
         /// </summary>
         /// <param name="_enemy">Il nemico che richiede il calcolo</param>
         /// <returns></returns>
-        public Enemy GetCloserTarget(Enemy _enemy)
+        public Enemy GetClosestTarget(Enemy _enemy)
         {
             float referanceDistance = 1000;
             Enemy enemyCloser = null;
