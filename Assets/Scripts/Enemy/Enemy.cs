@@ -139,11 +139,11 @@ namespace TeamF
         }
         public Vector3 Position { get { return transform.position; } }
 
-        float _damageMultiplyer = 100;
+        float _damagePercentage = 100;
         public float DamagePercentage
         {
-            get { return _damageMultiplyer; }
-            set { _damageMultiplyer = value; }
+            get { return _damagePercentage; }
+            set { _damagePercentage = value; }
         }
 
         public void TakeDamage(float _damage, ElementalType _type = ElementalType.None)

@@ -36,8 +36,8 @@ namespace TeamF
         /// <param name="_enemyKilled"></param>
         public void KillEnemy(Enemy _enemyKilled)
         {
-            Events_LevelController.UpdateKillPoints(_enemyKilled.data.EnemyValue);
-            DeleteSpecificEnemy(_enemyKilled.SpecificID);
+            Events_LevelController.UpdateKillPoints(_enemyKilled.Data.EnemyValue);
+            DeleteSpecificEnemy(_enemyKilled.ID);
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace TeamF
 
             foreach (Enemy enemy in enemiesSpawned)
             {
-                if (_enemy.SpecificID == enemy.SpecificID)
+                if (_enemy.ID == enemy.ID)
                     continue;
 
                 float distance = Vector3.Distance(_enemy.transform.position, enemy.transform.position);
@@ -192,7 +192,7 @@ namespace TeamF
         /// <param name="_data"></param>
         void InitEnemy(Enemy _enemy, EnemyData _data)
         {
-            _enemy.Init(target, this, "Enemy" + idCounter, _data);
+            _enemy.Init(target, this, _data, "Enemy" + idCounter);
         }
 
         /// <summary>
@@ -225,7 +225,7 @@ namespace TeamF
         {
             for (int i = 0; i < enemiesSpawned.Count; i++)
             {
-                if (enemiesSpawned[i].SpecificID == _idEnemy)
+                if (enemiesSpawned[i].ID == _idEnemy)
                 {
                     enemiesSpawned.Remove(enemiesSpawned[i]);
                     return;

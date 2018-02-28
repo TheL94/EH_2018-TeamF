@@ -113,7 +113,7 @@ namespace TeamF
         }
 
         #region IDamageable
-        public float DamageMultiplier { get; set; }
+        public float DamagePercentage { get; set; }
 
         /// <summary>
         /// Provoca danno al player e cambia stato se la vita dell'avatar raggiunge lo zero.
@@ -124,7 +124,7 @@ namespace TeamF
         {
             if (isInvincible)
                 return;
-            _damage += _damage * DamageMultiplier;
+            _damage += _damage * DamagePercentage;
             Life -= _damage;
             if (Life <= 0)
             {
