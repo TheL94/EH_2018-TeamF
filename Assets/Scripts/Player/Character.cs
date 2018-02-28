@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 namespace TeamF
 {
@@ -15,6 +16,7 @@ namespace TeamF
             set
             {
                 data.Life = value;
+                CharacterRenderer.material.DOColor(Color.white, .1f).OnComplete(() => { CharacterRenderer.material.DORewind(); });
                 EventManager.LifeChanged(data.Life, CharacterData.Life);
             }
         }
@@ -25,6 +27,7 @@ namespace TeamF
             set { transform.position = value; }
         }
         public MeshRenderer BackPackRenderer;
+        public MeshRenderer CharacterRenderer;
         [HideInInspector]
         public Movement movement;
         Weapon currentWeapon;
@@ -71,6 +74,8 @@ namespace TeamF
             }
         }
 
+        Color startColor;
+
 
         #region API
         public void Init(Player _player)
@@ -80,7 +85,9 @@ namespace TeamF
             movement = GetComponent<Movement>();
             InitOfTheData();
             data.AllElementalAmmo[0].Ammo = -1;
-            selectedAmmoIndex = 0;     
+            selectedAmmoIndex = 0;
+            startColor = CharacterRenderer.material.color;
+
         }
 
         /// <summary>

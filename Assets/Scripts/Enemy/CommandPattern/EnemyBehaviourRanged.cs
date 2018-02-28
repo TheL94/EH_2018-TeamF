@@ -27,13 +27,13 @@ namespace TeamF
         public virtual void DoAttack()
         {
             Bullet bull = GameObject.Instantiate(Resources.Load("Bullet") as GameObject, shootingPoint.position, shootingPoint.rotation).GetComponent<Bullet>();
-            bull.Init(ammo, .35f, BulletOwner.Enemy); 
+            bull.Init(ammo, (myEnemy.Data as RangedData).BulletSpeed, BulletOwner.Enemy); 
         }
 
         public virtual void DoTakeDamage(Enemy _enemy, float _damage, ElementalType _type)
         {
             _damage += (Multiplier * _damage) / 100;
-            _enemy.Data.Life -= _damage;          
+            _enemy.Data.Life -= _damage; // TODO : sbagliato, da rivedere
         }
 
         public virtual void DoDeath(ElementalType _bulletType)

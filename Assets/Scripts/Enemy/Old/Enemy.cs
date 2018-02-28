@@ -6,11 +6,8 @@ using UnityEngine.AI;
 namespace TeamF.Old
 {
     public class Enemy : MonoBehaviour
-    {
-        
+    {      
         float attackTimeCounter;
-
-
 
         //private void FixedUpdate()
         //{

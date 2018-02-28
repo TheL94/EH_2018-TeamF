@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using Framework.AI;
 using TeamF.AI;
+using DG.Tweening;
 
 namespace TeamF
 {
@@ -15,11 +16,15 @@ namespace TeamF
 
         EnemyController controller;
 
+        Color startColor;
+        MeshRenderer render;
+
         #region API
         public void Init(IDamageable _target, EnemyController _controller, EnemyData _data, string _id)
         {
             Agent = GetComponent<NavMeshAgent>();
             ai_Enemy = GetComponent<AI_Enemy>();
+            render = GetComponentInChildren<MeshRenderer>();
 
             Target = _target;
             controller = _controller;
@@ -32,6 +37,8 @@ namespace TeamF
 
             Agent.stoppingDistance = Data.DamageRange;
             Agent.SetDestination(Target.Position);
+
+            startColor = render.material.color;
 
             CurrentBehaviour.DoInit(this);
 
@@ -110,7 +117,6 @@ namespace TeamF
                     break;
             }
         }
-
         #endregion
 
         #region Effects
@@ -122,8 +128,15 @@ namespace TeamF
         #endregion
 
         #region IDamageable
-        public float Life { get { return Data.Life; } private set { Data.Life = value; } }
-
+        public float Life
+        {
+            get { return Data.Life; }
+            private set
+            {
+                Data.Life = value;
+                render.material.DOColor(Color.white, .1f).OnComplete(() => { render.material.DORewind(); });
+            }
+        }
         public Vector3 Position { get { return transform.position; } }
 
         float _damageMultiplyer = 100;
@@ -158,7 +171,6 @@ namespace TeamF
                 Agent.isStopped = _isParalized;
             }
         }
-
         #endregion
     }
 
