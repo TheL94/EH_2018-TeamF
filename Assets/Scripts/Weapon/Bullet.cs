@@ -110,23 +110,25 @@ namespace TeamF
 
         private void OnTriggerEnter(Collider other)
         {
-            if(owner == BulletOwner.Character)
+            if (other.tag == "ComboElement")
+                return;
+            if (owner == BulletOwner.Character)
             {
                 IDamageable damageable = other.GetComponent<IDamageable>();
                 if (damageable != null)
                 {
                     DoDamage(damageable);
                     ApplyElementalEffect(other.GetComponent<Enemy>());
-                    Destroy(gameObject); 
                 }
+                Destroy(gameObject); 
             }
             else
             {
-                if(other.GetComponent<Enemy>() == null)
+                if (other.GetComponent<Enemy>() == null)
                 {
                     DoDamage(other.GetComponent<IDamageable>());
                     Destroy(gameObject);
-                }          
+                }
             }
         }
     }

@@ -34,6 +34,9 @@ namespace TeamF
         {
             flowMng = new FlowManager();
             ChangeFlowState(FlowState.Loading);
+            Player player = FindObjectOfType<Player>();
+            if (player != null)
+                player.Init();
         }
 
         private void Update()
@@ -72,9 +75,24 @@ namespace TeamF
         {
             LevelMng = new LevelManager(50f);
 
+            Player player = FindObjectOfType<Player>();
+            if (player != null)
+                player.CharacterInit();
+
             UIMng.GameplayActions();
             AmmoController.Init();
-            EnemyCtrl.Init(LevelMng);
+            EnemyCtrl.Init();
+            ChangeFlowState(FlowState.Gameplay);
+        }
+
+        public void EnterTestScene()
+        {
+            Player player = FindObjectOfType<Player>();
+            if (player != null)
+                player.CharacterInit(true);
+
+            UIMng.GameplayActions();
+            EnemyCtrl.Init(true);
             ChangeFlowState(FlowState.Gameplay);
         }
 

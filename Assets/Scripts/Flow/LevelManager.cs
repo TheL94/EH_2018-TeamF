@@ -12,12 +12,13 @@ namespace TeamF
         public LevelManager(float _pointsToWin)
         {
             PointsToWin = _pointsToWin;
+            Events_LevelController.OnKillPointChanged += UpdateRoundPoints;
         }
 
         public void UpdateRoundPoints(float _killedEnemyValue)
         {
             roundPoints += _killedEnemyValue;
-            EventManager.KillPointsChanged(roundPoints, PointsToWin);
+            Events_UIController.KillPointsChanged(roundPoints, PointsToWin);
 
             CheckVictory();              
         }

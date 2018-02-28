@@ -9,13 +9,17 @@ namespace TeamF
     {
         public float StartDelayTime;
         public float DelayHordes;
+        public int MaxEnemiesInScene;
 
-        public int MaxHordeNumber;
-        public int MinHordeNumber;
+        public bool BlockSpawnNormal;
+        public int MaxNormalEnemies;
+        public int MinNormalEnemies;
 
+        public bool BlockSpawnElemental;
         public int MaxElementalsEnemies;
         public int MinElementalsEnemies;
 
+        public bool BlockSpawnRanged;
         public int MaxRangedEnemies;
         public int MinRangedEnemies;
 

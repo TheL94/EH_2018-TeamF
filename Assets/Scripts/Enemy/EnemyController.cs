@@ -12,18 +12,21 @@ namespace TeamF
         public bool CanSpawn { get; set; }
         public EnemyControllerData SpawnerData;
         public List<Transform> SpawnPoints = new List<Transform>();
-        public int MaxEnemiesInScene;
 
-        LevelManager levelMng;
         List<Enemy> enemiesSpawned = new List<Enemy>();
         int idCounter;
         float spawnTime;
 
         #region API
-        public void Init(LevelManager _levelMng)
+        public void Init(bool _canSpawn = false)
         {
-            levelMng = _levelMng;
-            StartCoroutine(FirstSpawn());
+            if (!_canSpawn)
+                StartCoroutine(FirstSpawn());
+            else
+            {
+                CanSpawn = _canSpawn;
+
+            }
         }
 
         /// <summary>
@@ -33,8 +36,8 @@ namespace TeamF
         /// <param name="_enemyKilled"></param>
         public void KillEnemy(Enemy _enemyKilled)
         {
-            levelMng.UpdateRoundPoints(_enemyKilled.Data.EnemyValue);
-            DeleteSpecificEnemy(_enemyKilled.ID);
+            Events_LevelController.UpdateKillPoints(_enemyKilled.data.EnemyValue);
+            DeleteSpecificEnemy(_enemyKilled.SpecificID);
         }
 
         /// <summary>
@@ -51,14 +54,14 @@ namespace TeamF
         /// </summary>
         /// <param name="_enemy">Il nemico che richiede il calcolo</param>
         /// <returns></returns>
-        public Enemy GetClosestTarget(Enemy _enemy)
+        public Enemy GetCloserTarget(Enemy _enemy)
         {
             float referanceDistance = 1000;
             Enemy enemyCloser = null;
 
             foreach (Enemy enemy in enemiesSpawned)
             {
-                if (_enemy.ID == enemy.ID)
+                if (_enemy.SpecificID == enemy.SpecificID)
                     continue;
 
                 float distance = Vector3.Distance(_enemy.transform.position, enemy.transform.position);
@@ -103,7 +106,7 @@ namespace TeamF
         /// <param name="_enemyPrefab"></param>
         void SpawnHorde()
         {
-            if (enemiesSpawned.Count >= MaxEnemiesInScene)
+            if (enemiesSpawned.Count >= SpawnerData.MaxEnemiesInScene)
                 return;
 
             int spawnIndexToExclude = ChooseSpawnPointToExclude();
@@ -113,23 +116,34 @@ namespace TeamF
                 if (i == spawnIndexToExclude)
                     continue;
 
-                int hordeNumber = Random.Range(SpawnerData.MinHordeNumber, SpawnerData.MaxHordeNumber + 1);
-                int elementalsEnemies = Random.Range(SpawnerData.MinElementalsEnemies, SpawnerData.MaxElementalsEnemies + 1);
-                int rangedEnemies = Random.Range(SpawnerData.MinRangedEnemies, SpawnerData.MaxRangedEnemies + 1);
-
-                for (int j = 0; j < elementalsEnemies; j++)
+                if (!SpawnerData.BlockSpawnElemental)
                 {
-                    InitEnemy(SpawnEnemy(EnemyPrefab, SpawnPoints[i]), FindEnemyDataByTypeAndElement(EnemyType.Melee, (ElementalType)Random.Range(1, 5)));
+                    int elementalsEnemies = Random.Range(SpawnerData.MinElementalsEnemies, SpawnerData.MaxElementalsEnemies + 1);
+
+                    for (int j = 0; j < elementalsEnemies; j++)
+                    {
+                        InitEnemy(SpawnEnemy(EnemyPrefab, SpawnPoints[i]), FindEnemyDataByTypeAndElement(EnemyType.Melee, (ElementalType)Random.Range(1, 5)));
+                    } 
                 }
 
-                for (int j = 0; j < rangedEnemies; j++)
+                if (!SpawnerData.BlockSpawnRanged)
                 {
-                    InitEnemy(SpawnEnemy(EnemyPrefab, SpawnPoints[i]), FindEnemyDataByTypeAndElement(EnemyType.Ranged, ElementalType.None));
+                    int rangedEnemies = Random.Range(SpawnerData.MinRangedEnemies, SpawnerData.MaxRangedEnemies + 1);
+
+                    for (int j = 0; j < rangedEnemies; j++)
+                    {
+                        InitEnemy(SpawnEnemy(EnemyPrefab, SpawnPoints[i]), FindEnemyDataByTypeAndElement(EnemyType.Ranged, ElementalType.None));
+                    } 
                 }
 
-                for (int j = 0; j < hordeNumber - elementalsEnemies; j++)
+                if (!SpawnerData.BlockSpawnNormal)
                 {
-                    InitEnemy(SpawnEnemy(EnemyPrefab, SpawnPoints[i]), FindEnemyDataByTypeAndElement(EnemyType.Melee, ElementalType.None));
+                    int hordeNumber = Random.Range(SpawnerData.MinNormalEnemies, SpawnerData.MaxNormalEnemies + 1);
+
+                    for (int j = 0; j < hordeNumber; j++)
+                    {
+                        InitEnemy(SpawnEnemy(EnemyPrefab, SpawnPoints[i]), FindEnemyDataByTypeAndElement(EnemyType.Melee, ElementalType.None));
+                    } 
                 }
             }
         }
@@ -178,7 +192,7 @@ namespace TeamF
         /// <param name="_data"></param>
         void InitEnemy(Enemy _enemy, EnemyData _data)
         {
-            _enemy.Init(target, this, _data, "Enemy" + idCounter);
+            _enemy.Init(target, this, "Enemy" + idCounter, _data);
         }
 
         /// <summary>
@@ -211,7 +225,7 @@ namespace TeamF
         {
             for (int i = 0; i < enemiesSpawned.Count; i++)
             {
-                if (enemiesSpawned[i].ID == _idEnemy)
+                if (enemiesSpawned[i].SpecificID == _idEnemy)
                 {
                     enemiesSpawned.Remove(enemiesSpawned[i]);
                     return;
