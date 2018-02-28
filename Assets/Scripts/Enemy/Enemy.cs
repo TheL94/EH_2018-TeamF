@@ -172,6 +172,12 @@ namespace TeamF
             }
         }
         #endregion
+
+        void CheckMovementConstrains()
+        {
+            if (transform.rotation.x != 0 || transform.rotation.z != 0)
+                transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
+        }
     }
 
     public enum EnemyType
