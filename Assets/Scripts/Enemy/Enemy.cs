@@ -14,6 +14,7 @@ namespace TeamF
         public EnemyData Data { get; private set; }
         public string ID { get; private set; }
 
+        // da tolgiere possibilmente
         EnemyController controller;
 
         Color startColor;
@@ -56,7 +57,7 @@ namespace TeamF
             set
             {
                 if (value == null) // Se target è nullo chiede come target al controller il più vicino
-                    _target = controller.GetClosestTarget(this);
+                    _target = controller.GetClosestTarget(this); // cambiare il modo in cui viene chiamata questa funzione (dall'alto verso il basso)
                 else
                     _target = value;
             }
