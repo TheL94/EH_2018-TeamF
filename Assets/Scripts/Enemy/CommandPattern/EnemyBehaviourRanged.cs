@@ -30,10 +30,10 @@ namespace TeamF
             bull.Init(ammo, (myEnemy.Data as RangedData).BulletSpeed, BulletOwner.Enemy); 
         }
 
-        public virtual void DoTakeDamage(Enemy _enemy, float _damage, ElementalType _type)
+        public virtual float CalulateDamage(Enemy _enemy, float _damage, ElementalType _type)
         {
             _damage += (Multiplier * _damage) / 100;
-            _enemy.Data.Life -= _damage; // TODO : sbagliato, da rivedere
+            return _damage; 
         }
 
         public virtual void DoDeath(ElementalType _bulletType)

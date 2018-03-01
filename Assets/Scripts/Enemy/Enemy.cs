@@ -13,37 +13,45 @@ namespace TeamF
     {
         public EnemyData Data { get; private set; }
         public string ID { get; private set; }
+        public float MovementSpeed
+        {
+            get { return Agent.speed; }
+            set
+            {
+                Data.Speed += (Data.Speed * value) / 100;
+                Agent.speed = Data.Speed;
+
+            }
+        }
 
         // da tolgiere possibilmente
         EnemyController controller;
 
-        Color startColor;
         MeshRenderer render;
 
         #region API
         public void Init(IDamageable _target, EnemyController _controller, EnemyData _data, string _id)
         {
-            Agent = GetComponent<NavMeshAgent>();
-            ai_Enemy = GetComponent<AI_Enemy>();
-
             Target = _target;
             controller = _controller;
             Data = _data;
             ID = _id;
 
-            DeterminateBehaviourFromType(Data);
-
             Instantiate(Data.ModelPrefab, transform.position, transform.rotation, transform);
+
+            Agent = GetComponent<NavMeshAgent>();
+            ai_Enemy = GetComponent<AI_Enemy>();
             render = GetComponentInChildren<MeshRenderer>();
 
-            Agent.stoppingDistance = Data.DamageRange;
-            Agent.SetDestination(Target.Position);
+            DeterminateBehaviourFromType(Data);
 
-            startColor = render.material.color;
+            Agent.speed = Data.Speed;
+            Agent.stoppingDistance = Data.DamageRange;              //TODO: incorretto non va fatto così.
+            Agent.SetDestination(Target.Position);
 
             CurrentBehaviour.DoInit(this);
 
-            ai_Enemy.IsActive = true;
+            //ai_Enemy.IsActive = true;
         }
         #endregion
 
@@ -120,14 +128,6 @@ namespace TeamF
         }
         #endregion
 
-        #region Effects
-        public float MovementSpeed
-        {
-            get { return Agent.speed; }
-            set { Agent.speed += (Agent.speed * value) / 100; }
-        }
-        #endregion
-
         #region IDamageable
         public float Life
         {
@@ -149,10 +149,10 @@ namespace TeamF
 
         public void TakeDamage(float _damage, ElementalType _type = ElementalType.None)
         {
-            _damage += (_damage * DamagePercentage) / 100;
-            CurrentBehaviour.DoTakeDamage(this, _damage, _type);
+            _damage = (_damage * DamagePercentage) / 100;
+            Life -= CurrentBehaviour.CalulateDamage(this, _damage, _type);
 
-            if (Data.Life <= 0)
+            if (Life <= 0)
             {
                 CurrentBehaviour.DoDeath(_type);
                 // distrggere l'oggetto e avvisare il controller

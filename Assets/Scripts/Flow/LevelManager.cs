@@ -38,6 +38,11 @@ namespace TeamF
             if (roundPoints >= PointsToWin)
                 GoToGameWon();
         }
+
+        ~ LevelManager()
+        {
+            Events_LevelController.OnKillPointChanged -= UpdateRoundPoints;
+        }
     }
 }
 

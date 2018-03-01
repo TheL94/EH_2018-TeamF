@@ -12,6 +12,7 @@ namespace TeamF
         public GameObject ModelPrefab;
 
         public float Life;
+        public float Speed;
 
         public int Damage;
         public float DamageRange;
