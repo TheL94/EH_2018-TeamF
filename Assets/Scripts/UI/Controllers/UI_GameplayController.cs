@@ -32,16 +32,28 @@ namespace TeamF
             switch (_ammoValues.AmmoType)
             {
                 case ElementalType.Fire:
-                    FireAmmo.text = "Fire: " + _ammoValues.Ammo;
+                    if (_ammoValues.Ammo < 0)
+                        FireAmmo.text = "Fire: \u221E"; // simbolo dell'infinito
+                    else
+                        FireAmmo.text = "Fire: " + _ammoValues.Ammo;                
                     break;
                 case ElementalType.Water:
-                    WaterAmmo.text = "Water: " + _ammoValues.Ammo;
+                    if (_ammoValues.Ammo < 0)
+                        WaterAmmo.text = "Fire: \u221E"; // simbolo dell'infinito
+                    else
+                        WaterAmmo.text = "Water: " + _ammoValues.Ammo;
                     break;
                 case ElementalType.Poison:
-                    PoisonAmmo.text = "Poison: " + _ammoValues.Ammo;
+                    if (_ammoValues.Ammo < 0)
+                        PoisonAmmo.text = "Fire: \u221E"; // simbolo dell'infinito
+                    else
+                        PoisonAmmo.text = "Poison: " + _ammoValues.Ammo;
                     break;
                 case ElementalType.Thunder:
-                    ThunderAmmo.text = "Thunder: " + _ammoValues.Ammo;
+                    if (_ammoValues.Ammo < 0)
+                        ThunderAmmo.text = "Fire: \u221E"; // simbolo dell'infinito
+                    else
+                        ThunderAmmo.text = "Thunder: " + _ammoValues.Ammo;
                     break;
                 default:
                     break;
