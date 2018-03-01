@@ -17,13 +17,13 @@ namespace TeamF
 
         public virtual void DoAttack()
         {
-            myEnemy.target.TakeDamage(myEnemy.data.Damage);
+            myEnemy.Target.TakeDamage(myEnemy.Data.Damage);
         }
 
         public virtual void DoTakeDamage(Enemy _enemy, float _damage, ElementalType _type)
         {
             _damage += (Multiplier * _damage) / 100;
-            _enemy.Life -= _damage;         
+            _enemy.Data.Life -= _damage; // TODO : sbagliato, da rivedere  
         }
 
         public virtual void DoDeath(ElementalType _bulletType)

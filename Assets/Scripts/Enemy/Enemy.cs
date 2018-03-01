@@ -2,179 +2,75 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Framework.AI;
+using TeamF.AI;
 using DG.Tweening;
 
 namespace TeamF
 {
+    [RequireComponent(typeof(NavMeshAgent), typeof(AI_Enemy))]
     public class Enemy : MonoBehaviour, IDamageable, IParalyzable
     {
-        public float Life
-        {
-            get { return data.Life; }
-            set
-            {
-                data.Life = value;
-                render.material.DOColor(Color.white, .1f).OnComplete(() => { render.material.DORewind(); });
-                
-            }
-        }
-        public Vector3 Position
-        {
-            get { return transform.position; }
-            set { transform.position = value; }
-        }
-        public float MovementSpeed {
-            get { return data.Speed; }
-            set
-            {
-                data.Speed = value;
-                agent.speed = data.Speed;
-            }
-        }
-        public EnemyData data { get; set; }
-        public IEnemyBehaviour CurrentBehaviour { get; set; }
-        public string SpecificID { get; set; }
-        public IDamageable target { get; set; }
+        public EnemyData Data { get; private set; }
+        public string ID { get; private set; }
 
-        NavMeshAgent agent;
+        // da tolgiere possibilmente
         EnemyController controller;
+
+        Color startColor;
         MeshRenderer render;
-        float attackTimeCounter;
-        float agentTimeCounter;
 
-        public void Init(Character _target, EnemyController _controller, string _id, EnemyData _data)
+        #region API
+        public void Init(IDamageable _target, EnemyController _controller, EnemyData _data, string _id)
         {
-            target = _target;
-            controller = _controller;
-            SpecificID = _id;
-
-            data = _data;
-            DeterminateBehaviourFromType(data);
-
-            Instantiate(data.ModelPrefab, transform.position, transform.rotation, transform);           // Instanza il modello
-
-            agent = GetComponentInChildren<NavMeshAgent>();
-            agent.stoppingDistance = data.DamageRange;
-            agent.speed = data.Speed;
-            agent.SetDestination(_target.transform.position);
-
+            Agent = GetComponent<NavMeshAgent>();
+            ai_Enemy = GetComponent<AI_Enemy>();
             render = GetComponentInChildren<MeshRenderer>();
 
+            Target = _target;
+            controller = _controller;
+            Data = _data;
+            ID = _id;
+
+            DeterminateBehaviourFromType(Data);
+
+            Instantiate(Data.ModelPrefab, transform.position, transform.rotation, transform);
+
+            Agent.stoppingDistance = Data.DamageRange;
+            Agent.SetDestination(Target.Position);
+
+            startColor = render.material.color;
+
             CurrentBehaviour.DoInit(this);
+
+            ai_Enemy.IsActive = true;
         }
+        #endregion
 
-        public void SetPercentageOfMovementSpeed(float _movement)
+        #region Nav Mesh Agent
+        public NavMeshAgent Agent { get; private set; }
+
+        IDamageable _target;
+        public IDamageable Target
         {
-            MovementSpeed += (MovementSpeed * _movement) / 100;
-        }
-
-        /// <summary>
-        /// Setta il nuovo target con l'idamageable più vicino a se
-        /// </summary>
-        public void ChangeMyTarget()
-        {
-            target = controller.GetCloserTarget(this);
-        }
-
-        private void FixedUpdate()
-        {
-            if (target == null)
-                return;
-
-            if (target.Life > 0)
+            get { return _target; }
+            set
             {
-                Move();
-                Attack(); 
-            }
-            else
-                ChangeMyTarget();
-
-            CheckMovementConstrains();
-        }
-
-        void Move()
-        {
-            agentTimeCounter += Time.deltaTime;
-            if (agentTimeCounter >= 0.3f)
-            {
-                agent.SetDestination(target.Position);
-                agentTimeCounter = 0;
-            }
-        }
-
-        void RotateTowards(Vector3 _pointToLook)
-        {
-            transform.rotation = Quaternion.LookRotation(_pointToLook - transform.position, Vector3.up);
-        }
-
-        #region IDamageable
-        float _damageMultiplyer = 100;
-        public float DamageMultiplier {
-            get { return _damageMultiplyer; }
-            set { _damageMultiplyer = value; }
-        }
-
-        
-
-        /// <summary>
-        /// Funzione per prendere danno;
-        /// </summary>
-        /// <param name="_damage">Il valore da sottrarre alla vita</param>
-        /// <param name="_bulletType">Il tipo del proiettile</param>
-        public void TakeDamage(float _damage, ElementalType _bulletType)
-        {
-            _damage += (_damage * DamageMultiplier) / 100;
-            CurrentBehaviour.DoTakeDamage(this, _damage, _bulletType);
-
-            if (Life <= 0)
-            {
-                controller.KillEnemy(this);
-                CurrentBehaviour.DoDeath(_bulletType);
-                Destroy(gameObject);
+                if (value == null) // Se target è nullo chiede come target al controller il più vicino
+                    _target = controller.GetClosestTarget(this); // cambiare il modo in cui viene chiamata questa funzione (dall'alto verso il basso)
+                else
+                    _target = value;
             }
         }
         #endregion
 
-        #region IParalizer
-        /// <summary>
-        /// Chiamata dalla combo elementale paralizzante, 
-        /// </summary>
-        /// <param name="_isParalize"></param>
-        public void Paralize(bool _isParalized)
-        {
-            if (agent.isActiveAndEnabled)
-            {
-                agent.isStopped = _isParalized;
-            }
-        }
-
+        #region AI Controller
+        AI_Enemy ai_Enemy;
+        AI_State currentState;
         #endregion
 
-        void CheckMovementConstrains()
-        {
-            if (transform.rotation.x != 0 || transform.rotation.z != 0)
-                transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
-        }
-
-        /// <summary>
-        /// provoca danno alla vita del target se è alla distanza corretta
-        /// </summary>
-        void Attack()
-        {
-            attackTimeCounter += Time.deltaTime;
-            if (attackTimeCounter >= data.DamageRate)
-            {
-                if (Vector3.Distance(agent.destination, transform.position) <= agent.stoppingDistance)
-                {
-                    if (target.Life > 0)
-                    {
-                        RotateTowards(target.Position);
-                        CurrentBehaviour.DoAttack();
-                        attackTimeCounter = 0;
-                    }
-                }
-            }
-        }
+        #region Enemy Behaviour
+        public IEnemyBehaviour CurrentBehaviour { get; private set; }
 
         void DeterminateBehaviourFromType(EnemyData _data)
         {
@@ -222,8 +118,67 @@ namespace TeamF
                     break;
             }
         }
+        #endregion
 
-        
+        #region Effects
+        public float MovementSpeed
+        {
+            get { return Agent.speed; }
+            set { Agent.speed += (Agent.speed * value) / 100; }
+        }
+        #endregion
+
+        #region IDamageable
+        public float Life
+        {
+            get { return Data.Life; }
+            private set
+            {
+                Data.Life = value;
+                render.material.DOColor(Color.white, .1f).OnComplete(() => { render.material.DORewind(); });
+            }
+        }
+        public Vector3 Position { get { return transform.position; } }
+
+        float _damagePercentage = 100;
+        public float DamagePercentage
+        {
+            get { return _damagePercentage; }
+            set { _damagePercentage = value; }
+        }
+
+        public void TakeDamage(float _damage, ElementalType _type = ElementalType.None)
+        {
+            _damage += (_damage * DamagePercentage) / 100;
+            CurrentBehaviour.DoTakeDamage(this, _damage, _type);
+
+            if (Data.Life <= 0)
+            {
+                CurrentBehaviour.DoDeath(_type);
+                // distrggere l'oggetto e avvisare il controller
+            }
+        }
+        #endregion
+
+        #region IParalyzable
+        /// <summary>
+        /// Chiamata dalla combo elementale paralizzante, 
+        /// </summary>
+        /// <param name="_isParalize"></param>
+        public void Paralize(bool _isParalized)
+        {
+            if (Agent.isActiveAndEnabled)
+            {
+                Agent.isStopped = _isParalized;
+            }
+        }
+        #endregion
+
+        void CheckMovementConstrains()
+        {
+            if (transform.rotation.x != 0 || transform.rotation.z != 0)
+                transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
+        }
     }
 
     public enum EnemyType
@@ -241,3 +196,4 @@ namespace TeamF
         Thunder = 4
     }
 }
+

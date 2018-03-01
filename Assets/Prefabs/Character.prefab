@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 54766758108439196}
   - component: {fileID: 136670992667913964}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Character
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 136066301021687814}
   - component: {fileID: 23171740124067216}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: Backpack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
