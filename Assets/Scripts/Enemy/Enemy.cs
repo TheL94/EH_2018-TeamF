@@ -51,7 +51,7 @@ namespace TeamF
 
             CurrentBehaviour.DoInit(this);
 
-            //ai_Enemy.IsActive = true;
+            ai_Enemy.IsActive = true;
         }
         #endregion
 
