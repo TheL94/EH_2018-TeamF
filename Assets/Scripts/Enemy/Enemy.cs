@@ -23,7 +23,14 @@ namespace TeamF
             get { return transform.position; }
             set { transform.position = value; }
         }
-        public float MovementSpeed { get { return agent.speed; } set { agent.speed = value; } }
+        public float MovementSpeed {
+            get { return data.Speed; }
+            set
+            {
+                data.Speed = value;
+                agent.speed = data.Speed;
+            }
+        }
         public EnemyData data { get; set; }
         public IEnemyBehaviour CurrentBehaviour { get; set; }
         public string SpecificID { get; set; }
@@ -48,6 +55,7 @@ namespace TeamF
 
             agent = GetComponentInChildren<NavMeshAgent>();
             agent.stoppingDistance = data.DamageRange;
+            agent.speed = data.Speed;
             agent.SetDestination(_target.transform.position);
 
             render = GetComponentInChildren<MeshRenderer>();

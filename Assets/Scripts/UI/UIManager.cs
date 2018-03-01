@@ -11,25 +11,39 @@ namespace TeamF
         public UI_GameplayController UI_GameplayCtrl;
         public UI_MainMenuController UI_MainMenuCtrl;
         public UI_GameOverController UI_GameOverCtrl;
+        public UI_ValuesPanelController UI_ValuesPanelCtrl;
 
         [HideInInspector]
         public MenuBase CurrentMenu;
 
         public void MainMenuActions()
         {
+            UI_ValuesPanelCtrl.gameObject.SetActive(false);
             UI_MainMenuCtrl.gameObject.SetActive(true);
             UI_GameOverCtrl.gameObject.SetActive(false);
             UI_MainMenuCtrl.Init();
         }
 
+        ///TODO: qualcuno deve richiamare questa funzione passando i valori già settati dei dati, in modo che vengano scritti nei campi presenti
+        ///nel pannello dei valori
+        public void EnableValuesPanel(CharacterData _characterData, EnemyData _enemyData)
+        {
+            UI_MainMenuCtrl.gameObject.SetActive(false);
+            UI_GameOverCtrl.gameObject.SetActive(false);
+            UI_ValuesPanelCtrl.gameObject.SetActive(true);
+            UI_ValuesPanelCtrl.Init(_characterData, _enemyData);
+        }
+
         public void GameplayActions()
         {
+            UI_ValuesPanelCtrl.gameObject.SetActive(false);
             UI_MainMenuCtrl.gameObject.SetActive(false);
             UI_GameOverCtrl.gameObject.SetActive(false);
         }
 
         public void GameOverActions(bool _isWin)
         {
+            UI_ValuesPanelCtrl.gameObject.SetActive(false);
             UI_MainMenuCtrl.gameObject.SetActive(false);
             UI_GameOverCtrl.gameObject.SetActive(true);
             UI_GameOverCtrl.Init(_isWin);

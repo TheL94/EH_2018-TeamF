@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace TeamF
 {
-    public class UI_MainMenuController : MenuBase, IButtonController
+    public class UI_MainMenuController : MenuBase
     {
         
 
@@ -25,7 +25,7 @@ namespace TeamF
                     break;
                 case 1:
                     //Scena test
-                    GameManager.I.EnterTestScene();
+                    GameManager.I.EnterValuesMenu();     //TODO: Deve fare in modo che venga attivato il pannello dei valori e chiamato l'init.
                     break;
                 case 2:
                     //ExitGame;

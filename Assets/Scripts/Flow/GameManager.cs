@@ -14,12 +14,13 @@ namespace TeamF
         public LevelManager LevelMng;
         public EnemyController EnemyCtrl;
 
-        public GameObject PlayerPrefab;
         public AmmoCratesController AmmoController;
 
         [HideInInspector]
         public UIManager UIMng;
         public GameObject UIManagerPrefab;
+        [HideInInspector]
+        public Player Player;
 
         void Awake()
         {
@@ -34,9 +35,9 @@ namespace TeamF
         {
             flowMng = new FlowManager();
             ChangeFlowState(FlowState.Loading);
-            Player player = FindObjectOfType<Player>();
-            if (player != null)
-                player.Init();
+            Player = FindObjectOfType<Player>();
+            if (Player != null)
+                Player.Init();
         }
 
         private void Update()
@@ -85,17 +86,6 @@ namespace TeamF
             ChangeFlowState(FlowState.Gameplay);
         }
 
-        public void EnterTestScene()
-        {
-            Player player = FindObjectOfType<Player>();
-            if (player != null)
-                player.CharacterInit(true);
-
-            UIMng.GameplayActions();
-            EnemyCtrl.Init(true);
-            ChangeFlowState(FlowState.Gameplay);
-        }
-
         public void PauseActions()
         {
 
@@ -123,6 +113,26 @@ namespace TeamF
             Application.Quit();
         }
         #endregion
+
+        /// <summary>
+        /// Attiva il pannello dei valori e gli passa i dati per settare i campi all'inizio
+        /// </summary>
+        public void EnterValuesMenu()
+        {
+            UIMng.EnableValuesPanel(Player.GetCharacterData(), EnemyCtrl.SpawnerData.EnemiesData[0]);               // Farsi restituire i dati dal data manager
+        }
+
+        //TODO: Operazioni da svolgere dopo aver settato i valori del pannello dei valori
+        public void EnterTestScene()
+        {
+            if (Player != null)
+                Player.CharacterInit(true);
+
+            UIMng.GameplayActions();
+            EnemyCtrl.Init(true);
+            ChangeFlowState(FlowState.Gameplay);
+        }
+
         #endregion
     }
 }

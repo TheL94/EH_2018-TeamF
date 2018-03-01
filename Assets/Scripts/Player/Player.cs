@@ -41,6 +41,17 @@ namespace TeamF
             character.Init(this, _isTestScene);
         }
 
+        public void SetCharacterData(CharacterData _data)
+        {
+            character.CharacterData = _data;
+        }
+
+        ///TODO: Eliminare non appena verrà creato il data manager [andrà modificato GameManager in enter values menu]
+        public CharacterData GetCharacterData()
+        {
+            return character.CharacterData;
+        }
+
         void CheckInput()
         {
             InputStatus status = controllerInput.GetPlayerInputStatus();
