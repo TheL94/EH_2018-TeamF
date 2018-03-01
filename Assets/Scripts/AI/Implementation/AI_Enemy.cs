@@ -9,8 +9,6 @@ namespace TeamF.AI
     {
         public Enemy Enemy { get; private set; }
 
-        public AI_State StartState;
-
         protected override void OnInit()
         {
             Enemy = GetComponent<Enemy>();

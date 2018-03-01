@@ -11,4 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b81a7753fd21994bb72925d2560e288, type: 3}
   m_Name: Enemy_NoTargetAvailable
   m_EditorClassIdentifier: 
-  Actions: []
+  Actions:
+  - Delay: 0
+    Loop: 0
+    Action: {fileID: 11400000, guid: eee0e97e521ea814d95ae07c996ac999, type: 2}
+    OnSuccess: {fileID: 0}
+    OnFailure: {fileID: 0}

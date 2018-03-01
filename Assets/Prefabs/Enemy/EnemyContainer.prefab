@@ -84,7 +84,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsActive: 0
-  InitialDefaultState: {fileID: 0}
+  InitialDefaultState: {fileID: 11400000, guid: cd0e5080c7089f946b8052e8a7966999,
+    type: 2}
 --- !u!114 &114581156254199516
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -93,7 +94,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1267129680638450}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5d1da0ac42fc3040a26ba80ac9223a1, type: 3}
+  m_Script: {fileID: 11500000, guid: f5f2cdab245fc494ea57c1f0df2a76f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114655604312748810

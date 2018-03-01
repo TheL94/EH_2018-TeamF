@@ -5,8 +5,8 @@ using Framework.AI;
 
 namespace TeamF.AI
 {
-    [CreateAssetMenu(menuName = "AI/NewAction/Wait")]
-    public class Wait : AI_Action
+    [CreateAssetMenu(menuName = "AI/NewAction/DelayAction")]
+    public class DelayAction : AI_Action
     {
         protected override bool Act(AI_Controller _controller)
         {

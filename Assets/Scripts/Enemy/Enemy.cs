@@ -25,7 +25,6 @@ namespace TeamF
         {
             Agent = GetComponent<NavMeshAgent>();
             ai_Enemy = GetComponent<AI_Enemy>();
-            render = GetComponentInChildren<MeshRenderer>();
 
             Target = _target;
             controller = _controller;
@@ -35,6 +34,7 @@ namespace TeamF
             DeterminateBehaviourFromType(Data);
 
             Instantiate(Data.ModelPrefab, transform.position, transform.rotation, transform);
+            render = GetComponentInChildren<MeshRenderer>();
 
             Agent.stoppingDistance = Data.DamageRange;
             Agent.SetDestination(Target.Position);
