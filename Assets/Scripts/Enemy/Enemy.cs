@@ -46,8 +46,7 @@ namespace TeamF
             DeterminateBehaviourFromType(Data);
 
             Agent.speed = Data.Speed;
-            Agent.stoppingDistance = Data.DamageRange;              //TODO: incorretto non va fatto così.
-            Agent.SetDestination(Target.Position);
+            Agent.stoppingDistance = Data.DamageRange;  //TODO: incorretto, non va fatto così.
 
             CurrentBehaviour.DoInit(this);
 
@@ -173,12 +172,6 @@ namespace TeamF
             }
         }
         #endregion
-
-        void CheckMovementConstrains()
-        {
-            if (transform.rotation.x != 0 || transform.rotation.z != 0)
-                transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
-        }
     }
 
     public enum EnemyType
