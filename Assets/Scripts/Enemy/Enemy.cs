@@ -13,6 +13,16 @@ namespace TeamF
     {
         public EnemyData Data { get; private set; }
         public string ID { get; private set; }
+        public float MovementSpeed
+        {
+            get { return Agent.speed; }
+            set
+            {
+                Data.Speed += (Data.Speed * value) / 100;
+                Agent.speed = Data.Speed;
+
+            }
+        }
 
         // da tolgiere possibilmente
         EnemyController controller;
@@ -36,7 +46,8 @@ namespace TeamF
 
             Instantiate(Data.ModelPrefab, transform.position, transform.rotation, transform);
 
-            Agent.stoppingDistance = Data.DamageRange;
+            Agent.speed = Data.Speed;
+            Agent.stoppingDistance = Data.DamageRange;              //TODO: incorretto non va fatto così.
             Agent.SetDestination(Target.Position);
 
             startColor = render.material.color;
@@ -117,14 +128,6 @@ namespace TeamF
                     }
                     break;
             }
-        }
-        #endregion
-
-        #region Effects
-        public float MovementSpeed
-        {
-            get { return Agent.speed; }
-            set { Agent.speed += (Agent.speed * value) / 100; }
         }
         #endregion
 
