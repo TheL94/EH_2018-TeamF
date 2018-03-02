@@ -24,10 +24,9 @@ namespace TeamF
             }
         }
 
-        // da tolgiere possibilmente
         EnemyController controller;
-
         MeshRenderer render;
+        AI_Enemy ai_Enemy;
 
         #region API
         public void Init(IDamageable _target, EnemyController _controller, EnemyData _data, string _id)
@@ -46,7 +45,7 @@ namespace TeamF
             DeterminateBehaviourFromType(Data);
 
             Agent.speed = Data.Speed;
-            Agent.stoppingDistance = Data.DamageRange;  //TODO: incorretto, non va fatto così.
+            Agent.stoppingDistance = Data.DamageRange;
 
             CurrentBehaviour.DoInit(this);
 
@@ -69,11 +68,6 @@ namespace TeamF
                     _target = value;
             }
         }
-        #endregion
-
-        #region AI Controller
-        AI_Enemy ai_Enemy;
-        AI_State currentState;
         #endregion
 
         #region Enemy Behaviour
@@ -161,16 +155,9 @@ namespace TeamF
 
         #region IParalyzable
         /// <summary>
-        /// Chiamata dalla combo elementale paralizzante, 
+        /// Chiamata dalla combo elementale paralizzante
         /// </summary>
-        /// <param name="_isParalize"></param>
-        public void Paralize(bool _isParalized)
-        {
-            if (Agent.isActiveAndEnabled)
-            {
-                Agent.isStopped = _isParalized;
-            }
-        }
+        public bool IsParalized { get; set; }
         #endregion
     }
 

@@ -53,7 +53,10 @@ namespace TeamF
 
         public Vector3 Position
         {
-            get { return transform.position; }
+            get
+            {
+                return transform.position;
+            }
         }
 
         float _damagePercentage = 100;
@@ -77,21 +80,16 @@ namespace TeamF
             if (Life <= 0)
             {
                 //Destroy(movement.ModelToRotate);
-                player.AvatarDeath();
+                player.CharacterDeath();
             }
         }
         #endregion
 
         #region IParalyzable
         /// <summary>
-        /// Setta la variabile booleana isParalized nel player
+        /// Chiamata dalla combo elementale paralizzante
         /// </summary>
-        /// <param name="_isParalized">Valore da assegnare alla variabile nel player; True: vengono bloccati i movimenti; False: vengono attivati</param>
-        public void Paralize(bool _isParalized)
-        {
-            player.IsParalized = _isParalized;
-        }
-
+        public bool IsParalized { get; set; }
         #endregion
 
         #region Weapon

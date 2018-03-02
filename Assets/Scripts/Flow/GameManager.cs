@@ -35,9 +35,7 @@ namespace TeamF
         {
             flowMng = new FlowManager();
             ChangeFlowState(FlowState.Loading);
-            Player = FindObjectOfType<Player>();
-            if (Player != null)
-                Player.Init();
+            // NELLO START NON CI INFILARE NIENTE ! USA L'AZIONE DI LOADING
         }
 
         private void Update()
@@ -64,6 +62,11 @@ namespace TeamF
         public void LoadingActions()
         {
             UIMng = Instantiate(UIManagerPrefab, transform).GetComponentInChildren<UIManager>();
+
+            Player = GetComponent<Player>();
+            if (Player != null)
+                Player.Init();
+
             ChangeFlowState(FlowState.Menu);
         }
 

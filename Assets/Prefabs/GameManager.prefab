@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4608509917988704}
   - component: {fileID: 114100090815372252}
+  - component: {fileID: 114731148670223682}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -52,9 +53,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyCtrl: {fileID: 0}
-  PlayerPrefab: {fileID: 1533697916002696, guid: 147fcc9a9e9101345a30dc035775ffa9,
-    type: 2}
   AmmoController: {fileID: 0}
   UIMng: {fileID: 0}
   UIManagerPrefab: {fileID: 1784264425848098, guid: 786bc380dcf915c418d04c91b3b47d86,
     type: 2}
+  Player: {fileID: 0}
+--- !u!114 &114731148670223682
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1893466740750056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e04875ffe7c14254d93184771cbe27a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

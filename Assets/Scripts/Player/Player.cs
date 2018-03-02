@@ -7,19 +7,6 @@ namespace TeamF
 {
     public class Player : MonoBehaviour
     {
-        /// <summary>
-        /// Se il player ha attraversato una nube paralizzante, viene settata questa variabile che blocca gli input.
-        /// </summary>
-        public bool IsParalized { get; set; }
-
-        Character character;
-        ControllerInput controllerInput;
-
-        public void AvatarDeath()
-        {
-            GameManager.I.LevelMng.GoToGameLost();
-        }
-
         void Update()
         {
             CheckInput();
@@ -27,10 +14,12 @@ namespace TeamF
 
         public void Init()
         {
+            character = FindObjectOfType<Character>();
             controllerInput = new ControllerInput(0);
-            character = GetComponent<Character>();
-            IsParalized = false;
         }
+
+        #region Character
+        Character character;
 
         /// <summary>
         /// Chiama l'init per il character
@@ -39,6 +28,11 @@ namespace TeamF
         public void CharacterInit(bool _isTestScene = false)
         {
             character.Init(this, _isTestScene);
+        }
+
+        public void CharacterDeath()
+        {
+            GameManager.I.LevelMng.GoToGameLost();
         }
 
         public void SetCharacterData(CharacterData _data)
@@ -51,21 +45,18 @@ namespace TeamF
         {
             return character.CharacterData;
         }
+        #endregion
+
+        #region Input
+        ControllerInput controllerInput;
 
         void CheckInput()
         {
-            InputStatus status = controllerInput.GetPlayerInputStatus();
-            if (IsParalized)
+            //InputStatus status = controllerInput.GetPlayerInputStatus();
+            if (character.IsParalized)
                 return;
-            if (status.IsConnected)
-                CheckControllerInput();
             else
                 CheckKeyboardInput();
-        }
-
-        void CheckControllerInput()
-        {
-
         }
 
         void CheckKeyboardInput()
@@ -116,5 +107,6 @@ namespace TeamF
                     GameManager.I.UIMng.CurrentMenu.Select();
             }
         }
+        #endregion
     }
 }

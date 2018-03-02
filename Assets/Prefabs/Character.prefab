@@ -68,7 +68,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4628954524922472}
-  - component: {fileID: 114535251106631316}
   - component: {fileID: 114614664107629650}
   - component: {fileID: 114537653086299798}
   - component: {fileID: 54766758108439196}
@@ -465,17 +464,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Barrel: {fileID: 1313148412620624}
---- !u!114 &114535251106631316
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1533697916002696}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e04875ffe7c14254d93184771cbe27a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114537653086299798
 MonoBehaviour:
   m_ObjectHideFlags: 1
