@@ -42,12 +42,12 @@ namespace TeamF
             ai_Enemy = GetComponent<AI_Enemy>();
             render = GetComponentInChildren<MeshRenderer>();
 
-            DeterminateBehaviourFromType(Data);
+            CurrentBehaviour = DeterminateBehaviourFromType(Data);
+            CurrentBehaviour.DoInit(this);
 
             Agent.speed = Data.Speed;
             Agent.stoppingDistance = Data.DamageRange;
-
-            CurrentBehaviour.DoInit(this);
+            Agent.SetDestination(Target.Position);
 
             ai_Enemy.InitialDefaultState = _initalState;
             ai_Enemy.IsActive = true;
@@ -74,7 +74,7 @@ namespace TeamF
         #region Enemy Behaviour
         public IEnemyBehaviour CurrentBehaviour { get; private set; }
 
-        void DeterminateBehaviourFromType(EnemyData _data)
+        IEnemyBehaviour DeterminateBehaviourFromType(EnemyData _data)
         {
             switch (_data.EnemyType)
             {
@@ -82,43 +82,34 @@ namespace TeamF
                     switch (_data.ElementalType)
                     {
                         case ElementalType.None:
-                            CurrentBehaviour = new EnemyBehaviourMelee();
-                            break;
+                            return new EnemyBehaviourMelee();
                         case ElementalType.Fire:
-                            CurrentBehaviour = new EnemyFireBehaviour();
-                            break;
+                            return new EnemyFireBehaviour();
                         case ElementalType.Water:
-                            CurrentBehaviour = new EnemyWaterBehaviour();
-                            break;
+                            return new EnemyWaterBehaviour();
                         case ElementalType.Poison:
-                            CurrentBehaviour = new EnemyPoisonBehaviour();
-                            break;
+                            return new EnemyPoisonBehaviour();
                         case ElementalType.Thunder:
-                            CurrentBehaviour = new EnemyThunderBehaviour();
-                            break;
+                            return new EnemyThunderBehaviour();
                     }
                     break;
                 case EnemyType.Ranged:
                     switch (_data.ElementalType)
                     {
                         case ElementalType.None:
-                            CurrentBehaviour = new EnemyBehaviourRanged();
-                            break;
+                            return new EnemyBehaviourRanged();
                         case ElementalType.Fire:
-                            CurrentBehaviour = new EnemyFireBehaviour();
-                            break;
+                            return new EnemyFireBehaviour();
                         case ElementalType.Water:
-                            CurrentBehaviour = new EnemyWaterBehaviour();
-                            break;
+                            return new EnemyWaterBehaviour();
                         case ElementalType.Poison:
-                            CurrentBehaviour = new EnemyPoisonBehaviour();
-                            break;
+                            return new EnemyPoisonBehaviour();
                         case ElementalType.Thunder:
-                            CurrentBehaviour = new EnemyThunderBehaviour();
-                            break;
+                            return new EnemyThunderBehaviour();
                     }
                     break;
             }
+            return null;
         }
         #endregion
 

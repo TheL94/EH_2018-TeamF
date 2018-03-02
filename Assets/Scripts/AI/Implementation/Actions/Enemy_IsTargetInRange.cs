@@ -15,9 +15,7 @@ namespace TeamF.AI
 
         bool IsTargetInRange(Enemy _enemy)
         {
-            if (_enemy.Agent.destination == _enemy.Position)
-                return false;
-            else if (Vector3.Distance(_enemy.Agent.destination, _enemy.Position) <= _enemy.Agent.stoppingDistance)
+            if (Vector3.Distance(_enemy.Agent.destination, _enemy.Position) <= _enemy.Agent.stoppingDistance)
                 return true;
             else
                 return false;

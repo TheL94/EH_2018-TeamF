@@ -130,9 +130,6 @@ namespace TeamF
         /// <param name="_enemyPrefab"></param>
         void SpawnHorde()
         {
-            if (enemiesSpawned.Count >= Data.MaxEnemiesInScene)
-                return;
-
             int spawnIndexToExclude = ChooseSpawnPointToExclude();
 
             for (int i = 0; i < SpawnPoints.Count; i++)
@@ -146,7 +143,9 @@ namespace TeamF
 
                     for (int j = 0; j < elementalsEnemies; j++)
                     {
-                        InitEnemy(SpawnEnemy(EnemyPrefab, SpawnPoints[i]), FindEnemyDataByTypeAndElement(EnemyType.Melee, (ElementalType)Random.Range(1, 5)));
+                        Enemy newEnemy = SpawnEnemy(EnemyPrefab, SpawnPoints[i]);
+                        if (newEnemy != null)
+                            InitEnemy(newEnemy, FindEnemyDataByTypeAndElement(EnemyType.Melee, (ElementalType)Random.Range(1, 5)));
                     } 
                 }
 
@@ -156,7 +155,9 @@ namespace TeamF
 
                     for (int j = 0; j < rangedEnemies; j++)
                     {
-                        InitEnemy(SpawnEnemy(EnemyPrefab, SpawnPoints[i]), FindEnemyDataByTypeAndElement(EnemyType.Ranged, ElementalType.None));
+                        Enemy newEnemy = SpawnEnemy(EnemyPrefab, SpawnPoints[i]);
+                        if(newEnemy != null)
+                            InitEnemy(newEnemy, FindEnemyDataByTypeAndElement(EnemyType.Ranged, ElementalType.None));
                     } 
                 }
 
@@ -166,7 +167,9 @@ namespace TeamF
 
                     for (int j = 0; j < hordeNumber; j++)
                     {
-                        InitEnemy(SpawnEnemy(EnemyPrefab, SpawnPoints[i]), FindEnemyDataByTypeAndElement(EnemyType.Melee, ElementalType.None));
+                        Enemy newEnemy = SpawnEnemy(EnemyPrefab, SpawnPoints[i]);
+                        if (newEnemy != null)
+                            InitEnemy(newEnemy, FindEnemyDataByTypeAndElement(EnemyType.Melee, ElementalType.None));
                     } 
                 }
             }
@@ -202,6 +205,9 @@ namespace TeamF
         /// <param name="SpawnElementalEnemy">True se il nemico da spawnare è elementale</param>
         Enemy SpawnEnemy(Enemy _enemyPrefab, Transform _spawnPoint)
         {
+            if (enemiesSpawned.Count >= Data.MaxEnemiesInScene)
+                return null;
+
             Enemy newEnemy = Instantiate(_enemyPrefab, _spawnPoint.position, Quaternion.identity, transform);
             enemiesSpawned.Add(newEnemy);
 
