@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Framework.AI;
 
 namespace TeamF
 {
-    [CreateAssetMenu(fileName = "SpawnerData", menuName = "EnemySpawner/SpawnerData", order = 1)]
-    public class EnemyControllerData : ScriptableObject
+    [CreateAssetMenu(fileName = "EnemyManagerData", menuName = "EnemySpawner/EnemyManagerData", order = 1)]
+    public class EnemyManagerData : ScriptableObject
     {
         public float StartDelayTime;
         public float DelayHordes;
@@ -22,6 +23,8 @@ namespace TeamF
         public bool BlockSpawnRanged;
         public int MaxRangedEnemies;
         public int MinRangedEnemies;
+
+        public AI_State EnemyInitialState;
 
         public List<EnemyData> EnemiesData;
     }

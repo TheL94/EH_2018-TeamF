@@ -84,9 +84,9 @@ namespace TeamF
             if (Player != null)
                 Player.InitCharacter();
 
+            EnemyMng.Init(Player.Character);
             UIMng.GameplayActions();
             AmmoController.Init();
-            EnemyMng.Init(Player.Character);
             ChangeFlowState(FlowState.Gameplay);
         }
 
@@ -123,7 +123,7 @@ namespace TeamF
         /// </summary>
         public void EnterValuesMenu()
         {
-            UIMng.EnableValuesPanel(Player.Character.Data, EnemyMng.SpawnerData.EnemiesData[0]);               // Farsi restituire i dati dal data manager
+            UIMng.EnableValuesPanel(Player.Character.Data, EnemyMng.Data.EnemiesData[0]);               // Farsi restituire i dati dal data manager
         }
 
         //TODO: Operazioni da svolgere dopo aver settato i valori del pannello dei valori

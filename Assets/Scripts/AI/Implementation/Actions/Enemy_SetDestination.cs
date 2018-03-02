@@ -15,9 +15,6 @@ namespace TeamF.AI
 
         bool SetDestination(Enemy _enemy)
         {
-            if (_enemy.Target == null || _enemy.Target.Life <= 0)
-                return false;
-
             _enemy.Agent.SetDestination(_enemy.Target.Position);
             return true;
         }

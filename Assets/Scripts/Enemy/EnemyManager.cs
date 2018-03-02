@@ -16,7 +16,7 @@ namespace TeamF
                 return;
 
             spawnTime += Time.deltaTime;
-            if (spawnTime >= SpawnerData.DelayHordes && EnemyTarget.Life > 0)
+            if (spawnTime >= Data.DelayHordes && EnemyTarget.Life > 0)
             {
                 SpawnHorde();
                 spawnTime = 0;
@@ -107,7 +107,7 @@ namespace TeamF
 
         #region Spawner
         public bool CanSpawn { get; set; }
-        public EnemyControllerData SpawnerData;
+        public EnemyManagerData Data;
         public List<Transform> SpawnPoints = new List<Transform>();
         List<Enemy> enemiesSpawned = new List<Enemy>();
         int idCounter;
@@ -119,7 +119,7 @@ namespace TeamF
         /// <returns></returns>
         IEnumerator FirstSpawn()
         {
-            yield return new WaitForSeconds(SpawnerData.StartDelayTime);
+            yield return new WaitForSeconds(Data.StartDelayTime);
             SpawnHorde();
             CanSpawn = true;
         }
@@ -130,7 +130,7 @@ namespace TeamF
         /// <param name="_enemyPrefab"></param>
         void SpawnHorde()
         {
-            if (enemiesSpawned.Count >= SpawnerData.MaxEnemiesInScene)
+            if (enemiesSpawned.Count >= Data.MaxEnemiesInScene)
                 return;
 
             int spawnIndexToExclude = ChooseSpawnPointToExclude();
@@ -140,9 +140,9 @@ namespace TeamF
                 if (i == spawnIndexToExclude)
                     continue;
 
-                if (!SpawnerData.BlockSpawnElemental)
+                if (!Data.BlockSpawnElemental)
                 {
-                    int elementalsEnemies = Random.Range(SpawnerData.MinElementalsEnemies, SpawnerData.MaxElementalsEnemies + 1);
+                    int elementalsEnemies = Random.Range(Data.MinElementalsEnemies, Data.MaxElementalsEnemies + 1);
 
                     for (int j = 0; j < elementalsEnemies; j++)
                     {
@@ -150,9 +150,9 @@ namespace TeamF
                     } 
                 }
 
-                if (!SpawnerData.BlockSpawnRanged)
+                if (!Data.BlockSpawnRanged)
                 {
-                    int rangedEnemies = Random.Range(SpawnerData.MinRangedEnemies, SpawnerData.MaxRangedEnemies + 1);
+                    int rangedEnemies = Random.Range(Data.MinRangedEnemies, Data.MaxRangedEnemies + 1);
 
                     for (int j = 0; j < rangedEnemies; j++)
                     {
@@ -160,9 +160,9 @@ namespace TeamF
                     } 
                 }
 
-                if (!SpawnerData.BlockSpawnNormal)
+                if (!Data.BlockSpawnNormal)
                 {
-                    int hordeNumber = Random.Range(SpawnerData.MinNormalEnemies, SpawnerData.MaxNormalEnemies + 1);
+                    int hordeNumber = Random.Range(Data.MinNormalEnemies, Data.MaxNormalEnemies + 1);
 
                     for (int j = 0; j < hordeNumber; j++)
                     {
@@ -213,10 +213,10 @@ namespace TeamF
         /// Inizializza nemico
         /// </summary>
         /// <param name="_enemy"></param>
-        /// <param name="_data"></param>
-        void InitEnemy(Enemy _enemy, EnemyData _data)
+        /// <param name="_enemyData"></param>
+        void InitEnemy(Enemy _enemy, EnemyData _enemyData)
         {
-            _enemy.Init(EnemyTarget, this, _data, "Enemy" + idCounter);
+            _enemy.Init(EnemyTarget, this, _enemyData, Data.EnemyInitialState, "Enemy" + idCounter);
         }
 
         /// <summary>
@@ -227,7 +227,7 @@ namespace TeamF
         /// <returns></returns>
         EnemyData FindEnemyDataByTypeAndElement(EnemyType _type, ElementalType _element)
         {
-            List<EnemyData> sortedByType = SpawnerData.EnemiesData.Where(d => d.EnemyType == _type).ToList();
+            List<EnemyData> sortedByType = Data.EnemiesData.Where(d => d.EnemyType == _type).ToList();
             List<EnemyData> sortedByElement = new List<EnemyData>();
 
             if (sortedByType.Count == 1)
@@ -244,6 +244,5 @@ namespace TeamF
             return null;
         }
         #endregion
-
     }
 }

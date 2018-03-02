@@ -9,24 +9,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 78d0cecd44868ed4a9189d1e2bc0e35d, type: 3}
-  m_Name: SpawnerData
+  m_Name: EnemyManagerDataTestScene
   m_EditorClassIdentifier: 
-  StartDelayTime: 10
-  DelayHordes: 5
-  MaxEnemiesInScene: 40
-  BlockSpawnNormal: 0
-  MaxNormalEnemies: 3
+  StartDelayTime: 1
+  DelayHordes: 3
+  MaxEnemiesInScene: 1
+  BlockSpawnNormal: 1
+  MaxNormalEnemies: 0
   MinNormalEnemies: 0
   BlockSpawnElemental: 0
-  MaxElementalsEnemies: 3
-  MinElementalsEnemies: 1
-  BlockSpawnRanged: 0
+  MaxElementalsEnemies: 5
+  MinElementalsEnemies: 5
+  BlockSpawnRanged: 1
   MaxRangedEnemies: 2
   MinRangedEnemies: 1
+  EnemyInitialState: {fileID: 11400000, guid: cd0e5080c7089f946b8052e8a7966999, type: 2}
   EnemiesData:
-  - {fileID: 11400000, guid: 5a6fea14b75e31644a1ea7dad9334747, type: 2}
   - {fileID: 11400000, guid: b87b82b560d7be7478495298387e24bc, type: 2}
-  - {fileID: 11400000, guid: 756bc42a005aa824d9f672139f7ea701, type: 2}
+  - {fileID: 11400000, guid: 5a6fea14b75e31644a1ea7dad9334747, type: 2}
   - {fileID: 11400000, guid: 9f12c6c547796534f9ed845b57219c53, type: 2}
-  - {fileID: 11400000, guid: e9667d5730c0b8d48bbc12d91ed5dbe3, type: 2}
   - {fileID: 11400000, guid: e4ae94c52e4390347990b527c6d740ae, type: 2}
+  - {fileID: 11400000, guid: e9667d5730c0b8d48bbc12d91ed5dbe3, type: 2}
+  - {fileID: 11400000, guid: 756bc42a005aa824d9f672139f7ea701, type: 2}

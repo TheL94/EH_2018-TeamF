@@ -28,7 +28,7 @@ namespace TeamF
         /// <param name="_isTestScene">Se true, il character deve essere inizializzato per la scena di test, altrimenti per una scena di gioco normale</param>
         public void InitCharacter(bool _isTestScene = false)
         {
-            Character.Init(this, CharacterData,_isTestScene);
+            Character.Init(this, Instantiate(CharacterData), _isTestScene);
         }
 
         public void CharacterDeath()

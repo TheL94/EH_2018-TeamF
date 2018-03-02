@@ -22,6 +22,8 @@ namespace TeamF
             player = _player;
             Data = _data;
 
+            IsParalized = false;
+
             currentWeapon = GetComponentInChildren<Weapon>();
             movement = GetComponent<Movement>();
 
@@ -54,13 +56,7 @@ namespace TeamF
             }
         }
 
-        public Vector3 Position
-        {
-            get
-            {
-                return transform.position;
-            }
-        }
+        public Vector3 Position { get { return transform.position; } }
 
         float _damagePercentage = 100;
         public float DamagePercentage

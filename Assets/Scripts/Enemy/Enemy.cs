@@ -29,7 +29,7 @@ namespace TeamF
         AI_Enemy ai_Enemy;
 
         #region API
-        public void Init(IDamageable _target, EnemyManager _manager, EnemyData _data, string _id)
+        public void Init(IDamageable _target, EnemyManager _manager, EnemyData _data, AI_State _initalState, string _id)
         {
             Target = _target;
             manager = _manager;
@@ -49,6 +49,7 @@ namespace TeamF
 
             CurrentBehaviour.DoInit(this);
 
+            ai_Enemy.InitialDefaultState = _initalState;
             ai_Enemy.IsActive = true;
         }
         #endregion
