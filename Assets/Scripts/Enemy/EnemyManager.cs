@@ -24,9 +24,9 @@ namespace TeamF
         }
 
         #region API
-        public void Init(IDamageable _target, bool _canSpawn = false)
+        public void Init(IDamageable _enemyTarget, bool _canSpawn = false)
         {
-            EnemyTarget = _target;
+            EnemyTarget = _enemyTarget;
 
             // TODO : PER FULVIO - a cosa serve ? non ha molto senso
             if (!_canSpawn)
