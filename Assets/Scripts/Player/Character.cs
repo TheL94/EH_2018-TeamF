@@ -75,7 +75,7 @@ namespace TeamF
         {
             if (isInvincible)
                 return;
-            _damage += (_damage * DamagePercentage) / 100;
+            _damage = (_damage * DamagePercentage) / 100;
             Life -= _damage;
 
             CharacterRenderer.material.DOColor(Color.white, .1f).OnComplete(() => { CharacterRenderer.material.DORewind(); });         
