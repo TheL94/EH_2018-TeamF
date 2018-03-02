@@ -22,6 +22,7 @@ namespace TeamF
             player = _player;
             Data = _data;
 
+            Life = Data.Life;
             IsParalized = false;
 
             currentWeapon = GetComponentInChildren<Weapon>();
@@ -45,14 +46,14 @@ namespace TeamF
         #endregion
 
         #region IDamageable
+        float _life;
         public float Life
         {
-            get { return Data.Life; }
+            get { return _life; }
             private set
             {
-                Data.Life = value;
-                CharacterRenderer.material.DOColor(Color.white, .1f).OnComplete(() => { CharacterRenderer.material.DORewind(); });
-                Events_UIController.LifeChanged(Data.Life, Data.Life);
+                _life = value;
+                Events_UIController.LifeChanged(Life, Data.Life);
             }
         }
 
@@ -76,6 +77,9 @@ namespace TeamF
                 return;
             _damage += (_damage * DamagePercentage) / 100;
             Life -= _damage;
+
+            CharacterRenderer.material.DOColor(Color.white, .1f).OnComplete(() => { CharacterRenderer.material.DORewind(); });         
+
             if (Life <= 0)
             {
                 //Destroy(movement.ModelToRotate);

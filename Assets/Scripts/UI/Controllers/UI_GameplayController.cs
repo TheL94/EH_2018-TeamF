@@ -7,7 +7,6 @@ namespace TeamF
 {
     public class UI_GameplayController : MonoBehaviour
     {
-
         public Text FireAmmo;
         public Text WaterAmmo;
         public Text PoisonAmmo;
@@ -76,6 +75,5 @@ namespace TeamF
             Events_UIController.OnPointsChanged -= UpdareKillPoints;
             Events_UIController.OnLifeChanged -= UpdateLifeSlider;
         }
-
     }
 }
