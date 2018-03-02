@@ -9,11 +9,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0b81a7753fd21994bb72925d2560e288, type: 3}
-  m_Name: Enemy_Attack
+  m_Name: Enemy_AttackCoolDown
   m_EditorClassIdentifier: 
   Actions:
-  - Delay: 0
+  - Delay: 1
     Loop: 0
-    Action: {fileID: 11400000, guid: 4de358522c95ac44e8cf78f511282059, type: 2}
-    OnSuccess: {fileID: 0}
+    Action: {fileID: 11400000, guid: 0efc6da8ce4b5c94bb31fff45b35d3ff, type: 2}
+    OnSuccess: {fileID: 11400000, guid: cd0e5080c7089f946b8052e8a7966999, type: 2}
     OnFailure: {fileID: 0}

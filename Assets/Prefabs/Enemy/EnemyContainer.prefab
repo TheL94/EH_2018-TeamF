@@ -84,7 +84,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsActive: 0
-  InitialDefaultState: {fileID: 11400000, guid: 59b1b92b469e58d4c8f16006462dbd55,
+  InitialDefaultState: {fileID: 0}
+  AttackCoolDownState: {fileID: 11400000, guid: ba39caf562a52264b9dbab30eda9dedb,
     type: 2}
 --- !u!114 &114581156254199516
 MonoBehaviour:
