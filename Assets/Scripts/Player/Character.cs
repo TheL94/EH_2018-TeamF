@@ -7,32 +7,35 @@ namespace TeamF
 {
     public class Character : MonoBehaviour, IDamageable, IParalyzable
     {
-        public CharacterData CharacterData;
+        public CharacterData Data { get; set; }
         public MeshRenderer BackPackRenderer;
         public MeshRenderer CharacterRenderer;
         [HideInInspector]
         public Movement movement;
 
         Player player;
-        CharacterData data;
 
         bool isInvincible;
         #region API
-        public void Init(Player _player, bool _isTestScene = false)
+        public void Init(Player _player, CharacterData _data,  bool _isTestScene = false)
         {
             player = _player;
+            Data = _data;
+
             currentWeapon = GetComponentInChildren<Weapon>();
             movement = GetComponent<Movement>();
-            InitOfTheData();
+
+            movement.Init(Data.MovementSpeed, Data.RotationSpeed);
+            currentWeapon.Init(Data.BulletSpeed, Data.Ratio, Data.MagCapacity, Data.BulletPrefab);
 
             if (!_isTestScene)
-                data.AllElementalAmmo[0].Ammo = -1;
+                Data.AllElementalAmmo[0].Ammo = -1;
             else
             {
                 isInvincible = _isTestScene;
-                for (int i = 0; i < data.AllElementalAmmo.Length; i++)
+                for (int i = 0; i < Data.AllElementalAmmo.Length; i++)
                 {
-                    data.AllElementalAmmo[i].Ammo = -1;
+                    Data.AllElementalAmmo[i].Ammo = -1;
                 }
             }
             selectedAmmoIndex = 0;
@@ -42,12 +45,12 @@ namespace TeamF
         #region IDamageable
         public float Life
         {
-            get { return data.Life; }
+            get { return Data.Life; }
             private set
             {
-                data.Life = value;
+                Data.Life = value;
                 CharacterRenderer.material.DOColor(Color.white, .1f).OnComplete(() => { CharacterRenderer.material.DORewind(); });
-                Events_UIController.LifeChanged(data.Life, CharacterData.Life);
+                Events_UIController.LifeChanged(Data.Life, Data.Life);
             }
         }
 
@@ -146,13 +149,13 @@ namespace TeamF
 
         public ElementalAmmo SelectedAmmo
         {
-            get { return data.AllElementalAmmo[selectedAmmoIndex]; }
+            get { return Data.AllElementalAmmo[selectedAmmoIndex]; }
             set
             {
-                data.AllElementalAmmo[selectedAmmoIndex] = value;
-                if (data.AllElementalAmmo[selectedAmmoIndex].AmmoType != ElementalType.None)
+                Data.AllElementalAmmo[selectedAmmoIndex] = value;
+                if (Data.AllElementalAmmo[selectedAmmoIndex].AmmoType != ElementalType.None)
                 {
-                    Events_UIController.AmmoChange(data.AllElementalAmmo[selectedAmmoIndex]);
+                    Events_UIController.AmmoChange(Data.AllElementalAmmo[selectedAmmoIndex]);
                 }
             }
         }
@@ -160,27 +163,27 @@ namespace TeamF
         public void SelectPreviousAmmo()
         {
             selectedAmmoIndex++;
-            if (selectedAmmoIndex > data.AllElementalAmmo.Length - 1)
+            if (selectedAmmoIndex > Data.AllElementalAmmo.Length - 1)
                 selectedAmmoIndex = 0;
         }
         public void SelectNextAmmo()
         {
             selectedAmmoIndex--;
             if (selectedAmmoIndex < 0)
-                selectedAmmoIndex = data.AllElementalAmmo.Length - 1;
+                selectedAmmoIndex = Data.AllElementalAmmo.Length - 1;
         }
 
         void PickupAmmo(AmmoCrate _crate)
         {
             if (_crate != null)
             {
-                for (int i = 0; i < data.AllElementalAmmo.Length; i++)
+                for (int i = 0; i < Data.AllElementalAmmo.Length; i++)
                 {
-                    if (_crate.Type == data.AllElementalAmmo[i].AmmoType)
+                    if (_crate.Type == Data.AllElementalAmmo[i].AmmoType)
                     {
                         //Aggiungi le munizioni a questo tipo;
-                        data.AllElementalAmmo[i].Ammo += _crate.Ammo;
-                        Events_UIController.AmmoChange(data.AllElementalAmmo[i]);
+                        Data.AllElementalAmmo[i].Ammo += _crate.Ammo;
+                        Events_UIController.AmmoChange(Data.AllElementalAmmo[i]);
                         _crate.DestroyAmmoCrate();
                         return;
                     }
@@ -188,13 +191,6 @@ namespace TeamF
             }
         }
         #endregion
-
-        void InitOfTheData()
-        {
-            data = Instantiate(CharacterData);
-            movement.Init(data.MovementSpeed, data.RotationSpeed);
-            currentWeapon.Init(data.BulletSpeed, data.Ratio, data.MagCapacity, data.BulletPrefab);
-        }
 
         private void OnTriggerEnter(Collider other)
         {

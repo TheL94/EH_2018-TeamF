@@ -24,15 +24,15 @@ namespace TeamF
             }
         }
 
-        EnemyController controller;
+        EnemyManager manager;
         MeshRenderer render;
         AI_Enemy ai_Enemy;
 
         #region API
-        public void Init(IDamageable _target, EnemyController _controller, EnemyData _data, string _id)
+        public void Init(IDamageable _target, EnemyManager _manager, EnemyData _data, string _id)
         {
             Target = _target;
-            controller = _controller;
+            manager = _manager;
             Data = _data;
             ID = _id;
 
@@ -63,7 +63,7 @@ namespace TeamF
             set
             {
                 if (value == null) // Se target è nullo chiede come target al controller il più vicino
-                    _target = controller.GetClosestTarget(this); // cambiare il modo in cui viene chiamata questa funzione (dall'alto verso il basso)
+                    _target = manager.GetClosestTarget(this); // cambiare il modo in cui viene chiamata questa funzione (dall'alto verso il basso)
                 else
                     _target = value;
             }

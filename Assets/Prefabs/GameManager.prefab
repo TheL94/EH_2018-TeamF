@@ -52,12 +52,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80373d0a1126d53489f437408e0a7729, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyCtrl: {fileID: 0}
+  EnemyMng: {fileID: 0}
   AmmoController: {fileID: 0}
   UIMng: {fileID: 0}
   UIManagerPrefab: {fileID: 1784264425848098, guid: 786bc380dcf915c418d04c91b3b47d86,
     type: 2}
   Player: {fileID: 0}
+  KillsToWin: 50
 --- !u!114 &114731148670223682
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -69,3 +70,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e04875ffe7c14254d93184771cbe27a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CharacterData: {fileID: 11400000, guid: 4f9d691242ecf8c4eb44614dec4c41e8, type: 2}

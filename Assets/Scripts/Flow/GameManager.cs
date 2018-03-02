@@ -12,7 +12,7 @@ namespace TeamF
 
         FlowManager flowMng;
         public LevelManager LevelMng;
-        public EnemyController EnemyCtrl;
+        public EnemyManager EnemyMng;
 
         public AmmoCratesController AmmoController;
 
@@ -21,6 +21,8 @@ namespace TeamF
         public GameObject UIManagerPrefab;
         [HideInInspector]
         public Player Player;
+
+        public float KillsToWin;
 
         void Awake()
         {
@@ -46,7 +48,7 @@ namespace TeamF
 
         void ClearScene()
         {
-            EnemyCtrl.EndGameplayActions();
+            EnemyMng.EndGameplayActions();
         }
 
         #region API
@@ -77,15 +79,14 @@ namespace TeamF
 
         public void EnterGameplayActions()
         {
-            LevelMng = new LevelManager(50f);
+            LevelMng = new LevelManager(KillsToWin);
 
-            Player player = FindObjectOfType<Player>();
-            if (player != null)
-                player.CharacterInit();
+            if (Player != null)
+                Player.InitCharacter();
 
             UIMng.GameplayActions();
             AmmoController.Init();
-            EnemyCtrl.Init();
+            EnemyMng.Init(Player.Character);
             ChangeFlowState(FlowState.Gameplay);
         }
 
@@ -122,17 +123,17 @@ namespace TeamF
         /// </summary>
         public void EnterValuesMenu()
         {
-            UIMng.EnableValuesPanel(Player.GetCharacterData(), EnemyCtrl.SpawnerData.EnemiesData[0]);               // Farsi restituire i dati dal data manager
+            UIMng.EnableValuesPanel(Player.Character.Data, EnemyMng.SpawnerData.EnemiesData[0]);               // Farsi restituire i dati dal data manager
         }
 
         //TODO: Operazioni da svolgere dopo aver settato i valori del pannello dei valori
         public void EnterTestScene()
         {
             if (Player != null)
-                Player.CharacterInit(true);
+                Player.InitCharacter(true);
 
             UIMng.GameplayActions();
-            EnemyCtrl.Init(true);
+            EnemyMng.Init(null, true);
             ChangeFlowState(FlowState.Gameplay);
         }
 

@@ -14,36 +14,26 @@ namespace TeamF
 
         public void Init()
         {
-            character = FindObjectOfType<Character>();
+            Character = FindObjectOfType<Character>();
             controllerInput = new ControllerInput(0);
         }
 
         #region Character
-        Character character;
+        public Character Character { get; private set; }
+        public CharacterData CharacterData;
 
         /// <summary>
         /// Chiama l'init per il character
         /// </summary>
         /// <param name="_isTestScene">Se true, il character deve essere inizializzato per la scena di test, altrimenti per una scena di gioco normale</param>
-        public void CharacterInit(bool _isTestScene = false)
+        public void InitCharacter(bool _isTestScene = false)
         {
-            character.Init(this, _isTestScene);
+            Character.Init(this, CharacterData,_isTestScene);
         }
 
         public void CharacterDeath()
         {
             GameManager.I.LevelMng.GoToGameLost();
-        }
-
-        public void SetCharacterData(CharacterData _data)
-        {
-            character.CharacterData = _data;
-        }
-
-        ///TODO: Eliminare non appena verrà creato il data manager [andrà modificato GameManager in enter values menu]
-        public CharacterData GetCharacterData()
-        {
-            return character.CharacterData;
         }
         #endregion
 
@@ -53,7 +43,7 @@ namespace TeamF
         void CheckInput()
         {
             //InputStatus status = controllerInput.GetPlayerInputStatus();
-            if (character.IsParalized)
+            if (Character.IsParalized)
                 return;
             else
                 CheckKeyboardInput();
@@ -63,7 +53,7 @@ namespace TeamF
         {
             if (GameManager.I.CurrentState == FlowState.Gameplay)
             {
-                if (character.Life <= 0)
+                if (Character.Life <= 0)
                     return;
 
                 Vector3 finalDirection = new Vector3();
@@ -79,23 +69,23 @@ namespace TeamF
 
                 if (Input.GetAxis("Mouse ScrollWheel") < 0f || Input.GetKeyDown(KeyCode.E))
                 {
-                    character.SelectPreviousAmmo();
+                    Character.SelectPreviousAmmo();
 
                 }
                 else if (Input.GetAxis("Mouse ScrollWheel") > 0f || Input.GetKeyDown(KeyCode.Q))
                 {
-                    character.SelectNextAmmo();
+                    Character.SelectNextAmmo();
                 }
 
-                character.movement.Move(finalDirection.normalized);
+                Character.movement.Move(finalDirection.normalized);
 
 
                 if (Input.GetMouseButtonDown(0))
-                    character.Shot();
+                    Character.Shot();
                 if (Input.GetMouseButton(0))
-                    character.FullAutoShot();
+                    Character.FullAutoShot();
 
-                character.movement.Rotate();
+                Character.movement.Rotate();
             }
             if (GameManager.I.CurrentState != FlowState.EnterGameplay && GameManager.I.CurrentState != FlowState.Gameplay)
             {

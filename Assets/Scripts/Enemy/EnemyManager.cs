@@ -5,39 +5,35 @@ using System.Linq;
 
 namespace TeamF
 {
-    public class EnemyController : MonoBehaviour
+    public class EnemyManager : MonoBehaviour
     {
-        public Character target;
         public Enemy EnemyPrefab;     
-        public bool CanSpawn { get; set; }
-        public EnemyControllerData SpawnerData;
-        public List<Transform> SpawnPoints = new List<Transform>();
+        public IDamageable EnemyTarget { get; private set; }
 
-        List<Enemy> enemiesSpawned = new List<Enemy>();
-        int idCounter;
-        float spawnTime;
-
-        #region API
-        public void Init(bool _canSpawn = false)
+        void Update()
         {
-            if (!_canSpawn)
-                StartCoroutine(FirstSpawn());
-            else
-            {
-                CanSpawn = _canSpawn;
+            if (!CanSpawn)
+                return;
 
+            spawnTime += Time.deltaTime;
+            if (spawnTime >= SpawnerData.DelayHordes && EnemyTarget.Life > 0)
+            {
+                SpawnHorde();
+                spawnTime = 0;
             }
         }
 
-        /// <summary>
-        /// Cancella il nemico dalla lista di nemici spawnati, aggiunge il valore del nemico al contatore dei nemici uccisi, 
-        /// se la partita è vinta avvisa il gamemanager
-        /// </summary>
-        /// <param name="_enemyKilled"></param>
-        public void KillEnemy(Enemy _enemyKilled)
+        #region API
+        public void Init(IDamageable _target, bool _canSpawn = false)
         {
-            Events_LevelController.UpdateKillPoints(_enemyKilled.Data.EnemyValue);
-            DeleteSpecificEnemy(_enemyKilled.ID);
+            EnemyTarget = _target;
+
+            // TODO : PER FULVIO - a cosa serve ? non ha molto senso
+            if (!_canSpawn)
+                StartCoroutine(FirstSpawn());
+            else
+                CanSpawn = _canSpawn;
+            //--------------------------------
         }
 
         /// <summary>
@@ -47,6 +43,19 @@ namespace TeamF
         {
             CanSpawn = false;
             DeleteAllEnemies();
+        }
+        #endregion
+
+        #region Enemy
+        /// <summary>
+        /// Cancella il nemico dalla lista di nemici spawnati, aggiunge il valore del nemico al contatore dei nemici uccisi, 
+        /// se la partita è vinta avvisa il gamemanager
+        /// </summary>
+        /// <param name="_enemyKilled"></param>
+        public void KillEnemy(Enemy _enemyKilled)
+        {
+            Events_LevelController.UpdateKillPoints(_enemyKilled.Data.EnemyValue);
+            DeleteSpecificEnemy(_enemyKilled.ID);
         }
 
         /// <summary>
@@ -73,22 +82,37 @@ namespace TeamF
             }
             return enemyCloser;
         }
-        #endregion
 
-        void Update()
+        void DeleteSpecificEnemy(string _idEnemy)
         {
-            if (!CanSpawn)
-                return;
-
-            spawnTime += Time.deltaTime;
-            if (spawnTime >= SpawnerData.DelayHordes && target.Life > 0)
+            for (int i = 0; i < enemiesSpawned.Count; i++)
             {
-                SpawnHorde();
-                spawnTime = 0;
+                if (enemiesSpawned[i].ID == _idEnemy)
+                {
+                    enemiesSpawned.Remove(enemiesSpawned[i]);
+                    return;
+                }
             }
         }
 
+        void DeleteAllEnemies()
+        {
+            for (int i = 0; i < enemiesSpawned.Count; i++)
+            {
+                Destroy(enemiesSpawned[i].gameObject);
+            }
+            enemiesSpawned.Clear();
+        }
+        #endregion
+
         #region Spawner
+        public bool CanSpawn { get; set; }
+        public EnemyControllerData SpawnerData;
+        public List<Transform> SpawnPoints = new List<Transform>();
+        List<Enemy> enemiesSpawned = new List<Enemy>();
+        int idCounter;
+        float spawnTime;
+
         /// <summary>
         /// Chiama lo spawn della prima orda
         /// </summary>
@@ -159,7 +183,7 @@ namespace TeamF
 
             for (int i = 0; i < SpawnPoints.Count; i++)
             {
-                float _spawnDistance = Vector3.Distance(SpawnPoints[i].position, target.transform.position);
+                float _spawnDistance = Vector3.Distance(SpawnPoints[i].position, EnemyTarget.Position);
                 if (_spawnDistance < _distance)
                 {
                     spawnIndexToExclude = i;
@@ -192,7 +216,7 @@ namespace TeamF
         /// <param name="_data"></param>
         void InitEnemy(Enemy _enemy, EnemyData _data)
         {
-            _enemy.Init(target, this, _data, "Enemy" + idCounter);
+            _enemy.Init(EnemyTarget, this, _data, "Enemy" + idCounter);
         }
 
         /// <summary>
@@ -221,25 +245,5 @@ namespace TeamF
         }
         #endregion
 
-        void DeleteSpecificEnemy(string _idEnemy)
-        {
-            for (int i = 0; i < enemiesSpawned.Count; i++)
-            {
-                if (enemiesSpawned[i].ID == _idEnemy)
-                {
-                    enemiesSpawned.Remove(enemiesSpawned[i]);
-                    return;
-                }
-            }
-        }
-
-        void DeleteAllEnemies()
-        {
-            for (int i = 0; i < enemiesSpawned.Count; i++)
-            {
-                Destroy(enemiesSpawned[i].gameObject);
-            }
-            enemiesSpawned.Clear();
-        }
     }
 }

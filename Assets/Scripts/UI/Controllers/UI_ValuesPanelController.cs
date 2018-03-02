@@ -55,14 +55,14 @@ namespace TeamF
             newData.BulletSpeed = float.Parse(Character_BulletSpeed.text);
             newData.Ratio = float.Parse(Character_Ratio.text);
 
-            GameManager.I.Player.SetCharacterData(newData);
+            GameManager.I.Player.Character.Data = newData;
         }
         /// <summary>
         /// Setta titti i dati dei nemici che ha l'enemy spawner controller con quelli inseriti negli input field
         /// </summary>
         void SetEnemiesValue()
         {
-            foreach (EnemyData data in GameManager.I.EnemyCtrl.SpawnerData.EnemiesData)
+            foreach (EnemyData data in GameManager.I.EnemyMng.SpawnerData.EnemiesData)
             {
                 data.Life = float.Parse(Enemy_Life.text);
                 data.Damage = int.Parse(Enemy_Damage.text);
