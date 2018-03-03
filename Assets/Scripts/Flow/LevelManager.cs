@@ -6,8 +6,8 @@ namespace TeamF
 {
     public class LevelManager
     {
-        public float PointsToWin;
-        float roundPoints;
+        public float PointsToWin { get; private set; }
+        float roundPoints = 0;
 
         public LevelManager(float _pointsToWin)
         {

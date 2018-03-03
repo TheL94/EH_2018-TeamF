@@ -35,7 +35,8 @@ namespace TeamF
             manager = _manager;
             Data = _data;
             ID = _id;
-
+            Life = Data.Life;
+            
             Instantiate(Data.ModelPrefab, transform.position, transform.rotation, transform);
 
             Agent = GetComponent<NavMeshAgent>();
@@ -114,15 +115,8 @@ namespace TeamF
         #endregion
 
         #region IDamageable
-        public float Life
-        {
-            get { return Data.Life; }
-            private set
-            {
-                Data.Life = value;
-                render.material.DOColor(Color.white, .1f).OnComplete(() => { render.material.DORewind(); });
-            }
-        }
+        public float Life { get; private set; }
+
         public Vector3 Position { get { return transform.position; } }
 
         float _damagePercentage = 100;
@@ -136,6 +130,8 @@ namespace TeamF
         {
             _damage = (_damage * DamagePercentage) / 100;
             Life -= CurrentBehaviour.CalulateDamage(this, _damage, _type);
+
+            render.material.DOColor(Color.white, .1f).OnComplete(() => { render.material.DORewind(); });
 
             if (Life <= 0)
             {
