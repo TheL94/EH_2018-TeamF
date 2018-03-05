@@ -58,7 +58,7 @@ MonoBehaviour:
   UIManagerPrefab: {fileID: 1784264425848098, guid: 786bc380dcf915c418d04c91b3b47d86,
     type: 2}
   Player: {fileID: 0}
-  KillsToWin: 50
+  KillsToWin: 0
 --- !u!114 &114731148670223682
 MonoBehaviour:
   m_ObjectHideFlags: 1

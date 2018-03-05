@@ -156,12 +156,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c4011c1537ff94947971d8c740e0ab9e, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &86820268 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114721334682215842, guid: c4011c1537ff94947971d8c740e0ab9e,
-    type: 2}
-  m_PrefabInternal: {fileID: 86820267}
-  m_Script: {fileID: 11500000, guid: ba017b4ce6de6a04a82f4705ad3d623b, type: 3}
 --- !u!1001 &126584137
 Prefab:
   m_ObjectHideFlags: 0
@@ -249,11 +243,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114100090815372252, guid: 024de7879b837ef4a834cdd88112491f,
-        type: 2}
-      propertyPath: EnemyMng
-      value: 
-      objectReference: {fileID: 86820268}
     - target: {fileID: 114100090815372252, guid: 024de7879b837ef4a834cdd88112491f,
         type: 2}
       propertyPath: AmmoController
