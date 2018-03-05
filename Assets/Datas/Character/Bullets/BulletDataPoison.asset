@@ -15,5 +15,5 @@ MonoBehaviour:
   BulletContainerPrefab: {fileID: 1096078678018924, guid: aed0c6b0c1afa4a4ca5d68d6e3bccfab,
     type: 2}
   BulletGraphicPrefab: {fileID: 100000, guid: 12398bdb6a70a7744a259f626cacab03, type: 3}
-  BulletTrailPrefab: {fileID: 1088442937980430, guid: ec72ee9dd3b96f14a8e6eca153f3b1fe,
+  BulletTrailPrefab: {fileID: 1088442937980430, guid: ddf08509b0fafdf4b9ac91bb3dfce5dd,
     type: 2}
