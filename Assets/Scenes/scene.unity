@@ -264,6 +264,11 @@ Prefab:
       propertyPath: AmmoController
       value: 
       objectReference: {fileID: 659673797}
+    - target: {fileID: 114100090815372252, guid: 024de7879b837ef4a834cdd88112491f,
+        type: 2}
+      propertyPath: PlayerPrefab
+      value: 
+      objectReference: {fileID: 1228095239}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 024de7879b837ef4a834cdd88112491f, type: 2}
   m_IsPrefabParent: 0
@@ -371,6 +376,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 147fcc9a9e9101345a30dc035775ffa9, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1228095239 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1533697916002696, guid: 147fcc9a9e9101345a30dc035775ffa9,
+    type: 2}
+  m_PrefabInternal: {fileID: 1228095238}
 --- !u!114 &1481763297 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114721334682215842, guid: c4011c1537ff94947971d8c740e0ab9e,
