@@ -57,8 +57,12 @@ namespace TeamF
         {
             BulletData data = bulletDatas.Where(d => d.Type == _currentAmmo.AmmoType).First();
             Bullet bull = Instantiate(data.BulletContainerPrefab, Barrel.transform.position, Barrel.transform.rotation).GetComponent<Bullet>();
-            Instantiate(data.BulletGraphicPrefab, bull.transform.position, bull.transform.rotation, bull.transform);
-            Instantiate(data.BulletTrailPrefab, bull.transform.position, bull.transform.rotation, bull.transform);
+
+            if(data.BulletGraphicPrefab != null)
+                Instantiate(data.BulletGraphicPrefab, bull.transform.position, bull.transform.rotation, bull.transform);
+            if (data.BulletTrailPrefab != null)
+                Instantiate(data.BulletTrailPrefab, bull.transform.position, bull.transform.rotation, bull.transform);
+
             bull.Init(_currentAmmo, bulletSpeed, BulletOwner.Character);
         }
     }
