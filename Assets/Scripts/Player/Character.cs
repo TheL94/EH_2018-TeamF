@@ -87,7 +87,6 @@ namespace TeamF
             data.AllElementalAmmo[0].Ammo = -1;
             selectedAmmoIndex = 0;
             startColor = CharacterRenderer.material.color;
-
         }
 
         /// <summary>
@@ -155,7 +154,12 @@ namespace TeamF
         {
             data = Instantiate(CharacterData);
             movement.Init(data.MovementSpeed, data.RotationSpeed);
-            currentWeapon.Init(data.BulletSpeed, data.Ratio, data.MagCapacity, data.BulletPrefab);
+
+            List<BulletData> bulletDatasInstancies = new List<BulletData>();
+            foreach (BulletData item in data.BulletDatas)
+                bulletDatasInstancies.Add(Instantiate(item));
+
+            currentWeapon.Init(data.BulletSpeed, data.Ratio, data.MagCapacity, bulletDatasInstancies);
         }
 
         void PickupAmmo(AmmoCrate _crate)

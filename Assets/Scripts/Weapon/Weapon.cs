@@ -1,25 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System.Linq;
 namespace TeamF
 {
     public class Weapon : MonoBehaviour
     {
         public GameObject Barrel;
-        GameObject BulletPrefab;
         float bulletSpeed;
         float ratio;
         int magCapacity;
+        List<BulletData> bulletDatas;
 
         float ratioTimer;
 
-        public void Init(float _bulletSpeed, float _ratio, int _magCapacity, GameObject _bulletPrefab)
+        public void Init(float _bulletSpeed, float _ratio, int _magCapacity, List<BulletData> _bulletDatas)
         {
             bulletSpeed = _bulletSpeed;
             ratio = _ratio;
             magCapacity = _magCapacity;
-            BulletPrefab = _bulletPrefab;
+            bulletDatas = _bulletDatas;
         }
 
         public ElementalAmmo FullAutoShoot(ElementalAmmo _selectedAmmo)
@@ -55,7 +55,10 @@ namespace TeamF
         /// </summary>
         void CreateBullet(ElementalAmmo _currentAmmo)
         {
-            Bullet bull = Instantiate(BulletPrefab, Barrel.transform.position, Barrel.transform.rotation).GetComponent<Bullet>();
+            BulletData data = bulletDatas.Where(d => d.Type == _currentAmmo.AmmoType).First();
+            Bullet bull = Instantiate(data.BulletContainerPrefab, Barrel.transform.position, Barrel.transform.rotation).GetComponent<Bullet>();
+            Instantiate(data.BulletGraphicPrefab, bull.transform.position, bull.transform.rotation, bull.transform);
+            Instantiate(data.BulletTrailPrefab, bull.transform.position, bull.transform.rotation, bull.transform);
             bull.Init(_currentAmmo, bulletSpeed, BulletOwner.Character);
         }
     }

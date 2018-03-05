@@ -325,4 +325,4 @@ MonoBehaviour:
   - {fileID: 4883973560409880}
   - {fileID: 4152577532400820}
   - {fileID: 4816904872436764}
-  MaxEnemiesInScene: 40
+  MaxEnemiesInScene: 0
