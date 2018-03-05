@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78d0cecd44868ed4a9189d1e2bc0e35d, type: 3}
   m_Name: SpawnerData
   m_EditorClassIdentifier: 
-  StartDelayTime: 10
+  StartDelayTime: 100000
   DelayHordes: 5
   MaxHordeNumber: 8
   MinHordeNumber: 5
