@@ -487,7 +487,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26a2e13c2445e044e9624cd6a1822518, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CharacterData: {fileID: 11400000, guid: 4f9d691242ecf8c4eb44614dec4c41e8, type: 2}
   BackPackRenderer: {fileID: 23171740124067216}
   CharacterRenderer: {fileID: 23734898067266978}
   movement: {fileID: 0}
