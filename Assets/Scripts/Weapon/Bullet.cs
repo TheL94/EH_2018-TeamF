@@ -30,7 +30,7 @@ namespace TeamF
             ammo = _currentAmmo;
             Speed = _speed;
             owner = _owner;
-            trail = GetComponent<TrailRenderer>();
+            trail = GetComponentInChildren<TrailRenderer>();
             rend = GetComponentInChildren<MeshRenderer>();
 
             SetBulletColors(_currentAmmo.AmmoType);

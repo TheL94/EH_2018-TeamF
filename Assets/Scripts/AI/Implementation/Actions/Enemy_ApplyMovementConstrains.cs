@@ -5,7 +5,7 @@ using Framework.AI;
 
 namespace TeamF.AI
 {
-    [CreateAssetMenu(menuName = "AI/NewAction/DelayAction")]
+    [CreateAssetMenu(menuName = "AI/NewAction/Enemy_ApplyMovementConstrains")]
     public class Enemy_ApplyMovementConstrains : AI_Action
     {
         protected override bool Act(AI_Controller _controller)
