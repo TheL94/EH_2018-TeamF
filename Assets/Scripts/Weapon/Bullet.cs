@@ -44,28 +44,28 @@ namespace TeamF
             {
                 case ElementalType.None:
                     rend.material.color = Color.grey;
-                    trail.material.color = Color.grey;
-                    trail.material.SetColor("_EmissionColor", Color.grey);
+                    //trail.material.color = Color.grey;
+                    //trail.material.SetColor("_EmissionColor", Color.grey);
                     break;
                 case ElementalType.Fire:
                     rend.material.color = Color.red;
-                    trail.material.color = Color.red;
-                    trail.material.SetColor("_EmissionColor", Color.red);
+                    //trail.material.color = Color.red;
+                    //trail.material.SetColor("_EmissionColor", Color.red);
                     break;
                 case ElementalType.Water:
                     rend.material.color = Color.blue;
-                    trail.material.color = Color.blue;
-                    trail.material.SetColor("_EmissionColor", Color.blue);
+                    //trail.material.color = Color.blue;
+                    //trail.material.SetColor("_EmissionColor", Color.blue);
                     break;
                 case ElementalType.Poison:
                     rend.material.color = Color.green;
-                    trail.material.color = Color.green;
-                    trail.material.SetColor("_EmissionColor", Color.green);
+                    //trail.material.color = Color.green;
+                    //trail.material.SetColor("_EmissionColor", Color.green);
                     break;
                 case ElementalType.Thunder:
                     rend.material.color = Color.magenta;
-                    trail.material.color = Color.magenta;
-                    trail.material.SetColor("_EmissionColor", Color.magenta);
+                    //trail.material.color = Color.magenta;
+                    //trail.material.SetColor("_EmissionColor", Color.magenta);
                     break;
             }
         }

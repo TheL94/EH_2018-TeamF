@@ -19,7 +19,10 @@ namespace TeamF
         public int MagCapacity;
         public float BulletSpeed;
         public float Ratio;
-        public GameObject BulletPrefab;
+        #endregion
+
+        #region Bullet
+        public List<BulletData> BulletDatas = new List<BulletData>();
         #endregion
     }
 }

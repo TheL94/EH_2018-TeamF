@@ -29,7 +29,12 @@ namespace TeamF
             movement = GetComponent<Movement>();
 
             movement.Init(Data.MovementSpeed, Data.RotationSpeed);
-            currentWeapon.Init(Data.BulletSpeed, Data.Ratio, Data.MagCapacity, Data.BulletPrefab);
+
+            List<BulletData> bulletDatasInstancies = new List<BulletData>();
+            foreach (BulletData item in Data.BulletDatas)
+                bulletDatasInstancies.Add(Instantiate(item));
+
+            currentWeapon.Init(Data.BulletSpeed, Data.Ratio, Data.MagCapacity, bulletDatasInstancies);
 
             if (!_isTestScene)
                 Data.AllElementalAmmo[0].Ammo = -1;
@@ -172,6 +177,7 @@ namespace TeamF
             if (selectedAmmoIndex < 0)
                 selectedAmmoIndex = Data.AllElementalAmmo.Length - 1;
         }
+        #endregion
 
         void PickupAmmo(AmmoCrate _crate)
         {
@@ -190,7 +196,6 @@ namespace TeamF
                 }
             }
         }
-        #endregion
 
         private void OnTriggerEnter(Collider other)
         {
