@@ -29,21 +29,21 @@ MonoBehaviour:
       TimeFraction: 1
   - AmmoType: 2
     Damage: 4
-    Ammo: 20
+    Ammo: 0
     Data:
       EffectValue: 3
       TimeOfEffect: 3
       TimeFraction: 1
   - AmmoType: 3
     Damage: 4
-    Ammo: 20
+    Ammo: 0
     Data:
       EffectValue: 5
       TimeOfEffect: 3
       TimeFraction: 1
   - AmmoType: 4
     Damage: 5
-    Ammo: 60
+    Ammo: 0
     Data:
       EffectValue: 0
       TimeOfEffect: 5
