@@ -51,13 +51,13 @@ namespace TeamF
         /// se la partita è vinta avvisa il gamemanager
         /// </summary>
         /// <param name="_enemyKilled"></param>
-        public void OnEnemyDeath(Enemy _enemyKilled)
+        public virtual void OnEnemyDeath(Enemy _enemyKilled)
         {
             Events_LevelController.UpdateKillPoints(_enemyKilled.Data.EnemyValue);
             DeleteSpecificEnemy(_enemyKilled.ID);
         }
 
-        public void OnEnemyConfusion(Enemy _enemy)
+        public virtual void OnEnemyConfusion(Enemy _enemy)
         {
             _enemy.Target = GetClosestTarget(_enemy);
         }

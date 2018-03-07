@@ -30,6 +30,7 @@ namespace TeamF
         public InputField Enemy_Speed;
         public InputField Enemy_BulletSpeed;
         public InputField Enemy_AttackRange;
+        public Toggle FollowPlayerToggle;
         #endregion
         #endregion
 
@@ -93,6 +94,8 @@ namespace TeamF
             {
                 case 0:
                     SetCharacterValues();
+                    EnemyManager mng = GameManager.I.EnemyMng;
+                    (mng as EnemySpawner_TS).FollowPlayer = FollowPlayerToggle.isOn;
                     GameManager.I.ChangeFlowState(FlowState.EnterTestScene);
                     break;
             }
