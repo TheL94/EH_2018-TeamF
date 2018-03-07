@@ -140,9 +140,29 @@ namespace TeamF
                 _animState = value;
                 if (animator != null)
                 {
-                    //animator.CrossFade("Idle", 0.3f);
                     switch (_animState)
                     {
+                        case AnimationState.Idle:
+                            animator.CrossFade("Idle", 0.3f);
+                            break;
+                        case AnimationState.Walk:
+                            animator.CrossFade("Walk", 0.3f);
+                            break;
+                        case AnimationState.Run:
+                            animator.CrossFade("Run", 0.3f);
+                            break;
+                        case AnimationState.MeleeAttack:
+                            animator.CrossFade("MeleeAttack", 0.3f);
+                            break;
+                        case AnimationState.RangedAttack:
+                            animator.CrossFade("RangedAttack", 0.3f);
+                            break;
+                        case AnimationState.Damage:
+                            animator.CrossFade("Damage", 0.3f);
+                            break;
+                        case AnimationState.Death:
+                            animator.CrossFade("Death", 0.3f);
+                            break;
                     }
                 }
             }
@@ -150,7 +170,13 @@ namespace TeamF
 
         public enum AnimationState
         {
-
+            Idle = 0,
+            Walk,
+            Run,
+            MeleeAttack,
+            RangedAttack,
+            Damage,
+            Death,
         }
         #endregion
     }
