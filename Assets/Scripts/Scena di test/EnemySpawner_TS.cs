@@ -25,7 +25,7 @@ namespace TeamF
             for (int i = 0; i < SpawnPoints.Count; i++)
             {
                 Enemy _newEnemy = SpawnEnemy(EnemyPrefab, SpawnPoints[i]);
-                _newEnemy.Init(ManichiniDiDestinazione[i], this, FindEnemyDataByTypeAndElement(EnemyType.Melee, (ElementalType)i + 1), Data.EnemyInitialState, "Enemy" + idCounter);
+                _newEnemy.Init(ManichiniDiDestinazione[i], FindEnemyDataByTypeAndElement(EnemyType.Melee, (ElementalType)i + 1), Data.EnemyInitialState, "Enemy" + idCounter);
             }
         }
     }

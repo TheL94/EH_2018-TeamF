@@ -31,8 +31,7 @@ namespace TeamF
             Enemy.EnemyDeath += OnEnemyDeath;
             Enemy.EnemyConfusion += OnEnemyConfusion;
 
-            // TODO : PER FULVIO - a cosa serve ? non ha molto senso
-            if (!_canSpawn)
+            if (!_isTestScene)
                 StartCoroutine(FirstSpawn());
         }
 
