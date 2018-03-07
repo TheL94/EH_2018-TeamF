@@ -48,7 +48,8 @@ namespace TeamF
 
         public override void OnEnemyDeath(Enemy _enemyKilled)
         {
-            
+            Destroy(_enemyKilled.gameObject);
+            SpawnEnemy(SpawnPoints[(int)_enemyKilled.Data.ElementalType - 1], ManichiniDiDestinazione[(int)_enemyKilled.Data.ElementalType - 1], _enemyKilled.Data.ElementalType);
         }
     }
 }
