@@ -7,13 +7,15 @@ namespace TeamF
 {
     public class EnemyBehaviourRanged : IEnemyBehaviour
     {
-        Enemy myEnemy;
+        public float Multiplier { get; set; }
 
+        Enemy myEnemy;
         Transform shootingPoint;
         ElementalAmmo ammo;
 
         float multiplier = 1;
-        public float Multiplier { get; set; }
+
+        RangedData rangedData { get { return myEnemy.Data as RangedData; } }
 
         public void DoInit(Enemy _myEnemy)
         {
@@ -25,9 +27,15 @@ namespace TeamF
         }
 
         public virtual void DoAttack()
-        {
-            Bullet bull = GameObject.Instantiate(Resources.Load("Bullet") as GameObject, shootingPoint.position, shootingPoint.rotation).GetComponent<Bullet>();
-            bull.Init(ammo, (myEnemy.Data as RangedData).BulletSpeed, BulletOwner.Enemy); 
+        {      
+            Bullet bull = GameObject.Instantiate(rangedData.BulletData.BulletContainerPrefab, shootingPoint.position, shootingPoint.rotation).GetComponent<Bullet>();
+
+            if(rangedData.BulletData.BulletGraphicPrefab != null)
+                GameObject.Instantiate(rangedData.BulletData.BulletGraphicPrefab, bull.transform.position, bull.transform.rotation, bull.transform).GetComponent<Bullet>();
+            if (rangedData.BulletData.BulletTrailPrefab != null)
+                GameObject.Instantiate(rangedData.BulletData.BulletTrailPrefab, bull.transform.position, bull.transform.rotation, bull.transform).GetComponent<Bullet>();
+
+            bull.Init(ammo, rangedData.BulletSpeed, BulletOwner.Enemy); 
         }
 
         public virtual float CalulateDamage(Enemy _enemy, float _damage, ElementalType _type)

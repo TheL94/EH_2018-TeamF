@@ -22,3 +22,4 @@ MonoBehaviour:
   DamageRate: 2
   EnemyValue: 1
   BulletSpeed: 0.35
+  BulletData: {fileID: 11400000, guid: fc0514fe99c1cf343900d4df6098e7f5, type: 2}
