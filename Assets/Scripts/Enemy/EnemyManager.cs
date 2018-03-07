@@ -238,7 +238,7 @@ namespace TeamF
         /// <returns></returns>
         protected EnemyData FindEnemyDataByType(EnemyType _type)
         {
-            return Data.EnemiesData.Where(d => d.EnemyType == _type).First();
+            return Instantiate(Data.EnemiesData.Where(d => d.EnemyType == _type).First());
         }
         #endregion
 
