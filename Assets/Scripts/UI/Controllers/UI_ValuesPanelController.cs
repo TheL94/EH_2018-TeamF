@@ -9,6 +9,8 @@ namespace TeamF
     {
         #region Variables Fields
         #region Character
+        CharacterData oldCharacterData;
+
         public InputField Character_Life;
         public InputField Character_Damage;
         public InputField Character_Speed;
@@ -21,6 +23,8 @@ namespace TeamF
         #endregion
 
         #region Enemy
+        EnemyData oldEnemyData;
+
         public InputField Enemy_Life;
         public InputField Enemy_Damage;
         public InputField Enemy_Speed;
@@ -31,16 +35,20 @@ namespace TeamF
 
         public void Init(CharacterData _characterData, EnemyData _enemyData)
         {
-            Character_Life.text = _characterData.Life.ToString();
-            Character_Speed.text = _characterData.MovementSpeed.ToString();
-            Character_RotationSpeed.text = _characterData.RotationSpeed.ToString();
-            Character_BulletSpeed.text = _characterData.BulletSpeed.ToString();
-            Character_Ratio.text = _characterData.Ratio.ToString();
+            oldCharacterData = Instantiate(_characterData);
 
-            Enemy_Life.text = _enemyData.Life.ToString();
-            Enemy_Damage.text = _enemyData.Damage.ToString();
-            Enemy_Speed.text = _enemyData.Speed.ToString();
-            Enemy_AttackRange.text = _enemyData.DamageRange.ToString();
+            Character_Life.text = oldCharacterData.Life.ToString();
+            Character_Speed.text = oldCharacterData.MovementSpeed.ToString();
+            Character_RotationSpeed.text = oldCharacterData.RotationSpeed.ToString();
+            Character_BulletSpeed.text = oldCharacterData.BulletSpeed.ToString();
+            Character_Ratio.text = oldCharacterData.Ratio.ToString();
+
+            oldEnemyData =Instantiate(_enemyData);
+
+            Enemy_Life.text = oldEnemyData.Life.ToString();
+            Enemy_Damage.text = oldEnemyData.Damage.ToString();
+            Enemy_Speed.text = oldEnemyData.Speed.ToString();
+            Enemy_AttackRange.text = oldEnemyData.DamageRange.ToString();
             MenuBaseInit();
         }
 
@@ -56,14 +64,14 @@ namespace TeamF
         /// </summary>
         void SetCharacterValues()
         {
-            CharacterData newData = new CharacterData();
+            CharacterData newData = oldCharacterData;
             newData.Life = float.Parse(Character_Life.text);
             newData.MovementSpeed = float.Parse(Character_Speed.text);
             newData.RotationSpeed = float.Parse(Character_RotationSpeed.text);
             newData.BulletSpeed = float.Parse(Character_BulletSpeed.text);
             newData.Ratio = float.Parse(Character_Ratio.text);
 
-            GameManager.I.Player.Character.Data = newData;
+            GameManager.I.Player.CharacterData = newData;
         }
         /// <summary>
         /// Setta titti i dati dei nemici che ha l'enemy spawner controller con quelli inseriti negli input field
@@ -84,6 +92,7 @@ namespace TeamF
             switch (CurrentIndexSelected)
             {
                 case 0:
+                    SetCharacterValues();
                     GameManager.I.ChangeFlowState(FlowState.EnterTestScene);
                     break;
             }
