@@ -9,7 +9,7 @@ namespace TeamF
         public override void DoInit(Enemy _myEnemy)
         {
             base.DoInit(_myEnemy);
-            _myEnemy.GetComponentInChildren<MeshRenderer>().material.color = Color.magenta;
+            _myEnemy.GetComponentInChildren<MeshRenderer>().material.color = Color.yellow;
         }
 
         public override float CalulateDamage(Enemy _enemy, float _damage, ElementalType _type)

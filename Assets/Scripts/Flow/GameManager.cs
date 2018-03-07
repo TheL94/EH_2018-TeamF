@@ -90,19 +90,13 @@ namespace TeamF
             ChangeFlowState(FlowState.Gameplay);
         }
 
-        //TODO: Operazioni da svolgere dopo aver settato i valori del pannello dei valori
         public void EnterTestSceneActions()
         {
             if (Player != null)
                 Player.InitCharacter(true);
 
             UIMng.GameplayActions();
-            EnemyMng.enabled = false;
-
-            GameObject tempobj = Instantiate(Resources.Load("TestScenePrefab/EnemyManager_TS"), transform) as GameObject;
-            EnemyMng = tempobj.GetComponent<EnemySpawner_TS>();
-
-            EnemyMng.Init(null, true);
+            EnemyMng.Init(Player.Character, true);
             ChangeFlowState(FlowState.Gameplay);
         }
 
@@ -140,6 +134,9 @@ namespace TeamF
         public void EnterValuesMenu()
         {
             UIMng.EnableValuesPanel(Player.CharacterData, EnemyMng.Data.EnemiesData[0]);               // Farsi restituire i dati dal data manager
+
+            GameObject tempobj = Instantiate(Resources.Load("TestScenePrefab/EnemyManager_TS"), transform) as GameObject;
+            EnemyMng = tempobj.GetComponent<EnemySpawner_TS>();
         }
 
         #endregion

@@ -143,7 +143,7 @@ namespace TeamF
                         BackPackRenderer.material.color = Color.green;
                         break;
                     case 4:
-                        BackPackRenderer.material.color = Color.magenta;
+                        BackPackRenderer.material.color = Color.yellow;
                         break;
                     default:
                         BackPackRenderer.material.color = Color.grey;
