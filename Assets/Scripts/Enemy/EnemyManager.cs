@@ -93,7 +93,7 @@ namespace TeamF
             {
                 if (enemiesSpawned[i].ID == _idEnemy)
                 {
-                    Destroy(enemiesSpawned[i]);
+                    enemiesSpawned[i].gameObject.SetActive(false); //TODO : da rivedere
                     enemiesSpawned.Remove(enemiesSpawned[i]);
                     return;
                 }
