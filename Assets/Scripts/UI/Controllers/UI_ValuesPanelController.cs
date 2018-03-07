@@ -94,6 +94,7 @@ namespace TeamF
             {
                 case 0:
                     SetCharacterValues();
+                    SetEnemiesValue();
                     EnemyManager mng = GameManager.I.EnemyMng;
                     (mng as EnemySpawner_TS).FollowPlayer = FollowPlayerToggle.isOn;
                     GameManager.I.ChangeFlowState(FlowState.EnterTestScene);
