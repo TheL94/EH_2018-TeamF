@@ -24,16 +24,9 @@ namespace TeamF
         }
 
         #region API
-        public void Init(IDamageable _enemyTarget, bool _canSpawn = false)
+        public virtual void Init(IDamageable _enemyTarget)
         {
             EnemyTarget = _enemyTarget;
-
-            // TODO : PER FULVIO - a cosa serve ? non ha molto senso
-            if (!_canSpawn)
-                StartCoroutine(FirstSpawn());
-            else
-                CanSpawn = _canSpawn;
-            //--------------------------------
         }
 
         /// <summary>
@@ -110,7 +103,7 @@ namespace TeamF
         public EnemyManagerData Data;
         public List<Transform> SpawnPoints = new List<Transform>();
         List<Enemy> enemiesSpawned = new List<Enemy>();
-        int idCounter;
+        protected int idCounter;
         float spawnTime;
 
         /// <summary>
@@ -203,7 +196,7 @@ namespace TeamF
         /// <param name="_enemyPrefab">Il prefab del nemico da utilizzare</param>
         /// <param name="_spawnPoint">Lo spawn point dove far spawnare il nemico</param>
         /// <param name="SpawnElementalEnemy">True se il nemico da spawnare è elementale</param>
-        Enemy SpawnEnemy(Enemy _enemyPrefab, Transform _spawnPoint)
+        protected Enemy SpawnEnemy(Enemy _enemyPrefab, Transform _spawnPoint)
         {
             if (enemiesSpawned.Count >= Data.MaxEnemiesInScene)
                 return null;
@@ -231,7 +224,7 @@ namespace TeamF
         /// <param name="_type"></param>
         /// <param name="_element"></param>
         /// <returns></returns>
-        EnemyData FindEnemyDataByTypeAndElement(EnemyType _type, ElementalType _element)
+        protected EnemyData FindEnemyDataByTypeAndElement(EnemyType _type, ElementalType _element)
         {
             List<EnemyData> sortedByType = Data.EnemiesData.Where(d => d.EnemyType == _type).ToList();
             List<EnemyData> sortedByElement = new List<EnemyData>();

@@ -25,7 +25,7 @@ namespace TeamF
                     break;
                 case 1:
                     //Scena test
-                    GameManager.I.EnterValuesMenu();     //TODO: Deve fare in modo che venga attivato il pannello dei valori e chiamato l'init.
+                    GameManager.I.EnterValuesMenu();
                     break;
                 case 2:
                     //ExitGame;

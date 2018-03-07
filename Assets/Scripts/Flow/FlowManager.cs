@@ -36,6 +36,10 @@ namespace TeamF
                     if (_oldState == FlowState.Menu)
                         GameManager.I.EnterGameplayActions();
                     break;
+                case FlowState.EnterTestScene:
+                    if (_oldState == FlowState.Menu)
+                        GameManager.I.EnterTestSceneActions();
+                    break;
                 case FlowState.Gameplay:
                     break;
                 case FlowState.Pause:
@@ -66,6 +70,7 @@ namespace TeamF
         Loading,
         Menu,
         EnterGameplay,
+        EnterTestScene,
         Gameplay,
         Pause,
         GameWon,

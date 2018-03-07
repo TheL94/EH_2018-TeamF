@@ -41,6 +41,14 @@ namespace TeamF
             Enemy_Damage.text = _enemyData.Damage.ToString();
             Enemy_Speed.text = _enemyData.Speed.ToString();
             Enemy_AttackRange.text = _enemyData.DamageRange.ToString();
+            MenuBaseInit();
+        }
+
+        void MenuBaseInit()
+        {
+            GameManager.I.UIMng.CurrentMenu = this;
+            FindISelectableObects();
+            SelectableButtons[0].IsSelected = true;
         }
 
         /// <summary>
@@ -68,6 +76,16 @@ namespace TeamF
                 data.Damage = int.Parse(Enemy_Damage.text);
                 data.Speed = float.Parse(Enemy_Speed.text);
                 data.DamageRange = float.Parse(Enemy_AttackRange.text);
+            }
+        }
+
+        public override void Select()
+        {
+            switch (CurrentIndexSelected)
+            {
+                case 0:
+                    GameManager.I.ChangeFlowState(FlowState.EnterTestScene);
+                    break;
             }
         }
     }
