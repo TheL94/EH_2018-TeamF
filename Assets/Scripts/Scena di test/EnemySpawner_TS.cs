@@ -23,6 +23,13 @@ namespace TeamF
             SpawnEnemyForeachSpawn();
         }
 
+        public override void OnEnemyDeath(Enemy _enemyKilled)
+        {
+            Destroy(_enemyKilled.gameObject);
+            SpawnEnemy(SpawnPoints[(int)_enemyKilled.Data.ElementalType - 1], ManichiniDiDestinazione[(int)_enemyKilled.Data.ElementalType - 1], _enemyKilled.Data.EnemyType);
+            enemiesSpawned.Remove(_enemyKilled);
+        }
+
         void SpawnEnemyForeachSpawn()
         {
             for (int i = 0; i < SpawnPoints.Count; i++)
@@ -46,10 +53,6 @@ namespace TeamF
                 _newEnemy.Init(EnemyTarget, FindEnemyDataByType(_type), Data.EnemyInitialState, "Enemy" + idCounter);
         }
 
-        public override void OnEnemyDeath(Enemy _enemyKilled)
-        {
-            Destroy(_enemyKilled.gameObject);
-            SpawnEnemy(SpawnPoints[(int)_enemyKilled.Data.ElementalType - 1], ManichiniDiDestinazione[(int)_enemyKilled.Data.ElementalType - 1], _enemyKilled.Data.EnemyType);
-        }
+        
     }
 }

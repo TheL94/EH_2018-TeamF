@@ -114,7 +114,7 @@ namespace TeamF
         public bool CanSpawn { get; set; }
         public EnemyManagerData Data;
         public List<Transform> SpawnPoints = new List<Transform>();
-        List<Enemy> enemiesSpawned = new List<Enemy>();
+        protected List<Enemy> enemiesSpawned = new List<Enemy>();
         protected int idCounter;
         float spawnTime;
 

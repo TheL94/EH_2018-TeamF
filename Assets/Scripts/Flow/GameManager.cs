@@ -43,7 +43,7 @@ namespace TeamF
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Escape))
-                CloseApplicationActions();
+                ChangeFlowState(FlowState.GameLost);
         }
 
         void ClearScene()
