@@ -27,6 +27,10 @@ namespace TeamF
         public virtual void Init(IDamageable _enemyTarget, bool _isTestScene = false)
         {
             EnemyTarget = _enemyTarget;
+
+            Enemy.EnemyDeath += OnEnemyDeath;
+            Enemy.EnemyConfusion += OnEnemyConfusion;
+
             if (!_isTestScene)
                 StartCoroutine(FirstSpawn());
         }
@@ -47,10 +51,15 @@ namespace TeamF
         /// se la partita è vinta avvisa il gamemanager
         /// </summary>
         /// <param name="_enemyKilled"></param>
-        public void KillEnemy(Enemy _enemyKilled)
+        public void OnEnemyDeath(Enemy _enemyKilled)
         {
             Events_LevelController.UpdateKillPoints(_enemyKilled.Data.EnemyValue);
             DeleteSpecificEnemy(_enemyKilled.ID);
+        }
+
+        public void OnEnemyConfusion(Enemy _enemy)
+        {
+            _enemy.Target = GetClosestTarget(_enemy);
         }
 
         /// <summary>
@@ -58,7 +67,7 @@ namespace TeamF
         /// </summary>
         /// <param name="_enemy">Il nemico che richiede il calcolo</param>
         /// <returns></returns>
-        public Enemy GetClosestTarget(Enemy _enemy)
+        Enemy GetClosestTarget(Enemy _enemy)
         {
             float referanceDistance = 1000;
             Enemy enemyCloser = null;
@@ -84,6 +93,7 @@ namespace TeamF
             {
                 if (enemiesSpawned[i].ID == _idEnemy)
                 {
+                    enemiesSpawned[i].gameObject.SetActive(false); //TODO : da rivedere
                     enemiesSpawned.Remove(enemiesSpawned[i]);
                     return;
                 }
@@ -217,7 +227,7 @@ namespace TeamF
         /// <param name="_enemyData"></param>
         void InitEnemy(Enemy _enemy, EnemyData _enemyData)
         {
-            _enemy.Init(EnemyTarget, this, _enemyData, Data.EnemyInitialState, "Enemy" + idCounter);
+            _enemy.Init(EnemyTarget, _enemyData, Data.EnemyInitialState, "Enemy" + idCounter);
         }
 
         /// <summary>
@@ -245,5 +255,11 @@ namespace TeamF
             return null;
         }
         #endregion
+
+        private void OnDisable()
+        {
+            Enemy.EnemyDeath -= OnEnemyDeath;
+            Enemy.EnemyConfusion -= OnEnemyConfusion;
+        }
     }
 }

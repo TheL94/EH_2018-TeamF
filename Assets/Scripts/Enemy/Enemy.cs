@@ -24,15 +24,13 @@ namespace TeamF
             }
         }
 
-        EnemyManager manager;
         MeshRenderer render;
         AI_Enemy ai_Enemy;
 
         #region API
-        public void Init(IDamageable _target, EnemyManager _manager, EnemyData _data, AI_State _initalState, string _id)
+        public void Init(IDamageable _target, EnemyData _data, AI_State _initalState, string _id)
         {
             Target = _target;
-            manager = _manager;
             Data = _data;
             ID = _id;
             Life = Data.Life;
@@ -57,19 +55,7 @@ namespace TeamF
 
         #region Nav Mesh Agent
         public NavMeshAgent Agent { get; private set; }
-
-        IDamageable _target;
-        public IDamageable Target
-        {
-            get { return _target; }
-            set
-            {
-                if (value == null) // Se target è nullo chiede come target al controller il più vicino
-                    _target = manager.GetClosestTarget(this); // cambiare il modo in cui viene chiamata questa funzione (dall'alto verso il basso)
-                else
-                    _target = value;
-            }
-        }
+        public IDamageable Target { get; set; }
         #endregion
 
         #region Enemy Behaviour
@@ -135,8 +121,10 @@ namespace TeamF
 
             if (Life <= 0)
             {
+                ai_Enemy.IsActive = false;
                 CurrentBehaviour.DoDeath(_type);
-                // distrggere l'oggetto e avvisare il controller
+                if(EnemyDeath != null)
+                    EnemyDeath(this);
             }
         }
         #endregion
@@ -146,6 +134,12 @@ namespace TeamF
         /// Chiamata dalla combo elementale paralizzante
         /// </summary>
         public bool IsParalized { get; set; }
+        #endregion
+
+        #region Enemy Delegate
+        public delegate void EnemyState(Enemy _enemy);
+        public static EnemyState EnemyDeath;
+        public static EnemyState EnemyConfusion;
         #endregion
     }
 
