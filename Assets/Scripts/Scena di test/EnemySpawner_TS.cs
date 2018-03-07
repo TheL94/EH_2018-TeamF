@@ -8,9 +8,9 @@ namespace TeamF
     {
         public List<IDamageable> ManichiniDiDestinazione = new List<IDamageable>();
 
-        public override void Init(IDamageable _enemyTarget)
+        public override void Init(IDamageable _enemyTarget, bool _isTestScene = false)
         {
-            base.Init(_enemyTarget);
+            base.Init(_enemyTarget, _isTestScene);
 
             foreach (IDamageable dummy in GetComponentsInChildren<IDamageable>())
             {

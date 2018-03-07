@@ -102,7 +102,7 @@ namespace TeamF
             GameObject tempobj = Instantiate(Resources.Load("TestScenePrefab/EnemyManager_TS"), transform) as GameObject;
             EnemyMng = tempobj.GetComponent<EnemySpawner_TS>();
 
-            EnemyMng.Init(null);
+            EnemyMng.Init(null, true);
             ChangeFlowState(FlowState.Gameplay);
         }
 

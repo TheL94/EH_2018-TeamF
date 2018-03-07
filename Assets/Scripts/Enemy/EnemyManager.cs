@@ -24,9 +24,11 @@ namespace TeamF
         }
 
         #region API
-        public virtual void Init(IDamageable _enemyTarget)
+        public virtual void Init(IDamageable _enemyTarget, bool _isTestScene = false)
         {
             EnemyTarget = _enemyTarget;
+            if (!_isTestScene)
+                StartCoroutine(FirstSpawn());
         }
 
         /// <summary>
