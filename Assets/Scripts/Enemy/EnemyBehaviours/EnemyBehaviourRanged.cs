@@ -7,13 +7,12 @@ namespace TeamF
 {
     public class EnemyBehaviourRanged : IEnemyBehaviour
     {
+        float multiplier = 1;
         public float Multiplier { get; set; }
 
         Enemy myEnemy;
         Transform shootingPoint;
         ElementalAmmo ammo;
-
-        float multiplier = 1;
 
         RangedData rangedData { get { return myEnemy.Data as RangedData; } }
 

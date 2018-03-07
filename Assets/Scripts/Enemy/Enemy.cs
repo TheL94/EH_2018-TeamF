@@ -146,22 +146,22 @@ namespace TeamF
                             animator.CrossFade("Idle", 0.3f);
                             break;
                         case AnimationState.Walk:
-                            animator.CrossFade("Walk", 0.3f);
+                            animator.CrossFade("walk", 0.3f);
                             break;
                         case AnimationState.Run:
-                            animator.CrossFade("Run", 0.3f);
+                            animator.CrossFade("run", 0.3f);
                             break;
                         case AnimationState.MeleeAttack:
-                            animator.CrossFade("MeleeAttack", 0.3f);
+                            animator.CrossFade("melee", 0.3f);
                             break;
                         case AnimationState.RangedAttack:
-                            animator.CrossFade("RangedAttack", 0.3f);
+                            animator.CrossFade("range", 0.3f);
                             break;
                         case AnimationState.Damage:
-                            animator.CrossFade("Damage", 0.3f);
+                            animator.CrossFade("damage", 0.3f);
                             break;
                         case AnimationState.Death:
-                            animator.CrossFade("Death", 0.3f);
+                            animator.CrossFade("death", 0.3f);
                             break;
                     }
                 }
