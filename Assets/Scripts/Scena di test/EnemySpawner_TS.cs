@@ -29,9 +29,9 @@ namespace TeamF
             {
                 Enemy _newEnemy = SpawnEnemy(EnemyPrefab, SpawnPoints[i]);
                 if (!FollowPlayer)
-                    _newEnemy.Init(ManichiniDiDestinazione[i], this, FindEnemyDataByTypeAndElement(EnemyType.Melee, (ElementalType)i + 1), Data.EnemyInitialState, "Enemy" + idCounter); 
+                    _newEnemy.Init(ManichiniDiDestinazione[i], FindEnemyDataByTypeAndElement(EnemyType.Melee, (ElementalType)i + 1), Data.EnemyInitialState, "Enemy" + idCounter); 
                 else
-                    _newEnemy.Init(EnemyTarget, this, FindEnemyDataByTypeAndElement(EnemyType.Melee, (ElementalType)i + 1), Data.EnemyInitialState, "Enemy" + idCounter);
+                    _newEnemy.Init(EnemyTarget, FindEnemyDataByTypeAndElement(EnemyType.Melee, (ElementalType)i + 1), Data.EnemyInitialState, "Enemy" + idCounter);
 
             }
         }
