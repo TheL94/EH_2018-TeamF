@@ -18,7 +18,7 @@ namespace TeamF
             get { return Agent.speed; }
             set
             {
-                Data.Speed += (Data.Speed * value) / 100;
+                Data.Speed = value;
                 Agent.speed = Data.Speed;
 
             }

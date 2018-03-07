@@ -29,7 +29,7 @@ namespace TeamF
                     GameManager.I.LoadingActions();
                     break;
                 case FlowState.Menu:
-                    if (_oldState == FlowState.Loading || _oldState == FlowState.ExitGameplay)
+                    if (_oldState == FlowState.Loading || _oldState == FlowState.ExitGameplay || _oldState == FlowState.EnterTestScene)
                         GameManager.I.MenuActions();
                     break;
                 case FlowState.EnterGameplay:

@@ -99,6 +99,9 @@ namespace TeamF
                     (mng as EnemySpawner_TS).FollowPlayer = FollowPlayerToggle.isOn;
                     GameManager.I.ChangeFlowState(FlowState.EnterTestScene);
                     break;
+                //case 1:
+                //    GameManager.I.MenuActions();
+                //    break;
             }
         }
     }
