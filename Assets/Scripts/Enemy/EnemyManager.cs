@@ -150,7 +150,7 @@ namespace TeamF
                     {
                         Enemy newEnemy = SpawnEnemy(EnemyPrefab, SpawnPoints[i]);
                         if (newEnemy != null)
-                            InitEnemy(newEnemy, FindEnemyDataByTypeAndElement(EnemyType.Melee, (ElementalType)Random.Range(1, 5)));
+                            InitEnemy(newEnemy, FindEnemyDataByType((EnemyType)Random.Range(2, 6)));
                     } 
                 }
 
@@ -162,7 +162,7 @@ namespace TeamF
                     {
                         Enemy newEnemy = SpawnEnemy(EnemyPrefab, SpawnPoints[i]);
                         if(newEnemy != null)
-                            InitEnemy(newEnemy, FindEnemyDataByTypeAndElement(EnemyType.Ranged, ElementalType.None));
+                            InitEnemy(newEnemy, FindEnemyDataByType(EnemyType.Ranged));
                     } 
                 }
 
@@ -174,7 +174,7 @@ namespace TeamF
                     {
                         Enemy newEnemy = SpawnEnemy(EnemyPrefab, SpawnPoints[i]);
                         if (newEnemy != null)
-                            InitEnemy(newEnemy, FindEnemyDataByTypeAndElement(EnemyType.Melee, ElementalType.None));
+                            InitEnemy(newEnemy, FindEnemyDataByType(EnemyType.Melee));
                     } 
                 }
             }
@@ -236,23 +236,9 @@ namespace TeamF
         /// <param name="_type"></param>
         /// <param name="_element"></param>
         /// <returns></returns>
-        protected EnemyData FindEnemyDataByTypeAndElement(EnemyType _type, ElementalType _element)
+        protected EnemyData FindEnemyDataByType(EnemyType _type)
         {
-            List<EnemyData> sortedByType = Data.EnemiesData.Where(d => d.EnemyType == _type).ToList();
-            List<EnemyData> sortedByElement = new List<EnemyData>();
-
-            if (sortedByType.Count == 1)
-            {
-                return Instantiate(sortedByType[0]);
-            }
-            else
-            {
-                sortedByElement = sortedByType.Where(d => d.ElementalType == _element).ToList();
-                if (sortedByElement.Count == 1)
-                    return Instantiate(sortedByElement[0]);
-            }
-
-            return null;
+            return Data.EnemiesData.Where(d => d.EnemyType == _type).First();
         }
         #endregion
 

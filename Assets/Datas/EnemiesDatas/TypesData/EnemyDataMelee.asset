@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Name: EnemyDataMelee
   m_EditorClassIdentifier: 
   EnemyType: 0
-  ElementalType: 0
   ModelPrefab: {fileID: 1030758615841798, guid: 63a0e7e88b49e0540822eab879ed3a97,
     type: 2}
   Life: 10

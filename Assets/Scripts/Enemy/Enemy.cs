@@ -40,6 +40,7 @@ namespace TeamF
             Agent = GetComponent<NavMeshAgent>();
             ai_Enemy = GetComponent<AI_Enemy>();
             render = GetComponentInChildren<MeshRenderer>();
+            animator = GetComponentInChildren<Animator>();
 
             CurrentBehaviour = DeterminateBehaviourFromType(Data);
             CurrentBehaviour.DoInit(this);
@@ -66,36 +67,18 @@ namespace TeamF
             switch (_data.EnemyType)
             {
                 case EnemyType.Melee:
-                    switch (_data.ElementalType)
-                    {
-                        case ElementalType.None:
-                            return new EnemyBehaviourMelee();
-                        case ElementalType.Fire:
-                            return new EnemyFireBehaviour();
-                        case ElementalType.Water:
-                            return new EnemyWaterBehaviour();
-                        case ElementalType.Poison:
-                            return new EnemyPoisonBehaviour();
-                        case ElementalType.Thunder:
-                            return new EnemyThunderBehaviour();
-                    }
-                    break;
+                    return new EnemyBehaviourMelee();
                 case EnemyType.Ranged:
-                    switch (_data.ElementalType)
-                    {
-                        case ElementalType.None:
-                            return new EnemyBehaviourRanged();
-                        case ElementalType.Fire:
-                            return new EnemyFireBehaviour();
-                        case ElementalType.Water:
-                            return new EnemyWaterBehaviour();
-                        case ElementalType.Poison:
-                            return new EnemyPoisonBehaviour();
-                        case ElementalType.Thunder:
-                            return new EnemyThunderBehaviour();
-                    }
-                    break;
-            }
+                    return new EnemyBehaviourRanged();
+                case EnemyType.Fire:
+                    return new EnemyFireBehaviour();
+                case EnemyType.Water:
+                    return new EnemyWaterBehaviour();
+                case EnemyType.Poison:
+                    return new EnemyPoisonBehaviour();
+                case EnemyType.Thunder:
+                    return new EnemyThunderBehaviour();
+            }                            
             return null;
         }
         #endregion
@@ -141,12 +124,45 @@ namespace TeamF
         public static EnemyState EnemyDeath;
         public static EnemyState EnemyConfusion;
         #endregion
+
+        #region Animation
+        Animator animator;
+
+        private AnimationState _animState;
+        public AnimationState AnimState
+        {
+            get { return _animState; }
+            set
+            {
+                if (_animState == value)
+                    return;
+
+                _animState = value;
+                if (animator != null)
+                {
+                    //animator.CrossFade("Idle", 0.3f);
+                    switch (_animState)
+                    {
+                    }
+                }
+            }
+        }
+
+        public enum AnimationState
+        {
+
+        }
+        #endregion
     }
 
     public enum EnemyType
     {
         Melee = 0,
-        Ranged
+        Ranged,
+        Fire,
+        Water,
+        Poison, 
+        Thunder
     }
 
     public enum ElementalType
