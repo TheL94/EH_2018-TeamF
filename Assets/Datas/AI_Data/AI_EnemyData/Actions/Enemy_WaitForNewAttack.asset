@@ -9,5 +9,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d89493f080624de40826fdcb1006050c, type: 3}
-  m_Name: Enemy_Wait For New Attack
+  m_Name: Enemy_WaitForNewAttack
   m_EditorClassIdentifier: 
