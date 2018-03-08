@@ -15,7 +15,7 @@ MonoBehaviour:
   AllElementalAmmo:
   - AmmoType: 0
     Damage: 1
-    Ammo: 0
+    Ammo: -1
     Data:
       EffectValue: 0
       TimeOfEffect: 0

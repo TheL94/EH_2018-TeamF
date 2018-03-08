@@ -6,6 +6,6 @@ namespace TeamF
 {
     public interface IParalyzable 
     {
-        void Paralize(bool _isParalized);
+        bool IsParalized { get; set; }
     }
 }

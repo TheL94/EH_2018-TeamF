@@ -8,28 +8,27 @@ namespace TeamF
     {
         Enemy enemy;
         ElementalEffectData elementalData;
-        float startMovementSpeed;
+        float previousMovementSpeed;
 
         public void DoInit(Enemy _enemy, ElementalEffectData _data)
         {
             enemy = _enemy;
             elementalData = _data;
-            startMovementSpeed = enemy.MovementSpeed;
-            enemy.SetPercentageOfMovementSpeed(_data.EffectValue);
+            previousMovementSpeed = enemy.MovementSpeed;
+            enemy.MovementSpeed = _data.EffectValue;
         }
 
         public void DoStopEffect()
         {
-            enemy.MovementSpeed = startMovementSpeed;
+            enemy.MovementSpeed = previousMovementSpeed;
         }
 
         public bool DoUpdate()
         {
             elementalData.TimeOfEffect -= Time.deltaTime;
             if (elementalData.TimeOfEffect <= 0)
-            {
                 return true;
-            }
+
             return false;
         }
     }

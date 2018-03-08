@@ -8,5 +8,6 @@ namespace TeamF
     public class RangedData : EnemyData
     {
         public float BulletSpeed;
+        public BulletData BulletData;
     }
 }

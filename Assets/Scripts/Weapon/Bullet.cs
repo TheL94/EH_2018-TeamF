@@ -43,9 +43,9 @@ namespace TeamF
             switch (_type)
             {
                 case ElementalType.None:
-                    if (rend != null)
+                    if(rend != null)
                         rend.material.color = Color.grey;
-                    if (trail != null)
+                    if(trail != null)
                     {
                         trail.material.color = Color.grey;
                         trail.material.SetColor("_EmissionColor", Color.grey);
@@ -58,7 +58,7 @@ namespace TeamF
                     {
                         trail.material.color = Color.red;
                         trail.material.SetColor("_EmissionColor", Color.red);
-                    }
+                    }           
                     break;
                 case ElementalType.Water:
                     if (rend != null)
@@ -130,23 +130,25 @@ namespace TeamF
 
         private void OnTriggerEnter(Collider other)
         {
-            if(owner == BulletOwner.Character)
+            if (other.tag == "ComboElement")
+                return;
+            if (owner == BulletOwner.Character)
             {
                 IDamageable damageable = other.GetComponent<IDamageable>();
                 if (damageable != null)
                 {
                     DoDamage(damageable);
                     ApplyElementalEffect(other.GetComponent<Enemy>());
-                    Destroy(gameObject); 
                 }
+                Destroy(gameObject); 
             }
             else
             {
-                if(other.GetComponent<Enemy>() == null)
+                if (other.GetComponent<Enemy>() == null)
                 {
                     DoDamage(other.GetComponent<IDamageable>());
                     Destroy(gameObject);
-                }          
+                }
             }
         }
     }

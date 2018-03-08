@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace TeamF
 {
-    public class UI_MainMenuController : MenuBase, IButtonController
+    public class UI_MainMenuController : MenuBase
     {
         
 
@@ -24,6 +24,10 @@ namespace TeamF
                     GameManager.I.ChangeFlowState(FlowState.EnterGameplay);
                     break;
                 case 1:
+                    //Scena test
+                    GameManager.I.EnterValuesMenu();
+                    break;
+                case 2:
                     //ExitGame;
                     GameManager.I.CloseApplicationActions();
                     break;
