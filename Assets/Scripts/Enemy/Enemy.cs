@@ -27,7 +27,6 @@ namespace TeamF
         MeshRenderer render;
         AI_Enemy ai_Enemy;
 
-        #region API
         public void Init(IDamageable _target, EnemyData _data, AI_State _initalState, string _id)
         {
             Target = _target;
@@ -52,14 +51,13 @@ namespace TeamF
             ai_Enemy.InitialDefaultState = _initalState;
             ai_Enemy.IsActive = true;
         }
-        #endregion
 
         #region Nav Mesh Agent
         public NavMeshAgent Agent { get; private set; }
         public IDamageable Target { get; set; }
         #endregion
 
-        #region Enemy Behaviour
+        #region IEnemyBehaviour
         public IEnemyBehaviour CurrentBehaviour { get; private set; }
 
         IEnemyBehaviour DeterminateBehaviourFromType(EnemyData _data)

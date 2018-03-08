@@ -32,7 +32,7 @@ namespace TeamF
                     render.material.color = Color.green;
                     break;
                 case ElementalType.Thunder:
-                    render.material.color = Color.magenta;
+                    render.material.color = Color.yellow;
                     break;
                 default:
                     break;
