@@ -1,0 +1,3 @@
+[submodule "Assets/UnityDevFramework"]
+	path = Assets/UnityDevFramework
+	url = https://github.com/TheL94/UnityDevFramework.git

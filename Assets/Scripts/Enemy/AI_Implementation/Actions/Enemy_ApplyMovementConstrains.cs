@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Framework.AI;
+using UnityFramework.AI;
 
 namespace TeamF.AI
 {
