@@ -13,12 +13,12 @@ namespace TeamF
         {
             enemy = _enemy;
             elementalData = _data;
-            enemy.GetComponent<IParalyzable>().Paralize(true);
+            enemy.GetComponent<IParalyzable>().IsParalized = true;
         }
 
         public void DoStopEffect()
         {
-            enemy.GetComponent<IParalyzable>().Paralize(false);             //TODO: alla fine dell'effetto il nemico ne deve essere immune per 2 secondi
+            enemy.GetComponent<IParalyzable>().IsParalized = false; //TODO: alla fine dell'effetto il nemico ne deve essere immune per 2 secondi
         }
 
         public bool DoUpdate()

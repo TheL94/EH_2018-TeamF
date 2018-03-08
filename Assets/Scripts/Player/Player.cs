@@ -7,25 +7,6 @@ namespace TeamF
 {
     public class Player : MonoBehaviour
     {
-        /// <summary>
-        /// Se il player ha attraversato una nube paralizzante, viene settata questa variabile che blocca gli input.
-        /// </summary>
-        public bool IsParalized { get; set; }
-
-        Character character;
-        ControllerInput controllerInput;
-
-        public void AvatarDeath()
-        {
-            GameManager.I.LevelMng.GoToGameLost();
-        }
-
-        void Start()
-        {
-            Init();
-            IsParalized = false;
-        }
-
         void Update()
         {
             CheckInput();
@@ -33,33 +14,46 @@ namespace TeamF
 
         public void Init()
         {
+            Character = FindObjectOfType<Character>();
             controllerInput = new ControllerInput(0);
-            character = GetComponent<Character>();
-            character.Init(this);
         }
+
+        #region Character
+        public Character Character { get; private set; }
+        public CharacterData CharacterData;
+
+        /// <summary>
+        /// Chiama l'init per il character
+        /// </summary>
+        /// <param name="_isTestScene">Se true, il character deve essere inizializzato per la scena di test, altrimenti per una scena di gioco normale</param>
+        public void InitCharacter(bool _isTestScene = false)
+        {
+            Character.Init(this, Instantiate(CharacterData), _isTestScene);
+        }
+
+        public void CharacterDeath()
+        {
+            GameManager.I.LevelMng.GoToGameLost();
+        }
+        #endregion
+
+        #region Input
+        ControllerInput controllerInput;
 
         void CheckInput()
         {
-            InputStatus status = controllerInput.GetPlayerInputStatus();
-
-            if (status.IsConnected)
-                CheckControllerInput();
+            //InputStatus status = controllerInput.GetPlayerInputStatus();
+            if (Character.IsParalized)
+                return;
             else
                 CheckKeyboardInput();
-        }
-
-        void CheckControllerInput()
-        {
-
         }
 
         void CheckKeyboardInput()
         {
             if (GameManager.I.CurrentState == FlowState.Gameplay)
             {
-                if (character.Life <= 0)
-                    return;
-                if (IsParalized)
+                if (Character.Life <= 0)
                     return;
 
                 Vector3 finalDirection = new Vector3();
@@ -75,23 +69,23 @@ namespace TeamF
 
                 if (Input.GetAxis("Mouse ScrollWheel") < 0f || Input.GetKeyDown(KeyCode.E))
                 {
-                    character.SelectPreviousAmmo();
+                    Character.SelectPreviousAmmo();
 
                 }
                 else if (Input.GetAxis("Mouse ScrollWheel") > 0f || Input.GetKeyDown(KeyCode.Q))
                 {
-                    character.SelectNextAmmo();
+                    Character.SelectNextAmmo();
                 }
 
-                character.movement.Move(finalDirection.normalized);
+                Character.movement.Move(finalDirection.normalized);
 
 
                 if (Input.GetMouseButtonDown(0))
-                    character.Shot();
+                    Character.Shot();
                 if (Input.GetMouseButton(0))
-                    character.FullAutoShot();
+                    Character.FullAutoShot();
 
-                character.movement.Rotate();
+                Character.movement.Rotate();
             }
             if (GameManager.I.CurrentState != FlowState.EnterGameplay && GameManager.I.CurrentState != FlowState.Gameplay)
             {
@@ -103,5 +97,6 @@ namespace TeamF
                     GameManager.I.UIMng.CurrentMenu.Select();
             }
         }
+        #endregion
     }
 }

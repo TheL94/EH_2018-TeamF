@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace TeamF
 {
-    public class UI_GameOverController : MenuBase, IButtonController
+    public class UI_GameOverController : MenuBase
     {
         public Text GameOverText;
 

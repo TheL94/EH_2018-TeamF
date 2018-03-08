@@ -12,14 +12,17 @@ namespace TeamF
 
         FlowManager flowMng;
         public LevelManager LevelMng;
-        public EnemyController EnemyCtrl;
+        public EnemyManager EnemyMng;
 
-        public GameObject PlayerPrefab;
         public AmmoCratesController AmmoController;
 
         [HideInInspector]
         public UIManager UIMng;
         public GameObject UIManagerPrefab;
+        [HideInInspector]
+        public Player Player;
+
+        public float KillsToWin;
 
         void Awake()
         {
@@ -34,17 +37,18 @@ namespace TeamF
         {
             flowMng = new FlowManager();
             ChangeFlowState(FlowState.Loading);
+            // NELLO START NON CI INFILARE NIENTE ! USA L'AZIONE DI LOADING
         }
 
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Escape))
-                CloseApplicationActions();
+                ChangeFlowState(FlowState.GameLost);
         }
 
         void ClearScene()
         {
-            EnemyCtrl.EndGameplayActions();
+            EnemyMng.EndGameplayActions();
         }
 
         #region API
@@ -60,6 +64,11 @@ namespace TeamF
         public void LoadingActions()
         {
             UIMng = Instantiate(UIManagerPrefab, transform).GetComponentInChildren<UIManager>();
+
+            Player = GetComponent<Player>();
+            if (Player != null)
+                Player.Init();
+
             ChangeFlowState(FlowState.Menu);
         }
 
@@ -70,11 +79,24 @@ namespace TeamF
 
         public void EnterGameplayActions()
         {
-            LevelMng = new LevelManager(50f);
+            LevelMng = new LevelManager(KillsToWin);
 
+            if (Player != null)
+                Player.InitCharacter();
+
+            EnemyMng.Init(Player.Character);
             UIMng.GameplayActions();
             AmmoController.Init();
-            EnemyCtrl.Init(LevelMng);
+            ChangeFlowState(FlowState.Gameplay);
+        }
+
+        public void EnterTestSceneActions()
+        {
+            if (Player != null)
+                Player.InitCharacter(true);
+
+            UIMng.GameplayActions();
+            EnemyMng.Init(Player.Character, true);
             ChangeFlowState(FlowState.Gameplay);
         }
 
@@ -105,6 +127,18 @@ namespace TeamF
             Application.Quit();
         }
         #endregion
+
+        /// <summary>
+        /// Attiva il pannello dei valori e gli passa i dati per settare i campi all'inizio
+        /// </summary>
+        public void EnterValuesMenu()
+        {
+            UIMng.EnableValuesPanel(Player.CharacterData, EnemyMng.Data.EnemiesData[0]);               // Farsi restituire i dati dal data manager
+
+            GameObject tempobj = Instantiate(Resources.Load("TestScenePrefab/EnemyManager_TS"), transform) as GameObject;
+            EnemyMng = tempobj.GetComponent<EnemySpawner_TS>();
+        }
+
         #endregion
     }
 }

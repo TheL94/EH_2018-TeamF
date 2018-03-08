@@ -7,7 +7,6 @@ namespace TeamF
 {
     public class UI_GameplayController : MonoBehaviour
     {
-
         public Text FireAmmo;
         public Text WaterAmmo;
         public Text PoisonAmmo;
@@ -18,9 +17,9 @@ namespace TeamF
 
         private void OnEnable()
         {
-            EventManager.OnAmmoChanged += UpdateAmmo;
-            EventManager.OnPointsChanged += UpdareKillPoints;
-            EventManager.OnLifeChanged += UpdateLifeSlider;
+            Events_UIController.OnAmmoChanged += UpdateAmmo;
+            Events_UIController.OnPointsChanged += UpdareKillPoints;
+            Events_UIController.OnLifeChanged += UpdateLifeSlider;
         }
 
         /// <summary>
@@ -32,16 +31,28 @@ namespace TeamF
             switch (_ammoValues.AmmoType)
             {
                 case ElementalType.Fire:
-                    FireAmmo.text = "2 - Fire: " + _ammoValues.Ammo;
+                    if (_ammoValues.Ammo < 0)
+                        FireAmmo.text = "Fire: \u221E"; // simbolo dell'infinito
+                    else
+                        FireAmmo.text = "Fire: " + _ammoValues.Ammo;                
                     break;
                 case ElementalType.Water:
-                    WaterAmmo.text = "3 - Water: " + _ammoValues.Ammo;
+                    if (_ammoValues.Ammo < 0)
+                        WaterAmmo.text = "Fire: \u221E"; // simbolo dell'infinito
+                    else
+                        WaterAmmo.text = "Water: " + _ammoValues.Ammo;
                     break;
                 case ElementalType.Poison:
-                    PoisonAmmo.text = "4 - Poison: " + _ammoValues.Ammo;
+                    if (_ammoValues.Ammo < 0)
+                        PoisonAmmo.text = "Fire: \u221E"; // simbolo dell'infinito
+                    else
+                        PoisonAmmo.text = "Poison: " + _ammoValues.Ammo;
                     break;
                 case ElementalType.Thunder:
-                    ThunderAmmo.text = "5 - Thunder: " + _ammoValues.Ammo;
+                    if (_ammoValues.Ammo < 0)
+                        ThunderAmmo.text = "Fire: \u221E"; // simbolo dell'infinito
+                    else
+                        ThunderAmmo.text = "Thunder: " + _ammoValues.Ammo;
                     break;
                 default:
                     break;
@@ -60,10 +71,9 @@ namespace TeamF
 
         private void OnDisable()
         {
-            EventManager.OnAmmoChanged -= UpdateAmmo;
-            EventManager.OnPointsChanged -= UpdareKillPoints;
-            EventManager.OnLifeChanged -= UpdateLifeSlider;
+            Events_UIController.OnAmmoChanged -= UpdateAmmo;
+            Events_UIController.OnPointsChanged -= UpdareKillPoints;
+            Events_UIController.OnLifeChanged -= UpdateLifeSlider;
         }
-
     }
 }

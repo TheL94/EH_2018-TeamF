@@ -2,228 +2,193 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Framework.AI;
+using TeamF.AI;
 using DG.Tweening;
 
 namespace TeamF
 {
+    [RequireComponent(typeof(NavMeshAgent), typeof(AI_Enemy))]
     public class Enemy : MonoBehaviour, IDamageable, IParalyzable
     {
-        Color startColor;
-        public float Life
+        public EnemyData Data { get; private set; }
+        public string ID { get; private set; }
+        public float MovementSpeed
         {
-            get { return data.Life; }
+            get { return Agent.speed; }
             set
             {
-                data.Life = value;
-                render.material.DOColor(Color.white, .1f).OnComplete(() => { render.material.DORewind(); });
-                
+                Data.Speed = value;
+                Agent.speed = Data.Speed;
+
             }
         }
-        public Vector3 Position
-        {
-            get { return transform.position; }
-            set { transform.position = value; }
-        }
-        public float MovementSpeed { get { return agent.speed; } set { agent.speed = value; } }
-        public EnemyData data { get; set; }
-        public IEnemyBehaviour CurrentBehaviour { get; set; }
-        public string SpecificID { get; set; }
-        public IDamageable target { get; set; }
 
-        NavMeshAgent agent;
-        EnemyController controller;
         MeshRenderer render;
-        float attackTimeCounter;
-        float agentTimeCounter;
+        AI_Enemy ai_Enemy;
 
-        public void Init(Character _target, EnemyController _controller, string _id, EnemyData _data)
+        #region API
+        public void Init(IDamageable _target, EnemyData _data, AI_State _initalState, string _id)
         {
-            target = _target;
-            controller = _controller;
-            SpecificID = _id;
+            Target = _target;
+            Data = _data;
+            ID = _id;
+            Life = Data.Life;
+            
+            Instantiate(Data.ModelPrefab, transform.position, transform.rotation, transform);
 
-            data = _data;
-            DeterminateBehaviourFromType(data);
-
-            Instantiate(data.ModelPrefab, transform.position, transform.rotation, transform);           // Instanza il modello
-
-            agent = GetComponentInChildren<NavMeshAgent>();
-            agent.stoppingDistance = data.DamageRange;
-            agent.SetDestination(_target.transform.position);
-
+            Agent = GetComponent<NavMeshAgent>();
+            ai_Enemy = GetComponent<AI_Enemy>();
             render = GetComponentInChildren<MeshRenderer>();
-            startColor = render.material.color;
+            animator = GetComponentInChildren<Animator>();
 
+            CurrentBehaviour = DeterminateBehaviourFromType(Data);
             CurrentBehaviour.DoInit(this);
+
+            Agent.speed = Data.Speed;
+            Agent.stoppingDistance = Data.DamageRange;
+            Agent.SetDestination(Target.Position);
+
+            ai_Enemy.InitialDefaultState = _initalState;
+            ai_Enemy.IsActive = true;
         }
+        #endregion
 
-        public void SetPercentageOfMovementSpeed(float _movement)
+        #region Nav Mesh Agent
+        public NavMeshAgent Agent { get; private set; }
+        public IDamageable Target { get; set; }
+        #endregion
+
+        #region Enemy Behaviour
+        public IEnemyBehaviour CurrentBehaviour { get; private set; }
+
+        IEnemyBehaviour DeterminateBehaviourFromType(EnemyData _data)
         {
-            MovementSpeed += (MovementSpeed * _movement) / 100;
-        }
-
-        /// <summary>
-        /// Setta il nuovo target con l'idamageable più vicino a se
-        /// </summary>
-        public void ChangeMyTarget()
-        {
-            target = controller.GetCloserTarget(this);
-        }
-
-        private void FixedUpdate()
-        {
-            if (target == null)
-                return;
-
-            if (target.Life > 0)
+            switch (_data.EnemyType)
             {
-                Move();
-                Attack(); 
-            }
-            else
-                ChangeMyTarget();
-
-            CheckMovementConstrains();
+                case EnemyType.Melee:
+                    return new EnemyBehaviourMelee();
+                case EnemyType.Ranged:
+                    return new EnemyBehaviourRanged();
+                case EnemyType.Fire:
+                    return new EnemyFireBehaviour();
+                case EnemyType.Water:
+                    return new EnemyWaterBehaviour();
+                case EnemyType.Poison:
+                    return new EnemyPoisonBehaviour();
+                case EnemyType.Thunder:
+                    return new EnemyThunderBehaviour();
+            }                            
+            return null;
         }
-
-        void Move()
-        {
-            agentTimeCounter += Time.deltaTime;
-            if (agentTimeCounter >= 0.3f)
-            {
-                agent.SetDestination(target.Position);
-                agentTimeCounter = 0;
-            }
-        }
-
-        void RotateTowards(Vector3 _pointToLook)
-        {
-            transform.rotation = Quaternion.LookRotation(_pointToLook - transform.position, Vector3.up);
-        }
+        #endregion
 
         #region IDamageable
-        float _damageMultiplyer = 100;
-        public float DamageMultiplier {
-            get { return _damageMultiplyer; }
-            set { _damageMultiplyer = value; }
+        public float Life { get; private set; }
+
+        public Vector3 Position { get { return transform.position; } }
+
+        float _damagePercentage = 100;
+        public float DamagePercentage
+        {
+            get { return _damagePercentage; }
+            set { _damagePercentage = value; }
         }
 
-        
-
-        /// <summary>
-        /// Funzione per prendere danno;
-        /// </summary>
-        /// <param name="_damage">Il valore da sottrarre alla vita</param>
-        /// <param name="_bulletType">Il tipo del proiettile</param>
-        public void TakeDamage(float _damage, ElementalType _bulletType)
+        public void TakeDamage(float _damage, ElementalType _type = ElementalType.None)
         {
-            _damage += (_damage * DamageMultiplier) / 100;
-            CurrentBehaviour.DoTakeDamage(this, _damage, _bulletType);
+            _damage = (_damage * DamagePercentage) / 100;
+            Life -= CurrentBehaviour.CalulateDamage(this, _damage, _type);
 
-            if (data.Life <= 0)
+            render.material.DOColor(Color.white, .1f).OnComplete(() => { render.material.DORewind(); });
+
+            if (Life <= 0)
             {
-                controller.KillEnemy(this);
-                CurrentBehaviour.DoDeath(_bulletType);
-                Destroy(gameObject);
+                ai_Enemy.IsActive = false;
+                CurrentBehaviour.DoDeath(_type);
+                if(EnemyDeath != null)
+                    EnemyDeath(this);
             }
         }
         #endregion
 
-        #region IParalizer
+        #region IParalyzable
         /// <summary>
-        /// Chiamata dalla combo elementale paralizzante, 
+        /// Chiamata dalla combo elementale paralizzante
         /// </summary>
-        /// <param name="_isParalize"></param>
-        public void Paralize(bool _isParalized)
-        {
-            if (agent.isActiveAndEnabled)
-            {
-                agent.isStopped = _isParalized;
-            }
-        }
-
+        public bool IsParalized { get; set; }
         #endregion
 
-        void CheckMovementConstrains()
-        {
-            if (transform.rotation.x != 0 || transform.rotation.z != 0)
-                transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
-        }
+        #region Enemy Delegate
+        public delegate void EnemyState(Enemy _enemy);
+        public static EnemyState EnemyDeath;
+        public static EnemyState EnemyConfusion;
+        #endregion
 
-        /// <summary>
-        /// provoca danno alla vita del target se è alla distanza corretta
-        /// </summary>
-        void Attack()
+        #region Animation
+        Animator animator;
+
+        private AnimationState _animState;
+        public AnimationState AnimState
         {
-            attackTimeCounter += Time.deltaTime;
-            if (attackTimeCounter >= data.DamageRate)
+            get { return _animState; }
+            set
             {
-                if (Vector3.Distance(agent.destination, transform.position) <= agent.stoppingDistance)
+                if (_animState == value)
+                    return;
+
+                _animState = value;
+                if (animator != null)
                 {
-                    if (target.Life > 0)
+                    switch (_animState)
                     {
-                        RotateTowards(target.Position);
-                        CurrentBehaviour.DoAttack();
-                        attackTimeCounter = 0;
+                        case AnimationState.Idle:
+                            animator.CrossFade("Idle", 0.3f);
+                            break;
+                        case AnimationState.Walk:
+                            animator.CrossFade("walk", 0.3f);
+                            break;
+                        case AnimationState.Run:
+                            animator.CrossFade("run", 0.3f);
+                            break;
+                        case AnimationState.MeleeAttack:
+                            animator.CrossFade("melee", 0.3f);
+                            break;
+                        case AnimationState.RangedAttack:
+                            animator.CrossFade("range", 0.3f);
+                            break;
+                        case AnimationState.Damage:
+                            animator.CrossFade("damage", 0.3f);
+                            break;
+                        case AnimationState.Death:
+                            animator.CrossFade("death", 0.3f);
+                            break;
                     }
                 }
             }
         }
 
-        void DeterminateBehaviourFromType(EnemyData _data)
+        public enum AnimationState
         {
-            switch (_data.EnemyType)
-            {
-                case EnemyType.Melee:
-                    switch (_data.ElementalType)
-                    {
-                        case ElementalType.None:
-                            CurrentBehaviour = new EnemyBehaviourMelee();
-                            break;
-                        case ElementalType.Fire:
-                            CurrentBehaviour = new EnemyFireBehaviour();
-                            break;
-                        case ElementalType.Water:
-                            CurrentBehaviour = new EnemyWaterBehaviour();
-                            break;
-                        case ElementalType.Poison:
-                            CurrentBehaviour = new EnemyPoisonBehaviour();
-                            break;
-                        case ElementalType.Thunder:
-                            CurrentBehaviour = new EnemyThunderBehaviour();
-                            break;
-                    }
-                    break;
-                case EnemyType.Ranged:
-                    switch (_data.ElementalType)
-                    {
-                        case ElementalType.None:
-                            CurrentBehaviour = new EnemyBehaviourRanged();
-                            break;
-                        case ElementalType.Fire:
-                            CurrentBehaviour = new EnemyFireBehaviour();
-                            break;
-                        case ElementalType.Water:
-                            CurrentBehaviour = new EnemyWaterBehaviour();
-                            break;
-                        case ElementalType.Poison:
-                            CurrentBehaviour = new EnemyPoisonBehaviour();
-                            break;
-                        case ElementalType.Thunder:
-                            CurrentBehaviour = new EnemyThunderBehaviour();
-                            break;
-                    }
-                    break;
-            }
+            Idle = 0,
+            Walk,
+            Run,
+            MeleeAttack,
+            RangedAttack,
+            Damage,
+            Death,
         }
-
-        
+        #endregion
     }
 
     public enum EnemyType
     {
         Melee = 0,
-        Ranged
+        Ranged,
+        Fire,
+        Water,
+        Poison, 
+        Thunder
     }
 
     public enum ElementalType
@@ -235,3 +200,4 @@ namespace TeamF
         Thunder = 4
     }
 }
+

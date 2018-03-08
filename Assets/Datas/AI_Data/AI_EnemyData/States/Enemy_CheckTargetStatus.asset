@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b81a7753fd21994bb72925d2560e288, type: 3}
+  m_Name: Enemy_CheckTargetStatus
+  m_EditorClassIdentifier: 
+  Actions:
+  - Delay: 0
+    Loop: 0
+    Action: {fileID: 11400000, guid: 84cd48c5512fb444aac57a9070ea6dd9, type: 2}
+    OnSuccess: {fileID: 0}
+    OnFailure: {fileID: 11400000, guid: 33f7e6be91618384188d15660b867435, type: 2}
+  - Delay: 0
+    Loop: 0
+    Action: {fileID: 11400000, guid: 9673b94937a2294449a06a5511abe59f, type: 2}
+    OnSuccess: {fileID: 11400000, guid: 77c0c56c95ec59e4f931bee8d6b077bf, type: 2}
+    OnFailure: {fileID: 0}
+  - Delay: 0
+    Loop: 0
+    Action: {fileID: 11400000, guid: 80c9df2ead7d35f4eaf0f8e5c8993d1c, type: 2}
+    OnSuccess: {fileID: 0}
+    OnFailure: {fileID: 0}
+  - Delay: 0.3
+    Loop: 0
+    Action: {fileID: 11400000, guid: 0efc6da8ce4b5c94bb31fff45b35d3ff, type: 2}
+    OnSuccess: {fileID: 11400000, guid: 2f23126c1ff04844bbd685122f4c7de4, type: 2}
+    OnFailure: {fileID: 0}

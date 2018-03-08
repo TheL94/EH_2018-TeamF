@@ -6,18 +6,19 @@ namespace TeamF
 {
     public class LevelManager
     {
-        public float PointsToWin;
-        float roundPoints;
+        public float PointsToWin { get; private set; }
+        float roundPoints = 0;
 
         public LevelManager(float _pointsToWin)
         {
             PointsToWin = _pointsToWin;
+            Events_LevelController.OnKillPointChanged += UpdateRoundPoints;
         }
 
         public void UpdateRoundPoints(float _killedEnemyValue)
         {
             roundPoints += _killedEnemyValue;
-            EventManager.KillPointsChanged(roundPoints, PointsToWin);
+            Events_UIController.KillPointsChanged(roundPoints, PointsToWin);
 
             CheckVictory();              
         }
@@ -36,6 +37,11 @@ namespace TeamF
         {
             if (roundPoints >= PointsToWin)
                 GoToGameWon();
+        }
+
+        ~ LevelManager()
+        {
+            Events_LevelController.OnKillPointChanged -= UpdateRoundPoints;
         }
     }
 }

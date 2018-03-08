@@ -35,7 +35,13 @@ namespace TeamF
 
         public void DoStopEffect()
         {
-            navMesh.isStopped = false;
+            if (navMesh != null)
+            {
+                if (navMesh.isActiveAndEnabled)
+                {
+                    navMesh.isStopped = false;
+                } 
+            }
         }
 
     }
