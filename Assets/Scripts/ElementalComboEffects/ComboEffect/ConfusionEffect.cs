@@ -16,7 +16,7 @@ namespace TeamF
             elementalData = _data;
             previousTarget = enemy.Target;
             if(Enemy.EnemyConfusion != null)
-                Enemy.EnemyConfusion(_enemy);
+                Enemy.EnemyConfusion(enemy);
         }
 
         public void DoStopEffect()
@@ -28,9 +28,16 @@ namespace TeamF
         {
             elementalData.TimeOfEffect -= Time.deltaTime;
             if (elementalData.TimeOfEffect <= 0)
-            {
+            {               
                 return true;
             }
+
+            if(enemy.Target != null)
+            {
+                if (Enemy.EnemyConfusion != null)
+                    Enemy.EnemyConfusion(enemy);
+            }
+
             return false;
         }
     }
