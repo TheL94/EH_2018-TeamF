@@ -8,6 +8,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47ff1725c9babcf4086ab08455e360a6, type: 3}
-  m_Name: Enemy_Is Target In Range
+  m_Script: {fileID: 11500000, guid: 90452818342d06b4290d937109cb10a6, type: 3}
+  m_Name: Enemy_IsTargetAvailable
   m_EditorClassIdentifier: 
