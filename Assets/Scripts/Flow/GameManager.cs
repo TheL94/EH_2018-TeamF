@@ -21,7 +21,7 @@ namespace TeamF
         public GameObject UIManagerPrefab;
         [HideInInspector]
         public Player Player;
-
+  
         public float KillsToWin;
         public float ComboCounterTimer;
 
@@ -66,7 +66,7 @@ namespace TeamF
         {
             UIMng = Instantiate(UIManagerPrefab, transform).GetComponentInChildren<UIManager>();
 
-            new ComboCounter(ComboCounterTimer);
+            GetComponent<ComboCounter>().Init(ComboCounterTimer);
 
             Player = GetComponent<Player>();
             if (Player != null)
