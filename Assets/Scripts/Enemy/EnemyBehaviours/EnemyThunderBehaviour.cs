@@ -6,12 +6,6 @@ namespace TeamF
 {
     public class EnemyThunderBehaviour : EnemyBehaviourMelee
     {
-        public override void DoInit(Enemy _myEnemy)
-        {
-            base.DoInit(_myEnemy);
-            _myEnemy.GetComponentInChildren<MeshRenderer>().material.color = Color.yellow;
-        }
-
         public override float CalulateDamage(Enemy _enemy, float _damage, ElementalType _type)
         {
             if (_type == ElementalType.Poison)
@@ -24,9 +18,11 @@ namespace TeamF
         public override void DoDeath(ElementalType _bulletType)
         {
             if(_bulletType == ElementalType.Fire)
-                GameObject.Instantiate(Resources.Load("ElementalCombo/SlowingCloud"), myEnemy.transform.position, Quaternion.identity);
+                InstantiateElementalCombo("ElementalCombo/SlowingCloud");
+
             if (_bulletType == ElementalType.Poison)
-                GameObject.Instantiate(Resources.Load("ElementalCombo/ConfusionCloud"), myEnemy.transform.position, Quaternion.identity); 
+                InstantiateElementalCombo("ElementalCombo/IncreaseDamage");
+
 
             base.DoDeath(_bulletType);
         }

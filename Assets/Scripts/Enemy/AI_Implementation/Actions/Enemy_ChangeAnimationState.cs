@@ -11,8 +11,14 @@ namespace TeamF.AI
         public Enemy.AnimationState AnimationState;
 
         protected override bool Act(AI_Controller _controller)
+        {        
+            return ChangeAnimationState((_controller as AI_Enemy).Enemy);
+        }
+
+        bool ChangeAnimationState(Enemy _enemy)
         {
-            (_controller as AI_Enemy).Enemy.AnimState = AnimationState;
+            if (_enemy.Animator != null)
+                _enemy.AnimState = AnimationState;
             return true;
         }
     }

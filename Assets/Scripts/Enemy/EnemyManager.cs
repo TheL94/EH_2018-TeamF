@@ -10,13 +10,16 @@ namespace TeamF
         public Enemy EnemyPrefab;     
         public IDamageable EnemyTarget { get; private set; }
 
+        public EnemyManagerData Data;
+        public EnemyManagerData DataInstance { get; set; }
+
         void Update()
         {
             if (!CanSpawn)
                 return;
 
             spawnTime += Time.deltaTime;
-            if (spawnTime >= Data.DelayHordes && EnemyTarget.Life > 0)
+            if (spawnTime >= DataInstance.DelayHordes && EnemyTarget.Life > 0)
             {
                 SpawnHorde();
                 spawnTime = 0;
@@ -26,6 +29,12 @@ namespace TeamF
         #region API
         public virtual void Init(IDamageable _enemyTarget, bool _isTestScene = false)
         {
+            Init(_enemyTarget, Instantiate(Data), _isTestScene);
+        }
+
+        public virtual void Init(IDamageable _enemyTarget, EnemyManagerData _dataInstance, bool _isTestScene = false)
+        {
+            DataInstance = _dataInstance;
             EnemyTarget = _enemyTarget;
 
             Enemy.EnemyDeath += OnEnemyDeath;
@@ -112,7 +121,6 @@ namespace TeamF
 
         #region Spawner
         public bool CanSpawn { get; set; }
-        public EnemyManagerData Data;
         public List<Transform> SpawnPoints = new List<Transform>();
         protected List<Enemy> enemiesSpawned = new List<Enemy>();
         protected int idCounter;
@@ -124,7 +132,7 @@ namespace TeamF
         /// <returns></returns>
         IEnumerator FirstSpawn()
         {
-            yield return new WaitForSeconds(Data.StartDelayTime);
+            yield return new WaitForSeconds(DataInstance.StartDelayTime);
             SpawnHorde();
             CanSpawn = true;
         }
@@ -142,9 +150,9 @@ namespace TeamF
                 if (i == spawnIndexToExclude)
                     continue;
 
-                if (!Data.BlockSpawnElemental)
+                if (!DataInstance.BlockSpawnElemental)
                 {
-                    int elementalsEnemies = Random.Range(Data.MinElementalsEnemies, Data.MaxElementalsEnemies + 1);
+                    int elementalsEnemies = Random.Range(DataInstance.MinElementalsEnemies, DataInstance.MaxElementalsEnemies + 1);
 
                     for (int j = 0; j < elementalsEnemies; j++)
                     {
@@ -154,9 +162,9 @@ namespace TeamF
                     } 
                 }
 
-                if (!Data.BlockSpawnRanged)
+                if (!DataInstance.BlockSpawnRanged)
                 {
-                    int rangedEnemies = Random.Range(Data.MinRangedEnemies, Data.MaxRangedEnemies + 1);
+                    int rangedEnemies = Random.Range(DataInstance.MinRangedEnemies, DataInstance.MaxRangedEnemies + 1);
 
                     for (int j = 0; j < rangedEnemies; j++)
                     {
@@ -166,9 +174,9 @@ namespace TeamF
                     } 
                 }
 
-                if (!Data.BlockSpawnNormal)
+                if (!DataInstance.BlockSpawnNormal)
                 {
-                    int hordeNumber = Random.Range(Data.MinNormalEnemies, Data.MaxNormalEnemies + 1);
+                    int hordeNumber = Random.Range(DataInstance.MinNormalEnemies, DataInstance.MaxNormalEnemies + 1);
 
                     for (int j = 0; j < hordeNumber; j++)
                     {
@@ -210,7 +218,7 @@ namespace TeamF
         /// <param name="SpawnElementalEnemy">True se il nemico da spawnare è elementale</param>
         protected Enemy SpawnEnemy(Enemy _enemyPrefab, Transform _spawnPoint)
         {
-            if (enemiesSpawned.Count >= Data.MaxEnemiesInScene)
+            if (enemiesSpawned.Count >= DataInstance.MaxEnemiesInScene)
                 return null;
 
             Enemy newEnemy = Instantiate(_enemyPrefab, _spawnPoint.position, Quaternion.identity, transform);
@@ -227,7 +235,7 @@ namespace TeamF
         /// <param name="_enemyData"></param>
         void InitEnemy(Enemy _enemy, EnemyData _enemyData)
         {
-            _enemy.Init(EnemyTarget, _enemyData, Data.EnemyInitialState, "Enemy" + idCounter);
+            _enemy.Init(EnemyTarget, _enemyData, DataInstance.EnemyInitialState, "Enemy" + idCounter);
         }
 
         /// <summary>
@@ -238,7 +246,7 @@ namespace TeamF
         /// <returns></returns>
         protected EnemyData FindEnemyDataByType(EnemyType _type)
         {
-            return Instantiate(Data.EnemiesData.Where(d => d.EnemyType == _type).First());
+            return Instantiate(DataInstance.EnemiesData.Where(d => d.EnemyType == _type).First());
         }
         #endregion
 

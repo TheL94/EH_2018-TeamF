@@ -11,6 +11,8 @@ namespace TeamF
         public Text WaterAmmo;
         public Text PoisonAmmo;
         public Text ThunderAmmo;
+        public Text ComboCounterText;
+
 
         public Slider KillPointsSlider;
         public Slider LifeSlider;
@@ -20,6 +22,7 @@ namespace TeamF
             Events_UIController.OnAmmoChanged += UpdateAmmo;
             Events_UIController.OnPointsChanged += UpdareKillPoints;
             Events_UIController.OnLifeChanged += UpdateLifeSlider;
+            ComboCounter.OnCounterChanged += UpdateComboCounter;
         }
 
         /// <summary>
@@ -69,11 +72,21 @@ namespace TeamF
             LifeSlider.value = _life / _totalLife;
         }
 
+        void UpdateComboCounter(int _counter)
+        {
+            if (_counter == 0)
+                ComboCounterText.text = string.Empty;
+            else
+                ComboCounterText.text = "+" + _counter.ToString();
+        }
+
         private void OnDisable()
         {
             Events_UIController.OnAmmoChanged -= UpdateAmmo;
             Events_UIController.OnPointsChanged -= UpdareKillPoints;
             Events_UIController.OnLifeChanged -= UpdateLifeSlider;
+            ComboCounter.OnCounterChanged -= UpdateComboCounter;
+
         }
     }
 }

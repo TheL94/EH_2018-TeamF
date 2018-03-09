@@ -17,6 +17,8 @@ namespace TeamF
 
         public virtual void DoAttack()
         {
+            if (myEnemy.Animator != null)
+                myEnemy.AnimState = Enemy.AnimationState.MeleeAttack;
             myEnemy.Target.TakeDamage(myEnemy.Data.Damage);
         }
 
@@ -29,6 +31,17 @@ namespace TeamF
         public virtual void DoDeath(ElementalType _bulletType)
         {
             // Azioni da compiere alla morte
+        }
+
+        /// <summary>
+        /// Instanzia il prefab della combo elementale e lancia l'evento per in counter delle combo elementali.
+        /// </summary>
+        /// <param name="_folderPath">Il percorso all'interno della cartella resources del prefab della combo elementale</param>
+        protected void InstantiateElementalCombo(string _folderPath)
+        {
+            GameObject.Instantiate(Resources.Load(_folderPath), myEnemy.transform.position, Quaternion.identity);
+            if (ComboCounter.OnComboCreation != null)
+                ComboCounter.OnComboCreation();
         }
     }
 }

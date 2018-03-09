@@ -11,6 +11,8 @@ namespace TeamF
         [HideInInspector]
         public int Ammo;
         AmmoCratesController controller;
+        Color ammoColor;
+        string ammoName;
 
         public void Init(AmmoCratesController _controller, int _ammo)
         {
@@ -23,16 +25,20 @@ namespace TeamF
                 case ElementalType.None:
                     break;
                 case ElementalType.Fire:
-                    render.material.color = Color.red;
+                    ammoColor = render.material.color = Color.red;
+                    ammoName = "Fire ";
                     break;
                 case ElementalType.Water:
-                    render.material.color = Color.blue;
+                    ammoColor = render.material.color = Color.blue;
+                    ammoName = "Water ";
                     break;
                 case ElementalType.Poison:
-                    render.material.color = Color.green;
+                    ammoColor = render.material.color = Color.green;
+                    ammoName = "Poison ";
                     break;
                 case ElementalType.Thunder:
-                    render.material.color = Color.yellow;
+                    ammoColor = render.material.color = Color.yellow;
+                    ammoName = "Thunder ";
                     break;
                 default:
                     break;
@@ -45,6 +51,8 @@ namespace TeamF
         /// </summary>
         public void DestroyAmmoCrate()
         {
+            // Crea la particles per indicare quante ammo sono state raccolte
+            GetComponent<HPScript>().ChangeHP(transform.position + new Vector3(0,5,0), ammoColor, ammoName + Ammo);
             controller.DeleteAmmoCrateFromList(this);
         }
     }
