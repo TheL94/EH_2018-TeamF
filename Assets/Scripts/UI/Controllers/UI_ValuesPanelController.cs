@@ -79,7 +79,7 @@ namespace TeamF
         /// </summary>
         void SetEnemiesValue()
         {
-            foreach (EnemyData data in GameManager.I.EnemyMng.Data.EnemiesData)
+            foreach (EnemyData data in GameManager.I.EnemyMng.DataInstance.EnemiesData)
             {
                 data.Life = float.Parse(Enemy_Life.text);
                 data.Damage = int.Parse(Enemy_Damage.text);

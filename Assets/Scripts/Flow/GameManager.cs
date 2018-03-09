@@ -98,8 +98,8 @@ namespace TeamF
             if (Player != null)
                 Player.InitCharacter(true);
 
-            UIMng.GameplayActions();
             EnemyMng.Init(Player.Character, true);
+            UIMng.GameplayActions();
             ChangeFlowState(FlowState.Gameplay);
         }
 
