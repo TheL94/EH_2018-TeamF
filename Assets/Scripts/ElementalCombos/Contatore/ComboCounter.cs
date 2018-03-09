@@ -1,31 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 
 namespace TeamF
 {
-    public class ComboCounter
+    public class ComboCounter : MonoBehaviour
     {
         int counter;
         bool isActive;
         float timer;
         float startTimer;
 
-        public ComboCounter(float _comboTimer)
+        public void Init(float _comboTimer)
         {
             OnComboCreation += ActivateCount;
-            EditorApplication.update += OnUpdate;
             startTimer = _comboTimer;
         }
 
-        void OnUpdate()
+        private void Update()
         {
             if (!isActive)
                 return;
 
             timer -= Time.deltaTime;
-            if(timer <= 0)
+            if (timer <= 0)
             {
                 isActive = false;
                 counter = 0;
