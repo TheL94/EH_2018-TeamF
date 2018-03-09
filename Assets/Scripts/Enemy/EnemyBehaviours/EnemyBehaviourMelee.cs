@@ -30,5 +30,16 @@ namespace TeamF
         {
             // Azioni da compiere alla morte
         }
+
+        /// <summary>
+        /// Instanzia il prefab della combo elementale e lancia l'evento per in counter delle combo elementali.
+        /// </summary>
+        /// <param name="_folderPath">Il percorso all'interno della cartella resources del prefab della combo elementale</param>
+        protected void InstantiateElementalCombo(string _folderPath)
+        {
+            GameObject.Instantiate(Resources.Load(_folderPath), myEnemy.transform.position, Quaternion.identity);
+            if (ComboCounter.OnComboCreation != null)
+                ComboCounter.OnComboCreation();
+        }
     }
 }

@@ -23,6 +23,7 @@ namespace TeamF
         public Player Player;
 
         public float KillsToWin;
+        public float ComboCounterTimer;
 
         void Awake()
         {
@@ -64,6 +65,8 @@ namespace TeamF
         public void LoadingActions()
         {
             UIMng = Instantiate(UIManagerPrefab, transform).GetComponentInChildren<UIManager>();
+
+            new ComboCounter(ComboCounterTimer);
 
             Player = GetComponent<Player>();
             if (Player != null)
