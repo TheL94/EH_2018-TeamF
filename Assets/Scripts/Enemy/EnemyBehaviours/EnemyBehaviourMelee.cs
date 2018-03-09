@@ -17,6 +17,8 @@ namespace TeamF
 
         public virtual void DoAttack()
         {
+            if (myEnemy.Animator != null)
+                myEnemy.AnimState = Enemy.AnimationState.MeleeAttack;
             myEnemy.Target.TakeDamage(myEnemy.Data.Damage);
         }
 
