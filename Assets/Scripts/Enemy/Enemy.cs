@@ -58,8 +58,15 @@ namespace TeamF
             if (Animator != null)
                 AnimState = AnimationState.Death;
 
-            ai_Enemy.IsActive = false;
+            // TODO : risolto bug in modo scoretto --------------------
+            ElementalEffect effect = GetComponent<ElementalEffect>();
+            if (effect != null)
+                effect.gameObject.SetActive(false);
+            // --------------------------------------------------------
+
             CurrentBehaviour.DoDeath(_type);
+
+            ai_Enemy.IsActive = false;
             if (EnemyDeath != null)
                 EnemyDeath(this);
         }

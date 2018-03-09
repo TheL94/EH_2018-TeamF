@@ -25,8 +25,6 @@ namespace TeamF
                 if(comboBehaviour.DoUpdate())
                     StopComboEffect();
             }
-                
-
         }
 
         /// <summary>
