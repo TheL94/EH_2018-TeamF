@@ -39,7 +39,7 @@ namespace TeamF
             Agent = GetComponent<NavMeshAgent>();
             ai_Enemy = GetComponent<AI_Enemy>();
             render = GetComponentInChildren<MeshRenderer>();
-            animator = GetComponentInChildren<Animator>();
+            Animator = GetComponentInChildren<Animator>();
 
             CurrentBehaviour = DeterminateBehaviourFromType(Data);
             CurrentBehaviour.DoInit(this);
@@ -52,7 +52,27 @@ namespace TeamF
             ai_Enemy.IsActive = true;
         }
 
-        #region Nav Mesh Agent
+        #region Actions
+        void DeathActions(ElementalType _type)
+        {
+            if (Animator != null)
+                AnimState = AnimationState.Death;
+
+            // TODO : risolto bug in modo scoretto --------------------
+            ElementalEffect effect = GetComponent<ElementalEffect>();
+            if (effect != null)
+                effect.gameObject.SetActive(false);
+            // --------------------------------------------------------
+
+            CurrentBehaviour.DoDeath(_type);
+
+            ai_Enemy.IsActive = false;
+            if (EnemyDeath != null)
+                EnemyDeath(this);
+        }
+        #endregion
+
+        #region Navigation
         public NavMeshAgent Agent { get; private set; }
         public IDamageable Target { get; set; }
         #endregion
@@ -98,14 +118,14 @@ namespace TeamF
             _damage = (_damage * DamagePercentage) / 100;
             Life -= CurrentBehaviour.CalulateDamage(this, _damage, _type);
 
-            render.material.DOColor(Color.white, .1f).OnComplete(() => { render.material.DORewind(); });
+            if (Animator != null)
+                AnimState = AnimationState.Damage;
+            else
+                render.material.DOColor(Color.white, .1f).OnComplete(() => { render.material.DORewind(); });
 
             if (Life <= 0)
             {
-                ai_Enemy.IsActive = false;
-                CurrentBehaviour.DoDeath(_type);
-                if(EnemyDeath != null)
-                    EnemyDeath(this);
+                DeathActions(_type);
             }
         }
         #endregion
@@ -124,7 +144,7 @@ namespace TeamF
         #endregion
 
         #region Animation
-        Animator animator;
+        public Animator Animator { get; private set; }
 
         private AnimationState _animState;
         public AnimationState AnimState
@@ -136,30 +156,30 @@ namespace TeamF
                     return;
 
                 _animState = value;
-                if (animator != null)
+                if (Animator != null)
                 {
                     switch (_animState)
                     {
                         case AnimationState.Idle:
-                            animator.CrossFade("Idle", 0.3f);
+                            Animator.CrossFade("Idle", 0.3f);
                             break;
                         case AnimationState.Walk:
-                            animator.CrossFade("walk", 0.3f);
+                            Animator.CrossFade("walk", 0.3f);
                             break;
                         case AnimationState.Run:
-                            animator.CrossFade("run", 0.3f);
+                            Animator.CrossFade("run", 0.3f);
                             break;
                         case AnimationState.MeleeAttack:
-                            animator.CrossFade("melee", 0.3f);
+                            Animator.CrossFade("melee", 0.3f);
                             break;
                         case AnimationState.RangedAttack:
-                            animator.CrossFade("range", 0.3f);
+                            Animator.CrossFade("range", 0.3f);
                             break;
                         case AnimationState.Damage:
-                            animator.CrossFade("damage", 0.3f);
+                            Animator.CrossFade("damage", 0.3f);
                             break;
                         case AnimationState.Death:
-                            animator.CrossFade("death", 0.3f);
+                            Animator.CrossFade("death", 0.3f);
                             break;
                     }
                 }

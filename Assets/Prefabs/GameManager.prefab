@@ -59,6 +59,7 @@ MonoBehaviour:
     type: 2}
   Player: {fileID: 0}
   KillsToWin: 50
+  ComboCounterTimer: 10
 --- !u!114 &114731148670223682
 MonoBehaviour:
   m_ObjectHideFlags: 1

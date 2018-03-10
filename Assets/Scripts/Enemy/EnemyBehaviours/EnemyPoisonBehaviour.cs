@@ -23,10 +23,10 @@ namespace TeamF
 
         public override void DoDeath(ElementalType _bulletType)
         {
-            if(_bulletType == ElementalType.Fire)
-                GameObject.Instantiate(Resources.Load("ElementalCombo/FireExplosion"), myEnemy.transform.position, Quaternion.identity);
+            if (_bulletType == ElementalType.Fire)
+                InstantiateElementalCombo("ElementalCombo/FireExplosion");
             if (_bulletType == ElementalType.Water  )
-                GameObject.Instantiate(Resources.Load("ElementalCombo/IncreaseDamage"), myEnemy.transform.position, Quaternion.identity);
+                InstantiateElementalCombo("ElementalCombo/IncreaseDamage");
 
             base.DoDeath(_bulletType);
         }

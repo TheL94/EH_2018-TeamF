@@ -21,8 +21,9 @@ namespace TeamF
         public GameObject UIManagerPrefab;
         [HideInInspector]
         public Player Player;
-
+  
         public float KillsToWin;
+        public float ComboCounterTimer;
 
         void Awake()
         {
@@ -65,6 +66,8 @@ namespace TeamF
         {
             UIMng = Instantiate(UIManagerPrefab, transform).GetComponentInChildren<UIManager>();
 
+            GetComponent<ComboCounter>().Init(ComboCounterTimer);
+
             Player = GetComponent<Player>();
             if (Player != null)
                 Player.Init();
@@ -95,8 +98,8 @@ namespace TeamF
             if (Player != null)
                 Player.InitCharacter(true);
 
-            UIMng.GameplayActions();
             EnemyMng.Init(Player.Character, true);
+            UIMng.GameplayActions();
             ChangeFlowState(FlowState.Gameplay);
         }
 
