@@ -44,6 +44,11 @@ namespace TeamF
                 StartCoroutine(FirstSpawn());
         }
 
+        public void InitDataForTestScene()
+        {
+            DataInstance = Instantiate(Data);
+        }
+
         /// <summary>
         /// Blocca lo spawn di altri nemici e cancella quelli presenti in scena
         /// </summary>

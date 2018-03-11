@@ -6,7 +6,7 @@ namespace TeamF
 {
     public class EnemySpawner_TS : EnemyManager
     {
-        public List<IDamageable> ManichiniDiDestinazione = new List<IDamageable>();
+        public List<IDamageable> EnemyDestinations = new List<IDamageable>();
 
         [HideInInspector]
         public bool FollowPlayer;
@@ -15,9 +15,21 @@ namespace TeamF
         {
             base.Init(_enemyTarget, _isTestScene);
 
-            foreach (IDamageable dummy in GetComponentsInChildren<IDamageable>())
+            foreach (IDamageable _destination in GetComponentsInChildren<IDamageable>())
             {
-                ManichiniDiDestinazione.Add(dummy);
+                EnemyDestinations.Add(_destination);
+            }
+
+            SpawnEnemyForeachSpawn();
+        }
+
+        public override void Init(IDamageable _enemyTarget, EnemyManagerData _dataInstance, bool _isTestScene = false)
+        {
+            base.Init(_enemyTarget, _dataInstance, _isTestScene);
+
+            foreach (IDamageable _destination in GetComponentsInChildren<IDamageable>())
+            {
+                EnemyDestinations.Add(_destination);
             }
 
             SpawnEnemyForeachSpawn();
@@ -26,7 +38,7 @@ namespace TeamF
         public override void OnEnemyDeath(Enemy _enemyKilled)
         {
             Destroy(_enemyKilled.gameObject);
-            SpawnEnemy(SpawnPoints[(int)_enemyKilled.Data.ElementalType - 1], ManichiniDiDestinazione[(int)_enemyKilled.Data.ElementalType - 1], _enemyKilled.Data.EnemyType);
+            SpawnEnemy(SpawnPoints[(int)_enemyKilled.Data.ElementalType - 1], EnemyDestinations[(int)_enemyKilled.Data.ElementalType - 1], _enemyKilled.Data.EnemyType);
             enemiesSpawned.Remove(_enemyKilled);
         }
 
@@ -34,7 +46,7 @@ namespace TeamF
         {
             for (int i = 0; i < SpawnPoints.Count; i++)
             {
-                SpawnEnemy(SpawnPoints[i], ManichiniDiDestinazione[i], (EnemyType)i + 2);
+                SpawnEnemy(SpawnPoints[i], EnemyDestinations[i], (EnemyType)i + 2);
             }
         }
 

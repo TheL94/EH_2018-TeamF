@@ -79,13 +79,25 @@ namespace TeamF
         /// </summary>
         void SetEnemiesValue()
         {
-            foreach (EnemyData data in GameManager.I.EnemyMng.DataInstance.EnemiesData)
+            for (int i = 0; i < GameManager.I.EnemyMng.DataInstance.EnemiesData.Count; i++)
             {
-                data.Life = float.Parse(Enemy_Life.text);
-                data.Damage = int.Parse(Enemy_Damage.text);
-                data.Speed = float.Parse(Enemy_Speed.text);
-                data.DamageRange = float.Parse(Enemy_AttackRange.text);
+                EnemyData enemyInstanceData = Instantiate(GameManager.I.EnemyMng.DataInstance.EnemiesData[i]);
+                enemyInstanceData.Life = float.Parse(Enemy_Life.text);
+                enemyInstanceData.Damage = int.Parse(Enemy_Damage.text);
+                enemyInstanceData.Speed = float.Parse(Enemy_Speed.text);
+                enemyInstanceData.DamageRange = float.Parse(Enemy_AttackRange.text);
+                GameManager.I.EnemyMng.DataInstance.EnemiesData[i] = enemyInstanceData;
             }
+
+            //foreach (EnemyData data in GameManager.I.EnemyMng.DataInstance.EnemiesData)
+            //{
+            //    EnemyData instanceData = Instantiate(data);
+            //    instanceData.Life = float.Parse(Enemy_Life.text);
+            //    instanceData.Damage = int.Parse(Enemy_Damage.text);
+            //    instanceData.Speed = float.Parse(Enemy_Speed.text);
+            //    instanceData.DamageRange = float.Parse(Enemy_AttackRange.text);
+
+            //}
         }
 
         public override void Select()
