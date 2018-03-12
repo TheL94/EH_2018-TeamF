@@ -27,6 +27,11 @@ namespace TeamF
         MeshRenderer render;
         AI_Enemy ai_Enemy;
 
+        #region Navigation
+        public NavMeshAgent Agent { get; private set; }
+        public IDamageable Target { get; set; }
+        #endregion
+
         public void Init(IDamageable _target, EnemyData _data, AI_State _initalState, string _id)
         {
             Target = _target;
@@ -70,11 +75,6 @@ namespace TeamF
             if (EnemyDeath != null)
                 EnemyDeath(this);
         }
-        #endregion
-
-        #region Navigation
-        public NavMeshAgent Agent { get; private set; }
-        public IDamageable Target { get; set; }
         #endregion
 
         #region IEnemyBehaviour
@@ -137,12 +137,6 @@ namespace TeamF
         public bool IsParalized { get; set; }
         #endregion
 
-        #region Enemy Delegate
-        public delegate void EnemyState(Enemy _enemy);
-        public static EnemyState EnemyDeath;
-        public static EnemyState EnemyConfusion;
-        #endregion
-
         #region Animation
         public Animator Animator { get; private set; }
 
@@ -196,6 +190,12 @@ namespace TeamF
             Damage,
             Death,
         }
+        #endregion
+
+        #region Enemy Delegate
+        public delegate void EnemyState(Enemy _enemy);
+        public static EnemyState EnemyDeath;
+        public static EnemyState EnemyConfusion;
         #endregion
     }
 
