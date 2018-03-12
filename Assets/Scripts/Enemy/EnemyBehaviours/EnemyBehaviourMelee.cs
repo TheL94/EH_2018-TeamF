@@ -7,8 +7,6 @@ namespace TeamF
     public class EnemyBehaviourMelee : IEnemyBehaviour
     {
         public  Enemy myEnemy;
-        float multiplier = 1;
-        public float Multiplier { get { return multiplier; } set { multiplier = value; } }
 
         public virtual void DoInit(Enemy _myEnemy)
         {
@@ -24,7 +22,6 @@ namespace TeamF
 
         public virtual float CalulateDamage(Enemy _enemy, float _damage, ElementalType _type)
         {
-            _damage += (Multiplier * _damage) / 100;
             return _damage; 
         }
 

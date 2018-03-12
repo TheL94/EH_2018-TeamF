@@ -21,7 +21,7 @@ namespace TeamF
                 InstantiateElementalCombo("ElementalCombo/SlowingCloud");
 
             if (_bulletType == ElementalType.Poison)
-                InstantiateElementalCombo("ElementalCombo/IncreaseDamage");
+                InstantiateElementalCombo("ElementalCombo/ConfusionCloud");
 
 
             base.DoDeath(_bulletType);
