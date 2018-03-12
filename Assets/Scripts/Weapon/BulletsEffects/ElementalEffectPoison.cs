@@ -14,7 +14,7 @@ namespace TeamF
         {
             enemy = _enemy;
             elementalData = _data;
-            timer -= elementalData.TimeFraction;
+            timer = elementalData.TimeFraction;
         }
 
         public bool DoUpdate()
