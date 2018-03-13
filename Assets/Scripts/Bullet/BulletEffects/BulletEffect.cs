@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace TeamF
 {
-    public class ElementalEffect : MonoBehaviour
+    public class BulletEffect : MonoBehaviour
     {
         bool isBulletBehaviourInitialized;
         bool isComboInitialized;
@@ -70,13 +70,13 @@ namespace TeamF
         /// <returns></returns>
         bool CheckIfEffectCanBeApplied(IElementalEffectBehaviour _behaviour, IEnemyBehaviour _enemyBehaviour)
         {
-            if (_behaviour.GetType() == typeof(ElementalEffectFire) && _enemyBehaviour.GetType() == typeof(EnemyFireBehaviour))
+            if (_behaviour.GetType() == typeof(BulletEffectFire) && _enemyBehaviour.GetType() == typeof(EnemyFireBehaviour))
                 return false;
-            if (_behaviour.GetType() == typeof(ElementalEffectPoison) && _enemyBehaviour.GetType() == typeof(EnemyPoisonBehaviour))
+            if (_behaviour.GetType() == typeof(BulletEffectPoison) && _enemyBehaviour.GetType() == typeof(EnemyPoisonBehaviour))
                 return false;
-            if (_behaviour.GetType() == typeof(ElementalEffectWater) && _enemyBehaviour.GetType() == typeof(EnemyWaterBehaviour))
+            if (_behaviour.GetType() == typeof(BulletEffectWater) && _enemyBehaviour.GetType() == typeof(EnemyWaterBehaviour))
                 return false;
-            if (_behaviour.GetType() == typeof(ElementalEffectThunder) && _enemyBehaviour.GetType() == typeof(EnemyThunderBehaviour))
+            if (_behaviour.GetType() == typeof(BulletEffectThunder) && _enemyBehaviour.GetType() == typeof(EnemyThunderBehaviour))
                 return false;
             return true;
         }

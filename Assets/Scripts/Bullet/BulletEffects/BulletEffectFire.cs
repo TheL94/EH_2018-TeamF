@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace TeamF
-{
-    public class ElementalEffectPoison : IElementalEffectBehaviour
-    {
+namespace TeamF {
+    public class BulletEffectFire : IElementalEffectBehaviour {
+
         Enemy enemy;
         ElementalEffectData elementalData;
         float timer;
@@ -14,7 +13,7 @@ namespace TeamF
         {
             enemy = _enemy;
             elementalData = _data;
-            timer = elementalData.TimeFraction;
+            timer = _data.TimeFraction;
         }
 
         public bool DoUpdate()
@@ -23,8 +22,12 @@ namespace TeamF
             if (elementalData.TimeOfEffect <= timer)
             {
                 if (elementalData.EffectValue > 0)
-                    enemy.TakeDamage(elementalData.EffectValue, ElementalType.Poison);
-
+                {
+                    enemy.TakeDamage(elementalData.EffectValue, ElementalType.Fire);
+                    elementalData.EffectValue -= 1;
+                    if (elementalData.EffectValue < 0)
+                        elementalData.EffectValue = 0;
+                }
                 timer -= elementalData.TimeFraction;
             }
             if (elementalData.TimeOfEffect <= 0)
@@ -32,7 +35,6 @@ namespace TeamF
             else
                 return false;
         }
-
 
         public void DoStopEffect() { }
     }

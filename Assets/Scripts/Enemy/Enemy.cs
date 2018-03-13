@@ -64,7 +64,7 @@ namespace TeamF
                 AnimState = AnimationState.Death;
 
             // TODO : risolto bug in modo scoretto --------------------
-            ElementalEffect effect = GetComponent<ElementalEffect>();
+            BulletEffect effect = GetComponent<BulletEffect>();
             if (effect != null)
                 effect.gameObject.SetActive(false);
             // --------------------------------------------------------

@@ -1,26 +1,32 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.AI;
 using UnityEngine;
 
-namespace TeamF {
-    public class ElementalEffectWater : IElementalEffectBehaviour {
 
-        float initialSlowdown;
+namespace TeamF
+{
+    public class BulletEffectThunder : IElementalEffectBehaviour
+    {
         Enemy enemy;
         ElementalEffectData elementalData;
+        NavMeshAgent navMesh;
 
         public void DoInit(Enemy _enemy, ElementalEffectData _data)
         {
             enemy = _enemy;
             elementalData = _data;
-            initialSlowdown = enemy.MovementSpeed;
-            enemy.MovementSpeed -= _data.EffectValue;
+            navMesh = enemy.GetComponent<NavMeshAgent>();
+            if (navMesh.isActiveAndEnabled)
+            {
+                navMesh.isStopped = true; 
+            }
         }
 
         public bool DoUpdate()
         {
             elementalData.TimeOfEffect -= Time.deltaTime;
-            if (elementalData.TimeOfEffect <= 0)
+            if(elementalData.TimeOfEffect <= 0)
             {
                 return true;
             }
@@ -29,7 +35,14 @@ namespace TeamF {
 
         public void DoStopEffect()
         {
-            enemy.MovementSpeed = initialSlowdown;
+            if (navMesh != null)
+            {
+                if (navMesh.isActiveAndEnabled)
+                {
+                    navMesh.isStopped = false;
+                } 
+            }
         }
+
     }
 }

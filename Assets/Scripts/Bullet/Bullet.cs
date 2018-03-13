@@ -107,20 +107,20 @@ namespace TeamF
         {
             if (_enemy != null)
             {
-                ElementalEffect _effect = _enemy.GetComponent<ElementalEffect>();
+                BulletEffect _effect = _enemy.GetComponent<BulletEffect>();
                 switch (ammo.AmmoType)
                 {
                     case ElementalType.Fire:
-                        _effect.InitEffect(new ElementalEffectFire(), _enemy, ammo.Data);
+                        _effect.InitEffect(new BulletEffectFire(), _enemy, ammo.Data);
                         break;
                     case ElementalType.Water:
-                        _effect.InitEffect(new ElementalEffectWater(), _enemy, ammo.Data);
+                        _effect.InitEffect(new BulletEffectWater(), _enemy, ammo.Data);
                         break;
                     case ElementalType.Poison:
-                        _effect.InitEffect(new ElementalEffectPoison(), _enemy, ammo.Data);
+                        _effect.InitEffect(new BulletEffectPoison(), _enemy, ammo.Data);
                         break;
                     case ElementalType.Thunder:
-                        _effect.InitEffect(new ElementalEffectThunder(), _enemy, ammo.Data);
+                        _effect.InitEffect(new BulletEffectThunder(), _enemy, ammo.Data);
                         break;
                     case ElementalType.None:
                         break;
