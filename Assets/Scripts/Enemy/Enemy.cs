@@ -64,7 +64,7 @@ namespace TeamF
                 AnimState = AnimationState.Death;
 
             // TODO : risolto bug in modo scoretto --------------------
-            BulletEffect effect = GetComponent<BulletEffect>();
+            EffectController effect = GetComponent<EffectController>();
             if (effect != null)
                 effect.gameObject.SetActive(false);
             // --------------------------------------------------------

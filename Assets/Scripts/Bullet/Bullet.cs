@@ -107,7 +107,7 @@ namespace TeamF
         {
             if (_enemy != null)
             {
-                BulletEffect _effect = _enemy.GetComponent<BulletEffect>();
+                EffectController _effect = _enemy.GetComponent<EffectController>();
                 switch (ammo.AmmoType)
                 {
                     case ElementalType.Fire:

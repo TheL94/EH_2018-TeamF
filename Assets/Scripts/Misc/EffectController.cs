@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace TeamF
 {
-    public class BulletEffect : MonoBehaviour
+    public class EffectController : MonoBehaviour
     {
         bool isBulletBehaviourInitialized;
         bool isComboInitialized;
