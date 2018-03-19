@@ -6,7 +6,18 @@ namespace TeamF
 {
     public class MachineGun : Weapon
     {
-        public float Overheating;
+        private float _overheating;
+
+        public float Overheating
+        {
+            get { return _overheating; }
+            set
+            {
+                _overheating = value;
+                Events_UIController.OverheatingChanged(_overheating, (weaponData as MachineGunData).MaxOverheating);
+            }
+        }
+
         bool canDropOverheating;
 
         float refrigerating = 1.5f;
@@ -19,7 +30,6 @@ namespace TeamF
                 timer += Time.deltaTime;
                 if(timer >= refrigerating)
                 {
-                    timer = 0;
                     canDropOverheating = true;
                 }
             }
@@ -45,6 +55,7 @@ namespace TeamF
         protected override void OnShot()
         {
             Overheating += (weaponData as MachineGunData).OverheatingPerShot;
+            timer = 0;
             canDropOverheating = false;
         }
     }

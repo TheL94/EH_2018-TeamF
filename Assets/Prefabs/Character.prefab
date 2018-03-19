@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 4226611935396044}
   m_Layer: 0
   m_Name: Barrel
-  m_TagString: Untagged
+  m_TagString: Barrel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -89,7 +89,9 @@ GameObject:
   - component: {fileID: 4122369251546292}
   - component: {fileID: 33473279720765696}
   - component: {fileID: 23954423212392126}
-  - component: {fileID: 114433938249210878}
+  - component: {fileID: 114307478386334040}
+  - component: {fileID: 114911815695809558}
+  - component: {fileID: 114367575620923320}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
@@ -452,7 +454,7 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1905338470690278}
   m_Enabled: 1
---- !u!114 &114433938249210878
+--- !u!114 &114307478386334040
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -460,10 +462,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 1766402263107386}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85b0a010cf84f284bbd00f840ab5da0e, type: 3}
+  m_Script: {fileID: 11500000, guid: f352a196556b0d94da7efb9cde0b6830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Barrel: {fileID: 1313148412620624}
+--- !u!114 &114367575620923320
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1766402263107386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4829725d7762e0e44bbffa29abbc1692, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WeaponData: {fileID: 11400000, guid: c17699a790c9a204f8814ba7212415e9, type: 2}
+  Overheating: 0
 --- !u!114 &114537653086299798
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -490,6 +504,18 @@ MonoBehaviour:
   BackPackRenderer: {fileID: 23171740124067216}
   CharacterRenderer: {fileID: 23734898067266978}
   movement: {fileID: 0}
+--- !u!114 &114911815695809558
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1766402263107386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2de75860af1c10f4f8e409f37434fff7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WeaponData: {fileID: 11400000, guid: 6b4ace897e588ea46bef47f87da56f2e, type: 2}
 --- !u!124 &124737006046693908
 Behaviour:
   m_ObjectHideFlags: 1

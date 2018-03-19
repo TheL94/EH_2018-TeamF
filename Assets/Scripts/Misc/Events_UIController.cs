@@ -46,5 +46,19 @@ namespace TeamF
                 OnLifeChanged(_life, _totalLife); 
         }
         #endregion
+
+        #region Update Overheating Slider
+
+        public delegate void UIUpdateOverheating(float _value, float _totalOverheating);
+
+        public static UIUpdateOverheating OnOverheatingChanged;
+
+        public static void OverheatingChanged(float _value, float _totalOverheating)
+        {
+            if (OnOverheatingChanged != null)
+                OnOverheatingChanged(_value, _totalOverheating);
+        }
+        #endregion
+
     }
 }

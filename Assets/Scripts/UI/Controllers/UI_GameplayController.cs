@@ -16,12 +16,15 @@ namespace TeamF
 
         public Slider KillPointsSlider;
         public Slider LifeSlider;
+        public Slider MachineGunOverhatingSlider;
 
         private void OnEnable()
         {
             Events_UIController.OnAmmoChanged += UpdateAmmo;
             Events_UIController.OnPointsChanged += UpdareKillPoints;
             Events_UIController.OnLifeChanged += UpdateLifeSlider;
+            Events_UIController.OnOverheatingChanged += UpdateOverheatingSlider;
+
             ComboCounter.OnCounterChanged += UpdateComboCounter;
         }
 
@@ -80,13 +83,18 @@ namespace TeamF
                 ComboCounterText.text = "+" + _counter.ToString();
         }
 
+        void UpdateOverheatingSlider(float _value, float _totalOverheating)
+        {
+            MachineGunOverhatingSlider.value = _value / _totalOverheating;
+        }
+
         private void OnDisable()
         {
             Events_UIController.OnAmmoChanged -= UpdateAmmo;
             Events_UIController.OnPointsChanged -= UpdareKillPoints;
             Events_UIController.OnLifeChanged -= UpdateLifeSlider;
             ComboCounter.OnCounterChanged -= UpdateComboCounter;
-
+            Events_UIController.OnOverheatingChanged -= UpdateOverheatingSlider;
         }
     }
 }
