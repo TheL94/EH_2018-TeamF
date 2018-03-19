@@ -133,7 +133,7 @@ TextMesh:
   m_GameObject: {fileID: 100004}
   m_Text: CustomText
   m_OffsetZ: 0
-  m_CharacterSize: 5
+  m_CharacterSize: 3
   m_LineSpacing: 1
   m_Anchor: 0
   m_Alignment: 0
@@ -157,7 +157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 0}
-  Speed: 100
+  Speed: 50
   JustOnStart: 0
 --- !u!114 &11400004
 MonoBehaviour:
@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Alpha: 1
-  FadeSpeed: 2.5
+  FadeSpeed: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
