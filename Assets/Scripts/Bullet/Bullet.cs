@@ -6,17 +6,14 @@ namespace TeamF
 {
     public class Bullet : MonoBehaviour
     {
-        public float BulletLife;
+        float bulletLife;
         TrailRenderer trail;
         MeshRenderer rend;
         BulletOwner owner;
         ElementalAmmo ammo;
         float Speed;
 
-        private void Start()
-        {
-            Destroy(gameObject, BulletLife);
-        }
+        IBulletBehaviour behaviour;             // Command for Bullet
 
         void FixedUpdate()
         {
@@ -25,14 +22,15 @@ namespace TeamF
 
         #region API
 
-        public void Init(ElementalAmmo _currentAmmo, float _speed, BulletOwner _owner)
+        public void Init(ElementalAmmo _currentAmmo, float _speed, BulletOwner _owner, float _bulletLife, IBulletBehaviour _behaviour)
         {
             ammo = _currentAmmo;
             Speed = _speed;
             owner = _owner;
             trail = GetComponentInChildren<TrailRenderer>();
             rend = GetComponentInChildren<MeshRenderer>();
-
+            bulletLife = _bulletLife;
+            behaviour = _behaviour;
             SetBulletColors(_currentAmmo.AmmoType);
         }
 
@@ -134,6 +132,7 @@ namespace TeamF
                 return;
             if (owner == BulletOwner.Character)
             {
+                // Da utilizzare il behaviour che viene iniettato dall'arma al momento dell'instanziazione
                 IDamageable damageable = other.GetComponent<IDamageable>();
                 if (damageable != null)
                 {

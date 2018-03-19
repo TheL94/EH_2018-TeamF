@@ -21,4 +21,6 @@ MonoBehaviour:
   DamageRate: 2
   EnemyValue: 1
   BulletSpeed: 0.35
+  BulletContainerPrefab: {fileID: 1096078678018924, guid: aed0c6b0c1afa4a4ca5d68d6e3bccfab,
+    type: 2}
   BulletData: {fileID: 11400000, guid: fc0514fe99c1cf343900d4df6098e7f5, type: 2}

@@ -27,14 +27,14 @@ namespace TeamF
 
         public virtual void DoAttack()
         {
-            Bullet bull = GameObject.Instantiate(rangedData.BulletData.BulletContainerPrefab, shootingPoint.position, shootingPoint.rotation).GetComponent<Bullet>();
+            Bullet bull = GameObject.Instantiate(rangedData.BulletContainerPrefab, shootingPoint.position, shootingPoint.rotation).GetComponent<Bullet>();
 
             if(rangedData.BulletData.BulletGraphicPrefab != null)
                 GameObject.Instantiate(rangedData.BulletData.BulletGraphicPrefab, bull.transform.position, bull.transform.rotation, bull.transform).GetComponent<Bullet>();
             if (rangedData.BulletData.BulletTrailPrefab != null)
                 GameObject.Instantiate(rangedData.BulletData.BulletTrailPrefab, bull.transform.position, bull.transform.rotation, bull.transform).GetComponent<Bullet>();
 
-            bull.Init(ammo, rangedData.BulletSpeed, BulletOwner.Enemy);
+            bull.Init(ammo, rangedData.BulletSpeed, BulletOwner.Enemy, 1 ,new PistolBulletBehaviour());
 
             if (myEnemy.Animator != null)
                 myEnemy.AnimState = Enemy.AnimationState.RangedAttack;

@@ -6,6 +6,8 @@ TagManager:
   tags:
   - ShootingPoint
   - ComboElement
+  - Effect
+  - Barrel
   layers:
   - Default
   - TransparentFX

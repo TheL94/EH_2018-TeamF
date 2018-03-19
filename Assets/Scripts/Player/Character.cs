@@ -25,7 +25,7 @@ namespace TeamF
             Life = Data.Life;
             IsParalized = false;
 
-            currentWeapon = GetComponentInChildren<Weapon>();
+            weaponController = GetComponentInChildren<WeaponController>();
             movement = GetComponent<Movement>();
 
             movement.Init(Data.MovementSpeed, Data.RotationSpeed);
@@ -34,7 +34,7 @@ namespace TeamF
             foreach (BulletData item in Data.BulletDatas)
                 bulletDatasInstancies.Add(Instantiate(item));
 
-            currentWeapon.Init(Data.BulletSpeed, Data.Ratio, Data.MagCapacity, bulletDatasInstancies);
+            weaponController.Init(bulletDatasInstancies);
 
             if (!_isTestScene)
                 Data.AllElementalAmmo[0].Ammo = -1;
@@ -101,22 +101,14 @@ namespace TeamF
         #endregion
 
         #region Weapon
-        Weapon currentWeapon;
+        public WeaponController weaponController { get; private set; }
 
-        /// <summary>
+                /// <summary>
         /// Chiama la funzione di sparo nell'arma e sovrascrive la struttura appena passata
         /// </summary>
         public void Shot()
         {
-            SelectedAmmo = currentWeapon.SingleShot(SelectedAmmo);
-        }
-
-        /// <summary>
-        /// Chiama la funzione di sparo nell'arma e sovrascrive la struttura appena passata
-        /// </summary>
-        public void FullAutoShot()
-        {
-            SelectedAmmo = currentWeapon.FullAutoShoot(SelectedAmmo);
+            weaponController.Shot(SelectedAmmo);
         }
         #endregion
 
@@ -128,7 +120,7 @@ namespace TeamF
             set
             {
                 _selectedAmmoIndex = value;
-                switch (_selectedAmmoIndex)
+                switch (_selectedAmmoIndex)         // Colora lo zaino del character
                 {
                     case 0:
                         BackPackRenderer.material.color = Color.grey;
@@ -155,14 +147,7 @@ namespace TeamF
         public ElementalAmmo SelectedAmmo
         {
             get { return Data.AllElementalAmmo[selectedAmmoIndex]; }
-            set
-            {
-                Data.AllElementalAmmo[selectedAmmoIndex] = value;
-                if (Data.AllElementalAmmo[selectedAmmoIndex].AmmoType != ElementalType.None)
-                {
-                    Events_UIController.AmmoChange(Data.AllElementalAmmo[selectedAmmoIndex]);
-                }
-            }
+            set { Data.AllElementalAmmo[selectedAmmoIndex] = value; }
         }
 
         public void SelectPreviousAmmo()
@@ -197,20 +182,28 @@ namespace TeamF
             }
         }
 
+        void PickupWeapon(WeaponCrate _crate)
+        {
+            if(_crate != null)
+            {
+                weaponController.SetCurrentWeapon(_crate.WeaponType);
+            }
+        }
+
         private void OnTriggerEnter(Collider other)
         {
             PickupAmmo(other.GetComponent<AmmoCrate>());
+            PickupWeapon(other.GetComponent<WeaponCrate>());
         }
     }
 
     [System.Serializable]
-    public struct ElementalAmmo
+    public class ElementalAmmo
     {
         public ElementalType AmmoType;
         public float Damage;
         public int Ammo;
         public ElementalEffectData Data;
-        
     }
 
     [System.Serializable]
