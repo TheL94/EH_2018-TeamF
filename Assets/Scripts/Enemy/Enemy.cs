@@ -209,13 +209,19 @@ namespace TeamF
         Thunder
     }
 
+    public enum AttackType
+    {
+        Melee = 0,
+        Ranged
+    }
+
     public enum ElementalType
     {
         None = 0,
-        Fire = 1,
-        Water = 2,
-        Poison = 3,
-        Thunder = 4
+        Fire,
+        Water,
+        Poison,
+        Thunder
     }
 }
 
