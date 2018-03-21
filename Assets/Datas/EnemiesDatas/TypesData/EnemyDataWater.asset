@@ -14,7 +14,8 @@ MonoBehaviour:
   EnemyType: 3
   ContainerPrefab: {fileID: 1267129680638450, guid: 25dfe3bec1371e14d87332e9234c5ef8,
     type: 2}
-  GraphicPrefab: {fileID: 0}
+  GraphicPrefab: {fileID: 1030758615841798, guid: 0ac0f5a2f0209574180fb02ba8669110,
+    type: 2}
   Life: 10
   Speed: 5.3
   MeleeDamage: 1

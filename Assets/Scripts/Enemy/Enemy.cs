@@ -39,7 +39,7 @@ namespace TeamF
             ID = _id;
             Life = Data.Life;
             
-            Instantiate(Data.ContainerPrefab, transform.position, transform.rotation, transform);
+            Instantiate(Data.GraphicPrefab, transform.position, transform.rotation, transform);
 
             Agent = GetComponent<NavMeshAgent>();
             ai_Enemy = GetComponent<AI_Enemy>();
