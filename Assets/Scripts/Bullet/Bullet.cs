@@ -6,7 +6,6 @@ namespace TeamF
 {
     public class Bullet : MonoBehaviour
     {
-        float bulletLife;
         TrailRenderer trail;
         MeshRenderer rend;
         BulletOwner owner;
@@ -29,9 +28,10 @@ namespace TeamF
             owner = _owner;
             trail = GetComponentInChildren<TrailRenderer>();
             rend = GetComponentInChildren<MeshRenderer>();
-            bulletLife = _bulletLife;
             behaviour = _behaviour;
             SetBulletColors(_currentAmmo.AmmoType);
+
+            Destroy(gameObject,_bulletLife);
         }
 
         #endregion
