@@ -10,14 +10,28 @@ namespace TeamF.AI
     {
         protected override bool Act(AI_Controller _controller)
         {
-            return true;
+            return SetTarget((_controller as AI_Enemy).Enemy);
         }
+
 
         bool SetTarget(Enemy _enemy)
         {
+            if (_enemy.Target != null)
+                return true;
+
             if (_enemy.IsCharmed)
-                GameManager.I.EnemyMng.GetClosestTarget(_enemy);
-            return true;
+            {
+                _enemy.Target = GameManager.I.EnemyMng.GetClosestTarget(_enemy);
+                return true;
+            }
+            else
+            {
+                _enemy.Target = GameManager.I.Player.Character;
+                if (_enemy.Target != null)
+                    return true;
+
+                return false;
+            }
         }
     }
 }
