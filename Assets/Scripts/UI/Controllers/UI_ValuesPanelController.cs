@@ -47,9 +47,9 @@ namespace TeamF
             oldEnemyData =Instantiate(_enemyData);
 
             Enemy_Life.text = oldEnemyData.Life.ToString();
-            Enemy_Damage.text = oldEnemyData.Damage.ToString();
+            Enemy_Damage.text = oldEnemyData.MeleeDamage.ToString();
             Enemy_Speed.text = oldEnemyData.Speed.ToString();
-            Enemy_AttackRange.text = oldEnemyData.DamageRange.ToString();
+            Enemy_AttackRange.text = oldEnemyData.MeleeDamageRange.ToString();
             MenuBaseInit();
         }
 
@@ -83,9 +83,9 @@ namespace TeamF
             {
                 EnemyData enemyInstanceData = Instantiate(GameManager.I.EnemyMng.DataInstance.EnemiesData[i]);
                 enemyInstanceData.Life = float.Parse(Enemy_Life.text);
-                enemyInstanceData.Damage = int.Parse(Enemy_Damage.text);
+                enemyInstanceData.MeleeDamage = int.Parse(Enemy_Damage.text);
                 enemyInstanceData.Speed = float.Parse(Enemy_Speed.text);
-                enemyInstanceData.DamageRange = float.Parse(Enemy_AttackRange.text);
+                enemyInstanceData.MeleeDamageRange = float.Parse(Enemy_AttackRange.text);
                 GameManager.I.EnemyMng.DataInstance.EnemiesData[i] = enemyInstanceData;
             }
 

@@ -4,31 +4,24 @@ using UnityEngine;
 
 namespace TeamF
 {
-    public class EnemyWaterBehaviour : EnemyBehaviourMelee
+    public class EnemyWaterBehaviour : IEnemyBehaviour
     {
-        public override void DoInit(Enemy _myEnemy)
+        public float CalulateDamage(float _damage, ElementalType _damageType)
         {
-            base.DoInit(_myEnemy);
-            _myEnemy.GetComponentInChildren<MeshRenderer>().material.color = Color.blue;
-        }
-
-        public override float CalulateDamage(Enemy _enemy, float _damage, ElementalType _type)
-        {
-            if (_type == ElementalType.Thunder)
+            if (_damageType == ElementalType.Thunder)
                 _damage *= 1.5f;
-            if (_type == ElementalType.Water)
+            if (_damageType == ElementalType.Water)
                 _damage = 0;
-            return base.CalulateDamage(_enemy, _damage, _type);
+            return _damage;
         }
 
-        public override void DoDeath(ElementalType _bulletType)
+        public void DoDeath(ElementalType _bulletType, Vector3 _position)
         {
             if (_bulletType == ElementalType.Poison)
-                InstantiateElementalCombo("ElementalCombo/IncreaseDamage");
+                this.InstantiateElementalCombo("ElementalCombo/IncreaseDamage", _position);
 
             if (_bulletType == ElementalType.Thunder)
-                InstantiateElementalCombo("ElementalCombo/ParalyzingCloud");
-
+                this.InstantiateElementalCombo("ElementalCombo/ParalyzingCloud", _position);
         }
     }
 }
