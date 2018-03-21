@@ -15,7 +15,10 @@ namespace TeamF.AI
 
         bool SetDestination(Enemy _enemy)
         {
-            _enemy.Agent.SetDestination(_enemy.Target.Position);
+            if (Vector3.Distance(_enemy.Agent.destination, _enemy.Target.Position) > _enemy.Agent.stoppingDistance)
+            {
+                _enemy.Agent.SetDestination(_enemy.Target.Position); 
+            }
             return true;
         }
     }
