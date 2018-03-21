@@ -9,14 +9,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 78d0cecd44868ed4a9189d1e2bc0e35d, type: 3}
-  m_Name: EnemyManagerData
+  m_Name: EnemyManagerData 1
   m_EditorClassIdentifier: 
   StartDelayTime: 1
   DelayHordes: 5
-  MaxEnemiesInScene: 40
+  MaxEnemiesInScene: 1
   BlockSpawnNormal: 0
-  MaxNormalEnemies: 3
-  MinNormalEnemies: 0
+  MaxNormalEnemies: 1
+  MinNormalEnemies: 1
   BlockSpawnElemental: 1
   MaxElementalsEnemies: 3
   MinElementalsEnemies: 1
