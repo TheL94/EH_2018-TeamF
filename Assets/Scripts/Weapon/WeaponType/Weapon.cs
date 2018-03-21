@@ -9,35 +9,26 @@ namespace TeamF
         public WeaponData WeaponData;
 
         protected WeaponData weaponData;
-        List<BulletData> bulletDatas;
-        GameObject Barrel;
 
         float nextFire;
 
         #region API
-        public void Init(List<BulletData> _bulletDatas)
+        public void Init()
         {
-            bulletDatas = _bulletDatas;
             weaponData = Instantiate(WeaponData);
-            Barrel = GetComponentsInChildren<Transform>().Where(d => d.tag == "Barrel").First().gameObject;
-        }
-
-        public void SetWeaponData(WeaponData _data)
-        {
-            weaponData = _data;
         }
 
         /// <summary>
         /// Controlla se ci sono abbastanza munizioni o sono sotto zero (le munizioni standard) per chiamare la funzione per istanziare il proiettile.
         /// Se le munizioni sono maggiori di zero le scala.
         /// </summary>
-        public virtual void SingleShot(ElementalAmmo _selectedAmmo)
+        public virtual void SingleShot(ElementalAmmo _selectedAmmo, BulletData _bulletData, Transform _barrel)
         {
             if (Time.time >= nextFire)
             {
                 if (_selectedAmmo.Ammo != 0)
                 {
-                    CreateBullet(_selectedAmmo);
+                    CreateBullet(_selectedAmmo, _bulletData, _barrel);
                     if (_selectedAmmo.Ammo > 0)
                     {
                         _selectedAmmo.Ammo--;
@@ -60,15 +51,14 @@ namespace TeamF
         /// <summary>
         /// Istanzia il proiettile e ne chiama l'init
         /// </summary>
-        void CreateBullet(ElementalAmmo _currentAmmo)
+        void CreateBullet(ElementalAmmo _currentAmmo, BulletData _bulletData, Transform _barrel)
         {
-            BulletData data = bulletDatas.Where(d => d.Type == _currentAmmo.AmmoType).First();
-            Bullet bull = Instantiate(weaponData.BulletContainerPrefab, Barrel.transform.position, Barrel.transform.rotation).GetComponent<Bullet>();
+            Bullet bull = Instantiate(weaponData.BulletContainerPrefab, _barrel.position, _barrel.rotation).GetComponent<Bullet>();
 
-            if(data.BulletGraphicPrefab != null)
-                Instantiate(data.BulletGraphicPrefab, bull.transform.position, bull.transform.rotation, bull.transform);
-            if (data.BulletTrailPrefab != null)
-                Instantiate(data.BulletTrailPrefab, bull.transform.position, bull.transform.rotation, bull.transform);
+            if(_bulletData.BulletGraphicPrefab != null)
+                Instantiate(_bulletData.BulletGraphicPrefab, bull.transform.position, bull.transform.rotation, bull.transform);
+            if (_bulletData.BulletTrailPrefab != null)
+                Instantiate(_bulletData.BulletTrailPrefab, bull.transform.position, bull.transform.rotation, bull.transform);
 
             bull.Init(_currentAmmo, weaponData.Parameters.BulletSpeed, BulletOwner.Character, weaponData.Parameters.BulletLife,ChoseBulletBehaviour());
         }
