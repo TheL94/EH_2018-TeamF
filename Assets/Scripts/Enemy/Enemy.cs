@@ -132,10 +132,21 @@ namespace TeamF
         #endregion
 
         #region ICharmable
+        bool _isCharmed;
         /// <summary>
         /// Chiamata dalla combo elementale paralizzante
         /// </summary>
-        public bool IsCharmed { get; set; }
+        public bool IsCharmed {
+            get { return _isCharmed; }
+            set
+            {
+                if(_isCharmed != value)
+                {
+                    _isCharmed = value;
+                    ai_Enemy.SetAICurrentState(ai_Enemy.CharmedState);
+                }
+            }
+        }
         #endregion
 
         #region Animation

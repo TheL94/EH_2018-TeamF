@@ -18,7 +18,7 @@ namespace TeamF
 
         public void DoStopEffect()
         {
-            paralyzable.IsParalized = false; //TODO: alla fine dell'effetto il nemico ne deve essere immune per 2 secondi
+            
         }
 
         public bool DoUpdate()

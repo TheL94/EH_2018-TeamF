@@ -74,10 +74,10 @@ namespace TeamF
         /// </summary>
         /// <param name="_enemy">Il nemico che richiede il calcolo</param>
         /// <returns></returns>
-        public Enemy GetClosestTarget(Enemy _enemy)
+        public IDamageable GetClosestTarget(Enemy _enemy)
         {
             float referanceDistance = 1000;
-            Enemy enemyCloser = null;
+            IDamageable enemyCloser = null;
 
             foreach (Enemy enemy in enemiesSpawned)
             {
@@ -91,6 +91,11 @@ namespace TeamF
                     referanceDistance = distance;
                 }
             }
+            float playerDistance = Vector3.Distance(GameManager.I.Player.Character.transform.position, _enemy.transform.position);
+            if(playerDistance < referanceDistance)
+                enemyCloser = GameManager.I.Player.Character;
+
+
             return enemyCloser;
         }
 
