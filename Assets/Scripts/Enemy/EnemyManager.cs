@@ -6,8 +6,7 @@ using System.Linq;
 namespace TeamF
 {
     public class EnemyManager : MonoBehaviour
-    {
-        public Enemy EnemyPrefab;     
+    {   
         public IDamageable EnemyTarget { get; private set; }
 
         public EnemyManagerData Data;
@@ -161,9 +160,10 @@ namespace TeamF
 
                     for (int j = 0; j < elementalsEnemies; j++)
                     {
-                        Enemy newEnemy = SpawnEnemy(EnemyPrefab, SpawnPoints[i]);
+                        EnemyData data = FindEnemyDataByType((EnemyType)Random.Range(2, 6));
+                        Enemy newEnemy = SpawnEnemy(data.ContainerPrefab, SpawnPoints[i]);
                         if (newEnemy != null)
-                            InitEnemy(newEnemy, FindEnemyDataByType((EnemyType)Random.Range(2, 6)));
+                            InitEnemy(newEnemy, data);
                     } 
                 }
 
@@ -173,9 +173,10 @@ namespace TeamF
 
                     for (int j = 0; j < rangedEnemies; j++)
                     {
-                        Enemy newEnemy = SpawnEnemy(EnemyPrefab, SpawnPoints[i]);
+                        EnemyData data = FindEnemyDataByType(EnemyType.Ranged);
+                        Enemy newEnemy = SpawnEnemy(data.ContainerPrefab, SpawnPoints[i]);
                         if(newEnemy != null)
-                            InitEnemy(newEnemy, FindEnemyDataByType(EnemyType.Ranged));
+                            InitEnemy(newEnemy, data);
                     } 
                 }
 
@@ -185,9 +186,10 @@ namespace TeamF
 
                     for (int j = 0; j < hordeNumber; j++)
                     {
-                        Enemy newEnemy = SpawnEnemy(EnemyPrefab, SpawnPoints[i]);
+                        EnemyData data = FindEnemyDataByType(EnemyType.Melee);
+                        Enemy newEnemy = SpawnEnemy(data.ContainerPrefab, SpawnPoints[i]);
                         if (newEnemy != null)
-                            InitEnemy(newEnemy, FindEnemyDataByType(EnemyType.Melee));
+                            InitEnemy(newEnemy, data);
                     } 
                 }
             }
@@ -221,12 +223,12 @@ namespace TeamF
         /// <param name="_enemyPrefab">Il prefab del nemico da utilizzare</param>
         /// <param name="_spawnPoint">Lo spawn point dove far spawnare il nemico</param>
         /// <param name="SpawnElementalEnemy">True se il nemico da spawnare è elementale</param>
-        protected Enemy SpawnEnemy(Enemy _enemyPrefab, Transform _spawnPoint)
+        protected Enemy SpawnEnemy(GameObject _enemyPrefab, Transform _spawnPoint)
         {
             if (enemiesSpawned.Count >= DataInstance.MaxEnemiesInScene)
                 return null;
 
-            Enemy newEnemy = Instantiate(_enemyPrefab, _spawnPoint.position, Quaternion.identity, transform);
+            Enemy newEnemy = Instantiate(_enemyPrefab, _spawnPoint.position, Quaternion.identity, transform).GetComponent<Enemy>();
             enemiesSpawned.Add(newEnemy);
 
             idCounter++;

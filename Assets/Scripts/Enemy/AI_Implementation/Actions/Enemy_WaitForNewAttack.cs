@@ -18,7 +18,7 @@ namespace TeamF.AI
         bool WaitForNewAttack(Enemy _enemy)
         {
             timeCounter += Time.deltaTime;
-            if (timeCounter >= _enemy.Data.DamageRate)
+            if (timeCounter >= _enemy.Data.MeleeDamageRate)
             {
                 timeCounter = 0;
                 return true;

@@ -8,19 +8,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65d612916f141b04dbbaa9b98e489af8, type: 3}
+  m_Script: {fileID: 11500000, guid: 761ff678fe32dff46beefa12330fe2ec, type: 3}
   m_Name: EnemyDataRanged
   m_EditorClassIdentifier: 
   EnemyType: 1
-  ModelPrefab: {fileID: 1030758615841798, guid: 40d572fdbbbdea24290dfbd230ed7593,
+  ContainerPrefab: {fileID: 1267129680638450, guid: 25dfe3bec1371e14d87332e9234c5ef8,
+    type: 2}
+  GraphicPrefab: {fileID: 1030758615841798, guid: 40d572fdbbbdea24290dfbd230ed7593,
     type: 2}
   Life: 10
   Speed: 5.3
-  Damage: 1
-  DamageRange: 5
-  DamageRate: 2
+  MeleeDamage: 1
+  MeleeDamageRange: 2
+  MeleeDamageRate: 1
+  RangedDamage: 2
+  RangedDamageRange: 5
+  RangedDamageRate: 1
   EnemyValue: 1
-  BulletSpeed: 0.35
-  BulletContainerPrefab: {fileID: 1096078678018924, guid: aed0c6b0c1afa4a4ca5d68d6e3bccfab,
-    type: 2}
-  BulletData: {fileID: 11400000, guid: fc0514fe99c1cf343900d4df6098e7f5, type: 2}

@@ -30,14 +30,19 @@ namespace TeamF
                 return ElementalType.None;
             }
         }
-        public GameObject ModelPrefab;
+        public GameObject ContainerPrefab;
+        public GameObject GraphicPrefab;
 
         public float Life;
         public float Speed;
 
-        public int Damage;
-        public float DamageRange;
-        public float DamageRate;
+        public float MeleeDamage;
+        public float MeleeDamageRange;
+        public float MeleeDamageRate;
+
+        public float RangedDamage;
+        public float RangedDamageRange;
+        public float RangedDamageRate;
 
         public float EnemyValue;
     }

@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33801439325645282}
   - component: {fileID: 23056515884023456}
   m_Layer: 0
-  m_Name: EnemyMeleeBlockout
+  m_Name: EnemyPoisonBlockout
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55,7 +55,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 68da149206b048141b7c277170532fc7, type: 2}
+  - {fileID: 2100000, guid: 7c4071a0d121acd4394b6283bb823a66, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

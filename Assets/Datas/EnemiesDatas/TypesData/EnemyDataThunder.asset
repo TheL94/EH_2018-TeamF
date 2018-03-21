@@ -12,11 +12,16 @@ MonoBehaviour:
   m_Name: EnemyDataThunder
   m_EditorClassIdentifier: 
   EnemyType: 5
-  ModelPrefab: {fileID: 1273753816426612, guid: 4d1d8d786b8e02046ab6341251b35f46,
+  ContainerPrefab: {fileID: 1267129680638450, guid: 25dfe3bec1371e14d87332e9234c5ef8,
+    type: 2}
+  GraphicPrefab: {fileID: 1273753816426612, guid: 4d1d8d786b8e02046ab6341251b35f46,
     type: 2}
   Life: 10
   Speed: 5.3
-  Damage: 2
-  DamageRange: 1
-  DamageRate: 1
+  MeleeDamage: 1
+  MeleeDamageRange: 2
+  MeleeDamageRate: 1
+  RangedDamage: 2
+  RangedDamageRange: 5
+  RangedDamageRate: 1
   EnemyValue: 1

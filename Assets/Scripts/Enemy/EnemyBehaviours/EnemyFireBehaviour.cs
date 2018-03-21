@@ -4,31 +4,23 @@ using UnityEngine;
 
 namespace TeamF
 {
-    public class EnemyFireBehaviour : EnemyBehaviourMelee
+    public class EnemyFireBehaviour : IEnemyBehaviour
     {
-        public override void DoInit(Enemy _myEnemy)
+        public float CalulateDamage(float _damage, ElementalType _damageType)
         {
-            base.DoInit(_myEnemy);
-            _myEnemy.GetComponentInChildren<MeshRenderer>().material.color = Color.red;
-        }
-
-        public override float CalulateDamage(Enemy _enemy, float _damage, ElementalType _type)
-        {
-            if (_type == ElementalType.Water)
+            if (_damageType == ElementalType.Water)
                 _damage *= 1.5f;
-            if (_type == ElementalType.Fire)
+            if (_damageType == ElementalType.Fire)
                 _damage = 0;
-            return base.CalulateDamage(_enemy, _damage, _type);
+            return _damage;
         }
 
-        public override void DoDeath(ElementalType _bulletType)
+        public void DoDeath(ElementalType _bulletType, Vector3 _position)
         {
             if (_bulletType == ElementalType.Thunder)
-                InstantiateElementalCombo("ElementalCombo/SlowingCloud");
-
+                this.InstantiateElementalCombo("ElementalCombo/SlowingCloud", _position);
             if (_bulletType == ElementalType.Water)
-                InstantiateElementalCombo("ElementalCombo/BlackHole");
-
+                this.InstantiateElementalCombo("ElementalCombo/BlackHole", _position);
         }
     }
 }

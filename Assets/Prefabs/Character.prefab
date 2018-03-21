@@ -89,9 +89,9 @@ GameObject:
   - component: {fileID: 4122369251546292}
   - component: {fileID: 33473279720765696}
   - component: {fileID: 23954423212392126}
-  - component: {fileID: 114307478386334040}
-  - component: {fileID: 114911815695809558}
-  - component: {fileID: 114367575620923320}
+  - component: {fileID: 114090205802415954}
+  - component: {fileID: 114254254339258264}
+  - component: {fileID: 114456535150152184}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
@@ -454,7 +454,7 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1905338470690278}
   m_Enabled: 1
---- !u!114 &114307478386334040
+--- !u!114 &114090205802415954
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -465,7 +465,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f352a196556b0d94da7efb9cde0b6830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114367575620923320
+--- !u!114 &114254254339258264
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1766402263107386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2de75860af1c10f4f8e409f37434fff7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WeaponData: {fileID: 11400000, guid: 6b4ace897e588ea46bef47f87da56f2e, type: 2}
+--- !u!114 &114456535150152184
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -477,7 +489,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WeaponData: {fileID: 11400000, guid: c17699a790c9a204f8814ba7212415e9, type: 2}
-  Overheating: 0
 --- !u!114 &114537653086299798
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -504,18 +515,6 @@ MonoBehaviour:
   BackPackRenderer: {fileID: 23171740124067216}
   CharacterRenderer: {fileID: 23734898067266978}
   movement: {fileID: 0}
---- !u!114 &114911815695809558
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1766402263107386}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2de75860af1c10f4f8e409f37434fff7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  WeaponData: {fileID: 11400000, guid: 6b4ace897e588ea46bef47f87da56f2e, type: 2}
 --- !u!124 &124737006046693908
 Behaviour:
   m_ObjectHideFlags: 1
