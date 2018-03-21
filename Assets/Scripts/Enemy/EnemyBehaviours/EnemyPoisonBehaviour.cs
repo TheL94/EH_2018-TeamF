@@ -4,31 +4,23 @@ using UnityEngine;
 
 namespace TeamF
 {
-    public class EnemyPoisonBehaviour : EnemyBehaviourMelee
+    public class EnemyPoisonBehaviour : IEnemyBehaviour
     {
-        public override void DoInit(Enemy _myEnemy)
+        public float CalulateDamage(float _damage, ElementalType _damageType)
         {
-            base.DoInit(_myEnemy);
-            _myEnemy.GetComponentInChildren<MeshRenderer>().material.color = Color.green;
-        }
-
-        public override float CalulateDamage(Enemy _enemy, float _damage, ElementalType _type)
-        {
-            if(_type == ElementalType.Fire)
+            if (_damageType == ElementalType.Fire)
                 _damage *= 1.5f;
-            if (_type == ElementalType.Poison)
+            if (_damageType == ElementalType.Poison)
                 _damage = 0;
-            return base.CalulateDamage(_enemy, _damage, _type);
+            return _damage;
         }
 
-        public override void DoDeath(ElementalType _bulletType)
+        public void DoDeath(ElementalType _bulletType, Vector3 _position)
         {
             if (_bulletType == ElementalType.Fire)
-                InstantiateElementalCombo("ElementalCombo/FireExplosion");
-            if (_bulletType == ElementalType.Water  )
-                InstantiateElementalCombo("ElementalCombo/IncreaseDamage");
-
-            base.DoDeath(_bulletType);
+                this.InstantiateElementalCombo("ElementalCombo/FireExplosion", _position);
+            if (_bulletType == ElementalType.Water)
+                this.InstantiateElementalCombo("ElementalCombo/IncreaseDamage", _position);
         }
     }
 }

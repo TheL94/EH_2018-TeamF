@@ -15,7 +15,7 @@ namespace TeamF.AI
 
         bool AttackTarget(Enemy _enemy)
         {
-            _enemy.CurrentBehaviour.DoAttack();
+            
             return true;
         }
     }

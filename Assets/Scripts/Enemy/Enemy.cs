@@ -39,7 +39,7 @@ namespace TeamF
             ID = _id;
             Life = Data.Life;
             
-            Instantiate(Data.ModelPrefab, transform.position, transform.rotation, transform);
+            Instantiate(Data.ContainerPrefab, transform.position, transform.rotation, transform);
 
             Agent = GetComponent<NavMeshAgent>();
             ai_Enemy = GetComponent<AI_Enemy>();
@@ -47,10 +47,9 @@ namespace TeamF
             Animator = GetComponentInChildren<Animator>();
 
             CurrentBehaviour = DeterminateBehaviourFromType(Data);
-            CurrentBehaviour.DoInit(this);
 
             Agent.speed = Data.Speed;
-            Agent.stoppingDistance = Data.DamageRange;
+            Agent.stoppingDistance = Data.MeleeDamageRange;
             Agent.SetDestination(Target.Position);
 
             ai_Enemy.InitialDefaultState = _initalState;
@@ -69,7 +68,7 @@ namespace TeamF
                 effect.gameObject.SetActive(false);
             // --------------------------------------------------------
 
-            CurrentBehaviour.DoDeath(_type);
+            CurrentBehaviour.DoDeath(_type, transform.position);
 
             ai_Enemy.IsActive = false;
             if (EnemyDeath != null)
@@ -116,7 +115,7 @@ namespace TeamF
         public void TakeDamage(float _damage, ElementalType _type = ElementalType.None)
         {
             _damage = (_damage * DamagePercentage) / 100;
-            Life -= CurrentBehaviour.CalulateDamage(this, _damage, _type);
+            Life -= CurrentBehaviour.CalulateDamage(_damage, _type);
 
             if (Animator != null)
                 AnimState = AnimationState.Damage;
