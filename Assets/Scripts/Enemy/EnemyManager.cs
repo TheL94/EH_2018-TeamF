@@ -37,7 +37,6 @@ namespace TeamF
             EnemyTarget = _enemyTarget;
 
             Enemy.EnemyDeath += OnEnemyDeath;
-            Enemy.EnemyConfusion += OnEnemyConfusion;
 
             if (!_isTestScene)
                 StartCoroutine(FirstSpawn());
@@ -70,17 +69,12 @@ namespace TeamF
             DeleteSpecificEnemy(_enemyKilled.ID);
         }
 
-        public virtual void OnEnemyConfusion(Enemy _enemy)
-        {
-            _enemy.Target = GetClosestTarget(_enemy);
-        }
-
         /// <summary>
         /// Torna il nemico più vicino al nemico che lo richiede.
         /// </summary>
         /// <param name="_enemy">Il nemico che richiede il calcolo</param>
         /// <returns></returns>
-        Enemy GetClosestTarget(Enemy _enemy)
+        public Enemy GetClosestTarget(Enemy _enemy)
         {
             float referanceDistance = 1000;
             Enemy enemyCloser = null;
@@ -242,7 +236,7 @@ namespace TeamF
         /// <param name="_enemyData"></param>
         void InitEnemy(Enemy _enemy, EnemyData _enemyData)
         {
-            _enemy.Init(EnemyTarget, _enemyData, DataInstance.EnemyInitialState, "Enemy" + idCounter);
+            _enemy.Init(_enemyData, DataInstance.EnemyInitialState, "Enemy" + idCounter);
         }
 
         /// <summary>
@@ -260,7 +254,6 @@ namespace TeamF
         private void OnDisable()
         {
             Enemy.EnemyDeath -= OnEnemyDeath;
-            Enemy.EnemyConfusion -= OnEnemyConfusion;
         }
     }
 }

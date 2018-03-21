@@ -61,9 +61,9 @@ namespace TeamF
             EnemyData data = FindEnemyDataByType(_type);
             Enemy _newEnemy = SpawnEnemy(data.ContainerPrefab, _spawner);
             if (!FollowPlayer)
-                _newEnemy.Init(_dummy, data, DataInstance.EnemyInitialState, "Enemy" + idCounter);
+                _newEnemy.Init(data, DataInstance.EnemyInitialState, "Enemy" + idCounter);
             else
-                _newEnemy.Init(EnemyTarget, data, DataInstance.EnemyInitialState, "Enemy" + idCounter);
+                _newEnemy.Init(data, DataInstance.EnemyInitialState, "Enemy" + idCounter);
         }     
     }
 }

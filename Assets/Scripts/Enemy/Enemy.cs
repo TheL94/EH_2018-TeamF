@@ -9,7 +9,7 @@ using DG.Tweening;
 namespace TeamF
 {
     [RequireComponent(typeof(NavMeshAgent), typeof(AI_Enemy))]
-    public class Enemy : MonoBehaviour, IDamageable, IParalyzable
+    public class Enemy : MonoBehaviour, IDamageable, IParalyzable, ICharmable
     {
         public EnemyData Data { get; private set; }
         public string ID { get; private set; }
@@ -32,9 +32,8 @@ namespace TeamF
         public IDamageable Target { get; set; }
         #endregion
 
-        public void Init(IDamageable _target, EnemyData _data, AI_State _initalState, string _id)
+        public void Init(EnemyData _data, AI_State _initalState, string _id)
         {
-            Target = _target;
             Data = _data;
             ID = _id;
             Life = Data.Life;
@@ -47,10 +46,6 @@ namespace TeamF
             Animator = GetComponentInChildren<Animator>();
 
             CurrentBehaviour = DeterminateBehaviourFromType(Data);
-
-            Agent.speed = Data.Speed;
-            Agent.stoppingDistance = Data.MeleeDamageRange;
-            Agent.SetDestination(Target.Position);
 
             ai_Enemy.InitialDefaultState = _initalState;
             ai_Enemy.IsActive = true;
@@ -136,6 +131,13 @@ namespace TeamF
         public bool IsParalized { get; set; }
         #endregion
 
+        #region ICharmable
+        /// <summary>
+        /// Chiamata dalla combo elementale paralizzante
+        /// </summary>
+        public bool IsCharmed { get; set; }
+        #endregion
+
         #region Animation
         public Animator Animator { get; private set; }
 
@@ -194,7 +196,6 @@ namespace TeamF
         #region Enemy Delegate
         public delegate void EnemyState(Enemy _enemy);
         public static EnemyState EnemyDeath;
-        public static EnemyState EnemyConfusion;
         #endregion
     }
 

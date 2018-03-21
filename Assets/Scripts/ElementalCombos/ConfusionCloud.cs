@@ -14,7 +14,7 @@ namespace TeamF
             EffectController _effect = other.GetComponent<EffectController>();
             if (_effect != null && _enemy != null)
             {
-                _effect.InitEffect(new ConfusionEffect(), _enemy, EffectData, true);
+                _effect.InitEffect(new CharmEffect(), _enemy, EffectData, true);
             }
         }
 
