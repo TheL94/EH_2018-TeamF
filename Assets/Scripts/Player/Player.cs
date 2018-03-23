@@ -80,7 +80,10 @@ namespace TeamF
                 Character.movement.Move(finalDirection.normalized);
 
                 if (Input.GetMouseButton(0))
-                    Character.Shot();
+                    Character.DefaultShot();
+
+                if (Input.GetMouseButton(1))
+                    Character.ElementalShot();
 
                 Character.movement.Rotate();
             }

@@ -46,7 +46,7 @@ namespace TeamF
                     Data.AllElementalAmmo[i].Ammo = -1;
                 }
             }
-            selectedAmmoIndex = 0;
+            selectedAmmoIndex = 1;
         }
         #endregion
 
@@ -103,10 +103,15 @@ namespace TeamF
         #region Weapon
         public WeaponController weaponController { get; private set; }
 
-                /// <summary>
+        public void DefaultShot()
+        {
+            weaponController.Shot(Data.AllElementalAmmo[0]);
+        }
+
+        /// <summary>
         /// Chiama la funzione di sparo nell'arma e sovrascrive la struttura appena passata
         /// </summary>
-        public void Shot()
+        public void ElementalShot()
         {
             weaponController.Shot(SelectedAmmo);
         }
@@ -122,9 +127,6 @@ namespace TeamF
                 _selectedAmmoIndex = value;
                 switch (_selectedAmmoIndex)         // Colora lo zaino del character
                 {
-                    case 0:
-                        BackPackRenderer.material.color = Color.grey;
-                        break;
                     case 1:
                         BackPackRenderer.material.color = Color.red;
                         break;
@@ -154,12 +156,12 @@ namespace TeamF
         {
             selectedAmmoIndex++;
             if (selectedAmmoIndex > Data.AllElementalAmmo.Length - 1)
-                selectedAmmoIndex = 0;
+                selectedAmmoIndex = 1;
         }
         public void SelectNextAmmo()
         {
             selectedAmmoIndex--;
-            if (selectedAmmoIndex < 0)
+            if (selectedAmmoIndex < 1)
                 selectedAmmoIndex = Data.AllElementalAmmo.Length - 1;
         }
         #endregion
