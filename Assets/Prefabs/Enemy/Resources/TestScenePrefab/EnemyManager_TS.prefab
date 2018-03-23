@@ -331,11 +331,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2396bacd178af74395f619946aa7068, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyPrefab: {fileID: 114374044604667838, guid: 25dfe3bec1371e14d87332e9234c5ef8,
-    type: 2}
-  Data: {fileID: 11400000, guid: 6e33b8ff52554c44aaa064e64e06f369, type: 2}
+  Data: {fileID: 11400000, guid: 7c77c3bcf4a609b44ac7da16ace7cf44, type: 2}
   SpawnPoints:
   - {fileID: 4749394148253252}
   - {fileID: 4878065832833718}
   - {fileID: 4870211738558828}
   - {fileID: 4234529438897840}
+  FollowPlayer: 0
