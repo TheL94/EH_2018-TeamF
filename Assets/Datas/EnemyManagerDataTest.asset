@@ -13,8 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartDelayTime: 1
   DelayHordes: 5
-  MaxEnemiesInScene: 1
-  BlockSpawnNormal: 0
+  MaxEnemiesInScene: 4
+  BlockSpawnNormal: 1
   MaxNormalEnemies: 1
   MinNormalEnemies: 1
   BlockSpawnElemental: 1

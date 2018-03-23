@@ -13,14 +13,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartDelayTime: 1
   DelayHordes: 5
-  MaxEnemiesInScene: 1
+  MaxEnemiesInScene: 50
   BlockSpawnNormal: 0
   MaxNormalEnemies: 3
   MinNormalEnemies: 0
-  BlockSpawnElemental: 1
+  BlockSpawnElemental: 0
   MaxElementalsEnemies: 3
   MinElementalsEnemies: 1
-  BlockSpawnRanged: 1
+  BlockSpawnRanged: 0
   MaxRangedEnemies: 2
   MinRangedEnemies: 1
   EnemyInitialState: {fileID: 11400000, guid: fed0d20f716108b42a4cd7bf4c08af2b, type: 2}
