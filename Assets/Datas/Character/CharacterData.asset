@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b284af11ef85af4fa12080c49889673, type: 3}
   m_Name: CharacterData
   m_EditorClassIdentifier: 
-  Life: 10
+  Life: 100000
   AllElementalAmmo:
   - AmmoType: 0
     Damage: 1

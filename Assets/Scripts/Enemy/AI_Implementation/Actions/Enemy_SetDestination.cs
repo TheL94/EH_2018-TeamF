@@ -17,10 +17,9 @@ namespace TeamF.AI
         void SetDestination(Enemy _enemy)
         {
             float attackDistance = _enemy.Data.MeleeDamageRange;
-            //if(Vector3.Distance(_enemy.transform.position, _enemy.Agent.destination) > attackDistance / 2)
             if(_enemy.Agent.destination != _enemy.Target.Position)
             {
-                Vector3 destination = _enemy.Target.Position/* + new Vector3(Random.Range(-attackDistance / 2, attackDistance / 2), 0f, Random.Range(-attackDistance / 2, attackDistance / 2))*/;
+                Vector3 destination = _enemy.Target.Position + new Vector3(Random.Range(-attackDistance / 2, attackDistance / 2), 0f, Random.Range(-attackDistance / 2, attackDistance / 2));
                 _enemy.Agent.destination = destination;
             }
         }

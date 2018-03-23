@@ -9,18 +9,41 @@ namespace TeamF.AI
     {
         public Enemy Enemy { get; private set; }
 
-        public float AttackCoolDownTime { get; set; }
-        public float ParalysisCoolDownTime { get; set; }
+        public bool IsAttackCoolDown { get; set; }
 
         public AI_State CharmedState;
         public AI_State ParalizeState;
         public AI_State DamageState;
-        public AI_State DeadState;
+        public AI_State DeathState;
 
         protected override void OnInit()
         {
             Enemy = GetComponent<Enemy>();
+            IsAttackCoolDown = true;
+        }
+
+        public void StartAttackCoolDown(float _time)
+        {
+            StartCoroutine(AttackCoolDown(_time));
+        }
+
+        IEnumerator AttackCoolDown(float _time)
+        {
+            IsAttackCoolDown = false;
+            yield return new WaitForSeconds(_time);
+            IsAttackCoolDown = true;
+        }
+
+        public void StartParalysisCoolDown(float _time)
+        {
+            StartCoroutine(ParalysisCoolDown(_time));
+        }
+
+        IEnumerator ParalysisCoolDown(float _time)
+        {
+            Enemy.IsParalized = true;
+            yield return new WaitForSeconds(_time);
+            Enemy.IsParalized = false;
         }
     }
 }
-

@@ -6,20 +6,15 @@ namespace TeamF
 {
     public class ParalizeEffect : IElementalEffectBehaviour
     {
-        IParalyzable paralyzable;
         ElementalEffectData elementalData;
 
         public void DoInit(Enemy _enemy, ElementalEffectData _data)
         {
-            paralyzable = _enemy;
             elementalData = _data;
-            paralyzable.IsParalized = true;
+            _enemy.AI_Enemy.CurrentState = _enemy.AI_Enemy.ParalizeState;
         }
 
-        public void DoStopEffect()
-        {
-            
-        }
+        public void DoStopEffect() { }
 
         public bool DoUpdate()
         {

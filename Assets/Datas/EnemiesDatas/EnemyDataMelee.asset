@@ -19,8 +19,8 @@ MonoBehaviour:
   Life: 10
   Speed: 5.3
   MeleeDamage: 1
-  MeleeDamageRange: 2
-  MeleeDamageRate: 1
+  MeleeDamageRange: 10
+  MeleeDamageRate: 3
   RangedDamage: 2
   RangedDamageRange: 5
   RangedDamageRate: 1

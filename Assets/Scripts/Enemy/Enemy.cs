@@ -24,8 +24,8 @@ namespace TeamF
             }
         }
 
+        public AI_Enemy AI_Enemy { get; private set; }
         MeshRenderer render;
-        AI_Enemy ai_Enemy;
 
         #region Navigation
         public NavMeshAgent Agent { get; private set; }
@@ -41,33 +41,21 @@ namespace TeamF
             Instantiate(Data.GraphicPrefab, transform.position, transform.rotation, transform);
 
             Agent = GetComponent<NavMeshAgent>();
-            ai_Enemy = GetComponent<AI_Enemy>();
+            AI_Enemy = GetComponent<AI_Enemy>();
             render = GetComponentInChildren<MeshRenderer>();
             Animator = GetComponentInChildren<Animator>();
 
             CurrentBehaviour = DeterminateBehaviourFromType(Data);
 
-            ai_Enemy.InitialDefaultState = _initalState;
-            ai_Enemy.IsActive = true;
+            AI_Enemy.InitialDefaultState = _initalState;
+            AI_Enemy.IsActive = true;
         }
 
         #region Actions
         void DeathActions(ElementalType _type)
         {
-            if (Animator != null)
-                AnimState = AnimationState.Death;
-
-            // TODO : risolto bug in modo scoretto --------------------
-            EffectController effect = GetComponent<EffectController>();
-            if (effect != null)
-                effect.gameObject.SetActive(false);
-            // --------------------------------------------------------
-
             CurrentBehaviour.DoDeath(_type, transform.position);
-
-            ai_Enemy.IsActive = false;
-            if (EnemyDeath != null)
-                EnemyDeath(this);
+            AI_Enemy.CurrentState = AI_Enemy.DeathState;
         }
         #endregion
 
@@ -143,7 +131,7 @@ namespace TeamF
                 if(_isCharmed != value)
                 {
                     _isCharmed = value;
-                    ai_Enemy.SetAICurrentState(ai_Enemy.CharmedState);
+                    AI_Enemy.SetAICurrentState(AI_Enemy.CharmedState);
                 }
             }
         }

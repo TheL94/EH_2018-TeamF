@@ -69,12 +69,23 @@ namespace TeamF
             DeleteSpecificEnemy(_enemyKilled.ID);
         }
 
+        public virtual IDamageable GetTarget(Enemy _enemy)
+        {
+            if (_enemy.IsCharmed)
+                return GetClosestTarget(_enemy);
+
+            if (GameManager.I.Player.Character != null)
+                return GameManager.I.Player.Character;
+
+            return null;
+        }
+
         /// <summary>
         /// Torna il nemico più vicino al nemico che lo richiede.
         /// </summary>
         /// <param name="_enemy">Il nemico che richiede il calcolo</param>
         /// <returns></returns>
-        public IDamageable GetClosestTarget(Enemy _enemy)
+        IDamageable GetClosestTarget(Enemy _enemy)
         {
             float referanceDistance = 1000;
             IDamageable enemyCloser = null;

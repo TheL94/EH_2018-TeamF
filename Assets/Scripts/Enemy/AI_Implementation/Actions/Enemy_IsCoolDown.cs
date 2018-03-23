@@ -15,7 +15,7 @@ namespace TeamF.AI
 
         bool CheckCoolDown(AI_Enemy _AiEnemy)
         {
-            if(_AiEnemy.AttackCoolDownTime <= 0)
+            if(_AiEnemy.IsAttackCoolDown)
                 return true;
 
             return false;

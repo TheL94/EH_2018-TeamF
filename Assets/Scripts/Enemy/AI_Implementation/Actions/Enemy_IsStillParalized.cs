@@ -10,16 +10,13 @@ namespace TeamF.AI
     {
         protected override bool Act(AI_Controller _controller)
         {
-            return IsStillParalized(_controller as AI_Enemy); 
+            return IsStillParalized((_controller as AI_Enemy).Enemy); 
         }
 
-        bool IsStillParalized(AI_Enemy _enemy)
+        bool IsStillParalized(Enemy _enemy)
         {
-            if(_enemy.ParalysisCoolDownTime <= 0)
-            {
-                _enemy.Enemy.IsParalized = false;
+            if(_enemy.IsParalized)
                 return false;
-            }
 
             return true;
         }
