@@ -15,10 +15,10 @@ MonoBehaviour:
   - Delay: 0
     Loop: 0
     Action: {fileID: 11400000, guid: 8947ab00cc8810e478f962dab949765b, type: 2}
-    OnSuccess: {fileID: 11400000, guid: ba251714e30fa9740aea080cc3e67773, type: 2}
+    OnSuccess: {fileID: 0}
     OnFailure: {fileID: 0}
   - Delay: 0.2
     Loop: 0
-    Action: {fileID: 11400000, guid: 8947ab00cc8810e478f962dab949765b, type: 2}
+    Action: {fileID: 11400000, guid: 5053112bdd4054e4e93bed365310d39d, type: 2}
     OnSuccess: {fileID: 11400000, guid: ba251714e30fa9740aea080cc3e67773, type: 2}
     OnFailure: {fileID: 0}

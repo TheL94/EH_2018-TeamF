@@ -19,9 +19,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4524965454235120}
-  - component: {fileID: 65382445944812754}
   - component: {fileID: 195810935744453768}
   - component: {fileID: 54297115417450244}
+  - component: {fileID: 65382445944812754}
   - component: {fileID: 114876029956112454}
   - component: {fileID: 114374044604667838}
   - component: {fileID: 114655604312748810}
@@ -56,9 +56,9 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!65 &65382445944812754
 BoxCollider:
@@ -107,6 +107,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsActive: 0
   InitialDefaultState: {fileID: 0}
+  CharmedState: {fileID: 0}
+  ParalizeState: {fileID: 0}
+  DamageState: {fileID: 0}
+  DeadState: {fileID: 0}
 --- !u!195 &195810935744453768
 NavMeshAgent:
   m_ObjectHideFlags: 1
