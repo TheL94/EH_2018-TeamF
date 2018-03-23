@@ -116,8 +116,9 @@ namespace TeamF
             {
                 if (enemiesSpawned[i].ID == _idEnemy)
                 {
-                    Destroy(enemiesSpawned[i]);
+                    Enemy enemyToDestroy = enemiesSpawned[i];
                     enemiesSpawned.Remove(enemiesSpawned[i]);
+                    Destroy(enemyToDestroy);
                     return;
                 }
             }

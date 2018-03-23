@@ -24,13 +24,12 @@ namespace TeamF
             }
         }
 
-        public AI_Enemy AI_Enemy { get; private set; }
-        MeshRenderer render;
-
-        #region Navigation
         public NavMeshAgent Agent { get; private set; }
         public IDamageable Target { get; set; }
-        #endregion
+        public AI_Enemy AI_Enemy { get; private set; }
+
+
+        MeshRenderer render;
 
         public void Init(EnemyData _data, AI_State _initalState, string _id)
         {
@@ -97,19 +96,19 @@ namespace TeamF
 
         public void TakeDamage(float _damage, ElementalType _type = ElementalType.None)
         {
+            LastHittingBulletType = _type;
             _damage = (_damage * DamagePercentage) / 100;
             Life -= CurrentBehaviour.CalulateDamage(_damage, _type);
+
+            AI_Enemy.CurrentState = AI_Enemy.DamageState;
 
             if (Animator != null)
                 AnimState = AnimationState.Damage;
             else
                 render.material.DOColor(Color.white, .1f).OnComplete(() => { render.material.DORewind(); });
-
-            if (Life <= 0)
-            {
-                DeathActions(_type);
-            }
         }
+
+        public ElementalType LastHittingBulletType { get; private set; }
         #endregion
 
         #region IParalyzable
