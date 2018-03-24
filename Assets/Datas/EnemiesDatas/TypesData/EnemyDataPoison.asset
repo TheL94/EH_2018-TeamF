@@ -14,8 +14,8 @@ MonoBehaviour:
   EnemyType: 4
   ModelPrefab: {fileID: 1030758615841798, guid: 63a0e7e88b49e0540822eab879ed3a97,
     type: 2}
-  Life: 10
-  Speed: 5.3
+  Life: 15
+  Speed: 4.3
   Damage: 2
   DamageRange: 1
   DamageRate: 1

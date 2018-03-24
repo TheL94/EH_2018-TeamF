@@ -15,10 +15,10 @@ MonoBehaviour:
   ModelPrefab: {fileID: 1030758615841798, guid: 40d572fdbbbdea24290dfbd230ed7593,
     type: 2}
   Life: 10
-  Speed: 5.3
+  Speed: 4.3
   Damage: 1
-  DamageRange: 5
-  DamageRate: 2
+  DamageRange: 8
+  DamageRate: 2.5
   EnemyValue: 1
-  BulletSpeed: 0.35
+  BulletSpeed: 0.15
   BulletData: {fileID: 11400000, guid: fc0514fe99c1cf343900d4df6098e7f5, type: 2}
