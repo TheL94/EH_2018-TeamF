@@ -8,6 +8,7 @@ TagManager:
   - ComboElement
   - Effect
   - Barrel
+  - Terrain
   layers:
   - Default
   - TransparentFX

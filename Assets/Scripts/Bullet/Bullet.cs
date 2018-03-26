@@ -12,8 +12,6 @@ namespace TeamF
         ElementalAmmo ammo;
         float Speed;
 
-        IBulletBehaviour behaviour;             // Command for Bullet
-
         void FixedUpdate()
         {
             Move();
@@ -21,14 +19,13 @@ namespace TeamF
 
         #region API
 
-        public void Init(ElementalAmmo _currentAmmo, float _speed, BulletOwner _owner, float _bulletLife, IBulletBehaviour _behaviour)
+        public virtual void Init(ElementalAmmo _currentAmmo, float _speed, BulletOwner _owner, float _bulletLife)
         {
             ammo = _currentAmmo;
             Speed = _speed;
             owner = _owner;
             trail = GetComponentInChildren<TrailRenderer>();
             rend = GetComponentInChildren<MeshRenderer>();
-            behaviour = _behaviour;
             SetBulletColors(_currentAmmo.AmmoType);
 
             Destroy(gameObject,_bulletLife);
@@ -93,7 +90,7 @@ namespace TeamF
             transform.Translate(-transform.forward * Speed);
         }
 
-        void DoDamage(IDamageable _damageable)
+        protected void DoDamage(IDamageable _damageable)
         {
             if (_damageable != null)
             {
@@ -101,7 +98,7 @@ namespace TeamF
             }
         }
 
-        void ApplyElementalEffect(Enemy _enemy)
+        protected void ApplyElementalEffect(Enemy _enemy)
         {
             if (_enemy != null)
             {
@@ -130,16 +127,20 @@ namespace TeamF
         {
             if (other.tag == "ComboElement")
                 return;
+            OnTrigger(other);
+        }
+
+        protected virtual void OnTrigger(Collider other)
+        {
             if (owner == BulletOwner.Character)
             {
-                // Da utilizzare il behaviour che viene iniettato dall'arma al momento dell'instanziazione
                 IDamageable damageable = other.GetComponent<IDamageable>();
                 if (damageable != null)
                 {
                     DoDamage(damageable);
                     ApplyElementalEffect(other.GetComponent<Enemy>());
                 }
-                Destroy(gameObject); 
+                Destroy(gameObject);
             }
             else
             {
