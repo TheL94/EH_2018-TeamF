@@ -16,6 +16,7 @@ namespace TeamF.AI
         bool DropElementalCombo(Enemy _enemy)
         {
             _enemy.CurrentBehaviour.DoDeath(_enemy.LastHittingBulletType, _enemy.Position);
+            _enemy.enabled = false;
             return true;
         }
     }
