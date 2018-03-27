@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 4226611935396044}
   m_Layer: 0
   m_Name: Barrel
-  m_TagString: Untagged
+  m_TagString: Barrel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72,6 +72,7 @@ GameObject:
   - component: {fileID: 114537653086299798}
   - component: {fileID: 54766758108439196}
   - component: {fileID: 136670992667913964}
+  - component: {fileID: 208672491918158222}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -89,7 +90,10 @@ GameObject:
   - component: {fileID: 4122369251546292}
   - component: {fileID: 33473279720765696}
   - component: {fileID: 23954423212392126}
-  - component: {fileID: 114433938249210878}
+  - component: {fileID: 114090205802415954}
+  - component: {fileID: 114254254339258264}
+  - component: {fileID: 114456535150152184}
+  - component: {fileID: 114170982709371526}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
@@ -106,7 +110,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4406199058714760}
   - component: {fileID: 33586299170492986}
-  - component: {fileID: 136066301021687814}
   - component: {fileID: 23171740124067216}
   m_Layer: 0
   m_Name: Backpack
@@ -452,7 +455,7 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1905338470690278}
   m_Enabled: 1
---- !u!114 &114433938249210878
+--- !u!114 &114090205802415954
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -460,10 +463,45 @@ MonoBehaviour:
   m_GameObject: {fileID: 1766402263107386}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85b0a010cf84f284bbd00f840ab5da0e, type: 3}
+  m_Script: {fileID: 11500000, guid: f352a196556b0d94da7efb9cde0b6830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Barrel: {fileID: 1313148412620624}
+--- !u!114 &114170982709371526
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1766402263107386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67c67377594481d4b9dab637931d9b50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WeaponData: {fileID: 11400000, guid: 0c38dac2c6d882d4285120e8d57f8030, type: 2}
+--- !u!114 &114254254339258264
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1766402263107386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2de75860af1c10f4f8e409f37434fff7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WeaponData: {fileID: 11400000, guid: 6b4ace897e588ea46bef47f87da56f2e, type: 2}
+--- !u!114 &114456535150152184
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1766402263107386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4829725d7762e0e44bbffa29abbc1692, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WeaponData: {fileID: 11400000, guid: c17699a790c9a204f8814ba7212415e9, type: 2}
 --- !u!114 &114537653086299798
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -497,19 +535,6 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1905338470690278}
   m_Enabled: 1
---- !u!136 &136066301021687814
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1808519068489834}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &136670992667913964
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -520,6 +545,21 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 2
+  m_Height: 1.75
   m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Center: {x: 0, y: 0.87, z: 0}
+--- !u!208 &208672491918158222
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1533697916002696}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.5, y: 0.875, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.87, z: 0}
+  m_TimeToStationary: 0.5

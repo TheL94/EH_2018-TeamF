@@ -21,13 +21,12 @@ MonoBehaviour:
   MaxElementalsEnemies: 2
   MinElementalsEnemies: 1
   BlockSpawnRanged: 0
-  MaxRangedEnemies: 1
-  MinRangedEnemies: 0
-  EnemyInitialState: {fileID: 11400000, guid: 3f2aa4913c6fb03449879e9c746da080, type: 2}
+  MaxRangedEnemies: 2
+  MinRangedEnemies: 1
   EnemiesData:
   - {fileID: 11400000, guid: 5a6fea14b75e31644a1ea7dad9334747, type: 2}
+  - {fileID: 11400000, guid: 43a0cc2ec2f5f7943b21df8f6dd5d04d, type: 2}
   - {fileID: 11400000, guid: b87b82b560d7be7478495298387e24bc, type: 2}
-  - {fileID: 11400000, guid: 756bc42a005aa824d9f672139f7ea701, type: 2}
   - {fileID: 11400000, guid: 9f12c6c547796534f9ed845b57219c53, type: 2}
   - {fileID: 11400000, guid: e9667d5730c0b8d48bbc12d91ed5dbe3, type: 2}
-  - {fileID: 11400000, guid: e4ae94c52e4390347990b527c6d740ae, type: 2}
+  - {fileID: 11400000, guid: 756bc42a005aa824d9f672139f7ea701, type: 2}

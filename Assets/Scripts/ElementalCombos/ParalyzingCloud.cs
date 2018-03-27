@@ -10,7 +10,7 @@ namespace TeamF
 
         protected override void OnEnteringCollider(Collider other)
         {
-            ElementalEffect effect = other.GetComponent<ElementalEffect>();
+            EffectController effect = other.GetComponent<EffectController>();
             if(effect != null)
             {
                 effect.InitEffect(new ParalizeEffect(), other.GetComponent<Enemy>(), EffectData, true);

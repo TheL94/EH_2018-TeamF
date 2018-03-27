@@ -11,7 +11,7 @@ namespace TeamF
         protected override void OnEnteringCollider(Collider other)
         {
             Enemy _enemy = other.GetComponent<Enemy>();
-            ElementalEffect _effect = other.GetComponent<ElementalEffect>();
+            EffectController _effect = other.GetComponent<EffectController>();
             if (_effect != null && _enemy != null)
             {
                 _effect.InitEffect(new IncreaseDamageEffect(), _enemy, EffectData, true);

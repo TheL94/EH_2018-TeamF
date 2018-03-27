@@ -9,7 +9,7 @@ using DG.Tweening;
 namespace TeamF
 {
     [RequireComponent(typeof(NavMeshAgent), typeof(AI_Enemy))]
-    public class Enemy : MonoBehaviour, IDamageable, IParalyzable
+    public class Enemy : MonoBehaviour, IDamageable, IParalyzable, ICharmable
     {
         public EnemyData Data { get; private set; }
         public string ID { get; private set; }
@@ -24,57 +24,38 @@ namespace TeamF
             }
         }
 
-        MeshRenderer render;
-        AI_Enemy ai_Enemy;
+        public NavMeshAgent Agent { get; private set; }
+        public IDamageable Target { get; set; }
+        public AI_Enemy AI_Enemy { get; private set; }
 
-        public void Init(IDamageable _target, EnemyData _data, AI_State _initalState, string _id)
+
+        MeshRenderer render;
+
+        public void Init(EnemyData _data, string _id)
         {
-            Target = _target;
             Data = _data;
             ID = _id;
             Life = Data.Life;
             
-            Instantiate(Data.ModelPrefab, transform.position, transform.rotation, transform);
+            Instantiate(Data.GraphicPrefab, transform.position, transform.rotation, transform);
 
             Agent = GetComponent<NavMeshAgent>();
-            ai_Enemy = GetComponent<AI_Enemy>();
+            AI_Enemy = GetComponent<AI_Enemy>();
             render = GetComponentInChildren<MeshRenderer>();
             Animator = GetComponentInChildren<Animator>();
 
             CurrentBehaviour = DeterminateBehaviourFromType(Data);
-            CurrentBehaviour.DoInit(this);
 
-            Agent.speed = Data.Speed;
-            Agent.stoppingDistance = Data.DamageRange;
-            Agent.SetDestination(Target.Position);
-
-            ai_Enemy.InitialDefaultState = _initalState;
-            ai_Enemy.IsActive = true;
+            AI_Enemy.InitialDefaultState = Data.InitialState;
+            AI_Enemy.IsActive = true;
         }
 
         #region Actions
         void DeathActions(ElementalType _type)
         {
-            if (Animator != null)
-                AnimState = AnimationState.Death;
-
-            // TODO : risolto bug in modo scoretto --------------------
-            ElementalEffect effect = GetComponent<ElementalEffect>();
-            if (effect != null)
-                effect.gameObject.SetActive(false);
-            // --------------------------------------------------------
-
-            CurrentBehaviour.DoDeath(_type);
-
-            ai_Enemy.IsActive = false;
-            if (EnemyDeath != null)
-                EnemyDeath(this);
+            CurrentBehaviour.DoDeath(_type, transform.position);
+            AI_Enemy.CurrentState = AI_Enemy.DeathState;
         }
-        #endregion
-
-        #region Navigation
-        public NavMeshAgent Agent { get; private set; }
-        public IDamageable Target { get; set; }
         #endregion
 
         #region IEnemyBehaviour
@@ -115,19 +96,19 @@ namespace TeamF
 
         public void TakeDamage(float _damage, ElementalType _type = ElementalType.None)
         {
+            LastHittingBulletType = _type;
             _damage = (_damage * DamagePercentage) / 100;
-            Life -= CurrentBehaviour.CalulateDamage(this, _damage, _type);
+            Life -= CurrentBehaviour.CalulateDamage(_damage, _type);
+
+            AI_Enemy.CurrentState = AI_Enemy.DamageState;
 
             if (Animator != null)
                 AnimState = AnimationState.Damage;
             else
                 render.material.DOColor(Color.white, .1f).OnComplete(() => { render.material.DORewind(); });
-
-            if (Life <= 0)
-            {
-                DeathActions(_type);
-            }
         }
+
+        public ElementalType LastHittingBulletType { get; private set; }
         #endregion
 
         #region IParalyzable
@@ -137,10 +118,22 @@ namespace TeamF
         public bool IsParalized { get; set; }
         #endregion
 
-        #region Enemy Delegate
-        public delegate void EnemyState(Enemy _enemy);
-        public static EnemyState EnemyDeath;
-        public static EnemyState EnemyConfusion;
+        #region ICharmable
+        bool _isCharmed;
+        /// <summary>
+        /// Chiamata dalla combo elementale paralizzante
+        /// </summary>
+        public bool IsCharmed {
+            get { return _isCharmed; }
+            set
+            {
+                if(_isCharmed != value)
+                {
+                    _isCharmed = value;
+                    AI_Enemy.SetAICurrentState(AI_Enemy.CharmedState);
+                }
+            }
+        }
         #endregion
 
         #region Animation
@@ -197,6 +190,11 @@ namespace TeamF
             Death,
         }
         #endregion
+
+        #region Enemy Delegate
+        public delegate void EnemyState(Enemy _enemy);
+        public static EnemyState EnemyDeath;
+        #endregion
     }
 
     public enum EnemyType
@@ -209,13 +207,19 @@ namespace TeamF
         Thunder
     }
 
+    public enum AttackType
+    {
+        Melee = 0,
+        Ranged
+    }
+
     public enum ElementalType
     {
         None = 0,
-        Fire = 1,
-        Water = 2,
-        Poison = 3,
-        Thunder = 4
+        Fire,
+        Water,
+        Poison,
+        Thunder
     }
 }
 

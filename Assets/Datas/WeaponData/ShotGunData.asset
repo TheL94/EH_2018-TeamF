@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a7a38527acaf3b43953d62c96fd9266, type: 3}
+  m_Name: ShotGunData
+  m_EditorClassIdentifier: 
+  Weapon: 2
+  Parameters:
+    BulletSpeed: 0.2
+    BulletLife: 0.8
+    Ratio: 1.5
+    DamagePercentage: 0
+  BulletContainerPrefab: {fileID: 1096078678018924, guid: aed0c6b0c1afa4a4ca5d68d6e3bccfab,
+    type: 2}
