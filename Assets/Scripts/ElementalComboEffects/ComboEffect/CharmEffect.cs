@@ -1,0 +1,34 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace TeamF
+{
+    public class CharmEffect : IElementalEffectBehaviour
+    {
+        Enemy enemy;
+        ElementalEffectData elementalData;
+
+        public void DoInit(Enemy _enemy, ElementalEffectData _data)
+        {
+            enemy = _enemy;
+            elementalData = _data;
+            (enemy as ICharmable).IsCharmed = true;
+        }
+
+        public void DoStopEffect()
+        {
+            (enemy as ICharmable).IsCharmed = false;
+        }
+
+        public bool DoUpdate()
+        {
+            elementalData.TimeOfEffect -= Time.deltaTime;
+            if (elementalData.TimeOfEffect <= 0)
+            {               
+                return true;
+            }
+            return false;
+        }
+    }
+}

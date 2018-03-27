@@ -6,7 +6,7 @@ namespace TeamF
 {
     public class EnemySpawner_TS : EnemyManager
     {
-        public List<IDamageable> ManichiniDiDestinazione = new List<IDamageable>();
+        public List<IDamageable> EnemyDestinations = new List<IDamageable>();
 
         [HideInInspector]
         public bool FollowPlayer;
@@ -15,9 +15,21 @@ namespace TeamF
         {
             base.Init(_enemyTarget, _isTestScene);
 
-            foreach (IDamageable dummy in GetComponentsInChildren<IDamageable>())
+            foreach (IDamageable _destination in GetComponentsInChildren<IDamageable>())
             {
-                ManichiniDiDestinazione.Add(dummy);
+                EnemyDestinations.Add(_destination);
+            }
+
+            SpawnEnemyForeachSpawn();
+        }
+
+        public override void Init(IDamageable _enemyTarget, EnemyManagerData _dataInstance, bool _isTestScene = false)
+        {
+            base.Init(_enemyTarget, _dataInstance, _isTestScene);
+
+            foreach (IDamageable _destination in GetComponentsInChildren<IDamageable>())
+            {
+                EnemyDestinations.Add(_destination);
             }
 
             SpawnEnemyForeachSpawn();
@@ -26,15 +38,23 @@ namespace TeamF
         public override void OnEnemyDeath(Enemy _enemyKilled)
         {
             Destroy(_enemyKilled.gameObject);
-            SpawnEnemy(SpawnPoints[(int)_enemyKilled.Data.ElementalType - 1], ManichiniDiDestinazione[(int)_enemyKilled.Data.ElementalType - 1], _enemyKilled.Data.EnemyType);
+            SpawnEnemy(SpawnPoints[(int)_enemyKilled.Data.ElementalType - 1], _enemyKilled.Data.EnemyType);
             enemiesSpawned.Remove(_enemyKilled);
+        }
+
+        public override IDamageable GetTarget(Enemy _enemy)
+        {
+            if (FollowPlayer)
+                return base.GetTarget(_enemy);
+            else
+                return null;
         }
 
         void SpawnEnemyForeachSpawn()
         {
             for (int i = 0; i < SpawnPoints.Count; i++)
             {
-                SpawnEnemy(SpawnPoints[i], ManichiniDiDestinazione[i], (EnemyType)i + 2);
+                SpawnEnemy(SpawnPoints[i], (EnemyType)i + 2);
             }
         }
 
@@ -42,17 +62,12 @@ namespace TeamF
         /// Crea un nuovo nemico e gli chiama l'init
         /// </summary>
         /// <param name="_spawner">Lo spawn point dove deve essere spawnatp</param>
-        /// <param name="_dummy">Il manichino da attaccare, se non deve seguire il player ma andare in un punto della mappa</param>
         /// <param name="_type">Il Tipo del nemico</param>
-        void SpawnEnemy(Transform _spawner, IDamageable _dummy, EnemyType _type)
+        void SpawnEnemy(Transform _spawner, EnemyType _type)
         {
-            Enemy _newEnemy = SpawnEnemy(EnemyPrefab, _spawner);
-            if (!FollowPlayer)
-                _newEnemy.Init(_dummy, FindEnemyDataByType(_type), DataInstance.EnemyInitialState, "Enemy" + idCounter);
-            else
-                _newEnemy.Init(EnemyTarget, FindEnemyDataByType(_type), DataInstance.EnemyInitialState, "Enemy" + idCounter);
-        }
-
-        
+            EnemyData data = FindEnemyDataByType(_type);
+            Enemy _newEnemy = SpawnEnemy(data.ContainerPrefab, _spawner);
+            _newEnemy.Init(data, "Enemy" + idCounter);
+        }     
     }
 }

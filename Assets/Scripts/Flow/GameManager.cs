@@ -98,7 +98,7 @@ namespace TeamF
             if (Player != null)
                 Player.InitCharacter(true);
 
-            EnemyMng.Init(Player.Character, true);
+            EnemyMng.Init(Player.Character,EnemyMng.DataInstance, true);
             UIMng.GameplayActions();
             ChangeFlowState(FlowState.Gameplay);
         }
@@ -140,6 +140,7 @@ namespace TeamF
 
             GameObject tempobj = Instantiate(Resources.Load("TestScenePrefab/EnemyManager_TS"), transform) as GameObject;
             EnemyMng = tempobj.GetComponent<EnemySpawner_TS>();
+            EnemyMng.InitDataForTestScene();
         }
 
         #endregion

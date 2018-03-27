@@ -6,8 +6,7 @@ using System.Linq;
 namespace TeamF
 {
     public class EnemyManager : MonoBehaviour
-    {
-        public Enemy EnemyPrefab;     
+    {   
         public IDamageable EnemyTarget { get; private set; }
 
         public EnemyManagerData Data;
@@ -38,10 +37,14 @@ namespace TeamF
             EnemyTarget = _enemyTarget;
 
             Enemy.EnemyDeath += OnEnemyDeath;
-            Enemy.EnemyConfusion += OnEnemyConfusion;
 
             if (!_isTestScene)
                 StartCoroutine(FirstSpawn());
+        }
+
+        public void InitDataForTestScene()
+        {
+            DataInstance = Instantiate(Data);
         }
 
         /// <summary>
@@ -66,9 +69,15 @@ namespace TeamF
             DeleteSpecificEnemy(_enemyKilled.ID);
         }
 
-        public virtual void OnEnemyConfusion(Enemy _enemy)
+        public virtual IDamageable GetTarget(Enemy _enemy)
         {
-            _enemy.Target = GetClosestTarget(_enemy);
+            if (_enemy.IsCharmed)
+                return GetClosestTarget(_enemy);
+
+            if (GameManager.I.Player.Character != null)
+                return GameManager.I.Player.Character;
+
+            return null;
         }
 
         /// <summary>
@@ -76,10 +85,10 @@ namespace TeamF
         /// </summary>
         /// <param name="_enemy">Il nemico che richiede il calcolo</param>
         /// <returns></returns>
-        Enemy GetClosestTarget(Enemy _enemy)
+        IDamageable GetClosestTarget(Enemy _enemy)
         {
             float referanceDistance = 1000;
-            Enemy enemyCloser = null;
+            IDamageable enemyCloser = null;
 
             foreach (Enemy enemy in enemiesSpawned)
             {
@@ -93,6 +102,11 @@ namespace TeamF
                     referanceDistance = distance;
                 }
             }
+            float playerDistance = Vector3.Distance(GameManager.I.Player.Character.transform.position, _enemy.transform.position);
+            if(playerDistance < referanceDistance)
+                enemyCloser = GameManager.I.Player.Character;
+
+
             return enemyCloser;
         }
 
@@ -102,8 +116,9 @@ namespace TeamF
             {
                 if (enemiesSpawned[i].ID == _idEnemy)
                 {
-                    Destroy(enemiesSpawned[i]);
+                    Enemy enemyToDestroy = enemiesSpawned[i];
                     enemiesSpawned.Remove(enemiesSpawned[i]);
+                    Destroy(enemyToDestroy);
                     return;
                 }
             }
@@ -156,9 +171,10 @@ namespace TeamF
 
                     for (int j = 0; j < elementalsEnemies; j++)
                     {
-                        Enemy newEnemy = SpawnEnemy(EnemyPrefab, SpawnPoints[i]);
+                        EnemyData data = FindEnemyDataByType((EnemyType)Random.Range(2, 6));
+                        Enemy newEnemy = SpawnEnemy(data.ContainerPrefab, SpawnPoints[i]);
                         if (newEnemy != null)
-                            InitEnemy(newEnemy, FindEnemyDataByType((EnemyType)Random.Range(2, 6)));
+                            InitEnemy(newEnemy, data);
                     } 
                 }
 
@@ -168,9 +184,10 @@ namespace TeamF
 
                     for (int j = 0; j < rangedEnemies; j++)
                     {
-                        Enemy newEnemy = SpawnEnemy(EnemyPrefab, SpawnPoints[i]);
+                        EnemyData data = FindEnemyDataByType(EnemyType.Ranged);
+                        Enemy newEnemy = SpawnEnemy(data.ContainerPrefab, SpawnPoints[i]);
                         if(newEnemy != null)
-                            InitEnemy(newEnemy, FindEnemyDataByType(EnemyType.Ranged));
+                            InitEnemy(newEnemy, data);
                     } 
                 }
 
@@ -180,9 +197,10 @@ namespace TeamF
 
                     for (int j = 0; j < hordeNumber; j++)
                     {
-                        Enemy newEnemy = SpawnEnemy(EnemyPrefab, SpawnPoints[i]);
+                        EnemyData data = FindEnemyDataByType(EnemyType.Melee);
+                        Enemy newEnemy = SpawnEnemy(data.ContainerPrefab, SpawnPoints[i]);
                         if (newEnemy != null)
-                            InitEnemy(newEnemy, FindEnemyDataByType(EnemyType.Melee));
+                            InitEnemy(newEnemy, data);
                     } 
                 }
             }
@@ -216,12 +234,12 @@ namespace TeamF
         /// <param name="_enemyPrefab">Il prefab del nemico da utilizzare</param>
         /// <param name="_spawnPoint">Lo spawn point dove far spawnare il nemico</param>
         /// <param name="SpawnElementalEnemy">True se il nemico da spawnare è elementale</param>
-        protected Enemy SpawnEnemy(Enemy _enemyPrefab, Transform _spawnPoint)
+        protected Enemy SpawnEnemy(GameObject _enemyPrefab, Transform _spawnPoint)
         {
             if (enemiesSpawned.Count >= DataInstance.MaxEnemiesInScene)
                 return null;
 
-            Enemy newEnemy = Instantiate(_enemyPrefab, _spawnPoint.position, Quaternion.identity, transform);
+            Enemy newEnemy = Instantiate(_enemyPrefab, _spawnPoint.position, Quaternion.identity, transform).GetComponent<Enemy>();
             enemiesSpawned.Add(newEnemy);
 
             idCounter++;
@@ -235,7 +253,7 @@ namespace TeamF
         /// <param name="_enemyData"></param>
         void InitEnemy(Enemy _enemy, EnemyData _enemyData)
         {
-            _enemy.Init(EnemyTarget, _enemyData, DataInstance.EnemyInitialState, "Enemy" + idCounter);
+            _enemy.Init(_enemyData, "Enemy" + idCounter);
         }
 
         /// <summary>
@@ -253,7 +271,6 @@ namespace TeamF
         private void OnDisable()
         {
             Enemy.EnemyDeath -= OnEnemyDeath;
-            Enemy.EnemyConfusion -= OnEnemyConfusion;
         }
     }
 }

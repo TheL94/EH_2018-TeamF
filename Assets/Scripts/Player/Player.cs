@@ -79,11 +79,11 @@ namespace TeamF
 
                 Character.movement.Move(finalDirection.normalized);
 
-
-                if (Input.GetMouseButtonDown(0))
-                    Character.Shot();
                 if (Input.GetMouseButton(0))
-                    Character.FullAutoShot();
+                    Character.DefaultShot();
+
+                if (Input.GetMouseButton(1))
+                    Character.ElementalShot();
 
                 Character.movement.Rotate();
             }

@@ -4,27 +4,24 @@ using UnityEngine;
 
 namespace TeamF
 {
-    public class EnemyThunderBehaviour : EnemyBehaviourMelee
+    public class EnemyThunderBehaviour : IEnemyBehaviour
     {
-        public override float CalulateDamage(Enemy _enemy, float _damage, ElementalType _type)
+        public float CalulateDamage(float _damage, ElementalType _damageType)
         {
-            if (_type == ElementalType.Poison)
+            if (_damageType == ElementalType.Poison)
                 _damage *= 1.5f;
-            if (_type == ElementalType.Thunder)
+            if (_damageType == ElementalType.Thunder)
                 _damage = 0;
-            return base.CalulateDamage(_enemy, _damage, _type);
+            return _damage;
         }
 
-        public override void DoDeath(ElementalType _bulletType)
+        public void DoDeath(ElementalType _bulletType, Vector3 _position)
         {
-            if(_bulletType == ElementalType.Fire)
-                InstantiateElementalCombo("ElementalCombo/SlowingCloud");
+            if (_bulletType == ElementalType.Fire)
+                this.InstantiateElementalCombo("ElementalCombo/SlowingCloud", _position);
 
             if (_bulletType == ElementalType.Poison)
-                InstantiateElementalCombo("ElementalCombo/IncreaseDamage");
-
-
-            base.DoDeath(_bulletType);
+                this.InstantiateElementalCombo("ElementalCombo/ConfusionCloud", _position);
         }
     }
 }

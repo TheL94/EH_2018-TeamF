@@ -10,13 +10,18 @@ namespace TeamF.AI
     {
         protected override bool Act(AI_Controller _controller)
         {
-            return SetDestination((_controller as AI_Enemy).Enemy);
+            SetDestination((_controller as AI_Enemy).Enemy);
+            return true;
         }
 
-        bool SetDestination(Enemy _enemy)
+        void SetDestination(Enemy _enemy)
         {
-            _enemy.Agent.SetDestination(_enemy.Target.Position);
-            return true;
+            float attackDistance = _enemy.Data.MeleeDamageRange;
+            if(_enemy.Agent.destination != _enemy.Target.Position)
+            {
+                Vector3 destination = _enemy.Target.Position + new Vector3(Random.Range(-attackDistance / 2, attackDistance / 2), 0f, Random.Range(-attackDistance / 2, attackDistance / 2));
+                _enemy.Agent.destination = destination;
+            }
         }
     }
 }

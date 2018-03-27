@@ -10,6 +10,9 @@ namespace TeamF
     {
         public int Index { get; set; }
 
+        public Sprite ButtonOn;
+        public Sprite ButtonOff;
+
         public IButtonController Controller { get; set; }
 
         bool _isSelected;
@@ -34,9 +37,9 @@ namespace TeamF
         {
             Image img = GetComponent<Image>();
             if (_isSelected)
-                img.color = Color.grey;
+                img.sprite = ButtonOn;
             else
-                img.color = Color.white;
+                img.sprite = ButtonOff;
 
         }
 
