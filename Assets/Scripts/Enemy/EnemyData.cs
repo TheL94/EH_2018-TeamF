@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityFramework.AI;
 
 namespace TeamF
 {
     [CreateAssetMenu(fileName = "EnemyData", menuName = "Enemy/EnemyData")]
     public class EnemyData : ScriptableObject
     {
+        public AI_State InitialState;
+
         public EnemyType EnemyType;
         public ElementalType ElementalType
         {

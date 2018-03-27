@@ -11,6 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 761ff678fe32dff46beefa12330fe2ec, type: 3}
   m_Name: EnemyDataRanged
   m_EditorClassIdentifier: 
+  InitialState: {fileID: 11400000, guid: 71cba2fedc5068d439e56827c896a183, type: 2}
   EnemyType: 1
   ContainerPrefab: {fileID: 1267129680638450, guid: 25dfe3bec1371e14d87332e9234c5ef8,
     type: 2}
