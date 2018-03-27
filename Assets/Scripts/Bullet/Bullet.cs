@@ -132,23 +132,32 @@ namespace TeamF
 
         protected virtual void OnTrigger(Collider other)
         {
-            if (owner == BulletOwner.Character)
+            IDamageable damageable;
+            switch (owner)
             {
-                IDamageable damageable = other.GetComponent<IDamageable>();
-                if (damageable != null)
-                {
-                    DoDamage(damageable);
-                    ApplyElementalEffect(other.GetComponent<Enemy>());
-                }
-                Destroy(gameObject);
-            }
-            else
-            {
-                if (other.GetComponent<Enemy>() == null)
-                {
-                    DoDamage(other.GetComponent<IDamageable>());
+                case BulletOwner.Character:
+                    damageable = other.GetComponent<IDamageable>();
+                    if (damageable != null)
+                    {
+                        DoDamage(damageable);
+                        ApplyElementalEffect(other.GetComponent<Enemy>());
+                    }
                     Destroy(gameObject);
-                }
+                    break;
+                case BulletOwner.Enemy:
+                    if (other.GetComponent<Enemy>() == null)
+                    {
+                        DoDamage(other.GetComponent<IDamageable>());
+                        Destroy(gameObject);
+                    }
+                    break;
+                case BulletOwner.EnemyChamed:
+                    damageable = other.GetComponent<IDamageable>();
+                    if (damageable != null)
+                    {
+                        DoDamage(damageable);
+                    }
+                    break;
             }
         }
     }
@@ -156,6 +165,7 @@ namespace TeamF
     public enum BulletOwner
     {
         Character,
-        Enemy
+        Enemy,
+        EnemyChamed
     }
 }

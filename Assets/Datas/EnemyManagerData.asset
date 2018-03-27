@@ -23,7 +23,6 @@ MonoBehaviour:
   BlockSpawnRanged: 0
   MaxRangedEnemies: 2
   MinRangedEnemies: 1
-  EnemyInitialState: {fileID: 11400000, guid: fed0d20f716108b42a4cd7bf4c08af2b, type: 2}
   EnemiesData:
   - {fileID: 11400000, guid: 5a6fea14b75e31644a1ea7dad9334747, type: 2}
   - {fileID: 11400000, guid: 43a0cc2ec2f5f7943b21df8f6dd5d04d, type: 2}

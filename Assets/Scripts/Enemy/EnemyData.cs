@@ -47,6 +47,7 @@ namespace TeamF
         public float RangedDamageRange;
         public float RangedDamageRate;
 
+        public float BulletSpeed;
         public BulletData BulletData;
 
         public float EnemyValue;

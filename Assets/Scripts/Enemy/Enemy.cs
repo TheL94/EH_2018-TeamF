@@ -31,7 +31,7 @@ namespace TeamF
 
         MeshRenderer render;
 
-        public void Init(EnemyData _data, AI_State _initalState, string _id)
+        public void Init(EnemyData _data, string _id)
         {
             Data = _data;
             ID = _id;
@@ -46,7 +46,7 @@ namespace TeamF
 
             CurrentBehaviour = DeterminateBehaviourFromType(Data);
 
-            AI_Enemy.InitialDefaultState = _initalState;
+            AI_Enemy.InitialDefaultState = Data.InitialState;
             AI_Enemy.IsActive = true;
         }
 
