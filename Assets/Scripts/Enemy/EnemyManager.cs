@@ -253,7 +253,7 @@ namespace TeamF
         /// <param name="_enemyData"></param>
         void InitEnemy(Enemy _enemy, EnemyData _enemyData)
         {
-            _enemy.Init(_enemyData, DataInstance.EnemyInitialState, "Enemy" + idCounter);
+            _enemy.Init(_enemyData, _enemyData.InitialState, "Enemy" + idCounter);
         }
 
         /// <summary>
