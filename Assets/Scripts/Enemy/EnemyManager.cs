@@ -36,6 +36,8 @@ namespace TeamF
             DataInstance = _dataInstance;
             EnemyTarget = _enemyTarget;
 
+            GetSpawnInScene();
+
             Enemy.EnemyDeath += OnEnemyDeath;
 
             if (!_isTestScene)
@@ -136,7 +138,7 @@ namespace TeamF
 
         #region Spawner
         public bool CanSpawn { get; set; }
-        public List<Transform> SpawnPoints = new List<Transform>();
+        protected List<Transform> spawnPoints = new List<Transform>();
         protected List<Enemy> enemiesSpawned = new List<Enemy>();
         protected int idCounter;
         float spawnTime;
@@ -160,7 +162,7 @@ namespace TeamF
         {
             int spawnIndexToExclude = ChooseSpawnPointToExclude();
 
-            for (int i = 0; i < SpawnPoints.Count; i++)
+            for (int i = 0; i < spawnPoints.Count; i++)
             {
                 if (i == spawnIndexToExclude)
                     continue;
@@ -172,7 +174,7 @@ namespace TeamF
                     for (int j = 0; j < elementalsEnemies; j++)
                     {
                         EnemyData data = FindEnemyDataByType((EnemyType)Random.Range(2, 6));
-                        Enemy newEnemy = SpawnEnemy(data.ContainerPrefab, SpawnPoints[i]);
+                        Enemy newEnemy = SpawnEnemy(data.ContainerPrefab, spawnPoints[i]);
                         if (newEnemy != null)
                             InitEnemy(newEnemy, data);
                     } 
@@ -185,7 +187,7 @@ namespace TeamF
                     for (int j = 0; j < rangedEnemies; j++)
                     {
                         EnemyData data = FindEnemyDataByType(EnemyType.Ranged);
-                        Enemy newEnemy = SpawnEnemy(data.ContainerPrefab, SpawnPoints[i]);
+                        Enemy newEnemy = SpawnEnemy(data.ContainerPrefab, spawnPoints[i]);
                         if(newEnemy != null)
                             InitEnemy(newEnemy, data);
                     } 
@@ -198,7 +200,7 @@ namespace TeamF
                     for (int j = 0; j < hordeNumber; j++)
                     {
                         EnemyData data = FindEnemyDataByType(EnemyType.Melee);
-                        Enemy newEnemy = SpawnEnemy(data.ContainerPrefab, SpawnPoints[i]);
+                        Enemy newEnemy = SpawnEnemy(data.ContainerPrefab, spawnPoints[i]);
                         if (newEnemy != null)
                             InitEnemy(newEnemy, data);
                     } 
@@ -215,9 +217,9 @@ namespace TeamF
             int spawnIndexToExclude = 0;
             float _distance = 100000;                   // Distanza improbabile, la prima distanza di riferimento è enorme
 
-            for (int i = 0; i < SpawnPoints.Count; i++)
+            for (int i = 0; i < spawnPoints.Count; i++)
             {
-                float _spawnDistance = Vector3.Distance(SpawnPoints[i].position, EnemyTarget.Position);
+                float _spawnDistance = Vector3.Distance(spawnPoints[i].position, EnemyTarget.Position);
                 if (_spawnDistance < _distance)
                 {
                     spawnIndexToExclude = i;
@@ -265,6 +267,15 @@ namespace TeamF
         protected EnemyData FindEnemyDataByType(EnemyType _type)
         {
             return Instantiate(DataInstance.EnemiesData.Where(d => d.EnemyType == _type).First());
+        }
+
+        void GetSpawnInScene()
+        {
+            foreach (GameObject spawn in GameObject.FindGameObjectsWithTag("EnemySpawn"))
+            {
+                spawnPoints.Add(spawn.transform);
+            }
+            
         }
         #endregion
 

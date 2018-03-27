@@ -34,15 +34,8 @@ namespace TeamF
 
         public virtual void Init(ElementalAmmo _currentAmmo, float _speed, BulletOwner _owner, float _bulletLife, float _damagePercentage)
         {
-            ammo = _currentAmmo;
-            Speed = _speed;
-            owner = _owner;
-            trail = GetComponentInChildren<TrailRenderer>();
-            rend = GetComponentInChildren<MeshRenderer>();
-            SetBulletColors(_currentAmmo.AmmoType);
             damagePercentage = _damagePercentage;
-
-            Destroy(gameObject, _bulletLife);
+            Init(_currentAmmo, _speed, _owner, _bulletLife);
         }
 
         #endregion

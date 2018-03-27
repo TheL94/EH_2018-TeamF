@@ -38,7 +38,7 @@ namespace TeamF
         public override void OnEnemyDeath(Enemy _enemyKilled)
         {
             Destroy(_enemyKilled.gameObject);
-            SpawnEnemy(SpawnPoints[(int)_enemyKilled.Data.ElementalType - 1], _enemyKilled.Data.EnemyType);
+            SpawnEnemy(spawnPoints[(int)_enemyKilled.Data.ElementalType - 1], _enemyKilled.Data.EnemyType);
             enemiesSpawned.Remove(_enemyKilled);
         }
 
@@ -52,9 +52,9 @@ namespace TeamF
 
         void SpawnEnemyForeachSpawn()
         {
-            for (int i = 0; i < SpawnPoints.Count; i++)
+            for (int i = 0; i < spawnPoints.Count; i++)
             {
-                SpawnEnemy(SpawnPoints[i], (EnemyType)i + 2);
+                SpawnEnemy(spawnPoints[i], (EnemyType)i + 2);
             }
         }
 
