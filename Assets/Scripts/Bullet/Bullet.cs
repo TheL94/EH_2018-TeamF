@@ -11,6 +11,7 @@ namespace TeamF
         BulletOwner owner;
         ElementalAmmo ammo;
         float Speed;
+        float damagePercentage;
 
         void FixedUpdate()
         {
@@ -29,6 +30,19 @@ namespace TeamF
             SetBulletColors(_currentAmmo.AmmoType);
 
             Destroy(gameObject,_bulletLife);
+        }
+
+        public virtual void Init(ElementalAmmo _currentAmmo, float _speed, BulletOwner _owner, float _bulletLife, float _damagePercentage)
+        {
+            ammo = _currentAmmo;
+            Speed = _speed;
+            owner = _owner;
+            trail = GetComponentInChildren<TrailRenderer>();
+            rend = GetComponentInChildren<MeshRenderer>();
+            SetBulletColors(_currentAmmo.AmmoType);
+            damagePercentage = _damagePercentage;
+
+            Destroy(gameObject, _bulletLife);
         }
 
         #endregion
@@ -94,7 +108,8 @@ namespace TeamF
         {
             if (_damageable != null)
             {
-                _damageable.TakeDamage(ammo.Damage, ammo.AmmoType);              
+                float damage = ammo.Damage + (ammo.Damage * damagePercentage / 100);
+                _damageable.TakeDamage(damage, ammo.AmmoType);              
             }
         }
 

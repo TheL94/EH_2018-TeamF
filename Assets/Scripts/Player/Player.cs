@@ -59,13 +59,16 @@ namespace TeamF
                 Vector3 finalDirection = new Vector3();
 
                 if (Input.GetKey(KeyCode.W))
-                    finalDirection += transform.right;
-                if (Input.GetKey(KeyCode.S))
-                    finalDirection += -transform.right;
-                if (Input.GetKey(KeyCode.A))
                     finalDirection += transform.forward;
-                if (Input.GetKey(KeyCode.D))
+
+                if (Input.GetKey(KeyCode.S))
                     finalDirection += -transform.forward;
+                if (Input.GetKey(KeyCode.A))
+                    finalDirection += -transform.right;
+
+                if (Input.GetKey(KeyCode.D))
+                    finalDirection += transform.right;
+
 
                 if (Input.GetAxis("Mouse ScrollWheel") < 0f || Input.GetKeyDown(KeyCode.E))
                 {
