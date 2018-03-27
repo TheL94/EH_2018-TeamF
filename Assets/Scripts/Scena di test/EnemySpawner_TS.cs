@@ -67,7 +67,7 @@ namespace TeamF
         {
             EnemyData data = FindEnemyDataByType(_type);
             Enemy _newEnemy = SpawnEnemy(data.ContainerPrefab, _spawner);
-            _newEnemy.Init(data, data.InitialState, "Enemy" + idCounter);
+            _newEnemy.Init(data, "Enemy" + idCounter);
         }     
     }
 }
