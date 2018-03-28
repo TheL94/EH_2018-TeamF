@@ -10,13 +10,14 @@ namespace TeamF.AI
     {
         protected override bool Act(AI_Controller _controller)
         {
-            return IsRangedPossible((_controller as AI_Enemy).Enemy);
+            return IsRangedPossible(_controller as AI_Enemy);
         }
 
-        bool IsRangedPossible(Enemy _enemy)
+        bool IsRangedPossible(AI_Enemy _AIenemy)
         {
-            if (Vector3.Distance(_enemy.Target.Position, _enemy.Position) <= _enemy.Data.RangedDamageRange - 0.5f)
-                return false;
+            //if (Vector3.Distance(_enemy.Target.Position, _enemy.Position) <= _enemy.Data.RangedDamageRange - 0.5f)
+            if(_AIenemy.IsRangedAttackPossible)
+                return true;
             else
                 return false;
         }

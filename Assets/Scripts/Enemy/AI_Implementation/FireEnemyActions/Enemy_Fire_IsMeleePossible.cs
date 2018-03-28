@@ -10,12 +10,12 @@ namespace TeamF.AI
     {
         protected override bool Act(AI_Controller _controller)
         {
-            return IsRangedPossible(_controller as AI_Enemy);
+            return IsMeleePossible(_controller as AI_Enemy);
         }
 
-        bool IsRangedPossible(AI_Enemy _AIenemy)
+        bool IsMeleePossible(AI_Enemy _AIenemy)
         {
-            if (_AIenemy.ConsecutiveAttacks <= 5)
+            if (_AIenemy.FireConsecutiveAttacks <= 5)
                 return true;
             else
                 return false;
