@@ -9,6 +9,7 @@ TagManager:
   - Effect
   - Barrel
   - Terrain
+  - EnemySpawn
   layers:
   - Default
   - TransparentFX
