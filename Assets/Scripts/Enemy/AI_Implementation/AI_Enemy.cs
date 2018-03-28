@@ -7,14 +7,16 @@ namespace TeamF.AI
 {
     public class AI_Enemy : AI_Controller
     {
-        public Enemy Enemy { get; private set; }
-
-        public bool IsAttackCoolDown { get; set; }
-
         public AI_State CharmedState;
         public AI_State ParalizeState;
         public AI_State DamageState;
         public AI_State DeathState;
+
+        public Enemy Enemy { get; private set; }
+
+        public bool IsAttackCoolDown { get; set; }
+
+        public int ConsecutiveAttacks { get; set; }
 
         protected override void OnInit()
         {
@@ -22,6 +24,9 @@ namespace TeamF.AI
             IsAttackCoolDown = true;
         }
 
+
+
+        #region CoolDowns
         public void StartAttackCoolDown(float _time)
         {
             StartCoroutine(AttackCoolDown(_time));
@@ -45,5 +50,6 @@ namespace TeamF.AI
             yield return new WaitForSeconds(_time);
             Enemy.IsParalized = false;
         }
+        #endregion
     }
 }

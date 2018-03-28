@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41e3d64deee77d649b8572271a3e5103, type: 3}
+  m_Name: Fire_ChooseAttack
+  m_EditorClassIdentifier: 
+  Actions:
+  - Delay: 0
+    Loop: 0
+    Action: {fileID: 11400000, guid: f9a042e98cae77144adc78379a24de38, type: 2}
+    OnSuccess: {fileID: 11400000, guid: feda19b0e11a44d42be653225a92e798, type: 2}
+    OnFailure: {fileID: 0}
+  - Delay: 0
+    Loop: 0
+    Action: {fileID: 11400000, guid: 48191e3ce0ec71444ba6802bdb2d04bd, type: 2}
+    OnSuccess: {fileID: 11400000, guid: a69fb3e8ac54442498cbc07d947fc8fd, type: 2}
+    OnFailure: {fileID: 11400000, guid: f24b22bd9b2f3c04f9f4ebe2e2f1d94e, type: 2}

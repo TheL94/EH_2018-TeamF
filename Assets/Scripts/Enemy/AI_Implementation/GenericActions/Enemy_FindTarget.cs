@@ -15,7 +15,7 @@ namespace TeamF.AI
 
         bool SetTarget(Enemy _enemy)
         {
-            if (_enemy.Target != null)
+            if (_enemy.Target != null && _enemy.Target.Life > 0)
                 return true;
 
             _enemy.Target = GameManager.I.EnemyMng.GetTarget(_enemy);

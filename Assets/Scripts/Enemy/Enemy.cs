@@ -28,7 +28,6 @@ namespace TeamF
         public IDamageable Target { get; set; }
         public AI_Enemy AI_Enemy { get; private set; }
 
-
         MeshRenderer render;
 
         public void Init(EnemyData _data, string _id)
@@ -102,9 +101,7 @@ namespace TeamF
 
             AI_Enemy.CurrentState = AI_Enemy.DamageState;
 
-            if (Animator != null)
-                AnimState = AnimationState.Damage;
-            else
+            if (render != null)              
                 render.material.DOColor(Color.white, .1f).OnComplete(() => { render.material.DORewind(); });
         }
 
