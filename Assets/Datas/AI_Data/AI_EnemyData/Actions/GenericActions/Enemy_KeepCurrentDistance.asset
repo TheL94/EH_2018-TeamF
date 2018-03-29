@@ -8,6 +8,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3124e21b3a8d5004e908be569e331764, type: 3}
-  m_Name: Enemy_SetDestination
+  m_Script: {fileID: 11500000, guid: b1e1996e8fde52f40bdd1989f24e0a50, type: 3}
+  m_Name: Enemy_KeepCurrentDistance
   m_EditorClassIdentifier: 

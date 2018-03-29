@@ -23,8 +23,8 @@ namespace TeamF.AI
         #region Fire Pattern
         public int FireConsecutiveAttacks;
 
-        public bool IsRangedAttackPossible = true;
-
+        public bool FireIsDisengaging;
+        
         public void StartRangedAttackCoolDown(float _time)
         {
             StartCoroutine(RangedAttackCoolDown(_time));
@@ -32,15 +32,14 @@ namespace TeamF.AI
 
         IEnumerator RangedAttackCoolDown(float _time)
         {
-            IsRangedAttackPossible = true;
             yield return new WaitForSeconds(_time);
-            IsRangedAttackPossible = false;
+            FireConsecutiveAttacks = 0;
         }
         #endregion
 
         #region CoolDowns Generic
         #region Attack CoolDown
-        public bool IsAttackCoolDown { get; set; }
+        public bool IsAttackCoolDown;
 
         public void StartAttackCoolDown(float _time)
         {

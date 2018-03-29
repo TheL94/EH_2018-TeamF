@@ -23,7 +23,7 @@ MonoBehaviour:
   MeleeDamageRange: 2
   MeleeDamageRate: 1
   RangedDamage: 2
-  RangedDamageRange: 5
+  RangedDamageRange: 9
   RangedDamageRate: 1
   BulletSpeed: 0.5
   BulletData: {fileID: 0}

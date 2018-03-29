@@ -14,11 +14,12 @@ namespace TeamF.AI
 
         void EvaluateRangedAttackPosition(Enemy _enemy)
         {
-            if (Vector3.Distance(_enemy.Agent.destination, _enemy.Target.Position) < 0.3f) 
+            if (!_enemy.AI_Enemy.FireIsDisengaging) 
             {
-                Vector3 destination = (_enemy.Target.Position - _enemy.Position).normalized;
-                destination *= _enemy.Data.RangedDamageRange + 0.5f;
-                _enemy.Agent.destination = destination;
+                _enemy.AI_Enemy.FireIsDisengaging = true;
+                   Vector3 disengageDestination = (_enemy.Target.Position - _enemy.Position).normalized;
+                disengageDestination *= _enemy.Data.RangedDamageRange + 0.5f;
+                _enemy.Agent.destination = _enemy.Target.Position + disengageDestination;
             }
         }
     }

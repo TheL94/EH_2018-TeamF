@@ -15,7 +15,7 @@ namespace TeamF.AI
 
         bool IsTargetInRangedRange(Enemy _enemy)
         {
-            if (Vector3.Distance(_enemy.Target.Position, _enemy.Position) <= _enemy.Data.RangedDamageRange)
+            if (Vector3.Distance(_enemy.Target.Position, _enemy.Position) <= _enemy.Data.RangedDamageRange + 0.25f)
                 return true;
             else
                 return false;

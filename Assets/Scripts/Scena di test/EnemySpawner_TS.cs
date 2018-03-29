@@ -66,8 +66,11 @@ namespace TeamF
         void SpawnEnemy(Transform _spawner, EnemyType _type)
         {
             EnemyData data = FindEnemyDataByType(_type);
-            Enemy _newEnemy = SpawnEnemy(data.ContainerPrefab, _spawner);
-            _newEnemy.Init(data, "Enemy" + idCounter);
+            if(data != null)
+            {
+                Enemy _newEnemy = SpawnEnemy(data.ContainerPrefab, _spawner);
+                _newEnemy.Init(data, "Enemy" + idCounter);
+            }
         }     
     }
 }
