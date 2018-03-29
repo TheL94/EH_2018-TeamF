@@ -14,7 +14,7 @@ MonoBehaviour:
   Weapon: 2
   Parameters:
     BulletSpeed: 0.2
-    BulletLife: 0.8
+    BulletLife: 0.4
     Ratio: 1.5
     DamagePercentage: 200
   BulletContainerPrefab: {fileID: 1096078678018924, guid: aed0c6b0c1afa4a4ca5d68d6e3bccfab,
