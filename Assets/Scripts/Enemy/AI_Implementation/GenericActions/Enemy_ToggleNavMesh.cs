@@ -20,9 +20,9 @@ namespace TeamF.AI
         {
             if (_enemy.Agent != null)
             {
-                if (Stop)
+                if (Stop && _enemy.Agent.speed > 0f)
                     _enemy.Agent.speed = 0f;
-                else
+                else if(_enemy.Agent.speed == 0f)
                     _enemy.Agent.speed = _enemy.Data.Speed;
             }
         }
