@@ -1,0 +1,61 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityFramework.AI;
+
+namespace TeamF
+{
+    [CreateAssetMenu(fileName = "EnemyGenericData", menuName = "Enemy/EnemyGenericData")]
+    public class EnemyGenericData : ScriptableObject
+    {
+        public AI_State InitialState;
+
+        [Header("Object Constuction")]
+        public GameObject ContainerPrefab;
+        public GameObject GraphicPrefab;
+
+        [Header("Generic Parameters")]
+        public EnemyType EnemyType;
+        public ElementalType ElementalType
+        {
+            get
+            {
+                switch (EnemyType)
+                {
+                    case EnemyType.Melee:
+                        return ElementalType.None;
+                    case EnemyType.Ranged:
+                        return ElementalType.None;
+                    case EnemyType.Fire:
+                        return ElementalType.Fire;
+                    case EnemyType.Water:
+                        return ElementalType.Water;
+                    case EnemyType.Poison:
+                        return ElementalType.Poison;
+                    case EnemyType.Thunder:
+                        return ElementalType.Thunder;
+                }
+                return ElementalType.None;
+            }
+        }
+        public float Life;
+        public float Speed;
+        public float AimTime;
+        public float EnemyValue;
+        public float RangeOffset;
+
+        [Header("Melee Attack Parameters")]
+        public float MeleeDamage;
+        public float MeleeDamageRange;
+        public float MeleeDamageRate;
+
+        [Header("Ranged Attack Parameters")]
+        public float RangedDamage;
+        public float RangedDamageRange;
+        public float RangedDamageRate;
+
+        [Header("Bullet Parameters")]
+        public BulletData BulletData;
+        public float BulletSpeed;
+    }
+}

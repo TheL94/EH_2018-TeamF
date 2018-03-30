@@ -9,12 +9,13 @@ namespace TeamF
         public GameObject AmmoCratePrefab;
         public float TimeToSpawnCrate;
         public int AmmoPerCrate;
-        public List<Transform> AmmoSpawnPoints = new List<Transform>();
+        List<Transform> ammoSpawnPoints = new List<Transform>();
 
         List<AmmoCrate> Crates = new List<AmmoCrate>();
 
         public void Init()
         {
+            GetAmmoSpawners();
             CreateAmmoCrate();
         }
 
@@ -43,7 +44,7 @@ namespace TeamF
             Destroy(_crate.gameObject);
 
             Transform spanwerPosition = null;
-            foreach (Transform transf in AmmoSpawnPoints)
+            foreach (Transform transf in ammoSpawnPoints)
             {
                 if (_crate.transform.position == transf.position)
                     spanwerPosition = transf;
@@ -58,7 +59,7 @@ namespace TeamF
         /// </summary>
         void CreateAmmoCrate()
         {
-            foreach (Transform pos in AmmoSpawnPoints)
+            foreach (Transform pos in ammoSpawnPoints)
             {
                 AmmoCrate temp = Instantiate(AmmoCratePrefab, pos.position, Quaternion.identity, pos).GetComponent<AmmoCrate>();
                 temp.Init(this, AmmoPerCrate);
@@ -86,6 +87,15 @@ namespace TeamF
         {
             yield return new WaitForSeconds(TimeToSpawnCrate);
             CreateAmmoCrate(_position);
+        }
+
+        void GetAmmoSpawners()
+        {
+            GameObject[] spawnPoints = GameObject.FindGameObjectsWithTag("AmmoSpawn");
+            foreach (GameObject spawn in spawnPoints)
+            {
+                ammoSpawnPoints.Add(spawn.transform);
+            }
         }
     }
 }

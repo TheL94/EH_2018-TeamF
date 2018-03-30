@@ -62,7 +62,7 @@ namespace TeamF
             if (_bulletData.BulletTrailPrefab != null)
                 Instantiate(_bulletData.BulletTrailPrefab, bull.transform.position, bull.transform.rotation, bull.transform);
 
-            bull.Init(_currentAmmo, weaponData.Parameters.BulletSpeed, BulletOwner.Character, weaponData.Parameters.BulletLife/*,ChoseBulletBehaviour()*/);
+            bull.Init(_currentAmmo, weaponData.Parameters.BulletSpeed, BulletOwner.Character, weaponData.Parameters.BulletLife, weaponData.Parameters.DamagePercentage);
         }
 
         /// <summary>

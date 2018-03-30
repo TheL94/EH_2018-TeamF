@@ -23,7 +23,7 @@ namespace TeamF
         #endregion
 
         #region Enemy
-        EnemyData oldEnemyData;
+        EnemyGenericData oldEnemyData;
 
         public InputField Enemy_Life;
         public InputField Enemy_Damage;
@@ -34,7 +34,7 @@ namespace TeamF
         #endregion
         #endregion
 
-        public void Init(CharacterData _characterData, EnemyData _enemyData)
+        public void Init(CharacterData _characterData, EnemyGenericData _enemyData)
         {
             oldCharacterData = Instantiate(_characterData);
 
@@ -81,7 +81,7 @@ namespace TeamF
         {
             for (int i = 0; i < GameManager.I.EnemyMng.DataInstance.EnemiesData.Count; i++)
             {
-                EnemyData enemyInstanceData = Instantiate(GameManager.I.EnemyMng.DataInstance.EnemiesData[i]);
+                EnemyGenericData enemyInstanceData = Instantiate(GameManager.I.EnemyMng.DataInstance.EnemiesData[i]);
                 enemyInstanceData.Life = float.Parse(Enemy_Life.text);
                 enemyInstanceData.MeleeDamage = int.Parse(Enemy_Damage.text);
                 enemyInstanceData.Speed = float.Parse(Enemy_Speed.text);

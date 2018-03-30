@@ -7,20 +7,39 @@ namespace TeamF.AI
 {
     public class AI_Enemy : AI_Controller
     {
-        public Enemy Enemy { get; private set; }
-
-        public bool IsAttackCoolDown { get; set; }
-
         public AI_State CharmedState;
         public AI_State ParalizeState;
         public AI_State DamageState;
         public AI_State DeathState;
+
+        public Enemy Enemy { get; private set; }
 
         protected override void OnInit()
         {
             Enemy = GetComponent<Enemy>();
             IsAttackCoolDown = true;
         }
+
+        #region Fire Pattern
+        public int FireConsecutiveAttacks;
+
+        public bool FireIsDisengaging;
+        
+        public void StartRangedAttackCoolDown(float _time)
+        {
+            StartCoroutine(RangedAttackCoolDown(_time));
+        }
+
+        IEnumerator RangedAttackCoolDown(float _time)
+        {
+            yield return new WaitForSeconds(_time);
+            FireConsecutiveAttacks = 0;
+        }
+        #endregion
+
+        #region CoolDowns Generic
+        #region Attack CoolDown
+        public bool IsAttackCoolDown;
 
         public void StartAttackCoolDown(float _time)
         {
@@ -33,7 +52,9 @@ namespace TeamF.AI
             yield return new WaitForSeconds(_time);
             IsAttackCoolDown = true;
         }
+        #endregion
 
+        #region Paralysis CoolDown
         public void StartParalysisCoolDown(float _time)
         {
             StartCoroutine(ParalysisCoolDown(_time));
@@ -45,5 +66,7 @@ namespace TeamF.AI
             yield return new WaitForSeconds(_time);
             Enemy.IsParalized = false;
         }
+        #endregion
+        #endregion
     }
 }

@@ -38,7 +38,7 @@ namespace TeamF
         public override void OnEnemyDeath(Enemy _enemyKilled)
         {
             Destroy(_enemyKilled.gameObject);
-            SpawnEnemy(SpawnPoints[(int)_enemyKilled.Data.ElementalType - 1], _enemyKilled.Data.EnemyType);
+            SpawnEnemy(spawnPoints[(int)_enemyKilled.Data.ElementalType - 1], _enemyKilled.Data.EnemyType);
             enemiesSpawned.Remove(_enemyKilled);
         }
 
@@ -52,9 +52,9 @@ namespace TeamF
 
         void SpawnEnemyForeachSpawn()
         {
-            for (int i = 0; i < SpawnPoints.Count; i++)
+            for (int i = 0; i < spawnPoints.Count; i++)
             {
-                SpawnEnemy(SpawnPoints[i], (EnemyType)i + 2);
+                SpawnEnemy(spawnPoints[i], (EnemyType)i + 2);
             }
         }
 
@@ -65,9 +65,12 @@ namespace TeamF
         /// <param name="_type">Il Tipo del nemico</param>
         void SpawnEnemy(Transform _spawner, EnemyType _type)
         {
-            EnemyData data = FindEnemyDataByType(_type);
-            Enemy _newEnemy = SpawnEnemy(data.ContainerPrefab, _spawner);
-            _newEnemy.Init(data, "Enemy" + idCounter);
+            EnemyGenericData data = FindEnemyDataByType(_type);
+            if(data != null)
+            {
+                Enemy _newEnemy = SpawnEnemy(data.ContainerPrefab, _spawner);
+                _newEnemy.Init(data, "Enemy" + idCounter);
+            }
         }     
     }
 }
