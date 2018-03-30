@@ -16,7 +16,7 @@ namespace TeamF.AI
         bool IsRangedPossible(AI_Enemy _AIenemy)
         {
             float targetDistance = Vector3.Distance(_AIenemy.Enemy.Target.Position, _AIenemy.Enemy.Position);
-            if (/*targetDistance <= _AIenemy.Enemy.Data.RangedDamageRange + 0.25f &&*/ targetDistance >= _AIenemy.Enemy.Data.RangedDamageRange - 0.25f)
+            if (targetDistance > _AIenemy.Enemy.Data.RangedDamageRange - _AIenemy.Enemy.Data.RangeOffset)
             {
                 _AIenemy.FireIsDisengaging = false;
                 return true;

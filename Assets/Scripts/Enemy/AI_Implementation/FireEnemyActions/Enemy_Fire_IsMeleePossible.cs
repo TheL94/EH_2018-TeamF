@@ -15,7 +15,7 @@ namespace TeamF.AI
 
         bool IsMeleePossible(AI_Enemy _AIenemy)
         {
-            if (_AIenemy.FireConsecutiveAttacks < 5)
+            if (_AIenemy.FireConsecutiveAttacks < (_AIenemy.Enemy.Data as EnemyFireData).MeleeConsecutiveAttacks)
                 return true;
             else
                 return false;

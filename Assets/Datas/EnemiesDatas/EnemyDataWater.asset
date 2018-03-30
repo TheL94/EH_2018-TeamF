@@ -12,19 +12,21 @@ MonoBehaviour:
   m_Name: EnemyDataWater
   m_EditorClassIdentifier: 
   InitialState: {fileID: 11400000, guid: fed0d20f716108b42a4cd7bf4c08af2b, type: 2}
-  EnemyType: 3
   ContainerPrefab: {fileID: 1267129680638450, guid: 25dfe3bec1371e14d87332e9234c5ef8,
     type: 2}
   GraphicPrefab: {fileID: 1396582309163458, guid: a3b280d73d927f24c87831fab5c48f39,
     type: 2}
+  EnemyType: 3
   Life: 10
   Speed: 5.3
+  EnemyValue: 1
+  AimTime: 0.2
+  RangeOffset: 0.25
   MeleeDamage: 1
   MeleeDamageRange: 2
   MeleeDamageRate: 1
   RangedDamage: 2
   RangedDamageRange: 9
   RangedDamageRate: 1
-  BulletSpeed: 0.5
   BulletData: {fileID: 11400000, guid: fc0514fe99c1cf343900d4df6098e7f5, type: 2}
-  EnemyValue: 1
+  BulletSpeed: 0.5

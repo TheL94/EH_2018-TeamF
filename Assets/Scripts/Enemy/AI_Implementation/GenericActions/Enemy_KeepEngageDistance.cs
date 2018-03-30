@@ -16,11 +16,11 @@ namespace TeamF.AI
 
         void KeepCurrentDistance(Enemy _enemy)
         {
-            if (Vector3.Distance(_enemy.Target.Position, _enemy.Position) >= _enemy.Data.RangedDamageRange + 0.25f)
+            if (Vector3.Distance(_enemy.Target.Position, _enemy.Position) > _enemy.Data.RangedDamageRange + _enemy.Data.RangeOffset)
             {
                 Vector3 engagePosition = (_enemy.Target.Position - _enemy.Position);
                 float engageDistance = engagePosition.magnitude - _enemy.Data.RangedDamageRange;
-                engagePosition = engagePosition.normalized * (engageDistance + 0.25f);
+                engagePosition = engagePosition.normalized * (engageDistance + Random.Range(-_enemy.Data.RangeOffset, _enemy.Data.RangeOffset));
                 _enemy.Agent.destination = _enemy.Position + engagePosition;
             }         
         }

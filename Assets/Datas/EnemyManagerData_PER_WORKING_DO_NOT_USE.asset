@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 78d0cecd44868ed4a9189d1e2bc0e35d, type: 3}
-  m_Name: EnemyManagerData_PER_WORKING
+  m_Name: EnemyManagerData_PER_WORKING_DO_NOT_USE
   m_EditorClassIdentifier: 
   StartDelayTime: 1
   DelayHordes: 3
@@ -24,4 +24,4 @@ MonoBehaviour:
   MaxRangedEnemies: 2
   MinRangedEnemies: 1
   EnemiesData:
-  - {fileID: 11400000, guid: b87b82b560d7be7478495298387e24bc, type: 2}
+  - {fileID: 11400000, guid: 1d39f6f3411a0ff4d88c73a973a284ae, type: 2}

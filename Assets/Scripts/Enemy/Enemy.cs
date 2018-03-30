@@ -11,7 +11,7 @@ namespace TeamF
     [RequireComponent(typeof(NavMeshAgent), typeof(AI_Enemy))]
     public class Enemy : MonoBehaviour, IDamageable, IParalyzable, ICharmable
     {
-        public EnemyData Data { get; private set; }
+        public EnemyGenericData Data { get; private set; }
         public string ID { get; private set; }
         public float MovementSpeed
         {
@@ -30,7 +30,7 @@ namespace TeamF
 
         MeshRenderer render;
 
-        public void Init(EnemyData _data, string _id)
+        public void Init(EnemyGenericData _data, string _id)
         {
             Data = _data;
             ID = _id;
@@ -60,7 +60,7 @@ namespace TeamF
         #region IEnemyBehaviour
         public IEnemyBehaviour CurrentBehaviour { get; private set; }
 
-        IEnemyBehaviour DeterminateBehaviourFromType(EnemyData _data)
+        IEnemyBehaviour DeterminateBehaviourFromType(EnemyGenericData _data)
         {
             switch (_data.EnemyType)
             {
