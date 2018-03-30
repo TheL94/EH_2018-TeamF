@@ -5,8 +5,8 @@ using UnityFramework.AI;
 
 namespace TeamF.AI
 {
-    [CreateAssetMenu(menuName = "AI/NewAction/Enemy_KeepCurrentDistance")]
-    public class Enemy_KeepCurrentDistance : AI_Action
+    [CreateAssetMenu(menuName = "AI/NewAction/Enemy_KeepEngageDistance")]
+    public class Enemy_KeepEngageDistance : AI_Action
     {
         protected override bool Act(AI_Controller _controller)
         {
