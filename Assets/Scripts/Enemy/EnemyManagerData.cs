@@ -23,6 +23,6 @@ namespace TeamF
         public int MaxRangedEnemies;
         public int MinRangedEnemies;
 
-        public List<EnemyData> EnemiesData;
+        public List<EnemyGenericData> EnemiesData;
     }
 }

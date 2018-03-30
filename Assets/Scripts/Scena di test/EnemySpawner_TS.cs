@@ -65,9 +65,12 @@ namespace TeamF
         /// <param name="_type">Il Tipo del nemico</param>
         void SpawnEnemy(Transform _spawner, EnemyType _type)
         {
-            EnemyData data = FindEnemyDataByType(_type);
-            Enemy _newEnemy = SpawnEnemy(data.ContainerPrefab, _spawner);
-            _newEnemy.Init(data, "Enemy" + idCounter);
+            EnemyGenericData data = FindEnemyDataByType(_type);
+            if(data != null)
+            {
+                Enemy _newEnemy = SpawnEnemy(data.ContainerPrefab, _spawner);
+                _newEnemy.Init(data, "Enemy" + idCounter);
+            }
         }     
     }
 }

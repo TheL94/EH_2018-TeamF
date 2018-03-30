@@ -173,10 +173,13 @@ namespace TeamF
 
                     for (int j = 0; j < elementalsEnemies; j++)
                     {
-                        EnemyData data = FindEnemyDataByType((EnemyType)Random.Range(2, 6));
-                        Enemy newEnemy = SpawnEnemy(data.ContainerPrefab, spawnPoints[i]);
-                        if (newEnemy != null)
-                            InitEnemy(newEnemy, data);
+                        EnemyGenericData data = FindEnemyDataByType((EnemyType)Random.Range(2, 6));
+                        if (data != null)
+                        {
+                            Enemy newEnemy = SpawnEnemy(data.ContainerPrefab, spawnPoints[i]);
+                            if (newEnemy != null)
+                                InitEnemy(newEnemy, data);
+                        }
                     } 
                 }
 
@@ -186,10 +189,13 @@ namespace TeamF
 
                     for (int j = 0; j < rangedEnemies; j++)
                     {
-                        EnemyData data = FindEnemyDataByType(EnemyType.Ranged);
-                        Enemy newEnemy = SpawnEnemy(data.ContainerPrefab, spawnPoints[i]);
-                        if(newEnemy != null)
-                            InitEnemy(newEnemy, data);
+                        EnemyGenericData data = FindEnemyDataByType(EnemyType.Ranged);
+                        if (data != null)
+                        {
+                            Enemy newEnemy = SpawnEnemy(data.ContainerPrefab, spawnPoints[i]);
+                            if (newEnemy != null)
+                                InitEnemy(newEnemy, data);
+                        }
                     } 
                 }
 
@@ -199,10 +205,13 @@ namespace TeamF
 
                     for (int j = 0; j < hordeNumber; j++)
                     {
-                        EnemyData data = FindEnemyDataByType(EnemyType.Melee);
-                        Enemy newEnemy = SpawnEnemy(data.ContainerPrefab, spawnPoints[i]);
-                        if (newEnemy != null)
-                            InitEnemy(newEnemy, data);
+                        EnemyGenericData data = FindEnemyDataByType(EnemyType.Melee);
+                        if (data != null)
+                        {
+                            Enemy newEnemy = SpawnEnemy(data.ContainerPrefab, spawnPoints[i]);
+                            if (newEnemy != null)
+                                InitEnemy(newEnemy, data);
+                        }
                     } 
                 }
             }
@@ -253,7 +262,7 @@ namespace TeamF
         /// </summary>
         /// <param name="_enemy"></param>
         /// <param name="_enemyData"></param>
-        void InitEnemy(Enemy _enemy, EnemyData _enemyData)
+        void InitEnemy(Enemy _enemy, EnemyGenericData _enemyData)
         {
             _enemy.Init(_enemyData, "Enemy" + idCounter);
         }
@@ -264,9 +273,13 @@ namespace TeamF
         /// <param name="_type"></param>
         /// <param name="_element"></param>
         /// <returns></returns>
-        protected EnemyData FindEnemyDataByType(EnemyType _type)
+        protected EnemyGenericData FindEnemyDataByType(EnemyType _type)
         {
-            return Instantiate(DataInstance.EnemiesData.Where(d => d.EnemyType == _type).First());
+            EnemyGenericData data = DataInstance.EnemiesData.Where(d => d.EnemyType == _type).FirstOrDefault();
+            if (data != null)
+                return Instantiate(data);
+            else
+                return null;
         }
 
         void GetSpawnInScene()

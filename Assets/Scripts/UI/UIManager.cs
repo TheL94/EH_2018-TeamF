@@ -26,7 +26,7 @@ namespace TeamF
 
         ///TODO: qualcuno deve richiamare questa funzione passando i valori già settati dei dati, in modo che vengano scritti nei campi presenti
         ///nel pannello dei valori
-        public void EnableValuesPanel(CharacterData _characterData, EnemyData _enemyData)
+        public void EnableValuesPanel(CharacterData _characterData, EnemyGenericData _enemyData)
         {
             UI_MainMenuCtrl.gameObject.SetActive(false);
             UI_GameOverCtrl.gameObject.SetActive(false);

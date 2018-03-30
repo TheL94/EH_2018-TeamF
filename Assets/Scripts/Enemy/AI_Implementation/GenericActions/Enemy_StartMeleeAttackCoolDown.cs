@@ -5,8 +5,8 @@ using UnityFramework.AI;
 
 namespace TeamF.AI
 {
-    [CreateAssetMenu(menuName = "AI/NewAction/Enemy_StartAttackCoolDown")]
-    public class Enemy_StartAttackCoolDown : AI_Action
+    [CreateAssetMenu(menuName = "AI/NewAction/Enemy_StartMeleeAttackCoolDown")]
+    public class Enemy_StartMeleeAttackCoolDown : AI_Action
     {
         protected override bool Act(AI_Controller _controller)
         {

@@ -5,20 +5,19 @@ using UnityFramework.AI;
 
 namespace TeamF.AI
 {
-    [CreateAssetMenu(menuName = "AI/NewAction/Enemy_Fire_StartRangedAttackCoolDown")]
-    public class Enemy_Fire_StartRangedAttackCoolDown : AI_Action
+    [CreateAssetMenu(menuName = "AI/NewAction/Enemy_StartRangedAttackCoolDown")]
+    public class Enemy_StartRangedAttackCoolDown : AI_Action
     {
-        float RangedAttackDuration;
-
         protected override bool Act(AI_Controller _controller)
         {
             StartRangedAttackCoolDown(_controller as AI_Enemy);
             return true;
         }
 
-        void StartRangedAttackCoolDown(AI_Enemy _AIenemy)
+        void StartRangedAttackCoolDown(AI_Enemy _AIEnemy)
         {
-            _AIenemy.StartRangedAttackCoolDown(RangedAttackDuration);
+            if(_AIEnemy.IsAttackCoolDown)
+                _AIEnemy.StartAttackCoolDown(_AIEnemy.Enemy.Data.RangedDamageRate);
         }
     }
 }

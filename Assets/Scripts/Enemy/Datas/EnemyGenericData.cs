@@ -5,11 +5,16 @@ using UnityFramework.AI;
 
 namespace TeamF
 {
-    [CreateAssetMenu(fileName = "EnemyData", menuName = "Enemy/EnemyData")]
-    public class EnemyData : ScriptableObject
+    [CreateAssetMenu(fileName = "EnemyGenericData", menuName = "Enemy/EnemyGenericData")]
+    public class EnemyGenericData : ScriptableObject
     {
         public AI_State InitialState;
 
+        [Header("Object Constuction")]
+        public GameObject ContainerPrefab;
+        public GameObject GraphicPrefab;
+
+        [Header("Generic Parameters")]
         public EnemyType EnemyType;
         public ElementalType ElementalType
         {
@@ -33,23 +38,24 @@ namespace TeamF
                 return ElementalType.None;
             }
         }
-        public GameObject ContainerPrefab;
-        public GameObject GraphicPrefab;
-
         public float Life;
         public float Speed;
+        public float AimTime;
+        public float EnemyValue;
+        public float RangeOffset;
 
+        [Header("Melee Attack Parameters")]
         public float MeleeDamage;
         public float MeleeDamageRange;
         public float MeleeDamageRate;
 
+        [Header("Ranged Attack Parameters")]
         public float RangedDamage;
         public float RangedDamageRange;
         public float RangedDamageRate;
 
-        public float BulletSpeed;
+        [Header("Bullet Parameters")]
         public BulletData BulletData;
-
-        public float EnemyValue;
+        public float BulletSpeed;
     }
 }
