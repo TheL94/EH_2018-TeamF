@@ -25,15 +25,15 @@ namespace TeamF
         {
             switch (_newState)
             {
-                case FlowState.Loading:
-                    GameManager.I.LoadingActions();
+                case FlowState.InitGame:
+                    GameManager.I.InitGame();
                     break;
                 case FlowState.Menu:
-                    if (_oldState == FlowState.Loading || _oldState == FlowState.ExitGameplay || _oldState == FlowState.EnterTestScene)
+                    if (_oldState == FlowState.InitGame || _oldState == FlowState.ExitGameplay || _oldState == FlowState.EnterTestScene)
                         GameManager.I.MenuActions();
                     break;
                 case FlowState.EnterGameplay:
-                    if (_oldState == FlowState.Menu)
+                    if (_oldState == FlowState.Menu || _oldState == FlowState.ExitGameplay)
                         GameManager.I.EnterGameplayActions();
                     break;
                 case FlowState.EnterTestScene:
@@ -67,7 +67,7 @@ namespace TeamF
     public enum FlowState
     {
         None,
-        Loading,
+        InitGame,
         Menu,
         EnterGameplay,
         EnterTestScene,

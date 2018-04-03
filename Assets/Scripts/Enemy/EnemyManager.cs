@@ -284,6 +284,8 @@ namespace TeamF
 
         void GetSpawnInScene()
         {
+            if (spawnPoints.Count > 0)
+                spawnPoints.Clear();
             foreach (GameObject spawn in GameObject.FindGameObjectsWithTag("EnemySpawn"))
             {
                 spawnPoints.Add(spawn.transform);
