@@ -12,8 +12,9 @@ namespace TeamF
 
         FlowManager flowMng;
         public LevelManager LevelMng;
+        [HideInInspector]
         public EnemyManager EnemyMng;
-
+        [HideInInspector]
         public AmmoCratesController AmmoController;
 
         [HideInInspector]
@@ -37,7 +38,7 @@ namespace TeamF
         void Start()
         {
             flowMng = new FlowManager();
-            ChangeFlowState(FlowState.Loading);
+            ChangeFlowState(FlowState.InitGame);
             // NELLO START NON CI INFILARE NIENTE ! USA L'AZIONE DI LOADING
         }
 
@@ -62,11 +63,15 @@ namespace TeamF
             flowMng.ChageState(_stateToSet);
         }
 
-        public void LoadingActions()
+        public void InitGame()
         {
             UIMng = Instantiate(UIManagerPrefab, transform).GetComponentInChildren<UIManager>();
 
             GetComponent<ComboCounter>().Init(ComboCounterTimer);
+            EnemyMng = GetComponent<EnemyManager>();
+            AmmoController = GetComponent<AmmoCratesController>();
+
+            LevelMng = new LevelManager(KillsToWin);
 
             Player = GetComponent<Player>();
             if (Player != null)
@@ -82,8 +87,6 @@ namespace TeamF
 
         public void EnterGameplayActions()
         {
-            LevelMng = new LevelManager(KillsToWin);
-
             if (Player != null)
                 Player.InitCharacter();
 
@@ -111,6 +114,7 @@ namespace TeamF
         public void GameWonActions()
         {
             UIMng.GameOverActions(true);
+            LevelMng.UpdateLevel();
             ChangeFlowState(FlowState.ExitGameplay);
         }
 
