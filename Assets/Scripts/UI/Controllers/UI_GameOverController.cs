@@ -36,7 +36,10 @@ namespace TeamF
             {
                 case 0:
                     // cambio stato in enter gameplay (*** il livellodeve essere già caricato ***)
-                    GameManager.I.ChangeFlowState(FlowState.EnterGameplay);
+                    if (SelectableButtons.Count > 1)
+                        GameManager.I.ChangeFlowState(FlowState.EnterGameplay); 
+                    else
+                        SceneManager.LoadScene(0);
                     break;
                 case 1:
                     SceneManager.LoadScene(0);
