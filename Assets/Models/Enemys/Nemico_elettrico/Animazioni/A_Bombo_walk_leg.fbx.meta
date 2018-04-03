@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: f25958564e1951849820ff7f2b59f018
-timeCreated: 1521452074
+guid: 8f805ea1df726564dba27c80a39f8f79
+timeCreated: 1522334971
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -41,7 +41,7 @@ ModelImporter:
     400030: R_leg
     400032: R_shoulder
     400034: root
-    7400000: walk_leg
+    7400000: walkleg
     9500000: //RootNode
   externalObjects: {}
   materials:
