@@ -17,6 +17,7 @@ namespace TeamF.AI
         {
             Quaternion rotationToReach = Quaternion.LookRotation(_enemy.Target.Position - _enemy.transform.position, Vector3.up);
             _enemy.transform.rotation = Quaternion.Slerp(_enemy.transform.rotation, rotationToReach, _enemy.Data.AimTime);
+            // TODO : ritornare true solo al completamento della rotazione
             return true;
         }
     }

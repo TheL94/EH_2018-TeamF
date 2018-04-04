@@ -22,8 +22,6 @@ namespace TeamF.AI
 
         #region Fire Pattern
         public int FireConsecutiveAttacks;
-
-        public bool FireIsDisengaging;
         
         public void StartRangedAttackCoolDown(float _time)
         {
@@ -37,7 +35,10 @@ namespace TeamF.AI
         }
         #endregion
 
-        #region CoolDowns Generic
+        #region Enemy Generic
+
+        public bool IsDisengaging;
+
         #region Attack CoolDown
         public bool IsAttackCoolDown;
 

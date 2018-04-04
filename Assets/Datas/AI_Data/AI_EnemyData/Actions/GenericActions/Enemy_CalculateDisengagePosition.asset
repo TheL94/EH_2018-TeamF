@@ -9,5 +9,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4c41f8c9c881808478d46b97b3e77106, type: 3}
-  m_Name: Enemy_Fire_CalculateRangedAttackPosition
+  m_Name: Enemy_CalculateDisengagePosition
   m_EditorClassIdentifier: 
