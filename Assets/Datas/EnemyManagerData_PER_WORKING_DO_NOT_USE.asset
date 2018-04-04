@@ -24,4 +24,4 @@ MonoBehaviour:
   MaxRangedEnemies: 2
   MinRangedEnemies: 1
   EnemiesData:
-  - {fileID: 11400000, guid: 1d39f6f3411a0ff4d88c73a973a284ae, type: 2}
+  - {fileID: 11400000, guid: 9958afa15145434468c81853f9347c5a, type: 2}
