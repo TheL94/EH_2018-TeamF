@@ -8,10 +8,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 761ff678fe32dff46beefa12330fe2ec, type: 3}
-  m_Name: EnemyDataPoison
+  m_Script: {fileID: 11500000, guid: 835e13c586cd51042b96768d9e0144d9, type: 3}
+  m_Name: EnemyPoisonData
   m_EditorClassIdentifier: 
-  InitialState: {fileID: 11400000, guid: fed0d20f716108b42a4cd7bf4c08af2b, type: 2}
+  InitialState: {fileID: 11400000, guid: aedc8e8965706ba4fbd43f55edb0b645, type: 2}
+  CharmedState: {fileID: 11400000, guid: ff7b2eb8815c84245ba46c5e882abbb6, type: 2}
+  ParalizedState: {fileID: 11400000, guid: 5b3f30c12266ad94aa44762d704f9025, type: 2}
+  DamageState: {fileID: 11400000, guid: 7e6c44d44741e2348a2205088f6374c6, type: 2}
   ContainerPrefab: {fileID: 1267129680638450, guid: 25dfe3bec1371e14d87332e9234c5ef8,
     type: 2}
   GraphicPrefab: {fileID: 1030758615841798, guid: 34d4af3507b2f404185c349fb52c141d,
@@ -19,14 +22,19 @@ MonoBehaviour:
   EnemyType: 4
   Life: 10
   Speed: 5.3
-  EnemyValue: 1
   AimTime: 0.2
+  AimApproximationAngle: 20
+  EnemyValue: 1
   RangeOffset: 0.25
-  MeleeDamage: 1
-  MeleeDamageRange: 2
-  MeleeDamageRate: 1
+  MeleeDamage: -1
+  MeleeDamageRange: -1
+  MeleeDamageRate: -1
   RangedDamage: 2
   RangedDamageRange: 9
   RangedDamageRate: 1
   BulletData: {fileID: 11400000, guid: fc0514fe99c1cf343900d4df6098e7f5, type: 2}
   BulletSpeed: 0.5
+  CloudPrefab: {fileID: 1673971421481346, guid: 70ead17ddbc5ee34bb7654b8bcff4ccb,
+    type: 2}
+  CloudReleaseDistance: 3
+  CloudLifeTime: 10

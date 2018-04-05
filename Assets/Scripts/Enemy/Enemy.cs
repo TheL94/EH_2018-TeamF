@@ -49,14 +49,6 @@ namespace TeamF
             AI_Enemy.IsActive = true;
         }
 
-        #region Actions
-        void DeathActions(ElementalType _type)
-        {
-            CurrentBehaviour.DoDeath(_type, transform.position);
-            AI_Enemy.CurrentState = AI_Enemy.DeathState;
-        }
-        #endregion
-
         #region IEnemyBehaviour
         public IEnemyBehaviour CurrentBehaviour { get; private set; }
 
@@ -99,7 +91,7 @@ namespace TeamF
             _damage = (_damage * DamagePercentage) / 100;
             Life -= CurrentBehaviour.CalulateDamage(_damage, _type);
 
-            AI_Enemy.CurrentState = AI_Enemy.DamageState;
+            AI_Enemy.CurrentState = Data.DamageState;
 
             if (render != null)              
                 render.material.DOColor(Color.white, .1f).OnComplete(() => { render.material.DORewind(); });
@@ -120,14 +112,15 @@ namespace TeamF
         /// <summary>
         /// Chiamata dalla combo elementale paralizzante
         /// </summary>
-        public bool IsCharmed {
+        public bool IsCharmed
+        {
             get { return _isCharmed; }
             set
             {
                 if(_isCharmed != value)
                 {
                     _isCharmed = value;
-                    AI_Enemy.SetAICurrentState(AI_Enemy.CharmedState);
+                    AI_Enemy.SetAICurrentState(Data.CharmedState);
                 }
             }
         }

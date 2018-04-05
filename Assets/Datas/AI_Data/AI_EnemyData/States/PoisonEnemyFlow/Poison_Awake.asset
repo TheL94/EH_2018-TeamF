@@ -9,11 +9,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 41e3d64deee77d649b8572271a3e5103, type: 3}
-  m_Name: Ranged_Charm
+  m_Name: Poison_Awake
   m_EditorClassIdentifier: 
   Actions:
   - Delay: 0
     Loop: 0
-    Action: {fileID: 11400000, guid: 4b5325d7bfb86e440b676fb0376634bf, type: 2}
-    OnSuccess: {fileID: 11400000, guid: c4934800f932a0541989f4fd31553265, type: 2}
+    Action: {fileID: 11400000, guid: 7b770f0ce7bee614b8230eba5183bf5f, type: 2}
+    OnSuccess: {fileID: 11400000, guid: 6c2b5113df18f08408d373c0e2e61a8f, type: 2}
     OnFailure: {fileID: 0}

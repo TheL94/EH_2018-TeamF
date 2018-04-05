@@ -250,7 +250,7 @@ namespace TeamF
             if (enemiesSpawned.Count >= DataInstance.MaxEnemiesInScene)
                 return null;
 
-            Enemy newEnemy = Instantiate(_enemyPrefab, _spawnPoint.position, Quaternion.identity, transform).GetComponent<Enemy>();
+            Enemy newEnemy = Instantiate(_enemyPrefab, _spawnPoint.position, Quaternion.identity, _spawnPoint).GetComponent<Enemy>();
             enemiesSpawned.Add(newEnemy);
 
             idCounter++;

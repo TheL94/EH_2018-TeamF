@@ -320,8 +320,8 @@ MonoBehaviour:
   - Type: 1
     Key: Assets/Scripts/Enemy/AI_Implementation/GenericActions
     IsRecursive: 0
-    SmallIcon: {fileID: 2800000, guid: 6afa87a5a70f8e54a82e85637cec0904, type: 3}
-    LargeIcon: {fileID: 2800000, guid: b84c63ef648173140b8fa6c05aef2768, type: 3}
+    SmallIcon: {fileID: 2800000, guid: bc1d6bab13fce1c448e2b0870277ce43, type: 3}
+    LargeIcon: {fileID: 2800000, guid: a257b7f6126c9e74f86c966b806ffbf7, type: 3}
   - Type: 1
     Key: Assets/Datas/AI_Data/AI_EnemyData/States/FireEnemyFlow
     IsRecursive: 0
@@ -355,8 +355,8 @@ MonoBehaviour:
   - Type: 1
     Key: Assets/Datas/AI_Data/AI_EnemyData/Actions/GenericActions
     IsRecursive: 0
-    SmallIcon: {fileID: 2800000, guid: 0379f5bc653a23045a15e41eb54d6db8, type: 3}
-    LargeIcon: {fileID: 2800000, guid: 575f900c4ff32fa42a779d65da794c83, type: 3}
+    SmallIcon: {fileID: 2800000, guid: bc1d6bab13fce1c448e2b0870277ce43, type: 3}
+    LargeIcon: {fileID: 2800000, guid: a257b7f6126c9e74f86c966b806ffbf7, type: 3}
   - Type: 1
     Key: Assets/Scripts/Enemy/Datas
     IsRecursive: 0
@@ -367,3 +367,23 @@ MonoBehaviour:
     IsRecursive: 0
     SmallIcon: {fileID: 2800000, guid: 0379f5bc653a23045a15e41eb54d6db8, type: 3}
     LargeIcon: {fileID: 2800000, guid: 575f900c4ff32fa42a779d65da794c83, type: 3}
+  - Type: 1
+    Key: Assets/Scripts/Enemy/AI_Implementation/PoisonEnemyActions
+    IsRecursive: 0
+    SmallIcon: {fileID: 2800000, guid: 6afa87a5a70f8e54a82e85637cec0904, type: 3}
+    LargeIcon: {fileID: 2800000, guid: b84c63ef648173140b8fa6c05aef2768, type: 3}
+  - Type: 1
+    Key: Assets/Datas/AI_Data/AI_EnemyData/Actions/PoisonAction
+    IsRecursive: 0
+    SmallIcon: {fileID: 2800000, guid: 6afa87a5a70f8e54a82e85637cec0904, type: 3}
+    LargeIcon: {fileID: 2800000, guid: b84c63ef648173140b8fa6c05aef2768, type: 3}
+  - Type: 1
+    Key: Assets/Datas/AI_Data/AI_EnemyData/States/PoisonEnemyFlow
+    IsRecursive: 0
+    SmallIcon: {fileID: 2800000, guid: 6afa87a5a70f8e54a82e85637cec0904, type: 3}
+    LargeIcon: {fileID: 2800000, guid: b84c63ef648173140b8fa6c05aef2768, type: 3}
+  - Type: 1
+    Key: Assets/Prefabs/Enemy
+    IsRecursive: 0
+    SmallIcon: {fileID: 2800000, guid: a65c70fcbe9ac0b4fbcbac4a0b67e64f, type: 3}
+    LargeIcon: {fileID: 2800000, guid: 3d8f946e891cc8f4e81b1a296f8fb6be, type: 3}
