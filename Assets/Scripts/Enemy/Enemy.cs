@@ -112,7 +112,8 @@ namespace TeamF
         /// <summary>
         /// Chiamata dalla combo elementale paralizzante
         /// </summary>
-        public bool IsCharmed {
+        public bool IsCharmed
+        {
             get { return _isCharmed; }
             set
             {

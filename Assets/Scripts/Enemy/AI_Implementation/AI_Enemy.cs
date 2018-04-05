@@ -15,34 +15,6 @@ namespace TeamF.AI
             IsAttackCoolDown = true;
         }
 
-        #region Fire Pattern
-        public int FireConsecutiveAttacks;
-        
-        public void StartRangedAttackCoolDown(float _time)
-        {
-            StartCoroutine(RangedAttackCoolDown(_time));
-        }
-
-        IEnumerator RangedAttackCoolDown(float _time)
-        {
-            yield return new WaitForSeconds(_time);
-            FireConsecutiveAttacks = 0;
-        }
-        #endregion
-
-        #region Poison Pattern
-        public void StartObscuringCloudLifeTimeCountlDown(float _time, GameObject _cloud)
-        {
-            StartCoroutine(ObscuringCloudLifeTime(_time, _cloud));
-        }
-
-        IEnumerator ObscuringCloudLifeTime(float _time, GameObject _cloud)
-        {
-            yield return new WaitForSeconds(_time);
-            DestroyObject(_cloud);
-        }
-        #endregion
-
         #region Enemy Generic
         public bool IsDisengaging;
 
@@ -75,6 +47,34 @@ namespace TeamF.AI
             Enemy.IsParalized = false;
         }
         #endregion
+        #endregion
+
+        #region Fire Pattern
+        public int FireConsecutiveAttacks;
+        
+        public void StartRangedAttackCoolDown(float _time)
+        {
+            StartCoroutine(RangedAttackCoolDown(_time));
+        }
+
+        IEnumerator RangedAttackCoolDown(float _time)
+        {
+            yield return new WaitForSeconds(_time);
+            FireConsecutiveAttacks = 0;
+        }
+        #endregion
+
+        #region Poison Pattern
+        public void StartObscuringCloudLifeTimeCountlDown(float _time, GameObject _cloud)
+        {
+            StartCoroutine(ObscuringCloudLifeTime(_time, _cloud));
+        }
+
+        IEnumerator ObscuringCloudLifeTime(float _time, GameObject _cloud)
+        {
+            yield return new WaitForSeconds(_time);
+            DestroyObject(_cloud);
+        }
         #endregion
     }
 }

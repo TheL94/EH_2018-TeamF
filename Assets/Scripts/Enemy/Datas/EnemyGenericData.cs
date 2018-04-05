@@ -45,6 +45,7 @@ namespace TeamF
         public float Life;
         public float Speed;
         public float AimTime;
+        public float AimApproximationAngle;
         public float EnemyValue;
         public float RangeOffset;
 

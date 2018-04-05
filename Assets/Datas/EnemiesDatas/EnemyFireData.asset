@@ -23,6 +23,7 @@ MonoBehaviour:
   Life: 10
   Speed: 5.3
   AimTime: 0.2
+  AimApproximationAngle: 20
   EnemyValue: 1
   RangeOffset: 0.25
   MeleeDamage: 1
