@@ -12,6 +12,7 @@ TagManager:
   - EnemySpawn
   - AmmoSpawn
   - PlayerSpawn
+  - Lava
   layers:
   - Default
   - TransparentFX
