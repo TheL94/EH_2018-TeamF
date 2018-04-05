@@ -28,6 +28,9 @@ namespace TeamF
         /// <param name="_isTestScene">Se true, il character deve essere inizializzato per la scena di test, altrimenti per una scena di gioco normale</param>
         public void InitCharacter(bool _isTestScene = false)
         {
+            Vector3 playerSpawn = GameObject.FindGameObjectWithTag("PlayerSpawn").transform.position;
+            Character.transform.position = playerSpawn;
+
             Character.Init(this, Instantiate(CharacterData), _isTestScene);
         }
 

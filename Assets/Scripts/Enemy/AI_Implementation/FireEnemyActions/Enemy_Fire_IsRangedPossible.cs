@@ -18,7 +18,7 @@ namespace TeamF.AI
             float targetDistance = Vector3.Distance(_AIenemy.Enemy.Target.Position, _AIenemy.Enemy.Position);
             if (targetDistance > _AIenemy.Enemy.Data.RangedDamageRange - _AIenemy.Enemy.Data.RangeOffset)
             {
-                _AIenemy.FireIsDisengaging = false;
+                _AIenemy.IsDisengaging = false;
                 return true;
             }
             else

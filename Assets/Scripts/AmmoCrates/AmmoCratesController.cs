@@ -73,9 +73,12 @@ namespace TeamF
         /// <param name="_pos">La trasnform dello spawn dove instanziare la crate</param>
         void CreateAmmoCrate(Transform _pos)
         {
-            AmmoCrate temp = Instantiate(AmmoCratePrefab, _pos.position, Quaternion.identity, _pos).GetComponent<AmmoCrate>();
-            temp.Init(this, AmmoPerCrate);
-            Crates.Add(temp);
+            if (_pos != null)
+            {
+                AmmoCrate temp = Instantiate(AmmoCratePrefab, _pos.position, Quaternion.identity, _pos).GetComponent<AmmoCrate>();
+                temp.Init(this, AmmoPerCrate);
+                Crates.Add(temp); 
+            }
         }
 
         /// <summary>
@@ -91,8 +94,10 @@ namespace TeamF
 
         void GetAmmoSpawners()
         {
-            GameObject[] spawnPoints = GameObject.FindGameObjectsWithTag("AmmoSpawn");
-            foreach (GameObject spawn in spawnPoints)
+            if (ammoSpawnPoints.Count > 0)
+                ammoSpawnPoints.Clear();
+
+            foreach (GameObject spawn in GameObject.FindGameObjectsWithTag("AmmoSpawn"))
             {
                 ammoSpawnPoints.Add(spawn.transform);
             }

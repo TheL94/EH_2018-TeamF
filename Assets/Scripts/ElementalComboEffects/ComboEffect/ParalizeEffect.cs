@@ -11,7 +11,7 @@ namespace TeamF
         public void DoInit(Enemy _enemy, ElementalEffectData _data)
         {
             elementalData = _data;
-            _enemy.AI_Enemy.CurrentState = _enemy.AI_Enemy.ParalizeState;
+            _enemy.AI_Enemy.CurrentState = _enemy.Data.ParalizedState;
         }
 
         public void DoStopEffect() { }
