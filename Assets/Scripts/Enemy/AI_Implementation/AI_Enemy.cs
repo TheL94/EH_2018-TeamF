@@ -35,8 +35,20 @@ namespace TeamF.AI
         }
         #endregion
 
-        #region Enemy Generic
+        #region Poison Pattern
+        public void StartObscuringCloudLifeTimeCountlDown(float _time, GameObject _cloud)
+        {
+            StartCoroutine(ObscuringCloudLifeTime(_time, _cloud));
+        }
 
+        IEnumerator ObscuringCloudLifeTime(float _time, GameObject _cloud)
+        {
+            yield return new WaitForSeconds(_time);
+            DestroyObject(_cloud);
+        }
+        #endregion
+
+        #region Enemy Generic
         public bool IsDisengaging;
 
         #region Attack CoolDown

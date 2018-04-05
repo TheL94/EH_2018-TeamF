@@ -214,17 +214,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114100090815372252, guid: 024de7879b837ef4a834cdd88112491f,
-        type: 2}
-      propertyPath: KillsToWin
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 114356663504853034, guid: 024de7879b837ef4a834cdd88112491f,
-        type: 2}
-      propertyPath: Data
-      value: 
-      objectReference: {fileID: 11400000, guid: 6e33b8ff52554c44aaa064e64e06f369,
-        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 024de7879b837ef4a834cdd88112491f, type: 2}
   m_IsPrefabParent: 0

@@ -211,9 +211,9 @@ GameObject:
   m_Component:
   - component: {fileID: 11770310}
   m_Layer: 0
-  m_Name: PLAYER
+  m_Name: SPAWN PLAYER
   m_TagString: PlayerSpawn
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -225,11 +225,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 11770309}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -44.6, y: 0.9, z: 34.7}
+  m_LocalPosition: {x: -44.6, y: 7.392298, z: 34.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1202310564}
-  m_RootOrder: 5
+  m_Father: {fileID: 1277260414}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &13375712
 GameObject:
@@ -316,7 +316,7 @@ GameObject:
   m_Layer: 0
   m_Name: munizioni (2)
   m_TagString: AmmoSpawn
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1072,7 +1072,7 @@ GameObject:
   m_Layer: 0
   m_Name: munizioni (3)
   m_TagString: AmmoSpawn
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -5378,7 +5378,7 @@ GameObject:
   m_Layer: 0
   m_Name: spawn nemici (2)
   m_TagString: EnemySpawn
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -5486,7 +5486,7 @@ GameObject:
   m_Layer: 0
   m_Name: spawn nemici (1)
   m_TagString: EnemySpawn
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -6982,8 +6982,8 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 913646832}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 6.492298, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1441081679}
@@ -6991,8 +6991,8 @@ Transform:
   - {fileID: 695256485}
   - {fileID: 1163187431}
   - {fileID: 993564439}
-  m_Father: {fileID: 1202310564}
-  m_RootOrder: 3
+  m_Father: {fileID: 1277260414}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &915869088
 Prefab:
@@ -7698,7 +7698,7 @@ GameObject:
   m_Layer: 0
   m_Name: spawn nemici (4)
   m_TagString: EnemySpawn
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -8992,7 +8992,7 @@ GameObject:
   m_Layer: 0
   m_Name: munizioni
   m_TagString: AmmoSpawn
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -9170,7 +9170,7 @@ GameObject:
   m_Layer: 0
   m_Name: spawn nemici (3)
   m_TagString: EnemySpawn
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -9479,7 +9479,7 @@ Transform:
   - {fileID: 851691869}
   - {fileID: 783528869}
   m_Father: {fileID: 1202310564}
-  m_RootOrder: 6
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1197451626
 Prefab:
@@ -9659,9 +9659,6 @@ Transform:
   - {fileID: 1911621552}
   - {fileID: 1944807565}
   - {fileID: 559224905}
-  - {fileID: 913646833}
-  - {fileID: 1870496405}
-  - {fileID: 11770310}
   - {fileID: 1189343391}
   m_Father: {fileID: 1498266563}
   m_RootOrder: 53
@@ -10374,6 +10371,38 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1267713549}
+--- !u!1 &1277260413
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1277260414}
+  m_Layer: 0
+  m_Name: Spawn Points
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1277260414
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1277260413}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1797363530}
+  - {fileID: 913646833}
+  - {fileID: 1870496405}
+  - {fileID: 11770310}
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1312532640
 Prefab:
   m_ObjectHideFlags: 0
@@ -11550,7 +11579,7 @@ GameObject:
   m_Layer: 0
   m_Name: spawn nemici
   m_TagString: EnemySpawn
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -12027,7 +12056,7 @@ GameObject:
   m_Layer: 0
   m_Name: munizioni (1)
   m_TagString: AmmoSpawn
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -12990,7 +13019,7 @@ RectTransform:
   - {fileID: 1935129714}
   - {fileID: 1267713550}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -14497,7 +14526,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1797363530}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: SPAWN ARMI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14509,15 +14538,15 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1797363529}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 11.68, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 434405579}
   - {fileID: 1166637777}
   - {fileID: 1618304629}
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_Father: {fileID: 1277260414}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1801730852
 Prefab:
@@ -14852,16 +14881,16 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1870496404}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 6.492298, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1141180842}
   - {fileID: 1483001554}
   - {fileID: 31111541}
   - {fileID: 169097454}
-  m_Father: {fileID: 1202310564}
-  m_RootOrder: 4
+  m_Father: {fileID: 1277260414}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1875759772
 GameObject:

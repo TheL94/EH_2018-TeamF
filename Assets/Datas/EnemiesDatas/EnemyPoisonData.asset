@@ -33,3 +33,4 @@ MonoBehaviour:
   CloudPrefab: {fileID: 1673971421481346, guid: 70ead17ddbc5ee34bb7654b8bcff4ccb,
     type: 2}
   CloudReleaseDistance: 3
+  CloudLifeTime: 10

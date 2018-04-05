@@ -9,5 +9,6 @@ namespace TeamF
         [Header("Poison Specific Parameters")]
         public GameObject CloudPrefab;
         public float CloudReleaseDistance;
+        public float CloudLifeTime;
     }
 }
