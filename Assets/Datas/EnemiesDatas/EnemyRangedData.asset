@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Name: EnemyRangedData
   m_EditorClassIdentifier: 
   InitialState: {fileID: 11400000, guid: 71cba2fedc5068d439e56827c896a183, type: 2}
+  CharmedState: {fileID: 11400000, guid: e80cce888eb62a445b88d35ceb560a4c, type: 2}
+  ParalizedState: {fileID: 11400000, guid: 99d8f988b12164f45aa85b56bf6c4738, type: 2}
+  DamageState: {fileID: 11400000, guid: 6565eb4bb6330fe4c85a70b3de3d1ac4, type: 2}
   ContainerPrefab: {fileID: 1267129680638450, guid: 25dfe3bec1371e14d87332e9234c5ef8,
     type: 2}
   GraphicPrefab: {fileID: 1030758615841798, guid: 40d572fdbbbdea24290dfbd230ed7593,
@@ -19,8 +22,8 @@ MonoBehaviour:
   EnemyType: 1
   Life: 10
   Speed: 5.3
-  EnemyValue: 1
   AimTime: 0.2
+  EnemyValue: 1
   RangeOffset: 0.25
   MeleeDamage: 1
   MeleeDamageRange: 2

@@ -9,16 +9,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 41e3d64deee77d649b8572271a3e5103, type: 3}
-  m_Name: Ranged_Death
+  m_Name: Melee_Charmed
   m_EditorClassIdentifier: 
   Actions:
   - Delay: 0
     Loop: 0
-    Action: {fileID: 11400000, guid: ddb816f9ee230fe489331177f520bc68, type: 2}
-    OnSuccess: {fileID: 0}
-    OnFailure: {fileID: 0}
-  - Delay: 0
-    Loop: 0
-    Action: {fileID: 11400000, guid: cd3fe1a5bde87d647a0825ca475be043, type: 2}
-    OnSuccess: {fileID: 0}
+    Action: {fileID: 11400000, guid: 4b5325d7bfb86e440b676fb0376634bf, type: 2}
+    OnSuccess: {fileID: 11400000, guid: dc958fae9dcf8a742b6b2a44e9da698a, type: 2}
     OnFailure: {fileID: 0}

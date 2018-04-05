@@ -9,11 +9,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 41e3d64deee77d649b8572271a3e5103, type: 3}
-  m_Name: Melee_Charm
+  m_Name: Poison_TakeDamage
   m_EditorClassIdentifier: 
   Actions:
   - Delay: 0
     Loop: 0
-    Action: {fileID: 11400000, guid: 4b5325d7bfb86e440b676fb0376634bf, type: 2}
-    OnSuccess: {fileID: 11400000, guid: dc958fae9dcf8a742b6b2a44e9da698a, type: 2}
-    OnFailure: {fileID: 0}
+    Action: {fileID: 11400000, guid: be2cce3d5a63f0247a06d2a8f46a5174, type: 2}
+    OnSuccess: {fileID: 11400000, guid: 6c2b5113df18f08408d373c0e2e61a8f, type: 2}
+    OnFailure: {fileID: 11400000, guid: c16f9135956a3f3499a719761e169293, type: 2}

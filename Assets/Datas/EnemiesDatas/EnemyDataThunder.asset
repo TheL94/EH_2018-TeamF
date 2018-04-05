@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Name: EnemyDataThunder
   m_EditorClassIdentifier: 
   InitialState: {fileID: 11400000, guid: fed0d20f716108b42a4cd7bf4c08af2b, type: 2}
+  CharmedState: {fileID: 11400000, guid: be36f027868a9214f8ff0cc883b566bc, type: 2}
+  ParalizedState: {fileID: 11400000, guid: 2ff2d443b904d6c45ae10f7fb3110339, type: 2}
+  DamageState: {fileID: 11400000, guid: 38bbb89fb884c7741818bec99cd8a91c, type: 2}
   ContainerPrefab: {fileID: 1267129680638450, guid: 25dfe3bec1371e14d87332e9234c5ef8,
     type: 2}
   GraphicPrefab: {fileID: 1273753816426612, guid: 4d1d8d786b8e02046ab6341251b35f46,
@@ -19,8 +22,8 @@ MonoBehaviour:
   EnemyType: 5
   Life: 10
   Speed: 5.3
-  EnemyValue: 1
   AimTime: 0.2
+  EnemyValue: 1
   RangeOffset: 0.25
   MeleeDamage: 1
   MeleeDamageRange: 2

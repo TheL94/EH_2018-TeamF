@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Name: EnemyPoisonData
   m_EditorClassIdentifier: 
   InitialState: {fileID: 11400000, guid: aedc8e8965706ba4fbd43f55edb0b645, type: 2}
+  CharmedState: {fileID: 11400000, guid: ff7b2eb8815c84245ba46c5e882abbb6, type: 2}
+  ParalizedState: {fileID: 11400000, guid: 5b3f30c12266ad94aa44762d704f9025, type: 2}
+  DamageState: {fileID: 11400000, guid: 7e6c44d44741e2348a2205088f6374c6, type: 2}
   ContainerPrefab: {fileID: 1267129680638450, guid: 25dfe3bec1371e14d87332e9234c5ef8,
     type: 2}
   GraphicPrefab: {fileID: 1030758615841798, guid: 34d4af3507b2f404185c349fb52c141d,

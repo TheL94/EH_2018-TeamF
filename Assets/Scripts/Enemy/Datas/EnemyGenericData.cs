@@ -8,7 +8,11 @@ namespace TeamF
     [CreateAssetMenu(fileName = "EnemyGenericData", menuName = "Enemy/EnemyGenericData")]
     public class EnemyGenericData : ScriptableObject
     {
+        [Header("AI States")]
         public AI_State InitialState;
+        public AI_State CharmedState;
+        public AI_State ParalizedState;
+        public AI_State DamageState;
 
         [Header("Object Constuction")]
         public GameObject ContainerPrefab;
