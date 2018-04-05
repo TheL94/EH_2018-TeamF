@@ -19,7 +19,10 @@ namespace TeamF.AI
             if (Vector3.Distance(_enemy.Target.Position, _enemy.Position) <= data.CloudReleaseDistance)
                 return true;
             else
+            {
+                _enemy.AI_Enemy.IsDisengaging = false;
                 return false;
+            }
         }
     }
 }

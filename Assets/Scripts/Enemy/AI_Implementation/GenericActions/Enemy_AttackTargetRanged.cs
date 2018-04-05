@@ -19,7 +19,7 @@ namespace TeamF.AI
         {
             BulletData bulletData = _enemy.Data.BulletData;
             Transform transF = FindShootingPoint(_enemy);
-            if(transF != null)
+            if (transF != null)
             {
                 Bullet bullet = Instantiate(bulletData.BulletContainerPrefab, transF.position, transF.rotation, null).AddComponent<Bullet>();
 
@@ -37,6 +37,8 @@ namespace TeamF.AI
 
                 bullet.Init(ammo, _enemy.Data.BulletSpeed, owner, 2.0f);
             }
+            else
+                Debug.LogWarning("No ShootingPoint Found !");
         }
 
         Transform FindShootingPoint(Enemy _enemy)
