@@ -19,6 +19,6 @@ MonoBehaviour:
     DamagePercentage: 0
   BulletContainerPrefab: {fileID: 1096078678018924, guid: aed0c6b0c1afa4a4ca5d68d6e3bccfab,
     type: 2}
-  MaxOverheating: 10
+  MaxOverheating: 15
   OverheatingPerShot: 1
-  OverheatingDropSpeed: 2
+  OverheatingDropSpeed: 20
