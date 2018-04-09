@@ -37,9 +37,9 @@ namespace TeamF
             }
         }
 
-        public void Dash()
+        public void Dash(Vector3 _direction)
         {
-            dash.ActivateDash();
+            dash.ActivateDash(_direction);
         }
     }
 }

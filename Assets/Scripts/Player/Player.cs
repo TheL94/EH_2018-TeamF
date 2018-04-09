@@ -73,7 +73,7 @@ namespace TeamF
                     finalDirection += transform.right;
 
                 if (Input.GetKeyDown(KeyCode.Space))
-                    Character.movement.Dash();
+                    Character.movement.Dash(finalDirection);
 
                     if (Input.GetAxis("Mouse ScrollWheel") < 0f || Input.GetKeyDown(KeyCode.E))
                 {

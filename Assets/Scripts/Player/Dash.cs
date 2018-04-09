@@ -13,12 +13,12 @@ namespace TeamF
             movement = _movement;
         }
 
-        public void ActivateDash()
+        public void ActivateDash(Vector3 _direction)
         {
-            Vector3 newPos = movement.ModelToRotate.transform.forward;  //transform.worldToLocalMatrix.MultiplyVector(transform.forward); ;
-            newPos *= 20;
+            //Vector3 newPos = movement.ModelToRotate.transform.forward;  //transform.worldToLocalMatrix.MultiplyVector(transform.forward); ;
+            _direction *= 20;
 
-            movement.Move(newPos);
+            movement.Move(_direction);
         }
     }
 }
