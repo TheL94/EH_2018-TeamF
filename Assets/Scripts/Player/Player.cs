@@ -72,8 +72,10 @@ namespace TeamF
                 if (Input.GetKey(KeyCode.D))
                     finalDirection += transform.right;
 
+                if (Input.GetKeyDown(KeyCode.Space))
+                    Character.movement.Dash();
 
-                if (Input.GetAxis("Mouse ScrollWheel") < 0f || Input.GetKeyDown(KeyCode.E))
+                    if (Input.GetAxis("Mouse ScrollWheel") < 0f || Input.GetKeyDown(KeyCode.E))
                 {
                     Character.SelectPreviousAmmo();
 

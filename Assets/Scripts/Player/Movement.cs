@@ -7,11 +7,14 @@ namespace TeamF
     public class Movement : MonoBehaviour
     {
         public GameObject ModelToRotate;
+        Dash dash;
         float MovementSpeed;
         float RotationSpeed;
 
         public void Init(float _movementSpeed, float _rotationSpeed)
         {
+            dash = GetComponent<Dash>();
+            dash.Init(this);
             MovementSpeed = _movementSpeed;
             RotationSpeed = _rotationSpeed;
         }
@@ -32,6 +35,11 @@ namespace TeamF
                 playerToMouse.y = 0;
                 ModelToRotate.transform.rotation = Quaternion.Slerp(ModelToRotate.transform.rotation, Quaternion.LookRotation(playerToMouse, transform.up), RotationSpeed * Time.deltaTime);
             }
+        }
+
+        public void Dash()
+        {
+            dash.ActivateDash();
         }
     }
 }
