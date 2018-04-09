@@ -11,8 +11,7 @@ namespace TeamF
         BulletOwner owner;
         ElementalAmmo ammo;
         float Speed;
-
-        IBulletBehaviour behaviour;             // Command for Bullet
+        float damagePercentage;
 
         void FixedUpdate()
         {
@@ -21,17 +20,22 @@ namespace TeamF
 
         #region API
 
-        public void Init(ElementalAmmo _currentAmmo, float _speed, BulletOwner _owner, float _bulletLife, IBulletBehaviour _behaviour)
+        public virtual void Init(ElementalAmmo _currentAmmo, float _speed, BulletOwner _owner, float _bulletLife)
         {
             ammo = _currentAmmo;
             Speed = _speed;
             owner = _owner;
             trail = GetComponentInChildren<TrailRenderer>();
             rend = GetComponentInChildren<MeshRenderer>();
-            behaviour = _behaviour;
             SetBulletColors(_currentAmmo.AmmoType);
 
             Destroy(gameObject,_bulletLife);
+        }
+
+        public virtual void Init(ElementalAmmo _currentAmmo, float _speed, BulletOwner _owner, float _bulletLife, float _damagePercentage)
+        {
+            damagePercentage = _damagePercentage;
+            Init(_currentAmmo, _speed, _owner, _bulletLife);
         }
 
         #endregion
@@ -93,15 +97,16 @@ namespace TeamF
             transform.Translate(-transform.forward * Speed);
         }
 
-        void DoDamage(IDamageable _damageable)
+        protected void DoDamage(IDamageable _damageable)
         {
             if (_damageable != null)
             {
-                _damageable.TakeDamage(ammo.Damage, ammo.AmmoType);              
+                float damage = ammo.Damage + (ammo.Damage * damagePercentage / 100);
+                _damageable.TakeDamage(damage, ammo.AmmoType);              
             }
         }
 
-        void ApplyElementalEffect(Enemy _enemy)
+        protected void ApplyElementalEffect(Enemy _enemy)
         {
             if (_enemy != null)
             {
@@ -130,24 +135,37 @@ namespace TeamF
         {
             if (other.tag == "ComboElement")
                 return;
-            if (owner == BulletOwner.Character)
+            OnTrigger(other);
+        }
+
+        protected virtual void OnTrigger(Collider other)
+        {
+            IDamageable damageable;
+            switch (owner)
             {
-                // Da utilizzare il behaviour che viene iniettato dall'arma al momento dell'instanziazione
-                IDamageable damageable = other.GetComponent<IDamageable>();
-                if (damageable != null)
-                {
-                    DoDamage(damageable);
-                    ApplyElementalEffect(other.GetComponent<Enemy>());
-                }
-                Destroy(gameObject); 
-            }
-            else
-            {
-                if (other.GetComponent<Enemy>() == null)
-                {
-                    DoDamage(other.GetComponent<IDamageable>());
+                case BulletOwner.Character:
+                    damageable = other.GetComponent<IDamageable>();
+                    if (damageable != null)
+                    {
+                        DoDamage(damageable);
+                        ApplyElementalEffect(other.GetComponent<Enemy>());
+                    }
                     Destroy(gameObject);
-                }
+                    break;
+                case BulletOwner.Enemy:
+                    if (other.GetComponent<Enemy>() == null)
+                    {
+                        DoDamage(other.GetComponent<IDamageable>());
+                        Destroy(gameObject);
+                    }
+                    break;
+                case BulletOwner.EnemyChamed:
+                    damageable = other.GetComponent<IDamageable>();
+                    if (damageable != null)
+                    {
+                        DoDamage(damageable);
+                    }
+                    break;
             }
         }
     }
@@ -155,6 +173,7 @@ namespace TeamF
     public enum BulletOwner
     {
         Character,
-        Enemy
+        Enemy,
+        EnemyChamed
     }
 }

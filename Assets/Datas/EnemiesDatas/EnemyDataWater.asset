@@ -11,18 +11,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 761ff678fe32dff46beefa12330fe2ec, type: 3}
   m_Name: EnemyDataWater
   m_EditorClassIdentifier: 
-  EnemyType: 3
+  InitialState: {fileID: 11400000, guid: fed0d20f716108b42a4cd7bf4c08af2b, type: 2}
+  CharmedState: {fileID: 11400000, guid: 2ff2d443b904d6c45ae10f7fb3110339, type: 2}
+  ParalizedState: {fileID: 11400000, guid: 2ff2d443b904d6c45ae10f7fb3110339, type: 2}
+  DamageState: {fileID: 11400000, guid: 38bbb89fb884c7741818bec99cd8a91c, type: 2}
   ContainerPrefab: {fileID: 1267129680638450, guid: 25dfe3bec1371e14d87332e9234c5ef8,
     type: 2}
-  GraphicPrefab: {fileID: 1030758615841798, guid: 0ac0f5a2f0209574180fb02ba8669110,
+  GraphicPrefab: {fileID: 1396582309163458, guid: a3b280d73d927f24c87831fab5c48f39,
     type: 2}
+  EnemyType: 3
   Life: 10
   Speed: 5.3
+  AimTime: 0.2
+  AimApproximationAngle: 20
+  EnemyValue: 1
+  RangeOffset: 0.25
   MeleeDamage: 1
   MeleeDamageRange: 2
   MeleeDamageRate: 1
   RangedDamage: 2
-  RangedDamageRange: 5
+  RangedDamageRange: 9
   RangedDamageRate: 1
-  BulletData: {fileID: 0}
-  EnemyValue: 1
+  BulletData: {fileID: 11400000, guid: fc0514fe99c1cf343900d4df6098e7f5, type: 2}
+  BulletSpeed: 0.5

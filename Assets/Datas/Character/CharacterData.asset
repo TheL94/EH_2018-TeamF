@@ -11,45 +11,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b284af11ef85af4fa12080c49889673, type: 3}
   m_Name: CharacterData
   m_EditorClassIdentifier: 
-  Life: 10
+  Life: 20
   AllElementalAmmo:
   - AmmoType: 0
-    Damage: 1
+    Damage: 2
     Ammo: -1
     Data:
       EffectValue: 0
       TimeOfEffect: 0
       TimeFraction: 0
   - AmmoType: 1
-    Damage: 4
-    Ammo: 0
+    Damage: 5
+    Ammo: 10
     Data:
       EffectValue: 7
       TimeOfEffect: 3
       TimeFraction: 1
   - AmmoType: 2
-    Damage: 4
-    Ammo: 0
+    Damage: 5
+    Ammo: 10
     Data:
       EffectValue: 3
       TimeOfEffect: 3
       TimeFraction: 1
   - AmmoType: 3
-    Damage: 4
-    Ammo: 0
+    Damage: 5
+    Ammo: 10
     Data:
       EffectValue: 5
       TimeOfEffect: 3
       TimeFraction: 1
   - AmmoType: 4
     Damage: 5
-    Ammo: 0
+    Ammo: 10
     Data:
       EffectValue: 0
       TimeOfEffect: 5
       TimeFraction: 1
   MovementSpeed: 5.5
-  RotationSpeed: 7
+  RotationSpeed: 8
   MagCapacity: 30
   BulletSpeed: 1
   Ratio: 0.5

@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace TeamF
 {
@@ -9,43 +9,60 @@ namespace TeamF
         public float PointsToWin { get; private set; }
         float roundPoints = 0;
 
-        bool isCurrentLevelMng;         //TODO: al reload della scena viene instanziato un nuovo level manager ma quello vecchio continua ad esistere e ad ascoltare gli eventi che vengono lanciati
+        private int _level = 1;
 
+        public int Level
+        {
+            get { return _level; }
+            private set
+            {
+                SceneManager.UnloadSceneAsync(_level);
+                _level = value;
+                SceneManager.LoadScene(_level, LoadSceneMode.Additive);
+            }
+        }
+
+        #region API
         public LevelManager(float _pointsToWin)
         {
             PointsToWin = _pointsToWin;
             Events_LevelController.OnKillPointChanged += UpdateRoundPoints;
-            isCurrentLevelMng = true;
+            SceneManager.LoadScene(Level, LoadSceneMode.Additive);
         }
 
         public void UpdateRoundPoints(float _killedEnemyValue)
         {
-            if (!isCurrentLevelMng)
-                return;
-
             roundPoints += _killedEnemyValue;
             Events_UIController.KillPointsChanged(roundPoints, PointsToWin);
 
-            CheckVictory();              
+            if(CheckVictory())   
+                GoToGameWon();
         }
 
         public void GoToGameWon()
         {
             GameManager.I.ChangeFlowState(FlowState.GameWon);
-            isCurrentLevelMng = false;
-
         }
 
         public void GoToGameLost()
         {
             GameManager.I.ChangeFlowState(FlowState.GameLost);
-            isCurrentLevelMng = false;
         }
 
-        void CheckVictory()
+        public void UpdateLevel()
+        {
+            roundPoints = 0;
+            if(Level < 2)
+                Level++;
+        }
+        #endregion
+
+        bool CheckVictory()
         {
             if (roundPoints >= PointsToWin)
-                GoToGameWon();
+                return true;
+
+            return false;
         }
 
         ~ LevelManager()

@@ -11,7 +11,7 @@ namespace TeamF
     [RequireComponent(typeof(NavMeshAgent), typeof(AI_Enemy))]
     public class Enemy : MonoBehaviour, IDamageable, IParalyzable, ICharmable
     {
-        public EnemyData Data { get; private set; }
+        public EnemyGenericData Data { get; private set; }
         public string ID { get; private set; }
         public float MovementSpeed
         {
@@ -28,10 +28,9 @@ namespace TeamF
         public IDamageable Target { get; set; }
         public AI_Enemy AI_Enemy { get; private set; }
 
-
         MeshRenderer render;
 
-        public void Init(EnemyData _data, AI_State _initalState, string _id)
+        public void Init(EnemyGenericData _data, string _id)
         {
             Data = _data;
             ID = _id;
@@ -46,22 +45,14 @@ namespace TeamF
 
             CurrentBehaviour = DeterminateBehaviourFromType(Data);
 
-            AI_Enemy.InitialDefaultState = _initalState;
+            AI_Enemy.InitialDefaultState = Data.InitialState;
             AI_Enemy.IsActive = true;
         }
-
-        #region Actions
-        void DeathActions(ElementalType _type)
-        {
-            CurrentBehaviour.DoDeath(_type, transform.position);
-            AI_Enemy.CurrentState = AI_Enemy.DeathState;
-        }
-        #endregion
 
         #region IEnemyBehaviour
         public IEnemyBehaviour CurrentBehaviour { get; private set; }
 
-        IEnemyBehaviour DeterminateBehaviourFromType(EnemyData _data)
+        IEnemyBehaviour DeterminateBehaviourFromType(EnemyGenericData _data)
         {
             switch (_data.EnemyType)
             {
@@ -100,11 +91,9 @@ namespace TeamF
             _damage = (_damage * DamagePercentage) / 100;
             Life -= CurrentBehaviour.CalulateDamage(_damage, _type);
 
-            AI_Enemy.CurrentState = AI_Enemy.DamageState;
+            AI_Enemy.CurrentState = Data.DamageState;
 
-            if (Animator != null)
-                AnimState = AnimationState.Damage;
-            else
+            if (render != null)              
                 render.material.DOColor(Color.white, .1f).OnComplete(() => { render.material.DORewind(); });
         }
 
@@ -123,14 +112,15 @@ namespace TeamF
         /// <summary>
         /// Chiamata dalla combo elementale paralizzante
         /// </summary>
-        public bool IsCharmed {
+        public bool IsCharmed
+        {
             get { return _isCharmed; }
             set
             {
                 if(_isCharmed != value)
                 {
                     _isCharmed = value;
-                    AI_Enemy.SetAICurrentState(AI_Enemy.CharmedState);
+                    AI_Enemy.SetAICurrentState(Data.CharmedState);
                 }
             }
         }

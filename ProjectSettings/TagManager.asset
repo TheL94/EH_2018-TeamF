@@ -8,6 +8,11 @@ TagManager:
   - ComboElement
   - Effect
   - Barrel
+  - Terrain
+  - EnemySpawn
+  - AmmoSpawn
+  - PlayerSpawn
+  - Lava
   layers:
   - Default
   - TransparentFX

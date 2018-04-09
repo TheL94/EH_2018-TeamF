@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityFramework.AI;
 
 namespace TeamF
 {
@@ -24,8 +23,6 @@ namespace TeamF
         public int MaxRangedEnemies;
         public int MinRangedEnemies;
 
-        public AI_State EnemyInitialState;
-
-        public List<EnemyData> EnemiesData;
+        public List<EnemyGenericData> EnemiesData;
     }
 }

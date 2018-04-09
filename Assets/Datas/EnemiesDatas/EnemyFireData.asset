@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 586f7a5e6494ded46a24978ac67b42d3, type: 3}
+  m_Name: EnemyFireData
+  m_EditorClassIdentifier: 
+  InitialState: {fileID: 11400000, guid: cf370888a2995f142887106d6f0c46d1, type: 2}
+  CharmedState: {fileID: 11400000, guid: 8e29a07000af0504b93c59acfa2cca40, type: 2}
+  ParalizedState: {fileID: 11400000, guid: c982e30750226cb489f58f21306a1d63, type: 2}
+  DamageState: {fileID: 11400000, guid: bec3e8397edf7234ea6c1a97883a6b07, type: 2}
+  ContainerPrefab: {fileID: 1267129680638450, guid: 25dfe3bec1371e14d87332e9234c5ef8,
+    type: 2}
+  GraphicPrefab: {fileID: 1030758615841798, guid: 60c9517b2f7ae494f860be10de72222a,
+    type: 2}
+  EnemyType: 2
+  Life: 10
+  Speed: 5.3
+  AimTime: 0.2
+  AimApproximationAngle: 20
+  EnemyValue: 1
+  RangeOffset: 0.25
+  MeleeDamage: 1
+  MeleeDamageRange: 2
+  MeleeDamageRate: 1
+  RangedDamage: 2
+  RangedDamageRange: 9
+  RangedDamageRate: 1
+  BulletData: {fileID: 11400000, guid: fc0514fe99c1cf343900d4df6098e7f5, type: 2}
+  BulletSpeed: 0.4
+  RangedAttackDuration: 20
+  MeleeConsecutiveAttacks: 5

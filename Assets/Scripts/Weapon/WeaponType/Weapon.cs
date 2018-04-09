@@ -53,32 +53,33 @@ namespace TeamF
         /// </summary>
         void CreateBullet(ElementalAmmo _currentAmmo, BulletData _bulletData, Transform _barrel)
         {
-            Bullet bull = Instantiate(weaponData.BulletContainerPrefab, _barrel.position, _barrel.rotation).GetComponent<Bullet>();
+            GameObject bullPrefab = Instantiate(weaponData.BulletContainerPrefab, _barrel.position, _barrel.rotation);
+
+            Bullet bull = InstantiateBulletBehaviour(bullPrefab);
 
             if(_bulletData.BulletGraphicPrefab != null)
                 Instantiate(_bulletData.BulletGraphicPrefab, bull.transform.position, bull.transform.rotation, bull.transform);
             if (_bulletData.BulletTrailPrefab != null)
                 Instantiate(_bulletData.BulletTrailPrefab, bull.transform.position, bull.transform.rotation, bull.transform);
 
-            bull.Init(_currentAmmo, weaponData.Parameters.BulletSpeed, BulletOwner.Character, weaponData.Parameters.BulletLife,ChoseBulletBehaviour());
+            bull.Init(_currentAmmo, weaponData.Parameters.BulletSpeed, BulletOwner.Character, weaponData.Parameters.BulletLife, weaponData.Parameters.DamagePercentage);
         }
 
-        IBulletBehaviour ChoseBulletBehaviour()
+        /// <summary>
+        /// Crea il proiettile Gameobject, Add component del tipo in base al Weapon Type. poi ne viene chiamato l'init
+        /// </summary>
+        Bullet InstantiateBulletBehaviour(GameObject _bulletPrefab)
         {
             switch (weaponData.Weapon)
             {
                 case WeaponType.Pistol:
-                    return new PistolBulletBehaviour();
+                    return _bulletPrefab.AddComponent<Bullet>();
                 case WeaponType.MachineGun:
-                    return new MachineGunBulletBehaviour();
+                    return _bulletPrefab.AddComponent<Bullet>();
                 case WeaponType.ShotGun:
-                    return new ShotgunBulletBehaviour();
-                case WeaponType.Ballistra:
-                    return new BallistraBulletBehaviour();
-                case WeaponType.SniperRifle:
-                    return new SniperRifleBulletBehaviour();
+                    return _bulletPrefab.AddComponent<ShotGunBullet>();
                 default:
-                    return new PistolBulletBehaviour();
+                    return _bulletPrefab.AddComponent<Bullet>(); ;
             }
         }
     }

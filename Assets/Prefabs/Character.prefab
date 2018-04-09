@@ -44,7 +44,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1313148412620624
 GameObject:
   m_ObjectHideFlags: 1
@@ -93,6 +93,7 @@ GameObject:
   - component: {fileID: 114090205802415954}
   - component: {fileID: 114254254339258264}
   - component: {fileID: 114456535150152184}
+  - component: {fileID: 114170982709371526}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
@@ -128,6 +129,7 @@ GameObject:
   - component: {fileID: 20701619348221032}
   - component: {fileID: 124737006046693908}
   - component: {fileID: 81273442914174124}
+  - component: {fileID: 114908243016779250}
   m_Layer: 0
   m_Name: MainCamera
   m_TagString: MainCamera
@@ -141,14 +143,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1905338470690278}
-  m_LocalRotation: {x: 0.28976363, y: 0.6450094, z: -0.28976363, w: 0.6450094}
-  m_LocalPosition: {x: -16.3, y: 18.9, z: 0}
+  m_LocalRotation: {x: 0.345118, y: -0.0000060100833, z: 0.000016344613, w: 0.93855935}
+  m_LocalPosition: {x: 0.43, y: 23.508354, z: -26.03}
   m_LocalScale: {x: 1.0000005, y: 1.0710601, z: 1.0710607}
   m_Children:
   - {fileID: 4434377097214314}
   m_Father: {fileID: 4628954524922472}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 48.383003, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 40.378002, y: 0, z: 0.002}
 --- !u!4 &4122369251546292
 Transform:
   m_ObjectHideFlags: 1
@@ -224,7 +226,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1533697916002696}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.38, y: 1, z: -21.85}
+  m_LocalPosition: {x: -12.38, y: 7.87, z: -21.85}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4093385644648234}
@@ -465,6 +467,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f352a196556b0d94da7efb9cde0b6830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114170982709371526
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1766402263107386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67c67377594481d4b9dab637931d9b50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WeaponData: {fileID: 11400000, guid: 0c38dac2c6d882d4285120e8d57f8030, type: 2}
 --- !u!114 &114254254339258264
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -515,6 +529,18 @@ MonoBehaviour:
   BackPackRenderer: {fileID: 23171740124067216}
   CharacterRenderer: {fileID: 23734898067266978}
   movement: {fileID: 0}
+--- !u!114 &114908243016779250
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1905338470690278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 11400000, guid: 37cc8cbb876283643acc2facc8bd0213, type: 2}
 --- !u!124 &124737006046693908
 Behaviour:
   m_ObjectHideFlags: 1

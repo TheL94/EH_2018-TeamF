@@ -13,9 +13,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Weapon: 2
   Parameters:
-    BulletSpeed: 0
-    BulletLife: 2
+    BulletSpeed: 0.2
+    BulletLife: 0.4
     Ratio: 1.5
-    DamagePercentage: 0
-  BulletContainerPrefab: {fileID: 1381359048439082, guid: 61e450dcf045d1747ae378bc7c1646ba,
+    DamagePercentage: 200
+  BulletContainerPrefab: {fileID: 1096078678018924, guid: aed0c6b0c1afa4a4ca5d68d6e3bccfab,
     type: 2}
