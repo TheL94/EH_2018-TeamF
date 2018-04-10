@@ -13,6 +13,7 @@ namespace TeamF
         #region Movement variables
         public float MovementSpeed;
         public float RotationSpeed;
+        public DashStruct DashValues;
         #endregion
 
         #region Weapon
@@ -24,5 +25,13 @@ namespace TeamF
         #region Bullet
         public List<BulletData> BulletDatas = new List<BulletData>();
         #endregion
+    }
+
+    [System.Serializable]
+    public struct DashStruct
+    {
+        public float DashDinstance;
+        public int ChargeCount;
+        public float ChargeCooldown;
     }
 }

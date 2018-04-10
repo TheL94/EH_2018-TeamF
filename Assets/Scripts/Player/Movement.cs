@@ -11,10 +11,10 @@ namespace TeamF
         float MovementSpeed;
         float RotationSpeed;
 
-        public void Init(float _movementSpeed, float _rotationSpeed)
+        public void Init(float _movementSpeed, float _rotationSpeed, DashStruct _dashData)
         {
             dash = GetComponent<Dash>();
-            dash.Init(this);
+            dash.Init(this, _dashData);
             MovementSpeed = _movementSpeed;
             RotationSpeed = _rotationSpeed;
         }

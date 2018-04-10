@@ -28,7 +28,7 @@ namespace TeamF
             weaponController = GetComponentInChildren<WeaponController>();
             movement = GetComponent<Movement>();
 
-            movement.Init(Data.MovementSpeed, Data.RotationSpeed);
+            movement.Init(Data.MovementSpeed, Data.RotationSpeed, Data.DashValues);
 
             List<BulletData> bulletDatasInstancies = new List<BulletData>();
             foreach (BulletData item in Data.BulletDatas)
