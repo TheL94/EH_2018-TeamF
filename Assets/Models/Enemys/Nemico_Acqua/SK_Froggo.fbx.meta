@@ -87,7 +87,12 @@ ModelImporter:
     4300000: Mostro_acqua
     9500000: //RootNode
     13700000: Mostro_acqua
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mat_Mostro_Acqua
+    second: {fileID: 2100000, guid: 71922bdf7bbf01d438057be9a6534c16, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

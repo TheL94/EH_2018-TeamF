@@ -1,0 +1,127 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Enem_Water
+  m_Shader: {fileID: 4800000, guid: 76374158b4c4e5744b394e9290aae693, type: 3}
+  m_ShaderKeywords: _EMISSION _GLOSSYREFLECTIONS_OFF _SPECULARHIGHLIGHTS_OFF _TEX_ON
+  m_LightmapFlags: 1
+  m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 3000
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 2800000, guid: 90d91d2fdc5879542ab3d8126f4e3794, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 6759dba7257929e43aa1b87be71326e3, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Matcap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Ramp:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SpecGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ToonShade:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _Brightness: 3.5
+    - _BumpScale: 1
+    - _Cutoff: 0.5
+    - _DetailNormalMapScale: 1
+    - _DetailTex: 1
+    - _DstBlend: 0
+    - _GlossMapScale: 1
+    - _Glossiness: 0
+    - _GlossyReflections: 0
+    - _LightSmoothness: 1
+    - _LightThreshold: 1
+    - _MKEditorShowDetailBehavior: 0
+    - _MKEditorShowDissolveBehavior: 0
+    - _MKEditorShowLightBehavior: 1
+    - _MKEditorShowMainBehavior: 1
+    - _MKEditorShowOutlineBehavior: 1
+    - _MKEditorShowReflectionBehavior: 0
+    - _MKEditorShowRenderBehavior: 1
+    - _MKEditorShowRimBehavior: 1
+    - _MKEditorShowShadowBehavior: 1
+    - _MKEditorShowSketchBehavior: 0
+    - _MKEditorShowSpecularBehavior: 1
+    - _MKEditorShowTranslucentBehavior: 0
+    - _Metallic: 0
+    - _Mode: 0
+    - _OcclusionStrength: 1
+    - _Outline: 2.96
+    - _OutlineSize: 0.04
+    - _Parallax: 0.02
+    - _RimIntensity: 0
+    - _RimMax: 0.8
+    - _RimMin: 0.86
+    - _RimSize: 0
+    - _RimSmoothness: 0
+    - _ShadowIntensity: 0
+    - _Shininess: 0.01
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 0
+    - _SpecularIntensity: 0
+    - _SrcBlend: 1
+    - _TintColor: 0
+    - _UVSec: 0
+    - _VertexColor: 0
+    - _ZWrite: 1
+    m_Colors:
+    - _Color: {r: 0.7205882, g: 0.7205882, b: 0.7205882, a: 1}
+    - _EmissionColor: {r: 3.436001, g: 3.436001, b: 3.436001, a: 1}
+    - _HColor: {r: 1, g: 1, b: 1, a: 1}
+    - _HighlightColor: {r: 0.9558824, g: 0.9558824, b: 0.9558824, a: 1}
+    - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
+    - _RimColor: {r: 1, g: 1, b: 1, a: 1}
+    - _SColor: {r: 1, g: 1, b: 1, a: 1}
+    - _ShadowColor: {r: 0.22794116, g: 0.22794116, b: 0.22794116, a: 1}
+    - _SpecColor: {r: 1, g: 1, b: 1, a: 1}
