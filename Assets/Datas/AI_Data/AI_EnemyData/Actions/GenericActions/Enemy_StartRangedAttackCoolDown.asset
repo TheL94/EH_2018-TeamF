@@ -11,3 +11,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5f9f77667578f14c8961497041e28aa, type: 3}
   m_Name: Enemy_StartRangedAttackCoolDown
   m_EditorClassIdentifier: 
+  AttackType: 1
