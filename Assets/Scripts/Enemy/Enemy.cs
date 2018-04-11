@@ -108,7 +108,10 @@ namespace TeamF
 
         public void SetParalisys(bool _isParalized)
         {
-
+            if (_isParalized)
+            {
+                AI_Enemy.CurrentState = Data.ParalizedState; 
+            }
         }
         #endregion
 
