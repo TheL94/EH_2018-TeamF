@@ -50,6 +50,10 @@ MonoBehaviour:
       TimeFraction: 1
   MovementSpeed: 5.5
   RotationSpeed: 8
+  DashValues:
+    DashDinstance: 35
+    ChargeCount: 3
+    ChargeCooldown: 3
   MagCapacity: 30
   BulletSpeed: 1
   Ratio: 0.5
