@@ -17,9 +17,9 @@ namespace TeamF.AI
             if (!_enemy.AI_Enemy.IsDisengaging) 
             {
                 _enemy.AI_Enemy.IsDisengaging = true;
-                   Vector3 disengageDestination = (_enemy.Target.Position - _enemy.Position).normalized;
-                disengageDestination *= _enemy.Data.RangedDamageRange + _enemy.Data.RangeOffset;
-                _enemy.Agent.destination = _enemy.Target.Position + disengageDestination;
+                Vector3 disengagePosition = (_enemy.Target.Position - _enemy.Position).normalized;
+                disengagePosition *= _enemy.Data.RangedDamageRange - Random.Range(0.05f, _enemy.Data.RangeOffset);
+                _enemy.Agent.destination = _enemy.Target.Position + disengagePosition;
             }
         }
     }
