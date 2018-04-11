@@ -33,7 +33,13 @@ namespace TeamF.AI
             if (Vector3.Distance(_enemy.Position, _enemy.Target.Position) > damageRange) 
             {
                 Vector3 engagePosition = (_enemy.Target.Position - _enemy.Position);
-                float engageDistance = engagePosition.magnitude - damageRange - Random.Range(0.05f, _enemy.Data.RangeOffset);
+                float engageDistance = engagePosition.magnitude - damageRange;
+                
+                if(engageDistance > damageRange)
+                    engageDistance += Random.Range(0.05f, _enemy.Data.RangeOffset); // se il nemico è fuori dalla distanza di attacco
+                else
+                    engageDistance -= Random.Range(0.05f, _enemy.Data.RangeOffset); // se il nemico è dentro la distanza di attacco               
+
                 engagePosition = engagePosition.normalized * engageDistance;
                 engagePosition += _enemy.Position;
 

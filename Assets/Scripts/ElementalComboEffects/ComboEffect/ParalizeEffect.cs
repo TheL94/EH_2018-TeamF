@@ -13,22 +13,20 @@ namespace TeamF
         {
             target = _target;
             elementalData = _data;
-            target.SetParalisys(true);
-            //_enemy.AI_Enemy.CurrentState = _enemy.Data.ParalizedState;
+            target.IsParalized = true;
         }
 
         public void DoStopEffect()
         {
-            target.SetParalisys(false);
+            target.IsParalized = false;
         }
 
         public bool DoUpdate()
         {
             elementalData.TimeOfEffect -= Time.deltaTime;
             if (elementalData.TimeOfEffect <= 0)
-            {
                 return true;
-            }
+
             return false;
         }
     }

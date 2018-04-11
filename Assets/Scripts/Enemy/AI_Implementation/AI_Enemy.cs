@@ -33,20 +33,6 @@ namespace TeamF.AI
             IsAttackCoolDown = true;
         }
         #endregion
-
-        #region Paralysis CoolDown
-        public void StartParalysisCoolDown(float _time)
-        {
-            StartCoroutine(ParalysisCoolDown(_time));
-        }
-
-        IEnumerator ParalysisCoolDown(float _time)
-        {
-            Enemy.IsParalized = true;
-            yield return new WaitForSeconds(_time);
-            Enemy.IsParalized = false;
-        }
-        #endregion
         #endregion
 
         #region Fire Pattern

@@ -13,12 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Actions:
   - Delay: 0
-    Loop: 0
-    Action: {fileID: 11400000, guid: d71cb3e484f269844bab0e1a6b7ef6b8, type: 2}
-    OnSuccess: {fileID: 11400000, guid: 159f114835b1ade4c8f43788936bf260, type: 2}
-    OnFailure: {fileID: 0}
-  - Delay: 0
-    Loop: 0
-    Action: {fileID: 11400000, guid: 2d90bd67bc096c1429d70f1a90f30718, type: 2}
+    Loop: 1
+    Action: {fileID: 11400000, guid: 6dface135e0b02d45b0327b102c378bb, type: 2}
     OnSuccess: {fileID: 0}
-    OnFailure: {fileID: 0}
+    OnFailure: {fileID: 11400000, guid: 6c2b5113df18f08408d373c0e2e61a8f, type: 2}

@@ -5,7 +5,7 @@ using DG.Tweening;
 
 namespace TeamF
 {
-    public class Character : MonoBehaviour, IEffectable
+    public class Character : MonoBehaviour, IEffectable, IParalyzable
     {
         public CharacterData Data { get; set; }
         public MeshRenderer BackPackRenderer;
@@ -110,11 +110,6 @@ namespace TeamF
         /// Chiamata dalla combo elementale paralizzante
         /// </summary>
         public bool IsParalized { get; set; }
-
-        public void SetParalisys(bool _isParalized)
-        {
-            IsParalized = _isParalized;
-        }
         #endregion
 
         #region Weapon

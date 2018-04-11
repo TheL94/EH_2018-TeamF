@@ -104,11 +104,17 @@ namespace TeamF
         /// <summary>
         /// Chiamata dalla combo elementale paralizzante
         /// </summary>
-        public bool IsParalized { get; set; }
 
-        public void SetParalisys(bool _isParalized)
+        bool _isParalized;
+        public bool IsParalized
         {
-
+            get { return _isParalized; }
+            set
+            {
+                _isParalized = value;
+                if (_isParalized)
+                    AI_Enemy.CurrentState = Data.ParalizedState;
+            }
         }
         #endregion
 

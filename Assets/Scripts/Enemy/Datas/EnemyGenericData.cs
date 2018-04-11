@@ -15,6 +15,7 @@ namespace TeamF
         public AI_State DamageState;
 
         [Header("AI Parameters")]
+        public float StoppingDistance;
         public float AimApproximationAngle;
         public float RangeOffset;
 
