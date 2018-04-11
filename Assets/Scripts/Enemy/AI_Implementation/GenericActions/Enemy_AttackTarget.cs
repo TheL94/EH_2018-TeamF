@@ -16,7 +16,7 @@ namespace TeamF.AI
             switch (AttackType)
             {
                 case AttackType.Melee:
-                    MeleeAttack((_controller as AI_Enemy).Enemy);                   
+                    MeleeAttack((_controller as AI_Enemy).Enemy);         
                     break;
                 case AttackType.Ranged:
                     RangedAttack((_controller as AI_Enemy).Enemy);

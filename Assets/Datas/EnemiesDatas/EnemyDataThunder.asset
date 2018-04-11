@@ -15,9 +15,8 @@ MonoBehaviour:
   CharmedState: {fileID: 11400000, guid: be36f027868a9214f8ff0cc883b566bc, type: 2}
   ParalizedState: {fileID: 11400000, guid: 2ff2d443b904d6c45ae10f7fb3110339, type: 2}
   DamageState: {fileID: 11400000, guid: 38bbb89fb884c7741818bec99cd8a91c, type: 2}
-  StoppingDistance: 1.5
+  StoppingDistance: 0.7
   AimApproximationAngle: 20
-  RangeOffset: 0.2
   ContainerPrefab: {fileID: 1267129680638450, guid: 25dfe3bec1371e14d87332e9234c5ef8,
     type: 2}
   GraphicPrefab: {fileID: 1273753816426612, guid: 4d1d8d786b8e02046ab6341251b35f46,
@@ -28,7 +27,7 @@ MonoBehaviour:
   AimTime: 0.2
   EnemyValue: 1
   MeleeDamage: 1
-  MeleeDamageRange: 2
+  MeleeDamageRange: 1.5
   MeleeDamageRate: 1
   RangedDamage: 2
   RangedDamageRange: 9

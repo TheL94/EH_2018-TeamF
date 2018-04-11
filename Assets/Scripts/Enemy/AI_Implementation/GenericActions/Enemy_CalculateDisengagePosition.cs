@@ -18,8 +18,12 @@ namespace TeamF.AI
             {
                 _enemy.AI_Enemy.IsDisengaging = true;
                 Vector3 disengagePosition = (_enemy.Target.Position - _enemy.Position).normalized;
-                disengagePosition *= _enemy.Data.RangedDamageRange - Random.Range(0.05f, _enemy.Data.RangeOffset);
-                _enemy.Agent.destination = _enemy.Target.Position + disengagePosition;
+
+                disengagePosition *= /*(*/_enemy.Data.RangedDamageRange /*- _enemy.Data.StoppingDistance / 2)*/;
+                disengagePosition += _enemy.Target.Position;
+                disengagePosition.y = 0f;
+
+                _enemy.Agent.destination = disengagePosition;
             }
         }
     }

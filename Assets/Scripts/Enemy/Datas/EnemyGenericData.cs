@@ -17,7 +17,6 @@ namespace TeamF
         [Header("AI Parameters")]
         public float StoppingDistance;
         public float AimApproximationAngle;
-        public float RangeOffset;
 
         [Header("Object Constuction")]
         public GameObject ContainerPrefab;
