@@ -111,19 +111,20 @@ namespace TeamF
             if (_enemy != null)
             {
                 EffectController _effect = _enemy.GetComponent<EffectController>();
+                IEffectable target = _enemy.GetComponent<IEffectable>();
                 switch (ammo.AmmoType)
                 {
                     case ElementalType.Fire:
-                        _effect.InitEffect(new BulletEffectFire(), _enemy, ammo.Data);
+                        _effect.InitEffect(new BulletEffectFire(), target, ammo.Data);
                         break;
                     case ElementalType.Water:
-                        _effect.InitEffect(new BulletEffectWater(), _enemy, ammo.Data);
+                        _effect.InitEffect(new BulletEffectWater(), target, ammo.Data);
                         break;
                     case ElementalType.Poison:
-                        _effect.InitEffect(new BulletEffectPoison(), _enemy, ammo.Data);
+                        _effect.InitEffect(new BulletEffectPoison(), target, ammo.Data);
                         break;
                     case ElementalType.Thunder:
-                        _effect.InitEffect(new BulletEffectThunder(), _enemy, ammo.Data);
+                        _effect.InitEffect(new BulletEffectThunder(), target, ammo.Data);
                         break;
                     case ElementalType.None:
                         break;

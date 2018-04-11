@@ -6,15 +6,15 @@ namespace TeamF {
     public class BulletEffectWater : IElementalEffectBehaviour {
 
         float initialSlowdown;
-        Enemy enemy;
+        IEffectable target;
         ElementalEffectData elementalData;
 
-        public void DoInit(Enemy _enemy, ElementalEffectData _data)
+        public void DoInit(IEffectable _target, ElementalEffectData _data)
         {
-            enemy = _enemy;
+            target = _target;
             elementalData = _data;
-            initialSlowdown = enemy.MovementSpeed;
-            enemy.MovementSpeed -= _data.EffectValue;
+            initialSlowdown = target.MovementSpeed;
+            target.MovementSpeed -= _data.EffectValue;
         }
 
         public bool DoUpdate()
@@ -29,7 +29,7 @@ namespace TeamF {
 
         public void DoStopEffect()
         {
-            enemy.MovementSpeed = initialSlowdown;
+            target.MovementSpeed = initialSlowdown;
         }
     }
 }

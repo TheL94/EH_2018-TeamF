@@ -5,13 +5,25 @@ using DG.Tweening;
 
 namespace TeamF
 {
-    public class Character : MonoBehaviour, IDamageable, IParalyzable
+    public class Character : MonoBehaviour, IEffectable
     {
         public CharacterData Data { get; set; }
         public MeshRenderer BackPackRenderer;
         public MeshRenderer CharacterRenderer;
         [HideInInspector]
         public Movement movement;
+
+        #region IGetSlower
+        public float MovementSpeed
+        {
+            get { return Data.MovementSpeed; }
+            set
+            {
+                Data.MovementSpeed = value;
+                movement.MovementSpeed = Data.MovementSpeed;
+            }
+        }
+        #endregion
 
         Player player;
 
@@ -28,7 +40,7 @@ namespace TeamF
             weaponController = GetComponentInChildren<WeaponController>();
             movement = GetComponent<Movement>();
 
-            movement.Init(Data.MovementSpeed, Data.RotationSpeed, Data.DashValues);
+            movement.Init(MovementSpeed, Data.RotationSpeed, Data.DashValues);
 
             List<BulletData> bulletDatasInstancies = new List<BulletData>();
             foreach (BulletData item in Data.BulletDatas)
@@ -98,6 +110,11 @@ namespace TeamF
         /// Chiamata dalla combo elementale paralizzante
         /// </summary>
         public bool IsParalized { get; set; }
+
+        public void SetParalisys(bool _isParalized)
+        {
+            IsParalized = _isParalized;
+        }
         #endregion
 
         #region Weapon
@@ -151,6 +168,8 @@ namespace TeamF
             get { return Data.AllElementalAmmo[selectedAmmoIndex]; }
             set { Data.AllElementalAmmo[selectedAmmoIndex] = value; }
         }
+
+        
 
         public void SelectPreviousAmmo()
         {

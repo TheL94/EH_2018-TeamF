@@ -8,19 +8,20 @@ namespace TeamF
 {
     public class BulletEffectThunder : IElementalEffectBehaviour
     {
-        Enemy enemy;
+        IEffectable target;
         ElementalEffectData elementalData;
-        NavMeshAgent navMesh;
+        //NavMeshAgent navMesh;
 
-        public void DoInit(Enemy _enemy, ElementalEffectData _data)
+        public void DoInit(IEffectable _target, ElementalEffectData _data)
         {
-            enemy = _enemy;
+            target = _target;
             elementalData = _data;
-            navMesh = enemy.GetComponent<NavMeshAgent>();
-            if (navMesh.isActiveAndEnabled)
-            {
-                navMesh.isStopped = true; 
-            }
+            target.SetParalisys(true);
+            //navMesh = target.GetComponent<NavMeshAgent>();
+            //if (navMesh.isActiveAndEnabled)
+            //{
+            //    navMesh.isStopped = true; 
+            //}
         }
 
         public bool DoUpdate()
@@ -35,13 +36,15 @@ namespace TeamF
 
         public void DoStopEffect()
         {
-            if (navMesh != null)
-            {
-                if (navMesh.isActiveAndEnabled)
-                {
-                    navMesh.isStopped = false;
-                } 
-            }
+            target.SetParalisys(false);
+
+            //if (navMesh != null)
+            //{
+            //    if (navMesh.isActiveAndEnabled)
+            //    {
+            //        navMesh.isStopped = false;
+            //    } 
+            //}
         }
 
     }

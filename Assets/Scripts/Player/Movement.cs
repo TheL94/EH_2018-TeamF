@@ -8,7 +8,7 @@ namespace TeamF
     {
         public GameObject ModelToRotate;
         Dash dash;
-        float MovementSpeed;
+        public float MovementSpeed { get; set; }
         float RotationSpeed;
 
         public void Init(float _movementSpeed, float _rotationSpeed, DashStruct _dashData)

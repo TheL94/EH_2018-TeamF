@@ -6,19 +6,19 @@ namespace TeamF
 {
     public class CharmEffect : IElementalEffectBehaviour
     {
-        Enemy enemy;
+        IEffectable target;
         ElementalEffectData elementalData;
 
-        public void DoInit(Enemy _enemy, ElementalEffectData _data)
+        public void DoInit(IEffectable _target, ElementalEffectData _data)
         {
-            enemy = _enemy;
+            target = _target;
             elementalData = _data;
-            (enemy as ICharmable).IsCharmed = true;
+            (target as ICharmable).IsCharmed = true;
         }
 
         public void DoStopEffect()
         {
-            (enemy as ICharmable).IsCharmed = false;
+            (target as ICharmable).IsCharmed = false;
         }
 
         public bool DoUpdate()
