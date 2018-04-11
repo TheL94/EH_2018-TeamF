@@ -29,7 +29,7 @@ namespace TeamF.AI
                     break;
             }
 
-            if (Vector3.Distance(_enemy.Target.Position, _enemy.Position) <= damageRange + _enemy.Data.RangeOffset)
+            if (Vector3.Distance(_enemy.Target.Position, _enemy.Position) <= damageRange)
                 return true;
             else
                 return false;

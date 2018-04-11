@@ -30,10 +30,10 @@ namespace TeamF.AI
                     break;
             }
 
-            if (Vector3.Distance(_enemy.Position, _enemy.Target.Position) > damageRange - _enemy.Data.RangeOffset) 
+            if (Vector3.Distance(_enemy.Position, _enemy.Target.Position) > damageRange) 
             {
                 Vector3 engagePosition = (_enemy.Target.Position - _enemy.Position);
-                float engageDistance = engagePosition.magnitude - damageRange - Random.Range(0f, _enemy.Data.RangeOffset);
+                float engageDistance = engagePosition.magnitude - damageRange - Random.Range(0.05f, _enemy.Data.RangeOffset);
                 engagePosition = engagePosition.normalized * engageDistance;
                 engagePosition += _enemy.Position;
 
