@@ -64,5 +64,6 @@ namespace TeamF
         [Header("Bullet Parameters")]
         public BulletData BulletData;
         public float BulletSpeed;
+        public float BulletLifeTime;
     }
 }
