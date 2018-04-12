@@ -35,13 +35,21 @@ namespace TeamF.AI
                 Vector3 engagePosition = _enemy.Target.Position - _enemy.Position;
                 float engageDistance = engagePosition.magnitude - damageRange;
 
-                //engageDistance += _enemy.Data.StoppingDistance / 2;    
-
                 engagePosition = engagePosition.normalized * engageDistance;
                 engagePosition += _enemy.Position;
                 engagePosition.y = 0;
 
-                _enemy.Agent.destination = engagePosition;               
+                _enemy.AI_Enemy.CurrentDestination = _enemy.Agent.destination = engagePosition;
+
+                if (_enemy.Agent.isActiveAndEnabled)
+                    _enemy.Agent.isStopped = false;
+                return;
+            }
+            else if(Vector3.Distance(_enemy.Position, _enemy.AI_Enemy.CurrentDestination) <= _enemy.Data.StoppingDistance)
+            {
+                if (_enemy.Agent.isActiveAndEnabled)
+                    _enemy.Agent.isStopped = true;
+                return;
             }
         }
     }

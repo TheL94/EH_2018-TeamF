@@ -16,6 +16,7 @@ namespace TeamF.AI
         }
 
         #region Enemy Generic
+        public Vector3 CurrentDestination;
         public bool IsDisengaging;
 
         #region Attack CoolDown
