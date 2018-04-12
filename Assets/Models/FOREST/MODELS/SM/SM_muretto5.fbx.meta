@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: a603a792f7f765f4d8a60ebb91a78ce9
-timeCreated: 1523302688
+guid: 523cf948862719e4b9b6db9b39ece305
+timeCreated: 1523471101
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -10,7 +10,7 @@ ModelImporter:
     2100000: lambert1
     2300000: //RootNode
     3300000: //RootNode
-    4300000: pCube3
+    4300000: pCube56
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -46,7 +46,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 84
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
