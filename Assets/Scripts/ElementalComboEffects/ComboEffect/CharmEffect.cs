@@ -13,7 +13,10 @@ namespace TeamF
         {
             target = _target;
             elementalData = _data;
-            (target as ICharmable).IsCharmed = true;
+            if (target.GetType().IsAssignableFrom(typeof(Enemy)))
+            {
+                (target as ICharmable).IsCharmed = true;
+            }
         }
 
         public void DoStopEffect()

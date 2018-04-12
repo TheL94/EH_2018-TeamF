@@ -5,13 +5,15 @@ using DG.Tweening;
 
 namespace TeamF
 {
-    public class Character : MonoBehaviour, IEffectable, IParalyzable
+    public class Character : MonoBehaviour, IEffectable
     {
-        public CharacterData Data { get; set; }
+        CharacterData Data;
         public MeshRenderer BackPackRenderer;
         public MeshRenderer CharacterRenderer;
         [HideInInspector]
         public Movement movement;
+
+        List<BulletData> bulletDatasInstancies = new List<BulletData>();
 
         #region IGetSlower
         public float MovementSpeed
@@ -42,20 +44,20 @@ namespace TeamF
 
             movement.Init(MovementSpeed, Data.RotationSpeed, Data.DashValues);
 
-            List<BulletData> bulletDatasInstancies = new List<BulletData>();
+            
             foreach (BulletData item in Data.BulletDatas)
                 bulletDatasInstancies.Add(Instantiate(item));
 
             weaponController.Init(bulletDatasInstancies);
 
             if (!_isTestScene)
-                Data.AllElementalAmmo[0].Ammo = -1;
+                bulletDatasInstancies[0].ElementalAmmo.Ammo = -1;
             else
             {
                 isInvincible = _isTestScene;
-                for (int i = 0; i < Data.AllElementalAmmo.Length; i++)
+                for (int i = 0; i < bulletDatasInstancies.Count; i++)
                 {
-                    Data.AllElementalAmmo[i].Ammo = -1;
+                    bulletDatasInstancies[i].ElementalAmmo.Ammo = -1;
                 }
             }
             selectedAmmoIndex = 1;
@@ -117,7 +119,7 @@ namespace TeamF
 
         public void DefaultShot()
         {
-            weaponController.Shot(Data.AllElementalAmmo[0]);
+            weaponController.Shot(bulletDatasInstancies[0]);
         }
 
         /// <summary>
@@ -158,10 +160,10 @@ namespace TeamF
             }
         }
 
-        public ElementalAmmo SelectedAmmo
+        public BulletData SelectedAmmo
         {
-            get { return Data.AllElementalAmmo[selectedAmmoIndex]; }
-            set { Data.AllElementalAmmo[selectedAmmoIndex] = value; }
+            get { return bulletDatasInstancies[selectedAmmoIndex]; }
+            set { bulletDatasInstancies[selectedAmmoIndex] = value; }
         }
 
         
@@ -169,14 +171,14 @@ namespace TeamF
         public void SelectPreviousAmmo()
         {
             selectedAmmoIndex++;
-            if (selectedAmmoIndex > Data.AllElementalAmmo.Length - 1)
+            if (selectedAmmoIndex > Data.BulletDatas.Length - 1)
                 selectedAmmoIndex = 1;
         }
         public void SelectNextAmmo()
         {
             selectedAmmoIndex--;
             if (selectedAmmoIndex < 1)
-                selectedAmmoIndex = Data.AllElementalAmmo.Length - 1;
+                selectedAmmoIndex = Data.BulletDatas.Length - 1;
         }
         #endregion
 
@@ -184,13 +186,13 @@ namespace TeamF
         {
             if (_crate != null)
             {
-                for (int i = 0; i < Data.AllElementalAmmo.Length; i++)
+                for (int i = 0; i < Data.BulletDatas.Length; i++)
                 {
-                    if (_crate.Type == Data.AllElementalAmmo[i].AmmoType)
+                    if (_crate.Type == Data.BulletDatas[i].ElementalAmmo.AmmoType)
                     {
                         //Aggiungi le munizioni a questo tipo;
-                        Data.AllElementalAmmo[i].Ammo += _crate.Ammo;
-                        Events_UIController.AmmoChange(Data.AllElementalAmmo[i]);
+                        Data.BulletDatas[i].ElementalAmmo.Ammo += _crate.Ammo;
+                        Events_UIController.AmmoChange(Data.BulletDatas[i].ElementalAmmo);
                         _crate.DestroyAmmoCrate();
                         return;
                     }
@@ -213,20 +215,6 @@ namespace TeamF
         }
     }
 
-    [System.Serializable]
-    public class ElementalAmmo
-    {
-        public ElementalType AmmoType;
-        public float Damage;
-        public int Ammo;
-        public ElementalEffectData Data;
-    }
+    
 
-    [System.Serializable]
-    public struct ElementalEffectData
-    {
-        public float EffectValue;
-        public float TimeOfEffect;
-        public float TimeFraction;
-    }
 }

@@ -44,14 +44,14 @@ namespace TeamF.AI
                 if (bulletData.BulletTrailPrefab != null)
                     Instantiate(bulletData.BulletTrailPrefab, bullet.transform.position, bullet.transform.rotation, bullet.transform);
 
-                ElementalAmmo ammo = new ElementalAmmo() { AmmoType = ElementalType.None, Damage = _enemy.Data.RangedDamage };
+                //ElementalAmmo ammo = new ElementalAmmo() { AmmoType = ElementalType.None, Damage = _enemy.Data.RangedDamage };
                 BulletOwner owner;
                 if (_enemy.IsCharmed)
                     owner = BulletOwner.EnemyChamed;
                 else
                     owner = BulletOwner.Enemy;
 
-                bullet.Init(ammo, _enemy.Data.BulletSpeed, owner, _enemy.Data.BulletLifeTime);
+                bullet.Init(bulletData.ElementalAmmo, _enemy.Data.BulletSpeed, owner, _enemy.Data.BulletLifeTime);
             }
             else
                 Debug.LogWarning("No ShootingPoint Found !");
