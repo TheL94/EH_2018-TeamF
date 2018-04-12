@@ -19,11 +19,21 @@ namespace TeamF.AI
                 _enemy.AI_Enemy.IsDisengaging = true;
                 Vector3 disengagePosition = (_enemy.Target.Position - _enemy.Position).normalized;
 
-                disengagePosition *= /*(*/_enemy.Data.RangedDamageRange /*- _enemy.Data.StoppingDistance / 2)*/;
+                disengagePosition *= _enemy.Data.RangedDamageRange;
                 disengagePosition += _enemy.Target.Position;
                 disengagePosition.y = 0f;
 
                 _enemy.Agent.destination = disengagePosition;
+                if (_enemy.Agent.isActiveAndEnabled)
+                    _enemy.Agent.isStopped = false;
+            }
+            else
+            {
+                if(Vector3.Distance(_enemy.Position, _enemy.AI_Enemy.CurrentDestination) <= _enemy.Data.StoppingDistance)
+                {
+                    if (_enemy.Agent.isActiveAndEnabled)
+                        _enemy.Agent.isStopped = true;
+                }
             }
         }
     }
