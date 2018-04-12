@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Actions:
   - Delay: 0
-    Loop: 1
-    Action: {fileID: 11400000, guid: 6dface135e0b02d45b0327b102c378bb, type: 2}
-    OnSuccess: {fileID: 0}
-    OnFailure: {fileID: 11400000, guid: 1b2b4dcf3f3c0ca44972e37450f8576c, type: 2}
+    Loop: 0
+    Action: {fileID: 11400000, guid: 17bdb9e5b93e76249acf8e1866a10ff8, type: 2}
+    OnSuccess: {fileID: 11400000, guid: 79fc8545669635144824323a040e07cf, type: 2}
+    OnFailure: {fileID: 0}
