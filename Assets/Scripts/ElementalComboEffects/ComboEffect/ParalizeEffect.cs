@@ -7,22 +7,26 @@ namespace TeamF
     public class ParalizeEffect : IElementalEffectBehaviour
     {
         ElementalEffectData elementalData;
+        IEffectable target;
 
-        public void DoInit(Enemy _enemy, ElementalEffectData _data)
+        public void DoInit(IEffectable _target, ElementalEffectData _data)
         {
+            target = _target;
             elementalData = _data;
-            _enemy.AI_Enemy.CurrentState = _enemy.Data.ParalizedState;
+            target.IsParalized = true;
         }
 
-        public void DoStopEffect() { }
+        public void DoStopEffect()
+        {
+            target.IsParalized = false;
+        }
 
         public bool DoUpdate()
         {
             elementalData.TimeOfEffect -= Time.deltaTime;
             if (elementalData.TimeOfEffect <= 0)
-            {
                 return true;
-            }
+
             return false;
         }
     }

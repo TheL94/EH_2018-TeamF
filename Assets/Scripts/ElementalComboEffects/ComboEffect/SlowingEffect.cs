@@ -6,21 +6,21 @@ namespace TeamF
 {
     public class SlowingEffect : IElementalEffectBehaviour
     {
-        Enemy enemy;
+        IEffectable target;
         ElementalEffectData elementalData;
         float previousMovementSpeed;
 
-        public void DoInit(Enemy _enemy, ElementalEffectData _data)
+        public void DoInit(IEffectable _target, ElementalEffectData _data)
         {
-            enemy = _enemy;
+            target = _target;
             elementalData = _data;
-            previousMovementSpeed = enemy.MovementSpeed;
-            enemy.MovementSpeed = _data.EffectValue;
+            previousMovementSpeed = target.MovementSpeed;
+            target.MovementSpeed = _data.EffectValue;
         }
 
         public void DoStopEffect()
         {
-            enemy.MovementSpeed = previousMovementSpeed;
+            target.MovementSpeed = previousMovementSpeed;
         }
 
         public bool DoUpdate()

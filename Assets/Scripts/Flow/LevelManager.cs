@@ -52,7 +52,7 @@ namespace TeamF
         public void UpdateLevel()
         {
             roundPoints = 0;
-            if(Level < 2)
+            if(Level < SceneManager.sceneCountInBuildSettings)
                 Level++;
         }
         #endregion

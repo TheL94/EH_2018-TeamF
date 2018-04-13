@@ -11,3 +11,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 400c1bd4e29af0a4c906fdab8da75f0e, type: 3}
   m_Name: Enemy_SetRangedApproachDestination
   m_EditorClassIdentifier: 
+  AttackType: 1

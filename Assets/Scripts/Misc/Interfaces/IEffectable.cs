@@ -4,8 +4,8 @@ using UnityEngine;
 
 namespace TeamF
 {
-    public interface IParalyzable
+    public interface IEffectable : IGetSlower, IParalyzable, IDamageable
     {
-        bool IsParalized { get; set; }
+        
     }
 }

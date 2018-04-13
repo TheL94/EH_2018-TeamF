@@ -4,8 +4,8 @@ using UnityEngine;
 
 namespace TeamF
 {
-    public interface IParalyzable
+    public interface IGetSlower
     {
-        bool IsParalized { get; set; }
+        float MovementSpeed { get; set; }
     }
 }

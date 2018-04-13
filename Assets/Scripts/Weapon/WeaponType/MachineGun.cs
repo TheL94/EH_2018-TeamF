@@ -44,11 +44,11 @@ namespace TeamF
             }
         }
 
-        public override void SingleShot(ElementalAmmo _selectedAmmo, BulletData _bulletData, Transform _barrel)
+        public override void SingleShot(BulletData _bulletData, Transform _barrel)
         {
             if (Overheating < (weaponData as MachineGunData).MaxOverheating)
             {
-                base.SingleShot(_selectedAmmo, _bulletData, _barrel); 
+                base.SingleShot(_bulletData, _barrel); 
             }
         }
 

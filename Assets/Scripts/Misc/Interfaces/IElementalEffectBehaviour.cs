@@ -6,7 +6,12 @@ namespace TeamF
 {
     public interface IElementalEffectBehaviour
     {
-        void DoInit(Enemy _enemy, ElementalEffectData _data);
+        /// <summary>
+        /// Inizializza l'effetto
+        /// </summary>
+        /// <param name="_target">Il riferimento a chi sta subendo l'effetto</param>
+        /// <param name="_data">I dati dell'effetto: durata, valore, etc.</param>
+        void DoInit(IEffectable _target, ElementalEffectData _data);
         /// <summary>
         /// Funzione dove viene eseguito il comportamento specifico dell'elemento
         /// </summary>

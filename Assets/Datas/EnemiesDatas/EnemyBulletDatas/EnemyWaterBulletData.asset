@@ -9,18 +9,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: abdf5623cbacfe340b10284495761a2b, type: 3}
-  m_Name: BulletDataThunder
+  m_Name: EnemyWaterBulletData
   m_EditorClassIdentifier: 
   ElementalAmmo:
-    AmmoType: 4
-    Damage: 5
-    Ammo: 52
+    AmmoType: 2
+    Damage: 0
+    Ammo: 0
     Data:
-      EffectValue: 0
-      TimeOfEffect: 5
+      EffectValue: 20
+      TimeOfEffect: 2
       TimeFraction: 1
   BulletContainerPrefab: {fileID: 1096078678018924, guid: aed0c6b0c1afa4a4ca5d68d6e3bccfab,
     type: 2}
-  BulletGraphicPrefab: {fileID: 0}
-  BulletTrailPrefab: {fileID: 1088442937980430, guid: 85aa085f458ecbf4094fd001ff14d309,
-    type: 2}
+  BulletGraphicPrefab: {fileID: 100000, guid: 12398bdb6a70a7744a259f626cacab03, type: 3}
+  BulletTrailPrefab: {fileID: 0}

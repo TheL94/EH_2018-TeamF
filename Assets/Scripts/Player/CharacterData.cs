@@ -7,24 +7,28 @@ namespace TeamF
     [CreateAssetMenu(fileName = "CharacterData", menuName = "Character/CharacterData")]
     public class CharacterData : ScriptableObject
     {
+        [Header("General")]
         public float Life;
-        public ElementalAmmo[] AllElementalAmmo;
+
+        [Header("Bullets")]
+        public BulletData[] BulletDatas;
 
         #region Movement variables
+        [Header("Movement")]
         public float MovementSpeed;
         public float RotationSpeed;
         public DashStruct DashValues;
         #endregion
 
         #region Weapon
-        public int MagCapacity;
+        [Header("Weapon")]
         public float BulletSpeed;
         public float Ratio;
         #endregion
 
-        #region Bullet
-        public List<BulletData> BulletDatas = new List<BulletData>();
-        #endregion
+        //#region Bullet
+        //public List<BulletData> BulletDatas = new List<BulletData>();
+        //#endregion
     }
 
     [System.Serializable]

@@ -26,10 +26,10 @@ namespace TeamF
             }
         }
 
-        public void Shot(ElementalAmmo _selectedAmmo)
+        public void Shot(BulletData _selectedAmmo)
         {
-            BulletData data = bulletDatas.Where(d => d.Type == _selectedAmmo.AmmoType).First();
-            CurrentWeapon.SingleShot(_selectedAmmo, data, Barrel.transform);
+            //BulletData data = bulletDatas.Where(d => d.ElementalAmmo == _selectedAmmo).First();
+            CurrentWeapon.SingleShot(_selectedAmmo, Barrel.transform);
         }
 
         public void SetCurrentWeapon(WeaponType _type)

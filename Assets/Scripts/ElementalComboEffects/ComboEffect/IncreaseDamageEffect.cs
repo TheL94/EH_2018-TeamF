@@ -6,21 +6,21 @@ namespace TeamF
 {
     public class IncreaseDamageEffect : IElementalEffectBehaviour
     {
-        Enemy enemy;
+        IEffectable target;
         ElementalEffectData elementalData;
         float startMultiplyer;
 
-        public void DoInit(Enemy _enemy, ElementalEffectData _data)
+        public void DoInit(IEffectable _target, ElementalEffectData _data)
         {
-            enemy = _enemy;
+            target = _target;
             elementalData = _data;
-            startMultiplyer = enemy.DamagePercentage;
-            enemy.DamagePercentage = _data.EffectValue;
+            startMultiplyer = target.DamagePercentage;
+            target.DamagePercentage = _data.EffectValue;
         }
 
         public void DoStopEffect()
         {
-            enemy.DamagePercentage = startMultiplyer;
+            target.DamagePercentage = startMultiplyer;
         }
 
         public bool DoUpdate()

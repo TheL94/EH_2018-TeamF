@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace TeamF {
-    public class BulletEffectFire : IElementalEffectBehaviour {
+    public class SetOnFireEffect : IElementalEffectBehaviour {
 
-        Enemy enemy;
+        IEffectable target;
         ElementalEffectData elementalData;
         float timer;
 
-        public void DoInit(Enemy _enemy, ElementalEffectData _data)
+        public void DoInit(IEffectable _target, ElementalEffectData _data)
         {
-            enemy = _enemy;
+            target = _target;
             elementalData = _data;
             timer = _data.TimeFraction;
         }
@@ -23,7 +23,7 @@ namespace TeamF {
             {
                 if (elementalData.EffectValue > 0)
                 {
-                    enemy.TakeDamage(elementalData.EffectValue, ElementalType.Fire);
+                    target.TakeDamage(elementalData.EffectValue, ElementalType.Fire);
                     elementalData.EffectValue -= 1;
                     if (elementalData.EffectValue < 0)
                         elementalData.EffectValue = 0;

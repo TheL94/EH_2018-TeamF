@@ -14,11 +14,15 @@ namespace TeamF
         public AI_State ParalizedState;
         public AI_State DamageState;
 
+        [Header("AI Parameters")]
+        public float StoppingDistance;
+        public float AimApproximationAngle;
+
         [Header("Object Constuction")]
         public GameObject ContainerPrefab;
         public GameObject GraphicPrefab;
 
-        [Header("Generic Parameters")]
+        [Header("Enemy Parameters")]
         public EnemyType EnemyType;
         public ElementalType ElementalType
         {
@@ -45,9 +49,7 @@ namespace TeamF
         public float Life;
         public float Speed;
         public float AimTime;
-        public float AimApproximationAngle;
         public float EnemyValue;
-        public float RangeOffset;
 
         [Header("Melee Attack Parameters")]
         public float MeleeDamage;
@@ -62,5 +64,6 @@ namespace TeamF
         [Header("Bullet Parameters")]
         public BulletData BulletData;
         public float BulletSpeed;
+        public float BulletLifeTime;
     }
 }

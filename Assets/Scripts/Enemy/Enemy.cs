@@ -9,7 +9,7 @@ using DG.Tweening;
 namespace TeamF
 {
     [RequireComponent(typeof(NavMeshAgent), typeof(AI_Enemy))]
-    public class Enemy : MonoBehaviour, IDamageable, IParalyzable, ICharmable
+    public class Enemy : MonoBehaviour, IEffectable, ICharmable
     {
         public EnemyGenericData Data { get; private set; }
         public string ID { get; private set; }
@@ -104,7 +104,18 @@ namespace TeamF
         /// <summary>
         /// Chiamata dalla combo elementale paralizzante
         /// </summary>
-        public bool IsParalized { get; set; }
+
+        bool _isParalized;
+        public bool IsParalized
+        {
+            get { return _isParalized; }
+            set
+            {
+                _isParalized = value;
+                if (_isParalized)
+                    AI_Enemy.CurrentState = Data.ParalizedState;
+            }
+        }
         #endregion
 
         #region ICharmable

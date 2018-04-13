@@ -22,19 +22,19 @@ namespace TeamF
         /// Controlla se ci sono abbastanza munizioni o sono sotto zero (le munizioni standard) per chiamare la funzione per istanziare il proiettile.
         /// Se le munizioni sono maggiori di zero le scala.
         /// </summary>
-        public virtual void SingleShot(ElementalAmmo _selectedAmmo, BulletData _bulletData, Transform _barrel)
+        public virtual void SingleShot(BulletData _bulletData, Transform _barrel)
         {
             if (Time.time >= nextFire)
             {
-                if (_selectedAmmo.Ammo != 0)
+                if (_bulletData.ElementalAmmo.Ammo != 0)
                 {
-                    CreateBullet(_selectedAmmo, _bulletData, _barrel);
-                    if (_selectedAmmo.Ammo > 0)
+                    CreateBullet(_bulletData, _barrel);
+                    if (_bulletData.ElementalAmmo.Ammo > 0)
                     {
-                        _selectedAmmo.Ammo--;
+                        _bulletData.ElementalAmmo.Ammo--;
 
-                        if (_selectedAmmo.AmmoType != ElementalType.None)
-                            Events_UIController.AmmoChange(_selectedAmmo);      // UI event
+                        if (_bulletData.ElementalAmmo.AmmoType != ElementalType.None)
+                            Events_UIController.AmmoChange(_bulletData.ElementalAmmo);      // UI event
                     }
                     OnShot();
                     nextFire = Time.time + weaponData.Parameters.Ratio;
@@ -51,7 +51,7 @@ namespace TeamF
         /// <summary>
         /// Istanzia il proiettile e ne chiama l'init
         /// </summary>
-        void CreateBullet(ElementalAmmo _currentAmmo, BulletData _bulletData, Transform _barrel)
+        void CreateBullet(BulletData _bulletData, Transform _barrel)
         {
             GameObject bullPrefab = Instantiate(weaponData.BulletContainerPrefab, _barrel.position, _barrel.rotation);
 
@@ -62,7 +62,7 @@ namespace TeamF
             if (_bulletData.BulletTrailPrefab != null)
                 Instantiate(_bulletData.BulletTrailPrefab, bull.transform.position, bull.transform.rotation, bull.transform);
 
-            bull.Init(_currentAmmo, weaponData.Parameters.BulletSpeed, BulletOwner.Character, weaponData.Parameters.BulletLife, weaponData.Parameters.DamagePercentage);
+            bull.Init(_bulletData.ElementalAmmo, weaponData.Parameters.BulletSpeed, BulletOwner.Character, weaponData.Parameters.BulletLife, weaponData.Parameters.DamagePercentage);
         }
 
         /// <summary>
