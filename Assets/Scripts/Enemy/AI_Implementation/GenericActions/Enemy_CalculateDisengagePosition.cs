@@ -17,9 +17,10 @@ namespace TeamF.AI
             if (!_enemy.AI_Enemy.IsDisengaging) 
             {
                 _enemy.AI_Enemy.IsDisengaging = true;
-                Vector3 disengagePosition = (_enemy.Target.Position - _enemy.Position).normalized;
+                Vector3 disengagePosition = _enemy.Target.Position - _enemy.Position;
+                float disengageDistance = disengagePosition.magnitude - _enemy.Data.RangedDamageRange;
 
-                disengagePosition *= _enemy.Data.RangedDamageRange;
+                disengagePosition = disengagePosition.normalized * _enemy.Data.RangedDamageRange;
                 disengagePosition += _enemy.Target.Position;
                 disengagePosition.y = 0f;
 
