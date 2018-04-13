@@ -63,7 +63,12 @@ ModelImporter:
     13700002: scarpa_d1
     13700004: scarpa_s1
     13700006: testa2
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mat_Mostro_Gen
+    second: {fileID: 2100000, guid: 8306dc6a04fe85a4c8ec0f6b747d1a09, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
