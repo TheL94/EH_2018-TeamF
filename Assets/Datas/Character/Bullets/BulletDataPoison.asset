@@ -11,7 +11,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abdf5623cbacfe340b10284495761a2b, type: 3}
   m_Name: BulletDataPoison
   m_EditorClassIdentifier: 
-  Type: 3
+  ElementalAmmo:
+    AmmoType: 3
+    Damage: 5
+    Ammo: 34
+    Data:
+      EffectValue: 5
+      TimeOfEffect: 3
+      TimeFraction: 1
   BulletContainerPrefab: {fileID: 1096078678018924, guid: aed0c6b0c1afa4a4ca5d68d6e3bccfab,
     type: 2}
   BulletGraphicPrefab: {fileID: 0}

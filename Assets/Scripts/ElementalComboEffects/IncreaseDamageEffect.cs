@@ -4,17 +4,24 @@ using UnityEngine;
 
 namespace TeamF
 {
-    public class ParalizeEffect : IElementalEffectBehaviour
+    public class IncreaseDamageEffect : IElementalEffectBehaviour
     {
+        IEffectable target;
         ElementalEffectData elementalData;
+        float startMultiplyer;
 
-        public void DoInit(Enemy _enemy, ElementalEffectData _data)
+        public void DoInit(IEffectable _target, ElementalEffectData _data)
         {
+            target = _target;
             elementalData = _data;
-            _enemy.AI_Enemy.CurrentState = _enemy.Data.ParalizedState;
+            startMultiplyer = target.DamagePercentage;
+            target.DamagePercentage = _data.EffectValue;
         }
 
-        public void DoStopEffect() { }
+        public void DoStopEffect()
+        {
+            target.DamagePercentage = startMultiplyer;
+        }
 
         public bool DoUpdate()
         {

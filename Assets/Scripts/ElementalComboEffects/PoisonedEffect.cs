@@ -4,15 +4,15 @@ using UnityEngine;
 
 namespace TeamF
 {
-    public class BulletEffectPoison : IElementalEffectBehaviour
+    public class PoisonedEffect : IElementalEffectBehaviour
     {
-        Enemy enemy;
+        IEffectable target;
         ElementalEffectData elementalData;
         float timer;
 
-        public void DoInit(Enemy _enemy, ElementalEffectData _data)
+        public void DoInit(IEffectable _target, ElementalEffectData _data)
         {
-            enemy = _enemy;
+            target = _target;
             elementalData = _data;
             timer = elementalData.TimeFraction;
         }
@@ -23,7 +23,7 @@ namespace TeamF
             if (elementalData.TimeOfEffect <= timer)
             {
                 if (elementalData.EffectValue > 0)
-                    enemy.TakeDamage(elementalData.EffectValue, ElementalType.Poison);
+                    target.TakeDamage(elementalData.EffectValue, ElementalType.Poison);
 
                 timer -= elementalData.TimeFraction;
             }

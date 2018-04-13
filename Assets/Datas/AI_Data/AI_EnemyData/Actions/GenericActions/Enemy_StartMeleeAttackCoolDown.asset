@@ -8,6 +8,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91caa6d7ade35be4fa63081d78a460d2, type: 3}
+  m_Script: {fileID: 11500000, guid: a5f9f77667578f14c8961497041e28aa, type: 3}
   m_Name: Enemy_StartMeleeAttackCoolDown
   m_EditorClassIdentifier: 
+  AttackType: 0

@@ -31,21 +31,21 @@ namespace TeamF
         /// Set the time of effect with the float passed
         /// </summary>
         /// <param name="_timeOfEffect"></param>
-        public void InitEffect(IElementalEffectBehaviour _behaviour, Enemy _enemy, ElementalEffectData _elementalData, bool _isComboEffect = false)
+        public void InitEffect(IElementalEffectBehaviour _behaviour, IEffectable _target, ElementalEffectData _elementalData, bool _isComboEffect = false)
         {
             if (!_isComboEffect)
             {
                 bulletBehaviour = _behaviour;
-                if (CheckIfEffectCanBeApplied(_behaviour, _enemy.CurrentBehaviour))
+                if (CheckIfEffectCanBeApplied(_behaviour, _target))
                 {
-                    bulletBehaviour.DoInit(_enemy, _elementalData);
+                    bulletBehaviour.DoInit(_target, _elementalData);
                     isBulletBehaviourInitialized = true;
                 } 
             }
             else
             {
                 comboBehaviour = _behaviour;
-                comboBehaviour.DoInit(_enemy, _elementalData);
+                comboBehaviour.DoInit(_target, _elementalData);
                 isComboInitialized = true;
             }
         }
@@ -68,16 +68,21 @@ namespace TeamF
         /// <param name="_behaviour"></param>
         /// <param name="_enemy"></param>
         /// <returns></returns>
-        bool CheckIfEffectCanBeApplied(IElementalEffectBehaviour _behaviour, IEnemyBehaviour _enemyBehaviour)
+        bool CheckIfEffectCanBeApplied(IElementalEffectBehaviour _behaviour, IEffectable _enemyBehaviour)
         {
-            if (_behaviour.GetType() == typeof(BulletEffectFire) && _enemyBehaviour.GetType() == typeof(EnemyFireBehaviour))
-                return false;
-            if (_behaviour.GetType() == typeof(BulletEffectPoison) && _enemyBehaviour.GetType() == typeof(EnemyPoisonBehaviour))
-                return false;
-            if (_behaviour.GetType() == typeof(BulletEffectWater) && _enemyBehaviour.GetType() == typeof(EnemyWaterBehaviour))
-                return false;
-            if (_behaviour.GetType() == typeof(BulletEffectThunder) && _enemyBehaviour.GetType() == typeof(EnemyThunderBehaviour))
-                return false;
+            Enemy enemy = _enemyBehaviour as Enemy;
+
+            if (enemy != null)
+            {
+                if (_behaviour.GetType() == typeof(SetOnFireEffect) && enemy.CurrentBehaviour.GetType() == typeof(EnemyFireBehaviour))
+                    return false;
+                if (_behaviour.GetType() == typeof(PoisonedEffect) && enemy.CurrentBehaviour.GetType() == typeof(EnemyPoisonBehaviour))
+                    return false;
+                if (_behaviour.GetType() == typeof(SlowingEffect) && enemy.CurrentBehaviour.GetType() == typeof(EnemyWaterBehaviour))
+                    return false;
+                if (_behaviour.GetType() == typeof(ParalizeEffect) && enemy.CurrentBehaviour.GetType() == typeof(EnemyThunderBehaviour))
+                    return false; 
+            }
             return true;
         }
     }

@@ -6,10 +6,29 @@ namespace TeamF
     [CreateAssetMenu(fileName = "BulletData", menuName = "Bullet/BulletData")]
     public class BulletData : ScriptableObject
     {
-        public ElementalType Type;
+        [Header("Ammo")]
+        public ElementalAmmo ElementalAmmo;
+        [Header("")]
         public GameObject BulletContainerPrefab;
         public GameObject BulletGraphicPrefab;
         public GameObject BulletTrailPrefab;
+    }
+
+    [System.Serializable]
+    public class ElementalAmmo
+    {
+        public ElementalType AmmoType;
+        public float Damage;
+        public int Ammo;
+        public ElementalEffectData Data;
+    }
+
+    [System.Serializable]
+    public struct ElementalEffectData
+    {
+        public float EffectValue;
+        public float TimeOfEffect;
+        public float TimeFraction;
     }
 }
 

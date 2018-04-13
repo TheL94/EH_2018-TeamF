@@ -16,6 +16,7 @@ namespace TeamF.AI
         }
 
         #region Enemy Generic
+        public Vector3 CurrentDestination;
         public bool IsDisengaging;
 
         #region Attack CoolDown
@@ -31,20 +32,6 @@ namespace TeamF.AI
             IsAttackCoolDown = false;
             yield return new WaitForSeconds(_time);
             IsAttackCoolDown = true;
-        }
-        #endregion
-
-        #region Paralysis CoolDown
-        public void StartParalysisCoolDown(float _time)
-        {
-            StartCoroutine(ParalysisCoolDown(_time));
-        }
-
-        IEnumerator ParalysisCoolDown(float _time)
-        {
-            Enemy.IsParalized = true;
-            yield return new WaitForSeconds(_time);
-            Enemy.IsParalized = false;
         }
         #endregion
         #endregion

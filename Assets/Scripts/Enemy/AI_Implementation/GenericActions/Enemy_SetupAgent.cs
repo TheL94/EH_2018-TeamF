@@ -17,7 +17,7 @@ namespace TeamF.AI
         void SetupAgent(Enemy _enemy)
         {
             _enemy.Agent.speed = _enemy.Data.Speed;
-            _enemy.Agent.stoppingDistance = 1.5f;
+            _enemy.Agent.stoppingDistance = 0f;
             _enemy.Agent.updateRotation = true;
         }
     }

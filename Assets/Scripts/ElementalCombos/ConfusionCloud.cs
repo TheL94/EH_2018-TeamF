@@ -10,11 +10,11 @@ namespace TeamF
 
         protected override void OnEnteringCollider(Collider other)
         {
-            Enemy _enemy = other.GetComponent<Enemy>();
+            IEffectable _target = other.GetComponent<IEffectable>();
             EffectController _effect = other.GetComponent<EffectController>();
-            if (_effect != null && _enemy != null)
+            if (_effect != null && _target != null)
             {
-                _effect.InitEffect(new CharmEffect(), _enemy, EffectData, true);
+                _effect.InitEffect(new CharmEffect(), _target, EffectData, true);
             }
         }
 

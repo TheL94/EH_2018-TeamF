@@ -106,27 +106,30 @@ namespace TeamF
             }
         }
 
-        protected void ApplyElementalEffect(Enemy _enemy)
+        protected void ApplyElementalEffect(IEffectable _effectable)
         {
-            if (_enemy != null)
+            if (_effectable != null)
             {
-                EffectController _effect = _enemy.GetComponent<EffectController>();
-                switch (ammo.AmmoType)
+                EffectController _effect = (_effectable as MonoBehaviour).GetComponent<EffectController>();
+                if (_effect != null)
                 {
-                    case ElementalType.Fire:
-                        _effect.InitEffect(new BulletEffectFire(), _enemy, ammo.Data);
-                        break;
-                    case ElementalType.Water:
-                        _effect.InitEffect(new BulletEffectWater(), _enemy, ammo.Data);
-                        break;
-                    case ElementalType.Poison:
-                        _effect.InitEffect(new BulletEffectPoison(), _enemy, ammo.Data);
-                        break;
-                    case ElementalType.Thunder:
-                        _effect.InitEffect(new BulletEffectThunder(), _enemy, ammo.Data);
-                        break;
-                    case ElementalType.None:
-                        break;
+                    switch (ammo.AmmoType)
+                    {
+                        case ElementalType.Fire:
+                            _effect.InitEffect(new SetOnFireEffect(), _effectable, ammo.Data);
+                            break;
+                        case ElementalType.Water:
+                            _effect.InitEffect(new SlowingEffect(), _effectable, ammo.Data);
+                            break;
+                        case ElementalType.Poison:
+                            _effect.InitEffect(new PoisonedEffect(), _effectable, ammo.Data);
+                            break;
+                        case ElementalType.Thunder:
+                            _effect.InitEffect(new ParalizeEffect(), _effectable, ammo.Data);
+                            break;
+                        case ElementalType.None:
+                            break;
+                    } 
                 }
             }
         }
@@ -148,7 +151,7 @@ namespace TeamF
                     if (damageable != null)
                     {
                         DoDamage(damageable);
-                        ApplyElementalEffect(other.GetComponent<Enemy>());
+                        ApplyElementalEffect(other.GetComponent<IEffectable>());
                     }
                     Destroy(gameObject);
                     break;
@@ -156,6 +159,7 @@ namespace TeamF
                     if (other.GetComponent<Enemy>() == null)
                     {
                         DoDamage(other.GetComponent<IDamageable>());
+                        ApplyElementalEffect(other.GetComponent<IEffectable>());
                         Destroy(gameObject);
                     }
                     break;

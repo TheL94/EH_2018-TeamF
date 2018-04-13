@@ -4,32 +4,29 @@ using UnityEngine;
 
 namespace TeamF
 {
-    public class IncreaseDamageEffect : IElementalEffectBehaviour
+    public class ParalizeEffect : IElementalEffectBehaviour
     {
-        Enemy enemy;
         ElementalEffectData elementalData;
-        float startMultiplyer;
+        IEffectable target;
 
-        public void DoInit(Enemy _enemy, ElementalEffectData _data)
+        public void DoInit(IEffectable _target, ElementalEffectData _data)
         {
-            enemy = _enemy;
+            target = _target;
             elementalData = _data;
-            startMultiplyer = enemy.DamagePercentage;
-            enemy.DamagePercentage = _data.EffectValue;
+            target.IsParalized = true;
         }
 
         public void DoStopEffect()
         {
-            enemy.DamagePercentage = startMultiplyer;
+            target.IsParalized = false;
         }
 
         public bool DoUpdate()
         {
             elementalData.TimeOfEffect -= Time.deltaTime;
             if (elementalData.TimeOfEffect <= 0)
-            {
                 return true;
-            }
+
             return false;
         }
     }

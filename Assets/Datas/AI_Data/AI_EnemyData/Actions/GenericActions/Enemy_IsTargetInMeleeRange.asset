@@ -8,6 +8,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47ff1725c9babcf4086ab08455e360a6, type: 3}
+  m_Script: {fileID: 11500000, guid: bedc208aa49402c49b0f50f76ab12d19, type: 3}
   m_Name: Enemy_IsTargetInMeleeRange
   m_EditorClassIdentifier: 
+  AttackType: 0
