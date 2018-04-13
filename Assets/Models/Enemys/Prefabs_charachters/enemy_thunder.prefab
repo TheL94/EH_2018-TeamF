@@ -234,7 +234,7 @@ GameObject:
   - component: {fileID: 4072740270389978}
   - component: {fileID: 95338843765671860}
   m_Layer: 0
-  m_Name: SK_Bombo
+  m_Name: enemy_thunder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -81,7 +81,7 @@ GameObject:
   - component: {fileID: 4005279215304406}
   - component: {fileID: 95901295189283282}
   m_Layer: 0
-  m_Name: SK_Froggo
+  m_Name: Enemy_water
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

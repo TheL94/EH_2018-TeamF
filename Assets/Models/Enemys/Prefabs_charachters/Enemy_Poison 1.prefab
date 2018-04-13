@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33827763752864170}
   - component: {fileID: 23906531044637246}
   m_Layer: 0
-  m_Name: SK_Poison
+  m_Name: Enemy_Poison 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
