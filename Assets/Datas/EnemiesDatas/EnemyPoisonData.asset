@@ -32,7 +32,7 @@ MonoBehaviour:
   RangedDamage: 2
   RangedDamageRange: 9
   RangedDamageRate: 1
-  BulletData: {fileID: 11400000, guid: fc0514fe99c1cf343900d4df6098e7f5, type: 2}
+  BulletData: {fileID: 11400000, guid: b69f54a5670741e478343d85268443f8, type: 2}
   BulletSpeed: 0.5
   BulletLifeTime: 2
   CloudPrefab: {fileID: 1673971421481346, guid: 70ead17ddbc5ee34bb7654b8bcff4ccb,
