@@ -111,22 +111,21 @@ namespace TeamF
             if (_effectable != null)
             {
                 EffectController _effect = (_effectable as MonoBehaviour).GetComponent<EffectController>();
-                //IEffectable target = _effectable.GetComponent<IEffectable>();
                 if (_effect != null)
                 {
                     switch (ammo.AmmoType)
                     {
                         case ElementalType.Fire:
-                            _effect.InitEffect(new BulletEffectFire(), _effectable, ammo.Data);
+                            _effect.InitEffect(new SetOnFireEffect(), _effectable, ammo.Data);
                             break;
                         case ElementalType.Water:
-                            _effect.InitEffect(new BulletEffectWater(), _effectable, ammo.Data);
+                            _effect.InitEffect(new SlowingEffect(), _effectable, ammo.Data);
                             break;
                         case ElementalType.Poison:
-                            _effect.InitEffect(new BulletEffectPoison(), _effectable, ammo.Data);
+                            _effect.InitEffect(new PoisonedEffect(), _effectable, ammo.Data);
                             break;
                         case ElementalType.Thunder:
-                            _effect.InitEffect(new BulletEffectThunder(), _effectable, ammo.Data);
+                            _effect.InitEffect(new ParalizeEffect(), _effectable, ammo.Data);
                             break;
                         case ElementalType.None:
                             break;

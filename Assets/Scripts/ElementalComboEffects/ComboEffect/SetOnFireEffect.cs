@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace TeamF {
-    public class BulletEffectFire : IElementalEffectBehaviour {
+    public class SetOnFireEffect : IElementalEffectBehaviour {
 
         IEffectable target;
         ElementalEffectData elementalData;

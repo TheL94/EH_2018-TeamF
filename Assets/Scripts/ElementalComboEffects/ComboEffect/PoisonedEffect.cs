@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace TeamF
 {
-    public class BulletEffectPoison : IElementalEffectBehaviour
+    public class PoisonedEffect : IElementalEffectBehaviour
     {
         IEffectable target;
         ElementalEffectData elementalData;

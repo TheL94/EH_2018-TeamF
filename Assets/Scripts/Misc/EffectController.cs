@@ -74,13 +74,13 @@ namespace TeamF
 
             if (enemy != null)
             {
-                if (_behaviour.GetType() == typeof(BulletEffectFire) && enemy.CurrentBehaviour.GetType() == typeof(EnemyFireBehaviour))
+                if (_behaviour.GetType() == typeof(SetOnFireEffect) && enemy.CurrentBehaviour.GetType() == typeof(EnemyFireBehaviour))
                     return false;
-                if (_behaviour.GetType() == typeof(BulletEffectPoison) && enemy.CurrentBehaviour.GetType() == typeof(EnemyPoisonBehaviour))
+                if (_behaviour.GetType() == typeof(PoisonedEffect) && enemy.CurrentBehaviour.GetType() == typeof(EnemyPoisonBehaviour))
                     return false;
-                if (_behaviour.GetType() == typeof(BulletEffectWater) && enemy.CurrentBehaviour.GetType() == typeof(EnemyWaterBehaviour))
+                if (_behaviour.GetType() == typeof(SlowingEffect) && enemy.CurrentBehaviour.GetType() == typeof(EnemyWaterBehaviour))
                     return false;
-                if (_behaviour.GetType() == typeof(BulletEffectThunder) && enemy.CurrentBehaviour.GetType() == typeof(EnemyThunderBehaviour))
+                if (_behaviour.GetType() == typeof(ParalizeEffect) && enemy.CurrentBehaviour.GetType() == typeof(EnemyThunderBehaviour))
                     return false; 
             }
             return true;
