@@ -8,6 +8,7 @@ namespace TeamF
     public class Character : MonoBehaviour, IEffectable
     {
         CharacterData Data;
+        public Light BackPackLight;
         public MeshRenderer BackPackRenderer;
         public MeshRenderer CharacterRenderer;
         [HideInInspector]
@@ -142,19 +143,24 @@ namespace TeamF
                 switch (_selectedAmmoIndex)         // Colora lo zaino del character
                 {
                     case 1:
-                        BackPackRenderer.material.color = Color.red;
+                        BackPackLight.color = Color.red;
+                        BackPackRenderer.material.SetColor("_EmissionColor", Color.red);
                         break;
                     case 2:
-                        BackPackRenderer.material.color = Color.blue;
+                        BackPackLight.color = Color.blue;
+                        BackPackRenderer.material.SetColor("_EmissionColor", Color.blue);
                         break;
                     case 3:
-                        BackPackRenderer.material.color = Color.green;
+                        BackPackLight.color = Color.green;
+                        BackPackRenderer.material.SetColor("_EmissionColor", Color.green);
                         break;
                     case 4:
-                        BackPackRenderer.material.color = Color.yellow;
+                        BackPackLight.color = Color.yellow;
+                        BackPackRenderer.material.SetColor("_EmissionColor", Color.yellow);
                         break;
                     default:
-                        BackPackRenderer.material.color = Color.grey;
+                        BackPackLight.color = Color.white;
+                        BackPackRenderer.material.SetColor("_EmissionColor", Color.white);
                         break;
                 }
             }
