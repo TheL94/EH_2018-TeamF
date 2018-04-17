@@ -14,13 +14,13 @@ MonoBehaviour:
   StartDelayTime: 1
   DelayHordes: 5
   MaxEnemiesInScene: 20
-  BlockSpawnNormal: 1
+  BlockSpawnNormal: 0
   MaxNormalEnemies: 2
   MinNormalEnemies: 1
   BlockSpawnElemental: 0
   MaxElementalsEnemies: 2
   MinElementalsEnemies: 1
-  BlockSpawnRanged: 1
+  BlockSpawnRanged: 0
   MaxRangedEnemies: 2
   MinRangedEnemies: 1
   EnemiesData:
