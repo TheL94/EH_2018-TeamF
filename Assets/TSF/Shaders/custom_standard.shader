@@ -282,7 +282,6 @@ Shader "Custom_outline/custom_standard"
 			}
 		}
 
-    psssfpiojafsgijohp arepijghweirjhg
         // ------------------------------------------------------------------
         //  Base forward pass (directional light, emission, lightmaps, ...)
         Pass

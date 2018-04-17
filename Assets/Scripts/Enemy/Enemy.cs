@@ -155,38 +155,43 @@ namespace TeamF
                     switch (_animState)
                     {
                         case AnimationState.Idle:
-                            Animator.CrossFade("Idle", 0.3f);
+                            Animator.SetInteger("State", 0);
                             break;
-                        case AnimationState.Walk:
-                            Animator.CrossFade("walk", 0.3f);
+                        case AnimationState.ChargeAttack:
+                            Animator.SetInteger("State", 1);
                             break;
-                        case AnimationState.Run:
-                            Animator.CrossFade("run", 0.3f);
-                            break;
-                        case AnimationState.MeleeAttack:
-                            Animator.CrossFade("melee", 0.3f);
-                            break;
-                        case AnimationState.RangedAttack:
-                            Animator.CrossFade("range", 0.3f);
+                        case AnimationState.Attack:
+                            Animator.SetInteger("State", 2);
                             break;
                         case AnimationState.Damage:
-                            Animator.CrossFade("damage", 0.3f);
+                            Animator.SetInteger("State", 3);
                             break;
                         case AnimationState.Death:
-                            Animator.CrossFade("death", 0.3f);
+                            Animator.SetInteger("State", 4);
                             break;
                     }
                 }
             }
         }
 
+        bool _isWalking;
+        public bool IsWalking {
+            get { return _isWalking; }
+            set
+            {
+                if (_isWalking == value)
+                    return;
+
+                _isWalking = value;
+                Animator.SetBool("IsWalking", _isWalking);
+            }
+        }
+
         public enum AnimationState
         {
             Idle = 0,
-            Walk,
-            Run,
-            MeleeAttack,
-            RangedAttack,
+            ChargeAttack,
+            Attack,
             Damage,
             Death,
         }
