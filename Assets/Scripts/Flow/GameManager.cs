@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityFramework.Pool;
 
 namespace TeamF
 {
@@ -22,7 +23,9 @@ namespace TeamF
         public GameObject UIManagerPrefab;
         [HideInInspector]
         public Player Player;
-  
+
+        public PoolManager PoolMng { get; private set; }
+
         public float KillsToWin;
         public float ComboCounterTimer;
 
@@ -70,6 +73,9 @@ namespace TeamF
             GetComponent<ComboCounter>().Init(ComboCounterTimer);
             EnemyMng = GetComponent<EnemyManager>();
             AmmoController = GetComponent<AmmoCratesController>();
+            PoolMng = GetComponentInChildren<PoolManager>();
+
+            PoolMng.Init();
 
             LevelMng = new LevelManager(KillsToWin);
 
