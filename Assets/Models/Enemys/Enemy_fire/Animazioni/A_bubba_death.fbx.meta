@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 411ac7d558af75649a7c1d2bfd4030c7
-timeCreated: 1523542279
+guid: e884da854c2757840b18943fd79de72c
+timeCreated: 1524072199
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -139,20 +139,12 @@ ModelImporter:
     400128: testa
     400130: Torso
     400132: torso
-    2100000: lambert1
-    2100002: lambert2
-    2300000: //RootNode
-    2300002: SK_Bubba_Fuoco1
-    3300000: //RootNode
-    3300002: SK_Bubba_Fuoco1
-    4300000: SK_Bubba_Fuoco:polySurface1
-    4300002: SK_Bubba_Fuoco1
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: lambert1
-    second: {fileID: 2100000, guid: 01b7ba7866e999146aa00fdf2e44a742, type: 2}
+    2100000: lambert2
+    4300000: SK_Bubba_Fuoco1
+    7400000: death
+    9500000: //RootNode
+    13700000: SK_Bubba_Fuoco1
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
@@ -226,7 +218,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
