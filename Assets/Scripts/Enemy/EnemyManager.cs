@@ -119,6 +119,9 @@ namespace TeamF
                 if (enemiesSpawned[i].ID == _idEnemy)
                 {
                     Enemy enemyToDestroy = enemiesSpawned[i];
+                    enemyToDestroy.gameObject.SetActive(false);
+                    GameManager.I.PoolMng.ResetObject(enemyToDestroy.Data.GraphicID);
+
                     enemiesSpawned.Remove(enemiesSpawned[i]);
                     Destroy(enemyToDestroy);
                     return;

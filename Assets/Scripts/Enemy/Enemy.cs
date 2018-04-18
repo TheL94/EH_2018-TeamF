@@ -35,8 +35,9 @@ namespace TeamF
             Data = _data;
             ID = _id;
             Life = Data.Life;
-            
-            Instantiate(Data.GraphicPrefab, transform.position, transform.rotation, transform);
+
+            //Instantiate(GameManager.I.PoolMng.GetObject(Data.GraphicID), transform.position, transform.rotation, transform);
+            GetGraphic();
 
             Agent = GetComponent<NavMeshAgent>();
             AI_Enemy = GetComponent<AI_Enemy>();
@@ -47,6 +48,13 @@ namespace TeamF
 
             AI_Enemy.InitialDefaultState = Data.InitialState;
             AI_Enemy.IsActive = true;
+        }
+
+        void GetGraphic()
+        {
+            GameObject graphic = GameManager.I.PoolMng.GetObject(Data.GraphicID);
+            graphic.transform.position = transform.position;
+            graphic.transform.SetParent(transform);
         }
 
         #region IEnemyBehaviour

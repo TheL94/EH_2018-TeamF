@@ -19,8 +19,7 @@ MonoBehaviour:
   AimApproximationAngle: 20
   ContainerPrefab: {fileID: 1267129680638450, guid: 25dfe3bec1371e14d87332e9234c5ef8,
     type: 2}
-  GraphicPrefab: {fileID: 1607081544167904, guid: 0d0e7f88499723c4dabe8d6ca3025bcc,
-    type: 2}
+  GraphicID: Melee
   EnemyType: 0
   Life: 10
   Speed: 5.3

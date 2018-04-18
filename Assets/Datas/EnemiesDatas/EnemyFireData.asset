@@ -19,8 +19,7 @@ MonoBehaviour:
   AimApproximationAngle: 20
   ContainerPrefab: {fileID: 1267129680638450, guid: 25dfe3bec1371e14d87332e9234c5ef8,
     type: 2}
-  GraphicPrefab: {fileID: 1507419834035002, guid: 49c627737dd205b4585d2dd17db5e669,
-    type: 2}
+  GraphicID: Fire
   EnemyType: 2
   Life: 10
   Speed: 5.3

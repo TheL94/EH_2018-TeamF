@@ -9,8 +9,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 66f74fca0ddcb0545bb79818f64038f8, type: 3}
-  m_Name: EnemyThunder
+  m_Name: PoolEnemyFire
   m_EditorClassIdentifier: 
-  ID: Thunder
-  Graphic: {fileID: 1273753816426612, guid: 4d1d8d786b8e02046ab6341251b35f46, type: 2}
-  Quantity: 10
+  ID: Fire
+  Graphic: {fileID: 1507419834035002, guid: 49c627737dd205b4585d2dd17db5e669, type: 2}
+  Quantity: 15

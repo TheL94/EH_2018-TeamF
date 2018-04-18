@@ -19,8 +19,7 @@ MonoBehaviour:
   AimApproximationAngle: 20
   ContainerPrefab: {fileID: 1267129680638450, guid: 25dfe3bec1371e14d87332e9234c5ef8,
     type: 2}
-  GraphicPrefab: {fileID: 1396582309163458, guid: a3b280d73d927f24c87831fab5c48f39,
-    type: 2}
+  GraphicID: Water
   EnemyType: 3
   Life: 10
   Speed: 5.3
