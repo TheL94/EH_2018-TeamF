@@ -17,6 +17,7 @@ namespace TeamF
             private set
             {
                 SceneManager.UnloadSceneAsync(_level);
+                CheckSceneInGame();
                 _level = value;
                 SceneManager.LoadScene(_level, LoadSceneMode.Additive);
             }
@@ -27,6 +28,7 @@ namespace TeamF
         {
             PointsToWin = _pointsToWin;
             Events_LevelController.OnKillPointChanged += UpdateRoundPoints;
+            CheckSceneInGame();
             SceneManager.LoadScene(Level, LoadSceneMode.Additive);
         }
 
@@ -56,6 +58,19 @@ namespace TeamF
                 Level++;
         }
         #endregion
+
+        void CheckSceneInGame()
+        {
+            if(SceneManager.sceneCount > 1)
+            {
+                for (int i = 0; i < SceneManager.sceneCount; i++)
+                {
+                    if (i == 0)
+                        return;
+                    SceneManager.UnloadSceneAsync(i);
+                }
+            }
+        }
 
         bool CheckVictory()
         {
