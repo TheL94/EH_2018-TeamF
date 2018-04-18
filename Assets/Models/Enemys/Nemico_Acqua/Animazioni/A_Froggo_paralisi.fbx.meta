@@ -1,68 +1,94 @@
 fileFormatVersion: 2
-guid: 64563704ff0814b42861837be418e802
-timeCreated: 1523262835
+guid: cea1edcdac0a48447b7bbea3603f0d67
+timeCreated: 1524062631
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
-    100002: C_general
-    100004: Chest
-    100006: Chest_C
-    100008: head
-    100010: Head_C
-    100012: L_foot
-    100014: L_foot_C
-    100016: L_hand
-    100018: L_hand_C
-    100020: L_sholuder
-    100022: L_shoulder_C
-    100024: mounth
-    100026: Pelvis
-    100028: Pelvis_C
-    100030: R_foot
-    100032: R_foot_C
-    100034: R_hand
-    100036: R_Hand_C
-    100038: R_sholuder
-    100040: R_shoulder_C
-    100042: Sharky_mesh
+    100002: bocca
+    100004: bocca 1
+    100006: centrale
+    100008: D_gamba
+    100010: D_ginocchio
+    100012: D_gomito
+    100014: D_gomito 1
+    100016: D_mano
+    100018: D_mano 1
+    100020: D_piede
+    100022: D_piede 1
+    100024: D_polso
+    100026: D_spalla
+    100028: D_spalla 1
+    100030: D_tallone
+    100032: generale
+    100034: lab_inf
+    100036: lab_sup
+    100038: Mostro_acqua
+    100040: pancia
+    100042: pancia 1
+    100044: root
+    100046: S_gamba
+    100048: S_ginocchio
+    100050: S_gomito
+    100052: S_gomito 1
+    100054: S_mano
+    100056: S_mano 1
+    100058: S_piede
+    100060: S_piede 1
+    100062: S_polso
+    100064: S_spalla
+    100066: S_spalla 1
+    100068: S_tallone
+    100070: testa
+    100072: testa 1
+    100074: torace
+    100076: torso
     400000: //RootNode
-    400002: C_general
-    400004: Chest
-    400006: Chest_C
-    400008: head
-    400010: Head_C
-    400012: L_foot
-    400014: L_foot_C
-    400016: L_hand
-    400018: L_hand_C
-    400020: L_sholuder
-    400022: L_shoulder_C
-    400024: mounth
-    400026: Pelvis
-    400028: Pelvis_C
-    400030: R_foot
-    400032: R_foot_C
-    400034: R_hand
-    400036: R_Hand_C
-    400038: R_sholuder
-    400040: R_shoulder_C
-    400042: Sharky_mesh
-    2100000: lambert1
-    2100002: Sharky_mat
-    2300000: //RootNode
-    2300002: Sharky_mesh
-    3300000: //RootNode
-    3300002: Sharky_mesh
-    4300000: pCube20
-    4300002: Sharky_mesh
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: lambert1
-    second: {fileID: 2100000, guid: d73bc94bcb8dae9408592666f1b77328, type: 2}
+    400002: bocca
+    400004: bocca 1
+    400006: centrale
+    400008: D_gamba
+    400010: D_ginocchio
+    400012: D_gomito
+    400014: D_gomito 1
+    400016: D_mano
+    400018: D_mano 1
+    400020: D_piede
+    400022: D_piede 1
+    400024: D_polso
+    400026: D_spalla
+    400028: D_spalla 1
+    400030: D_tallone
+    400032: generale
+    400034: lab_inf
+    400036: lab_sup
+    400038: Mostro_acqua
+    400040: pancia
+    400042: pancia 1
+    400044: root
+    400046: S_gamba
+    400048: S_ginocchio
+    400050: S_gomito
+    400052: S_gomito 1
+    400054: S_mano
+    400056: S_mano 1
+    400058: S_piede
+    400060: S_piede 1
+    400062: S_polso
+    400064: S_spalla
+    400066: S_spalla 1
+    400068: S_tallone
+    400070: testa
+    400072: testa 1
+    400074: torace
+    400076: torso
+    2100000: Mat_Mostro_Acqua
+    4300000: Mostro_acqua
+    7400000: _paralisi
+    9500000: //RootNode
+    13700000: Mostro_acqua
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
@@ -136,7 +162,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
