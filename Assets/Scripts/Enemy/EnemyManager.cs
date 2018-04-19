@@ -131,6 +131,8 @@ namespace TeamF
 
         void DeleteAllEnemies()
         {
+            GameManager.I.PoolMng.ForcePoolReset();
+
             for (int i = 0; i < enemiesSpawned.Count; i++)
             {
                 Destroy(enemiesSpawned[i].gameObject);
