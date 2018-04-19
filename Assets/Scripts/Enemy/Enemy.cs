@@ -13,6 +13,9 @@ namespace TeamF
     {
         public EnemyGenericData Data { get; private set; }
         public string ID { get; private set; }
+
+        #region IGetSlower
+        public bool IsSlowed { get; set; }
         public float MovementSpeed
         {
             get { return Agent.speed; }
@@ -23,6 +26,7 @@ namespace TeamF
 
             }
         }
+        #endregion
 
         public NavMeshAgent Agent { get; private set; }
         public IDamageable Target { get; set; }

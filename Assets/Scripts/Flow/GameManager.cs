@@ -42,7 +42,6 @@ namespace TeamF
         {
             flowMng = new FlowManager();
             ChangeFlowState(FlowState.InitGame);
-            // NELLO START NON CI INFILARE NIENTE ! USA L'AZIONE DI LOADING
         }
 
         private void Update()

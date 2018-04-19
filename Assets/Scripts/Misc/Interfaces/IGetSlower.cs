@@ -6,6 +6,7 @@ namespace TeamF
 {
     public interface IGetSlower
     {
+        bool IsSlowed { get; set; }
         float MovementSpeed { get; set; }
     }
 }

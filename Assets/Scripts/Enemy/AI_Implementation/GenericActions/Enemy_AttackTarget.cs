@@ -22,7 +22,6 @@ namespace TeamF.AI
                     RangedAttack((_controller as AI_Enemy).Enemy);
                     break;
             }
-            Debug.Log((_controller as AI_Enemy).Enemy.Data.EnemyType + " / " + AttackType);
             return true;
         }
 
