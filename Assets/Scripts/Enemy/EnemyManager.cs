@@ -120,7 +120,7 @@ namespace TeamF
                 {
                     Enemy enemyToDestroy = enemiesSpawned[i];
                     enemyToDestroy.gameObject.SetActive(false);
-                    GameManager.I.PoolMng.ResetObject(enemyToDestroy.Data.GraphicID);
+                    GameManager.I.PoolMng.UpdatePool(enemyToDestroy.Data.GraphicID);
 
                     enemiesSpawned.Remove(enemiesSpawned[i]);
                     Destroy(enemyToDestroy);
