@@ -182,7 +182,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Datas:
+  - {fileID: 11400000, guid: ab03e7172d41f7041a1551308a46cb3f, type: 2}
+  - {fileID: 11400000, guid: c644e117cebf12d40a1997770cd1c60b, type: 2}
   - {fileID: 11400000, guid: b2796ef20f54de24b957271e121f9f44, type: 2}
+  - {fileID: 11400000, guid: 1996c79aaea403a42bf207e4b6adae0b, type: 2}
+  - {fileID: 11400000, guid: b4e1cbe1c57b60541ad14bd4a0aa9a8c, type: 2}
+  - {fileID: 11400000, guid: 5cf6079d41bcf3f45beefdf50228f797, type: 2}
+  - {fileID: 11400000, guid: 8fd17068539be91449f9cdd7d717d275, type: 2}
 --- !u!114 &114973790194786270
 MonoBehaviour:
   m_ObjectHideFlags: 1
