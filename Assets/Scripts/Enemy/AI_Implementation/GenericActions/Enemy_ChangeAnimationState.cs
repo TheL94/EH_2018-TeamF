@@ -8,6 +8,8 @@ namespace TeamF.AI
     [CreateAssetMenu(menuName = "AI/NewAction/Enemy_ChangeAnimationState")]
     public class Enemy_ChangeAnimationState : AI_Action
     {
+        public bool SetOnlyMovementAnim;
+        public bool IsWalking;
         public Enemy.AnimationState AnimationState;
 
         protected override bool Act(AI_Controller _controller)
@@ -18,7 +20,12 @@ namespace TeamF.AI
         bool ChangeAnimationState(Enemy _enemy)
         {
             if (_enemy.Animator != null)
-                _enemy.AnimState = AnimationState;
+            {
+                if (SetOnlyMovementAnim)
+                    _enemy.IsWalking = IsWalking;
+                else
+                    _enemy.AnimState = AnimationState;
+            }
             return true;
         }
     }
