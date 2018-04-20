@@ -10,6 +10,7 @@ namespace TeamF
         public float Damage;
         protected override void DoInit()
         {
+            base.DoInit();
             transform.DOScale(3, 2);
         }
 

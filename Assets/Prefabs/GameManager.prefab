@@ -188,7 +188,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1996c79aaea403a42bf207e4b6adae0b, type: 2}
   - {fileID: 11400000, guid: b4e1cbe1c57b60541ad14bd4a0aa9a8c, type: 2}
   - {fileID: 11400000, guid: 5cf6079d41bcf3f45beefdf50228f797, type: 2}
+  - {fileID: 11400000, guid: 34add6ccbe3b2224eb5fcbc562eb2bc6, type: 2}
+  - {fileID: 11400000, guid: 8eacde7974a828941b63454c2a5523b5, type: 2}
   - {fileID: 11400000, guid: 8fd17068539be91449f9cdd7d717d275, type: 2}
+  - {fileID: 11400000, guid: 9b4e0cd05378db844b84d661cd332723, type: 2}
+  - {fileID: 11400000, guid: 30fbfa07a28165e4d8d71f8cd53a3cf7, type: 2}
+  - {fileID: 11400000, guid: bc0f46c2a60928e47bd67058da844dc0, type: 2}
 --- !u!114 &114973790194786270
 MonoBehaviour:
   m_ObjectHideFlags: 1
