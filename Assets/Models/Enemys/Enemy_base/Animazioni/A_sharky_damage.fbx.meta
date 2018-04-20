@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 64563704ff0814b42861837be418e802
-timeCreated: 1523262835
+guid: 3f699b5928b5cf8468278ffb5a87ce12
+timeCreated: 1524062817
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -49,20 +49,12 @@ ModelImporter:
     400038: R_sholuder
     400040: R_shoulder_C
     400042: Sharky_mesh
-    2100000: lambert1
-    2100002: Sharky_mat
-    2300000: //RootNode
-    2300002: Sharky_mesh
-    3300000: //RootNode
-    3300002: Sharky_mesh
-    4300000: pCube20
-    4300002: Sharky_mesh
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: lambert1
-    second: {fileID: 2100000, guid: d73bc94bcb8dae9408592666f1b77328, type: 2}
+    2100000: Sharky_mat
+    4300000: Sharky_mesh
+    7400000: damage
+    9500000: //RootNode
+    13700000: Sharky_mesh
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
@@ -136,7 +128,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
