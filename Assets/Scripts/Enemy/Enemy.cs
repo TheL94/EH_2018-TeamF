@@ -150,63 +150,9 @@ namespace TeamF
         #endregion
 
         #region Animation
+
         public Animator Animator { get; private set; }
 
-        private AnimationState _animState;
-        public AnimationState AnimState
-        {
-            get { return _animState; }
-            set
-            {
-                if (_animState == value)
-                    return;
-
-                _animState = value;
-                if (Animator != null)
-                {
-                    switch (_animState)
-                    {
-                        case AnimationState.Idle:
-                            Animator.SetInteger("State", 0);
-                            break;
-                        case AnimationState.ChargeAttack:
-                            Animator.SetInteger("State", 1);
-                            break;
-                        case AnimationState.Attack:
-                            Animator.SetInteger("State", 2);
-                            break;
-                        case AnimationState.Damage:
-                            Animator.SetInteger("State", 3);
-                            break;
-                        case AnimationState.Death:
-                            Animator.SetInteger("State", 4);
-                            break;
-                    }
-                }
-            }
-        }
-
-        bool _isWalking;
-        public bool IsWalking {
-            get { return _isWalking; }
-            set
-            {
-                if (_isWalking == value)
-                    return;
-
-                _isWalking = value;
-                Animator.SetBool("IsWalking", _isWalking);
-            }
-        }
-
-        public enum AnimationState
-        {
-            Idle = 0,
-            ChargeAttack,
-            Attack,
-            Damage,
-            Death,
-        }
         #endregion
 
         #region Enemy Delegate
