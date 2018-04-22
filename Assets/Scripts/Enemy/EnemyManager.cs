@@ -62,13 +62,26 @@ namespace TeamF
         #region Enemy
         /// <summary>
         /// Cancella il nemico dalla lista di nemici spawnati, aggiunge il valore del nemico al contatore dei nemici uccisi, 
-        /// se la partita è vinta avvisa il gamemanager
+        /// se la partita è vinta avvisa il gamemanager.
         /// </summary>
         /// <param name="_enemyKilled"></param>
         public virtual void OnEnemyDeath(Enemy _enemyKilled)
         {
             Events_LevelController.UpdateKillPoints(_enemyKilled.Data.EnemyValue);
             DeleteSpecificEnemy(_enemyKilled.ID);
+        }
+
+        /// <summary>
+        /// Funizonche setta lo stato acceso o spento di tutte le AI in gioco.
+        /// </summary>
+        /// <param name="_value"></param>
+        public void ToggleAllAIs(bool _value)
+        {
+            foreach (Enemy enemy in enemiesSpawned)
+            {
+                enemy.AI_Enemy.IsActive = _value;
+                enemy.Agent.enabled = _value;
+            }
         }
 
         public virtual IDamageable GetTarget(Enemy _enemy)

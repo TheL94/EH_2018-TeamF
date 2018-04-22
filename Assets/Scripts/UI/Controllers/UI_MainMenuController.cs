@@ -6,8 +6,6 @@ namespace TeamF
 {
     public class UI_MainMenuController : MenuBase
     {
-        
-
         public void Init()
         {
             GameManager.I.UIMng.CurrentMenu = this;
@@ -21,15 +19,15 @@ namespace TeamF
             {
                 case 0:
                     //Start game;
-                    GameManager.I.ChangeFlowState(FlowState.EnterGameplay);
+                    GameManager.I.CurrentState = FlowState.ManageMap;
                     break;
                 case 1:
                     //Scena test
-                    GameManager.I.EnterValuesMenu();
+                    GameManager.I.CurrentState = FlowState.InitTestScene;                   
                     break;
                 case 2:
                     //ExitGame;
-                    GameManager.I.CloseApplicationActions();
+                    GameManager.I.CurrentState = FlowState.QuitGame;
                     break;
             }
         }

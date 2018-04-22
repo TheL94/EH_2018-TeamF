@@ -74,6 +74,7 @@ namespace TeamF
 
             GameManager.I.Player.CharacterData = newData;
         }
+
         /// <summary>
         /// Setta titti i dati dei nemici che ha l'enemy spawner controller con quelli inseriti negli input field
         /// </summary>
@@ -109,11 +110,8 @@ namespace TeamF
                     SetEnemiesValue();
                     EnemyManager mng = GameManager.I.EnemyMng;
                     (mng as EnemySpawner_TS).FollowPlayer = FollowPlayerToggle.isOn;
-                    GameManager.I.ChangeFlowState(FlowState.EnterTestScene);
+                    GameManager.I.CurrentState = FlowState.TestGameplay;
                     break;
-                //case 1:
-                //    GameManager.I.MenuActions();
-                //    break;
             }
         }
     }

@@ -1,9 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
 
 namespace TeamF
 {
@@ -12,17 +10,18 @@ namespace TeamF
         public Text GameOverText;
         public GameObject NextRoundButton;
 
-        public void Init(bool _isWin)
+        public void Init(LevelEndingStaus _levelStaus)
         {
-            if (_isWin)
+            switch (_levelStaus)
             {
-                GameOverText.text = "Round Won";
-                NextRoundButton.SetActive(true);
-            }
-            else
-            {
-                GameOverText.text = "Game Over";
-                NextRoundButton.SetActive(false);
+                case LevelEndingStaus.Won:
+                    GameOverText.text = "Round Won";
+                    NextRoundButton.SetActive(true);
+                    break;
+                case LevelEndingStaus.Lost:
+                    GameOverText.text = "Game Over";
+                    NextRoundButton.SetActive(false);
+                    break;
             }
 
             GameManager.I.UIMng.CurrentMenu = this;
@@ -37,12 +36,12 @@ namespace TeamF
                 case 0:
                     // cambio stato in enter gameplay (*** il livellodeve essere già caricato ***)
                     if (SelectableButtons.Count > 1)
-                        GameManager.I.ChangeFlowState(FlowState.EnterGameplay); 
+                        GameManager.I.CurrentState = FlowState.ManageMap;
                     else
-                        SceneManager.LoadScene(0);
+                        GameManager.I.CurrentState = FlowState.MainMenu;
                     break;
                 case 1:
-                    SceneManager.LoadScene(0);
+                    GameManager.I.CurrentState = FlowState.MainMenu;
                     break;
             }
         }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityFramework.Pool;
 
 namespace TeamF
 {
@@ -10,13 +11,12 @@ namespace TeamF
         public FlowState CurrentState
         {
             get { return _currentState; }
-            private set
+            set
             {
                 if (_currentState != value)
                 {
                     FlowState oldState = _currentState;
-                    _currentState = value;
-                    OnStateChange(_currentState, oldState);
+                    OnStateChange(value, oldState);
                 }
             }
         }
@@ -25,56 +25,247 @@ namespace TeamF
         {
             switch (_newState)
             {
-                case FlowState.InitGame:
-                    GameManager.I.InitGame();
+                #region Regular Flow
+                case FlowState.SetupGame:
+                    if (_oldState == FlowState.None)
+                    {
+                        _currentState = _newState;
+                        SetupGameActions();
+                    }
+                    else
+                    {
+                        Debug.LogWarning("Passaggio di stato non permesso da : " + _oldState + " a : " + _newState);
+                    }
                     break;
-                case FlowState.Menu:
-                    if (_oldState == FlowState.InitGame || _oldState == FlowState.ExitGameplay || _oldState == FlowState.EnterTestScene)
-                        GameManager.I.MenuActions();
+
+                case FlowState.MainMenu:
+                    if (_oldState == FlowState.SetupGame || _oldState == FlowState.EndRound || _oldState == FlowState.Pause || _oldState == FlowState.TestGameplay)
+                    {
+                        _currentState = _newState;
+                        MainMenuActions();
+                    }
+                    else
+                    {
+                        Debug.LogWarning("Passaggio di stato non permesso da : " + _oldState + " a : " + _newState);
+                    }
                     break;
-                case FlowState.EnterGameplay:
-                    if (_oldState == FlowState.Menu || _oldState == FlowState.ExitGameplay)
-                        GameManager.I.EnterGameplayActions();
+
+                case FlowState.ManageMap:
+                    if (_oldState == FlowState.MainMenu || _oldState == FlowState.EndRound)
+                    {
+                        _currentState = _newState;
+                        ManageMapActions();
+                    }
+                    else
+                    {
+                        Debug.LogWarning("Passaggio di stato non permesso da : " + _oldState + " a : " + _newState);
+                    }
                     break;
-                case FlowState.EnterTestScene:
-                    if (_oldState == FlowState.Menu)
-                        GameManager.I.EnterTestSceneActions();
+
+                case FlowState.InitGameplayElements:
+                    if (_oldState == FlowState.ManageMap)
+                    {
+                        _currentState = _newState;
+                        InitGameplayElementsActions();
+                    }
+                    else
+                    {
+                        Debug.LogWarning("Passaggio di stato non permesso da : " + _oldState + " a : " + _newState);
+                    }
                     break;
+
                 case FlowState.Gameplay:
+                    if (_oldState == FlowState.InitGameplayElements || _oldState == FlowState.Pause)
+                    {
+                        _currentState = _newState;
+                        if (_oldState == FlowState.Pause)
+                            PauseActions(false);
+                    }
+                    else
+                    {
+                        Debug.LogWarning("Passaggio di stato non permesso da : " + _oldState + " a : " + _newState);
+                    }
                     break;
+
                 case FlowState.Pause:
-                    GameManager.I.PauseActions();
+                    if (_oldState == FlowState.Gameplay)
+                    {
+                        _currentState = _newState;
+                        PauseActions(true);
+                    }
+                    else
+                    {
+                        Debug.LogWarning("Passaggio di stato non permesso da : " + _oldState + " a : " + _newState);
+                    }
                     break;
-                case FlowState.GameWon:
-                    GameManager.I.GameWonActions();
+
+                case FlowState.EndRound:
+                    if (_oldState == FlowState.Gameplay || _oldState == FlowState.Pause)
+                    {
+                        _currentState = _newState;
+                        EndRoundActions();
+                    }
+                    else
+                    {
+                        Debug.LogWarning("Passaggio di stato non permesso da : " + _oldState + " a : " + _newState);
+                    }
                     break;
-                case FlowState.GameLost:
-                    GameManager.I.GameLostActions();
+
+                case FlowState.QuitGame:
+                    if (_oldState == FlowState.MainMenu || _oldState == FlowState.Pause)
+                    {
+                        _currentState = _newState;
+                        QuitGameActions();
+                    }
+                    else
+                    {
+                        Debug.LogWarning("Passaggio di stato non permesso da : " + _oldState + " a : " + _newState);
+                    }
                     break;
-                case FlowState.ExitGameplay:
-                    if (_oldState == FlowState.GameWon || _oldState == FlowState.GameLost)
-                        GameManager.I.ExitGameplayActions();
+                #endregion
+
+                #region Test Flow
+                case FlowState.InitTestScene:
+                    if (_oldState == FlowState.MainMenu)
+                    {
+                        _currentState = _newState;
+                        InitTestSceneActions();
+                    }
+                    else
+                    {
+                        Debug.LogWarning("Passaggio di stato non permesso da : " + _oldState + " a : " + _newState);
+                    }
                     break;
+
+                case FlowState.TestGameplay:
+                    if (_oldState == FlowState.InitTestScene)
+                    {
+                        _currentState = _newState;
+                    }
+                    else
+                    {
+                        Debug.LogWarning("Passaggio di stato non permesso da : " + _oldState + " a : " + _newState);
+                    }
+                    break;
+                case FlowState.ExitTestScene:
+                    if (_oldState == FlowState.TestGameplay)
+                    {
+                        _currentState = _newState;
+                        ExitTestSceneActions();
+                    }
+                    else
+                    {
+                        Debug.LogWarning("Passaggio di stato non permesso da : " + _oldState + " a : " + _newState);
+                    }
+                    break;
+                    #endregion
             }
         }
 
-        public void ChageState(FlowState _stateToSet)
+        #region Game Flow Actions
+        void SetupGameActions()
         {
-            CurrentState = _stateToSet;
+            GameManager.I.UIMng = GameObject.Instantiate(GameManager.I.UIManagerPrefab, GameManager.I.transform).GetComponentInChildren<UIManager>();
+
+            GameManager.I.PoolMng = GameManager.I.GetComponentInChildren<PoolManager>();
+            GameManager.I.PoolMng.Init();
+
+            GameManager.I.GetComponent<ComboCounter>().Init(GameManager.I.ComboCounterTimer);
+            GameManager.I.EnemyMng = GameManager.I.GetComponent<EnemyManager>();
+            GameManager.I.AmmoController = GameManager.I.GetComponent<AmmoCratesController>();
+
+            if (GameManager.I.LevelMng == null)
+                GameManager.I.LevelMng = new LevelManager(GameManager.I.KillsToWin);
+
+            GameManager.I.Player = GameManager.I.GetComponent<Player>();
+            if (GameManager.I.Player != null)
+                GameManager.I.Player.Init();
+
+            CurrentState = FlowState.MainMenu;
         }
+
+        void MainMenuActions()
+        {
+            GameManager.I.UIMng.MainMenuActions();
+        }
+
+        void ManageMapActions()
+        {
+            GameManager.I.LevelMng.Level++;
+        }
+
+        void InitGameplayElementsActions()
+        {
+            if (GameManager.I.Player != null)
+                GameManager.I.Player.InitCharacter();
+
+            GameManager.I.EnemyMng.Init(GameManager.I.Player.Character);
+            GameManager.I.UIMng.GameplayActions();
+            GameManager.I.AmmoController.Init();
+            CurrentState = FlowState.Gameplay;
+        }
+
+        void PauseActions(bool _isGamePaused)
+        {
+            GameManager.I.EnemyMng.ToggleAllAIs(!_isGamePaused);
+            if(_isGamePaused)
+                GameManager.I.UIMng.PauseActions();
+            else
+                GameManager.I.UIMng.GameplayActions();
+        }
+
+        void EndRoundActions()
+        {
+            GameManager.I.EnemyMng.EndGameplayActions();
+
+            if(GameManager.I.LevelMng.EndingStaus == LevelEndingStaus.Interrupted)
+            {
+                CurrentState = FlowState.MainMenu;
+                return;
+            }
+
+            GameManager.I.UIMng.GameOverActions(GameManager.I.LevelMng.EndingStaus);
+        }
+
+        void QuitGameActions()
+        {
+            Application.Quit();
+        }
+        #endregion
+
+        #region Test Flow Actions
+        void InitTestSceneActions()
+        {
+            GameManager.I.UIMng.EnableValuesPanel(GameManager.I.Player.CharacterData, GameManager.I.EnemyMng.Data.EnemiesData[0]);               // Farsi restituire i dati dal data manager
+
+            GameObject tempobj = GameObject.Instantiate(Resources.Load("TestScenePrefab/EnemyManager_TS"), GameManager.I.transform) as GameObject;
+            GameManager.I.EnemyMng = tempobj.GetComponent<EnemySpawner_TS>();
+            GameManager.I.EnemyMng.InitDataForTestScene();
+            GameManager.I.LevelMng.Level++;
+        }
+
+        void ExitTestSceneActions()
+        {
+            GameManager.I.EnemyMng.EndGameplayActions();
+            GameManager.I.LevelMng.Level--;
+        }
+        #endregion
     }
 
     public enum FlowState
     {
-        None,
-        InitGame,
-        Menu,
-        EnterGameplay,
-        EnterTestScene,
+        None = 0,
+        SetupGame,
+        MainMenu,
+        ManageMap,
+        InitGameplayElements,
         Gameplay,
         Pause,
-        GameWon,
-        GameLost,
-        ExitGameplay,
+        EndRound,
+        QuitGame,
+
+        InitTestScene,
+        TestGameplay,
+        ExitTestScene
     }
 }
