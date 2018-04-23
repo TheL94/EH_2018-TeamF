@@ -16,9 +16,9 @@ namespace TeamF.AI
         bool IsStillParalized(Enemy _enemy)
         {
             if(_enemy.IsParalized)
-                return false;
+                return true;
 
-            return true;
+            return false;
         }
     }
 }
