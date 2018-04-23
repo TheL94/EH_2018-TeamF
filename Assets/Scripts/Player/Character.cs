@@ -30,6 +30,8 @@ namespace TeamF
 
         Player player;
 
+        FadeToMe FadeComponent;
+
         bool isInvincible;
         #region API
         public void Init(Player _player, CharacterData _data,  bool _isTestScene = false)
@@ -40,6 +42,8 @@ namespace TeamF
             Life = Data.Life;
             IsParalized = false;
 
+            FadeComponent = GetComponentInChildren<FadeToMe>();
+            FadeComponent.Init();
             weaponController = GetComponentInChildren<WeaponController>();
             movement = GetComponent<Movement>();
 
