@@ -46,12 +46,13 @@ namespace TeamF
                 {
                     _level = _newLevel;
                     async.allowSceneActivation = true;
-                    GameManager.I.CurrentState++;
+                    GameManager.I.CurrentState = FlowState.InitGameplayElements;
                 };
             }
             else if (_newLevel >= SceneManager.sceneCountInBuildSettings)
             {
                 _level = 0;
+                GameManager.I.CurrentState = FlowState.MainMenu;
             }
         }
         #endregion
