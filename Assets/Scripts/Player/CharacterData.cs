@@ -20,12 +20,6 @@ namespace TeamF
         public DashStruct DashValues;
         #endregion
 
-        #region Weapon
-        [Header("Weapon")]
-        public float BulletSpeed;
-        public float Ratio;
-        #endregion
-
         //#region Bullet
         //public List<BulletData> BulletDatas = new List<BulletData>();
         //#endregion

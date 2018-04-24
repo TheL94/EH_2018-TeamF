@@ -53,7 +53,8 @@ namespace TeamF
         /// </summary>
         void CreateBullet(BulletData _bulletData, Transform _barrel)
         {
-            GameObject bullPrefab = Instantiate(weaponData.BulletContainerPrefab, _barrel.position, _barrel.rotation);
+            //GameObject bullPrefab = Instantiate(weaponData.BulletContainerPrefab, _barrel.position, _barrel.rotation);
+            GameObject bullPrefab = Instantiate(_bulletData.BulletContainerPrefab, _barrel.position, _barrel.rotation);
 
             Bullet bull = InstantiateBulletBehaviour(bullPrefab);
 
