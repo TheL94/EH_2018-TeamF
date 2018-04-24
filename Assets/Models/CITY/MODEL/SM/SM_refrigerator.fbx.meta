@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: cce00155c324b4a42b8efd1d6b1e2d86
-timeCreated: 1524090988
+guid: edf43b6d9d2373a42b571f094ed32770
+timeCreated: 1524169570
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -10,13 +10,8 @@ ModelImporter:
     2100000: M_city_palette
     2300000: //RootNode
     3300000: //RootNode
-    4300000: SM_city_tree_A
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: M_city_palette
-    second: {fileID: 2100000, guid: 49a83adcef4213a418c5162d7d8d7418, type: 2}
+    4300000: polySurface144
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0

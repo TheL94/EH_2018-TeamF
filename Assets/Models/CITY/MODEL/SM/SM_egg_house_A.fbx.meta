@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 43c5b166ccd0e064abb73be3d7eac573
-timeCreated: 1524090988
+guid: 3fa8c9880de2b674ea29b45da505ccc8
+timeCreated: 1524125213
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -11,7 +11,12 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: SM_egg_house
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_city_palette
+    second: {fileID: 2100000, guid: 49a83adcef4213a418c5162d7d8d7418, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -46,10 +51,10 @@ ModelImporter:
     addColliders: 0
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 1
-    importLights: 1
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0

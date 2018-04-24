@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: cce00155c324b4a42b8efd1d6b1e2d86
-timeCreated: 1524090988
+guid: 653325f4408061e4f86e8f7f7f522cca
+timeCreated: 1524429856
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -10,7 +10,7 @@ ModelImporter:
     2100000: M_city_palette
     2300000: //RootNode
     3300000: //RootNode
-    4300000: SM_city_tree_A
+    4300000: pCylinder88
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -51,10 +51,10 @@ ModelImporter:
     addColliders: 0
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 1
-    importLights: 1
-    swapUVChannels: 0
-    generateSecondaryUV: 0
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 1
+    generateSecondaryUV: 1
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
@@ -71,7 +71,7 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
-  importAnimation: 1
+  importAnimation: 0
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2

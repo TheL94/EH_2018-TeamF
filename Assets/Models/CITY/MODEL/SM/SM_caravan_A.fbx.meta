@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: cce00155c324b4a42b8efd1d6b1e2d86
-timeCreated: 1524090988
+guid: 09d5cbf11f3692540aab40d4624672eb
+timeCreated: 1524151382
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -10,7 +10,7 @@ ModelImporter:
     2100000: M_city_palette
     2300000: //RootNode
     3300000: //RootNode
-    4300000: SM_city_tree_A
+    4300000: SM_caravan_A
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -51,10 +51,10 @@ ModelImporter:
     addColliders: 0
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 1
-    importLights: 1
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0

@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: cce00155c324b4a42b8efd1d6b1e2d86
-timeCreated: 1524090988
+guid: 0f821d35d12e76a44a0688b359481e37
+timeCreated: 1524169570
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -8,15 +8,21 @@ ModelImporter:
     100000: //RootNode
     400000: //RootNode
     2100000: M_city_palette
+    2100002: lambert2
     2300000: //RootNode
     3300000: //RootNode
-    4300000: SM_city_tree_A
+    4300000: polySurface142
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: M_city_palette
     second: {fileID: 2100000, guid: 49a83adcef4213a418c5162d7d8d7418, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert2
+    second: {fileID: 2100000, guid: 1876862bf9e4fe54aa7a1620b60a8817, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -51,10 +57,10 @@ ModelImporter:
     addColliders: 0
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 1
-    importLights: 1
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
@@ -71,7 +77,7 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
-  importAnimation: 1
+  importAnimation: 0
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2
