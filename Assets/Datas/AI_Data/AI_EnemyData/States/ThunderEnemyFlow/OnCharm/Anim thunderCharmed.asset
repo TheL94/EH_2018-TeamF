@@ -11,4 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41e3d64deee77d649b8572271a3e5103, type: 3}
   m_Name: Anim thunderCharmed
   m_EditorClassIdentifier: 
-  Actions: []
+  Actions:
+  - Delay: 0
+    Loop: 0
+    Action: {fileID: 11400000, guid: 4b5325d7bfb86e440b676fb0376634bf, type: 2}
+    OnSuccess: {fileID: 11400000, guid: 360923539bc65434a9d05811cd41d426, type: 2}
+    OnFailure: {fileID: 0}

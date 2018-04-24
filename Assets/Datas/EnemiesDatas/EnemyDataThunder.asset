@@ -11,10 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 761ff678fe32dff46beefa12330fe2ec, type: 3}
   m_Name: EnemyDataThunder
   m_EditorClassIdentifier: 
-  InitialState: {fileID: 11400000, guid: d00f247d61e011349ab3e16276141d5f, type: 2}
-  CharmedState: {fileID: 11400000, guid: 90a1fcc0a645d914eba930a3241849e6, type: 2}
-  ParalizedState: {fileID: 11400000, guid: b6cc0f5354b6c8440b0a5f7429ad1ef7, type: 2}
-  DamageState: {fileID: 11400000, guid: 2fc73392a2976904db987f5c4774976a, type: 2}
+  InitialState: {fileID: 11400000, guid: 51026d570471a68469236a3788b4efbe, type: 2}
+  CharmedState: {fileID: 11400000, guid: d61be8897e993c647845e0f46fa76471, type: 2}
+  ParalizedState: {fileID: 11400000, guid: 66f751faaa17e7a43b49ce8c19c366cf, type: 2}
+  DamageState: {fileID: 11400000, guid: afa52ab5d4812b64883808973aaa3fbf, type: 2}
   StoppingDistance: 0.5
   AimApproximationAngle: 20
   ContainerPrefab: {fileID: 1267129680638450, guid: 25dfe3bec1371e14d87332e9234c5ef8,
