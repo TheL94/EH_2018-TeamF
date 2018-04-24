@@ -32,6 +32,8 @@ namespace TeamF
         public InputField Enemy_AttackRange;
         public Toggle FollowPlayerToggle;
         #endregion
+
+        public InputField SceneToLoad;
         #endregion
 
         public void Init(CharacterData _characterData, EnemyGenericData _enemyData)
@@ -50,6 +52,8 @@ namespace TeamF
             Enemy_Damage.text = oldEnemyData.MeleeDamage.ToString();
             Enemy_Speed.text = oldEnemyData.Speed.ToString();
             Enemy_AttackRange.text = oldEnemyData.MeleeDamageRange.ToString();
+
+            SceneToLoad.text = "1";
             MenuBaseInit();
         }
 
@@ -110,7 +114,7 @@ namespace TeamF
                     SetEnemiesValue();
                     EnemyManager mng = GameManager.I.EnemyMng;
                     (mng as EnemySpawner_TS).FollowPlayer = FollowPlayerToggle.isOn;
-                    GameManager.I.CurrentState = FlowState.TestGameplay;
+                    GameManager.I.LevelMng.Level = int.Parse(SceneToLoad.text);
                     break;
             }
         }

@@ -14,10 +14,7 @@ namespace TeamF
             set
             {
                 if (_currentState != value)
-                {
-                    FlowState oldState = _currentState;
-                    OnStateChange(value, oldState);
-                }
+                    OnStateChange(value, _currentState);
             }
         }
 
@@ -39,7 +36,7 @@ namespace TeamF
                     break;
 
                 case FlowState.MainMenu:
-                    if (_oldState == FlowState.SetupGame || _oldState == FlowState.EndRound || _oldState == FlowState.Pause || _oldState == FlowState.TestGameplay)
+                    if (_oldState == FlowState.SetupGame || _oldState == FlowState.EndRound || _oldState == FlowState.ManageMap || _oldState == FlowState.Pause || _oldState == FlowState.ExitTestScene)
                     {
                         _currentState = _newState;
                         MainMenuActions();
@@ -141,6 +138,7 @@ namespace TeamF
                     if (_oldState == FlowState.InitTestScene)
                     {
                         _currentState = _newState;
+                        TestGameplayActions();
                     }
                     else
                     {
@@ -199,6 +197,12 @@ namespace TeamF
             if (GameManager.I.Player != null)
                 GameManager.I.Player.InitCharacter();
 
+            if (GameManager.I.EnemyMng.GetType() == typeof(EnemySpawner_TS))
+            {
+                GameObject.Destroy(GameManager.I.EnemyMng);
+                GameManager.I.EnemyMng = GameManager.I.GetComponent<EnemyManager>();
+            }
+
             GameManager.I.EnemyMng.Init(GameManager.I.Player.Character);
             GameManager.I.UIMng.GameplayActions();
             GameManager.I.AmmoController.Init();
@@ -217,8 +221,9 @@ namespace TeamF
         void EndRoundActions()
         {
             GameManager.I.EnemyMng.EndGameplayActions();
+            GameManager.I.Player.Character.ReInit();
 
-            if(GameManager.I.LevelMng.EndingStaus == LevelEndingStaus.Interrupted)
+            if (GameManager.I.LevelMng.EndingStaus == LevelEndingStaus.Interrupted)
             {
                 CurrentState = FlowState.MainMenu;
                 return;
@@ -241,13 +246,20 @@ namespace TeamF
             GameObject tempobj = GameObject.Instantiate(Resources.Load("TestScenePrefab/EnemyManager_TS"), GameManager.I.transform) as GameObject;
             GameManager.I.EnemyMng = tempobj.GetComponent<EnemySpawner_TS>();
             GameManager.I.EnemyMng.InitDataForTestScene();
-            GameManager.I.LevelMng.Level++;
+        }
+
+        void TestGameplayActions()
+        {
+            if (GameManager.I.Player != null)
+                GameManager.I.Player.InitCharacter();
+            GameManager.I.UIMng.GameplayActions();
         }
 
         void ExitTestSceneActions()
         {
             GameManager.I.EnemyMng.EndGameplayActions();
-            GameManager.I.LevelMng.Level--;
+            GameManager.I.Player.Character.ReInit();
+            GameManager.I.LevelMng.Level = 0;
         }
         #endregion
     }

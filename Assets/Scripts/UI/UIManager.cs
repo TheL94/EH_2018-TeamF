@@ -50,6 +50,7 @@ namespace TeamF
             UI_MainMenuCtrl.gameObject.SetActive(false);
             UI_GameOverCtrl.gameObject.SetActive(false);
             UI_PauseController.gameObject.SetActive(true);
+            UI_PauseController.Init();
         }
 
         public void GameOverActions(LevelEndingStaus _levelStatus)
