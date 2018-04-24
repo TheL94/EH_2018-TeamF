@@ -51,7 +51,8 @@ namespace TeamF
             CurrentBehaviour = DeterminateBehaviourFromType(Data);
 
             AI_Enemy.InitialDefaultState = Data.InitialState;
-            AI_Enemy.IsActive = true;
+            if(GameManager.I.CurrentState != FlowState.Pause)
+                AI_Enemy.IsActive = true;
         }
 
         void GetGraphic()

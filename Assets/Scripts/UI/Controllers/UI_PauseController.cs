@@ -1,15 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace TeamF
 {
-    public class UI_MainMenuController : MenuBase
+    public class UI_PauseController : MenuBase
     {
         public override void Init()
         {
-            base.Init();
             GameManager.I.UIMng.CurrentMenu = this;
+            base.Init();
         }
 
         public override void Select()
@@ -17,15 +18,12 @@ namespace TeamF
             switch (CurrentIndexSelected)
             {
                 case 0:
-                    //Start game;
-                    GameManager.I.CurrentState = FlowState.ManageMap;
+                    GameManager.I.CurrentState = FlowState.Gameplay;
                     break;
                 case 1:
-                    //Scena test
-                    GameManager.I.CurrentState = FlowState.InitTestScene;                   
+                    GameManager.I.CurrentState = FlowState.MainMenu;
                     break;
                 case 2:
-                    //ExitGame;
                     GameManager.I.CurrentState = FlowState.QuitGame;
                     break;
             }

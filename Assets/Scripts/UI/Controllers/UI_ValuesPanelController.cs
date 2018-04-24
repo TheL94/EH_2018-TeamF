@@ -30,6 +30,8 @@ namespace TeamF
         public InputField Enemy_AttackRange;
         public Toggle FollowPlayerToggle;
         #endregion
+
+        public InputField SceneToLoad;
         #endregion
 
         public void Init(CharacterData _characterData, EnemyGenericData _enemyData)
@@ -46,14 +48,11 @@ namespace TeamF
             Enemy_Damage.text = oldEnemyData.MeleeDamage.ToString();
             Enemy_Speed.text = oldEnemyData.Speed.ToString();
             Enemy_AttackRange.text = oldEnemyData.MeleeDamageRange.ToString();
-            MenuBaseInit();
-        }
 
-        void MenuBaseInit()
-        {
+            SceneToLoad.text = "1";
+
             GameManager.I.UIMng.CurrentMenu = this;
-            FindISelectableObects();
-            SelectableButtons[0].IsSelected = true;
+            base.Init();
         }
 
         /// <summary>
@@ -68,6 +67,7 @@ namespace TeamF
 
             GameManager.I.Player.CharacterData = newData;
         }
+
         /// <summary>
         /// Setta titti i dati dei nemici che ha l'enemy spawner controller con quelli inseriti negli input field
         /// </summary>
@@ -103,11 +103,8 @@ namespace TeamF
                     SetEnemiesValue();
                     EnemyManager mng = GameManager.I.EnemyMng;
                     (mng as EnemySpawner_TS).FollowPlayer = FollowPlayerToggle.isOn;
-                    GameManager.I.ChangeFlowState(FlowState.EnterTestScene);
+                    GameManager.I.LevelMng.Level = int.Parse(SceneToLoad.text);
                     break;
-                //case 1:
-                //    GameManager.I.MenuActions();
-                //    break;
             }
         }
     }

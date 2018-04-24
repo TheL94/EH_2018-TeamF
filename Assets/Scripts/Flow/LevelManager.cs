@@ -1,89 +1,109 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace TeamF
 {
     public class LevelManager
     {
-        public float PointsToWin { get; private set; }
+        public LevelEndingStaus EndingStaus { get; private set; }
+
+        float PointsToWin { get { return GameManager.I.KillsToWinPerLevel[Level - 1]; } }
         float roundPoints = 0;
 
-        private int _level = 1;
-
-        public int Level
+        #region Constructor And Destructor
+        public LevelManager()
         {
-            get { return _level; }
-            private set
+            Events_LevelController.OnKillPointChanged += UpdateRoundPoints;
+        }
+
+        ~LevelManager()
+        {
+            Events_LevelController.OnKillPointChanged -= UpdateRoundPoints;
+        }
+        #endregion
+
+        #region Scene Management
+        AsyncOperation async;
+        public float LoadindProgress
+        {
+            get
             {
-                SceneManager.UnloadSceneAsync(_level);
-                CheckSceneInGame();
-                _level = value;
-                SceneManager.LoadScene(_level, LoadSceneMode.Additive);
+                if (async != null)
+                    return async.progress;
+                else
+                    return -1f;
             }
         }
 
-        #region API
-        public LevelManager(float _pointsToWin)
-        {
-            PointsToWin = _pointsToWin;
-            Events_LevelController.OnKillPointChanged += UpdateRoundPoints;
-            CheckSceneInGame();
-            SceneManager.LoadScene(Level, LoadSceneMode.Additive);
-        }
+        int _level  = 0;
+        public int Level { get { return _level; } set { OnLevelChange(value); } }
 
+        void OnLevelChange(int _newLevel)
+        {
+            if (_level > 0)
+            {
+                SceneManager.UnloadSceneAsync(_level);
+            }
+
+            if (_newLevel != _level && _newLevel != 0 && _newLevel < SceneManager.sceneCountInBuildSettings)
+            {
+                async = SceneManager.LoadSceneAsync(_newLevel, LoadSceneMode.Additive);
+                GameManager.I.UIMng.LoadingActions();
+                async.completed += (async) =>
+                {
+                    _level = _newLevel;
+                    async.allowSceneActivation = true;
+                    if(GameManager.I.CurrentState == FlowState.ManageMap)
+                        GameManager.I.CurrentState = FlowState.InitGameplayElements;
+                    else if (GameManager.I.CurrentState == FlowState.InitTestScene)
+                        GameManager.I.CurrentState = FlowState.TestGameplay;
+
+                };
+            }
+            else if (_newLevel == 0 || _newLevel >= SceneManager.sceneCountInBuildSettings)
+            {
+                _level = 0;
+                GameManager.I.CurrentState = FlowState.MainMenu;
+            }
+        }
+        #endregion
+
+        #region API
         public void UpdateRoundPoints(float _killedEnemyValue)
         {
             roundPoints += _killedEnemyValue;
             Events_UIController.KillPointsChanged(roundPoints, PointsToWin);
 
-            if(CheckVictory())   
-                GoToGameWon();
+            CheckGameStatus();
         }
 
-        public void GoToGameWon()
+        public void CheckGameStatus()
         {
-            GameManager.I.ChangeFlowState(FlowState.GameWon);
-        }
-
-        public void GoToGameLost()
-        {
-            GameManager.I.ChangeFlowState(FlowState.GameLost);
-        }
-
-        public void UpdateLevel()
-        {
-            roundPoints = 0;
-            if(Level < SceneManager.sceneCountInBuildSettings)
-                Level++;
-        }
-        #endregion
-
-        void CheckSceneInGame()
-        {
-            if(SceneManager.sceneCount > 1)
+            if (roundPoints >= PointsToWin)
             {
-                for (int i = 0; i < SceneManager.sceneCount; i++)
-                {
-                    if (i == 0)
-                        return;
-                    SceneManager.UnloadSceneAsync(i);
-                }
+                EndingStaus = LevelEndingStaus.Won;
+                GameManager.I.CurrentState = FlowState.EndRound;
+                return;
+            }
+
+            if(GameManager.I.Player.Character.Life <= 0)
+            {
+                EndingStaus = LevelEndingStaus.Lost;
+                GameManager.I.CurrentState = FlowState.EndRound;
+                return;
             }
         }
 
-        bool CheckVictory()
+        public void ReInit()
         {
-            if (roundPoints >= PointsToWin)
-                return true;
-
-            return false;
+            roundPoints = 0;
+            EndingStaus = LevelEndingStaus.NotEnded;
         }
-
-        ~ LevelManager()
-        {
-            Events_LevelController.OnKillPointChanged -= UpdateRoundPoints;
-        }
+        #endregion
     }
+
+    public enum LevelEndingStaus { NotEnded = 0, Won, Lost, Interrupted}
 }
 

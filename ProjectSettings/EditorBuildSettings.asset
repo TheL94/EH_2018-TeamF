@@ -18,8 +18,8 @@ EditorBuildSettings:
     path: Assets/Scenes/GameScene/MINE_map03.unity
     guid: aa88c4e8f1ec6354dae23a4261a898d6
   - enabled: 1
-    path: Assets/Scenes/forest_map01.unity
+    path: Assets/Scenes/GameScene/forest_map01.unity
     guid: b6092490615a76e4e9ebbcda6b822619
   - enabled: 1
-    path: Assets/Scenes/forest_map02.unity
+    path: Assets/Scenes/GameScene/forest_map02.unity
     guid: 467f741fbf338f241b997a9976e425da
