@@ -31,6 +31,19 @@ namespace TeamF
             set { _selectableButtons = value; }
         }
 
+        public virtual void Init()
+        {
+            FindISelectableObects();
+
+            for (int i = 0; i < SelectableButtons.Count; i++)
+            {
+                if (SelectableButtons[i].IsSelected == true)
+                    SelectableButtons[i].IsSelected = false;
+            }
+
+            SelectableButtons[0].IsSelected = true;
+        }
+
         /// <summary>
         /// Cerca tutti i selectable button figli e se li salva in un lista
         /// </summary>

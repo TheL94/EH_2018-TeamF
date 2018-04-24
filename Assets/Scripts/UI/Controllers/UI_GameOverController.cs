@@ -25,8 +25,7 @@ namespace TeamF
             }
 
             GameManager.I.UIMng.CurrentMenu = this;
-            FindISelectableObects();
-            SelectableButtons[0].IsSelected = true;
+            base.Init();
         }
 
         public override void Select()

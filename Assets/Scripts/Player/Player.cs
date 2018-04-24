@@ -100,7 +100,7 @@ namespace TeamF
                     GameManager.I.UIMng.CurrentMenu.GoUpInMenu();
                 if (Input.GetKeyDown(KeyCode.DownArrow))
                     GameManager.I.UIMng.CurrentMenu.GoDownInMenu();
-                if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
+                if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
                     GameManager.I.UIMng.CurrentMenu.Select();
             }
         }

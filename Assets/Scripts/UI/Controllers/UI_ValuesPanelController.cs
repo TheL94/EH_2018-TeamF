@@ -50,14 +50,9 @@ namespace TeamF
             Enemy_AttackRange.text = oldEnemyData.MeleeDamageRange.ToString();
 
             SceneToLoad.text = "1";
-            MenuBaseInit();
-        }
 
-        void MenuBaseInit()
-        {
             GameManager.I.UIMng.CurrentMenu = this;
-            FindISelectableObects();
-            SelectableButtons[0].IsSelected = true;
+            base.Init();
         }
 
         /// <summary>

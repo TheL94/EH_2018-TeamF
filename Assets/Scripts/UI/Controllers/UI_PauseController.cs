@@ -7,11 +7,10 @@ namespace TeamF
 {
     public class UI_PauseController : MenuBase
     {
-        public void Init()
+        public override void Init()
         {
             GameManager.I.UIMng.CurrentMenu = this;
-            FindISelectableObects();
-            SelectableButtons[0].IsSelected = true;
+            base.Init();
         }
 
         public override void Select()

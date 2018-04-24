@@ -6,11 +6,10 @@ namespace TeamF
 {
     public class UI_MainMenuController : MenuBase
     {
-        public void Init()
+        public override void Init()
         {
+            base.Init();
             GameManager.I.UIMng.CurrentMenu = this;
-            FindISelectableObects();
-            SelectableButtons[0].IsSelected = true;
         }
 
         public override void Select()
