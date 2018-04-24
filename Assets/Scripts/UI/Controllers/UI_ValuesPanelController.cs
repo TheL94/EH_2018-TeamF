@@ -15,8 +15,6 @@ namespace TeamF
         public InputField Character_Damage;
         public InputField Character_Speed;
         public InputField Character_RotationSpeed;
-        public InputField Character_BulletSpeed;
-        public InputField Character_Ratio;
         public Toggle Invincible;
         public Toggle InfiniteAmmo;
 
@@ -43,8 +41,6 @@ namespace TeamF
             Character_Life.text = oldCharacterData.Life.ToString();
             Character_Speed.text = oldCharacterData.MovementSpeed.ToString();
             Character_RotationSpeed.text = oldCharacterData.RotationSpeed.ToString();
-            Character_BulletSpeed.text = oldCharacterData.BulletSpeed.ToString();
-            Character_Ratio.text = oldCharacterData.Ratio.ToString();
 
             oldEnemyData =Instantiate(_enemyData);
 
@@ -73,8 +69,6 @@ namespace TeamF
             newData.Life = float.Parse(Character_Life.text);
             newData.MovementSpeed = float.Parse(Character_Speed.text);
             newData.RotationSpeed = float.Parse(Character_RotationSpeed.text);
-            newData.BulletSpeed = float.Parse(Character_BulletSpeed.text);
-            newData.Ratio = float.Parse(Character_Ratio.text);
 
             GameManager.I.Player.CharacterData = newData;
         }
