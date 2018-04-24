@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 41e3d64deee77d649b8572271a3e5103, type: 3}
-  m_Name: Melee_Approach
+  m_Name: Thunder_Approach
   m_EditorClassIdentifier: 
   Actions:
   - Delay: 0
@@ -19,21 +19,16 @@ MonoBehaviour:
     OnFailure: {fileID: 0}
   - Delay: 0
     Loop: 0
-    Action: {fileID: 11400000, guid: 83c660965c8e28e4abb914b1fd350122, type: 2}
+    Action: {fileID: 11400000, guid: 154cf61968c37be408fd70a6d182c1f5, type: 2}
     OnSuccess: {fileID: 0}
     OnFailure: {fileID: 0}
   - Delay: 0
     Loop: 0
-    Action: {fileID: 11400000, guid: d371b9bc5b653e543820ab93a68885bb, type: 2}
-    OnSuccess: {fileID: 0}
-    OnFailure: {fileID: 0}
-  - Delay: 0
-    Loop: 0
-    Action: {fileID: 11400000, guid: bcb0a85af04fd3e42a10f2787c207ba6, type: 2}
+    Action: {fileID: 11400000, guid: f70d50d0c51f4b24b8abd3fb8a07060c, type: 2}
     OnSuccess: {fileID: 0}
     OnFailure: {fileID: 0}
   - Delay: 0.2
     Loop: 0
     Action: {fileID: 11400000, guid: 5053112bdd4054e4e93bed365310d39d, type: 2}
-    OnSuccess: {fileID: 11400000, guid: dc958fae9dcf8a742b6b2a44e9da698a, type: 2}
+    OnSuccess: {fileID: 11400000, guid: 360923539bc65434a9d05811cd41d426, type: 2}
     OnFailure: {fileID: 0}

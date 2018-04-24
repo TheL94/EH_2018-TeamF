@@ -9,11 +9,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 41e3d64deee77d649b8572271a3e5103, type: 3}
-  m_Name: Ranged_CheckCoolDown
+  m_Name: Thunder_SerchTarget
   m_EditorClassIdentifier: 
   Actions:
   - Delay: 0
     Loop: 0
-    Action: {fileID: 11400000, guid: abe7b317589fa444c99dd75137fd16bd, type: 2}
-    OnSuccess: {fileID: 11400000, guid: c9f9bce4ce3b40d43bce7769ec44d611, type: 2}
-    OnFailure: {fileID: 11400000, guid: c4934800f932a0541989f4fd31553265, type: 2}
+    Action: {fileID: 11400000, guid: 79c385ec3bf5f2947af6f54b7258e02b, type: 2}
+    OnSuccess: {fileID: 11400000, guid: 048fbcaa4b058b84981916505ed3bd30, type: 2}
+    OnFailure: {fileID: 11400000, guid: 100d5892fa5bf1644bcfec3b03756441, type: 2}
