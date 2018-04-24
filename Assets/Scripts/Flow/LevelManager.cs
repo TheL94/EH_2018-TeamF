@@ -26,22 +26,31 @@ namespace TeamF
 
         #region Scene Management
         AsyncOperation async;
+        public float LoadindProgress
+        {
+            get
+            {
+                if (async != null)
+                    return async.progress;
+                else
+                    return -1f;
+            }
+        }
+
         int _level  = 0;
         public int Level { get { return _level; } set { OnLevelChange(value); } }
+
         void OnLevelChange(int _newLevel)
         {
             if (_level > 0)
             {
-                async = SceneManager.UnloadSceneAsync(_level);
-                async.completed += (async) =>
-                {
-                    Debug.Log("SceneUnload");
-                };
+                SceneManager.UnloadSceneAsync(_level);
             }
 
             if (_newLevel != _level && _newLevel != 0 && _newLevel < SceneManager.sceneCountInBuildSettings)
             {
                 async = SceneManager.LoadSceneAsync(_newLevel, LoadSceneMode.Additive);
+                GameManager.I.UIMng.LoadingActions();
                 async.completed += (async) =>
                 {
                     _level = _newLevel;
@@ -60,12 +69,6 @@ namespace TeamF
             }
         }
         #endregion
-
-        public void OnUpdate()
-        {
-            if(async != null && async.progress != 0)
-                Debug.Log(async.progress);
-        }
 
         #region API
         public void UpdateRoundPoints(float _killedEnemyValue)

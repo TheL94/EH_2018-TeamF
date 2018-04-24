@@ -55,8 +55,6 @@ namespace TeamF
                     CurrentState = FlowState.Pause;
 
             }
-
-            LevelMng.OnUpdate();
         }
     }
 }

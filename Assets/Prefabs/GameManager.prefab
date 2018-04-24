@@ -70,7 +70,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1085661247444538}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4608509917988704}
@@ -133,7 +133,8 @@ MonoBehaviour:
   UIManagerPrefab: {fileID: 1784264425848098, guid: 786bc380dcf915c418d04c91b3b47d86,
     type: 2}
   Player: {fileID: 0}
-  KillsToWin: 50
+  PoolMng: {fileID: 0}
+  KillsToWin: 1
   ComboCounterTimer: 10
 --- !u!114 &114344852107688236
 MonoBehaviour:
