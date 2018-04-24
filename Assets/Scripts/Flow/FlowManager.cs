@@ -173,7 +173,7 @@ namespace TeamF
             GameManager.I.AmmoController = GameManager.I.GetComponent<AmmoCratesController>();
 
             if (GameManager.I.LevelMng == null)
-                GameManager.I.LevelMng = new LevelManager(GameManager.I.KillsToWin);
+                GameManager.I.LevelMng = new LevelManager();
 
             GameManager.I.Player = GameManager.I.GetComponent<Player>();
             if (GameManager.I.Player != null)
@@ -189,6 +189,7 @@ namespace TeamF
 
         void ManageMapActions()
         {
+            GameManager.I.LevelMng.ReInit();
             GameManager.I.LevelMng.Level++;
         }
 

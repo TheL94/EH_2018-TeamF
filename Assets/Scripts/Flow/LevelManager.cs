@@ -8,13 +8,13 @@ namespace TeamF
     public class LevelManager
     {
         public LevelEndingStaus EndingStaus { get; private set; }
-        public float PointsToWin { get; private set; }
+
+        float PointsToWin { get { return GameManager.I.KillsToWinPerLevel[Level - 1]; } }
         float roundPoints = 0;
 
         #region Constructor And Destructor
-        public LevelManager(float _pointsToWin)
+        public LevelManager()
         {
-            PointsToWin = _pointsToWin;
             Events_LevelController.OnKillPointChanged += UpdateRoundPoints;
         }
 

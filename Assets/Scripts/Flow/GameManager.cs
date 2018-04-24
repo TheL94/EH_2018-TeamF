@@ -24,7 +24,7 @@ namespace TeamF
         [HideInInspector]
         public PoolManager PoolMng;
 
-        public float KillsToWin;
+        public List<float> KillsToWinPerLevel = new List<float>();
         public float ComboCounterTimer;
 
         FlowManager flowMng;
