@@ -211,7 +211,7 @@ GameObject:
   m_Component:
   - component: {fileID: 11770310}
   m_Layer: 0
-  m_Name: SPAWN PLAYER
+  m_Name: Player
   m_TagString: PlayerSpawn
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -7615,7 +7615,7 @@ GameObject:
   m_Component:
   - component: {fileID: 913646833}
   m_Layer: 0
-  m_Name: SPAWN NEMICI
+  m_Name: Enemys
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15761,7 +15761,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1797363530}
   m_Layer: 0
-  m_Name: SPAWN ARMI
+  m_Name: Weapons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16194,7 +16194,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1870496405}
   m_Layer: 0
-  m_Name: SPAWN MUNIZIONI
+  m_Name: Ammos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
