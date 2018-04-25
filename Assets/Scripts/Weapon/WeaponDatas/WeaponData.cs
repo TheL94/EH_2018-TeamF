@@ -9,7 +9,6 @@ namespace TeamF
     {
         public WeaponType Weapon;
         public WeaponParameters Parameters;
-        public GameObject BulletContainerPrefab;
     }
 
     [System.Serializable]

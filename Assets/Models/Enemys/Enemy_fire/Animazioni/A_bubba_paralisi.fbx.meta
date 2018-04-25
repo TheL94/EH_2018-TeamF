@@ -1,0 +1,226 @@
+fileFormatVersion: 2
+guid: a0089644f06a8044683aa38d87de0175
+timeCreated: 1524072199
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Bacino
+    100004: Base
+    100006: Bocca_inf
+    100008: Bocca_sup
+    100010: D_bocca_inf
+    100012: D_bocca_sup
+    100014: D_braccio
+    100016: D_braccio 1
+    100018: D_braccio1
+    100020: D_gamba
+    100022: D_gomito
+    100024: D_indice
+    100026: D_indice_1
+    100028: D_indice_2
+    100030: D_mano
+    100032: D_mano 1
+    100034: D_medio
+    100036: D_medio_1
+    100038: D_medio_2
+    100040: D_mignolo
+    100042: D_mignolo_1
+    100044: D_mignolo_2
+    100046: D_occhio
+    100048: D_occhio_inf
+    100050: D_occhio_sup
+    100052: D_piede
+    100054: D_piede 1
+    100056: D_piede_punta
+    100058: D_pollice
+    100060: D_pollice_1
+    100062: D_pollice_2
+    100064: D_soprac
+    100066: D_soprac1
+    100068: root
+    100070: S_bocca_inf
+    100072: S_bocca_sup
+    100074: S_braccio
+    100076: S_braccio 1
+    100078: S_braccio1
+    100080: S_gamba
+    100082: S_gomito
+    100084: S_indice
+    100086: S_indice_1
+    100088: S_indice_2
+    100090: S_mano
+    100092: S_mano 1
+    100094: S_medio
+    100096: S_medio_1
+    100098: S_medio_2
+    100100: S_mignolo
+    100102: S_mignolo_1
+    100104: S_mignolo_2
+    100106: S_occhio
+    100108: S_occhio_inf
+    100110: S_occhio_sup
+    100112: S_piede
+    100114: S_piede 1
+    100116: S_piede_punta
+    100118: S_pollice
+    100120: S_pollice_1
+    100122: S_pollice_2
+    100124: SK_Bubba_Fuoco1
+    100126: Testa
+    100128: testa
+    100130: Torso
+    100132: torso
+    400000: //RootNode
+    400002: Bacino
+    400004: Base
+    400006: Bocca_inf
+    400008: Bocca_sup
+    400010: D_bocca_inf
+    400012: D_bocca_sup
+    400014: D_braccio
+    400016: D_braccio 1
+    400018: D_braccio1
+    400020: D_gamba
+    400022: D_gomito
+    400024: D_indice
+    400026: D_indice_1
+    400028: D_indice_2
+    400030: D_mano
+    400032: D_mano 1
+    400034: D_medio
+    400036: D_medio_1
+    400038: D_medio_2
+    400040: D_mignolo
+    400042: D_mignolo_1
+    400044: D_mignolo_2
+    400046: D_occhio
+    400048: D_occhio_inf
+    400050: D_occhio_sup
+    400052: D_piede
+    400054: D_piede 1
+    400056: D_piede_punta
+    400058: D_pollice
+    400060: D_pollice_1
+    400062: D_pollice_2
+    400064: D_soprac
+    400066: D_soprac1
+    400068: root
+    400070: S_bocca_inf
+    400072: S_bocca_sup
+    400074: S_braccio
+    400076: S_braccio 1
+    400078: S_braccio1
+    400080: S_gamba
+    400082: S_gomito
+    400084: S_indice
+    400086: S_indice_1
+    400088: S_indice_2
+    400090: S_mano
+    400092: S_mano 1
+    400094: S_medio
+    400096: S_medio_1
+    400098: S_medio_2
+    400100: S_mignolo
+    400102: S_mignolo_1
+    400104: S_mignolo_2
+    400106: S_occhio
+    400108: S_occhio_inf
+    400110: S_occhio_sup
+    400112: S_piede
+    400114: S_piede 1
+    400116: S_piede_punta
+    400118: S_pollice
+    400120: S_pollice_1
+    400122: S_pollice_2
+    400124: SK_Bubba_Fuoco1
+    400126: Testa
+    400128: testa
+    400130: Torso
+    400132: torso
+    2100000: lambert2
+    4300000: SK_Bubba_Fuoco1
+    7400000: paralisi
+    9500000: //RootNode
+    13700000: SK_Bubba_Fuoco1
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

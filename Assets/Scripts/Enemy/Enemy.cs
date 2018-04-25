@@ -13,6 +13,9 @@ namespace TeamF
     {
         public EnemyGenericData Data { get; private set; }
         public string ID { get; private set; }
+
+        #region IGetSlower
+        public bool IsSlowed { get; set; }
         public float MovementSpeed
         {
             get { return Agent.speed; }
@@ -23,6 +26,7 @@ namespace TeamF
 
             }
         }
+        #endregion
 
         public NavMeshAgent Agent { get; private set; }
         public IDamageable Target { get; set; }
@@ -35,8 +39,9 @@ namespace TeamF
             Data = _data;
             ID = _id;
             Life = Data.Life;
-            
-            Instantiate(Data.GraphicPrefab, transform.position, transform.rotation, transform);
+
+            //Instantiate(GameManager.I.PoolMng.GetObject(Data.GraphicID), transform.position, transform.rotation, transform);
+            GetGraphic();
 
             Agent = GetComponent<NavMeshAgent>();
             AI_Enemy = GetComponent<AI_Enemy>();
@@ -46,7 +51,15 @@ namespace TeamF
             CurrentBehaviour = DeterminateBehaviourFromType(Data);
 
             AI_Enemy.InitialDefaultState = Data.InitialState;
-            AI_Enemy.IsActive = true;
+            if(GameManager.I.CurrentState != FlowState.Pause)
+                AI_Enemy.IsActive = true;
+        }
+
+        void GetGraphic()
+        {
+            GameObject graphic = GameManager.I.PoolMng.GetObject(Data.GraphicID);
+            graphic.transform.position = transform.position;
+            graphic.transform.SetParent(transform);
         }
 
         #region IEnemyBehaviour
@@ -138,63 +151,9 @@ namespace TeamF
         #endregion
 
         #region Animation
+
         public Animator Animator { get; private set; }
 
-        private AnimationState _animState;
-        public AnimationState AnimState
-        {
-            get { return _animState; }
-            set
-            {
-                if (_animState == value)
-                    return;
-
-                _animState = value;
-                if (Animator != null)
-                {
-                    switch (_animState)
-                    {
-                        case AnimationState.Idle:
-                            Animator.SetInteger("State", 0);
-                            break;
-                        case AnimationState.ChargeAttack:
-                            Animator.SetInteger("State", 1);
-                            break;
-                        case AnimationState.Attack:
-                            Animator.SetInteger("State", 2);
-                            break;
-                        case AnimationState.Damage:
-                            Animator.SetInteger("State", 3);
-                            break;
-                        case AnimationState.Death:
-                            Animator.SetInteger("State", 4);
-                            break;
-                    }
-                }
-            }
-        }
-
-        bool _isWalking;
-        public bool IsWalking {
-            get { return _isWalking; }
-            set
-            {
-                if (_isWalking == value)
-                    return;
-
-                _isWalking = value;
-                Animator.SetBool("IsWalking", _isWalking);
-            }
-        }
-
-        public enum AnimationState
-        {
-            Idle = 0,
-            ChargeAttack,
-            Attack,
-            Damage,
-            Death,
-        }
         #endregion
 
         #region Enemy Delegate

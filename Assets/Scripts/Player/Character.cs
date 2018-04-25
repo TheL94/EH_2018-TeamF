@@ -17,6 +17,8 @@ namespace TeamF
         List<BulletData> bulletDatasInstancies = new List<BulletData>();
 
         #region IGetSlower
+        public bool IsSlowed { get; set; }
+
         public float MovementSpeed
         {
             get { return Data.MovementSpeed; }
@@ -66,6 +68,11 @@ namespace TeamF
                 }
             }
             selectedAmmoIndex = 1;
+        }
+
+        public void ReInit()
+        {
+            movement.ReInit();
         }
         #endregion
 

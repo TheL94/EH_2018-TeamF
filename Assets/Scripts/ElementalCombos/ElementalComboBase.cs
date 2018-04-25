@@ -6,7 +6,7 @@ namespace TeamF
 {
     public class ElementalComboBase : MonoBehaviour
     {
-
+        public string GraphicID;
         public float Timer;
         float timer;
 
@@ -38,7 +38,14 @@ namespace TeamF
             OnExitCollider(other);
         }
 
-        protected virtual void DoInit() { }
+        protected virtual void DoInit() {
+            GameObject obj = GameManager.I.PoolMng.GetObject(GraphicID);
+            if (obj != null)
+            {
+                obj.transform.position = transform.position;
+                obj.transform.SetParent(transform);
+            }
+        }
 
         protected virtual void OnUpdate() { }
         
@@ -53,6 +60,8 @@ namespace TeamF
         /// </summary>
         protected virtual void OnEndEffect()
         {
+            gameObject.SetActive(false);
+            GameManager.I.PoolMng.UpdatePool(GraphicID);
             Destroy(gameObject);
         }
 

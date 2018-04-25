@@ -6,13 +6,13 @@ namespace TeamF
 {
     public class UI_MainMenuController : MenuBase
     {
-        
-
-        public void Init()
+        public override void Init()
         {
+            base.Init();
             GameManager.I.UIMng.CurrentMenu = this;
-            FindISelectableObects();
-            SelectableButtons[0].IsSelected = true;
+
+            if (!Debug.isDebugBuild)
+                (SelectableButtons[1] as SelectableButton).gameObject.SetActive(false);
         }
 
         public override void Select()
@@ -21,15 +21,15 @@ namespace TeamF
             {
                 case 0:
                     //Start game;
-                    GameManager.I.ChangeFlowState(FlowState.EnterGameplay);
+                    GameManager.I.CurrentState = FlowState.ManageMap;
                     break;
                 case 1:
                     //Scena test
-                    GameManager.I.EnterValuesMenu();
+                    GameManager.I.CurrentState = FlowState.InitTestScene;                   
                     break;
                 case 2:
                     //ExitGame;
-                    GameManager.I.CloseApplicationActions();
+                    GameManager.I.CurrentState = FlowState.QuitGame;
                     break;
             }
         }

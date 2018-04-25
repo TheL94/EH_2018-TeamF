@@ -33,7 +33,7 @@ namespace TeamF.AI
             if (Vector3.Distance(_enemy.Position, _enemy.Target.Position) > damageRange) 
             {
                 Vector3 engagePosition = _enemy.Target.Position - _enemy.Position;
-                float engageDistance = engagePosition.magnitude - damageRange;
+                float engageDistance = engagePosition.magnitude - (damageRange - .5f);
 
                 engagePosition = engagePosition.normalized * engageDistance;
                 engagePosition += _enemy.Position;
