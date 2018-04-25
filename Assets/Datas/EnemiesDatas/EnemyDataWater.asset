@@ -22,7 +22,7 @@ MonoBehaviour:
   GraphicID: Water
   EnemyType: 3
   Life: 10
-  Speed: 5.3
+  Speed: 11.8
   AimTime: 0.2
   EnemyValue: 1
   MeleeDamage: 1
