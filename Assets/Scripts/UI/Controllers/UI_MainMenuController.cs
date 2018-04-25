@@ -11,7 +11,7 @@ namespace TeamF
             base.Init();
             GameManager.I.UIMng.CurrentMenu = this;
 
-            if (!Debug.isDebugBuild || !Application.isEditor)
+            if (!Debug.isDebugBuild)
                 (SelectableButtons[1] as SelectableButton).gameObject.SetActive(false);
         }
 
