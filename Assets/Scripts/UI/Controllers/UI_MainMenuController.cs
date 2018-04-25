@@ -10,6 +10,9 @@ namespace TeamF
         {
             base.Init();
             GameManager.I.UIMng.CurrentMenu = this;
+
+            if (!Debug.isDebugBuild || !Application.isEditor)
+                (SelectableButtons[1] as SelectableButton).gameObject.SetActive(false);
         }
 
         public override void Select()
