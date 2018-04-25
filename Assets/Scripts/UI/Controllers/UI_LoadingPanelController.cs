@@ -12,7 +12,10 @@ namespace TeamF
         void Update()
         {
             if (GameManager.I.LevelMng.LoadindProgress != -1f)
-                LoadingText.text = GameManager.I.LevelMng.LoadindProgress.ToString() + " %";
+            {
+                float value = GameManager.I.LevelMng.LoadindProgress * 100;
+                LoadingText.text = value.ToString() + " %";
+            }
             else
                 LoadingText.text = "0 %";
         }

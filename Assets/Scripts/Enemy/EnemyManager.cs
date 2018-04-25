@@ -55,6 +55,7 @@ namespace TeamF
         public void EndGameplayActions()
         {
             CanSpawn = false;
+            spawnPoints.Clear();
             DeleteAllEnemies();
         }
         #endregion
