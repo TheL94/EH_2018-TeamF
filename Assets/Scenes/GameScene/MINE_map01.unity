@@ -2431,6 +2431,10 @@ Prefab:
       propertyPath: m_ScaleInLightmap
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 19dd9bd53a659bd4b99aaeb4d58dbc3d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 76f8e2324b80d994bbdfe0208d0053ce, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 19dd9bd53a659bd4b99aaeb4d58dbc3d, type: 3}
   m_IsPrefabParent: 0
@@ -11457,6 +11461,10 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: cc7b6c886ce511245941e3997c1040c6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d5f2fc3b0c837674fa1a75139686fabc, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc7b6c886ce511245941e3997c1040c6, type: 3}
   m_IsPrefabParent: 0
@@ -11464,6 +11472,22 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: cc7b6c886ce511245941e3997c1040c6, type: 3}
   m_PrefabInternal: {fileID: 1329440523}
+--- !u!1 &1329440525 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: cc7b6c886ce511245941e3997c1040c6, type: 3}
+  m_PrefabInternal: {fileID: 1329440523}
+--- !u!65 &1329440526
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1329440525}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.7473307, y: 5.6824374, z: 3.9117162}
+  m_Center: {x: -0.00000017881393, y: 0, z: -0.0000056028366}
 --- !u!1001 &1332827961
 Prefab:
   m_ObjectHideFlags: 0
