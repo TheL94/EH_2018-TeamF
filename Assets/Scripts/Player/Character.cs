@@ -7,7 +7,7 @@ namespace TeamF
 {
     public class Character : MonoBehaviour, IEffectable
     {
-        CharacterData Data;
+        public CharacterData Data { get; private set; }
         public Light BackPackLight;
         public MeshRenderer BackPackRenderer;
         public MeshRenderer CharacterRenderer;

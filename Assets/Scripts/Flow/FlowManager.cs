@@ -198,13 +198,7 @@ namespace TeamF
             if (GameManager.I.Player != null)
                 GameManager.I.Player.InitCharacter();
 
-            if (GameManager.I.EnemyMng.GetType() == typeof(EnemySpawner_TS))
-            {
-                GameObject.Destroy(GameManager.I.EnemyMng);
-                GameManager.I.EnemyMng = GameManager.I.GetComponent<EnemyManager>();
-            }
-
-            GameManager.I.EnemyMng.Init(GameManager.I.Player.Character);
+            GameManager.I.EnemyMng.Init();
             GameManager.I.UIMng.GameplayActions();
             GameManager.I.AmmoController.Init();
             CurrentState = FlowState.Gameplay;
@@ -243,17 +237,33 @@ namespace TeamF
         #region Test Flow Actions
         void InitTestSceneActions()
         {
-            GameManager.I.UIMng.EnableValuesPanel(GameManager.I.Player.CharacterData, GameManager.I.EnemyMng.Data.EnemiesData[0]);               // Farsi restituire i dati dal data manager
-
-            GameObject tempobj = GameObject.Instantiate(Resources.Load("TestScenePrefab/EnemyManager_TS"), GameManager.I.transform) as GameObject;
-            GameManager.I.EnemyMng = tempobj.GetComponent<EnemySpawner_TS>();
-            GameManager.I.EnemyMng.InitDataForTestScene();
+            GameManager.I.UIMng.EnableValuesPanel(GameManager.I.Player.CharacterData, GameManager.I.EnemyMng.Data.EnemiesData[0]); 
         }
 
         void TestGameplayActions()
         {
             if (GameManager.I.Player != null)
-                GameManager.I.Player.InitCharacter();
+            {
+                GameManager.I.Player.InitCharacter(true);
+                CharacterData newData = GameObject.Instantiate(GameManager.I.Player.CharacterData);
+                newData.Life = GameManager.I.UIMng.UI_ValuesPanelCtrl.CharacterDataForTestScene.Life;
+                newData.MovementSpeed = GameManager.I.UIMng.UI_ValuesPanelCtrl.CharacterDataForTestScene.MovementSpeed;
+                newData.RotationSpeed = GameManager.I.UIMng.UI_ValuesPanelCtrl.CharacterDataForTestScene.RotationSpeed;
+                GameManager.I.Player.Character.Init(GameManager.I.Player, newData, true);
+            }
+
+            GameManager.I.EnemyMng.IgnoreTarget = !GameManager.I.UIMng.UI_ValuesPanelCtrl.FollowPlayerToggle.isOn;
+            GameManager.I.EnemyMng.Init(true);
+
+            foreach (EnemyGenericData enemyData in GameManager.I.EnemyMng.DataInstance.EnemiesData)
+            {
+                enemyData.Life = GameManager.I.UIMng.UI_ValuesPanelCtrl.EnemyGenericDataForTestScene.Life;
+                enemyData.MeleeDamage = GameManager.I.UIMng.UI_ValuesPanelCtrl.EnemyGenericDataForTestScene.MeleeDamage;
+                enemyData.Speed = GameManager.I.UIMng.UI_ValuesPanelCtrl.EnemyGenericDataForTestScene.Speed;
+                enemyData.MeleeDamageRange = GameManager.I.UIMng.UI_ValuesPanelCtrl.EnemyGenericDataForTestScene.MeleeDamageRange;
+            }
+
+            GameManager.I.EnemyMng.SpawnEnemyForTestScene();
             GameManager.I.UIMng.GameplayActions();
         }
 
