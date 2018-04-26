@@ -20,7 +20,7 @@ namespace TeamF
 
         [Header("Object Constuction")]
         public GameObject ContainerPrefab;
-        public GameObject GraphicPrefab;
+        public string GraphicID;
 
         [Header("Enemy Parameters")]
         public EnemyType EnemyType;

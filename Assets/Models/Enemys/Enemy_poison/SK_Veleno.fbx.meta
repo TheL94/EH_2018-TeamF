@@ -6,11 +6,85 @@ ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
+    100002: Abs
+    100004: Char
+    100006: ctrl_abs
+    100008: ctrl_foot_l
+    100010: ctrl_foot_r
+    100012: ctrl_root
+    100014: Head_tip
+    100016: head_tip
+    100018: ikHandle1
+    100020: ikHandle2
+    100022: imagePlane1
+    100024: imagePlane2
+    100026: L_Arm
+    100028: L_Foot
+    100030: L_Foot_tip
+    100032: L_Gomito
+    100034: L_gomito
+    100036: L_hand
+    100038: L_Leg
+    100040: Lower_Eyelid
+    100042: Lower_mouth
+    100044: R_Arm
+    100046: R_Foot
+    100048: R_Foot_tip
+    100050: R_Gomito
+    100052: R_gomito
+    100054: R_hand
+    100056: R_Leg
+    100058: Root
+    100060: Shoulders
+    100062: transform1
+    100064: transform2
+    100066: transform3
+    100068: Upper_Eyelid
+    100070: Upper_mouth
     400000: //RootNode
+    400002: Abs
+    400004: Char
+    400006: ctrl_abs
+    400008: ctrl_foot_l
+    400010: ctrl_foot_r
+    400012: ctrl_root
+    400014: Head_tip
+    400016: head_tip
+    400018: ikHandle1
+    400020: ikHandle2
+    400022: imagePlane1
+    400024: imagePlane2
+    400026: L_Arm
+    400028: L_Foot
+    400030: L_Foot_tip
+    400032: L_Gomito
+    400034: L_gomito
+    400036: L_hand
+    400038: L_Leg
+    400040: Lower_Eyelid
+    400042: Lower_mouth
+    400044: R_Arm
+    400046: R_Foot
+    400048: R_Foot_tip
+    400050: R_Gomito
+    400052: R_gomito
+    400054: R_hand
+    400056: R_Leg
+    400058: Root
+    400060: Shoulders
+    400062: transform1
+    400064: transform2
+    400066: transform3
+    400068: Upper_Eyelid
+    400070: Upper_mouth
     2100000: lambert2
+    2100002: lambert1
     2300000: //RootNode
+    2300002: Char
     3300000: //RootNode
+    3300002: Char
     4300000: polySurface1
+    4300002: Char
   externalObjects: {}
   materials:
     importMaterials: 1

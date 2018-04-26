@@ -15,8 +15,6 @@ namespace TeamF
         public InputField Character_Damage;
         public InputField Character_Speed;
         public InputField Character_RotationSpeed;
-        public InputField Character_BulletSpeed;
-        public InputField Character_Ratio;
         public Toggle Invincible;
         public Toggle InfiniteAmmo;
 
@@ -32,6 +30,8 @@ namespace TeamF
         public InputField Enemy_AttackRange;
         public Toggle FollowPlayerToggle;
         #endregion
+
+        public InputField SceneToLoad;
         #endregion
 
         public void Init(CharacterData _characterData, EnemyGenericData _enemyData)
@@ -41,8 +41,6 @@ namespace TeamF
             Character_Life.text = oldCharacterData.Life.ToString();
             Character_Speed.text = oldCharacterData.MovementSpeed.ToString();
             Character_RotationSpeed.text = oldCharacterData.RotationSpeed.ToString();
-            Character_BulletSpeed.text = oldCharacterData.BulletSpeed.ToString();
-            Character_Ratio.text = oldCharacterData.Ratio.ToString();
 
             oldEnemyData =Instantiate(_enemyData);
 
@@ -50,14 +48,11 @@ namespace TeamF
             Enemy_Damage.text = oldEnemyData.MeleeDamage.ToString();
             Enemy_Speed.text = oldEnemyData.Speed.ToString();
             Enemy_AttackRange.text = oldEnemyData.MeleeDamageRange.ToString();
-            MenuBaseInit();
-        }
 
-        void MenuBaseInit()
-        {
+            SceneToLoad.text = "1";
+
             GameManager.I.UIMng.CurrentMenu = this;
-            FindISelectableObects();
-            SelectableButtons[0].IsSelected = true;
+            base.Init();
         }
 
         /// <summary>
@@ -69,11 +64,10 @@ namespace TeamF
             newData.Life = float.Parse(Character_Life.text);
             newData.MovementSpeed = float.Parse(Character_Speed.text);
             newData.RotationSpeed = float.Parse(Character_RotationSpeed.text);
-            newData.BulletSpeed = float.Parse(Character_BulletSpeed.text);
-            newData.Ratio = float.Parse(Character_Ratio.text);
 
             GameManager.I.Player.CharacterData = newData;
         }
+
         /// <summary>
         /// Setta titti i dati dei nemici che ha l'enemy spawner controller con quelli inseriti negli input field
         /// </summary>
@@ -109,11 +103,8 @@ namespace TeamF
                     SetEnemiesValue();
                     EnemyManager mng = GameManager.I.EnemyMng;
                     (mng as EnemySpawner_TS).FollowPlayer = FollowPlayerToggle.isOn;
-                    GameManager.I.ChangeFlowState(FlowState.EnterTestScene);
+                    GameManager.I.LevelMng.Level = int.Parse(SceneToLoad.text);
                     break;
-                //case 1:
-                //    GameManager.I.MenuActions();
-                //    break;
             }
         }
     }

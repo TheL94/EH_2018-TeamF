@@ -7,11 +7,12 @@ namespace TeamF
 {
     public class UIManager : MonoBehaviour
     {
-
         public UI_GameplayController UI_GameplayCtrl;
         public UI_MainMenuController UI_MainMenuCtrl;
         public UI_GameOverController UI_GameOverCtrl;
         public UI_ValuesPanelController UI_ValuesPanelCtrl;
+        public UI_PauseController UI_PauseController;
+        public UI_LoadingPanelController UI_LoadingPanelController;
 
         [HideInInspector]
         public MenuBase CurrentMenu;
@@ -21,6 +22,8 @@ namespace TeamF
             UI_ValuesPanelCtrl.gameObject.SetActive(false);
             UI_MainMenuCtrl.gameObject.SetActive(true);
             UI_GameOverCtrl.gameObject.SetActive(false);
+            UI_LoadingPanelController.gameObject.SetActive(false);
+            UI_PauseController.gameObject.SetActive(false);
             UI_MainMenuCtrl.Init();
         }
 
@@ -31,6 +34,8 @@ namespace TeamF
             UI_MainMenuCtrl.gameObject.SetActive(false);
             UI_GameOverCtrl.gameObject.SetActive(false);
             UI_ValuesPanelCtrl.gameObject.SetActive(true);
+            UI_LoadingPanelController.gameObject.SetActive(false);
+            UI_PauseController.gameObject.SetActive(false);
             UI_ValuesPanelCtrl.Init(_characterData, _enemyData);
         }
 
@@ -39,14 +44,37 @@ namespace TeamF
             UI_ValuesPanelCtrl.gameObject.SetActive(false);
             UI_MainMenuCtrl.gameObject.SetActive(false);
             UI_GameOverCtrl.gameObject.SetActive(false);
+            UI_PauseController.gameObject.SetActive(false);
+            UI_LoadingPanelController.gameObject.SetActive(false);
         }
 
-        public void GameOverActions(bool _isWin)
+        public void PauseActions()
         {
             UI_ValuesPanelCtrl.gameObject.SetActive(false);
             UI_MainMenuCtrl.gameObject.SetActive(false);
+            UI_GameOverCtrl.gameObject.SetActive(false);
+            UI_LoadingPanelController.gameObject.SetActive(false);
+            UI_PauseController.gameObject.SetActive(true);
+            UI_PauseController.Init();
+        }
+
+        public void GameOverActions(LevelEndingStaus _levelStatus)
+        {
+            UI_ValuesPanelCtrl.gameObject.SetActive(false);
+            UI_MainMenuCtrl.gameObject.SetActive(false);
+            UI_LoadingPanelController.gameObject.SetActive(false);
+            UI_PauseController.gameObject.SetActive(false);
             UI_GameOverCtrl.gameObject.SetActive(true);
-            UI_GameOverCtrl.Init(_isWin);
+            UI_GameOverCtrl.Init(_levelStatus);
+        }
+
+        public void LoadingActions()
+        {
+            UI_ValuesPanelCtrl.gameObject.SetActive(false);
+            UI_MainMenuCtrl.gameObject.SetActive(false);
+            UI_GameOverCtrl.gameObject.SetActive(false);
+            UI_PauseController.gameObject.SetActive(false);
+            UI_LoadingPanelController.gameObject.SetActive(true);
         }
     }
 }
