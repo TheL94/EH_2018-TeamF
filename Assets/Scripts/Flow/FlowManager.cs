@@ -36,7 +36,7 @@ namespace TeamF
                     break;
 
                 case FlowState.MainMenu:
-                    if (_oldState == FlowState.SetupGame || _oldState == FlowState.EndRound || _oldState == FlowState.ManageMap || _oldState == FlowState.Pause || _oldState == FlowState.ExitTestScene)
+                    if (_oldState == FlowState.SetupGame || _oldState == FlowState.EndRound || _oldState == FlowState.ManageMap || _oldState == FlowState.ExitTestScene)
                     {
                         _currentState = _newState;
                         MainMenuActions();
@@ -226,6 +226,7 @@ namespace TeamF
 
             if (GameManager.I.LevelMng.EndingStaus == LevelEndingStaus.Interrupted)
             {
+                GameManager.I.LevelMng.Level = 0;
                 CurrentState = FlowState.MainMenu;
                 return;
             }

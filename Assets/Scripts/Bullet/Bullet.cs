@@ -158,8 +158,12 @@ namespace TeamF
                 case BulletOwner.Enemy:
                     if (other.GetComponent<Enemy>() == null)
                     {
-                        DoDamage(other.GetComponent<IDamageable>());
-                        ApplyElementalEffect(other.GetComponent<IEffectable>());
+                        damageable = other.GetComponent<IDamageable>();
+                        if (damageable != null)
+                        {
+                            DoDamage(damageable);
+                            ApplyElementalEffect(other.GetComponent<IEffectable>());
+                        }
                         Destroy(gameObject);
                     }
                     break;
@@ -168,7 +172,9 @@ namespace TeamF
                     if (damageable != null)
                     {
                         DoDamage(damageable);
+                        ApplyElementalEffect(other.GetComponent<IEffectable>());
                     }
+                    Destroy(gameObject);
                     break;
             }
         }

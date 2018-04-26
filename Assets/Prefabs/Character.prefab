@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 4254573017787072}
   - component: {fileID: 33174196437690948}
   - component: {fileID: 23458981917286108}
+  - component: {fileID: 114455667335572392}
   m_Layer: 0
   m_Name: SK_Larry_test_1_tank
   m_TagString: Untagged
@@ -55,6 +56,7 @@ GameObject:
   - component: {fileID: 4569997324659090}
   - component: {fileID: 33669649708432726}
   - component: {fileID: 23186767508243018}
+  - component: {fileID: 114404907232534708}
   m_Layer: 0
   m_Name: SK_Larry_test_1_body
   m_TagString: Untagged
@@ -88,10 +90,9 @@ GameObject:
   - component: {fileID: 114614664107629650}
   - component: {fileID: 114537653086299798}
   - component: {fileID: 114165898222929040}
+  - component: {fileID: 114979120555928256}
   - component: {fileID: 54766758108439196}
   - component: {fileID: 136670992667913964}
-  - component: {fileID: 114979120555928256}
-  - component: {fileID: 114540896669658070}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -124,6 +125,7 @@ GameObject:
   - component: {fileID: 4282491763180802}
   - component: {fileID: 33275934190464344}
   - component: {fileID: 23176434574807544}
+  - component: {fileID: 114039786421693760}
   m_Layer: 0
   m_Name: SK_Larry_test_1_helmet
   m_TagString: Untagged
@@ -582,6 +584,17 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114039786421693760
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1821280894263854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b17f3054addf4a4885eb6ec39473dee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114165898222929040
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -605,6 +618,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WeaponData: {fileID: 11400000, guid: 6b4ace897e588ea46bef47f87da56f2e, type: 2}
+--- !u!114 &114404907232534708
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1315546726277550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b17f3054addf4a4885eb6ec39473dee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114455667335572392
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1239794036536592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b17f3054addf4a4885eb6ec39473dee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114537653086299798
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -617,17 +652,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ModelToRotate: {fileID: 1591770313687090}
---- !u!114 &114540896669658070
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1533697916002696}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b17f3054addf4a4885eb6ec39473dee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114600692040967896
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -16,7 +16,6 @@ namespace TeamF
         {
             if (isBulletBehaviourInitialized)
             {
-                //bulletBehaviour.DoUpdate();
                 if (bulletBehaviour.DoUpdate())
                     StopBulletEffect();
             }

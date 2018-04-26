@@ -16,20 +16,6 @@ namespace TeamF
 
         List<BulletData> bulletDatasInstancies = new List<BulletData>();
 
-        #region IGetSlower
-        public bool IsSlowed { get; set; }
-
-        public float MovementSpeed
-        {
-            get { return Data.MovementSpeed; }
-            set
-            {
-                Data.MovementSpeed = value;
-                movement.MovementSpeed = Data.MovementSpeed;
-            }
-        }
-        #endregion
-
         Player player;
 
         FadeToMe FadeComponent;
@@ -113,8 +99,21 @@ namespace TeamF
 
             if (Life <= 0)
             {
-                //Destroy(movement.ModelToRotate);
                 player.CharacterDeath();
+            }
+        }
+        #endregion
+
+        #region IGetSlower
+        public bool IsSlowed { get; set; }
+
+        public float MovementSpeed
+        {
+            get { return Data.MovementSpeed; }
+            set
+            {
+                Data.MovementSpeed = value;
+                movement.MovementSpeed = Data.MovementSpeed;
             }
         }
         #endregion
