@@ -119,7 +119,7 @@ namespace TeamF
         /// </summary>
 
         bool _isParalized;
-        public bool IsParalized
+        public bool IsParalyzed
         {
             get { return _isParalized; }
             set

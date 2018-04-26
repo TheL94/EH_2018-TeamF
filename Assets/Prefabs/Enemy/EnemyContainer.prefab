@@ -94,6 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25e773c66df95e64c9585c5dd991ffbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ParalysisImmunityTime: 2
 --- !u!114 &114876029956112454
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -107,10 +108,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsActive: 0
   InitialDefaultState: {fileID: 0}
-  CharmedState: {fileID: 11400000, guid: be36f027868a9214f8ff0cc883b566bc, type: 2}
-  ParalizeState: {fileID: 11400000, guid: 2ff2d443b904d6c45ae10f7fb3110339, type: 2}
-  DamageState: {fileID: 11400000, guid: 38bbb89fb884c7741818bec99cd8a91c, type: 2}
-  DeadState: {fileID: 11400000, guid: 2211d2357802c344e87e2781f833128d, type: 2}
+  CurrentDestination: {x: 0, y: 0, z: 0}
+  IsDisengaging: 0
+  IsAttackCoolDown: 0
+  FireConsecutiveAttacks: 0
 --- !u!195 &195810935744453768
 NavMeshAgent:
   m_ObjectHideFlags: 1

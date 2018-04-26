@@ -28,7 +28,7 @@ namespace TeamF
             Data = _data;
 
             Life = Data.Life;
-            IsParalized = false;
+            IsParalyzed = false;
 
             FadeComponent = GetComponentInChildren<FadeToMe>();
             FadeComponent.Init();
@@ -122,7 +122,7 @@ namespace TeamF
         /// <summary>
         /// Chiamata dalla combo elementale paralizzante
         /// </summary>
-        public bool IsParalized { get; set; }
+        public bool IsParalyzed { get; set; }
         #endregion
 
         #region Weapon

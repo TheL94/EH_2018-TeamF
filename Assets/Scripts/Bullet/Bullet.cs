@@ -125,7 +125,7 @@ namespace TeamF
                             _effect.InitEffect(new PoisonedEffect(), _effectable, ammo.Data);
                             break;
                         case ElementalType.Thunder:
-                            _effect.InitEffect(new ParalizeEffect(), _effectable, ammo.Data);
+                            _effect.InitEffect(new ParalyzeEffect(), _effectable, ammo.Data);
                             break;
                         case ElementalType.None:
                             break;

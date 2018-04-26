@@ -46,7 +46,7 @@ namespace TeamF
         void CheckInput()
         {
             //InputStatus status = controllerInput.GetPlayerInputStatus();
-            if (Character.IsParalized)
+            if (Character.IsParalyzed)
                 return;
             else
                 CheckKeyboardInput();

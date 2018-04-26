@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace TeamF
 {
-    public class ParalizeEffect : IElementalEffectBehaviour
+    public class ParalyzeEffect : IElementalEffectBehaviour
     {
         ElementalEffectData elementalData;
         IEffectable target;
@@ -13,12 +13,12 @@ namespace TeamF
         {
             target = _target;
             elementalData = _data;
-            target.IsParalized = true;
+            target.IsParalyzed = true;
         }
 
         public void DoStopEffect()
         {
-            target.IsParalized = false;
+            target.IsParalyzed = false;
         }
 
         public bool DoUpdate()

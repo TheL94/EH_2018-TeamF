@@ -15,7 +15,7 @@ namespace TeamF.AI
 
         bool IsStillParalized(Enemy _enemy)
         {
-            if(_enemy.IsParalized)
+            if(_enemy.IsParalyzed)
                 return true;
 
             return false;

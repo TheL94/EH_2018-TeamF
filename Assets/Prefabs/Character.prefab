@@ -725,6 +725,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25e773c66df95e64c9585c5dd991ffbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ParalysisImmunityTime: 2
 --- !u!124 &124737006046693908
 Behaviour:
   m_ObjectHideFlags: 1
