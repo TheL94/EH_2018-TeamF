@@ -9,8 +9,6 @@ namespace TeamF
     {
         #region Variables Fields
         #region Character
-        CharacterData oldCharacterData;
-
         public InputField Character_Life;
         public InputField Character_Damage;
         public InputField Character_Speed;
@@ -21,8 +19,6 @@ namespace TeamF
         #endregion
 
         #region Enemy
-        EnemyGenericData oldEnemyData;
-
         public InputField Enemy_Life;
         public InputField Enemy_Damage;
         public InputField Enemy_Speed;
@@ -34,20 +30,23 @@ namespace TeamF
         public InputField SceneToLoad;
         #endregion
 
+        public CharacterData CharacterDataForTestScene;
+        public EnemyGenericData EnemyGenericDataForTestScene;
+
         public void Init(CharacterData _characterData, EnemyGenericData _enemyData)
         {
-            oldCharacterData = Instantiate(_characterData);
+            CharacterDataForTestScene = Instantiate(_characterData);
 
-            Character_Life.text = oldCharacterData.Life.ToString();
-            Character_Speed.text = oldCharacterData.MovementSpeed.ToString();
-            Character_RotationSpeed.text = oldCharacterData.RotationSpeed.ToString();
+            Character_Life.text = CharacterDataForTestScene.Life.ToString();
+            Character_Speed.text = CharacterDataForTestScene.MovementSpeed.ToString();
+            Character_RotationSpeed.text = CharacterDataForTestScene.RotationSpeed.ToString();
 
-            oldEnemyData =Instantiate(_enemyData);
+            EnemyGenericDataForTestScene = Instantiate(_enemyData);
 
-            Enemy_Life.text = oldEnemyData.Life.ToString();
-            Enemy_Damage.text = oldEnemyData.MeleeDamage.ToString();
-            Enemy_Speed.text = oldEnemyData.Speed.ToString();
-            Enemy_AttackRange.text = oldEnemyData.MeleeDamageRange.ToString();
+            Enemy_Life.text = EnemyGenericDataForTestScene.Life.ToString();
+            Enemy_Damage.text = EnemyGenericDataForTestScene.MeleeDamage.ToString();
+            Enemy_Speed.text = EnemyGenericDataForTestScene.Speed.ToString();
+            Enemy_AttackRange.text = EnemyGenericDataForTestScene.MeleeDamageRange.ToString();
 
             SceneToLoad.text = "1";
 
@@ -60,12 +59,9 @@ namespace TeamF
         /// </summary>
         void SetCharacterValues()
         {
-            CharacterData newData = oldCharacterData;
-            newData.Life = float.Parse(Character_Life.text);
-            newData.MovementSpeed = float.Parse(Character_Speed.text);
-            newData.RotationSpeed = float.Parse(Character_RotationSpeed.text);
-
-            GameManager.I.Player.CharacterData = newData;
+            CharacterDataForTestScene.Life = float.Parse(Character_Life.text);
+            CharacterDataForTestScene.MovementSpeed = float.Parse(Character_Speed.text);
+            CharacterDataForTestScene.RotationSpeed = float.Parse(Character_RotationSpeed.text);
         }
 
         /// <summary>
@@ -73,25 +69,10 @@ namespace TeamF
         /// </summary>
         void SetEnemiesValue()
         {
-            for (int i = 0; i < GameManager.I.EnemyMng.DataInstance.EnemiesData.Count; i++)
-            {
-                EnemyGenericData enemyInstanceData = Instantiate(GameManager.I.EnemyMng.DataInstance.EnemiesData[i]);
-                enemyInstanceData.Life = float.Parse(Enemy_Life.text);
-                enemyInstanceData.MeleeDamage = int.Parse(Enemy_Damage.text);
-                enemyInstanceData.Speed = float.Parse(Enemy_Speed.text);
-                enemyInstanceData.MeleeDamageRange = float.Parse(Enemy_AttackRange.text);
-                GameManager.I.EnemyMng.DataInstance.EnemiesData[i] = enemyInstanceData;
-            }
-
-            //foreach (EnemyData data in GameManager.I.EnemyMng.DataInstance.EnemiesData)
-            //{
-            //    EnemyData instanceData = Instantiate(data);
-            //    instanceData.Life = float.Parse(Enemy_Life.text);
-            //    instanceData.Damage = int.Parse(Enemy_Damage.text);
-            //    instanceData.Speed = float.Parse(Enemy_Speed.text);
-            //    instanceData.DamageRange = float.Parse(Enemy_AttackRange.text);
-
-            //}
+            EnemyGenericDataForTestScene.Life = float.Parse(Enemy_Life.text);
+            EnemyGenericDataForTestScene.MeleeDamage = int.Parse(Enemy_Damage.text);
+            EnemyGenericDataForTestScene.Speed = float.Parse(Enemy_Speed.text);
+            EnemyGenericDataForTestScene.MeleeDamageRange = float.Parse(Enemy_AttackRange.text);
         }
 
         public override void Select()
@@ -101,8 +82,6 @@ namespace TeamF
                 case 0:
                     SetCharacterValues();
                     SetEnemiesValue();
-                    EnemyManager mng = GameManager.I.EnemyMng;
-                    (mng as EnemySpawner_TS).FollowPlayer = FollowPlayerToggle.isOn;
                     GameManager.I.LevelMng.Level = int.Parse(SceneToLoad.text);
                     break;
             }

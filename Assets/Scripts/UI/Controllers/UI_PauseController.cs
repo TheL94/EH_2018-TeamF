@@ -21,7 +21,8 @@ namespace TeamF
                     GameManager.I.CurrentState = FlowState.Gameplay;
                     break;
                 case 1:
-                    GameManager.I.CurrentState = FlowState.MainMenu;
+                    GameManager.I.LevelMng.EndingStaus = LevelEndingStaus.Interrupted;
+                    GameManager.I.CurrentState = FlowState.EndRound;
                     break;
                 case 2:
                     GameManager.I.CurrentState = FlowState.QuitGame;

@@ -165,6 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Data: {fileID: 11400000, guid: 6e33b8ff52554c44aaa064e64e06f369, type: 2}
+  IgnoreTarget: 0
 --- !u!114 &114731148670223682
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -80,7 +80,7 @@ namespace TeamF
                 case WeaponType.ShotGun:
                     return _bulletPrefab.AddComponent<ShotGunBullet>();
                 default:
-                    return _bulletPrefab.AddComponent<Bullet>(); ;
+                    return _bulletPrefab.AddComponent<Bullet>();
             }
         }
     }

@@ -20,7 +20,7 @@ namespace TeamF.AI
 
         bool ChangeAnimationState(Enemy _enemy)
         {
-            if (_enemy.IsParalized)
+            if (_enemy.IsParalyzed)
             {
                 if (_enemy.Animator != null)
                 {

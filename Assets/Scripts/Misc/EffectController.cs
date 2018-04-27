@@ -6,6 +6,10 @@ namespace TeamF
 {
     public class EffectController : MonoBehaviour
     {
+        public float ParalysisImmunityTime;
+        bool canBeParalyzed = true;
+        int runningCorutineNumber;
+
         bool isBulletBehaviourInitialized;
         bool isComboInitialized;
 
@@ -16,7 +20,6 @@ namespace TeamF
         {
             if (isBulletBehaviourInitialized)
             {
-                //bulletBehaviour.DoUpdate();
                 if (bulletBehaviour.DoUpdate())
                     StopBulletEffect();
             }
@@ -35,6 +38,9 @@ namespace TeamF
         {
             if (!_isComboEffect)
             {
+                if (isBulletBehaviourInitialized)
+                    bulletBehaviour.DoStopEffect();
+
                 bulletBehaviour = _behaviour;
                 if (CheckIfEffectCanBeApplied(_behaviour, _target))
                 {
@@ -44,6 +50,9 @@ namespace TeamF
             }
             else
             {
+                if (isComboInitialized)
+                    comboBehaviour.DoStopEffect();
+
                 comboBehaviour = _behaviour;
                 comboBehaviour.DoInit(_target, _elementalData);
                 isComboInitialized = true;
@@ -54,36 +63,64 @@ namespace TeamF
         {
             bulletBehaviour.DoStopEffect();
             isBulletBehaviourInitialized = false;
+
+            ApplyParalysisImmunity(bulletBehaviour);
         }
 
         void StopComboEffect()
         {
             comboBehaviour.DoStopEffect();
             isComboInitialized = false;
+
+            ApplyParalysisImmunity(comboBehaviour);
+        }
+
+        void ApplyParalysisImmunity(IElementalEffectBehaviour _behaviour)
+        {
+            if (_behaviour.GetType() == typeof(ParalyzeEffect))
+            {
+                if (runningCorutineNumber > 0)
+                    StopAllCoroutines();
+
+                StartCoroutine(ParalyzeImmunity(ParalysisImmunityTime));
+            }
         }
 
         /// <summary>
-        /// Funzione che ritorna true se l'effetto elementale può essere applicato per il tipo di nemico, altrimenti ritorna false
+        /// Funzione che ritorna true se l'effetto elementale può essere applicato , altrimenti ritorna false
         /// </summary>
         /// <param name="_behaviour"></param>
-        /// <param name="_enemy"></param>
+        /// <param name="_target"></param>
         /// <returns></returns>
-        bool CheckIfEffectCanBeApplied(IElementalEffectBehaviour _behaviour, IEffectable _enemyBehaviour)
+        bool CheckIfEffectCanBeApplied(IElementalEffectBehaviour _behaviour, IEffectable _target)
         {
-            Enemy enemy = _enemyBehaviour as Enemy;
+            if (_behaviour.GetType() == typeof(ParalyzeEffect) && !canBeParalyzed)
+                return false;
 
-            if (enemy != null)
+            if (typeof(Enemy).IsAssignableFrom(_target.GetType()))
             {
+                Enemy enemy = _target as Enemy;
+
                 if (_behaviour.GetType() == typeof(SetOnFireEffect) && enemy.CurrentBehaviour.GetType() == typeof(EnemyFireBehaviour))
                     return false;
                 if (_behaviour.GetType() == typeof(PoisonedEffect) && enemy.CurrentBehaviour.GetType() == typeof(EnemyPoisonBehaviour))
                     return false;
                 if (_behaviour.GetType() == typeof(SlowingEffect) && enemy.CurrentBehaviour.GetType() == typeof(EnemyWaterBehaviour))
                     return false;
-                if (_behaviour.GetType() == typeof(ParalizeEffect) && enemy.CurrentBehaviour.GetType() == typeof(EnemyThunderBehaviour))
+                if (_behaviour.GetType() == typeof(ParalyzeEffect) && enemy.CurrentBehaviour.GetType() == typeof(EnemyThunderBehaviour))
                     return false; 
             }
+            
             return true;
+        }
+
+        IEnumerator ParalyzeImmunity(float _immunityTime)
+        {
+            canBeParalyzed = false;
+            runningCorutineNumber++;
+            yield return new WaitForSeconds(_immunityTime);
+            runningCorutineNumber--;
+            canBeParalyzed = true;
         }
     }
 }
