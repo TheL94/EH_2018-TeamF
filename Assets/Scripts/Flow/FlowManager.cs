@@ -184,6 +184,7 @@ namespace TeamF
 
         void MainMenuActions()
         {
+            GameManager.I.LevelMng.Level = 0;
             GameManager.I.UIMng.MainMenuActions();
         }
 
