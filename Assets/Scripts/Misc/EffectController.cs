@@ -38,6 +38,9 @@ namespace TeamF
         {
             if (!_isComboEffect)
             {
+                if (isBulletBehaviourInitialized)
+                    bulletBehaviour.DoStopEffect();
+
                 bulletBehaviour = _behaviour;
                 if (CheckIfEffectCanBeApplied(_behaviour, _target))
                 {
@@ -47,6 +50,9 @@ namespace TeamF
             }
             else
             {
+                if (isComboInitialized)
+                    comboBehaviour.DoStopEffect();
+
                 comboBehaviour = _behaviour;
                 comboBehaviour.DoInit(_target, _elementalData);
                 isComboInitialized = true;

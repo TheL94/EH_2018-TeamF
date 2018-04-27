@@ -19,7 +19,7 @@ namespace TeamF.AI
             float Angle = Vector3.SignedAngle(_enemy.transform.forward, (_enemy.Target.Position - _enemy.transform.position), Vector3.up);
                 _enemy.transform.rotation = Quaternion.Slerp(_enemy.transform.rotation, rotationToReach, _enemy.Data.AimTime);
 
-            if (Angle > -_enemy.Data.AimApproximationAngle || Angle < _enemy.Data.AimApproximationAngle)
+            if (Angle > -_enemy.Data.AimApproximationAngle && Angle < _enemy.Data.AimApproximationAngle)
                 return true;
             else
                 return false;
