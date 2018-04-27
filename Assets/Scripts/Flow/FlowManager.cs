@@ -172,8 +172,7 @@ namespace TeamF
             GameManager.I.EnemyMng = GameManager.I.GetComponent<EnemyManager>();
             GameManager.I.AmmoController = GameManager.I.GetComponent<AmmoCratesController>();
 
-            if (GameManager.I.LevelMng == null)
-                GameManager.I.LevelMng = new LevelManager();
+            GameManager.I.LevelMng = new LevelManager();
 
             GameManager.I.Player = GameManager.I.GetComponent<Player>();
             if (GameManager.I.Player != null)

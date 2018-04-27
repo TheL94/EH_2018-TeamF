@@ -10,6 +10,16 @@ namespace TeamF
         public EnemyManagerData Data;
         public EnemyManagerData DataInstance { get; set; }
 
+        private void OnEnable()
+        {
+            Enemy.EnemyDeath += OnEnemyDeath;
+        }
+
+        void OnDisable()
+        {
+            Enemy.EnemyDeath -= OnEnemyDeath;
+        }
+
         void Update()
         {
             if (!CanSpawn)
@@ -38,8 +48,6 @@ namespace TeamF
                 GetSpawnInScene();
                 StartCoroutine(FirstSpawn());
             }
-
-            Enemy.EnemyDeath += OnEnemyDeath;
         }
 
         /// <summary>
@@ -61,6 +69,7 @@ namespace TeamF
         /// <param name="_enemyKilled"></param>
         public virtual void OnEnemyDeath(Enemy _enemyKilled)
         {
+            Debug.Log(this.GetInstanceID());
             Events_LevelController.UpdateKillPoints(_enemyKilled.Data.EnemyValue);
             DeleteSpecificEnemy(_enemyKilled.ID);
         }
@@ -330,10 +339,5 @@ namespace TeamF
             }
         }
         #endregion
-
-        private void OnDisable()
-        {
-            Enemy.EnemyDeath -= OnEnemyDeath;
-        }
     }
 }
