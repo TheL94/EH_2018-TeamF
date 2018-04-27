@@ -125,7 +125,7 @@ namespace TeamF
                             _effect.InitEffect(new PoisonedEffect(), _effectable, ammo.Data);
                             break;
                         case ElementalType.Thunder:
-                            _effect.InitEffect(new ParalizeEffect(), _effectable, ammo.Data);
+                            _effect.InitEffect(new ParalyzeEffect(), _effectable, ammo.Data);
                             break;
                         case ElementalType.None:
                             break;
@@ -158,8 +158,12 @@ namespace TeamF
                 case BulletOwner.Enemy:
                     if (other.GetComponent<Enemy>() == null)
                     {
-                        DoDamage(other.GetComponent<IDamageable>());
-                        ApplyElementalEffect(other.GetComponent<IEffectable>());
+                        damageable = other.GetComponent<IDamageable>();
+                        if (damageable != null)
+                        {
+                            DoDamage(damageable);
+                            ApplyElementalEffect(other.GetComponent<IEffectable>());
+                        }
                         Destroy(gameObject);
                     }
                     break;
@@ -168,7 +172,9 @@ namespace TeamF
                     if (damageable != null)
                     {
                         DoDamage(damageable);
+                        ApplyElementalEffect(other.GetComponent<IEffectable>());
                     }
+                    Destroy(gameObject);
                     break;
             }
         }

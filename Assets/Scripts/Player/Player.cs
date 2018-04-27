@@ -31,7 +31,8 @@ namespace TeamF
             Vector3 playerSpawn = GameObject.FindGameObjectWithTag("PlayerSpawn").transform.position;
             Character.transform.position = playerSpawn;
 
-            Character.Init(this, Instantiate(CharacterData), _isTestScene);
+            if(!_isTestScene)
+                Character.Init(this, Instantiate(CharacterData), _isTestScene);
         }
 
         public void CharacterDeath()
@@ -46,7 +47,7 @@ namespace TeamF
         void CheckInput()
         {
             //InputStatus status = controllerInput.GetPlayerInputStatus();
-            if (Character.IsParalized)
+            if (Character.IsParalyzed)
                 return;
             else
                 CheckKeyboardInput();

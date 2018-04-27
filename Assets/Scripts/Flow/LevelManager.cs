@@ -7,7 +7,7 @@ namespace TeamF
 {
     public class LevelManager
     {
-        public LevelEndingStaus EndingStaus { get; private set; }
+        public LevelEndingStaus EndingStaus { get; set; }
 
         float PointsToWin { get { return GameManager.I.KillsToWinPerLevel[Level - 1]; } }
         float roundPoints = 0;
