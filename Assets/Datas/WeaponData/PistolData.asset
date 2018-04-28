@@ -15,7 +15,5 @@ MonoBehaviour:
   Parameters:
     BulletSpeed: 1
     BulletLife: 5
-    Ratio: 0.8
-    DamagePercentage: 0
-  BulletContainerPrefab: {fileID: 1096078678018924, guid: aed0c6b0c1afa4a4ca5d68d6e3bccfab,
-    type: 2}
+    Ratio: 0.5
+    DamagePercentage: 50
