@@ -21,8 +21,8 @@ MonoBehaviour:
     type: 2}
   GraphicID: Ranged
   EnemyType: 1
-  Life: 10
-  Speed: 11.8
+  Life: 2
+  Speed: 8.5
   AimTime: 0.2
   EnemyValue: 1
   MeleeDamage: -1
@@ -32,5 +32,5 @@ MonoBehaviour:
   RangedDamageRange: 9
   RangedDamageRate: 1
   BulletData: {fileID: 11400000, guid: fc0514fe99c1cf343900d4df6098e7f5, type: 2}
-  BulletSpeed: 0.5
+  BulletSpeed: 0.2
   BulletLifeTime: 2
