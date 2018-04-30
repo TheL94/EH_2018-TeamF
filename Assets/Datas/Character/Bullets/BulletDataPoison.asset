@@ -14,7 +14,7 @@ MonoBehaviour:
   ElementalAmmo:
     AmmoType: 3
     Damage: 5
-    Ammo: 34
+    Ammo: 10
     Data:
       EffectValue: 5
       TimeOfEffect: 3

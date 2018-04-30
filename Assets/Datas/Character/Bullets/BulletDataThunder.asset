@@ -14,7 +14,7 @@ MonoBehaviour:
   ElementalAmmo:
     AmmoType: 4
     Damage: 5
-    Ammo: 52
+    Ammo: 10
     Data:
       EffectValue: 0
       TimeOfEffect: 5
@@ -22,5 +22,5 @@ MonoBehaviour:
   BulletContainerPrefab: {fileID: 1096078678018924, guid: aed0c6b0c1afa4a4ca5d68d6e3bccfab,
     type: 2}
   BulletGraphicPrefab: {fileID: 0}
-  BulletTrailPrefab: {fileID: 1088442937980430, guid: 85aa085f458ecbf4094fd001ff14d309,
+  BulletTrailPrefab: {fileID: 1030270273456590, guid: 6028cf2afc3b88a4c840edde44c7c2ef,
     type: 2}

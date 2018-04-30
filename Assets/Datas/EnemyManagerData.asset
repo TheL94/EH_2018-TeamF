@@ -11,18 +11,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78d0cecd44868ed4a9189d1e2bc0e35d, type: 3}
   m_Name: EnemyManagerData
   m_EditorClassIdentifier: 
-  StartDelayTime: 1
-  DelayHordes: 5
-  MaxEnemiesInScene: 20
+  StartDelayTime: 3
+  DelayHordes: 20
+  MaxEnemiesInScene: 15
   BlockSpawnNormal: 0
   MaxNormalEnemies: 2
-  MinNormalEnemies: 1
+  MinNormalEnemies: 0
   BlockSpawnElemental: 0
-  MaxElementalsEnemies: 2
+  MaxElementalsEnemies: 1
   MinElementalsEnemies: 1
   BlockSpawnRanged: 0
-  MaxRangedEnemies: 2
-  MinRangedEnemies: 1
+  MaxRangedEnemies: 1
+  MinRangedEnemies: 0
   EnemiesData:
   - {fileID: 11400000, guid: 5a6fea14b75e31644a1ea7dad9334747, type: 2}
   - {fileID: 11400000, guid: 43a0cc2ec2f5f7943b21df8f6dd5d04d, type: 2}
