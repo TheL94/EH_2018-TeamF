@@ -21,8 +21,8 @@ MonoBehaviour:
     type: 2}
   GraphicID: Poison
   EnemyType: 4
-  Life: 10
-  Speed: 11.8
+  Life: 15
+  Speed: 8.5
   AimTime: 0.2
   EnemyValue: 1
   MeleeDamage: -1
@@ -32,7 +32,7 @@ MonoBehaviour:
   RangedDamageRange: 9
   RangedDamageRate: 1
   BulletData: {fileID: 11400000, guid: b69f54a5670741e478343d85268443f8, type: 2}
-  BulletSpeed: 0.5
+  BulletSpeed: 0.2
   BulletLifeTime: 2
   CloudPrefab: {fileID: 1673971421481346, guid: 70ead17ddbc5ee34bb7654b8bcff4ccb,
     type: 2}
