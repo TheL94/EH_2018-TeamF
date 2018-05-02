@@ -11,12 +11,12 @@ namespace TeamF
         public float MovementSpeed { get; set; }
         float RotationSpeed;
 
-        Rigidbody rigid;
+        Rigidbody playerRigidbody;
 
         public void Init(float _movementSpeed, float _rotationSpeed, DashStruct _dashData)
         {
-            rigid = GetComponent<Rigidbody>();
-            rigid.useGravity = true;
+            playerRigidbody = GetComponent<Rigidbody>();
+            playerRigidbody.useGravity = true;
             dash = GetComponent<Dash>();
             dash.Init(this, _dashData);
             MovementSpeed = _movementSpeed;
@@ -25,15 +25,16 @@ namespace TeamF
 
         public void ReInit()
         {
-            rigid.useGravity = false;
+            playerRigidbody.useGravity = false;
         }
 
         public void Move(Vector3 _position)
         {
-            transform.position = Vector3.Lerp(transform.position, transform.position + _position, MovementSpeed * Time.deltaTime);
+            Vector3 position = _position * MovementSpeed * Time.deltaTime;
+            playerRigidbody.MovePosition(transform.position + position);
         }
 
-        public void Rotate()
+        public void Turn()
         {
             Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit floorHit;
@@ -42,7 +43,8 @@ namespace TeamF
             {
                 Vector3 playerToMouse = floorHit.point - transform.position;
                 playerToMouse.y = 0;
-                ModelToRotate.transform.rotation = Quaternion.Slerp(ModelToRotate.transform.rotation, Quaternion.LookRotation(playerToMouse, transform.up), RotationSpeed * Time.deltaTime);
+                Quaternion newRotatation = Quaternion.LookRotation(playerToMouse, transform.up);
+                playerRigidbody.MoveRotation(newRotatation);
             }
         }
 

@@ -7,7 +7,7 @@ namespace TeamF
 {
     public class Player : MonoBehaviour
     {
-        void Update()
+        void FixedUpdate()
         {
             CheckInput();
         }
@@ -93,7 +93,7 @@ namespace TeamF
                 if (Input.GetMouseButton(1))
                     Character.ElementalShot();
 
-                Character.movement.Rotate();
+                Character.movement.Turn();
             }
             if (GameManager.I.CurrentState == FlowState.MainMenu  || GameManager.I.CurrentState == FlowState.Pause || GameManager.I.CurrentState == FlowState.EndRound)
             {
