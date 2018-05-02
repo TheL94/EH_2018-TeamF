@@ -5,15 +5,13 @@ using UnityFramework.AI;
 
 namespace TeamF.AI
 {
-    [CreateAssetMenu(menuName = "AI/NewAction/Enemy_ChangeAnimationState")]
-    public class Enemy_ChangeAnimationState : AI_Action
+    [CreateAssetMenu(menuName = "AI/NewAction/Animation/Enemy_ParalysisAnimationState")]
+    public class Enemy_ParalysisAnimationState : AI_Action
     {
-        public bool SetOnlyMovementAnim;
-        public bool IsWalking;
         public int AnimationState;
 
         protected override bool Act(AI_Controller _controller)
-        {        
+        {
             return ChangeAnimationState((_controller as AI_Enemy).Enemy);
         }
 
@@ -21,12 +19,9 @@ namespace TeamF.AI
         {
             if (_enemy.Animator != null)
             {
-                if (SetOnlyMovementAnim)
-                    _enemy.Animator.SetBool("IsWalking", IsWalking);
-                else
+                if (_enemy.IsParalyzed)
                 {
-                    _enemy.Animator.SetInteger("State", AnimationState);
-                    //Debug.Log(AnimationState);
+                    _enemy.Animator.SetInteger("State", AnimationState); 
                 }
             }
             return true;
