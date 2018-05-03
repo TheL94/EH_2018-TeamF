@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41e3d64deee77d649b8572271a3e5103, type: 3}
+  m_Name: Ranged_CheckParalysisCoolDown
+  m_EditorClassIdentifier: 
+  Actions:
+  - Delay: 0
+    Loop: 1
+    Action: {fileID: 11400000, guid: 6dface135e0b02d45b0327b102c378bb, type: 2}
+    OnSuccess: {fileID: 0}
+    OnFailure: {fileID: 11400000, guid: c4934800f932a0541989f4fd31553265, type: 2}
+  - Delay: 0
+    Loop: 0
+    Action: {fileID: 11400000, guid: 72cc829e5b9ffee42a35afc292da4534, type: 2}
+    OnSuccess: {fileID: 0}
+    OnFailure: {fileID: 11400000, guid: c4934800f932a0541989f4fd31553265, type: 2}

@@ -10,7 +10,7 @@ namespace TeamF.AI
     {
         public bool SetOnlyMovementAnim;
         public bool IsWalking;
-        public Enemy.AnimationState AnimationState;
+        public int AnimationState;
 
         protected override bool Act(AI_Controller _controller)
         {        
@@ -22,9 +22,12 @@ namespace TeamF.AI
             if (_enemy.Animator != null)
             {
                 if (SetOnlyMovementAnim)
-                    _enemy.IsWalking = IsWalking;
+                    _enemy.Animator.SetBool("IsWalking", IsWalking);
                 else
-                    _enemy.AnimState = AnimationState;
+                {
+                    _enemy.Animator.SetInteger("State", AnimationState);
+                    //Debug.Log(AnimationState);
+                }
             }
             return true;
         }

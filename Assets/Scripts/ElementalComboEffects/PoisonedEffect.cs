@@ -14,7 +14,7 @@ namespace TeamF
         {
             target = _target;
             elementalData = _data;
-            timer = elementalData.TimeFraction;
+            timer = elementalData.TimeOfEffect;
         }
 
         public bool DoUpdate()

@@ -1267,6 +1267,14 @@ Prefab:
       propertyPath: m_NavMeshLayer
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 2f213a2fc60a395458c75fdd4c45cdaa, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d5f2fc3b0c837674fa1a75139686fabc, type: 2}
+    - target: {fileID: 100000, guid: 2f213a2fc60a395458c75fdd4c45cdaa, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2f213a2fc60a395458c75fdd4c45cdaa, type: 3}
   m_IsPrefabParent: 0
@@ -5051,7 +5059,7 @@ GameObject:
   m_Component:
   - component: {fileID: 353309778}
   m_Layer: 0
-  m_Name: SPAWN NEMICI
+  m_Name: Enemys
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9983,7 +9991,7 @@ GameObject:
   m_Component:
   - component: {fileID: 664016168}
   m_Layer: 0
-  m_Name: SPAWN ARMI
+  m_Name: Weapons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10002,6 +10010,7 @@ Transform:
   - {fileID: 1928880605}
   - {fileID: 765040021}
   - {fileID: 578348582}
+  - {fileID: 892861793}
   m_Father: {fileID: 591211224}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13664,19 +13673,19 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 892861789}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 24.59}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: -1.1800008}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 394713993}
   - {fileID: 1557676993}
   - {fileID: 1041001309}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 664016168}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 7.78, y: 1.0057287}
+  m_AnchoredPosition: {x: 5.2899985, y: -1.2}
   m_SizeDelta: {x: 10, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &903443563
@@ -14251,7 +14260,7 @@ GameObject:
   m_Component:
   - component: {fileID: 921376752}
   m_Layer: 0
-  m_Name: SPAWN MUNIZIONI
+  m_Name: Ammos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16178,6 +16187,10 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: 1.0000005
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 3c947ce2382f6df469a75687387b2aad, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d5f2fc3b0c837674fa1a75139686fabc, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3c947ce2382f6df469a75687387b2aad, type: 3}
   m_IsPrefabParent: 0
@@ -16185,6 +16198,23 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 3c947ce2382f6df469a75687387b2aad, type: 3}
   m_PrefabInternal: {fileID: 1072102466}
+--- !u!1 &1072102468 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: 3c947ce2382f6df469a75687387b2aad, type: 3}
+  m_PrefabInternal: {fileID: 1072102466}
+--- !u!136 &1072102469
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1072102468}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 2.2577245
+  m_Height: 16.80877
+  m_Direction: 1
+  m_Center: {x: -0.0037689216, y: 5.3404392e-11, z: -0.023808597}
 --- !u!1 &1082181428
 GameObject:
   m_ObjectHideFlags: 0
@@ -18210,6 +18240,10 @@ Prefab:
       propertyPath: m_NavMeshLayer
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 3c947ce2382f6df469a75687387b2aad, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d5f2fc3b0c837674fa1a75139686fabc, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3c947ce2382f6df469a75687387b2aad, type: 3}
   m_IsPrefabParent: 0
@@ -20592,6 +20626,10 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 197.713
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 3c947ce2382f6df469a75687387b2aad, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d5f2fc3b0c837674fa1a75139686fabc, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3c947ce2382f6df469a75687387b2aad, type: 3}
   m_IsPrefabParent: 0
@@ -24628,7 +24666,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1704959041}
   m_Layer: 0
-  m_Name: SPAWN PLAYER
+  m_Name: Player
   m_TagString: PlayerSpawn
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -25746,6 +25784,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: d5f2fc3b0c837674fa1a75139686fabc, type: 2}
+    - target: {fileID: 100000, guid: 3c947ce2382f6df469a75687387b2aad, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3c947ce2382f6df469a75687387b2aad, type: 3}
   m_IsPrefabParent: 0

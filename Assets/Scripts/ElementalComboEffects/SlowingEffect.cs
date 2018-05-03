@@ -14,13 +14,18 @@ namespace TeamF
         {
             target = _target;
             elementalData = _data;
-            previousMovementSpeed = target.MovementSpeed;
-            target.MovementSpeed = _data.EffectValue;
+            if (!target.IsSlowed)
+            {
+                target.IsSlowed = true;
+                previousMovementSpeed = target.MovementSpeed;
+                target.MovementSpeed = target.MovementSpeed - (target.MovementSpeed * _data.EffectValue) / 100; 
+            }
         }
 
         public void DoStopEffect()
         {
             target.MovementSpeed = previousMovementSpeed;
+            target.IsSlowed = false;
         }
 
         public bool DoUpdate()

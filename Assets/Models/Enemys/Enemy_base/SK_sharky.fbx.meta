@@ -6,11 +6,57 @@ ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
+    100002: C_general
+    100004: Chest
+    100006: Chest_C
+    100008: head
+    100010: Head_C
+    100012: L_foot
+    100014: L_foot_C
+    100016: L_hand
+    100018: L_hand_C
+    100020: L_sholuder
+    100022: L_shoulder_C
+    100024: mounth
+    100026: Pelvis
+    100028: Pelvis_C
+    100030: R_foot
+    100032: R_foot_C
+    100034: R_hand
+    100036: R_Hand_C
+    100038: R_sholuder
+    100040: R_shoulder_C
+    100042: Sharky_mesh
     400000: //RootNode
+    400002: C_general
+    400004: Chest
+    400006: Chest_C
+    400008: head
+    400010: Head_C
+    400012: L_foot
+    400014: L_foot_C
+    400016: L_hand
+    400018: L_hand_C
+    400020: L_sholuder
+    400022: L_shoulder_C
+    400024: mounth
+    400026: Pelvis
+    400028: Pelvis_C
+    400030: R_foot
+    400032: R_foot_C
+    400034: R_hand
+    400036: R_Hand_C
+    400038: R_sholuder
+    400040: R_shoulder_C
+    400042: Sharky_mesh
     2100000: lambert1
+    2100002: Sharky_mat
     2300000: //RootNode
+    2300002: Sharky_mesh
     3300000: //RootNode
+    3300002: Sharky_mesh
     4300000: pCube20
+    4300002: Sharky_mesh
   externalObjects:
   - first:
       type: UnityEngine:Material

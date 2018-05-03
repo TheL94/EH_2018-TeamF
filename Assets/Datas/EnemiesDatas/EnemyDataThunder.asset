@@ -11,19 +11,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 761ff678fe32dff46beefa12330fe2ec, type: 3}
   m_Name: EnemyDataThunder
   m_EditorClassIdentifier: 
-  InitialState: {fileID: 11400000, guid: 71cba2fedc5068d439e56827c896a183, type: 2}
-  CharmedState: {fileID: 11400000, guid: e80cce888eb62a445b88d35ceb560a4c, type: 2}
-  ParalizedState: {fileID: 11400000, guid: 99d8f988b12164f45aa85b56bf6c4738, type: 2}
-  DamageState: {fileID: 11400000, guid: 6565eb4bb6330fe4c85a70b3de3d1ac4, type: 2}
-  StoppingDistance: 0.5
+  InitialState: {fileID: 11400000, guid: 51026d570471a68469236a3788b4efbe, type: 2}
+  CharmedState: {fileID: 11400000, guid: d61be8897e993c647845e0f46fa76471, type: 2}
+  ParalizedState: {fileID: 11400000, guid: 66f751faaa17e7a43b49ce8c19c366cf, type: 2}
+  DamageState: {fileID: 11400000, guid: afa52ab5d4812b64883808973aaa3fbf, type: 2}
+  StoppingDistance: 1
   AimApproximationAngle: 20
   ContainerPrefab: {fileID: 1267129680638450, guid: 25dfe3bec1371e14d87332e9234c5ef8,
     type: 2}
-  GraphicPrefab: {fileID: 1273753816426612, guid: 4d1d8d786b8e02046ab6341251b35f46,
-    type: 2}
+  GraphicID: Thunder
   EnemyType: 5
-  Life: 10
-  Speed: 11.8
+  Life: 15
+  Speed: 9.5
   AimTime: 0.2
   EnemyValue: 1
   MeleeDamage: 1
@@ -33,5 +32,5 @@ MonoBehaviour:
   RangedDamageRange: 9
   RangedDamageRate: 1
   BulletData: {fileID: 11400000, guid: 936fa4877bc454445a0cce927ca680a0, type: 2}
-  BulletSpeed: 0.5
-  BulletLifeTime: 2
+  BulletSpeed: 0.35
+  BulletLifeTime: 5

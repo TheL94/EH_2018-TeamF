@@ -7,10 +7,18 @@ namespace TeamF
 {
     public class EnemyManager : MonoBehaviour
     {   
-        public IDamageable EnemyTarget { get; private set; }
-
         public EnemyManagerData Data;
         public EnemyManagerData DataInstance { get; set; }
+
+        private void OnEnable()
+        {
+            Enemy.EnemyDeath += OnEnemyDeath;
+        }
+
+        void OnDisable()
+        {
+            Enemy.EnemyDeath -= OnEnemyDeath;
+        }
 
         void Update()
         {
@@ -18,7 +26,7 @@ namespace TeamF
                 return;
 
             spawnTime += Time.deltaTime;
-            if (spawnTime >= DataInstance.DelayHordes && EnemyTarget.Life > 0)
+            if (spawnTime >= DataInstance.DelayHordes && (GameManager.I.CurrentState == FlowState.Gameplay || GameManager.I.CurrentState == FlowState.TestGameplay))
             {
                 SpawnHorde();
                 spawnTime = 0;
@@ -26,27 +34,20 @@ namespace TeamF
         }
 
         #region API
-        public virtual void Init(IDamageable _enemyTarget, bool _isTestScene = false)
+        public void Init(bool _isTestScene = false)
         {
-            Init(_enemyTarget, Instantiate(Data), _isTestScene);
+            Init(Instantiate(Data), _isTestScene);
         }
 
-        public virtual void Init(IDamageable _enemyTarget, EnemyManagerData _dataInstance, bool _isTestScene = false)
+        public void Init(EnemyManagerData _dataInstance, bool _isTestScene = false)
         {
             DataInstance = _dataInstance;
-            EnemyTarget = _enemyTarget;
-
-            GetSpawnInScene();
-
-            Enemy.EnemyDeath += OnEnemyDeath;
 
             if (!_isTestScene)
+            {
+                GetSpawnInScene();
                 StartCoroutine(FirstSpawn());
-        }
-
-        public void InitDataForTestScene()
-        {
-            DataInstance = Instantiate(Data);
+            }
         }
 
         /// <summary>
@@ -55,6 +56,7 @@ namespace TeamF
         public void EndGameplayActions()
         {
             CanSpawn = false;
+            spawnPoints.Clear();
             DeleteAllEnemies();
         }
         #endregion
@@ -62,13 +64,27 @@ namespace TeamF
         #region Enemy
         /// <summary>
         /// Cancella il nemico dalla lista di nemici spawnati, aggiunge il valore del nemico al contatore dei nemici uccisi, 
-        /// se la partita è vinta avvisa il gamemanager
+        /// se la partita è vinta avvisa il gamemanager.
         /// </summary>
         /// <param name="_enemyKilled"></param>
         public virtual void OnEnemyDeath(Enemy _enemyKilled)
         {
+            Debug.Log(this.GetInstanceID());
             Events_LevelController.UpdateKillPoints(_enemyKilled.Data.EnemyValue);
             DeleteSpecificEnemy(_enemyKilled.ID);
+        }
+
+        /// <summary>
+        /// Funizonche setta lo stato acceso o spento di tutte le AI in gioco.
+        /// </summary>
+        /// <param name="_value"></param>
+        public void ToggleAllAIs(bool _value)
+        {
+            foreach (Enemy enemy in enemiesSpawned)
+            {
+                enemy.AI_Enemy.IsActive = _value;
+                enemy.Agent.enabled = _value;
+            }
         }
 
         public virtual IDamageable GetTarget(Enemy _enemy)
@@ -90,7 +106,7 @@ namespace TeamF
         IDamageable GetClosestTarget(Enemy _enemy)
         {
             float referanceDistance = 1000;
-            IDamageable enemyCloser = null;
+            IDamageable closestTarget = null;
 
             foreach (Enemy enemy in enemiesSpawned)
             {
@@ -100,16 +116,16 @@ namespace TeamF
                 float distance = Vector3.Distance(_enemy.transform.position, enemy.transform.position);
                 if (distance < referanceDistance)
                 {
-                    enemyCloser = enemy;
+                    closestTarget = enemy;
                     referanceDistance = distance;
                 }
             }
             float playerDistance = Vector3.Distance(GameManager.I.Player.Character.transform.position, _enemy.transform.position);
             if(playerDistance < referanceDistance)
-                enemyCloser = GameManager.I.Player.Character;
+                closestTarget = GameManager.I.Player.Character;
 
 
-            return enemyCloser;
+            return closestTarget;
         }
 
         void DeleteSpecificEnemy(string _idEnemy)
@@ -119,6 +135,9 @@ namespace TeamF
                 if (enemiesSpawned[i].ID == _idEnemy)
                 {
                     Enemy enemyToDestroy = enemiesSpawned[i];
+                    enemyToDestroy.gameObject.SetActive(false);
+                    GameManager.I.PoolMng.UpdatePool(enemyToDestroy.Data.GraphicID);
+
                     enemiesSpawned.Remove(enemiesSpawned[i]);
                     Destroy(enemyToDestroy);
                     return;
@@ -128,6 +147,8 @@ namespace TeamF
 
         void DeleteAllEnemies()
         {
+            GameManager.I.PoolMng.ForcePoolReset();
+
             for (int i = 0; i < enemiesSpawned.Count; i++)
             {
                 Destroy(enemiesSpawned[i].gameObject);
@@ -138,9 +159,9 @@ namespace TeamF
 
         #region Spawner
         public bool CanSpawn { get; set; }
-        protected List<Transform> spawnPoints = new List<Transform>();
-        protected List<Enemy> enemiesSpawned = new List<Enemy>();
-        protected int idCounter;
+        List<Transform> spawnPoints = new List<Transform>();
+        List<Enemy> enemiesSpawned = new List<Enemy>();
+        int idCounter;
         float spawnTime;
 
         /// <summary>
@@ -228,7 +249,7 @@ namespace TeamF
 
             for (int i = 0; i < spawnPoints.Count; i++)
             {
-                float _spawnDistance = Vector3.Distance(spawnPoints[i].position, EnemyTarget.Position);
+                float _spawnDistance = Vector3.Distance(spawnPoints[i].position, GameManager.I.Player.Character.Position);
                 if (_spawnDistance < _distance)
                 {
                     spawnIndexToExclude = i;
@@ -245,7 +266,7 @@ namespace TeamF
         /// <param name="_enemyPrefab">Il prefab del nemico da utilizzare</param>
         /// <param name="_spawnPoint">Lo spawn point dove far spawnare il nemico</param>
         /// <param name="SpawnElementalEnemy">True se il nemico da spawnare è elementale</param>
-        protected Enemy SpawnEnemy(GameObject _enemyPrefab, Transform _spawnPoint)
+        Enemy SpawnEnemy(GameObject _enemyPrefab, Transform _spawnPoint)
         {
             if (enemiesSpawned.Count >= DataInstance.MaxEnemiesInScene)
                 return null;
@@ -273,7 +294,7 @@ namespace TeamF
         /// <param name="_type"></param>
         /// <param name="_element"></param>
         /// <returns></returns>
-        protected EnemyGenericData FindEnemyDataByType(EnemyType _type)
+        EnemyGenericData FindEnemyDataByType(EnemyType _type)
         {
             EnemyGenericData data = DataInstance.EnemiesData.Where(d => d.EnemyType == _type).FirstOrDefault();
             if (data != null)
@@ -294,9 +315,29 @@ namespace TeamF
         }
         #endregion
 
-        private void OnDisable()
+        #region Test Scene
+        public bool IgnoreTarget;
+
+        public void SpawnEnemyForTestScene()
         {
-            Enemy.EnemyDeath -= OnEnemyDeath;
+            GetSpawnInScene();
+
+            for (int i = 2; i < Data.EnemiesData.Count; i++)
+            {
+                EnemyGenericData data = FindEnemyDataByType((EnemyType)i);
+                if (data != null)
+                {
+                    Transform spawn;
+                    if (i - 2 < spawnPoints.Count)
+                        spawn = spawnPoints[i - 2];
+                    else
+                        spawn = spawnPoints[0];
+
+                    Enemy _newEnemy = SpawnEnemy(data.ContainerPrefab, spawn);
+                    _newEnemy.Init(data, "Enemy" + idCounter);
+                }
+            }
         }
+        #endregion
     }
 }

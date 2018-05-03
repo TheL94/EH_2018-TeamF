@@ -31,12 +31,13 @@ namespace TeamF
             Vector3 playerSpawn = GameObject.FindGameObjectWithTag("PlayerSpawn").transform.position;
             Character.transform.position = playerSpawn;
 
-            Character.Init(this, Instantiate(CharacterData), _isTestScene);
+            if(!_isTestScene)
+                Character.Init(this, Instantiate(CharacterData), _isTestScene);
         }
 
         public void CharacterDeath()
         {
-            GameManager.I.LevelMng.GoToGameLost();
+            GameManager.I.LevelMng.CheckGameStatus();
         }
         #endregion
 
@@ -46,7 +47,7 @@ namespace TeamF
         void CheckInput()
         {
             //InputStatus status = controllerInput.GetPlayerInputStatus();
-            if (Character.IsParalized)
+            if (Character.IsParalyzed)
                 return;
             else
                 CheckKeyboardInput();
@@ -54,7 +55,7 @@ namespace TeamF
 
         void CheckKeyboardInput()
         {
-            if (GameManager.I.CurrentState == FlowState.Gameplay)
+            if (GameManager.I.CurrentState == FlowState.Gameplay || GameManager.I.CurrentState == FlowState.TestGameplay)
             {
                 if (Character.Life <= 0)
                     return;
@@ -75,10 +76,9 @@ namespace TeamF
                 if (Input.GetKeyDown(KeyCode.Space))
                     Character.movement.Dash(finalDirection);
 
-                    if (Input.GetAxis("Mouse ScrollWheel") < 0f || Input.GetKeyDown(KeyCode.E))
+                if (Input.GetAxis("Mouse ScrollWheel") < 0f || Input.GetKeyDown(KeyCode.E))
                 {
                     Character.SelectPreviousAmmo();
-
                 }
                 else if (Input.GetAxis("Mouse ScrollWheel") > 0f || Input.GetKeyDown(KeyCode.Q))
                 {
@@ -95,13 +95,13 @@ namespace TeamF
 
                 Character.movement.Rotate();
             }
-            if (GameManager.I.CurrentState != FlowState.EnterGameplay && GameManager.I.CurrentState != FlowState.Gameplay)
+            if (GameManager.I.CurrentState == FlowState.MainMenu  || GameManager.I.CurrentState == FlowState.Pause || GameManager.I.CurrentState == FlowState.EndRound)
             {
                 if (Input.GetKeyDown(KeyCode.UpArrow))
                     GameManager.I.UIMng.CurrentMenu.GoUpInMenu();
                 if (Input.GetKeyDown(KeyCode.DownArrow))
                     GameManager.I.UIMng.CurrentMenu.GoDownInMenu();
-                if (Input.GetKeyDown(KeyCode.Space))
+                if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
                     GameManager.I.UIMng.CurrentMenu.Select();
             }
         }

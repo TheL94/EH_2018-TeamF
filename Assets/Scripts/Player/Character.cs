@@ -7,7 +7,7 @@ namespace TeamF
 {
     public class Character : MonoBehaviour, IEffectable
     {
-        CharacterData Data;
+        public CharacterData Data { get; private set; }
         public Light BackPackLight;
         public MeshRenderer BackPackRenderer;
         public MeshRenderer CharacterRenderer;
@@ -15,18 +15,6 @@ namespace TeamF
         public Movement movement;
 
         List<BulletData> bulletDatasInstancies = new List<BulletData>();
-
-        #region IGetSlower
-        public float MovementSpeed
-        {
-            get { return Data.MovementSpeed; }
-            set
-            {
-                Data.MovementSpeed = value;
-                movement.MovementSpeed = Data.MovementSpeed;
-            }
-        }
-        #endregion
 
         Player player;
 
@@ -40,7 +28,7 @@ namespace TeamF
             Data = _data;
 
             Life = Data.Life;
-            IsParalized = false;
+            IsParalyzed = false;
 
             FadeComponent = GetComponentInChildren<FadeToMe>();
             FadeComponent.Init();
@@ -66,6 +54,11 @@ namespace TeamF
                 }
             }
             selectedAmmoIndex = 1;
+        }
+
+        public void ReInit()
+        {
+            movement.ReInit();
         }
         #endregion
 
@@ -106,8 +99,21 @@ namespace TeamF
 
             if (Life <= 0)
             {
-                //Destroy(movement.ModelToRotate);
                 player.CharacterDeath();
+            }
+        }
+        #endregion
+
+        #region IGetSlower
+        public bool IsSlowed { get; set; }
+
+        public float MovementSpeed
+        {
+            get { return Data.MovementSpeed; }
+            set
+            {
+                Data.MovementSpeed = value;
+                movement.MovementSpeed = Data.MovementSpeed;
             }
         }
         #endregion
@@ -116,7 +122,7 @@ namespace TeamF
         /// <summary>
         /// Chiamata dalla combo elementale paralizzante
         /// </summary>
-        public bool IsParalized { get; set; }
+        public bool IsParalyzed { get; set; }
         #endregion
 
         #region Weapon
@@ -201,8 +207,8 @@ namespace TeamF
                     if (_crate.Type == Data.BulletDatas[i].ElementalAmmo.AmmoType)
                     {
                         //Aggiungi le munizioni a questo tipo;
-                        Data.BulletDatas[i].ElementalAmmo.Ammo += _crate.Ammo;
-                        Events_UIController.AmmoChange(Data.BulletDatas[i].ElementalAmmo);
+                        bulletDatasInstancies[i].ElementalAmmo.Ammo += _crate.Ammo;
+                        Events_UIController.AmmoChange(bulletDatasInstancies[i].ElementalAmmo);
                         _crate.DestroyAmmoCrate();
                         return;
                     }

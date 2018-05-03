@@ -19,11 +19,10 @@ MonoBehaviour:
   AimApproximationAngle: 20
   ContainerPrefab: {fileID: 1267129680638450, guid: 25dfe3bec1371e14d87332e9234c5ef8,
     type: 2}
-  GraphicPrefab: {fileID: 1396582309163458, guid: a3b280d73d927f24c87831fab5c48f39,
-    type: 2}
+  GraphicID: Water
   EnemyType: 3
-  Life: 10
-  Speed: 11.8
+  Life: 15
+  Speed: 8.8
   AimTime: 0.2
   EnemyValue: 1
   MeleeDamage: 1
@@ -33,5 +32,5 @@ MonoBehaviour:
   RangedDamageRange: 9
   RangedDamageRate: 1
   BulletData: {fileID: 11400000, guid: 5ff57a97b0c6cd84cafe9ff72198d7ee, type: 2}
-  BulletSpeed: 0.5
+  BulletSpeed: 0.2
   BulletLifeTime: 2

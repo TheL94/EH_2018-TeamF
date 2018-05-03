@@ -22,9 +22,9 @@ namespace TeamF.AI
                 effect.gameObject.SetActive(false);
             // --------------------------------------------------------
 
-            _enemy.AI_Enemy.IsActive = false;
             if (Enemy.EnemyDeath != null)
                 Enemy.EnemyDeath(_enemy);
+            _enemy.AI_Enemy.IsActive = false;
         }
     }
 }

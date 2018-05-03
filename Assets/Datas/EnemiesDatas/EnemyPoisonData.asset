@@ -19,11 +19,10 @@ MonoBehaviour:
   AimApproximationAngle: 20
   ContainerPrefab: {fileID: 1267129680638450, guid: 25dfe3bec1371e14d87332e9234c5ef8,
     type: 2}
-  GraphicPrefab: {fileID: 1124996623055566, guid: 810ca68633868c44d9cf80a7acdaa149,
-    type: 2}
+  GraphicID: Poison
   EnemyType: 4
-  Life: 10
-  Speed: 11.8
+  Life: 15
+  Speed: 8.5
   AimTime: 0.2
   EnemyValue: 1
   MeleeDamage: -1
@@ -33,7 +32,7 @@ MonoBehaviour:
   RangedDamageRange: 9
   RangedDamageRate: 1
   BulletData: {fileID: 11400000, guid: b69f54a5670741e478343d85268443f8, type: 2}
-  BulletSpeed: 0.5
+  BulletSpeed: 0.2
   BulletLifeTime: 2
   CloudPrefab: {fileID: 1673971421481346, guid: 70ead17ddbc5ee34bb7654b8bcff4ccb,
     type: 2}
