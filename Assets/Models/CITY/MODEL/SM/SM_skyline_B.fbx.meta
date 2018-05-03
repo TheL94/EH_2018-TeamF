@@ -1,22 +1,17 @@
 fileFormatVersion: 2
-guid: caf450a2d9a4f884ba6ff9012fe660f4
-timeCreated: 1524169570
+guid: 80aca3294168cc042a910b63b0481f17
+timeCreated: 1525004778
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: M_city_palette
+    2100000: lambert1
     2300000: //RootNode
     3300000: //RootNode
-    4300000: polySurface146
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: M_city_palette
-    second: {fileID: 2100000, guid: 49a83adcef4213a418c5162d7d8d7418, type: 2}
+    4300000: pCube6
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
@@ -51,10 +46,10 @@ ModelImporter:
     addColliders: 0
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 0
-    importLights: 0
+    importCameras: 1
+    importLights: 1
     swapUVChannels: 0
-    generateSecondaryUV: 1
+    generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
@@ -71,7 +66,7 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
-  importAnimation: 0
+  importAnimation: 1
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2

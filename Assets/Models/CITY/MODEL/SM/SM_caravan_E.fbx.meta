@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: caf450a2d9a4f884ba6ff9012fe660f4
-timeCreated: 1524169570
+guid: 304a5be0323d2f4498b09003d839f6f4
+timeCreated: 1524583114
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -10,7 +10,7 @@ ModelImporter:
     2100000: M_city_palette
     2300000: //RootNode
     3300000: //RootNode
-    4300000: polySurface146
+    4300000: SM_caravan_E
   externalObjects:
   - first:
       type: UnityEngine:Material
