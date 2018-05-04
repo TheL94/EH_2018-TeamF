@@ -1,0 +1,181 @@
+fileFormatVersion: 2
+guid: 539b34abf55a62f45840ca42fce2c893
+timeCreated: 1525423742
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: abdomen
+    100002: chest
+    100004: head
+    100006: head_bubble1
+    100008: head_bubble2
+    100010: head_bubble3
+    100012: joint6
+    100014: L_ankle
+    100016: L_elbow
+    100018: L_foot
+    100020: L_footend
+    100022: L_hand
+    100024: L_knee
+    100026: L_leg
+    100028: L_shoulder
+    100030: //RootNode
+    100032: neck
+    100034: neckbase
+    100036: pelvis
+    100038: R_ankle
+    100040: R_elbow
+    100042: R_finger1
+    100044: R_finger1end
+    100046: R_finger2
+    100048: R_finger2end
+    100050: R_finger3
+    100052: R_finger3end
+    100054: R_foot
+    100056: R_footend
+    100058: R_hand
+    100060: R_knee
+    100062: R_leg
+    100064: R_shoulder
+    100066: tank_bottom
+    100068: tank_bubble1
+    100070: tank_bubble2
+    100072: tank_bubble3
+    100074: tank_top
+    100076: tube1
+    100078: tube2
+    100080: tube3
+    100082: tube4
+    100084: tube5
+    100086: tube6
+    100088: tube7
+    100090: tube8
+    100092: tube9
+    400000: abdomen
+    400002: chest
+    400004: head
+    400006: head_bubble1
+    400008: head_bubble2
+    400010: head_bubble3
+    400012: joint6
+    400014: L_ankle
+    400016: L_elbow
+    400018: L_foot
+    400020: L_footend
+    400022: L_hand
+    400024: L_knee
+    400026: L_leg
+    400028: L_shoulder
+    400030: //RootNode
+    400032: neck
+    400034: neckbase
+    400036: pelvis
+    400038: R_ankle
+    400040: R_elbow
+    400042: R_finger1
+    400044: R_finger1end
+    400046: R_finger2
+    400048: R_finger2end
+    400050: R_finger3
+    400052: R_finger3end
+    400054: R_foot
+    400056: R_footend
+    400058: R_hand
+    400060: R_knee
+    400062: R_leg
+    400064: R_shoulder
+    400066: tank_bottom
+    400068: tank_bubble1
+    400070: tank_bubble2
+    400072: tank_bubble3
+    400074: tank_top
+    400076: tube1
+    400078: tube2
+    400080: tube3
+    400082: tube4
+    400084: tube5
+    400086: tube6
+    400088: tube7
+    400090: tube8
+    400092: tube9
+    7400000: Larry_backwards
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
