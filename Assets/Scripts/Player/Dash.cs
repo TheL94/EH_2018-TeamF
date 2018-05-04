@@ -11,7 +11,6 @@ namespace TeamF
 
         int chargeCount;            // Le cariche di dash eseguibili
         float coolDown;             // Il timer che allo scadere viene rigenerata una tacca di dash
-        float chargeCooldown;       // Dopo quanto deve iniziare a ricaricare i dash
 
         public void Init(Movement _movement, DashStruct _data)
         {
@@ -37,15 +36,12 @@ namespace TeamF
         {
             if (chargeCount > 0)
             {
-                _direction *= dashData.DashDinstance;
-                movement.Move(_direction);
-
+                movement.Dash(_direction, dashData.DashDinstance);
 
                 if (_direction.x == 0 && _direction.z == 0)
                 {
                     Vector3 newPos = movement.ModelToRotate.transform.forward;
-                    newPos *= dashData.DashDinstance;
-                    movement.Move(newPos);
+                    movement.Dash(newPos, dashData.DashDinstance);
                 }
                 chargeCount--; 
             }

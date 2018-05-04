@@ -55,11 +55,6 @@ namespace TeamF
             }
             selectedAmmoIndex = 1;
         }
-
-        public void ReInit()
-        {
-            movement.ReInit();
-        }
         #endregion
 
         #region IDamageable

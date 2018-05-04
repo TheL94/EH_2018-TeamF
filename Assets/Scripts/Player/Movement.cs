@@ -16,22 +16,21 @@ namespace TeamF
         public void Init(float _movementSpeed, float _rotationSpeed, DashStruct _dashData)
         {
             playerRigidbody = GetComponent<Rigidbody>();
-            playerRigidbody.useGravity = true;
             dash = GetComponent<Dash>();
             dash.Init(this, _dashData);
             MovementSpeed = _movementSpeed;
             RotationSpeed = _rotationSpeed;
         }
 
-        public void ReInit()
-        {
-            playerRigidbody.useGravity = false;
-        }
-
         public void Move(Vector3 _position)
         {
             Vector3 position = _position * MovementSpeed * Time.deltaTime;
             playerRigidbody.MovePosition(transform.position + position);
+        }
+
+        public void Dash(Vector3 _direction, float _force)
+        {
+            playerRigidbody.AddForce(_direction * _force, ForceMode.Impulse);
         }
 
         public void Turn()
