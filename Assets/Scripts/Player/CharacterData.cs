@@ -28,7 +28,7 @@ namespace TeamF
     [System.Serializable]
     public struct DashStruct
     {
-        public float DashDinstance;
+        public float DashForce;
         public int ChargeCount;
         public float ChargeCooldown;
     }

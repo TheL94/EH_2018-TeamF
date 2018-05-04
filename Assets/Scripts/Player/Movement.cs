@@ -6,8 +6,6 @@ namespace TeamF
 {
     public class Movement : MonoBehaviour
     {
-        public GameObject ModelToRotate;
-        Dash dash;
         public float MovementSpeed { get; set; }
         float RotationSpeed;
 
@@ -16,8 +14,8 @@ namespace TeamF
         public void Init(float _movementSpeed, float _rotationSpeed, DashStruct _dashData)
         {
             playerRigidbody = GetComponent<Rigidbody>();
-            dash = GetComponent<Dash>();
-            dash.Init(this, _dashData);
+            dashData = _dashData;
+            chargeCount = dashData.ChargeCount;
             MovementSpeed = _movementSpeed;
             RotationSpeed = _rotationSpeed;
         }
@@ -26,11 +24,6 @@ namespace TeamF
         {
             Vector3 position = _position * MovementSpeed * Time.deltaTime;
             playerRigidbody.MovePosition(transform.position + position);
-        }
-
-        public void Dash(Vector3 _direction, float _force)
-        {
-            playerRigidbody.AddForce(_direction * _force, ForceMode.Impulse);
         }
 
         public void Turn()
@@ -47,9 +40,36 @@ namespace TeamF
             }
         }
 
+        #region Dash
+        DashStruct dashData;
+        int chargeCount;            // Le cariche di dash eseguibili
+        float coolDown;             // Il timer che allo scadere viene rigenerata una tacca di dash
+
         public void Dash(Vector3 _direction)
         {
-            dash.ActivateDash(_direction);
+            if (chargeCount > 0)
+            {
+                playerRigidbody.AddRelativeForce(_direction * dashData.DashForce, ForceMode.Impulse);
+
+                if (_direction.x == 0 && _direction.z == 0)
+                    playerRigidbody.AddRelativeForce(transform.forward * dashData.DashForce, ForceMode.Impulse);
+
+                chargeCount--;
+            }
         }
+
+        private void Update()
+        {
+            if (chargeCount < dashData.ChargeCount)
+            {
+                coolDown += Time.deltaTime;
+                if (coolDown >= dashData.ChargeCooldown)
+                {
+                    chargeCount++;
+                    coolDown = 0;
+                }
+            }
+        }
+        #endregion
     }
 }
