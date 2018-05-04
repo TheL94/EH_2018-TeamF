@@ -11,4 +11,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d031f19ddc4baaf45b6d9cb3836dc4e0, type: 3}
   m_Name: EnemyAnim_Fire_Paralysis
   m_EditorClassIdentifier: 
-  AnimationState: 0
+  AnimationState: 3
