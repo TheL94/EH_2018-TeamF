@@ -216,7 +216,6 @@ namespace TeamF
         void EndRoundActions()
         {
             GameManager.I.EnemyMng.EndGameplayActions();
-            GameManager.I.Player.Character.ReInit();
 
             if (GameManager.I.LevelMng.EndingStaus == LevelEndingStaus.Interrupted)
             {
@@ -270,7 +269,6 @@ namespace TeamF
         void ExitTestSceneActions()
         {
             GameManager.I.EnemyMng.EndGameplayActions();
-            GameManager.I.Player.Character.ReInit();
             GameManager.I.LevelMng.Level = 0;
         }
         #endregion

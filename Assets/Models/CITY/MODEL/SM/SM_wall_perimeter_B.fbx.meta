@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: caf450a2d9a4f884ba6ff9012fe660f4
-timeCreated: 1524169570
+guid: bffe2281d189ed844a07b4d48d83b185
+timeCreated: 1524925191
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -10,7 +10,7 @@ ModelImporter:
     2100000: M_city_palette
     2300000: //RootNode
     3300000: //RootNode
-    4300000: polySurface146
+    4300000: pCube80
   externalObjects:
   - first:
       type: UnityEngine:Material

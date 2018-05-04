@@ -11,7 +11,12 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: SM_city_tree_C
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_city_palette
+    second: {fileID: 2100000, guid: 49a83adcef4213a418c5162d7d8d7418, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

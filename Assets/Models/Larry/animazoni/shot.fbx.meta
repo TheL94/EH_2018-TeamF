@@ -1,22 +1,41 @@
 fileFormatVersion: 2
-guid: caf450a2d9a4f884ba6ff9012fe660f4
-timeCreated: 1524169570
+guid: f6cbaa1137692214e92329c4356b25ac
+timeCreated: 1525423846
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2100000: M_city_palette
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: polySurface146
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: M_city_palette
-    second: {fileID: 2100000, guid: 49a83adcef4213a418c5162d7d8d7418, type: 2}
+    100000: abdomen
+    100002: chest
+    100004: joint6
+    100006: pelvis
+    100008: R_elbow
+    100010: R_finger1
+    100012: R_finger1end
+    100014: R_finger2
+    100016: R_finger2end
+    100018: R_finger3
+    100020: R_finger3end
+    100022: R_hand
+    100024: R_shoulder
+    100026: //RootNode
+    400000: abdomen
+    400002: chest
+    400004: joint6
+    400006: pelvis
+    400008: R_elbow
+    400010: R_finger1
+    400012: R_finger1end
+    400014: R_finger2
+    400016: R_finger2end
+    400018: R_finger3
+    400020: R_finger3end
+    400022: R_hand
+    400024: R_shoulder
+    400026: //RootNode
+    7400000: shot
+    9500000: //RootNode
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
@@ -51,10 +70,10 @@ ModelImporter:
     addColliders: 0
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 0
-    importLights: 0
+    importCameras: 1
+    importLights: 1
     swapUVChannels: 0
-    generateSecondaryUV: 1
+    generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
@@ -71,7 +90,7 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
-  importAnimation: 0
+  importAnimation: 1
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2
@@ -90,7 +109,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
