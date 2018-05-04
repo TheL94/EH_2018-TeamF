@@ -85,7 +85,7 @@ namespace TeamF
                     Character.SelectNextAmmo();
                 }
 
-                Character.movement.Move(finalDirection.normalized);
+                Character.movement.Move(finalDirection);
 
                 if (Input.GetMouseButton(0))
                     Character.DefaultShot();

@@ -22,7 +22,7 @@ namespace TeamF
 
         public void Move(Vector3 _position)
         {
-            Vector3 position = _position * MovementSpeed * Time.deltaTime;
+            Vector3 position = _position.normalized * MovementSpeed * Time.deltaTime;
             playerRigidbody.MovePosition(transform.position + position);
         }
 
@@ -49,10 +49,10 @@ namespace TeamF
         {
             if (chargeCount > 0)
             {
-                playerRigidbody.AddRelativeForce(_direction * dashData.DashForce, ForceMode.Impulse);
+                playerRigidbody.AddForce(_direction.normalized * dashData.DashForce, ForceMode.Impulse);
 
                 if (_direction.x == 0 && _direction.z == 0)
-                    playerRigidbody.AddRelativeForce(transform.forward * dashData.DashForce, ForceMode.Impulse);
+                    playerRigidbody.AddForce(transform.forward.normalized * dashData.DashForce * 2, ForceMode.Impulse);
 
                 chargeCount--;
             }

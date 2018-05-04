@@ -392,8 +392,8 @@ Rigidbody:
   m_GameObject: {fileID: 1533697916002696}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: Infinity
-  m_AngularDrag: Infinity
+  m_Drag: 10
+  m_AngularDrag: 10
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
@@ -491,7 +491,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e49549b7760d89b4aafec80f462c398a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ModelToRotate: {fileID: 1591770313687090}
 --- !u!114 &114600692040967896
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -560,7 +559,7 @@ CapsuleCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1533697916002696}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 15d231edd58146b48ac7ede4a94b50fe, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.6
