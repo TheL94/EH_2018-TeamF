@@ -24,11 +24,11 @@ MonoBehaviour:
     OnFailure: {fileID: 11400000, guid: c4934800f932a0541989f4fd31553265, type: 2}
   - Delay: 0
     Loop: 0
-    Action: {fileID: 11400000, guid: 4fe5cfc0d55b54b47925f868aec430ec, type: 2}
+    Action: {fileID: 11400000, guid: 06c87f4ba74566e41a78a8e03d477886, type: 2}
     OnSuccess: {fileID: 0}
     OnFailure: {fileID: 0}
   - Delay: 0
     Loop: 0
-    Action: {fileID: 11400000, guid: bcb0a85af04fd3e42a10f2787c207ba6, type: 2}
+    Action: {fileID: 11400000, guid: 4455c6c6696c35a41b4b12f82e3e35fb, type: 2}
     OnSuccess: {fileID: 0}
     OnFailure: {fileID: 0}

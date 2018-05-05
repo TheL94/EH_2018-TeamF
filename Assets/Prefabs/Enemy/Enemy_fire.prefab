@@ -667,7 +667,7 @@ GameObject:
   - component: {fileID: 4382591476947710}
   - component: {fileID: 95338987003826174}
   m_Layer: 0
-  m_Name: Enemy_Fire
+  m_Name: Enemy_fire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
