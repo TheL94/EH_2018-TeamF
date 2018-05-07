@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: d69bee36327a9454195a8ab37f4c4188
 timeCreated: 1525423846
+=======
+guid: b28ce7e8af7ed764294cca51c04e6ecf
+timeCreated: 1525423742
+>>>>>>> 3D
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -106,7 +111,11 @@ ModelImporter:
     importMaterials: 1
     materialName: 0
     materialSearch: 1
+<<<<<<< HEAD
     materialLocation: 1
+=======
+    materialLocation: 0
+>>>>>>> 3D
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -144,8 +153,11 @@ ModelImporter:
     optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+<<<<<<< HEAD
     preserveHierarchy: 0
     indexFormat: 0
+=======
+>>>>>>> 3D
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
