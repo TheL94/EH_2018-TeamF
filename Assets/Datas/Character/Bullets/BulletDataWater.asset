@@ -17,7 +17,7 @@ MonoBehaviour:
     Ammo: 10
     Data:
       EffectValue: 25
-      TimeOfEffect: 3
+      TimeOfEffect: 5
       TimeFraction: 1
   BulletContainerPrefab: {fileID: 1096078678018924, guid: aed0c6b0c1afa4a4ca5d68d6e3bccfab,
     type: 2}

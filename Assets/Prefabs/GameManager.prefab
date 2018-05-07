@@ -215,5 +215,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AmmoCratePrefab: {fileID: 1124228256075524, guid: 467d5f63c301fc841a4c9d62e2cf3c3f,
     type: 2}
-  TimeToSpawnCrate: 10
-  AmmoPerCrate: 10
+  TimeToSpawnCrate: 20
+  AmmoPerCrate: 50
