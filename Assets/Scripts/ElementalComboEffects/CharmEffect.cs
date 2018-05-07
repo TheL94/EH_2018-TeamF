@@ -21,7 +21,10 @@ namespace TeamF
 
         public void DoStopEffect()
         {
-            (target as ICharmable).IsCharmed = false;
+            if ((target as ICharmable) != null)
+            {
+                (target as ICharmable).IsCharmed = false; 
+            }
         }
 
         public bool DoUpdate()
