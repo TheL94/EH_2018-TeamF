@@ -15,5 +15,5 @@ MonoBehaviour:
   Parameters:
     BulletSpeed: 1
     BulletLife: 5
-    Ratio: 0.5
-    DamagePercentage: 50
+    Ratio: 0.4
+    DamagePercentage: 0

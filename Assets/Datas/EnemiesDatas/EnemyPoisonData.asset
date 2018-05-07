@@ -21,12 +21,12 @@ MonoBehaviour:
     type: 2}
   GraphicID: Poison
   EnemyType: 4
-  Life: 15
-  Speed: 8.5
+  Life: 20
+  Speed: 8.8
   AimTime: 0.2
   EnemyValue: 1
-  MeleeDamage: -1
-  MeleeDamageRange: -1
+  MeleeDamage: 1
+  MeleeDamageRange: 2
   MeleeDamageRate: -1
   RangedDamage: 2
   RangedDamageRange: 9

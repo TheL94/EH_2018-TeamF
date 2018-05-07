@@ -53,8 +53,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GraphicID: FireExplosion
-  Timer: 10
-  Damage: 3
+  Timer: 3
+  Damage: 10
 --- !u!135 &135663917217223652
 SphereCollider:
   m_ObjectHideFlags: 1
