@@ -337,7 +337,7 @@ GameObject:
   - component: {fileID: 4582685788599596}
   - component: {fileID: 95017024459013566}
   m_Layer: 0
-  m_Name: EnemyBase_Melee
+  m_Name: EnemyBase_Melee_old
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

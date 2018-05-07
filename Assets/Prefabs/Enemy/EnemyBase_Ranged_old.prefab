@@ -172,7 +172,7 @@ GameObject:
   - component: {fileID: 4259851993143890}
   - component: {fileID: 95690729113118270}
   m_Layer: 0
-  m_Name: EnemyBase_Ranged
+  m_Name: EnemyBase_Ranged_old
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
