@@ -22,3 +22,13 @@ MonoBehaviour:
     Action: {fileID: 11400000, guid: 224026452fb48364eb3b547dabd95778, type: 2}
     OnSuccess: {fileID: 11400000, guid: 6cc10df2cecbfca4e9575de0120cea76, type: 2}
     OnFailure: {fileID: 11400000, guid: 6c2b5113df18f08408d373c0e2e61a8f, type: 2}
+  - Delay: 0
+    Loop: 0
+    Action: {fileID: 11400000, guid: edbd5a2a9a7a55643bd6cfd6a1668204, type: 2}
+    OnSuccess: {fileID: 0}
+    OnFailure: {fileID: 0}
+  - Delay: 0
+    Loop: 0
+    Action: {fileID: 11400000, guid: c4b51103030390043bdc9331ed98f7eb, type: 2}
+    OnSuccess: {fileID: 0}
+    OnFailure: {fileID: 0}

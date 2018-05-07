@@ -21,8 +21,8 @@ MonoBehaviour:
     type: 2}
   GraphicID: Thunder
   EnemyType: 5
-  Life: 15
-  Speed: 9.5
+  Life: 20
+  Speed: 8.8
   AimTime: 0.2
   EnemyValue: 1
   MeleeDamage: 1

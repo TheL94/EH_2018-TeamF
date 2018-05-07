@@ -6,34 +6,27 @@ namespace TeamF
 {
     public class Movement : MonoBehaviour
     {
-        public GameObject ModelToRotate;
-        Dash dash;
         public float MovementSpeed { get; set; }
         float RotationSpeed;
 
-        Rigidbody rigid;
+        Rigidbody playerRigidbody;
 
         public void Init(float _movementSpeed, float _rotationSpeed, DashStruct _dashData)
         {
-            rigid = GetComponent<Rigidbody>();
-            rigid.useGravity = true;
-            dash = GetComponent<Dash>();
-            dash.Init(this, _dashData);
+            playerRigidbody = GetComponent<Rigidbody>();
+            dashData = _dashData;
+            chargeCount = dashData.ChargeCount;
             MovementSpeed = _movementSpeed;
             RotationSpeed = _rotationSpeed;
         }
 
-        public void ReInit()
-        {
-            rigid.useGravity = false;
-        }
-
         public void Move(Vector3 _position)
         {
-            transform.position = Vector3.Lerp(transform.position, transform.position + _position, MovementSpeed * Time.deltaTime);
+            Vector3 position = _position.normalized * MovementSpeed * Time.deltaTime;
+            playerRigidbody.MovePosition(transform.position + position);
         }
 
-        public void Rotate()
+        public void Turn()
         {
             Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit floorHit;
@@ -42,13 +35,41 @@ namespace TeamF
             {
                 Vector3 playerToMouse = floorHit.point - transform.position;
                 playerToMouse.y = 0;
-                ModelToRotate.transform.rotation = Quaternion.Slerp(ModelToRotate.transform.rotation, Quaternion.LookRotation(playerToMouse, transform.up), RotationSpeed * Time.deltaTime);
+                Quaternion newRotatation = Quaternion.LookRotation(playerToMouse, transform.up);
+                playerRigidbody.MoveRotation(newRotatation);
             }
         }
 
+        #region Dash
+        DashStruct dashData;
+        int chargeCount;            // Le cariche di dash eseguibili
+        float coolDown;             // Il timer che allo scadere viene rigenerata una tacca di dash
+
         public void Dash(Vector3 _direction)
         {
-            dash.ActivateDash(_direction);
+            if (chargeCount > 0)
+            {
+                playerRigidbody.AddForce(_direction.normalized * dashData.DashForce, ForceMode.Impulse);
+
+                if (_direction.x == 0 && _direction.z == 0)
+                    playerRigidbody.AddForce(transform.forward.normalized * dashData.DashForce * 2, ForceMode.Impulse);
+
+                chargeCount--;
+            }
         }
+
+        private void Update()
+        {
+            if (chargeCount < dashData.ChargeCount)
+            {
+                coolDown += Time.deltaTime;
+                if (coolDown >= dashData.ChargeCooldown)
+                {
+                    chargeCount++;
+                    coolDown = 0;
+                }
+            }
+        }
+        #endregion
     }
 }

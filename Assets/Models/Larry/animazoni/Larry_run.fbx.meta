@@ -1,112 +1,172 @@
 fileFormatVersion: 2
-guid: 7d86beaf78033504196791acc8ec7c22
-timeCreated: 1525423742
-licenseType: Free
+guid: d47e213e1c7708144a74163586f10ee8
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: abdomen
-    100002: chest
-    100004: head
-    100006: head_bubble1
-    100008: head_bubble2
-    100010: head_bubble3
-    100012: joint6
-    100014: L_ankle
-    100016: L_elbow
-    100018: L_foot
-    100020: L_footend
-    100022: L_hand
-    100024: L_knee
-    100026: L_leg
-    100028: L_shoulder
-    100030: //RootNode
-    100032: neck
-    100034: neckbase
-    100036: pelvis
-    100038: R_ankle
-    100040: R_elbow
-    100042: R_finger1
-    100044: R_finger1end
-    100046: R_finger2
-    100048: R_finger2end
-    100050: R_finger3
-    100052: R_finger3end
-    100054: R_foot
-    100056: R_footend
-    100058: R_hand
-    100060: R_knee
-    100062: R_leg
-    100064: R_shoulder
-    100066: tank_bottom
-    100068: tank_bubble1
-    100070: tank_bubble2
-    100072: tank_bubble3
-    100074: tank_top
-    100076: tube1
-    100078: tube2
-    100080: tube3
-    100082: tube4
-    100084: tube5
-    100086: tube6
-    100088: tube7
-    100090: tube8
-    100092: tube9
+    100002: body
+    100004: chest
+    100006: head
+    100008: head 1
+    100010: head_bubble1
+    100012: head_bubble1 1
+    100014: head_bubble2
+    100016: head_bubble2 1
+    100018: head_bubble3
+    100020: head_bubble3 1
+    100022: helmet
+    100024: joint6
+    100026: L_ankle
+    100028: L_arm
+    100030: L_elbow
+    100032: L_foot
+    100034: L_foot 1
+    100036: L_footend
+    100038: L_hand
+    100040: L_knee
+    100042: L_leg
+    100044: L_shoulder
+    100046: //RootNode
+    100048: neck
+    100050: neckbase
+    100052: pelvis
+    100054: R_ankle
+    100056: R_arm
+    100058: R_elbow
+    100060: R_finger1
+    100062: R_finger1end
+    100064: R_finger2
+    100066: R_finger2end
+    100068: R_finger3
+    100070: R_finger3end
+    100072: R_foot
+    100074: R_foot 1
+    100076: R_footend
+    100078: R_hand
+    100080: R_knee
+    100082: R_leg
+    100084: R_shoulder
+    100086: tank
+    100088: tank_bottom
+    100090: tank_bubble1
+    100092: tank_bubble1 1
+    100094: tank_bubble2
+    100096: tank_bubble2 1
+    100098: tank_bubble3
+    100100: tank_bubble3 1
+    100102: tank_top
+    100104: tube
+    100106: tube1
+    100108: tube2
+    100110: tube3
+    100112: tube4
+    100114: tube5
+    100116: tube6
+    100118: tube7
+    100120: tube8
+    100122: tube9
     400000: abdomen
-    400002: chest
-    400004: head
-    400006: head_bubble1
-    400008: head_bubble2
-    400010: head_bubble3
-    400012: joint6
-    400014: L_ankle
-    400016: L_elbow
-    400018: L_foot
-    400020: L_footend
-    400022: L_hand
-    400024: L_knee
-    400026: L_leg
-    400028: L_shoulder
-    400030: //RootNode
-    400032: neck
-    400034: neckbase
-    400036: pelvis
-    400038: R_ankle
-    400040: R_elbow
-    400042: R_finger1
-    400044: R_finger1end
-    400046: R_finger2
-    400048: R_finger2end
-    400050: R_finger3
-    400052: R_finger3end
-    400054: R_foot
-    400056: R_footend
-    400058: R_hand
-    400060: R_knee
-    400062: R_leg
-    400064: R_shoulder
-    400066: tank_bottom
-    400068: tank_bubble1
-    400070: tank_bubble2
-    400072: tank_bubble3
-    400074: tank_top
-    400076: tube1
-    400078: tube2
-    400080: tube3
-    400082: tube4
-    400084: tube5
-    400086: tube6
-    400088: tube7
-    400090: tube8
-    400092: tube9
+    400002: body
+    400004: chest
+    400006: head
+    400008: head 1
+    400010: head_bubble1
+    400012: head_bubble1 1
+    400014: head_bubble2
+    400016: head_bubble2 1
+    400018: head_bubble3
+    400020: head_bubble3 1
+    400022: helmet
+    400024: joint6
+    400026: L_ankle
+    400028: L_arm
+    400030: L_elbow
+    400032: L_foot
+    400034: L_foot 1
+    400036: L_footend
+    400038: L_hand
+    400040: L_knee
+    400042: L_leg
+    400044: L_shoulder
+    400046: //RootNode
+    400048: neck
+    400050: neckbase
+    400052: pelvis
+    400054: R_ankle
+    400056: R_arm
+    400058: R_elbow
+    400060: R_finger1
+    400062: R_finger1end
+    400064: R_finger2
+    400066: R_finger2end
+    400068: R_finger3
+    400070: R_finger3end
+    400072: R_foot
+    400074: R_foot 1
+    400076: R_footend
+    400078: R_hand
+    400080: R_knee
+    400082: R_leg
+    400084: R_shoulder
+    400086: tank
+    400088: tank_bottom
+    400090: tank_bubble1
+    400092: tank_bubble1 1
+    400094: tank_bubble2
+    400096: tank_bubble2 1
+    400098: tank_bubble3
+    400100: tank_bubble3 1
+    400102: tank_top
+    400104: tube
+    400106: tube1
+    400108: tube2
+    400110: tube3
+    400112: tube4
+    400114: tube5
+    400116: tube6
+    400118: tube7
+    400120: tube8
+    400122: tube9
+    2100000: lambert8
+    2100002: lambert9
+    4300000: R_arm
+    4300002: tank
+    4300004: body
+    4300006: helmet
+    4300008: head
+    4300010: L_arm
+    4300012: L_foot
+    4300014: tank_bubble1
+    4300016: head_bubble1
+    4300018: R_foot
+    4300020: tube
+    4300022: tank_bubble2
+    4300024: tank_bubble3
+    4300026: head_bubble2
+    4300028: head_bubble3
     7400000: Larry_run
     9500000: //RootNode
+    13700000: body
+    13700002: head
+    13700004: head_bubble1
+    13700006: head_bubble2
+    13700008: head_bubble3
+    13700010: helmet
+    13700012: L_arm
+    13700014: L_foot
+    13700016: R_arm
+    13700018: R_foot
+    13700020: tank
+    13700022: tank_bubble1
+    13700024: tank_bubble2
+    13700026: tank_bubble3
+    13700028: tube
   externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
     materialSearch: 1
-    materialLocation: 0
+    materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -144,6 +204,8 @@ ModelImporter:
     optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88

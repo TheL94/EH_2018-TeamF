@@ -69,7 +69,6 @@ namespace TeamF
         /// <param name="_enemyKilled"></param>
         public virtual void OnEnemyDeath(Enemy _enemyKilled)
         {
-            Debug.Log(this.GetInstanceID());
             Events_LevelController.UpdateKillPoints(_enemyKilled.Data.EnemyValue);
             DeleteSpecificEnemy(_enemyKilled.ID);
         }
