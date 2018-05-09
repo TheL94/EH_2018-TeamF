@@ -136,7 +136,7 @@ namespace TeamF
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.tag == "ComboElement")
+            if (other.tag == "ComboElement" || other.tag == "ColliderToIgnore")
                 return;
             OnTrigger(other);
         }

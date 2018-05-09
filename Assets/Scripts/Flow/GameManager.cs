@@ -53,7 +53,6 @@ namespace TeamF
                     CurrentState = FlowState.ExitTestScene;
                 else            
                     CurrentState = FlowState.Pause;
-
             }
         }
     }
