@@ -7,19 +7,21 @@ namespace TeamF
 {
     public class UI_GameOverController : MenuBase
     {
-        public Text GameOverText;
         public GameObject NextRoundButton;
+        public Sprite WinImage;
+        public Sprite LoseImage;
 
         public void Init(LevelEndingStaus _levelStaus)
         {
+            Image img = GetComponent<Image>();
             switch (_levelStaus)
             {
                 case LevelEndingStaus.Won:
-                    GameOverText.text = "Round Won";
+                    img.sprite = WinImage;
                     NextRoundButton.SetActive(true);
                     break;
                 case LevelEndingStaus.Lost:
-                    GameOverText.text = "Game Over";
+                    img.sprite = LoseImage;
                     NextRoundButton.SetActive(false);
                     break;
             }
