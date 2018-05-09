@@ -9,7 +9,14 @@ namespace TeamF
     {
         public LevelEndingStaus EndingStaus { get; set; }
 
-        float PointsToWin { get { return GameManager.I.KillsToWinPerLevel[Level - 1]; } }
+        float PointsToWin {
+            get {
+                if(Level > 0)
+                    return GameManager.I.KillsToWinPerLevel[Level - 1];
+                else
+                    return GameManager.I.KillsToWinPerLevel[0];
+            }
+        }
         float roundPoints = 0;
 
         #region Constructor And Destructor
@@ -99,6 +106,7 @@ namespace TeamF
         public void ReInit()
         {
             roundPoints = 0;
+            Events_UIController.KillPointsChanged(roundPoints, PointsToWin);
             EndingStaus = LevelEndingStaus.NotEnded;
         }
         #endregion
