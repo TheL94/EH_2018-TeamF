@@ -5,7 +5,7 @@ using DG.Tweening;
 
 namespace TeamF
 {
-    public class Character : MonoBehaviour, IEffectable
+    public class Character : MonoBehaviour, IEffectable, IShooter
     {
         public CharacterData Data { get; private set; }
         public Light BackPackLight;
@@ -42,7 +42,7 @@ namespace TeamF
             foreach (BulletData item in Data.BulletDatas)
                 bulletDatasInstancies.Add(Instantiate(item));
 
-            weaponController.Init(bulletDatasInstancies);
+            weaponController.Init(bulletDatasInstancies, this);
 
             if (!_isTestScene)
                 bulletDatasInstancies[0].ElementalAmmo.Ammo = -1;

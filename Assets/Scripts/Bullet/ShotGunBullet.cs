@@ -1,14 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using DG.Tweening;
 
 namespace TeamF
 {
     public class ShotGunBullet : Bullet
     {
 
-        public override void Init(ElementalAmmo _currentAmmo, float _speed, BulletOwner _owner, float _bulletLife)
+        public override void Init(ElementalAmmo _currentAmmo, float _speed, IShooter _owner, float _bulletLife)
         {
             base.Init(_currentAmmo, _speed, _owner, _bulletLife);
         }

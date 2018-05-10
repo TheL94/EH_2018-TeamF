@@ -8,7 +8,7 @@ namespace TeamF
     {
         TrailRenderer trail;
         MeshRenderer rend;
-        BulletOwner owner;
+        IShooter owner;
         ElementalAmmo ammo;
         float Speed;
         float damagePercentage;
@@ -20,7 +20,7 @@ namespace TeamF
 
         #region API
 
-        public virtual void Init(ElementalAmmo _currentAmmo, float _speed, BulletOwner _owner, float _bulletLife)
+        public virtual void Init(ElementalAmmo _currentAmmo, float _speed, IShooter _owner, float _bulletLife)
         {
             ammo = _currentAmmo;
             Speed = _speed;
@@ -32,7 +32,7 @@ namespace TeamF
             Destroy(gameObject,_bulletLife);
         }
 
-        public virtual void Init(ElementalAmmo _currentAmmo, float _speed, BulletOwner _owner, float _bulletLife, float _damagePercentage)
+        public virtual void Init(ElementalAmmo _currentAmmo, float _speed, IShooter _owner, float _bulletLife, float _damagePercentage)
         {
             damagePercentage = _damagePercentage;
             Init(_currentAmmo, _speed, _owner, _bulletLife);
@@ -143,47 +143,39 @@ namespace TeamF
 
         protected virtual void OnTrigger(Collider other)
         {
-            IDamageable damageable;
-            switch (owner)
+            IDamageable damageable = other.GetComponent<IDamageable>();
+            if (damageable == null)
             {
-                case BulletOwner.Character:
-                    damageable = other.GetComponent<IDamageable>();
-                    if (damageable != null)
-                    {
-                        DoDamage(damageable);
-                        ApplyElementalEffect(other.GetComponent<IEffectable>());
-                    }
-                    Destroy(gameObject);
-                    break;
-                case BulletOwner.Enemy:
-                    if (other.GetComponent<Enemy>() == null)
-                    {
-                        damageable = other.GetComponent<IDamageable>();
-                        if (damageable != null)
-                        {
-                            DoDamage(damageable);
-                            ApplyElementalEffect(other.GetComponent<IEffectable>());
-                        }
-                        Destroy(gameObject);
-                    }
-                    break;
-                case BulletOwner.EnemyChamed:
-                    damageable = other.GetComponent<IDamageable>();
-                    if (damageable != null)
-                    {
-                        DoDamage(damageable);
-                        ApplyElementalEffect(other.GetComponent<IEffectable>());
-                    }
-                    Destroy(gameObject);
-                    break;
+                Destroy(gameObject);
+                return;
             }
-        }
-    }
 
-    public enum BulletOwner
-    {
-        Character,
-        Enemy,
-        EnemyChamed
+            if ((damageable as IShooter) == owner)
+                return;
+
+            if(owner.GetType() == typeof(Enemy))
+            {
+                if((owner as Enemy).IsCharmed)
+                {
+                    // Enemy Charmed
+                    DoDamage(damageable);
+                    ApplyElementalEffect(other.GetComponent<IEffectable>());
+                }
+                else if(other.GetComponent<Enemy>() == null)
+                {
+                    // Enemy
+                    DoDamage(damageable);
+                    ApplyElementalEffect(other.GetComponent<IEffectable>());
+                }
+            }
+            else
+            {
+                // Character
+                DoDamage(damageable);
+                ApplyElementalEffect(other.GetComponent<IEffectable>());
+            }
+
+            Destroy(gameObject);
+        }
     }
 }

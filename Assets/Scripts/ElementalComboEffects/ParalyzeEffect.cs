@@ -19,11 +19,7 @@ namespace TeamF
         public void DoStopEffect()
         {
             if (target != null)
-            {
                 target.IsParalyzed = false;
-            }
-            else
-                Debug.LogError("Paralysis: target not found");
         }
 
         public bool DoUpdate()

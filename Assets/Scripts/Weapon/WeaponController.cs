@@ -11,10 +11,9 @@ namespace TeamF
         Weapon[] weapons;
         List<BulletData> bulletDatas;
 
-
         public Weapon CurrentWeapon { get; set; }
 
-        public void Init(List<BulletData> _bulletDatas)
+        public void Init(List<BulletData> _bulletDatas, Character _character)
         {
             weapons = GetComponents<Weapon>();
             bulletDatas = _bulletDatas;
@@ -22,7 +21,7 @@ namespace TeamF
             CurrentWeapon = weapons[0];
             foreach (Weapon item in weapons)
             {
-                item.Init();
+                item.Init(_character);
             }
         }
 
