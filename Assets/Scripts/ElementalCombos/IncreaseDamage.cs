@@ -8,7 +8,7 @@ namespace TeamF
     {
         public ElementalEffectData EffectData;
 
-        protected override void OnEnteringCollider(Collider other)
+        protected override void OnEnterCollider(Collider other)
         {
             IEffectable _target = other.GetComponent<IEffectable>();
             EffectController _effect = other.GetComponent<EffectController>();
