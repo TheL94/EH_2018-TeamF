@@ -10,14 +10,12 @@ namespace TeamF
         public float Timer;
         float timer;
 
-        // Use this for initialization
         void Start()
         {
             timer = Timer;
             DoInit();
         }
 
-        // Update is called once per frame
         void Update()
         {
             OnUpdate();
@@ -30,7 +28,7 @@ namespace TeamF
 
         private void OnTriggerEnter(Collider other)
         {
-            OnEnteringCollider(other);
+            OnEnterCollider(other);
         }
 
         private void OnTriggerExit(Collider other)
@@ -38,22 +36,18 @@ namespace TeamF
             OnExitCollider(other);
         }
 
-        protected virtual void DoInit() {
-            GameObject obj = GameManager.I.PoolMng.GetObject(GraphicID);
+        protected virtual void DoInit()
+        {
+            GameObject obj = null;
+            if (GraphicID != null || GraphicID != string.Empty)
+                obj = GameManager.I.PoolMng.GetObject(GraphicID);
+
             if (obj != null)
             {
                 obj.transform.position = transform.position;
                 obj.transform.SetParent(transform);
             }
         }
-
-        protected virtual void OnUpdate() { }
-        
-        /// <summary>
-        /// L'effetto che combiono le classi che ereditano da questa classe
-        /// </summary>
-        /// <param name="other"></param>
-        protected virtual void OnEnteringCollider(Collider other) { }
 
         /// <summary>
         /// Le azioni da svolegere una volta scaduto il timer
@@ -64,6 +58,14 @@ namespace TeamF
             GameManager.I.PoolMng.UpdatePool(GraphicID);
             Destroy(gameObject);
         }
+
+        protected virtual void OnUpdate() { }
+        
+        /// <summary>
+        /// L'effetto che combiono le classi che ereditano da questa classe
+        /// </summary>
+        /// <param name="other"></param>
+        protected virtual void OnEnterCollider(Collider other) { }
 
         protected virtual void OnExitCollider(Collider other) { }
     }
