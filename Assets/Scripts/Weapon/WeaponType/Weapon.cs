@@ -11,10 +11,12 @@ namespace TeamF
         protected WeaponData weaponData;
 
         float nextFire;
+        Character character;
 
         #region API
-        public void Init()
+        public void Init(Character _character)
         {
+            character = _character;
             weaponData = Instantiate(WeaponData);
         }
 
@@ -53,7 +55,6 @@ namespace TeamF
         /// </summary>
         void CreateBullet(BulletData _bulletData, Transform _barrel)
         {
-            //GameObject bullPrefab = Instantiate(weaponData.BulletContainerPrefab, _barrel.position, _barrel.rotation);
             GameObject bullPrefab = Instantiate(_bulletData.BulletContainerPrefab, _barrel.position, _barrel.rotation);
 
             Bullet bull = InstantiateBulletBehaviour(bullPrefab);
@@ -63,7 +64,7 @@ namespace TeamF
             if (_bulletData.BulletTrailPrefab != null)
                 Instantiate(_bulletData.BulletTrailPrefab, bull.transform.position, bull.transform.rotation, bull.transform);
 
-            bull.Init(_bulletData.ElementalAmmo, weaponData.Parameters.BulletSpeed, BulletOwner.Character, weaponData.Parameters.BulletLife, weaponData.Parameters.DamagePercentage);
+            bull.Init(_bulletData.ElementalAmmo, weaponData.Parameters.BulletSpeed, character, weaponData.Parameters.BulletLife, weaponData.Parameters.DamagePercentage);
         }
 
         /// <summary>

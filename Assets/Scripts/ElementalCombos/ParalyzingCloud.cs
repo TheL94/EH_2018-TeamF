@@ -13,7 +13,9 @@ namespace TeamF
             EffectController effect = other.GetComponent<EffectController>();
             if(effect != null)
             {
-                effect.InitEffect(new ParalyzeEffect(), other.GetComponent<IEffectable>(), EffectData, true);
+                Enemy enemy = other.GetComponent<Enemy>();
+                if (enemy != null)
+                    effect.InitEffect(new ParalyzeEffect(), enemy as IEffectable, EffectData, true);
             }
         }
     }

@@ -24,8 +24,11 @@ namespace TeamF
 
         public void DoStopEffect()
         {
-            target.MovementSpeed = previousMovementSpeed;
-            target.IsSlowed = false;
+            if(target != null)
+            {
+                target.MovementSpeed = previousMovementSpeed;
+                target.IsSlowed = false;
+            }       
         }
 
         public bool DoUpdate()
