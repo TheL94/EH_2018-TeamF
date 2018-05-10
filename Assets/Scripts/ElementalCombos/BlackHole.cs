@@ -9,7 +9,7 @@ namespace TeamF {
     {
         List<NavMeshAgent> enemyCaught = new List<NavMeshAgent>();
 
-        protected override void OnEnteringCollider(Collider other)
+        protected override void OnEnterCollider(Collider other)
         {
             NavMeshAgent navMesh = other.GetComponent<NavMeshAgent>();
             if (navMesh != null)
