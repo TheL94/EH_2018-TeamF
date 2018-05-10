@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: PoolIncreaseDamage
   m_EditorClassIdentifier: 
   ID: IncreaseDamage
-  Graphic: {fileID: 1600504857715298, guid: e5b8505782b5aea408af5e43f84827c3, type: 2}
+  Graphic: {fileID: 1993951192060040, guid: 5a9b8c7eeaf6de644a25cfd323d8aab2, type: 2}
   Quantity: 10

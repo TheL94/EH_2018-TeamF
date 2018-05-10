@@ -7,7 +7,7 @@ namespace TeamF
 {
     public class Player : MonoBehaviour
     {
-        void Update()
+        void FixedUpdate()
         {
             CheckInput();
         }
@@ -85,7 +85,7 @@ namespace TeamF
                     Character.SelectNextAmmo();
                 }
 
-                Character.movement.Move(finalDirection.normalized);
+                Character.movement.Move(finalDirection);
 
                 if (Input.GetMouseButton(0))
                     Character.DefaultShot();
@@ -93,7 +93,7 @@ namespace TeamF
                 if (Input.GetMouseButton(1))
                     Character.ElementalShot();
 
-                Character.movement.Rotate();
+                Character.movement.Turn();
             }
             if (GameManager.I.CurrentState == FlowState.MainMenu  || GameManager.I.CurrentState == FlowState.Pause || GameManager.I.CurrentState == FlowState.EndRound)
             {

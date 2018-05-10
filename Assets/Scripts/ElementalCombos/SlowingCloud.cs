@@ -8,7 +8,7 @@ namespace TeamF
     {
         public float ReductionPercentage;
         float enemySpeed;
-        protected override void OnEnteringCollider(Collider other)
+        protected override void OnEnterCollider(Collider other)
         {
             Enemy enemy = other.GetComponent<Enemy>();
             if (enemy != null)

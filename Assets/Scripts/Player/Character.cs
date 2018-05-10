@@ -9,8 +9,8 @@ namespace TeamF
     {
         public CharacterData Data { get; private set; }
         public Light BackPackLight;
-        public MeshRenderer BackPackRenderer;
-        public MeshRenderer CharacterRenderer;
+        public SkinnedMeshRenderer BackPackRenderer;
+        public SkinnedMeshRenderer CharacterRenderer;
         [HideInInspector]
         public Movement movement;
 
@@ -27,15 +27,16 @@ namespace TeamF
             player = _player;
             Data = _data;
 
+            movement = GetComponent<Movement>();
+            movement.Init(MovementSpeed, Data.RotationSpeed, Data.DashValues);
+
             Life = Data.Life;
             IsParalyzed = false;
 
             FadeComponent = GetComponentInChildren<FadeToMe>();
             FadeComponent.Init();
             weaponController = GetComponentInChildren<WeaponController>();
-            movement = GetComponent<Movement>();
-
-            movement.Init(MovementSpeed, Data.RotationSpeed, Data.DashValues);
+            
 
             
             foreach (BulletData item in Data.BulletDatas)
@@ -54,11 +55,6 @@ namespace TeamF
                 }
             }
             selectedAmmoIndex = 1;
-        }
-
-        public void ReInit()
-        {
-            movement.ReInit();
         }
         #endregion
 
@@ -154,23 +150,23 @@ namespace TeamF
                 {
                     case 1:
                         BackPackLight.color = Color.red;
-                        BackPackRenderer.material.SetColor("_EmissionColor", Color.red);
+                        BackPackRenderer.materials[1].SetColor("_EmissionColor", Color.red);
                         break;
                     case 2:
                         BackPackLight.color = Color.blue;
-                        BackPackRenderer.material.SetColor("_EmissionColor", Color.blue);
+                        BackPackRenderer.materials[1].SetColor("_EmissionColor", Color.blue);
                         break;
                     case 3:
                         BackPackLight.color = Color.green;
-                        BackPackRenderer.material.SetColor("_EmissionColor", Color.green);
+                        BackPackRenderer.materials[1].SetColor("_EmissionColor", Color.green);
                         break;
                     case 4:
                         BackPackLight.color = Color.yellow;
-                        BackPackRenderer.material.SetColor("_EmissionColor", Color.yellow);
+                        BackPackRenderer.materials[1].SetColor("_EmissionColor", Color.yellow);
                         break;
                     default:
                         BackPackLight.color = Color.white;
-                        BackPackRenderer.material.SetColor("_EmissionColor", Color.white);
+                        BackPackRenderer.materials[1].SetColor("_EmissionColor", Color.white);
                         break;
                 }
             }
@@ -189,12 +185,15 @@ namespace TeamF
             selectedAmmoIndex++;
             if (selectedAmmoIndex > Data.BulletDatas.Length - 1)
                 selectedAmmoIndex = 1;
+            print(selectedAmmoIndex);
+
         }
         public void SelectNextAmmo()
         {
             selectedAmmoIndex--;
             if (selectedAmmoIndex < 1)
                 selectedAmmoIndex = Data.BulletDatas.Length - 1;
+            print(selectedAmmoIndex);
         }
         #endregion
 

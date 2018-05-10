@@ -27,3 +27,8 @@ MonoBehaviour:
     Action: {fileID: 11400000, guid: 4fe5cfc0d55b54b47925f868aec430ec, type: 2}
     OnSuccess: {fileID: 0}
     OnFailure: {fileID: 0}
+  - Delay: 0
+    Loop: 0
+    Action: {fileID: 11400000, guid: bcb0a85af04fd3e42a10f2787c207ba6, type: 2}
+    OnSuccess: {fileID: 0}
+    OnFailure: {fileID: 0}

@@ -16,12 +16,12 @@ MonoBehaviour:
   ParalizedState: {fileID: 11400000, guid: c982e30750226cb489f58f21306a1d63, type: 2}
   DamageState: {fileID: 11400000, guid: bec3e8397edf7234ea6c1a97883a6b07, type: 2}
   StoppingDistance: 0.5
-  AimApproximationAngle: 20
+  AimApproximationAngle: 10
   ContainerPrefab: {fileID: 1267129680638450, guid: 25dfe3bec1371e14d87332e9234c5ef8,
     type: 2}
   GraphicID: Fire
   EnemyType: 2
-  Life: 15
+  Life: 20
   Speed: 8.8
   AimTime: 0.2
   EnemyValue: 1

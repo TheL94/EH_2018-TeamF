@@ -6,34 +6,58 @@ namespace TeamF
 {
     public class Movement : MonoBehaviour
     {
-        public GameObject ModelToRotate;
-        Dash dash;
         public float MovementSpeed { get; set; }
         float RotationSpeed;
 
-        Rigidbody rigid;
+        Rigidbody playerRigidbody;
+
+        #region AnimVariables
+
+        Animator anim;
+        Transform cam;
+        Vector3 camForward;
+        Vector3 move;
+        Vector3 moveInput;
+
+        float forwardAmmount;
+        float turnAmmount;
+
+        #endregion
+
 
         public void Init(float _movementSpeed, float _rotationSpeed, DashStruct _dashData)
         {
-            rigid = GetComponent<Rigidbody>();
-            rigid.useGravity = true;
-            dash = GetComponent<Dash>();
-            dash.Init(this, _dashData);
+            cam = Camera.main.transform;
+            anim = GetComponentInChildren<Animator>();
+            playerRigidbody = GetComponent<Rigidbody>();
+            dashData = _dashData;
+            chargeCount = dashData.ChargeCount;
             MovementSpeed = _movementSpeed;
             RotationSpeed = _rotationSpeed;
-        }
-
-        public void ReInit()
-        {
-            rigid.useGravity = false;
+            
         }
 
         public void Move(Vector3 _position)
         {
-            transform.position = Vector3.Lerp(transform.position, transform.position + _position, MovementSpeed * Time.deltaTime);
+            /// Calcolo dell'animazione da riprodurre
+
+            if(cam != null)
+            {
+                camForward = Vector3.Scale(cam.up, new Vector3(1, 0, 1)).normalized;
+                move = _position.z * camForward + _position.x * cam.right;
+            }
+            else
+            {
+                move = _position.z * Vector3.forward + _position.x * Vector3.right;
+            }
+
+            ManageAnimations(move);
+
+            Vector3 position = _position.normalized * MovementSpeed * Time.deltaTime;
+            playerRigidbody.MovePosition(transform.position + position);
         }
 
-        public void Rotate()
+        public void Turn()
         {
             Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit floorHit;
@@ -42,13 +66,76 @@ namespace TeamF
             {
                 Vector3 playerToMouse = floorHit.point - transform.position;
                 playerToMouse.y = 0;
-                ModelToRotate.transform.rotation = Quaternion.Slerp(ModelToRotate.transform.rotation, Quaternion.LookRotation(playerToMouse, transform.up), RotationSpeed * Time.deltaTime);
+                Quaternion newRotatation = Quaternion.LookRotation(playerToMouse, transform.up);
+                playerRigidbody.MoveRotation(newRotatation);
             }
         }
 
+        /// <summary>
+        /// Normalizza il vettore dato, chiama le funzioni per trasformare il vettore di movimento da global a local e passa i valori all'animator
+        /// </summary>
+        /// <param name="_move"></param>
+        void ManageAnimations(Vector3 _move)
+        {
+            if (_move.magnitude > 1)
+                _move.Normalize();
+
+            moveInput = _move;
+
+            ConvertMoveInput();
+            UpdateAnimator();
+        }
+
+        /// <summary>
+        /// Converte MoveInput da global a local e salva i valori di X e Z in due variabili float
+        /// </summary>
+        void ConvertMoveInput()
+        {
+            Vector3 localMove = transform.InverseTransformDirection(moveInput);
+            turnAmmount = localMove.x;
+            forwardAmmount = localMove.z;
+        }
+
+        /// <summary>
+        /// Setta l'animator con i valori float salvati nella funzione ConvertMoveInput
+        /// </summary>
+        void UpdateAnimator()
+        {
+            // Setta l'animator
+            anim.SetFloat("Forward", forwardAmmount, .1f, Time.deltaTime);
+            anim.SetFloat("Turn", turnAmmount, .1f, Time.deltaTime);
+        }
+
+        #region Dash
+        DashStruct dashData;
+        int chargeCount;            // Le cariche di dash eseguibili
+        float coolDown;             // Il timer che allo scadere viene rigenerata una tacca di dash
+
         public void Dash(Vector3 _direction)
         {
-            dash.ActivateDash(_direction);
+            if (chargeCount > 0)
+            {
+                playerRigidbody.AddForce(_direction.normalized * dashData.DashForce, ForceMode.Impulse);
+
+                if (_direction.x == 0 && _direction.z == 0)
+                    playerRigidbody.AddForce(transform.forward.normalized * dashData.DashForce * 2, ForceMode.Impulse);
+
+                chargeCount--;
+            }
         }
+
+        private void Update()
+        {
+            if (chargeCount < dashData.ChargeCount)
+            {
+                coolDown += Time.deltaTime;
+                if (coolDown >= dashData.ChargeCooldown)
+                {
+                    chargeCount++;
+                    coolDown = 0;
+                }
+            }
+        }
+        #endregion
     }
 }

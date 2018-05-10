@@ -14,10 +14,10 @@ MonoBehaviour:
   ElementalAmmo:
     AmmoType: 4
     Damage: 5
-    Ammo: 10
+    Ammo: 50
     Data:
       EffectValue: 0
-      TimeOfEffect: 5
+      TimeOfEffect: 3
       TimeFraction: 1
   BulletContainerPrefab: {fileID: 1096078678018924, guid: aed0c6b0c1afa4a4ca5d68d6e3bccfab,
     type: 2}

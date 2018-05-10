@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: PoolExplosion
   m_EditorClassIdentifier: 
   ID: FireExplosion
-  Graphic: {fileID: 1837879467080228, guid: 1542eb541d78e1e4e8c76132771de050, type: 2}
+  Graphic: {fileID: 1261797704183194, guid: fb52e08697e6a094f8e20a2d31163b5c, type: 2}
   Quantity: 10

@@ -16,13 +16,13 @@ MonoBehaviour:
   ParalizedState: {fileID: 11400000, guid: 66f751faaa17e7a43b49ce8c19c366cf, type: 2}
   DamageState: {fileID: 11400000, guid: afa52ab5d4812b64883808973aaa3fbf, type: 2}
   StoppingDistance: 1
-  AimApproximationAngle: 20
+  AimApproximationAngle: 10
   ContainerPrefab: {fileID: 1267129680638450, guid: 25dfe3bec1371e14d87332e9234c5ef8,
     type: 2}
   GraphicID: Thunder
   EnemyType: 5
-  Life: 15
-  Speed: 9.5
+  Life: 20
+  Speed: 8.8
   AimTime: 0.2
   EnemyValue: 1
   MeleeDamage: 1

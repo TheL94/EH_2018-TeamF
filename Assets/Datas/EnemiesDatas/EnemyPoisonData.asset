@@ -16,17 +16,17 @@ MonoBehaviour:
   ParalizedState: {fileID: 11400000, guid: 5b3f30c12266ad94aa44762d704f9025, type: 2}
   DamageState: {fileID: 11400000, guid: 7e6c44d44741e2348a2205088f6374c6, type: 2}
   StoppingDistance: 0.5
-  AimApproximationAngle: 20
+  AimApproximationAngle: 10
   ContainerPrefab: {fileID: 1267129680638450, guid: 25dfe3bec1371e14d87332e9234c5ef8,
     type: 2}
   GraphicID: Poison
   EnemyType: 4
-  Life: 15
-  Speed: 8.5
+  Life: 20
+  Speed: 8.8
   AimTime: 0.2
   EnemyValue: 1
-  MeleeDamage: -1
-  MeleeDamageRange: -1
+  MeleeDamage: 1
+  MeleeDamageRange: 2
   MeleeDamageRate: -1
   RangedDamage: 2
   RangedDamageRange: 9
