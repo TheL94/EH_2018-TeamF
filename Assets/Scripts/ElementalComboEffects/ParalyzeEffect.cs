@@ -14,12 +14,16 @@ namespace TeamF
             target = _target;
             elementalData = _data;
             target.IsParalyzed = true;
+            (target as MonoBehaviour).GetComponentInChildren<ParticlesController>().ActivateParticles(ParticlesController.PartucleType.Paralysis);
         }
 
         public void DoStopEffect()
         {
             if (target != null)
+            {
                 target.IsParalyzed = false;
+                (target as MonoBehaviour).GetComponentInChildren<ParticlesController>().StopAllParticles();
+            }
         }
 
         public bool DoUpdate()

@@ -65,6 +65,8 @@ namespace TeamF
             isBulletBehaviourInitialized = false;
 
             ApplyParalysisImmunity(bulletBehaviour);
+
+            // Stop dei particellari
         }
 
         void StopComboEffect()

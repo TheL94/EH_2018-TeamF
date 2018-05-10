@@ -14,6 +14,7 @@ namespace TeamF {
             target = _target;
             elementalData = _data;
             timer = _data.TimeFraction;
+            (target as MonoBehaviour).GetComponentInChildren<ParticlesController>().ActivateParticles(ParticlesController.PartucleType.Fire);
         }
 
         public bool DoUpdate()
@@ -36,6 +37,8 @@ namespace TeamF {
                 return false;
         }
 
-        public void DoStopEffect() { }
+        public void DoStopEffect() {
+            (target as MonoBehaviour).GetComponentInChildren<ParticlesController>().StopAllParticles();
+        }
     }
 }
