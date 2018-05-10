@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2812787392d31644682956b48eeb8038, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GraphicID: ParalyzingCloud
+  GraphicID: 
   Timer: 20
   EffectData:
     EffectValue: 0
