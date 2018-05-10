@@ -185,7 +185,6 @@ namespace TeamF
             selectedAmmoIndex++;
             if (selectedAmmoIndex > Data.BulletDatas.Length - 1)
                 selectedAmmoIndex = 1;
-            print(selectedAmmoIndex);
 
         }
         public void SelectNextAmmo()
@@ -193,7 +192,6 @@ namespace TeamF
             selectedAmmoIndex--;
             if (selectedAmmoIndex < 1)
                 selectedAmmoIndex = Data.BulletDatas.Length - 1;
-            print(selectedAmmoIndex);
         }
         #endregion
 
