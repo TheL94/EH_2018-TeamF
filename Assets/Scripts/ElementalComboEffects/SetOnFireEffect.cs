@@ -37,8 +37,10 @@ namespace TeamF {
                 return false;
         }
 
-        public void DoStopEffect() {
-            (target as MonoBehaviour).GetComponentInChildren<ParticlesController>().StopAllParticles();
+        public void DoStopEffect()
+        {
+            if(target != null)
+                (target as MonoBehaviour).GetComponentInChildren<ParticlesController>().StopAllParticles();
         }
     }
 }
