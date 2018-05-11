@@ -1536,7 +1536,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -55.56, y: -3.9457283}
+  m_AnchoredPosition: {x: -55.56, y: -0.1}
   m_SizeDelta: {x: 10, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &81202496
@@ -3005,7 +3005,7 @@ GameObject:
   m_Component:
   - component: {fileID: 133062097}
   m_Layer: 0
-  m_Name: Cube (6)
+  m_Name: munizioni
   m_TagString: AmmoSpawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3019,7 +3019,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 133062096}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9, y: 11.6, z: 4.9}
+  m_LocalPosition: {x: -9, y: 0, z: 4.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1678152934}
@@ -5135,7 +5135,7 @@ GameObject:
   m_Component:
   - component: {fileID: 244912096}
   m_Layer: 0
-  m_Name: Cube (2)
+  m_Name: munizioni
   m_TagString: AmmoSpawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5149,7 +5149,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 244912095}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -36.1, y: 11.6, z: -53.4}
+  m_LocalPosition: {x: -36.1, y: 0, z: -53.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1678152934}
@@ -9262,7 +9262,7 @@ GameObject:
   m_Component:
   - component: {fileID: 524056136}
   m_Layer: 0
-  m_Name: Cube (1)
+  m_Name: nemici
   m_TagString: EnemySpawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9276,7 +9276,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 524056135}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.65, y: 12.82, z: 8.57}
+  m_LocalPosition: {x: -3.65, y: 0, z: 8.57}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1297218935}
@@ -9853,7 +9853,7 @@ GameObject:
   m_Component:
   - component: {fileID: 553022710}
   m_Layer: 0
-  m_Name: SpawnPlayer
+  m_Name: Player
   m_TagString: PlayerSpawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9865,12 +9865,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 553022709}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -19.41, y: 0.47999954, z: -46.27}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -19.41, y: 0, z: -46.27}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_Father: {fileID: 1696712500}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &553805865 stripped
 Transform:
@@ -10733,7 +10733,7 @@ GameObject:
   m_Component:
   - component: {fileID: 595761431}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: nemici
   m_TagString: EnemySpawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10747,7 +10747,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 595761430}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 18.45, y: 12.82, z: -51.91}
+  m_LocalPosition: {x: 18.45, y: 0, z: -51.91}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1297218935}
@@ -11959,7 +11959,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 665224229}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -50.19, y: -4.1771407, z: 28.57}
+  m_LocalPosition: {x: -50.19, y: 0, z: 28.57}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1703245155}
@@ -18191,7 +18191,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1764801733}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1032933223
 Prefab:
@@ -19499,7 +19499,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1081585760}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -49.71, y: -4.18, z: 20.78}
+  m_LocalPosition: {x: -49.71, y: 0, z: 20.78}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1703245155}
@@ -22098,7 +22098,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1281483113}
   m_Layer: 0
-  m_Name: Cube (3)
+  m_Name: munizioni
   m_TagString: AmmoSpawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22112,7 +22112,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1281483112}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 27.02, y: 12.27, z: 7.3}
+  m_LocalPosition: {x: 27.02, y: 0, z: 7.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1678152934}
@@ -22695,15 +22695,15 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1297218934}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -35.035065, y: 7.62, z: 44.967934}
+  m_LocalPosition: {x: 6.4001083, y: 0, z: 13.774929}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 595761431}
   - {fileID: 524056136}
   - {fileID: 1888963649}
   - {fileID: 2006132190}
-  m_Father: {fileID: 1764801733}
-  m_RootOrder: 4
+  m_Father: {fileID: 1696712500}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1297369092
 Prefab:
@@ -24151,7 +24151,7 @@ Transform:
   - {fileID: 576230646}
   - {fileID: 1327286995}
   m_Father: {fileID: 1764801733}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1359857795
 Prefab:
@@ -25951,7 +25951,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1469740430}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -49.68, y: -4.23, z: 25.36}
+  m_LocalPosition: {x: -49.68, y: 0, z: 25.36}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1703245155}
@@ -29214,7 +29214,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1678152933}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -35.035065, y: 8.598259, z: 44.967934}
+  m_LocalPosition: {x: 6.4001083, y: 0.5, z: 13.774929}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2070725378}
@@ -29222,8 +29222,8 @@ Transform:
   - {fileID: 1281483113}
   - {fileID: 2073857317}
   - {fileID: 133062097}
-  m_Father: {fileID: 1764801733}
-  m_RootOrder: 3
+  m_Father: {fileID: 1696712500}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1679699445
 Prefab:
@@ -29622,6 +29622,38 @@ Transform:
   m_Father: {fileID: 1201563996}
   m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: 0, y: -144.94101, z: 90.00001}
+--- !u!1 &1696712499
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1696712500}
+  m_Layer: 0
+  m_Name: SpawnPoints
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1696712500
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1696712499}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 553022710}
+  - {fileID: 1703245155}
+  - {fileID: 1678152934}
+  - {fileID: 1297218935}
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1697691051 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 27a504089b11af548b39858962391d47, type: 3}
@@ -29827,15 +29859,15 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1703245154}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 47.59, y: 5.0357285, z: -69.04}
+  m_LocalPosition: {x: 47.59, y: 0.5, z: -69.04}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 665224230}
   - {fileID: 1469740431}
   - {fileID: 1081585761}
   - {fileID: 81202495}
-  m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_Father: {fileID: 1696712500}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1704294552 stripped
 Transform:
@@ -31028,8 +31060,6 @@ Transform:
   - {fileID: 1925061075}
   - {fileID: 1085166153}
   - {fileID: 448965372}
-  - {fileID: 1678152934}
-  - {fileID: 1297218935}
   - {fileID: 1030762073}
   - {fileID: 1359464566}
   m_Father: {fileID: 0}
@@ -33288,7 +33318,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1888963649}
   m_Layer: 0
-  m_Name: Cube (2)
+  m_Name: nemici
   m_TagString: EnemySpawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33302,7 +33332,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1888963648}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.5, y: 12.82, z: -55.4}
+  m_LocalPosition: {x: -6.5, y: 0, z: -55.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1297218935}
@@ -34880,7 +34910,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2006132190}
   m_Layer: 0
-  m_Name: Cube (3)
+  m_Name: nemici
   m_TagString: EnemySpawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34894,7 +34924,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2006132189}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 22.4, y: 12.82, z: 3.8}
+  m_LocalPosition: {x: 22.4, y: 0, z: 3.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1297218935}
@@ -36337,7 +36367,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2070725378}
   m_Layer: 0
-  m_Name: Cube (1)
+  m_Name: munizioni
   m_TagString: AmmoSpawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36351,7 +36381,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2070725377}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 24.3, y: 11.6, z: -22.9}
+  m_LocalPosition: {x: 24.3, y: 0, z: -22.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1678152934}
@@ -36367,7 +36397,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2073857317}
   m_Layer: 0
-  m_Name: Cube (4)
+  m_Name: munizioni
   m_TagString: AmmoSpawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36381,7 +36411,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2073857316}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -38.65, y: 12.19, z: -24.1}
+  m_LocalPosition: {x: -38.65, y: 0, z: -24.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1678152934}
