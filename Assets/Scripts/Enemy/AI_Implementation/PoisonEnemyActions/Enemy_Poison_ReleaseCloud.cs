@@ -19,7 +19,7 @@ namespace TeamF.AI
             if (!_enemy.AI_Enemy.IsDisengaging)
             {
                 EnemyPoisonData data = _enemy.Data as EnemyPoisonData;
-                PoisonCloud cloud = GameObject.Instantiate(data.CloudPrefab, _enemy.transform.position + (Vector3.up * 2), Quaternion.identity, null).GetComponent<PoisonCloud>();
+                PoisonCloud cloud = GameObject.Instantiate(data.CloudPrefab, _enemy.transform.position, Quaternion.identity, null).GetComponent<PoisonCloud>();
                 cloud.Init(data.CloudLifeTime);
             }
         }

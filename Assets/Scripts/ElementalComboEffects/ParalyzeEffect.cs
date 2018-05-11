@@ -14,7 +14,7 @@ namespace TeamF
             target = _target;
             elementalData = _data;
             target.IsParalyzed = true;
-            (target as MonoBehaviour).GetComponentInChildren<ParticlesController>().ActivateParticles(ParticlesController.PartucleType.Paralysis);
+            (target as MonoBehaviour).GetComponentInChildren<ParticlesController>().ActivateParticles(ParticlesController.ParticleType.Paralysis);
         }
 
         public void DoStopEffect()

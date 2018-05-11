@@ -16,7 +16,7 @@ namespace TeamF
             if (target.GetType().IsAssignableFrom(typeof(Enemy)))
             {
                 (target as ICharmable).IsCharmed = true;
-                (target as MonoBehaviour).GetComponentInChildren<ParticlesController>().ActivateParticles(ParticlesController.PartucleType.Confusion);
+                (target as MonoBehaviour).GetComponentInChildren<ParticlesController>().ActivateParticles(ParticlesController.ParticleType.Confusion);
             }
         }
 

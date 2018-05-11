@@ -11,32 +11,36 @@ namespace TeamF
         public ParticleSystem ParalysisParticles;
         public ParticleSystem SlowParticles;
         public ParticleSystem IncreaseDamageParticles;
+        public ParticleSystem Dash;
 
-
-        public void ActivateParticles(PartucleType _type)
+        public void ActivateParticles(ParticleType _type)
         {
             StopAllParticles();
             switch (_type)
             {
-                case PartucleType.Fire:
+                case ParticleType.Fire:
                     if (FireParticles != null)
                         FireParticles.Play(); 
                     break;
-                case PartucleType.Slowing:
+                case ParticleType.Slowing:
                     if (SlowParticles != null)
                         SlowParticles.Play();
                     break;
-                case PartucleType.Confusion:
+                case ParticleType.Confusion:
                     if (ConfusionParticles != null)
                         ConfusionParticles.Play();
                     break;
-                case PartucleType.Paralysis:
+                case ParticleType.Paralysis:
                     if (ParalysisParticles != null)
                         ParalysisParticles.Play();
                     break;
-                case PartucleType.IncreaseDamage:
+                case ParticleType.IncreaseDamage:
                     if (IncreaseDamageParticles != null)
                         IncreaseDamageParticles.Play();
+                    break;
+                case ParticleType.Dash:
+                    if (Dash != null)
+                        Dash.Play();
                     break;
                 default:
                     break;
@@ -55,16 +59,19 @@ namespace TeamF
                 ParalysisParticles.Stop();
             if (IncreaseDamageParticles != null)
                 IncreaseDamageParticles.Stop();
+            if(Dash != null)
+                Dash.Stop();
         }
 
 
-        public enum PartucleType
+        public enum ParticleType
         {
             Fire,
             Slowing,
             Confusion,
             Paralysis,
-            IncreaseDamage
+            IncreaseDamage,
+            Dash
         }
     }
 }

@@ -14,7 +14,7 @@ namespace TeamF {
             target = _target;
             elementalData = _data;
             timer = _data.TimeFraction;
-            (target as MonoBehaviour).GetComponentInChildren<ParticlesController>().ActivateParticles(ParticlesController.PartucleType.Fire);
+            (target as MonoBehaviour).GetComponentInChildren<ParticlesController>().ActivateParticles(ParticlesController.ParticleType.Fire);
         }
 
         public bool DoUpdate()
