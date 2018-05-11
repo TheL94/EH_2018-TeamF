@@ -118,7 +118,7 @@ namespace TeamF
                 playerRigidbody.AddForce(_direction.normalized * dashData.DashForce, ForceMode.Impulse);
 
                 if (_direction.x == 0 && _direction.z == 0)
-                    playerRigidbody.AddForce(transform.forward.normalized * dashData.DashForce * 2, ForceMode.Impulse);
+                    playerRigidbody.AddForce(transform.forward.normalized * dashData.DashForce * 1.5f, ForceMode.Impulse);
 
                 chargeCount--;
             }

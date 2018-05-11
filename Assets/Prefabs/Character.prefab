@@ -2186,10 +2186,10 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 10
   m_AngularDrag: 10
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 80
+  m_Constraints: 84
   m_CollisionDetection: 0
 --- !u!95 &95533576714420756
 Animator:
@@ -2270,6 +2270,7 @@ MonoBehaviour:
   ConfusionParticles: {fileID: 0}
   ParalysisParticles: {fileID: 198559538955754696}
   SlowParticles: {fileID: 198312012540712322}
+  IncreaseDamageParticles: {fileID: 0}
 --- !u!114 &114057162375723978
 MonoBehaviour:
   m_ObjectHideFlags: 1
