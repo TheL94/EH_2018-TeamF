@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: PoolParalyzingCoud
   m_EditorClassIdentifier: 
   ID: ParalyzingCoud
-  Graphic: {fileID: 1564962568233094, guid: d8129a086ab1b3a4594ce08ec4be0562, type: 2}
+  Graphic: {fileID: 1993698555973788, guid: b6a936abcad4f6844820f7a3bcbd63c7, type: 2}
   Quantity: 10

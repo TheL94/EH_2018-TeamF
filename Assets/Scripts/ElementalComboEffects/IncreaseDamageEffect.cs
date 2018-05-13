@@ -20,7 +20,8 @@ namespace TeamF
 
         public void DoStopEffect()
         {
-            target.DamagePercentage = startMultiplyer;
+            if(target != null)
+                target.DamagePercentage = startMultiplyer;
         }
 
         public bool DoUpdate()

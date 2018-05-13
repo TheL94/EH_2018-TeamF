@@ -7,7 +7,7 @@ namespace TeamF
     public class CameraFollow : MonoBehaviour
     {
         public Transform Target;
-        public float MovemntSmoothing = 5f;
+        public float MovementSmoothing = 5f;
 
         Vector3 offset;
 
@@ -19,7 +19,7 @@ namespace TeamF
         void FixedUpdate()
         {
             Vector3 targetCamPos = Target.position + offset;
-            transform.position = Vector3.Lerp(transform.position, targetCamPos, MovemntSmoothing * Time.deltaTime);
+            transform.position = Vector3.Lerp(transform.position, targetCamPos, MovementSmoothing * Time.deltaTime);
         }
     }
 }

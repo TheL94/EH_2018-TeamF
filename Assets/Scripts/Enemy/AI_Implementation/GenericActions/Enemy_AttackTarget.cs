@@ -34,6 +34,7 @@ namespace TeamF.AI
         {
             BulletData bulletData = _enemy.Data.BulletData;
             Transform transF = _enemy.GetComponentsInChildren<Transform>().FirstOrDefault(t => t.tag == "ShootingPoint");
+
             if (transF != null)
             {
                 Bullet bullet = Instantiate(bulletData.BulletContainerPrefab, transF.position, transF.rotation, null).AddComponent<Bullet>();
@@ -43,17 +44,10 @@ namespace TeamF.AI
                 if (bulletData.BulletTrailPrefab != null)
                     Instantiate(bulletData.BulletTrailPrefab, bullet.transform.position, bullet.transform.rotation, bullet.transform);
 
-                //ElementalAmmo ammo = new ElementalAmmo() { AmmoType = ElementalType.None, Damage = _enemy.Data.RangedDamage };
-                BulletOwner owner;
-                if (_enemy.IsCharmed)
-                    owner = BulletOwner.EnemyChamed;
-                else
-                    owner = BulletOwner.Enemy;
-
-                bullet.Init(bulletData.ElementalAmmo, _enemy.Data.BulletSpeed, owner, _enemy.Data.BulletLifeTime);
+                bullet.Init(bulletData.ElementalAmmo, _enemy.Data.BulletSpeed, _enemy, _enemy.Data.BulletLifeTime);
             }
             else
-                Debug.LogWarning("No ShootingPoint Found !");
+                Debug.LogError("No ShootingPoint Found On " + _enemy.Data.EnemyType + " !");
         }
     }
 }

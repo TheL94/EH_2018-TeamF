@@ -56,8 +56,8 @@ namespace TeamF
         public void EndGameplayActions()
         {
             CanSpawn = false;
-            spawnPoints.Clear();
             DeleteAllEnemies();
+            spawnPoints.Clear();
         }
         #endregion
 
@@ -138,7 +138,7 @@ namespace TeamF
                     GameManager.I.PoolMng.UpdatePool(enemyToDestroy.Data.GraphicID);
 
                     enemiesSpawned.Remove(enemiesSpawned[i]);
-                    Destroy(enemyToDestroy);
+                    Destroy(enemyToDestroy, 1f);
                     return;
                 }
             }
@@ -150,7 +150,9 @@ namespace TeamF
 
             for (int i = 0; i < enemiesSpawned.Count; i++)
             {
-                Destroy(enemiesSpawned[i].gameObject);
+                enemiesSpawned[i].gameObject.SetActive(false);
+                GameManager.I.PoolMng.UpdatePool(enemiesSpawned[i].Data.GraphicID);
+                Destroy(enemiesSpawned[i].gameObject, 1f);
             }
             enemiesSpawned.Clear();
         }
@@ -164,7 +166,7 @@ namespace TeamF
         float spawnTime;
 
         /// <summary>
-        /// Chiama lo spawn della prima orda
+        /// Chiama lo spawn della prima ordaMO
         /// </summary>
         /// <returns></returns>
         IEnumerator FirstSpawn()

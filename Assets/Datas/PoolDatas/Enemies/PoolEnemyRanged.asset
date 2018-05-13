@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: PoolEnemyRanged
   m_EditorClassIdentifier: 
   ID: Ranged
-  Graphic: {fileID: 1424920924673014, guid: 0dc426155ad0f7e45814236e7a1b7402, type: 2}
+  Graphic: {fileID: 1466958813535024, guid: 532931363920e0347bbb93c257ff2498, type: 2}
   Quantity: 20

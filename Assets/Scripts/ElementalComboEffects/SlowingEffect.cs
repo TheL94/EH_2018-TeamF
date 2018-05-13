@@ -20,12 +20,18 @@ namespace TeamF
                 previousMovementSpeed = target.MovementSpeed;
                 target.MovementSpeed = target.MovementSpeed - (target.MovementSpeed * _data.EffectValue) / 100; 
             }
+            
+
         }
 
         public void DoStopEffect()
         {
-            target.MovementSpeed = previousMovementSpeed;
-            target.IsSlowed = false;
+            if(target != null)
+            {
+                target.MovementSpeed = previousMovementSpeed;
+                target.IsSlowed = false;
+                
+            }
         }
 
         public bool DoUpdate()
