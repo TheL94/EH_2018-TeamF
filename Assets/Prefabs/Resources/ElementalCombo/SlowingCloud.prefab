@@ -35,7 +35,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1757367698301280}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.1629095, y: 1.12, z: -53.83869}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1.84}
   m_Children: []
   m_Father: {fileID: 0}
@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59c754626c9f2814db93027b116913aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GraphicID: 
+  GraphicID: SlowingCloud
   Timer: 20
   ReductionPercentage: 40
 --- !u!135 &135411400998662500
@@ -65,5 +65,5 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 4
+  m_Radius: 2.5
   m_Center: {x: 0, y: 0, z: 0}

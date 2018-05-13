@@ -9,7 +9,7 @@ using DG.Tweening;
 namespace TeamF
 {
     [RequireComponent(typeof(NavMeshAgent), typeof(AI_Enemy))]
-    public class Enemy : MonoBehaviour, IEffectable, ICharmable
+    public class Enemy : MonoBehaviour, IEffectable, ICharmable, IShooter
     {
         public EnemyGenericData Data { get; private set; }
         public string ID { get; private set; }
@@ -40,7 +40,6 @@ namespace TeamF
             ID = _id;
             Life = Data.Life;
 
-            //Instantiate(GameManager.I.PoolMng.GetObject(Data.GraphicID), transform.position, transform.rotation, transform);
             GetGraphic();
 
             Agent = GetComponent<NavMeshAgent>();
@@ -59,6 +58,7 @@ namespace TeamF
         {
             GameObject graphic = GameManager.I.PoolMng.GetObject(Data.GraphicID);
             graphic.transform.position = transform.position;
+            graphic.transform.rotation = transform.rotation;
             graphic.transform.SetParent(transform);
         }
 

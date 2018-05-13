@@ -5,7 +5,7 @@ using DG.Tweening;
 
 namespace TeamF
 {
-    public class Character : MonoBehaviour, IEffectable
+    public class Character : MonoBehaviour, IEffectable, IShooter
     {
         public CharacterData Data { get; private set; }
         public Light BackPackLight;
@@ -42,7 +42,7 @@ namespace TeamF
             foreach (BulletData item in Data.BulletDatas)
                 bulletDatasInstancies.Add(Instantiate(item));
 
-            weaponController.Init(bulletDatasInstancies);
+            weaponController.Init(bulletDatasInstancies, this);
 
             if (!_isTestScene)
                 bulletDatasInstancies[0].ElementalAmmo.Ammo = -1;
@@ -185,7 +185,6 @@ namespace TeamF
             selectedAmmoIndex++;
             if (selectedAmmoIndex > Data.BulletDatas.Length - 1)
                 selectedAmmoIndex = 1;
-            print(selectedAmmoIndex);
 
         }
         public void SelectNextAmmo()
@@ -193,7 +192,6 @@ namespace TeamF
             selectedAmmoIndex--;
             if (selectedAmmoIndex < 1)
                 selectedAmmoIndex = Data.BulletDatas.Length - 1;
-            print(selectedAmmoIndex);
         }
         #endregion
 

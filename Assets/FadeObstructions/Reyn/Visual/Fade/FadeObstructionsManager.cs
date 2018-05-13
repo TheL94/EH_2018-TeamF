@@ -26,8 +26,11 @@ public class FadeObstructionsManager : MonoBehaviour
     {
         void OnDestroy()
         {
-            FadeObstructionsManager.Instance.RemoveFadingObject(this.gameObject);
-            FadeObstructionsManager.Instance.UnRegisterShouldBeVisible(this.gameObject);
+            if(this.gameObject != null)
+            {
+                FadeObstructionsManager.Instance.RemoveFadingObject(this.gameObject);
+                FadeObstructionsManager.Instance.UnRegisterShouldBeVisible(this.gameObject);
+            }
         }
     }
 
@@ -217,8 +220,6 @@ public class FadeObstructionsManager : MonoBehaviour
 
             return true;
         });
-
-
     }
 
     /// <summary>

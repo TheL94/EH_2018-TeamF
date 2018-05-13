@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: PoolSlowingCloud
   m_EditorClassIdentifier: 
   ID: SlowingCloud
-  Graphic: {fileID: 1757367698301280, guid: e1cc1d46946382b49b9be9951680e3dd, type: 2}
+  Graphic: {fileID: 1175610546330488, guid: 9fbc4378fbf5b894681bbeb7c210d0c2, type: 2}
   Quantity: 10

@@ -12,9 +12,7 @@ namespace TeamF
         {
             EffectController effect = other.GetComponent<EffectController>();
             if(effect != null)
-            {
                 effect.InitEffect(new ParalyzeEffect(), other.GetComponent<IEffectable>(), EffectData, true);
-            }
         }
     }
 }

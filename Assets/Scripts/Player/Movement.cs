@@ -10,6 +10,7 @@ namespace TeamF
         float RotationSpeed;
 
         Rigidbody playerRigidbody;
+        ParticlesController particle;
 
         #region AnimVariables
 
@@ -30,6 +31,7 @@ namespace TeamF
             cam = Camera.main.transform;
             anim = GetComponentInChildren<Animator>();
             playerRigidbody = GetComponent<Rigidbody>();
+            particle = GetComponentInChildren<ParticlesController>();
             dashData = _dashData;
             chargeCount = dashData.ChargeCount;
             MovementSpeed = _movementSpeed;
@@ -115,10 +117,12 @@ namespace TeamF
         {
             if (chargeCount > 0)
             {
+                particle.ActivateParticles(ParticlesController.ParticleType.Dash);
+
                 playerRigidbody.AddForce(_direction.normalized * dashData.DashForce, ForceMode.Impulse);
 
                 if (_direction.x == 0 && _direction.z == 0)
-                    playerRigidbody.AddForce(transform.forward.normalized * dashData.DashForce * 2, ForceMode.Impulse);
+                    playerRigidbody.AddForce(transform.forward.normalized * dashData.DashForce * 1.5f, ForceMode.Impulse);
 
                 chargeCount--;
             }
