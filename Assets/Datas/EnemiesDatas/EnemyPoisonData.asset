@@ -15,6 +15,7 @@ MonoBehaviour:
   CharmedState: {fileID: 11400000, guid: ff7b2eb8815c84245ba46c5e882abbb6, type: 2}
   ParalizedState: {fileID: 11400000, guid: 5b3f30c12266ad94aa44762d704f9025, type: 2}
   DamageState: {fileID: 11400000, guid: 7e6c44d44741e2348a2205088f6374c6, type: 2}
+  SearchTargetState: {fileID: 11400000, guid: 6c2b5113df18f08408d373c0e2e61a8f, type: 2}
   StoppingDistance: 0.5
   AimApproximationAngle: 10
   ContainerPrefab: {fileID: 1267129680638450, guid: 25dfe3bec1371e14d87332e9234c5ef8,
@@ -22,11 +23,11 @@ MonoBehaviour:
   GraphicID: Poison
   EnemyType: 4
   Life: 20
-  Speed: 8.8
+  Speed: 9
   AimTime: 0.2
   EnemyValue: 1
-  MeleeDamage: 1
-  MeleeDamageRange: 2
+  MeleeDamage: 2
+  MeleeDamageRange: 3
   MeleeDamageRate: -1
   RangedDamage: 2
   RangedDamageRange: 9

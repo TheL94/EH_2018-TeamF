@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ElementalAmmo:
     AmmoType: 4
-    Damage: 5
+    Damage: 7
     Ammo: 50
     Data:
       EffectValue: 0
