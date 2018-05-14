@@ -19,15 +19,21 @@ namespace TeamF
             bulletDatas = _bulletDatas;
             Barrel = GetComponentsInChildren<Transform>().Where(d => d.tag == "Barrel").First();
             CurrentWeapon = weapons[0];
+
             foreach (Weapon item in weapons)
             {
                 item.Init(_character);
+            }
+
+            foreach (BulletData bulletData in _bulletDatas)
+            {
+                if (bulletData.ElementalAmmo.AmmoType != ElementalType.None)
+                    Events_UIController.AmmoChange(bulletData.ElementalAmmo);      // UI event
             }
         }
 
         public void Shot(BulletData _selectedAmmo)
         {
-            //BulletData data = bulletDatas.Where(d => d.ElementalAmmo == _selectedAmmo).First();
             CurrentWeapon.SingleShot(_selectedAmmo, Barrel.transform);
         }
 

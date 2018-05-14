@@ -21,6 +21,6 @@ MonoBehaviour:
   MovementSpeed: 8
   RotationSpeed: 8
   DashValues:
-    DashForce: 35
+    DashForce: 75
     ChargeCount: 3
     ChargeCooldown: 3

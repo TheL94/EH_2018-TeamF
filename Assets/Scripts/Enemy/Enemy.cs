@@ -58,6 +58,7 @@ namespace TeamF
         {
             GameObject graphic = GameManager.I.PoolMng.GetObject(Data.GraphicID);
             graphic.transform.position = transform.position;
+            graphic.transform.rotation = transform.rotation;
             graphic.transform.SetParent(transform);
         }
 
