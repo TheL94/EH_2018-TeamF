@@ -11,16 +11,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b284af11ef85af4fa12080c49889673, type: 3}
   m_Name: CharacterData
   m_EditorClassIdentifier: 
-  Life: 1000
+  Life: 80
   BulletDatas:
   - {fileID: 11400000, guid: 6d8215c998413094ebba4d5ee9c79cd1, type: 2}
   - {fileID: 11400000, guid: 40ab1dcbc04f55949a227859170e9890, type: 2}
   - {fileID: 11400000, guid: e6fe3ff06c63043498f6a00a04dfce2e, type: 2}
   - {fileID: 11400000, guid: ca272d055d3ba27418d8ce71c4641262, type: 2}
   - {fileID: 11400000, guid: 405af493842c30e4ba0c18bb2aaa6db2, type: 2}
-  MovementSpeed: 8
+  MovementSpeed: 9
   RotationSpeed: 8
   DashValues:
-    DashForce: 75
+    DashForce: 65
     ChargeCount: 3
     ChargeCooldown: 3

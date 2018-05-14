@@ -13,6 +13,7 @@ namespace TeamF
         public AI_State CharmedState;
         public AI_State ParalizedState;
         public AI_State DamageState;
+        public AI_State SearchTargetState;
 
         [Header("AI Parameters")]
         public float StoppingDistance;

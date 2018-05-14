@@ -16,7 +16,7 @@ MonoBehaviour:
     BulletSpeed: 1
     BulletLife: 5
     Ratio: 0.2
-    DamagePercentage: 0.5
+    DamagePercentage: 1
   MaxOverheating: 30
   OverheatingPerShot: 1
   OverheatingDropSpeed: 20

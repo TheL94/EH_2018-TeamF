@@ -17,22 +17,30 @@ namespace TeamF.AI
 
         bool IsTargetInRangedRange(Enemy _enemy)
         {
-            float damageRange = 0f;
-
-            switch (AttackType)
+            try
             {
-                case AttackType.Melee:
-                    damageRange = _enemy.Data.MeleeDamageRange;
-                    break;
-                case AttackType.Ranged:
-                    damageRange = _enemy.Data.RangedDamageRange;
-                    break;
-            }
+                float damageRange = 0f;
 
-            if (Vector3.Distance(_enemy.Target.Position, _enemy.Position) <= damageRange)
-                return true;
-            else
-                return false;
+                switch (AttackType)
+                {
+                    case AttackType.Melee:
+                        damageRange = _enemy.Data.MeleeDamageRange;
+                        break;
+                    case AttackType.Ranged:
+                        damageRange = _enemy.Data.RangedDamageRange;
+                        break;
+                }
+
+                if (Vector3.Distance(_enemy.Target.Position, _enemy.Position) <= damageRange)
+                    return true;
+                else
+                    return false;
+            }
+            catch (System.NullReferenceException)
+            {
+                _enemy.AI_Enemy.CurrentState = _enemy.Data.SearchTargetState;
+                throw;
+            }
         }
     }
 }
