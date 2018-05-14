@@ -17,7 +17,7 @@ MonoBehaviour:
   DamageState: {fileID: 11400000, guid: 7e6c44d44741e2348a2205088f6374c6, type: 2}
   SearchTargetState: {fileID: 11400000, guid: 6c2b5113df18f08408d373c0e2e61a8f, type: 2}
   StoppingDistance: 0.5
-  AimApproximationAngle: 20
+  AimApproximationAngle: 10
   ContainerPrefab: {fileID: 1267129680638450, guid: 25dfe3bec1371e14d87332e9234c5ef8,
     type: 2}
   GraphicID: Poison
@@ -35,7 +35,7 @@ MonoBehaviour:
   BulletData: {fileID: 11400000, guid: b69f54a5670741e478343d85268443f8, type: 2}
   BulletSpeed: 0.2
   BulletLifeTime: 2
-  CloudPrefab: {fileID: 1673971421481346, guid: 70ead17ddbc5ee34bb7654b8bcff4ccb,
+  CloudPrefab: {fileID: 1207629656897942, guid: 70ead17ddbc5ee34bb7654b8bcff4ccb,
     type: 2}
   CloudReleaseDistance: 3
   CloudLifeTime: 10

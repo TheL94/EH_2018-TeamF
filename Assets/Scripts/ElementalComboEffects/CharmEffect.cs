@@ -16,6 +16,7 @@ namespace TeamF
             if (target.GetType().IsAssignableFrom(typeof(Enemy)))
             {
                 (target as ICharmable).IsCharmed = true;
+                (target as MonoBehaviour).GetComponentInChildren<ParticlesController>().ActivateParticles(ParticlesController.ParticleType.Confusion);
             }
         }
 
@@ -23,7 +24,8 @@ namespace TeamF
         {
             if ((target as ICharmable) != null)
             {
-                (target as ICharmable).IsCharmed = false; 
+                (target as ICharmable).IsCharmed = false;
+                (target as MonoBehaviour).GetComponentInChildren<ParticlesController>().StopAllParticles();
             }
         }
 

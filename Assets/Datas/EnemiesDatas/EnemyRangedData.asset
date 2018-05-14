@@ -17,7 +17,7 @@ MonoBehaviour:
   DamageState: {fileID: 11400000, guid: 6565eb4bb6330fe4c85a70b3de3d1ac4, type: 2}
   SearchTargetState: {fileID: 11400000, guid: c4934800f932a0541989f4fd31553265, type: 2}
   StoppingDistance: 0.5
-  AimApproximationAngle: 20
+  AimApproximationAngle: 10
   ContainerPrefab: {fileID: 1267129680638450, guid: 25dfe3bec1371e14d87332e9234c5ef8,
     type: 2}
   GraphicID: Ranged

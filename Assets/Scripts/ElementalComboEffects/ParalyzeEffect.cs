@@ -14,6 +14,7 @@ namespace TeamF
             target = _target;
             elementalData = _data;
             target.IsParalyzed = true;
+            (target as MonoBehaviour).GetComponentInChildren<ParticlesController>().ActivateParticles(ParticlesController.ParticleType.Paralysis);
         }
 
         public void DoStopEffect()
@@ -21,9 +22,8 @@ namespace TeamF
             if (target != null)
             {
                 target.IsParalyzed = false;
+                (target as MonoBehaviour).GetComponentInChildren<ParticlesController>().StopAllParticles();
             }
-            else
-                Debug.LogError("Paralysis: target not found");
         }
 
         public bool DoUpdate()

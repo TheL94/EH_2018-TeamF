@@ -17,7 +17,7 @@ MonoBehaviour:
   DamageState: {fileID: 11400000, guid: 38bbb89fb884c7741818bec99cd8a91c, type: 2}
   SearchTargetState: {fileID: 11400000, guid: dc958fae9dcf8a742b6b2a44e9da698a, type: 2}
   StoppingDistance: 0.5
-  AimApproximationAngle: 20
+  AimApproximationAngle: 10
   ContainerPrefab: {fileID: 1267129680638450, guid: 25dfe3bec1371e14d87332e9234c5ef8,
     type: 2}
   GraphicID: Melee

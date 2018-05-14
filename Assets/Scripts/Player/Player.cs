@@ -7,7 +7,7 @@ namespace TeamF
 {
     public class Player : MonoBehaviour
     {
-        void FixedUpdate()
+        void Update()
         {
             CheckInput();
         }

@@ -13,6 +13,7 @@ TagManager:
   - AmmoSpawn
   - PlayerSpawn
   - Lava
+  - ColliderToIgnore
   layers:
   - Default
   - TransparentFX

@@ -17,7 +17,7 @@ MonoBehaviour:
   DamageState: {fileID: 11400000, guid: afa52ab5d4812b64883808973aaa3fbf, type: 2}
   SearchTargetState: {fileID: 11400000, guid: 360923539bc65434a9d05811cd41d426, type: 2}
   StoppingDistance: 1
-  AimApproximationAngle: 20
+  AimApproximationAngle: 10
   ContainerPrefab: {fileID: 1267129680638450, guid: 25dfe3bec1371e14d87332e9234c5ef8,
     type: 2}
   GraphicID: Thunder
