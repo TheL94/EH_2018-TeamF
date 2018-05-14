@@ -15,6 +15,7 @@ MonoBehaviour:
   CharmedState: {fileID: 11400000, guid: d61be8897e993c647845e0f46fa76471, type: 2}
   ParalizedState: {fileID: 11400000, guid: 66f751faaa17e7a43b49ce8c19c366cf, type: 2}
   DamageState: {fileID: 11400000, guid: afa52ab5d4812b64883808973aaa3fbf, type: 2}
+  SearchTargetState: {fileID: 11400000, guid: 360923539bc65434a9d05811cd41d426, type: 2}
   StoppingDistance: 1
   AimApproximationAngle: 20
   ContainerPrefab: {fileID: 1267129680638450, guid: 25dfe3bec1371e14d87332e9234c5ef8,
