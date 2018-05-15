@@ -178,6 +178,9 @@ namespace TeamF
             if (GameManager.I.Player != null)
                 GameManager.I.Player.Init();
 
+            GameManager.I.AudioMng = GameManager.I.GetComponentInChildren<AudioManager>();
+            GameManager.I.AudioMng.Init();
+
             CurrentState = FlowState.MainMenu;
         }
 
