@@ -210,7 +210,9 @@ namespace TeamF
         void PauseActions(bool _isGamePaused)
         {
             GameManager.I.EnemyMng.ToggleAllAIs(!_isGamePaused);
-            if(_isGamePaused)
+            GameManager.I.AudioMng.TogglePauseAll(_isGamePaused);
+
+            if (_isGamePaused)
                 GameManager.I.UIMng.PauseActions();
             else
                 GameManager.I.UIMng.GameplayActions();

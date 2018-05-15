@@ -9,6 +9,7 @@ namespace TeamF
     {
         public List<ClipData> Clips = new List<ClipData>();
 
+        List<AudioSource> allSources;
         List<AudioSource> GenricSources;
         List<AudioSource> CharacterSources;
         List<AudioSource> EnemySources;
@@ -16,7 +17,7 @@ namespace TeamF
 
         public void Init()
         {
-            List<AudioSource> allSources = GetComponentsInChildren<AudioSource>().ToList();
+            allSources = GetComponentsInChildren<AudioSource>().ToList();
 
             GenricSources = allSources.Where(s => s.tag == "GenericAudioSource").ToList();
             CharacterSources = allSources.Where(s => s.tag == "CharacterAudioSource").ToList();
@@ -26,14 +27,19 @@ namespace TeamF
 
         public void StopAll()
         {
-            List<AudioSource> allSources = new List<AudioSource>();
-            allSources.AddRange(GenricSources);
-            allSources.AddRange(CharacterSources);
-            allSources.AddRange(EnemySources);
-            allSources.AddRange(ComboSources);
-
             foreach (AudioSource source in allSources)
                 source.Stop();
+        }
+
+        public void TogglePauseAll(bool _value)
+        {
+            foreach (AudioSource source in allSources)
+            {
+                if (_value)
+                    source.Pause();
+                else
+                    source.UnPause();
+            }         
         }
 
         public void PlaySound(Clips _clip)
