@@ -178,6 +178,9 @@ namespace TeamF
             if (GameManager.I.Player != null)
                 GameManager.I.Player.Init();
 
+            GameManager.I.AudioMng = GameManager.I.GetComponentInChildren<AudioManager>();
+            GameManager.I.AudioMng.Init();
+
             CurrentState = FlowState.MainMenu;
         }
 
@@ -207,7 +210,9 @@ namespace TeamF
         void PauseActions(bool _isGamePaused)
         {
             GameManager.I.EnemyMng.ToggleAllAIs(!_isGamePaused);
-            if(_isGamePaused)
+            GameManager.I.AudioMng.TogglePauseAll(_isGamePaused);
+
+            if (_isGamePaused)
                 GameManager.I.UIMng.PauseActions();
             else
                 GameManager.I.UIMng.GameplayActions();
