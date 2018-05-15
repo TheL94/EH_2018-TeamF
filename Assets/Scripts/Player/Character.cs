@@ -36,11 +36,14 @@ namespace TeamF
             FadeComponent = GetComponentInChildren<FadeToMe>();
             FadeComponent.Init();
             weaponController = GetComponentInChildren<WeaponController>();
-            
 
-            
-            foreach (BulletData item in Data.BulletDatas)
-                bulletDatasInstancies.Add(Instantiate(item));
+
+
+            if (bulletDatasInstancies.Count == 0)
+            {
+                foreach (BulletData item in Data.BulletDatas)
+                    bulletDatasInstancies.Add(Instantiate(item)); 
+            }
 
             weaponController.Init(bulletDatasInstancies, this);
 
