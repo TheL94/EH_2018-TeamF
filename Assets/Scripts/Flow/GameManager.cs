@@ -23,6 +23,8 @@ namespace TeamF
         public Player Player;
         [HideInInspector]
         public PoolManager PoolMng;
+        [HideInInspector]
+        public AudioManager AudioMng;
 
         public List<float> KillsToWinPerLevel = new List<float>();
         public float ComboCounterTimer;

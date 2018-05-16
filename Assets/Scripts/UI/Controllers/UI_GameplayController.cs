@@ -38,27 +38,27 @@ namespace TeamF
             {
                 case ElementalType.Fire:
                     if (_ammoValues.Ammo < 0)
-                        FireAmmo.text = "Fire: \u221E"; // simbolo dell'infinito
+                        FireAmmo.text = "\u221E"; // simbolo dell'infinito
                     else
-                        FireAmmo.text = "Fire: " + _ammoValues.Ammo;                
+                        FireAmmo.text = _ammoValues.Ammo.ToString();                
                     break;
                 case ElementalType.Water:
                     if (_ammoValues.Ammo < 0)
-                        WaterAmmo.text = "Fire: \u221E"; // simbolo dell'infinito
+                        WaterAmmo.text = "\u221E"; // simbolo dell'infinito
                     else
-                        WaterAmmo.text = "Water: " + _ammoValues.Ammo;
+                        WaterAmmo.text = _ammoValues.Ammo.ToString();
                     break;
                 case ElementalType.Poison:
                     if (_ammoValues.Ammo < 0)
-                        PoisonAmmo.text = "Fire: \u221E"; // simbolo dell'infinito
+                        PoisonAmmo.text = "\u221E"; // simbolo dell'infinito
                     else
-                        PoisonAmmo.text = "Poison: " + _ammoValues.Ammo;
+                        PoisonAmmo.text = _ammoValues.Ammo.ToString();
                     break;
                 case ElementalType.Thunder:
                     if (_ammoValues.Ammo < 0)
-                        ThunderAmmo.text = "Fire: \u221E"; // simbolo dell'infinito
+                        ThunderAmmo.text = "\u221E"; // simbolo dell'infinito
                     else
-                        ThunderAmmo.text = "Thunder: " + _ammoValues.Ammo;
+                        ThunderAmmo.text = _ammoValues.Ammo.ToString();
                     break;
                 default:
                     break;

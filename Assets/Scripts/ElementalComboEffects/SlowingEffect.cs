@@ -20,8 +20,8 @@ namespace TeamF
                 previousMovementSpeed = target.MovementSpeed;
                 target.MovementSpeed = target.MovementSpeed - (target.MovementSpeed * _data.EffectValue) / 100; 
             }
-            
 
+            (target as MonoBehaviour).GetComponentInChildren<BlinkController>().SlowedBlink(elementalData.TimeOfEffect);
         }
 
         public void DoStopEffect()

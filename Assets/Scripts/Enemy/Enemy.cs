@@ -32,7 +32,7 @@ namespace TeamF
         public IDamageable Target { get; set; }
         public AI_Enemy AI_Enemy { get; private set; }
 
-        MeshRenderer render;
+        BlinkController blinkCtrl;
 
         public void Init(EnemyGenericData _data, string _id)
         {
@@ -44,7 +44,7 @@ namespace TeamF
 
             Agent = GetComponent<NavMeshAgent>();
             AI_Enemy = GetComponent<AI_Enemy>();
-            render = GetComponentInChildren<MeshRenderer>();
+            blinkCtrl = GetComponentInChildren<BlinkController>();
             Animator = GetComponentInChildren<Animator>();
 
             CurrentBehaviour = DeterminateBehaviourFromType(Data);
@@ -106,8 +106,8 @@ namespace TeamF
 
             AI_Enemy.CurrentState = Data.DamageState;
 
-            if (render != null)              
-                render.material.DOColor(Color.white, .1f).OnComplete(() => { render.material.DORewind(); });
+            if (blinkCtrl != null)
+                blinkCtrl.DamageBlink();
         }
 
         public ElementalType LastHittingBulletType { get; private set; }
