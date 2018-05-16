@@ -437,6 +437,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4222458432307898}
   - component: {fileID: 95533576714420756}
+  - component: {fileID: 114447085280769386}
   m_Layer: 0
   m_Name: SK_Larry_avatar_1
   m_TagString: Untagged
@@ -2421,6 +2422,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b17f3054addf4a4885eb6ec39473dee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114447085280769386
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1307916965217176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d9edcbdb23a6ba46a36fba4ebd76eeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DamageBlinkTime: 0.1
+  DamageBrightness: 16
+  PoisonedBlinkTime: 0.7
+  PosonedColor: {r: 0, g: 0.8602941, b: 0.0771298, a: 0}
+  SlowedBlinkTime: 0.7
+  SlowedColor: {r: 0.02865128, g: 0, b: 0.8308824, a: 0}
 --- !u!114 &114472130906700806
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2468,7 +2486,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BackPackLight: {fileID: 108714827154813920}
   BackPackRenderer: {fileID: 137691053717632952}
-  CharacterRenderer: {fileID: 137972918041086370}
   movement: {fileID: 114537653086299798}
 --- !u!114 &114669542341789762
 MonoBehaviour:

@@ -10,15 +10,14 @@ namespace TeamF
         public CharacterData Data { get; private set; }
         public Light BackPackLight;
         public SkinnedMeshRenderer BackPackRenderer;
-        public SkinnedMeshRenderer CharacterRenderer;
         [HideInInspector]
         public Movement movement;
 
         List<BulletData> bulletDatasInstancies = new List<BulletData>();
 
         Player player;
-
         FadeToMe FadeComponent;
+        BlinkController blinkCtrl;
 
         bool isInvincible;
         #region API
@@ -36,8 +35,7 @@ namespace TeamF
             FadeComponent = GetComponentInChildren<FadeToMe>();
             FadeComponent.Init();
             weaponController = GetComponentInChildren<WeaponController>();
-
-
+            blinkCtrl = GetComponentInChildren<BlinkController>();
 
             if (bulletDatasInstancies.Count == 0)
             {
@@ -94,7 +92,8 @@ namespace TeamF
             _damage = (_damage * DamagePercentage) / 100;
             Life -= _damage;
 
-            CharacterRenderer.material.DOColor(Color.white, .1f).OnComplete(() => { CharacterRenderer.material.DORewind(); });         
+            if(blinkCtrl != null)
+                blinkCtrl.DamageBlink();
 
             if (Life <= 0)
             {

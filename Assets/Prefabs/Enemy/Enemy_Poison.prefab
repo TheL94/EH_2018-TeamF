@@ -50,6 +50,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4891010526683748}
   - component: {fileID: 95478348457846464}
+  - component: {fileID: 114126892973422312}
   m_Layer: 0
   m_Name: Enemy_Poison
   m_TagString: Untagged
@@ -1160,6 +1161,23 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114126892973422312
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1138119534572090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d9edcbdb23a6ba46a36fba4ebd76eeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DamageBlinkTime: 0.1
+  DamageBrightness: 24
+  PoisonedBlinkTime: 0.7
+  PosonedColor: {r: 0, g: 0.8602941, b: 0.0771298, a: 0}
+  SlowedBlinkTime: 0.7
+  SlowedColor: {r: 0.02865128, g: 0, b: 0.8308824, a: 0}
 --- !u!137 &137218327816635766
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

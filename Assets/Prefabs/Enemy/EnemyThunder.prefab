@@ -65,6 +65,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4310538959980688}
   - component: {fileID: 95428781775442710}
+  - component: {fileID: 114643834449926950}
   m_Layer: 0
   m_Name: EnemyThunder
   m_TagString: Untagged
@@ -786,6 +787,23 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114643834449926950
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1273753816426612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d9edcbdb23a6ba46a36fba4ebd76eeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DamageBlinkTime: 0.1
+  DamageBrightness: 40
+  PoisonedBlinkTime: 0.7
+  PosonedColor: {r: 0, g: 0.8602941, b: 0.0771298, a: 0}
+  SlowedBlinkTime: 0.7
+  SlowedColor: {r: 0.02865128, g: 0, b: 0.8308824, a: 0}
 --- !u!137 &137077979438348490
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
