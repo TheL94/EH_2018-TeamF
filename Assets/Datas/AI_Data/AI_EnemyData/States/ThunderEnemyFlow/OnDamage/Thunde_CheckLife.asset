@@ -21,4 +21,4 @@ MonoBehaviour:
     Loop: 0
     Action: {fileID: 11400000, guid: be2cce3d5a63f0247a06d2a8f46a5174, type: 2}
     OnSuccess: {fileID: 11400000, guid: 89ffe93403a9fad49a6e5c792a97ea67, type: 2}
-    OnFailure: {fileID: 11400000, guid: cf225266b8d54f647bd696bf42000b59, type: 2}
+    OnFailure: {fileID: 11400000, guid: c80e59ba880f87b4babcefc8ccb2d52c, type: 2}
