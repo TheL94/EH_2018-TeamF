@@ -10,8 +10,14 @@ namespace TeamF
         public ParticleSystem ConfusionParticles;
         public ParticleSystem ParalysisParticles;
         public ParticleSystem SlowParticles;
-        public ParticleSystem IncreaseDamageParticles;
+        public MeshRenderer IncreaseDamageParticles;
         public ParticleSystem Dash;
+
+        private void Start()
+        {
+            if (IncreaseDamageParticles != null)
+                IncreaseDamageParticles.enabled = false;
+        }
 
         public void ActivateParticles(ParticleType _type)
         {
@@ -36,7 +42,7 @@ namespace TeamF
                     break;
                 case ParticleType.IncreaseDamage:
                     if (IncreaseDamageParticles != null)
-                        IncreaseDamageParticles.Play();
+                        IncreaseDamageParticles.enabled = true;
                     break;
                 case ParticleType.Dash:
                     if (Dash != null)
@@ -58,8 +64,8 @@ namespace TeamF
             if (ParalysisParticles != null)
                 ParalysisParticles.Stop();
             if (IncreaseDamageParticles != null)
-                IncreaseDamageParticles.Stop();
-            if(Dash != null)
+                IncreaseDamageParticles.enabled = false;
+            if (Dash != null)
                 Dash.Stop();
         }
 

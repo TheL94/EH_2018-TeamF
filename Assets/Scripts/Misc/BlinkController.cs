@@ -10,6 +10,7 @@ namespace TeamF
     {
         public float DamageBlinkTime;
         public float DamageBrightness;
+        float initalBrightness;
 
         public float PoisonedBlinkTime;
         public Color PosonedColor;
@@ -25,6 +26,7 @@ namespace TeamF
         private void Start()
         {
             renderers = GetComponentsInChildren<SkinnedMeshRenderer>().ToList();
+            initalBrightness = renderers[0].material.GetFloat("_Brightness");
         }
 
         #region API
@@ -34,7 +36,11 @@ namespace TeamF
                 return;
 
             if (corutine != null)
+            {
                 StopCoroutine(corutine);
+                foreach (SkinnedMeshRenderer renderer in renderers)
+                    renderer.material.SetFloat("_Brightness", initalBrightness);
+            }
 
             corutine = StartCoroutine(DamageBlinkCorutine());
         }
@@ -42,9 +48,13 @@ namespace TeamF
         public void PoisonedBlink(float _durationTime)
         {
             if (activeTweeners.Count > 0)
-                foreach (Tweener tween in activeTweeners)
-                    tween.Kill();
-
+            {
+                for (int i = 0; i < activeTweeners.Count; i++)
+                {
+                    activeTweeners[i].Kill();
+                    renderers[i].material.SetColor("_Color", Color.white);
+                }
+            }
 
             EffectBlink(PoisonedBlinkTime, _durationTime, PosonedColor);
         }

@@ -6,6 +6,8 @@ namespace TeamF
 {
     public class Bullet : MonoBehaviour
     {
+        public string FragGraphicID;
+
         TrailRenderer trail;
         MeshRenderer rend;
         IShooter owner;
@@ -146,6 +148,7 @@ namespace TeamF
             IDamageable damageable = other.GetComponent<IDamageable>();
             if (damageable == null)
             {
+                //DropFragParticle(transform.position);
                 Destroy(gameObject);
                 return;
             }
@@ -176,6 +179,12 @@ namespace TeamF
             }
 
             Destroy(gameObject);
+        }
+
+        void DropFragParticle(Vector3 _position)
+        {
+            GameObject fragParticle = GameManager.I.PoolMng.GetObject(FragGraphicID);
+            fragParticle.transform.position = _position;
         }
     }
 }
