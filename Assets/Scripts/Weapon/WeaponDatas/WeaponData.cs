@@ -15,7 +15,7 @@ namespace TeamF
     public struct WeaponParameters
     {
         public float BulletSpeed;
-        public float BulletLife;
+        public float BulletRange;
         public float Ratio;
         public float DamagePercentage;
     }
@@ -23,9 +23,6 @@ namespace TeamF
     public enum WeaponType
     {
         Pistol,
-        MachineGun,
-        ShotGun,
-        Ballistra,
-        SniperRifle
+        MachineGun
     }
 }

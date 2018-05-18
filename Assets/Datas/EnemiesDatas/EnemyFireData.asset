@@ -34,6 +34,6 @@ MonoBehaviour:
   RangedDamageRate: 1
   BulletData: {fileID: 11400000, guid: fc0514fe99c1cf343900d4df6098e7f5, type: 2}
   BulletSpeed: 0.2
-  BulletLifeTime: 2
+  BulletRange: 10
   RangedAttackDuration: 20
   MeleeConsecutiveAttacks: 5

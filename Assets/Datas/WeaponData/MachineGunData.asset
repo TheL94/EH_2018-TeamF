@@ -14,7 +14,7 @@ MonoBehaviour:
   Weapon: 1
   Parameters:
     BulletSpeed: 1
-    BulletLife: 5
+    BulletRange: 10
     Ratio: 0.2
     DamagePercentage: 1
   MaxOverheating: 30

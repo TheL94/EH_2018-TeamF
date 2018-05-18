@@ -6,7 +6,7 @@ using System.Linq;
 namespace TeamF
 {
     public class EnemyManager : MonoBehaviour
-    {   
+    {
         public EnemyManagerData Data;
         public EnemyManagerData DataInstance { get; set; }
 
@@ -26,9 +26,11 @@ namespace TeamF
                 return;
 
             spawnTime += Time.deltaTime;
+
             if (spawnTime >= DataInstance.DelayHordes && (GameManager.I.CurrentState == FlowState.Gameplay || GameManager.I.CurrentState == FlowState.TestGameplay))
             {
-                SpawnHorde();
+                StartCoroutine(ActiveSpawnParticles());
+                //SpawnHorde();
                 spawnTime = 0;
             }
         }
@@ -120,7 +122,7 @@ namespace TeamF
                 }
             }
             float playerDistance = Vector3.Distance(GameManager.I.Player.Character.transform.position, _enemy.transform.position);
-            if(playerDistance < referanceDistance)
+            if (playerDistance < referanceDistance)
                 closestTarget = GameManager.I.Player.Character;
 
 
@@ -171,9 +173,11 @@ namespace TeamF
         /// <returns></returns>
         IEnumerator FirstSpawn()
         {
+            SetSpawnParticles(true);
             yield return new WaitForSeconds(DataInstance.StartDelayTime);
             SpawnHorde();
             CanSpawn = true;
+            SetSpawnParticles(false);
         }
 
         /// <summary>
@@ -189,6 +193,13 @@ namespace TeamF
                 if (i == spawnIndexToExclude)
                     continue;
 
+                foreach (ParticleSystem particle in spawnPoints[i].GetComponentsInChildren<ParticleSystem>())
+                {
+                    if (particle != null)
+                        particle.Play();
+                }
+
+
                 if (!DataInstance.BlockSpawnElemental)
                 {
                     int elementalsEnemies = Random.Range(DataInstance.MinElementalsEnemies, DataInstance.MaxElementalsEnemies + 1);
@@ -202,7 +213,7 @@ namespace TeamF
                             if (newEnemy != null)
                                 InitEnemy(newEnemy, data);
                         }
-                    } 
+                    }
                 }
 
                 if (!DataInstance.BlockSpawnRanged)
@@ -218,7 +229,7 @@ namespace TeamF
                             if (newEnemy != null)
                                 InitEnemy(newEnemy, data);
                         }
-                    } 
+                    }
                 }
 
                 if (!DataInstance.BlockSpawnNormal)
@@ -234,8 +245,15 @@ namespace TeamF
                             if (newEnemy != null)
                                 InitEnemy(newEnemy, data);
                         }
-                    } 
+                    }
                 }
+
+                foreach (ParticleSystem particle in spawnPoints[i].GetComponentsInChildren<ParticleSystem>())
+                {
+                    if (particle != null)
+                        particle.Stop();
+                }
+
             }
         }
 
@@ -312,7 +330,7 @@ namespace TeamF
             {
                 spawnPoints.Add(spawn.transform);
             }
-            
+
         }
         #endregion
 
@@ -340,5 +358,30 @@ namespace TeamF
             }
         }
         #endregion
+
+        void SetSpawnParticles(bool _active)
+        {
+            foreach (Transform spawn in spawnPoints)
+            {
+                foreach (ParticleSystem particle in spawn.GetComponentsInChildren<ParticleSystem>())
+                {
+                    if (particle != null)
+                    {
+                        if (_active)
+                            particle.Play();
+                        else
+                            particle.Stop();
+                    }
+                }
+            }
+        }
+
+        IEnumerator ActiveSpawnParticles()
+        {
+            SetSpawnParticles(true);
+            yield return new WaitForSeconds(2f);
+            SpawnHorde();
+            SetSpawnParticles(false);
+        }
     }
 }

@@ -14,6 +14,6 @@ MonoBehaviour:
   Weapon: 0
   Parameters:
     BulletSpeed: 1
-    BulletLife: 5
+    BulletRange: 10
     Ratio: 0.4
     DamagePercentage: 0
