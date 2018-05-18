@@ -23,6 +23,7 @@ namespace TeamF.AI
             // --------------------------------------------------------
 
             _enemy.GetComponentInChildren<ParticlesController>().StopAllParticles();
+            _enemy.GetComponentInChildren<BlinkController>().ResetEffects();
 
             if (Enemy.EnemyDeath != null)
                 Enemy.EnemyDeath(_enemy);

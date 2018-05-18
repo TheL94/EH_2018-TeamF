@@ -51,7 +51,7 @@ namespace TeamF
             if (activeTweeners.Count > 0)
             {
                 for (int i = 0; i < activeTweeners.Count; i++)
-                    activeTweeners[i].Kill();
+                    activeTweeners[i].Complete();
 
                 for (int i = 0; i < renderers.Count; i++)
                     renderers[i].material.SetColor("_Color", Color.white);
@@ -72,6 +72,15 @@ namespace TeamF
             }
 
             EffectBlink(SlowedBlinkTime, _durationTime, SlowedColor);
+        }
+
+        public void ResetEffects()
+        {
+            for (int i = 0; i < renderers.Count; i++)
+                renderers[i].material.SetFloat("_Brightness", initalBrightness);
+
+            for (int i = 0; i < renderers.Count; i++)
+                renderers[i].material.SetColor("_Color", Color.white);
         }
         #endregion
 
