@@ -13,44 +13,43 @@ namespace TeamF
         public string DashParticlesGraphicID;
         public string IncreaseDamageMeshGraphicID;
 
-        ParticleSystem FireParticles;
-        ParticleSystem ConfusionParticles;
-        ParticleSystem ParalysisParticles;
-        ParticleSystem SlowParticles;
+        ParticleSystem ParticlesEffect;
         ParticleSystem DashParticles;
         MeshRenderer IncreaseDamageMesh;
 
         public void ActivateParticles(ParticleType _type)
         {
-            StopAllParticles();
+            if (_type != ParticleType.Dash)
+                StopAllParticles();
+
             switch (_type)
             {
                 case ParticleType.Fire:
                     if (FireParticlesGraphicID != null || FireParticlesGraphicID != string.Empty)
                     {
-                        FireParticles = GetPoolObj(FireParticlesGraphicID).GetComponentInChildren<ParticleSystem>();
-                        FireParticles.Play(); 
+                        ParticlesEffect = GetPoolObj(FireParticlesGraphicID).GetComponentInChildren<ParticleSystem>();
+                        ParticlesEffect.Play(); 
                     }
                     break;
                 case ParticleType.Slowing:
                     if (SlowParticlesGraphicID !=  null || SlowParticlesGraphicID != string.Empty)
                     {
-                        SlowParticles = GetPoolObj(SlowParticlesGraphicID).GetComponentInChildren<ParticleSystem>();
-                        SlowParticles.Play(); 
+                        ParticlesEffect = GetPoolObj(SlowParticlesGraphicID).GetComponentInChildren<ParticleSystem>();
+                        ParticlesEffect.Play(); 
                     }
                     break;
                 case ParticleType.Confusion:
                     if (ConfusionParticlesGraphicID != null || ConfusionParticlesGraphicID != string.Empty)
                     {
-                        ConfusionParticles = GetPoolObj(ConfusionParticlesGraphicID).GetComponentInChildren<ParticleSystem>();
-                        ConfusionParticles.Play(); 
+                        ParticlesEffect = GetPoolObj(ConfusionParticlesGraphicID).GetComponentInChildren<ParticleSystem>();
+                        ParticlesEffect.Play(); 
                     }
                     break;
                 case ParticleType.Paralysis:
                     if (ParalysisParticlesGraphicID != null || ParalysisParticlesGraphicID != string.Empty)
                     {
-                        ParalysisParticles = GetPoolObj(ParalysisParticlesGraphicID).GetComponentInChildren<ParticleSystem>();
-                        ParalysisParticles.Play(); 
+                        ParticlesEffect = GetPoolObj(ParalysisParticlesGraphicID).GetComponentInChildren<ParticleSystem>();
+                        ParticlesEffect.Play(); 
                     }
                     break;
                 case ParticleType.Dash:
@@ -72,45 +71,25 @@ namespace TeamF
 
         public void StopAllParticles()
         {
-            if (FireParticles != null)
+
+            if (ParticlesEffect != null)
             {
-                FireParticles.Stop();
-                FireParticles.gameObject.SetActive(false);
+                ParticlesEffect.Stop();
+                ParticlesEffect.GetComponentInParent<Transform>().gameObject.SetActive(false);
                 GameManager.I.PoolMng.UpdatePool(FireParticlesGraphicID);
-            }
-
-            if (SlowParticles != null)
-            {
-                SlowParticles.Stop();
-                SlowParticles.gameObject.SetActive(false);
-                GameManager.I.PoolMng.UpdatePool(SlowParticlesGraphicID);
-            }
-
-            if (ConfusionParticles != null)
-            {
-                ConfusionParticles.Stop();
-                ConfusionParticles.gameObject.SetActive(false);
-                GameManager.I.PoolMng.UpdatePool(ConfusionParticlesGraphicID);
-            }
-
-            if (ParalysisParticles != null)
-            {
-                ParalysisParticles.Stop();
-                ParalysisParticles.gameObject.SetActive(false);
-                GameManager.I.PoolMng.UpdatePool(ParalysisParticlesGraphicID);
             }
 
             if (DashParticles != null)
             {
                 DashParticles.Stop();
-                DashParticles.gameObject.SetActive(false);
+                DashParticles.GetComponentInParent<Transform>().gameObject.SetActive(false);
                 GameManager.I.PoolMng.UpdatePool(DashParticlesGraphicID);
             }
 
             if (IncreaseDamageMesh != null)
             {
                 IncreaseDamageMesh.enabled = false;
-                IncreaseDamageMesh.gameObject.SetActive(false);
+                IncreaseDamageMesh.GetComponentInParent<Transform>().gameObject.SetActive(false);
                 GameManager.I.PoolMng.UpdatePool(IncreaseDamageMeshGraphicID);
             }
         }

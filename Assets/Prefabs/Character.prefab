@@ -2169,7 +2169,7 @@ MonoBehaviour:
   ParalysisParticlesGraphicID: ParalysisEffect
   SlowParticlesGraphicID: SlowedEffect
   DashParticlesGraphicID: DashEffect
-  IncreaseDamageMeshGraphicID: 
+  IncreaseDamageMeshGraphicID: IncreaseDamageEffect
 --- !u!114 &114406873073673418
 MonoBehaviour:
   m_ObjectHideFlags: 1
