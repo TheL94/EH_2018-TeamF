@@ -943,7 +943,6 @@ GameObject:
   - component: {fileID: 114669542341789762}
   - component: {fileID: 114290204624647926}
   - component: {fileID: 114600692040967896}
-  - component: {fileID: 114702209494971156}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Barrel
@@ -2258,18 +2257,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f352a196556b0d94da7efb9cde0b6830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114702209494971156
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1885822007935324}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67c67377594481d4b9dab637931d9b50, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  WeaponData: {fileID: 11400000, guid: 0c38dac2c6d882d4285120e8d57f8030, type: 2}
 --- !u!114 &114772729913483000
 MonoBehaviour:
   m_ObjectHideFlags: 1

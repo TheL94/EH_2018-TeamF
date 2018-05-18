@@ -34,4 +34,4 @@ MonoBehaviour:
   RangedDamageRate: 1
   BulletData: {fileID: 11400000, guid: 936fa4877bc454445a0cce927ca680a0, type: 2}
   BulletSpeed: 0.35
-  BulletLifeTime: 5
+  BulletRange: 10
