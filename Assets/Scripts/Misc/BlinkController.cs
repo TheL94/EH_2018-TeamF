@@ -33,45 +33,45 @@ namespace TeamF
         #region API
         public void DamageBlink()
         {
-            //if (renderers == null)
-            //    return;
+            if (renderers == null)
+                return;
 
-            //if (corutine != null)
-            //{
-            //    StopCoroutine(corutine);
-            //    foreach (SkinnedMeshRenderer renderer in renderers)
-            //        renderer.material.SetFloat("_Brightness", initalBrightness);
-            //}
+            if (corutine != null)
+            {
+                StopCoroutine(corutine);
+                for (int i = 0; i < renderers.Count; i++)
+                    renderers[i].material.SetFloat("_Brightness", initalBrightness);
+            }
 
-            //corutine = StartCoroutine(DamageBlinkCorutine());
+            corutine = StartCoroutine(DamageBlinkCorutine());
         }
 
         public void PoisonedBlink(float _durationTime)
         {
-            //if (activeTweeners.Count > 0)
-            //{
-            //    for (int i = 0; i < activeTweeners.Count; i++)
-            //    {
-            //        activeTweeners[i].Kill();
-            //        renderers[i].material.SetColor("_Color", Color.white);
-            //    }
-            //}
+            if (activeTweeners.Count > 0)
+            {
+                for (int i = 0; i < activeTweeners.Count; i++)
+                    activeTweeners[i].Kill();
 
-            //EffectBlink(PoisonedBlinkTime, _durationTime, PosonedColor);
+                for (int i = 0; i < renderers.Count; i++)
+                    renderers[i].material.SetColor("_Color", Color.white);
+            }
+
+            EffectBlink(PoisonedBlinkTime, _durationTime, PosonedColor);
         }
 
         public void SlowedBlink(float _durationTime)
         {
-            //if (activeTweeners.Count > 0)
-            //{
-            //    for (int i = 0; i < activeTweeners.Count; i++)
-            //    {
-            //        activeTweeners[i].Kill();
-            //        renderers[i].material.SetColor("_Color", Color.white);
-            //    }
-            //}
+            if (activeTweeners.Count > 0)
+            {
+                for (int i = 0; i < activeTweeners.Count; i++)
+                    activeTweeners[i].Complete();
 
-            //EffectBlink(SlowedBlinkTime, _durationTime, SlowedColor);
+                for (int i = 0; i < renderers.Count; i++)
+                    renderers[i].material.SetColor("_Color", Color.white);
+            }
+
+            EffectBlink(SlowedBlinkTime, _durationTime, SlowedColor);
         }
         #endregion
 
@@ -79,13 +79,13 @@ namespace TeamF
         {
             float initialValue = renderers[0].material.GetFloat("_Brightness");
 
-            foreach (SkinnedMeshRenderer renderer in renderers)
-                renderer.material.SetFloat("_Brightness", DamageBrightness);
+            for (int i = 0; i < renderers.Count; i++)
+                renderers[i].material.SetFloat("_Brightness", DamageBrightness);
 
             yield return new WaitForSeconds(DamageBlinkTime);
 
-            foreach (SkinnedMeshRenderer renderer in renderers)
-                renderer.material.SetFloat("_Brightness", initialValue);
+            for (int i = 0; i < renderers.Count; i++)
+                renderers[i].material.SetFloat("_Brightness", initialValue);
         }
 
         void EffectBlink(float _time, float _duration, Color _colorToReach)
