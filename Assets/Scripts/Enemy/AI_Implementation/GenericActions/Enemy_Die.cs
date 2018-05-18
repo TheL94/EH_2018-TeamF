@@ -22,6 +22,8 @@ namespace TeamF.AI
                 effect.gameObject.SetActive(false);
             // --------------------------------------------------------
 
+            _enemy.GetComponentInChildren<ParticlesController>().StopAllParticles();
+
             if (Enemy.EnemyDeath != null)
                 Enemy.EnemyDeath(_enemy);
             _enemy.AI_Enemy.IsActive = false;
