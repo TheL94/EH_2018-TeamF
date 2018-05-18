@@ -22,7 +22,9 @@ namespace TeamF
 
         public void ActivateParticles(ParticleType _type)
         {
-            StopAllParticles();
+            if (_type != ParticleType.Dash)
+                StopAllParticles();
+
             switch (_type)
             {
                 case ParticleType.Fire:
