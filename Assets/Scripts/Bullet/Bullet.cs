@@ -157,10 +157,12 @@ namespace TeamF
 
         protected virtual void OnTrigger(Collider other)
         {
+            Vector3 closetPoint = other.ClosestPoint(transform.position);
+
             IDamageable damageable = other.GetComponent<IDamageable>();
             if (damageable == null)
             {
-                DropFragParticle();
+                DropFragParticle(closetPoint);
                 return;
             }
 
@@ -174,7 +176,7 @@ namespace TeamF
                     // Enemy Charmed
                     DoDamage(damageable);
                     ApplyElementalEffect(other.GetComponent<IEffectable>());
-                    DropFragParticle();
+                    DropFragParticle(closetPoint);
                     return;
                 }
 
@@ -183,7 +185,7 @@ namespace TeamF
                     // Enemy
                     DoDamage(damageable);
                     ApplyElementalEffect(other.GetComponent<IEffectable>());
-                    DropFragParticle();
+                    DropFragParticle(closetPoint);
                     return;
                 }
                 else
@@ -196,18 +198,18 @@ namespace TeamF
                 // Character
                 DoDamage(damageable);
                 ApplyElementalEffect(other.GetComponent<IEffectable>());
-                DropFragParticle();
+                DropFragParticle(closetPoint);
                 return;
             }            
         }
 
-        void DropFragParticle()
+        void DropFragParticle(Vector3 _position)
         {
             hasHit = true;
             GetComponent<Collider>().enabled = false;
 
             GameObject fragParticle = GameManager.I.PoolMng.GetObject(FragGraphicID);
-            fragParticle.transform.position = transform.position;
+            fragParticle.transform.position = _position;
             StartCoroutine(WaitForParticle(fragParticle));
         }
 
