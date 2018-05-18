@@ -6,38 +6,47 @@ namespace TeamF
 {
     public class Bullet : MonoBehaviour
     {
+        public string FragGraphicID;
+
         TrailRenderer trail;
         MeshRenderer rend;
         IShooter owner;
         ElementalAmmo ammo;
         float Speed;
         float damagePercentage;
+        bool hasHit;
 
-        void FixedUpdate()
+        float range;
+        Vector3 initialPosition;
+
+        void Update()
         {
-            Move();
+            if (!hasHit)
+                Move();
+
+            if (Vector3.Distance(initialPosition, transform.position) > range)
+                Destroy(gameObject);
         }
 
         #region API
-
-        public virtual void Init(ElementalAmmo _currentAmmo, float _speed, IShooter _owner, float _bulletLife)
+        public virtual void Init(ElementalAmmo _currentAmmo, float _speed, IShooter _owner, float _range)
         {
             ammo = _currentAmmo;
             Speed = _speed;
             owner = _owner;
+            range = _range;
             trail = GetComponentInChildren<TrailRenderer>();
             rend = GetComponentInChildren<MeshRenderer>();
             SetBulletColors(_currentAmmo.AmmoType);
 
-            Destroy(gameObject,_bulletLife);
+            initialPosition = transform.position;
         }
 
-        public virtual void Init(ElementalAmmo _currentAmmo, float _speed, IShooter _owner, float _bulletLife, float _damagePercentage)
+        public virtual void Init(ElementalAmmo _currentAmmo, float _speed, IShooter _owner, float _range, float _damagePercentage)
         {
             damagePercentage = _damagePercentage;
-            Init(_currentAmmo, _speed, _owner, _bulletLife);
+            Init(_currentAmmo, _speed, _owner, _range);
         }
-
         #endregion
 
         void SetBulletColors(ElementalType _type)
@@ -141,12 +150,19 @@ namespace TeamF
             OnTrigger(other);
         }
 
+        private void OnDestroy()
+        {
+            StopAllCoroutines();
+        }
+
         protected virtual void OnTrigger(Collider other)
         {
+            Vector3 closetPoint = other.ClosestPoint(transform.position);
+
             IDamageable damageable = other.GetComponent<IDamageable>();
             if (damageable == null)
             {
-                Destroy(gameObject);
+                DropFragParticle(closetPoint);
                 return;
             }
 
@@ -160,12 +176,21 @@ namespace TeamF
                     // Enemy Charmed
                     DoDamage(damageable);
                     ApplyElementalEffect(other.GetComponent<IEffectable>());
+                    DropFragParticle(closetPoint);
+                    return;
                 }
-                else if(other.GetComponent<Enemy>() == null)
+
+                if (other.GetComponent<Enemy>() == null)
                 {
                     // Enemy
                     DoDamage(damageable);
                     ApplyElementalEffect(other.GetComponent<IEffectable>());
+                    DropFragParticle(closetPoint);
+                    return;
+                }
+                else
+                {
+                    return;
                 }
             }
             else
@@ -173,9 +198,31 @@ namespace TeamF
                 // Character
                 DoDamage(damageable);
                 ApplyElementalEffect(other.GetComponent<IEffectable>());
-            }
+                DropFragParticle(closetPoint);
+                return;
+            }            
+        }
 
-            Destroy(gameObject);
+        void DropFragParticle(Vector3 _position)
+        {
+            hasHit = true;
+            GetComponent<Collider>().enabled = false;
+
+            GameObject fragParticle = GameManager.I.PoolMng.GetObject(FragGraphicID);
+            fragParticle.transform.position = _position;
+            StartCoroutine(WaitForParticle(fragParticle));
+        }
+
+        IEnumerator WaitForParticle(GameObject _obj)
+        {
+            ParticleSystem particle = _obj.GetComponentInChildren<ParticleSystem>();
+
+            while (particle.isPlaying)
+                yield return new WaitForEndOfFrame();
+
+            particle.gameObject.SetActive(false);
+            GameManager.I.PoolMng.UpdatePool(FragGraphicID);
+            Destroy(gameObject, 0.1f);
         }
     }
 }

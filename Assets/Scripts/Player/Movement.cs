@@ -36,14 +36,14 @@ namespace TeamF
             chargeCount = dashData.ChargeCount;
             MovementSpeed = _movementSpeed;
             RotationSpeed = _rotationSpeed;
-            
+
         }
 
         public void Move(Vector3 _position)
         {
             /// Calcolo dell'animazione da riprodurre
 
-            if(cam != null)
+            if (cam != null)
             {
                 camForward = Vector3.Scale(cam.up, new Vector3(1, 0, 1)).normalized;
                 move = _position.z * camForward + _position.x * cam.right;
@@ -94,8 +94,17 @@ namespace TeamF
         void ConvertMoveInput()
         {
             Vector3 localMove = transform.InverseTransformDirection(moveInput);
-            turnAmmount = localMove.x;
-            forwardAmmount = localMove.z;
+
+            if (localMove.z < -.6f && localMove.x != 0)
+            {
+                turnAmmount = -localMove.x;
+                forwardAmmount = localMove.z;
+            }
+            else
+            {
+                turnAmmount = localMove.x;
+                forwardAmmount = localMove.z;
+            }
         }
 
         /// <summary>

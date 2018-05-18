@@ -13,6 +13,7 @@ namespace TeamF
         public AI_State CharmedState;
         public AI_State ParalizedState;
         public AI_State DamageState;
+        public AI_State SearchTargetState;
 
         [Header("AI Parameters")]
         public float StoppingDistance;
@@ -26,8 +27,7 @@ namespace TeamF
         public EnemyType EnemyType;
         public ElementalType ElementalType
         {
-            get
-            {
+            get {
                 switch (EnemyType)
                 {
                     case EnemyType.Melee:
@@ -64,6 +64,6 @@ namespace TeamF
         [Header("Bullet Parameters")]
         public BulletData BulletData;
         public float BulletSpeed;
-        public float BulletLifeTime;
+        public float BulletRange;
     }
 }

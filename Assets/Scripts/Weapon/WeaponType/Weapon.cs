@@ -57,32 +57,14 @@ namespace TeamF
         {
             GameObject bullPrefab = Instantiate(_bulletData.BulletContainerPrefab, _barrel.position, _barrel.rotation);
 
-            Bullet bull = InstantiateBulletBehaviour(bullPrefab);
+            Bullet bull = bullPrefab.GetComponent<Bullet>();
 
-            if(_bulletData.BulletGraphicPrefab != null)
+            if (_bulletData.BulletGraphicPrefab != null)
                 Instantiate(_bulletData.BulletGraphicPrefab, bull.transform.position, bull.transform.rotation, bull.transform);
             if (_bulletData.BulletTrailPrefab != null)
                 Instantiate(_bulletData.BulletTrailPrefab, bull.transform.position, bull.transform.rotation, bull.transform);
 
-            bull.Init(_bulletData.ElementalAmmo, weaponData.Parameters.BulletSpeed, character, weaponData.Parameters.BulletLife, weaponData.Parameters.DamagePercentage);
-        }
-
-        /// <summary>
-        /// Crea il proiettile Gameobject, Add component del tipo in base al Weapon Type. poi ne viene chiamato l'init
-        /// </summary>
-        Bullet InstantiateBulletBehaviour(GameObject _bulletPrefab)
-        {
-            switch (weaponData.Weapon)
-            {
-                case WeaponType.Pistol:
-                    return _bulletPrefab.AddComponent<Bullet>();
-                case WeaponType.MachineGun:
-                    return _bulletPrefab.AddComponent<Bullet>();
-                case WeaponType.ShotGun:
-                    return _bulletPrefab.AddComponent<ShotGunBullet>();
-                default:
-                    return _bulletPrefab.AddComponent<Bullet>();
-            }
+            bull.Init(_bulletData.ElementalAmmo, weaponData.Parameters.BulletSpeed, character, weaponData.Parameters.BulletRange, weaponData.Parameters.DamagePercentage);
         }
     }
 }

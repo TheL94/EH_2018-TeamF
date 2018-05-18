@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41e3d64deee77d649b8572271a3e5103, type: 3}
+  m_Name: Poison_DeathAnimation
+  m_EditorClassIdentifier: 
+  Actions:
+  - Delay: 0
+    Loop: 0
+    Action: {fileID: 11400000, guid: 17bdb9e5b93e76249acf8e1866a10ff8, type: 2}
+    OnSuccess: {fileID: 0}
+    OnFailure: {fileID: 0}
+  - Delay: 0
+    Loop: 0
+    Action: {fileID: 11400000, guid: c4b51103030390043bdc9331ed98f7eb, type: 2}
+    OnSuccess: {fileID: 0}
+    OnFailure: {fileID: 0}
+  - Delay: 0
+    Loop: 0
+    Action: {fileID: 11400000, guid: 23015dd0cc37fdc4dace3db953b23f70, type: 2}
+    OnSuccess: {fileID: 0}
+    OnFailure: {fileID: 0}
+  - Delay: 2
+    Loop: 0
+    Action: {fileID: 11400000, guid: 5053112bdd4054e4e93bed365310d39d, type: 2}
+    OnSuccess: {fileID: 11400000, guid: c16f9135956a3f3499a719761e169293, type: 2}
+    OnFailure: {fileID: 0}

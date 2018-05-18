@@ -15,22 +15,23 @@ MonoBehaviour:
   CharmedState: {fileID: 11400000, guid: e80cce888eb62a445b88d35ceb560a4c, type: 2}
   ParalizedState: {fileID: 11400000, guid: 99d8f988b12164f45aa85b56bf6c4738, type: 2}
   DamageState: {fileID: 11400000, guid: 6565eb4bb6330fe4c85a70b3de3d1ac4, type: 2}
-  StoppingDistance: 0.7
+  SearchTargetState: {fileID: 11400000, guid: c4934800f932a0541989f4fd31553265, type: 2}
+  StoppingDistance: 0.5
   AimApproximationAngle: 10
   ContainerPrefab: {fileID: 1267129680638450, guid: 25dfe3bec1371e14d87332e9234c5ef8,
     type: 2}
   GraphicID: Ranged
   EnemyType: 1
-  Life: 2
-  Speed: 10
+  Life: 3
+  Speed: 9
   AimTime: 0.2
   EnemyValue: 1
-  MeleeDamage: -1
-  MeleeDamageRange: -1
+  MeleeDamage: 2
+  MeleeDamageRange: 3
   MeleeDamageRate: -1
   RangedDamage: 2
   RangedDamageRange: 9
   RangedDamageRate: 1
   BulletData: {fileID: 11400000, guid: fc0514fe99c1cf343900d4df6098e7f5, type: 2}
   BulletSpeed: 0.18
-  BulletLifeTime: 2
+  BulletRange: 15
