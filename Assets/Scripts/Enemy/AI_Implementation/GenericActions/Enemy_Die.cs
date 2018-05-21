@@ -16,17 +16,10 @@ namespace TeamF.AI
 
         void Die(Enemy _enemy)
         {
-            EffectController effect = _enemy.GetComponent<EffectController>();
-            if (effect != null)
-                effect.gameObject.SetActive(false);
-
-            _enemy.GetComponentInChildren<ParticlesController>().StopAllParticles();
-            _enemy.GetComponentInChildren<BlinkController>().ResetEffects();
             _enemy.GetComponentInChildren<Animator>().Play("Idle");
 
             if (Enemy.EnemyDeath != null)
                 Enemy.EnemyDeath(_enemy);
-            _enemy.AI_Enemy.IsActive = false;
         }
     }
 }
