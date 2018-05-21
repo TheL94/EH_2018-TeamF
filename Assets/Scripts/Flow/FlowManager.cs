@@ -181,11 +181,14 @@ namespace TeamF
             GameManager.I.AudioMng = GameManager.I.GetComponentInChildren<AudioManager>();
             GameManager.I.AudioMng.Init();
 
+            GameManager.I.CursorCtrl = GameManager.I.GetComponentInChildren<CursorController>();        
+
             CurrentState = FlowState.MainMenu;
         }
 
         void MainMenuActions()
         {
+            GameManager.I.CursorCtrl.SetCursor(false);
             GameManager.I.LevelMng.Level = 0;
             GameManager.I.UIMng.MainMenuActions();
         }
@@ -204,22 +207,34 @@ namespace TeamF
             GameManager.I.EnemyMng.Init();
             GameManager.I.UIMng.GameplayActions();
             GameManager.I.AmmoController.Init();
+
+            GameManager.I.CursorCtrl.SetCursor(true);
+
             CurrentState = FlowState.Gameplay;
         }
 
         void PauseActions(bool _isGamePaused)
         {
+            
+
             GameManager.I.EnemyMng.ToggleAllAIs(!_isGamePaused);
             GameManager.I.AudioMng.TogglePauseAll(_isGamePaused);
 
             if (_isGamePaused)
+            {
+                GameManager.I.CursorCtrl.SetCursor(false);
                 GameManager.I.UIMng.PauseActions();
+            }
             else
+            {
+                GameManager.I.CursorCtrl.SetCursor(true);
                 GameManager.I.UIMng.GameplayActions();
+            }
         }
 
         void EndRoundActions()
         {
+            GameManager.I.CursorCtrl.SetCursor(false);
             GameManager.I.EnemyMng.EndGameplayActions();
 
             if (GameManager.I.LevelMng.EndingStaus == LevelEndingStaus.Interrupted)
@@ -246,6 +261,8 @@ namespace TeamF
 
         void TestGameplayActions()
         {
+            GameManager.I.CursorCtrl.SetCursor(true);
+
             if (GameManager.I.Player != null)
             {
                 GameManager.I.Player.InitCharacter(true);
@@ -273,6 +290,7 @@ namespace TeamF
 
         void ExitTestSceneActions()
         {
+            GameManager.I.CursorCtrl.SetCursor(false);
             GameManager.I.EnemyMng.EndGameplayActions();
             GameManager.I.LevelMng.Level = 0;
         }
