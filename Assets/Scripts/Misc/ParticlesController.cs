@@ -21,7 +21,7 @@ namespace TeamF
         {
             if (_type != ParticleType.Dash)
                 StopAllParticles();
-
+            
             switch (_type)
             {
                 case ParticleType.Fire:
@@ -75,21 +75,21 @@ namespace TeamF
             if (ParticlesEffect != null)
             {
                 ParticlesEffect.Stop();
-                ParticlesEffect.GetComponentInParent<Transform>().gameObject.SetActive(false);
+                ParticlesEffect.GetComponentInChildren<Transform>().gameObject.SetActive(false);
                 GameManager.I.PoolMng.UpdatePool(FireParticlesGraphicID);
             }
 
             if (DashParticles != null)
             {
                 DashParticles.Stop();
-                DashParticles.GetComponentInParent<Transform>().gameObject.SetActive(false);
+                DashParticles.GetComponentInChildren<Transform>().gameObject.SetActive(false);
                 GameManager.I.PoolMng.UpdatePool(DashParticlesGraphicID);
             }
 
             if (IncreaseDamageMesh != null)
             {
                 IncreaseDamageMesh.enabled = false;
-                IncreaseDamageMesh.GetComponentInParent<Transform>().gameObject.SetActive(false);
+                IncreaseDamageMesh.GetComponentInChildren<Transform>().gameObject.SetActive(false);
                 GameManager.I.PoolMng.UpdatePool(IncreaseDamageMeshGraphicID);
             }
         }
