@@ -30,7 +30,6 @@ namespace TeamF
             if (spawnTime >= DataInstance.DelayHordes && (GameManager.I.CurrentState == FlowState.Gameplay || GameManager.I.CurrentState == FlowState.TestGameplay))
             {
                 StartCoroutine(ActiveSpawnParticles());
-                //SpawnHorde();
                 spawnTime = 0;
             }
         }
@@ -140,7 +139,7 @@ namespace TeamF
                     GameManager.I.PoolMng.UpdatePool(enemyToDestroy.Data.GraphicID);
 
                     enemiesSpawned.Remove(enemiesSpawned[i]);
-                    Destroy(enemyToDestroy, 1f);
+                    DestroyImmediate(enemyToDestroy);
                     return;
                 }
             }
@@ -154,7 +153,7 @@ namespace TeamF
             {
                 enemiesSpawned[i].gameObject.SetActive(false);
                 GameManager.I.PoolMng.UpdatePool(enemiesSpawned[i].Data.GraphicID);
-                Destroy(enemiesSpawned[i].gameObject, 1f);
+                DestroyImmediate(enemiesSpawned[i].gameObject);
             }
             enemiesSpawned.Clear();
         }
@@ -192,13 +191,6 @@ namespace TeamF
             {
                 if (i == spawnIndexToExclude)
                     continue;
-
-                foreach (ParticleSystem particle in spawnPoints[i].GetComponentsInChildren<ParticleSystem>())
-                {
-                    if (particle != null)
-                        particle.Play();
-                }
-
 
                 if (!DataInstance.BlockSpawnElemental)
                 {
@@ -247,13 +239,6 @@ namespace TeamF
                         }
                     }
                 }
-
-                foreach (ParticleSystem particle in spawnPoints[i].GetComponentsInChildren<ParticleSystem>())
-                {
-                    if (particle != null)
-                        particle.Stop();
-                }
-
             }
         }
 
@@ -330,7 +315,6 @@ namespace TeamF
             {
                 spawnPoints.Add(spawn.transform);
             }
-
         }
         #endregion
 
