@@ -13,4 +13,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: FragBullet
   Graphic: {fileID: 1250364860620518, guid: 74d5df5c11b387c438ce22d23ff8a230, type: 2}
-  Quantity: 30
+  Quantity: 50
