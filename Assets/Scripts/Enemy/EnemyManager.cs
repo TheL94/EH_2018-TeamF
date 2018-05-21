@@ -139,7 +139,7 @@ namespace TeamF
                     GameManager.I.PoolMng.UpdatePool(enemyToDestroy.Data.GraphicID);
 
                     enemiesSpawned.Remove(enemiesSpawned[i]);
-                    DestroyImmediate(enemyToDestroy);
+                    Destroy(enemyToDestroy);
                     return;
                 }
             }
@@ -153,7 +153,7 @@ namespace TeamF
             {
                 enemiesSpawned[i].gameObject.SetActive(false);
                 GameManager.I.PoolMng.UpdatePool(enemiesSpawned[i].Data.GraphicID);
-                DestroyImmediate(enemiesSpawned[i].gameObject);
+                Destroy(enemiesSpawned[i].gameObject);
             }
             enemiesSpawned.Clear();
         }
