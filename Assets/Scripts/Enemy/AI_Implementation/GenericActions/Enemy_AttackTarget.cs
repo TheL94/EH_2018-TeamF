@@ -37,14 +37,14 @@ namespace TeamF.AI
 
             if (transF != null)
             {
-                Bullet bullet = Instantiate(bulletData.BulletContainerPrefab, transF.position, transF.rotation, null).AddComponent<Bullet>();
+                Bullet bullet = Instantiate(bulletData.BulletContainerPrefab, transF.position, transF.rotation, null).GetComponent<Bullet>();
 
                 if (bulletData.BulletGraphicPrefab != null)
                     Instantiate(bulletData.BulletGraphicPrefab, bullet.transform.position, bullet.transform.rotation, bullet.transform);
                 if (bulletData.BulletTrailPrefab != null)
                     Instantiate(bulletData.BulletTrailPrefab, bullet.transform.position, bullet.transform.rotation, bullet.transform);
 
-                bullet.Init(bulletData.ElementalAmmo, _enemy.Data.BulletSpeed, _enemy, _enemy.Data.BulletLifeTime);
+                bullet.Init(bulletData.ElementalAmmo, _enemy.Data.BulletSpeed, _enemy, _enemy.Data.BulletRange);
             }
             else
                 Debug.LogError("No ShootingPoint Found On " + _enemy.Data.EnemyType + " !");

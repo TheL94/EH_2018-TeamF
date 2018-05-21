@@ -34,4 +34,4 @@ MonoBehaviour:
   RangedDamageRate: -1
   BulletData: {fileID: 0}
   BulletSpeed: 0.5
-  BulletLifeTime: 2
+  BulletRange: 15
