@@ -16,7 +16,10 @@ namespace TeamF.AI
 
         void Die(Enemy _enemy)
         {
-            _enemy.GetComponentInChildren<Animator>().Play("Idle");
+            Animator anim = _enemy.GetComponentInChildren<Animator>();
+
+            if(anim != null)
+                anim.Play("Idle");
 
             if (Enemy.EnemyDeath != null)
                 Enemy.EnemyDeath(_enemy);

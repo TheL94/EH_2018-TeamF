@@ -56,6 +56,7 @@ namespace TeamF
         /// </summary>
         public void EndGameplayActions()
         {
+            ToggleAllAIs(false);
             CanSpawn = false;
             DeleteAllEnemies();
             spawnPoints.Clear();
@@ -139,7 +140,7 @@ namespace TeamF
                     GameManager.I.PoolMng.UpdatePool(enemyToDestroy.Data.GraphicID);
 
                     enemiesSpawned.Remove(enemiesSpawned[i]);
-                    Destroy(enemyToDestroy);
+                    Destroy(enemyToDestroy.gameObject, 0.1f);
                     return;
                 }
             }
@@ -153,7 +154,7 @@ namespace TeamF
             {
                 enemiesSpawned[i].gameObject.SetActive(false);
                 GameManager.I.PoolMng.UpdatePool(enemiesSpawned[i].Data.GraphicID);
-                Destroy(enemiesSpawned[i].gameObject);
+                Destroy(enemiesSpawned[i].gameObject, 0.1f);
             }
             enemiesSpawned.Clear();
         }

@@ -202,13 +202,6 @@ namespace TeamF
 
         void InitGameplayElementsActions()
         {
-            if (GameManager.I.LevelMng.Level <= 3)
-                GameManager.I.PPCtrl.SetPostProcess(PostProcessController.MapType.Forest);
-            else if (GameManager.I.LevelMng.Level <= 6)
-                GameManager.I.PPCtrl.SetPostProcess(PostProcessController.MapType.Mine);
-            else if (GameManager.I.LevelMng.Level <= 9)
-                GameManager.I.PPCtrl.SetPostProcess(PostProcessController.MapType.City);
-
             if (GameManager.I.Player != null)
                 GameManager.I.Player.InitCharacter();
 
@@ -218,13 +211,18 @@ namespace TeamF
 
             GameManager.I.CursorCtrl.SetCursor(true);
 
+            if (GameManager.I.LevelMng.Level <= 3)
+                GameManager.I.PPCtrl.SetPostProcess(PostProcessController.MapType.Forest);
+            else if (GameManager.I.LevelMng.Level <= 6)
+                GameManager.I.PPCtrl.SetPostProcess(PostProcessController.MapType.Mine);
+            else if (GameManager.I.LevelMng.Level <= 9)
+                GameManager.I.PPCtrl.SetPostProcess(PostProcessController.MapType.City);
+
             CurrentState = FlowState.Gameplay;
         }
 
         void PauseActions(bool _isGamePaused)
         {
-            
-
             GameManager.I.EnemyMng.ToggleAllAIs(!_isGamePaused);
             GameManager.I.AudioMng.TogglePauseAll(_isGamePaused);
 
