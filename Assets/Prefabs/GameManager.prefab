@@ -2601,11 +2601,11 @@ MonoBehaviour:
   PoolMng: {fileID: 0}
   AudioMng: {fileID: 0}
   KillsToWinPerLevel:
-  - 50
-  - 50
-  - 50
-  - 50
-  - 50
+  - 25
+  - 30
+  - 35
+  - 40
+  - 45
   - 50
   ComboCounterTimer: 10
 --- !u!114 &114344852107688236

@@ -19,4 +19,4 @@ MonoBehaviour:
     DamagePercentage: 1
   MaxOverheating: 30
   OverheatingPerShot: 1
-  OverheatingDropSpeed: 20
+  OverheatingDropSpeed: 40

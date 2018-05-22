@@ -22,7 +22,7 @@ MonoBehaviour:
     type: 2}
   GraphicID: Fire
   EnemyType: 2
-  Life: 3
+  Life: 20
   Speed: 9
   AimTime: 0.2
   EnemyValue: 1
