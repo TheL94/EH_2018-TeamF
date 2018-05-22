@@ -2600,6 +2600,7 @@ MonoBehaviour:
   Player: {fileID: 0}
   PoolMng: {fileID: 0}
   AudioMng: {fileID: 0}
+  CursorCtrl: {fileID: 0}
   KillsToWinPerLevel:
   - 25
   - 30
@@ -2705,6 +2706,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 644f8ff85fefdea4b84a45d7e023915d, type: 2}
   - {fileID: 11400000, guid: 00022269882d373459383854355d0535, type: 2}
   - {fileID: 11400000, guid: 16b408c8e2c8a2e4a8b718b10ea83a89, type: 2}
+  - {fileID: 11400000, guid: 1a91fe5af6c1b314cb0e5e9184dbc1b0, type: 2}
+  - {fileID: 11400000, guid: e34b9ef273a7d024881fe93979cc4f1d, type: 2}
+  - {fileID: 11400000, guid: c2fd368b00a3d2646bd4b91a2a41895b, type: 2}
+  - {fileID: 11400000, guid: dc351c1a89c77a748ab5c052fe6d8d23, type: 2}
 --- !u!114 &114973790194786270
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: ThunderIcon
   Graphic: {fileID: 1567448620153266, guid: 09a1f32cb758db641be45c6d51c7186a, type: 2}
-  Quantity: 10
+  Quantity: 5

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: WaterIcon
   Graphic: {fileID: 1434228558566864, guid: e373e84b5ee48aa4ca64aa0dd5b8cf37, type: 2}
-  Quantity: 10
+  Quantity: 5

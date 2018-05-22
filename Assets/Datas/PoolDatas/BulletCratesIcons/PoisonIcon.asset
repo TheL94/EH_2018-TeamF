@@ -13,4 +13,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: PoisonIcon
   Graphic: {fileID: 1774357057335746, guid: da6574005faba244f9fc884c63e82528, type: 2}
-  Quantity: 10
+  Quantity: 5

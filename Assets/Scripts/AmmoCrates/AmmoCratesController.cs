@@ -40,6 +40,9 @@ namespace TeamF
         /// <param name="_crate">La Crate che deve essere rimossa</param>
         public void DeleteAmmoCrateFromList(AmmoCrate _crate)
         {
+            _crate.Graphic.SetActive(false);
+            GameManager.I.PoolMng.UpdatePool(_crate.CurrentGraphicID);
+
             Crates.Remove(_crate);
             Destroy(_crate.gameObject);
 

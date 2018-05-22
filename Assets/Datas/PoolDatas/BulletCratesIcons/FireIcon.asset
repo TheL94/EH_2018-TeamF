@@ -13,4 +13,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: FireIcon
   Graphic: {fileID: 1230887325521180, guid: 5322d973b75147d4880a9b858a0b8271, type: 2}
-  Quantity: 10
+  Quantity: 5
