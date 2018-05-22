@@ -181,7 +181,8 @@ namespace TeamF
             GameManager.I.AudioMng = GameManager.I.GetComponentInChildren<AudioManager>();
             GameManager.I.AudioMng.Init();
 
-            GameManager.I.CursorCtrl = GameManager.I.GetComponentInChildren<CursorController>();        
+            GameManager.I.CursorCtrl = GameManager.I.GetComponentInChildren<CursorController>();
+            GameManager.I.PPCtrl = Camera.main.GetComponentInChildren<PostProcessController>();
 
             CurrentState = FlowState.MainMenu;
         }
@@ -201,6 +202,13 @@ namespace TeamF
 
         void InitGameplayElementsActions()
         {
+            if (GameManager.I.LevelMng.Level <= 3)
+                GameManager.I.PPCtrl.SetPostProcess(PostProcessController.MapType.Forest);
+            else if (GameManager.I.LevelMng.Level <= 6)
+                GameManager.I.PPCtrl.SetPostProcess(PostProcessController.MapType.Mine);
+            else if (GameManager.I.LevelMng.Level <= 9)
+                GameManager.I.PPCtrl.SetPostProcess(PostProcessController.MapType.City);
+
             if (GameManager.I.Player != null)
                 GameManager.I.Player.InitCharacter();
 

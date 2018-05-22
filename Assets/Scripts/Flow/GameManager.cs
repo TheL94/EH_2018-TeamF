@@ -27,6 +27,8 @@ namespace TeamF
         public AudioManager AudioMng;
         [HideInInspector]
         public CursorController CursorCtrl;
+        [HideInInspector]
+        public PostProcessController PPCtrl;
 
         public List<float> KillsToWinPerLevel = new List<float>();
         public float ComboCounterTimer;
