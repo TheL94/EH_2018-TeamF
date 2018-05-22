@@ -13,4 +13,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: Ranged
   Graphic: {fileID: 1466958813535024, guid: 532931363920e0347bbb93c257ff2498, type: 2}
-  Quantity: 20
+  Quantity: 15
