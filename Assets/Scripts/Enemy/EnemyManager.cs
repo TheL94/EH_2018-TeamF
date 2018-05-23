@@ -13,11 +13,13 @@ namespace TeamF
         private void OnEnable()
         {
             Enemy.EnemyDeath += OnEnemyDeath;
+            Enemy.UpdateKill += UpdateKillPoints;
         }
 
         void OnDisable()
         {
             Enemy.EnemyDeath -= OnEnemyDeath;
+            Enemy.UpdateKill -= UpdateKillPoints;
         }
 
         void Update()
@@ -71,8 +73,16 @@ namespace TeamF
         /// <param name="_enemyKilled"></param>
         public virtual void OnEnemyDeath(Enemy _enemyKilled)
         {
-            Events_LevelController.UpdateKillPoints(_enemyKilled.Data.EnemyValue);
             DeleteSpecificEnemy(_enemyKilled.ID);
+        }
+
+        /// <summary>
+        /// Chiama l'evento per aggiornare i punti vittoria
+        /// </summary>
+        /// <param name="_enemyKilled"></param>
+        public void UpdateKillPoints(Enemy _enemyKilled)
+        {
+            Events_LevelController.UpdateKillPoints(_enemyKilled.Data.EnemyValue);
         }
 
         /// <summary>

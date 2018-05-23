@@ -16,15 +16,19 @@ namespace TeamF.AI
 
         void ShutDown(Enemy _enemy)
         {
-            _enemy.AI_Enemy.IsActive = false;
             _enemy.GetComponent<Collider>().enabled = false;
-
-            EffectController effect = _enemy.GetComponent<EffectController>();
-            if (effect != null)
-                effect.gameObject.SetActive(false);
 
             _enemy.GetComponentInChildren<ParticlesController>().StopAllParticles();
             _enemy.GetComponentInChildren<BlinkController>().ResetEffects();
+            EffectController effect = _enemy.GetComponent<EffectController>();
+            if (effect != null)
+            {
+                effect.StopAllEffects();
+            }
+
+            if (Enemy.UpdateKill != null)
+                Enemy.UpdateKill(_enemy);
+
         }
     }
 }

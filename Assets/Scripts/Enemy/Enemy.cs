@@ -159,6 +159,7 @@ namespace TeamF
         #region Enemy Delegate
         public delegate void EnemyState(Enemy _enemy);
         public static EnemyState EnemyDeath;
+        public static EnemyState UpdateKill;
         #endregion
     }
 

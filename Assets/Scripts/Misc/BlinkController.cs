@@ -79,6 +79,9 @@ namespace TeamF
             for (int i = 0; i < renderers.Count; i++)
                 renderers[i].material.SetFloat("_Brightness", initalBrightness);
 
+            for (int i = 0; i < activeTweeners.Count; i++)
+                activeTweeners[i].Complete();
+
             for (int i = 0; i < renderers.Count; i++)
                 renderers[i].material.SetColor("_Color", Color.white);
         }
