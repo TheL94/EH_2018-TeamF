@@ -22,7 +22,7 @@ namespace TeamF
         #region Constructor And Destructor
         public LevelManager()
         {
-            Init();
+            //Init();
         }
 
         public void Init()
@@ -81,6 +81,7 @@ namespace TeamF
         public void UpdateRoundPoints(float _killedEnemyValue)
         {
             roundPoints += _killedEnemyValue;
+            Debug.Log(roundPoints);
             if (roundPoints >= PointsToWin)
                 roundPoints = PointsToWin;
             Events_UIController.KillPointsChanged(roundPoints, PointsToWin);
