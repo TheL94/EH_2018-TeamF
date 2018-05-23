@@ -18,7 +18,7 @@ namespace TeamF.AI
         {
             _enemy.GetComponent<Collider>().enabled = false;
 
-            _enemy.GetComponentInChildren<ParticlesController>().StopAllParticles();
+            //_enemy.GetComponentInChildren<ParticlesController>().StopAllParticles();
             _enemy.GetComponentInChildren<BlinkController>().ResetEffects();
             EffectController effect = _enemy.GetComponent<EffectController>();
             if (effect != null)

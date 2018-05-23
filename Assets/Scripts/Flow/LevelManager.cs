@@ -81,7 +81,6 @@ namespace TeamF
         public void UpdateRoundPoints(float _killedEnemyValue)
         {
             roundPoints += _killedEnemyValue;
-            Debug.Log(roundPoints);
             if (roundPoints >= PointsToWin)
                 roundPoints = PointsToWin;
             Events_UIController.KillPointsChanged(roundPoints, PointsToWin);

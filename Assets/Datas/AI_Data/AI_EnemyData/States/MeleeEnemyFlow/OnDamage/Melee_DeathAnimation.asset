@@ -14,7 +14,7 @@ MonoBehaviour:
   Actions:
   - Delay: 0
     Loop: 0
-    Action: {fileID: 11400000, guid: 17bdb9e5b93e76249acf8e1866a10ff8, type: 2}
+    Action: {fileID: 11400000, guid: 3467cb8c8a80c8c499e08a319587009f, type: 2}
     OnSuccess: {fileID: 0}
     OnFailure: {fileID: 0}
   - Delay: 0
@@ -27,8 +27,18 @@ MonoBehaviour:
     Action: {fileID: 11400000, guid: 45a954160b7fcef49bffc994e782e3f8, type: 2}
     OnSuccess: {fileID: 0}
     OnFailure: {fileID: 0}
-  - Delay: 1.5
+  - Delay: 0
     Loop: 0
-    Action: {fileID: 11400000, guid: 5053112bdd4054e4e93bed365310d39d, type: 2}
+    Action: {fileID: 11400000, guid: 17bdb9e5b93e76249acf8e1866a10ff8, type: 2}
+    OnSuccess: {fileID: 0}
+    OnFailure: {fileID: 0}
+  - Delay: 0
+    Loop: 0
+    Action: {fileID: 11400000, guid: ddb816f9ee230fe489331177f520bc68, type: 2}
+    OnSuccess: {fileID: 0}
+    OnFailure: {fileID: 0}
+  - Delay: 1
+    Loop: 1
+    Action: {fileID: 11400000, guid: cf95b443cf122fe4686d1fe1d387ff8f, type: 2}
     OnSuccess: {fileID: 11400000, guid: 6e8dca463cf29b5499c013b3e8fb1fe5, type: 2}
     OnFailure: {fileID: 0}

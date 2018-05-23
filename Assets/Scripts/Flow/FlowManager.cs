@@ -242,6 +242,7 @@ namespace TeamF
 
         void EndRoundActions()
         {
+            GameManager.I.PoolMng.ForcePoolReset();
             GameManager.I.CursorCtrl.SetCursor(false);
             GameManager.I.EnemyMng.EndGameplayActions();
 
