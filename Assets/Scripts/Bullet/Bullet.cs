@@ -162,7 +162,7 @@ namespace TeamF
             IDamageable damageable = other.GetComponent<IDamageable>();
             if (damageable == null)
             {
-                DropFragParticle(closetPoint);
+                //DropFragParticle(closetPoint);
                 return;
             }
 
@@ -176,7 +176,7 @@ namespace TeamF
                     // Enemy Charmed
                     DoDamage(damageable);
                     ApplyElementalEffect(other.GetComponent<IEffectable>());
-                    DropFragParticle(closetPoint);
+                    //DropFragParticle(closetPoint);
                     return;
                 }
 
@@ -185,7 +185,7 @@ namespace TeamF
                     // Enemy
                     DoDamage(damageable);
                     ApplyElementalEffect(other.GetComponent<IEffectable>());
-                    DropFragParticle(closetPoint);
+                    //DropFragParticle(closetPoint);
                     return;
                 }
                 else
@@ -198,7 +198,7 @@ namespace TeamF
                 // Character
                 DoDamage(damageable);
                 ApplyElementalEffect(other.GetComponent<IEffectable>());
-                DropFragParticle(closetPoint);
+                //DropFragParticle(closetPoint);
                 return;
             }            
         }
