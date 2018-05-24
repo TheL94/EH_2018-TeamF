@@ -57,6 +57,20 @@ namespace TeamF
                 StartCoroutine(CreateAmmoCrateAfterTime(spanwerPosition)); 
         }
 
+        public void DeleteAllAmmoCrate()
+        {
+            StopAllCoroutines();
+
+            for (int i = 0; i < Crates.Count; i++)
+            {
+                Crates[i].Graphic.SetActive(false);
+                GameManager.I.PoolMng.UpdatePool(Crates[i].CurrentGraphicID);
+
+                Destroy(Crates[i].gameObject);
+            }
+            Crates.Clear();
+        }
+
         /// <summary>
         /// Crea le AmmoCrate nei punti di spawn
         /// </summary>

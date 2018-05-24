@@ -52,13 +52,10 @@ namespace TeamF
         }
 
         /// <summary>
-        /// Chiama la funzione nel controller per rimuoverla dalla lista di crate, distruggerla, 
-        /// avviare la coroutine per istanziare una nuova cassa al suo posto.
+        /// Mostra l'icona di quante munizioni sono state raccolte e poi distrugge la cassa
         /// </summary>
-        public void DestroyAmmoCrate()
+        public void CrateCollected()
         {
-            Graphic.SetActive(false);
-            GameManager.I.PoolMng.UpdatePool(CurrentGraphicID);
             // Crea la particles per indicare quante ammo sono state raccolte
             GetComponent<HPScript>().ChangeHP(transform.position + new Vector3(0,5,0), ammoColor, Type.ToString() + " " + Ammo);
             controller.DeleteAmmoCrateFromList(this);

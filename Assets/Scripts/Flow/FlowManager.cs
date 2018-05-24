@@ -245,6 +245,7 @@ namespace TeamF
             GameManager.I.PoolMng.ForcePoolReset();
             GameManager.I.CursorCtrl.SetCursor(false);
             GameManager.I.EnemyMng.EndGameplayActions();
+            GameManager.I.AmmoController.DeleteAllAmmoCrate();
 
             if (GameManager.I.LevelMng.EndingStaus == LevelEndingStaus.Interrupted)
             {
