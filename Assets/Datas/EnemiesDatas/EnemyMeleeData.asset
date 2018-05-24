@@ -24,8 +24,8 @@ MonoBehaviour:
   EnemyType: 0
   Life: 3
   Speed: 9.5
-  AimTime: 0.2
-  EnemyValue: 1
+  AimTime: 0.5
+  EnemyValue: 0.1
   MeleeDamage: 2
   MeleeDamageRange: 3
   MeleeDamageRate: 1

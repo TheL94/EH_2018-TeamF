@@ -22,15 +22,15 @@ MonoBehaviour:
     type: 2}
   GraphicID: Water
   EnemyType: 3
-  Life: 20
-  Speed: 7
-  AimTime: 0.2
+  Life: 50
+  Speed: 5
+  AimTime: 0.5
   EnemyValue: 1
-  MeleeDamage: 2
+  MeleeDamage: 10
   MeleeDamageRange: 3
   MeleeDamageRate: 1
-  RangedDamage: 2
-  RangedDamageRange: 15
+  RangedDamage: 10
+  RangedDamageRange: 10
   RangedDamageRate: 5
   BulletData: {fileID: 11400000, guid: 5ff57a97b0c6cd84cafe9ff72198d7ee, type: 2}
   BulletSpeed: 0.3

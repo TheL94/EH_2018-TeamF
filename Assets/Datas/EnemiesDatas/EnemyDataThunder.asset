@@ -22,15 +22,15 @@ MonoBehaviour:
     type: 2}
   GraphicID: Thunder
   EnemyType: 5
-  Life: 15
+  Life: 30
   Speed: 9.5
-  AimTime: 0.2
+  AimTime: 0.5
   EnemyValue: 1
-  MeleeDamage: 2
+  MeleeDamage: 5
   MeleeDamageRange: 3
   MeleeDamageRate: 1
-  RangedDamage: 2
-  RangedDamageRange: 15
+  RangedDamage: 5
+  RangedDamageRange: 6
   RangedDamageRate: 5
   BulletData: {fileID: 11400000, guid: 936fa4877bc454445a0cce927ca680a0, type: 2}
   BulletSpeed: 0.5
