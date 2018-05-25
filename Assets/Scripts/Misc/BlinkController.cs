@@ -39,8 +39,7 @@ namespace TeamF
             if (corutine != null)
             {
                 StopCoroutine(corutine);
-                for (int i = 0; i < renderers.Count; i++)
-                    renderers[i].material.SetFloat("_Brightness", initalBrightness);
+                ResetBrightness();
             }
 
             corutine = StartCoroutine(DamageBlinkCorutine());
@@ -50,11 +49,8 @@ namespace TeamF
         {
             if (activeTweeners.Count > 0)
             {
-                for (int i = 0; i < activeTweeners.Count; i++)
-                    activeTweeners[i].Complete();
-
-                for (int i = 0; i < renderers.Count; i++)
-                    renderers[i].material.SetColor("_Color", Color.white);
+                CompleteTweens();
+                ResetColor();
             }
 
             EffectBlink(PoisonedBlinkTime, _durationTime, PosonedColor);
@@ -64,11 +60,8 @@ namespace TeamF
         {
             if (activeTweeners.Count > 0)
             {
-                for (int i = 0; i < activeTweeners.Count; i++)
-                    activeTweeners[i].Complete();
-
-                for (int i = 0; i < renderers.Count; i++)
-                    renderers[i].material.SetColor("_Color", Color.white);
+                CompleteTweens();
+                ResetColor();
             }
 
             EffectBlink(SlowedBlinkTime, _durationTime, SlowedColor);
@@ -76,14 +69,8 @@ namespace TeamF
 
         public void ResetEffects()
         {
-            for (int i = 0; i < renderers.Count; i++)
-                renderers[i].material.SetFloat("_Brightness", initalBrightness);
-
-            for (int i = 0; i < activeTweeners.Count; i++)
-                activeTweeners[i].Complete();
-
-            for (int i = 0; i < renderers.Count; i++)
-                renderers[i].material.SetColor("_Color", Color.white);
+            ResetBrightness();
+            ResetColor();
         }
         #endregion
 
@@ -111,8 +98,27 @@ namespace TeamF
             {
                 Tweener tween = renderers[i].material.DOColor(_colorToReach, "_Color", _time);
                 tween.SetLoops(loops, LoopType.Yoyo);
+                tween.OnComplete(() => { ResetColor(); activeTweeners.Remove(tween); });
                 activeTweeners.Add(tween);
             }
+        }
+
+        void ResetBrightness()
+        {
+            for (int i = 0; i < renderers.Count; i++)
+                renderers[i].material.SetFloat("_Brightness", initalBrightness);
+        }
+
+        void CompleteTweens()
+        {
+            for (int i = 0; i < activeTweeners.Count; i++)
+                activeTweeners[i].Complete();
+        }
+
+        void ResetColor()
+        {
+            for (int i = 0; i < renderers.Count; i++)
+                renderers[i].material.SetColor("_Color", Color.white);
         }
     }
 }
