@@ -22,14 +22,14 @@ MonoBehaviour:
     type: 2}
   GraphicID: Fire
   EnemyType: 2
-  Life: 20
+  Life: 40
   Speed: 9
-  AimTime: 0.2
+  AimTime: 0.5
   EnemyValue: 1
-  MeleeDamage: 2
+  MeleeDamage: 5
   MeleeDamageRange: 3
   MeleeDamageRate: 1
-  RangedDamage: 3
+  RangedDamage: 5
   RangedDamageRange: 8
   RangedDamageRate: 1
   BulletData: {fileID: 11400000, guid: fc0514fe99c1cf343900d4df6098e7f5, type: 2}

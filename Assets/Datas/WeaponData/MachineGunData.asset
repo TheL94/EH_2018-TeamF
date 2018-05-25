@@ -13,10 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Weapon: 1
   Parameters:
-    BulletSpeed: 1
-    BulletRange: 15
-    Ratio: 0.2
-    DamagePercentage: 1
+    BulletSpeed: 0.8
+    BulletRange: 25
+    Ratio: 0.175
+    DamagePercentage: 0.75
   MaxOverheating: 30
   OverheatingPerShot: 1
-  OverheatingDropSpeed: 40
+  OverheatingDropSpeed: 30

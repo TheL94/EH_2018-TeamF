@@ -22,14 +22,14 @@ MonoBehaviour:
     type: 2}
   GraphicID: Poison
   EnemyType: 4
-  Life: 15
+  Life: 40
   Speed: 7
-  AimTime: 0.2
+  AimTime: 0.5
   EnemyValue: 1
   MeleeDamage: 2
   MeleeDamageRange: 3
   MeleeDamageRate: -1
-  RangedDamage: 2
+  RangedDamage: 5
   RangedDamageRange: 15
   RangedDamageRate: 5
   BulletData: {fileID: 11400000, guid: b69f54a5670741e478343d85268443f8, type: 2}
