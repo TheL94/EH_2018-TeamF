@@ -311,6 +311,15 @@ namespace TeamF
 
             GameManager.I.EnemyMng.SpawnEnemyForTestScene();
             GameManager.I.UIMng.GameplayActions();
+
+            GameManager.I.AudioMng.PlaySound(Clips.GameplayMusic);
+
+            if (GameManager.I.LevelMng.Level <= 3)
+                GameManager.I.AudioMng.PlaySound(Clips.ForestAmbience);
+            else if (GameManager.I.LevelMng.Level <= 6)
+                GameManager.I.AudioMng.PlaySound(Clips.MineAmbience);
+            else if (GameManager.I.LevelMng.Level <= 9)
+                GameManager.I.AudioMng.PlaySound(Clips.CityAmbience);
         }
 
         void ExitTestSceneActions()

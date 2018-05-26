@@ -36,7 +36,7 @@ namespace TeamF
             OnExitCollider(other);
         }
 
-        protected virtual void DoInit()
+        private void DoInit()
         {
             GameObject obj = null;
             if (GraphicID != null || GraphicID != string.Empty)
@@ -47,6 +47,8 @@ namespace TeamF
                 obj.transform.position = transform.position;
                 obj.transform.SetParent(transform);
             }
+
+            OnInit();
         }
 
         /// <summary>
@@ -58,6 +60,8 @@ namespace TeamF
             GameManager.I.PoolMng.UpdatePool(GraphicID);
             Destroy(gameObject);
         }
+
+        protected virtual void OnInit() { }
 
         protected virtual void OnUpdate() { }
         

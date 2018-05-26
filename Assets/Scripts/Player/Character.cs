@@ -87,12 +87,14 @@ namespace TeamF
         /// <param name="_type">Tipo del nemico che attacca, per triggherare azioni particolari del player a seconda del tipo di nemico</param>
         public void TakeDamage(float _damage, ElementalType _type = ElementalType.None)
         {
-            if (isInvincible)
+            if (isInvincible || Life <= 0)
                 return;
+
             _damage = (_damage * DamagePercentage) / 100;
             Life -= _damage;
+            GameManager.I.AudioMng.PlaySound(Clips.CharacterDamage);
 
-            if(blinkCtrl != null)
+            if (blinkCtrl != null)
                 blinkCtrl.DamageBlink();
 
             if (Life <= 0)
@@ -135,7 +137,7 @@ namespace TeamF
         /// Chiama la funzione di sparo nell'arma e sovrascrive la struttura appena passata
         /// </summary>
         public void ElementalShot()
-        {
+        {           
             weaponController.Shot(SelectedAmmo);
         }
         #endregion
@@ -201,6 +203,7 @@ namespace TeamF
         {
             if (_crate != null)
             {
+                GameManager.I.AudioMng.PlaySound(Clips.CharacterPickUp);
                 for (int i = 0; i < Data.BulletDatas.Length; i++)
                 {
                     if (_crate.Type == Data.BulletDatas[i].ElementalAmmo.AmmoType)
@@ -219,6 +222,7 @@ namespace TeamF
         {
             if(_crate != null)
             {
+                GameManager.I.AudioMng.PlaySound(Clips.CharacterPickUp);
                 weaponController.SetCurrentWeapon(_crate.WeaponType);
             }
         }

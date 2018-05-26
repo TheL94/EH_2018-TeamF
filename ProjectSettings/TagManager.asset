@@ -22,6 +22,8 @@ TagManager:
   - CharacterAudioSource
   - EnemyAudioSource
   - ComboAudioSource
+  - MusicAudioSource
+  - AmbienceAudioSource
   layers:
   - Default
   - TransparentFX

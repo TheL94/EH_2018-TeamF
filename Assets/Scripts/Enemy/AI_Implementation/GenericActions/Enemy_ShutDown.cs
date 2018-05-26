@@ -18,6 +18,8 @@ namespace TeamF.AI
         {
             _enemy.GetComponent<Collider>().enabled = false;
 
+            GameManager.I.AudioMng.PlaySound(Clips.EnemyDeath);
+
             //_enemy.GetComponentInChildren<ParticlesController>().StopAllParticles();
             _enemy.GetComponentInChildren<BlinkController>().ResetEffects();
             EffectController effect = _enemy.GetComponent<EffectController>();
@@ -28,7 +30,6 @@ namespace TeamF.AI
 
             if (Enemy.UpdateKill != null)
                 Enemy.UpdateKill(_enemy);
-
         }
     }
 }

@@ -8,6 +8,12 @@ namespace TeamF
     {
         public float ReductionPercentage;
         float enemySpeed;
+
+        protected override void OnInit()
+        {
+            GameManager.I.AudioMng.PlaySound(Clips.ComboSlowingCloud);
+        }
+
         protected override void OnEnterCollider(Collider other)
         {
             Enemy enemy = other.GetComponent<Enemy>();

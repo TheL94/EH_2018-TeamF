@@ -222,7 +222,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1956686046
+--- !u!1001 &1950903103
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -260,90 +260,6 @@ Prefab:
     - target: {fileID: 4608509917988704, guid: 024de7879b837ef4a834cdd88112491f, type: 2}
       propertyPath: m_RootOrder
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1796153888903910, guid: 024de7879b837ef4a834cdd88112491f, type: 2}
-      propertyPath: m_TagString
-      value: GenericAudioSource
-      objectReference: {fileID: 0}
-    - target: {fileID: 1439698262421134, guid: 024de7879b837ef4a834cdd88112491f, type: 2}
-      propertyPath: m_TagString
-      value: CharacterAudioSource
-      objectReference: {fileID: 0}
-    - target: {fileID: 1331950986962468, guid: 024de7879b837ef4a834cdd88112491f, type: 2}
-      propertyPath: m_TagString
-      value: EnemyAudioSource
-      objectReference: {fileID: 0}
-    - target: {fileID: 1408696538003660, guid: 024de7879b837ef4a834cdd88112491f, type: 2}
-      propertyPath: m_TagString
-      value: ComboAudioSource
-      objectReference: {fileID: 0}
-    - target: {fileID: 1451903741083096, guid: 024de7879b837ef4a834cdd88112491f, type: 2}
-      propertyPath: m_TagString
-      value: ComboAudioSource
-      objectReference: {fileID: 0}
-    - target: {fileID: 1826263418431902, guid: 024de7879b837ef4a834cdd88112491f, type: 2}
-      propertyPath: m_TagString
-      value: CharacterAudioSource
-      objectReference: {fileID: 0}
-    - target: {fileID: 1408182034548700, guid: 024de7879b837ef4a834cdd88112491f, type: 2}
-      propertyPath: m_TagString
-      value: ComboAudioSource
-      objectReference: {fileID: 0}
-    - target: {fileID: 1171259948394284, guid: 024de7879b837ef4a834cdd88112491f, type: 2}
-      propertyPath: m_TagString
-      value: CharacterAudioSource
-      objectReference: {fileID: 0}
-    - target: {fileID: 1536901151083172, guid: 024de7879b837ef4a834cdd88112491f, type: 2}
-      propertyPath: m_TagString
-      value: EnemyAudioSource
-      objectReference: {fileID: 0}
-    - target: {fileID: 1755136107717774, guid: 024de7879b837ef4a834cdd88112491f, type: 2}
-      propertyPath: m_TagString
-      value: ComboAudioSource
-      objectReference: {fileID: 0}
-    - target: {fileID: 1191448315180068, guid: 024de7879b837ef4a834cdd88112491f, type: 2}
-      propertyPath: m_TagString
-      value: EnemyAudioSource
-      objectReference: {fileID: 0}
-    - target: {fileID: 1474858948123526, guid: 024de7879b837ef4a834cdd88112491f, type: 2}
-      propertyPath: m_TagString
-      value: ComboAudioSource
-      objectReference: {fileID: 0}
-    - target: {fileID: 1405282791302392, guid: 024de7879b837ef4a834cdd88112491f, type: 2}
-      propertyPath: m_TagString
-      value: EnemyAudioSource
-      objectReference: {fileID: 0}
-    - target: {fileID: 1357672739803804, guid: 024de7879b837ef4a834cdd88112491f, type: 2}
-      propertyPath: m_TagString
-      value: EnemyAudioSource
-      objectReference: {fileID: 0}
-    - target: {fileID: 1294152580999430, guid: 024de7879b837ef4a834cdd88112491f, type: 2}
-      propertyPath: m_TagString
-      value: GenericAudioSource
-      objectReference: {fileID: 0}
-    - target: {fileID: 1650280279422624, guid: 024de7879b837ef4a834cdd88112491f, type: 2}
-      propertyPath: m_TagString
-      value: EnemyAudioSource
-      objectReference: {fileID: 0}
-    - target: {fileID: 1246186598451498, guid: 024de7879b837ef4a834cdd88112491f, type: 2}
-      propertyPath: m_TagString
-      value: ComboAudioSource
-      objectReference: {fileID: 0}
-    - target: {fileID: 1063389159586340, guid: 024de7879b837ef4a834cdd88112491f, type: 2}
-      propertyPath: m_TagString
-      value: EnemyAudioSource
-      objectReference: {fileID: 0}
-    - target: {fileID: 1216800466876540, guid: 024de7879b837ef4a834cdd88112491f, type: 2}
-      propertyPath: m_TagString
-      value: GenericAudioSource
-      objectReference: {fileID: 0}
-    - target: {fileID: 1385675855539042, guid: 024de7879b837ef4a834cdd88112491f, type: 2}
-      propertyPath: m_TagString
-      value: CharacterAudioSource
-      objectReference: {fileID: 0}
-    - target: {fileID: 1745070319258120, guid: 024de7879b837ef4a834cdd88112491f, type: 2}
-      propertyPath: m_TagString
-      value: EnemyAudioSource
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 024de7879b837ef4a834cdd88112491f, type: 2}
