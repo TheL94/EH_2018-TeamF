@@ -81,6 +81,8 @@ namespace TeamF
                 CurrentIndexSelected++;
             if (CurrentIndexSelected > SelectableButtons.Count - 1)
                 CurrentIndexSelected = 0;
+
+            GameManager.I.AudioMng.PlaySound(Clips.MenuMovement);
         }
 
         public virtual void GoUpInMenu()
@@ -89,6 +91,8 @@ namespace TeamF
                 CurrentIndexSelected--;
             if (CurrentIndexSelected < 0)
                 CurrentIndexSelected = SelectableButtons.Count - 1;
+
+            GameManager.I.AudioMng.PlaySound(Clips.MenuMovement);
         }
 
         public virtual void GoLeftInMenu()
@@ -101,12 +105,10 @@ namespace TeamF
             throw new System.NotImplementedException();
         }
 
-
         public virtual void Select()
         {
-            throw new System.NotImplementedException();
+            GameManager.I.AudioMng.PlaySound(Clips.MenuConfirm);
         }
-
         #endregion
     }
 }

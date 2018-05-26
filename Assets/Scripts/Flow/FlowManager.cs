@@ -77,6 +77,8 @@ namespace TeamF
                         _currentState = _newState;
                         if (_oldState == FlowState.Pause)
                             PauseActions(false);
+                        else
+                            GameplayActions();
                     }
                     else
                     {
@@ -192,6 +194,7 @@ namespace TeamF
             GameManager.I.CursorCtrl.SetCursor(false);
             GameManager.I.LevelMng.Level = 0;
             GameManager.I.UIMng.MainMenuActions();
+            GameManager.I.AudioMng.PlaySound(Clips.MenuMusic);
         }
 
         void ManageMapActions()
@@ -221,6 +224,18 @@ namespace TeamF
                 GameManager.I.PPCtrl.SetPostProcess(PostProcessController.MapType.City);
 
             CurrentState = FlowState.Gameplay;
+        }
+
+        void GameplayActions()
+        {
+            GameManager.I.AudioMng.PlaySound(Clips.GameplayMusic);
+
+            if (GameManager.I.LevelMng.Level <= 3)
+                GameManager.I.AudioMng.PlaySound(Clips.ForestAmbience);
+            else if (GameManager.I.LevelMng.Level <= 6)
+                GameManager.I.AudioMng.PlaySound(Clips.MineAmbience);
+            else if (GameManager.I.LevelMng.Level <= 9)
+                GameManager.I.AudioMng.PlaySound(Clips.CityAmbience);
         }
 
         void PauseActions(bool _isGamePaused)
