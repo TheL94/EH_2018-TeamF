@@ -159,24 +159,28 @@ namespace TeamF
         {
             Vector3 closetPoint = other.ClosestPoint(transform.position);
 
+
             IDamageable damageable = other.GetComponent<IDamageable>();
             if (damageable == null)
             {
-                DropFragParticle(closetPoint);
+                //DropFragParticle(closetPoint);
+                Destroy(gameObject);
                 return;
             }
 
             if ((damageable as IShooter) == owner)
                 return;
 
-            if(owner.GetType() == typeof(Enemy))
+
+            if (owner.GetType() == typeof(Enemy))
             {
                 if((owner as Enemy).IsCharmed)
                 {
                     // Enemy Charmed
                     DoDamage(damageable);
                     ApplyElementalEffect(other.GetComponent<IEffectable>());
-                    DropFragParticle(closetPoint);
+                    Destroy(gameObject);
+                    //DropFragParticle(closetPoint);
                     return;
                 }
 
@@ -185,7 +189,8 @@ namespace TeamF
                     // Enemy
                     DoDamage(damageable);
                     ApplyElementalEffect(other.GetComponent<IEffectable>());
-                    DropFragParticle(closetPoint);
+                    Destroy(gameObject);
+                    //DropFragParticle(closetPoint);
                     return;
                 }
                 else
@@ -198,9 +203,12 @@ namespace TeamF
                 // Character
                 DoDamage(damageable);
                 ApplyElementalEffect(other.GetComponent<IEffectable>());
-                DropFragParticle(closetPoint);
+                Destroy(gameObject);
+                //DropFragParticle(closetPoint);
                 return;
-            }            
+            }
+
+
         }
 
         void DropFragParticle(Vector3 _position)

@@ -32,6 +32,7 @@ namespace TeamF
                     GameManager.I.CurrentState = FlowState.QuitGame;
                     break;
             }
+            base.Select();
         }
     }
 }

@@ -9,6 +9,11 @@ namespace TeamF {
     {
         List<NavMeshAgent> enemyCaught = new List<NavMeshAgent>();
 
+        protected override void OnInit()
+        {
+            GameManager.I.AudioMng.PlaySound(Clips.ComboBlackHole);
+        }
+
         protected override void OnEnterCollider(Collider other)
         {
             NavMeshAgent navMesh = other.GetComponent<NavMeshAgent>();

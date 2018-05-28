@@ -13,11 +13,13 @@ namespace TeamF
         private void OnEnable()
         {
             Enemy.EnemyDeath += OnEnemyDeath;
+            Enemy.UpdateKill += UpdateKillPoints;
         }
 
         void OnDisable()
         {
             Enemy.EnemyDeath -= OnEnemyDeath;
+            Enemy.UpdateKill -= UpdateKillPoints;
         }
 
         void Update()
@@ -56,6 +58,7 @@ namespace TeamF
         /// </summary>
         public void EndGameplayActions()
         {
+            ToggleAllAIs(false);
             CanSpawn = false;
             DeleteAllEnemies();
             spawnPoints.Clear();
@@ -70,8 +73,16 @@ namespace TeamF
         /// <param name="_enemyKilled"></param>
         public virtual void OnEnemyDeath(Enemy _enemyKilled)
         {
-            Events_LevelController.UpdateKillPoints(_enemyKilled.Data.EnemyValue);
             DeleteSpecificEnemy(_enemyKilled.ID);
+        }
+
+        /// <summary>
+        /// Chiama l'evento per aggiornare i punti vittoria
+        /// </summary>
+        /// <param name="_enemyKilled"></param>
+        public void UpdateKillPoints(Enemy _enemyKilled)
+        {
+            Events_LevelController.UpdateKillPoints(_enemyKilled.Data.EnemyValue);
         }
 
         /// <summary>
@@ -139,7 +150,7 @@ namespace TeamF
                     GameManager.I.PoolMng.UpdatePool(enemyToDestroy.Data.GraphicID);
 
                     enemiesSpawned.Remove(enemiesSpawned[i]);
-                    DestroyImmediate(enemyToDestroy);
+                    Destroy(enemyToDestroy.gameObject, 0.1f);
                     return;
                 }
             }
@@ -147,13 +158,13 @@ namespace TeamF
 
         void DeleteAllEnemies()
         {
-            GameManager.I.PoolMng.ForcePoolReset();
+            //GameManager.I.PoolMng.ForcePoolReset();
 
             for (int i = 0; i < enemiesSpawned.Count; i++)
             {
                 enemiesSpawned[i].gameObject.SetActive(false);
                 GameManager.I.PoolMng.UpdatePool(enemiesSpawned[i].Data.GraphicID);
-                DestroyImmediate(enemiesSpawned[i].gameObject);
+                Destroy(enemiesSpawned[i].gameObject, 0.1f);
             }
             enemiesSpawned.Clear();
         }

@@ -85,6 +85,7 @@ namespace TeamF
                     GameManager.I.LevelMng.Level = int.Parse(SceneToLoad.text);
                     break;
             }
+            base.Select();
         }
     }
 }

@@ -6,7 +6,12 @@ namespace TeamF
 {
     public class ParalyzingCloud : ElementalComboBase
     {
-        public ElementalEffectData EffectData;        
+        public ElementalEffectData EffectData;
+
+        protected override void OnInit()
+        {
+            GameManager.I.AudioMng.PlaySound(Clips.ComboParalyzingCloud);
+        }
 
         protected override void OnEnterCollider(Collider other)
         {

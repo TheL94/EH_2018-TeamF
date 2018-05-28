@@ -9,51 +9,64 @@ namespace TeamF
         public ElementalType Type { get; set; }
 
         [HideInInspector]
+        public GameObject Graphic;
+        [HideInInspector]
+        public string CurrentGraphicID;
+
+        [HideInInspector]
         public int Ammo;
         AmmoCratesController controller;
         Color ammoColor;
-        string ammoName;
+
 
         public void Init(AmmoCratesController _controller, int _ammo)
         {
             controller = _controller;
             Ammo = _ammo;
             Type = (ElementalType)Random.Range(1, 5);
-            MeshRenderer render = GetComponent<MeshRenderer>();
             switch (Type)
             {
                 case ElementalType.None:
                     break;
                 case ElementalType.Fire:
-                    ammoColor = render.material.color = Color.red;
-                    ammoName = "Fire ";
+                    CurrentGraphicID = "FireIcon";
+                    SetGraphic(GameManager.I.PoolMng.GetObject(CurrentGraphicID));
+                    ammoColor = Color.red;
                     break;
                 case ElementalType.Water:
-                    ammoColor = render.material.color = Color.blue;
-                    ammoName = "Water ";
+                    CurrentGraphicID = "WaterIcon";
+                    SetGraphic(GameManager.I.PoolMng.GetObject(CurrentGraphicID));
+                    ammoColor = Color.blue;
                     break;
                 case ElementalType.Poison:
-                    ammoColor = render.material.color = Color.green;
-                    ammoName = "Poison ";
+                    CurrentGraphicID = "PoisonIcon";
+                    SetGraphic(GameManager.I.PoolMng.GetObject(CurrentGraphicID));
+                    ammoColor = Color.green;
                     break;
                 case ElementalType.Thunder:
-                    ammoColor = render.material.color = Color.yellow;
-                    ammoName = "Thunder ";
-                    break;
-                default:
+                    CurrentGraphicID = "ThunderIcon";
+                    SetGraphic(GameManager.I.PoolMng.GetObject(CurrentGraphicID));
+                    ammoColor = Color.yellow;
                     break;
             }
         }
 
         /// <summary>
-        /// Chiama la funzioen nel controller per rimuoverla dalla lista di crate, distruggerla, 
-        /// avviare la coroutine per istanziare una nuova cassa al suo posto.
+        /// Mostra l'icona di quante munizioni sono state raccolte e poi distrugge la cassa
         /// </summary>
-        public void DestroyAmmoCrate()
+        public void CrateCollected()
         {
             // Crea la particles per indicare quante ammo sono state raccolte
-            GetComponent<HPScript>().ChangeHP(transform.position + new Vector3(0,5,0), ammoColor, ammoName + Ammo);
+            GetComponent<HPScript>().ChangeHP(transform.position + new Vector3(0,5,0), ammoColor, Type.ToString() + " " + Ammo);
             controller.DeleteAmmoCrateFromList(this);
+        }
+
+        void SetGraphic(GameObject _pool)
+        {
+            Graphic = _pool;
+            Graphic.transform.position = transform.position;
+            Graphic.transform.rotation = transform.rotation;
+            Graphic.transform.parent = transform;
         }
     }
 }

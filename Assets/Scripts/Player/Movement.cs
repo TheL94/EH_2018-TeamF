@@ -128,6 +128,8 @@ namespace TeamF
             {
                 particle.ActivateParticles(ParticlesController.ParticleType.Dash);
 
+                GameManager.I.AudioMng.PlaySound(Clips.CharacterDash);
+
                 playerRigidbody.AddForce(_direction.normalized * dashData.DashForce, ForceMode.Impulse);
 
                 if (_direction.x == 0 && _direction.z == 0)

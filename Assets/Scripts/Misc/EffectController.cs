@@ -59,6 +59,14 @@ namespace TeamF
             }
         }
 
+        public void StopAllEffects()
+        {
+            if (isBulletBehaviourInitialized)
+                StopBulletEffect(); 
+            if(isComboInitialized)
+                StopComboEffect();
+        }
+
         void StopBulletEffect()
         {
             bulletBehaviour.DoStopEffect();

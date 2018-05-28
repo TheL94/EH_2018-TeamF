@@ -10,6 +10,10 @@ namespace TeamF
         public List<ClipData> Clips = new List<ClipData>();
 
         List<AudioSource> allSources;
+
+        AudioSource MusicSource;
+        AudioSource AmbienceSources;
+
         List<AudioSource> GenricSources;
         List<AudioSource> CharacterSources;
         List<AudioSource> EnemySources;
@@ -18,6 +22,9 @@ namespace TeamF
         public void Init()
         {
             allSources = GetComponentsInChildren<AudioSource>().ToList();
+
+            MusicSource = allSources.FirstOrDefault(s => s.tag == "MusicAudioSource");
+            AmbienceSources = allSources.FirstOrDefault(s => s.tag == "AmbienceAudioSource");
 
             GenricSources = allSources.Where(s => s.tag == "GenericAudioSource").ToList();
             CharacterSources = allSources.Where(s => s.tag == "CharacterAudioSource").ToList();
@@ -59,13 +66,17 @@ namespace TeamF
         {
             List<AudioSource> sources = null;
 
-            if (_clipNumber >= 0 && _clipNumber < 8)
+            if(_clipNumber == 0 || _clipNumber == 4) // Music
+                sources = new List<AudioSource>() { MusicSource };
+            else if (_clipNumber >= 1 && _clipNumber < 4) // Menù
                 sources = GenricSources;
-            else if (_clipNumber >= 8 && _clipNumber < 13)
+            else if (_clipNumber >= 5 && _clipNumber < 8) // Ambience
+                sources = new List<AudioSource>() { AmbienceSources };
+            else if (_clipNumber >= 8 && _clipNumber < 13) // Character
                 sources = CharacterSources;
-            else if (_clipNumber >= 13 && _clipNumber < 16)
+            else if (_clipNumber >= 13 && _clipNumber < 16) // Enemys
                 sources = EnemySources;
-            else if (_clipNumber >= 16 && _clipNumber < 23)
+            else if (_clipNumber >= 16 && _clipNumber < 23) // Combos
                 sources = ComboSources;
 
             if (sources != null || sources.Count > 0)

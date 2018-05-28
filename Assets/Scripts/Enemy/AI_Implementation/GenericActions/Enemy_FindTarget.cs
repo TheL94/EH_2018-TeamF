@@ -15,6 +15,10 @@ namespace TeamF.AI
 
         bool SetTarget(Enemy _enemy)
         {
+            // TODO : corretto bug dei nemici che muoviono ma escono dal flow di morte, da rifare !
+            if (_enemy.Life <= 0)
+                _enemy.AI_Enemy.CurrentState = _enemy.Data.DamageState;
+
             if (GameManager.I.EnemyMng.IgnoreTarget)
             {
                 _enemy.Target = null;

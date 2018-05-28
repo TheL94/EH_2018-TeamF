@@ -45,6 +45,7 @@ namespace TeamF
                     GameManager.I.CurrentState = FlowState.MainMenu;
                     break;
             }
+            base.Select();
         }
     }
 }
