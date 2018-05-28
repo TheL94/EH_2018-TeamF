@@ -103,7 +103,7 @@ NavMeshSettings:
     agentRadius: 0.8
     agentHeight: 1.7
     agentSlope: 30
-    agentClimb: 1
+    agentClimb: 1.7
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 0.5
@@ -1466,7 +1466,7 @@ ReflectionProbe:
   m_Enabled: 1
   serializedVersion: 2
   m_Type: 0
-  m_Mode: 1
+  m_Mode: 0
   m_RefreshMode: 0
   m_TimeSlicingMode: 0
   m_Resolution: 128
