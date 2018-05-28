@@ -8,10 +8,10 @@ namespace TeamF
     public class FireExplosion : ElementalComboBase
     {
         public float Damage;
-        protected override void DoInit()
+        protected override void OnInit()
         {
-            base.DoInit();
             transform.DOScale(3, 2);
+            GameManager.I.AudioMng.PlaySound(Clips.ComboFireExplosion);
         }
 
         protected override void OnEnterCollider(Collider other)

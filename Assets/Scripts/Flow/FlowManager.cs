@@ -77,6 +77,8 @@ namespace TeamF
                         _currentState = _newState;
                         if (_oldState == FlowState.Pause)
                             PauseActions(false);
+                        else
+                            GameplayActions();
                     }
                     else
                     {
@@ -181,13 +183,18 @@ namespace TeamF
             GameManager.I.AudioMng = GameManager.I.GetComponentInChildren<AudioManager>();
             GameManager.I.AudioMng.Init();
 
+            GameManager.I.CursorCtrl = GameManager.I.GetComponentInChildren<CursorController>();
+            GameManager.I.PPCtrl = Camera.main.GetComponentInChildren<PostProcessController>();
+
             CurrentState = FlowState.MainMenu;
         }
 
         void MainMenuActions()
         {
+            GameManager.I.CursorCtrl.SetCursor(false);
             GameManager.I.LevelMng.Level = 0;
             GameManager.I.UIMng.MainMenuActions();
+            GameManager.I.AudioMng.PlaySound(Clips.MenuMusic);
         }
 
         void ManageMapActions()
@@ -198,13 +205,37 @@ namespace TeamF
 
         void InitGameplayElementsActions()
         {
+            GameManager.I.LevelMng.Init();
+
             if (GameManager.I.Player != null)
                 GameManager.I.Player.InitCharacter();
 
             GameManager.I.EnemyMng.Init();
             GameManager.I.UIMng.GameplayActions();
             GameManager.I.AmmoController.Init();
+
+            GameManager.I.CursorCtrl.SetCursor(true);
+
+            if (GameManager.I.LevelMng.Level <= 3)
+                GameManager.I.PPCtrl.SetPostProcess(PostProcessController.MapType.Forest);
+            else if (GameManager.I.LevelMng.Level <= 6)
+                GameManager.I.PPCtrl.SetPostProcess(PostProcessController.MapType.Mine);
+            else if (GameManager.I.LevelMng.Level <= 9)
+                GameManager.I.PPCtrl.SetPostProcess(PostProcessController.MapType.City);
+
             CurrentState = FlowState.Gameplay;
+        }
+
+        void GameplayActions()
+        {
+            GameManager.I.AudioMng.PlaySound(Clips.GameplayMusic);
+
+            if (GameManager.I.LevelMng.Level <= 3)
+                GameManager.I.AudioMng.PlaySound(Clips.ForestAmbience);
+            else if (GameManager.I.LevelMng.Level <= 6)
+                GameManager.I.AudioMng.PlaySound(Clips.MineAmbience);
+            else if (GameManager.I.LevelMng.Level <= 9)
+                GameManager.I.AudioMng.PlaySound(Clips.CityAmbience);
         }
 
         void PauseActions(bool _isGamePaused)
@@ -213,14 +244,23 @@ namespace TeamF
             GameManager.I.AudioMng.TogglePauseAll(_isGamePaused);
 
             if (_isGamePaused)
+            {
+                GameManager.I.CursorCtrl.SetCursor(false);
                 GameManager.I.UIMng.PauseActions();
+            }
             else
+            {
+                GameManager.I.CursorCtrl.SetCursor(true);
                 GameManager.I.UIMng.GameplayActions();
+            }
         }
 
         void EndRoundActions()
         {
+            GameManager.I.PoolMng.ForcePoolReset();
+            GameManager.I.CursorCtrl.SetCursor(false);
             GameManager.I.EnemyMng.EndGameplayActions();
+            GameManager.I.AmmoController.DeleteAllAmmoCrate();
 
             if (GameManager.I.LevelMng.EndingStaus == LevelEndingStaus.Interrupted)
             {
@@ -246,6 +286,8 @@ namespace TeamF
 
         void TestGameplayActions()
         {
+            GameManager.I.CursorCtrl.SetCursor(true);
+
             if (GameManager.I.Player != null)
             {
                 GameManager.I.Player.InitCharacter(true);
@@ -269,10 +311,20 @@ namespace TeamF
 
             GameManager.I.EnemyMng.SpawnEnemyForTestScene();
             GameManager.I.UIMng.GameplayActions();
+
+            GameManager.I.AudioMng.PlaySound(Clips.GameplayMusic);
+
+            if (GameManager.I.LevelMng.Level <= 3)
+                GameManager.I.AudioMng.PlaySound(Clips.ForestAmbience);
+            else if (GameManager.I.LevelMng.Level <= 6)
+                GameManager.I.AudioMng.PlaySound(Clips.MineAmbience);
+            else if (GameManager.I.LevelMng.Level <= 9)
+                GameManager.I.AudioMng.PlaySound(Clips.CityAmbience);
         }
 
         void ExitTestSceneActions()
         {
+            GameManager.I.CursorCtrl.SetCursor(false);
             GameManager.I.EnemyMng.EndGameplayActions();
             GameManager.I.LevelMng.Level = 0;
         }

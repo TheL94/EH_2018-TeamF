@@ -1,7 +1,5 @@
 fileFormatVersion: 2
 guid: 411ac7d558af75649a7c1d2bfd4030c7
-timeCreated: 1523542279
-licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
@@ -147,6 +145,7 @@ ModelImporter:
     3300002: SK_Bubba_Fuoco1
     4300000: SK_Bubba_Fuoco:polySurface1
     4300002: SK_Bubba_Fuoco1
+    2186277476908879412: ImportLogs
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -171,6 +170,7 @@ ModelImporter:
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5

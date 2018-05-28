@@ -22,12 +22,12 @@ namespace TeamF
         #region Constructor And Destructor
         public LevelManager()
         {
-            Events_LevelController.OnKillPointChanged += UpdateRoundPoints;
+            //Init();
         }
 
-        ~LevelManager()
+        public void Init()
         {
-            Events_LevelController.OnKillPointChanged -= UpdateRoundPoints;
+            Events_LevelController.OnKillPointChanged += UpdateRoundPoints;
         }
         #endregion
 
@@ -81,6 +81,8 @@ namespace TeamF
         public void UpdateRoundPoints(float _killedEnemyValue)
         {
             roundPoints += _killedEnemyValue;
+            if (roundPoints >= PointsToWin)
+                roundPoints = PointsToWin;
             Events_UIController.KillPointsChanged(roundPoints, PointsToWin);
 
             CheckGameStatus();
@@ -88,10 +90,12 @@ namespace TeamF
 
         public void CheckGameStatus()
         {
-            if (roundPoints >= PointsToWin)
+            if (roundPoints == PointsToWin)
             {
                 EndingStaus = LevelEndingStaus.Won;
                 GameManager.I.CurrentState = FlowState.EndRound;
+                Events_LevelController.OnKillPointChanged -= UpdateRoundPoints;
+
                 return;
             }
 

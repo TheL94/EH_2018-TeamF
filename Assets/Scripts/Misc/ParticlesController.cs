@@ -13,6 +13,12 @@ namespace TeamF
         public string DashParticlesGraphicID;
         public string IncreaseDamageMeshGraphicID;
 
+        string currentID;
+
+        GameObject ParticleObj;
+        GameObject DashObj;
+        GameObject IncreaseDamageObj;
+
         ParticleSystem ParticlesEffect;
         ParticleSystem DashParticles;
         MeshRenderer IncreaseDamageMesh;
@@ -21,48 +27,58 @@ namespace TeamF
         {
             if (_type != ParticleType.Dash)
                 StopAllParticles();
-
+            
             switch (_type)
             {
                 case ParticleType.Fire:
                     if (FireParticlesGraphicID != null || FireParticlesGraphicID != string.Empty)
                     {
-                        ParticlesEffect = GetPoolObj(FireParticlesGraphicID).GetComponentInChildren<ParticleSystem>();
-                        ParticlesEffect.Play(); 
+                        currentID = FireParticlesGraphicID;
+                        ParticleObj = GetPoolObj(currentID);
+                        ParticlesEffect = ParticleObj.GetComponentInChildren<ParticleSystem>();
+                        ParticlesEffect.Play();
                     }
                     break;
                 case ParticleType.Slowing:
                     if (SlowParticlesGraphicID !=  null || SlowParticlesGraphicID != string.Empty)
                     {
-                        ParticlesEffect = GetPoolObj(SlowParticlesGraphicID).GetComponentInChildren<ParticleSystem>();
-                        ParticlesEffect.Play(); 
+                        currentID = SlowParticlesGraphicID;
+                        ParticleObj = GetPoolObj(currentID);
+                        ParticlesEffect = ParticleObj.GetComponentInChildren<ParticleSystem>();
+                        ParticlesEffect.Play();
                     }
                     break;
                 case ParticleType.Confusion:
                     if (ConfusionParticlesGraphicID != null || ConfusionParticlesGraphicID != string.Empty)
                     {
-                        ParticlesEffect = GetPoolObj(ConfusionParticlesGraphicID).GetComponentInChildren<ParticleSystem>();
-                        ParticlesEffect.Play(); 
+                        currentID = ConfusionParticlesGraphicID;
+                        ParticleObj = GetPoolObj(currentID);
+                        ParticlesEffect = ParticleObj.GetComponentInChildren<ParticleSystem>();
+                        ParticlesEffect.Play();
                     }
                     break;
                 case ParticleType.Paralysis:
                     if (ParalysisParticlesGraphicID != null || ParalysisParticlesGraphicID != string.Empty)
                     {
-                        ParticlesEffect = GetPoolObj(ParalysisParticlesGraphicID).GetComponentInChildren<ParticleSystem>();
-                        ParticlesEffect.Play(); 
+                        currentID = ParalysisParticlesGraphicID;
+                        ParticleObj = GetPoolObj(currentID);
+                        ParticlesEffect = ParticleObj.GetComponentInChildren<ParticleSystem>();
+                        ParticlesEffect.Play();
                     }
                     break;
                 case ParticleType.Dash:
                     if (DashParticlesGraphicID != null || DashParticlesGraphicID != string.Empty)
                     {
-                        DashParticles = GetPoolObj(DashParticlesGraphicID).GetComponentInChildren<ParticleSystem>();
+                        DashObj = GetPoolObj(DashParticlesGraphicID);
+                        DashParticles = DashObj.GetComponentInChildren<ParticleSystem>();
                         DashParticles.Play(); 
                     }
                     break;
                 case ParticleType.IncreaseDamage:
                     if (IncreaseDamageMeshGraphicID != null || IncreaseDamageMeshGraphicID != string.Empty)
                     {
-                        IncreaseDamageMesh = GetPoolObj(IncreaseDamageMeshGraphicID).GetComponentInChildren<MeshRenderer>();
+                        IncreaseDamageObj = GetPoolObj(IncreaseDamageMeshGraphicID);
+                        IncreaseDamageMesh = IncreaseDamageObj.GetComponentInChildren<MeshRenderer>();
                         IncreaseDamageMesh.enabled = true; 
                     }
                     break;
@@ -75,22 +91,22 @@ namespace TeamF
             if (ParticlesEffect != null)
             {
                 ParticlesEffect.Stop();
-                ParticlesEffect.GetComponentInParent<Transform>().gameObject.SetActive(false);
-                GameManager.I.PoolMng.UpdatePool(FireParticlesGraphicID);
+                ParticleObj.SetActive(false);
+                GameManager.I.PoolMng.ReturnObject(currentID, ParticleObj);
             }
 
             if (DashParticles != null)
             {
                 DashParticles.Stop();
-                DashParticles.GetComponentInParent<Transform>().gameObject.SetActive(false);
-                GameManager.I.PoolMng.UpdatePool(DashParticlesGraphicID);
+                DashObj.SetActive(false);
+                GameManager.I.PoolMng.ReturnObject(DashParticlesGraphicID, DashObj);
             }
 
             if (IncreaseDamageMesh != null)
             {
                 IncreaseDamageMesh.enabled = false;
-                IncreaseDamageMesh.GetComponentInParent<Transform>().gameObject.SetActive(false);
-                GameManager.I.PoolMng.UpdatePool(IncreaseDamageMeshGraphicID);
+                IncreaseDamageObj.SetActive(false);
+                GameManager.I.PoolMng.ReturnObject(IncreaseDamageMeshGraphicID, IncreaseDamageObj);
             }
         }
 

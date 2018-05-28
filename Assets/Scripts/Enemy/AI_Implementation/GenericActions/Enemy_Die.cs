@@ -16,19 +16,10 @@ namespace TeamF.AI
 
         void Die(Enemy _enemy)
         {
-            // TODO : risolto bug in modo scoretto --------------------
-            EffectController effect = _enemy.GetComponent<EffectController>();
-            if (effect != null)
-                effect.gameObject.SetActive(false);
-            // --------------------------------------------------------
-
-            _enemy.GetComponentInChildren<ParticlesController>().StopAllParticles();
-            _enemy.GetComponentInChildren<Animator>().Play("Idle");
-            _enemy.GetComponentInChildren<BlinkController>().ResetEffects();
+            _enemy.AI_Enemy.IsActive = false;
 
             if (Enemy.EnemyDeath != null)
                 Enemy.EnemyDeath(_enemy);
-            _enemy.AI_Enemy.IsActive = false;
         }
     }
 }

@@ -30,6 +30,7 @@ namespace TeamF
             {
                 if (_bulletData.ElementalAmmo.Ammo != 0)
                 {
+                    GameManager.I.AudioMng.PlaySound(Clips.CharacterShoot);
                     CreateBullet(_bulletData, _barrel);
                     if (_bulletData.ElementalAmmo.Ammo > 0)
                     {

@@ -104,6 +104,8 @@ namespace TeamF
             _damage = (_damage * DamagePercentage) / 100;
             Life -= CurrentBehaviour.CalulateDamage(_damage, _type);
 
+            GameManager.I.AudioMng.PlaySound(Clips.EnemyDamage);
+
             AI_Enemy.CurrentState = Data.DamageState;
 
             if (blinkCtrl != null)
@@ -159,6 +161,7 @@ namespace TeamF
         #region Enemy Delegate
         public delegate void EnemyState(Enemy _enemy);
         public static EnemyState EnemyDeath;
+        public static EnemyState UpdateKill;
         #endregion
     }
 

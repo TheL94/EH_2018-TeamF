@@ -8,6 +8,11 @@ namespace TeamF
     {
         public ElementalEffectData EffectData;
 
+        protected override void OnInit()
+        {
+            GameManager.I.AudioMng.PlaySound(Clips.ComboConfusionCloud);
+        }
+
         protected override void OnEnterCollider(Collider other)
         {
             IEffectable _target = other.GetComponent<IEffectable>();

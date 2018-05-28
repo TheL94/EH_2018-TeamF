@@ -14,10 +14,16 @@ TagManager:
   - PlayerSpawn
   - Lava
   - ColliderToIgnore
-  - EnemyAudioSurce
   - CharacterAudioSurce
-  - ComboAudioSurce
+  - EnemyAudioSurce
   - GenericAudioSurce
+  - ComboAudioSurce
+  - GenericAudioSource
+  - CharacterAudioSource
+  - EnemyAudioSource
+  - ComboAudioSource
+  - MusicAudioSource
+  - AmbienceAudioSource
   layers:
   - Default
   - TransparentFX

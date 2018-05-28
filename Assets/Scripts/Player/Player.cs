@@ -37,6 +37,7 @@ namespace TeamF
 
         public void CharacterDeath()
         {
+            GameManager.I.AudioMng.PlaySound(Clips.CharacterDeath);
             GameManager.I.LevelMng.CheckGameStatus();
         }
         #endregion

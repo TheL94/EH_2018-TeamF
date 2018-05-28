@@ -13,8 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ElementalAmmo:
     AmmoType: 4
-    Damage: 7
-    Ammo: 50
+    Damage: 8.5
+    Ammo: 10
     Data:
       EffectValue: 0
       TimeOfEffect: 3

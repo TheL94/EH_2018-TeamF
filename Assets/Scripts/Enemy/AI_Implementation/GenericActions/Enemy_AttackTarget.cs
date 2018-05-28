@@ -28,6 +28,7 @@ namespace TeamF.AI
         void MeleeAttack(Enemy _enemy)
         {
             _enemy.Target.TakeDamage(_enemy.Data.MeleeDamage);
+            GameManager.I.AudioMng.PlaySound(Clips.EnemyAttack);
         }
 
         void RangedAttack(Enemy _enemy)
@@ -45,6 +46,7 @@ namespace TeamF.AI
                     Instantiate(bulletData.BulletTrailPrefab, bullet.transform.position, bullet.transform.rotation, bullet.transform);
 
                 bullet.Init(bulletData.ElementalAmmo, _enemy.Data.BulletSpeed, _enemy, _enemy.Data.BulletRange);
+                GameManager.I.AudioMng.PlaySound(Clips.EnemyAttack);
             }
             else
                 Debug.LogError("No ShootingPoint Found On " + _enemy.Data.EnemyType + " !");
