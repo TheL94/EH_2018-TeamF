@@ -257,10 +257,10 @@ namespace TeamF
 
         void EndRoundActions()
         {
-            GameManager.I.PoolMng.ForcePoolReset();
-            GameManager.I.CursorCtrl.SetCursor(false);
             GameManager.I.EnemyMng.EndGameplayActions();
+            GameManager.I.CursorCtrl.SetCursor(false);
             GameManager.I.AmmoController.DeleteAllAmmoCrate();
+            GameManager.I.LevelMng.ClearCombos();
 
             if (GameManager.I.LevelMng.EndingStaus == LevelEndingStaus.Interrupted)
             {

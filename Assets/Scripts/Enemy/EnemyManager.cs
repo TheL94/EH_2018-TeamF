@@ -61,7 +61,7 @@ namespace TeamF
             ToggleAllAIs(false);
             CanSpawn = false;
             spawnPoints.Clear();
-            DeleteAllEnemies();
+            ResetEnemies();
         }
         #endregion
 
@@ -147,24 +147,32 @@ namespace TeamF
                 {
                     Enemy enemyToDestroy = enemiesSpawned[i];
                     enemyToDestroy.gameObject.SetActive(false);
-                    GameManager.I.PoolMng.UpdatePool(enemyToDestroy.Data.GraphicID);
+                    GameManager.I.PoolMng.ReturnObject(enemyToDestroy.Data.GraphicID, enemyToDestroy.Graphic);
 
-                    enemiesSpawned.Remove(enemiesSpawned[i]);
-                    Destroy(enemyToDestroy.gameObject, 0.1f);
+                    enemiesSpawned.Remove(enemyToDestroy);
+                    Destroy(enemyToDestroy.gameObject);
                     return;
                 }
             }
         }
 
-        void DeleteAllEnemies()
+        void ResetEnemies()
         {
             for (int i = 0; i < enemiesSpawned.Count; i++)
             {
-                enemiesSpawned[i].gameObject.SetActive(false);
-                GameManager.I.PoolMng.UpdatePool(enemiesSpawned[i].Data.GraphicID);
-                Destroy(enemiesSpawned[i].gameObject, 0.1f);
+                StartCoroutine(ReturnEnemy(enemiesSpawned[i]));
             }
-            enemiesSpawned.Clear();
+        }
+
+        IEnumerator ReturnEnemy(Enemy _enemy)
+        {
+            Animator animator = _enemy.GetComponentInChildren<Animator>();
+            animator.SetInteger("State", 0);
+            animator.SetBool("IsWalking", false);
+            yield return new WaitForSeconds(1f);
+            GameManager.I.PoolMng.ReturnObject(_enemy.Data.GraphicID, _enemy.Graphic);
+            enemiesSpawned.Remove(_enemy);
+            Destroy(_enemy.gameObject);
         }
         #endregion
 
