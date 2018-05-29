@@ -60,8 +60,8 @@ namespace TeamF
         {
             ToggleAllAIs(false);
             CanSpawn = false;
-            DeleteAllEnemies();
             spawnPoints.Clear();
+            DeleteAllEnemies();
         }
         #endregion
 
@@ -158,8 +158,6 @@ namespace TeamF
 
         void DeleteAllEnemies()
         {
-            //GameManager.I.PoolMng.ForcePoolReset();
-
             for (int i = 0; i < enemiesSpawned.Count; i++)
             {
                 enemiesSpawned[i].gameObject.SetActive(false);
@@ -327,6 +325,31 @@ namespace TeamF
                 spawnPoints.Add(spawn.transform);
             }
         }
+
+        void SetSpawnParticles(bool _active)
+        {
+            foreach (Transform spawn in spawnPoints)
+            {
+                foreach (ParticleSystem particle in spawn.GetComponentsInChildren<ParticleSystem>())
+                {
+                    if (particle != null)
+                    {
+                        if (_active)
+                            particle.Play();
+                        else
+                            particle.Stop();
+                    }
+                }
+            }
+        }
+
+        IEnumerator ActiveSpawnParticles()
+        {
+            SetSpawnParticles(true);
+            yield return new WaitForSeconds(2f);
+            SpawnHorde();
+            SetSpawnParticles(false);
+        }
         #endregion
 
         #region Test Scene
@@ -353,30 +376,5 @@ namespace TeamF
             }
         }
         #endregion
-
-        void SetSpawnParticles(bool _active)
-        {
-            foreach (Transform spawn in spawnPoints)
-            {
-                foreach (ParticleSystem particle in spawn.GetComponentsInChildren<ParticleSystem>())
-                {
-                    if (particle != null)
-                    {
-                        if (_active)
-                            particle.Play();
-                        else
-                            particle.Stop();
-                    }
-                }
-            }
-        }
-
-        IEnumerator ActiveSpawnParticles()
-        {
-            SetSpawnParticles(true);
-            yield return new WaitForSeconds(2f);
-            SpawnHorde();
-            SetSpawnParticles(false);
-        }
     }
 }
