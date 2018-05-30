@@ -14,7 +14,7 @@ namespace TeamF
         /// Attiva o disattiva l'immagine per indicare se la munizione è selezionata
         /// </summary>
         /// <param name="_isActive">Lo stato che deve avere</param>
-        public void SetEnabled(bool _isActive)
+        public void IsCurrentSelected(bool _isActive)
         {
             if (_isActive)
                 SelectedImage.enabled = true;

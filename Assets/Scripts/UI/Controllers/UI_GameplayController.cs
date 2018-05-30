@@ -69,26 +69,26 @@ namespace TeamF
         /// Attiva l'immagine per le munizioni selezionate
         /// </summary>
         /// <param name="_type">Il tipo delle munizioni selezionate</param>
-        void UpdateSelectedAmmo(ElementalType _type)                            //TODO: collegare la funzione ad un evento richiamato quando il character cambia munizione
+        public void UpdateSelectedAmmo(ElementalAmmo _ammoType)                            //TODO: collegare la funzione ad un evento richiamato quando il character cambia munizione
         {
-            FireAmmo.SetEnabled(false);
-            WaterAmmo.SetEnabled(false);
-            PoisonAmmo.SetEnabled(false);
-            ThunderAmmo.SetEnabled(false);
+            FireAmmo.IsCurrentSelected(false);
+            WaterAmmo.IsCurrentSelected(false);
+            PoisonAmmo.IsCurrentSelected(false);
+            ThunderAmmo.IsCurrentSelected(false);
 
-            switch (_type)
+            switch (_ammoType.AmmoType)
             {
                 case ElementalType.Fire:
-                    FireAmmo.SetEnabled(true);
+                    FireAmmo.IsCurrentSelected(true);
                     break;
                 case ElementalType.Water:
-                WaterAmmo.SetEnabled(true);
+                WaterAmmo.IsCurrentSelected(true);
                     break;
                 case ElementalType.Poison:
-                PoisonAmmo.SetEnabled(true);
+                PoisonAmmo.IsCurrentSelected(true);
                     break;
                 case ElementalType.Thunder:
-                ThunderAmmo.SetEnabled(true);
+                ThunderAmmo.IsCurrentSelected(true);
                     break;
                 default:
                     break;
