@@ -24,10 +24,7 @@ namespace TeamF.AI
                 if (SetOnlyMovementAnim)
                     _enemy.Animator.SetBool("IsWalking", IsWalking);
                 else
-                {
                     _enemy.Animator.SetInteger("State", AnimationState);
-                    //Debug.Log(AnimationState);
-                }
             }
             return true;
         }

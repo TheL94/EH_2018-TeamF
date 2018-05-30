@@ -260,7 +260,7 @@ namespace TeamF
             GameManager.I.EnemyMng.EndGameplayActions();
             GameManager.I.CursorCtrl.SetCursor(false);
             GameManager.I.AmmoController.DeleteAllAmmoCrate();
-            GameManager.I.LevelMng.ClearCombos();
+            //GameManager.I.LevelMng.ClearCombos();
 
             if (GameManager.I.LevelMng.EndingStaus == LevelEndingStaus.Interrupted)
             {
