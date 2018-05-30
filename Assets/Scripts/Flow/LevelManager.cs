@@ -113,6 +113,16 @@ namespace TeamF
             Events_UIController.KillPointsChanged(roundPoints, PointsToWin);
             EndingStaus = LevelEndingStaus.NotEnded;
         }
+
+        public void ClearCombos()
+        {
+            ElementalComboBase[] elementalCombos = GameObject.FindObjectsOfType<ElementalComboBase>();
+            for (int i = 0; i < elementalCombos.Length; i++)
+                GameManager.I.PoolMng.UpdatePool(elementalCombos[i].GraphicID);                
+
+            for (int i = 0; i < elementalCombos.Length; i++)
+                GameObject.Destroy(elementalCombos[i].gameObject);
+        }
         #endregion
     }
 

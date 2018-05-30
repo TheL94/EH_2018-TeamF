@@ -60,8 +60,8 @@ namespace TeamF
         {
             ToggleAllAIs(false);
             CanSpawn = false;
-            DeleteAllEnemies();
             spawnPoints.Clear();
+            ResetEnemies();
         }
         #endregion
 
@@ -147,26 +147,32 @@ namespace TeamF
                 {
                     Enemy enemyToDestroy = enemiesSpawned[i];
                     enemyToDestroy.gameObject.SetActive(false);
-                    GameManager.I.PoolMng.UpdatePool(enemyToDestroy.Data.GraphicID);
+                    GameManager.I.PoolMng.ReturnObject(enemyToDestroy.Data.GraphicID, enemyToDestroy.Graphic);
 
-                    enemiesSpawned.Remove(enemiesSpawned[i]);
-                    Destroy(enemyToDestroy.gameObject, 0.1f);
+                    enemiesSpawned.Remove(enemyToDestroy);
+                    Destroy(enemyToDestroy.gameObject);
                     return;
                 }
             }
         }
 
-        void DeleteAllEnemies()
+        void ResetEnemies()
         {
-            //GameManager.I.PoolMng.ForcePoolReset();
-
             for (int i = 0; i < enemiesSpawned.Count; i++)
             {
-                enemiesSpawned[i].gameObject.SetActive(false);
-                GameManager.I.PoolMng.UpdatePool(enemiesSpawned[i].Data.GraphicID);
-                Destroy(enemiesSpawned[i].gameObject, 0.1f);
+                StartCoroutine(ReturnEnemy(enemiesSpawned[i]));
             }
-            enemiesSpawned.Clear();
+        }
+
+        IEnumerator ReturnEnemy(Enemy _enemy)
+        {
+            Animator animator = _enemy.GetComponentInChildren<Animator>();
+            animator.SetInteger("State", 0);
+            animator.SetBool("IsWalking", false);
+            yield return new WaitForSeconds(1f);
+            GameManager.I.PoolMng.ReturnObject(_enemy.Data.GraphicID, _enemy.Graphic);
+            enemiesSpawned.Remove(_enemy);
+            Destroy(_enemy.gameObject);
         }
         #endregion
 
@@ -327,6 +333,31 @@ namespace TeamF
                 spawnPoints.Add(spawn.transform);
             }
         }
+
+        void SetSpawnParticles(bool _active)
+        {
+            foreach (Transform spawn in spawnPoints)
+            {
+                foreach (ParticleSystem particle in spawn.GetComponentsInChildren<ParticleSystem>())
+                {
+                    if (particle != null)
+                    {
+                        if (_active)
+                            particle.Play();
+                        else
+                            particle.Stop();
+                    }
+                }
+            }
+        }
+
+        IEnumerator ActiveSpawnParticles()
+        {
+            SetSpawnParticles(true);
+            yield return new WaitForSeconds(2f);
+            SpawnHorde();
+            SetSpawnParticles(false);
+        }
         #endregion
 
         #region Test Scene
@@ -353,30 +384,5 @@ namespace TeamF
             }
         }
         #endregion
-
-        void SetSpawnParticles(bool _active)
-        {
-            foreach (Transform spawn in spawnPoints)
-            {
-                foreach (ParticleSystem particle in spawn.GetComponentsInChildren<ParticleSystem>())
-                {
-                    if (particle != null)
-                    {
-                        if (_active)
-                            particle.Play();
-                        else
-                            particle.Stop();
-                    }
-                }
-            }
-        }
-
-        IEnumerator ActiveSpawnParticles()
-        {
-            SetSpawnParticles(true);
-            yield return new WaitForSeconds(2f);
-            SpawnHorde();
-            SetSpawnParticles(false);
-        }
     }
 }
