@@ -174,7 +174,7 @@ namespace TeamF
             GameManager.I.EnemyMng = GameManager.I.GetComponent<EnemyManager>();
             GameManager.I.AmmoController = GameManager.I.GetComponent<AmmoCratesController>();
 
-            GameManager.I.LevelMng = new LevelManager();
+            GameManager.I.LevelMng = GameManager.I.GetComponent<LevelManager>();
 
             GameManager.I.Player = GameManager.I.GetComponent<Player>();
             if (GameManager.I.Player != null)
@@ -257,10 +257,11 @@ namespace TeamF
 
         void EndRoundActions()
         {
+            GameManager.I.Player.Character.GetComponentInChildren<ParticlesController>().StopAllParticles();
             GameManager.I.EnemyMng.EndGameplayActions();
             GameManager.I.CursorCtrl.SetCursor(false);
             GameManager.I.AmmoController.DeleteAllAmmoCrate();
-            //GameManager.I.LevelMng.ClearCombos();
+            GameManager.I.LevelMng.ClearCombos();
 
             if (GameManager.I.LevelMng.EndingStaus == LevelEndingStaus.Interrupted)
             {

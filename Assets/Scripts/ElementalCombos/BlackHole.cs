@@ -39,7 +39,6 @@ namespace TeamF {
                 }
             }
             enemyCaught.Clear();
-            base.OnEndEffect();
         }
     }
 }
