@@ -36,11 +36,7 @@ namespace TeamF
             if (renderers == null)
                 return;
 
-            if (corutine != null)
-            {
-                StopCoroutine(corutine);
-                ResetBrightness();
-            }
+            ResetBrightness();
 
             corutine = StartCoroutine(DamageBlinkCorutine());
         }
@@ -70,6 +66,7 @@ namespace TeamF
         public void ResetEffects()
         {
             ResetBrightness();
+            CompleteTweens();
             ResetColor();
         }
         #endregion
@@ -105,6 +102,12 @@ namespace TeamF
 
         void ResetBrightness()
         {
+            if (corutine != null)
+            {
+                StopCoroutine(corutine);
+                corutine = null;
+            }
+
             for (int i = 0; i < renderers.Count; i++)
                 renderers[i].material.SetFloat("_Brightness", initalBrightness);
         }

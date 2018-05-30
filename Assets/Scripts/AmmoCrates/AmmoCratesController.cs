@@ -54,12 +54,20 @@ namespace TeamF
             }
 
             if (spanwerPosition != null)
-                StartCoroutine(CreateAmmoCrateAfterTime(spanwerPosition)); 
+                corutine.Add(StartCoroutine(CreateAmmoCrateAfterTime(spanwerPosition))); 
         }
+
+        List<Coroutine> corutine = new List<Coroutine>();
 
         public void DeleteAllAmmoCrate()
         {
-            StopAllCoroutines();
+            for (int i = 0; i < corutine.Count; i++)
+            {
+                StopCoroutine(corutine[i]);
+                corutine[i] = null;
+            }
+
+            corutine.Clear();
 
             for (int i = 0; i < Crates.Count; i++)
             {

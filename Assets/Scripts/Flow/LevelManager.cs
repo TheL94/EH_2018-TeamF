@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 namespace TeamF
 {
-    public class LevelManager
+    public class LevelManager : MonoBehaviour
     {
         public LevelEndingStaus EndingStaus { get; set; }
 
@@ -19,17 +19,10 @@ namespace TeamF
         }
         float roundPoints = 0;
 
-        #region Constructor And Destructor
-        public LevelManager()
-        {
-            //Init();
-        }
-
         public void Init()
         {
             Events_LevelController.OnKillPointChanged += UpdateRoundPoints;
         }
-        #endregion
 
         #region Scene Management
         AsyncOperation async;
@@ -49,24 +42,40 @@ namespace TeamF
 
         void OnLevelChange(int _newLevel)
         {
-            if (_level > 0)
-            {
-                SceneManager.UnloadSceneAsync(_level);
-            }
+            UnloadLevel(Level, _newLevel);
+        }
 
+        void UnloadLevel(int _currentLevel, int _newLevel)
+        {
+            if (_currentLevel > 0)
+            {
+                StartCoroutine(DectivateScene(_currentLevel, _newLevel));
+            }
+            else
+                LoadNewLevel(_newLevel);
+        }
+
+        IEnumerator DectivateScene(int _currentLevel, int _newLevel)
+        {
+            while (!GameManager.I.EnemyMng.IsFreeToGo)
+                yield return null;
+
+            async = SceneManager.UnloadSceneAsync(_currentLevel);
+            async.completed += (async) =>
+            {
+                LoadNewLevel(_newLevel);
+            };
+        }
+
+        void LoadNewLevel(int _newLevel)
+        {
             if (_newLevel != _level && _newLevel != 0 && _newLevel < SceneManager.sceneCountInBuildSettings)
             {
-                async = SceneManager.LoadSceneAsync(_newLevel, LoadSceneMode.Additive);
                 GameManager.I.UIMng.LoadingActions();
+                async = SceneManager.LoadSceneAsync(_newLevel, LoadSceneMode.Additive);
                 async.completed += (async) =>
                 {
-                    _level = _newLevel;
-                    async.allowSceneActivation = true;
-                    if(GameManager.I.CurrentState == FlowState.ManageMap)
-                        GameManager.I.CurrentState = FlowState.InitGameplayElements;
-                    else if (GameManager.I.CurrentState == FlowState.InitTestScene)
-                        GameManager.I.CurrentState = FlowState.TestGameplay;
-
+                    StartCoroutine(ActivateScene(_newLevel));
                 };
             }
             else if (_newLevel == 0 || _newLevel >= SceneManager.sceneCountInBuildSettings)
@@ -74,6 +83,19 @@ namespace TeamF
                 _level = 0;
                 GameManager.I.CurrentState = FlowState.MainMenu;
             }
+        }
+
+        IEnumerator ActivateScene(int _newLevel)
+        {
+            while (!GameManager.I.PoolMng.IsFreeToGo)
+                yield return null;
+
+            _level = _newLevel;
+            async.allowSceneActivation = true;
+            if (GameManager.I.CurrentState == FlowState.ManageMap)
+                GameManager.I.CurrentState = FlowState.InitGameplayElements;
+            else if (GameManager.I.CurrentState == FlowState.InitTestScene)
+                GameManager.I.CurrentState = FlowState.TestGameplay;
         }
         #endregion
 
@@ -114,14 +136,11 @@ namespace TeamF
             EndingStaus = LevelEndingStaus.NotEnded;
         }
 
-        public void ClearCombos()
+        public List<ElementalComboBase> Combos = new List<ElementalComboBase>();
+        public void ClearCombos() 
         {
-            ElementalComboBase[] elementalCombos = GameObject.FindObjectsOfType<ElementalComboBase>();
-            for (int i = 0; i < elementalCombos.Length; i++)
-                GameManager.I.PoolMng.UpdatePool(elementalCombos[i].GraphicID);                
-
-            for (int i = 0; i < elementalCombos.Length; i++)
-                GameObject.Destroy(elementalCombos[i].gameObject);
+            for (int i = 0; i < Combos.Count; i++)
+                Combos[i].EndEffect();
         }
         #endregion
     }

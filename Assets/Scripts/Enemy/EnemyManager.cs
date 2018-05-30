@@ -159,31 +159,26 @@ namespace TeamF
         {
             foreach (Enemy enemy in enemiesSpawned)
             {
+                enemy.LastHittingBulletType = ElementalType.None;
                 enemy.AI_Enemy.CurrentState = enemy.Data.DeathAnimState;
             }
         }
-
-        //void ResetEnemies()
-        //{
-        //    for (int i = 0; i < enemiesSpawned.Count; i++)
-        //    {
-        //        StartCoroutine(ReturnEnemy(enemiesSpawned[i]));
-        //    }
-        //}
-
-        //IEnumerator ReturnEnemy(Enemy _enemy)
-        //{
-        //    Animator animator = _enemy.GetComponentInChildren<Animator>();
-        //    animator.SetInteger("State", 0);
-        //    animator.SetBool("IsWalking", false);
-        //    yield return new WaitForSeconds(1f);
-        //    GameManager.I.PoolMng.ReturnObject(_enemy.Data.GraphicID, _enemy.Graphic);
-        //    enemiesSpawned.Remove(_enemy);
-        //    Destroy(_enemy.gameObject);
-        //}
         #endregion
 
         #region Spawner
+        public bool IsFreeToGo
+        {
+            get
+            {
+                foreach (Enemy item in enemiesSpawned)
+                {
+                    if (!item.AI_Enemy.IsActive)
+                        return false;
+                }
+                return true;
+            }
+        }
+
         public bool CanSpawn { get; set; }
         List<Transform> spawnPoints = new List<Transform>();
         List<Enemy> enemiesSpawned = new List<Enemy>();
@@ -299,7 +294,7 @@ namespace TeamF
             if (enemiesSpawned.Count >= DataInstance.MaxEnemiesInScene)
                 return null;
 
-            Enemy newEnemy = Instantiate(_enemyPrefab, _spawnPoint.position, Quaternion.identity, _spawnPoint).GetComponent<Enemy>();
+            Enemy newEnemy = Instantiate(_enemyPrefab, _spawnPoint.position, Quaternion.identity, transform).GetComponent<Enemy>();
             enemiesSpawned.Add(newEnemy);
 
             idCounter++;

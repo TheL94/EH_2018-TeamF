@@ -114,7 +114,7 @@ namespace TeamF
                 blinkCtrl.DamageBlink();
         }
 
-        public ElementalType LastHittingBulletType { get; private set; }
+        public ElementalType LastHittingBulletType { get; set; }
         #endregion
 
         #region IParalyzable

@@ -10,6 +10,8 @@ namespace TeamF
         public float Timer;
         float timer;
 
+        GameObject graphic;
+
         void Start()
         {
             timer = Timer;
@@ -22,7 +24,7 @@ namespace TeamF
             timer -= Time.deltaTime;
             if (timer <= 0)
             {
-                OnEndEffect();
+                EndEffect();
             }
         }
 
@@ -38,28 +40,32 @@ namespace TeamF
 
         private void DoInit()
         {
-            GameObject obj = null;
-            if (GraphicID != null || GraphicID != string.Empty)
-                obj = GameManager.I.PoolMng.GetObject(GraphicID);
+            GameManager.I.LevelMng.Combos.Add(this);
 
-            if (obj != null)
+            if (GraphicID != null || GraphicID != string.Empty)
+                graphic = GameManager.I.PoolMng.GetObject(GraphicID);
+
+            if (graphic != null)
             {
-                obj.transform.position = transform.position;
-                obj.transform.SetParent(transform);
+                graphic.transform.position = transform.position;
+                graphic.transform.SetParent(transform);
             }
 
             OnInit();
         }
 
+        public void EndEffect()
+        {
+            OnEndEffect();
+            GameManager.I.LevelMng.Combos.Remove(this);
+            GameManager.I.PoolMng.ReturnObject(GraphicID, graphic);
+            Destroy(gameObject);
+        }
+
         /// <summary>
         /// Le azioni da svolegere una volta scaduto il timer
         /// </summary>
-        protected virtual void OnEndEffect()
-        {
-            gameObject.SetActive(false);
-            GameManager.I.PoolMng.UpdatePool(GraphicID);
-            Destroy(gameObject);
-        }
+        protected virtual void OnEndEffect() { }
 
         protected virtual void OnInit() { }
 
