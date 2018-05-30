@@ -20,8 +20,9 @@ namespace TeamF.AI
 
             GameManager.I.AudioMng.PlaySound(Clips.EnemyDeath);
 
-            //_enemy.GetComponentInChildren<ParticlesController>().StopAllParticles();
+            _enemy.GetComponentInChildren<ParticlesController>().StopAllParticles();
             _enemy.GetComponentInChildren<BlinkController>().ResetEffects();
+
             EffectController effect = _enemy.GetComponent<EffectController>();
             if (effect != null)
             {

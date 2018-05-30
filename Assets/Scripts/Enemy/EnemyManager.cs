@@ -58,10 +58,11 @@ namespace TeamF
         /// </summary>
         public void EndGameplayActions()
         {
-            ToggleAllAIs(false);
+            //ToggleAllAIs(false);
+            SetAIDeathState();
             CanSpawn = false;
             spawnPoints.Clear();
-            ResetEnemies();
+            //ResetEnemies();
         }
         #endregion
 
@@ -146,9 +147,7 @@ namespace TeamF
                 if (enemiesSpawned[i].ID == _idEnemy)
                 {
                     Enemy enemyToDestroy = enemiesSpawned[i];
-                    enemyToDestroy.gameObject.SetActive(false);
                     GameManager.I.PoolMng.ReturnObject(enemyToDestroy.Data.GraphicID, enemyToDestroy.Graphic);
-
                     enemiesSpawned.Remove(enemyToDestroy);
                     Destroy(enemyToDestroy.gameObject);
                     return;
@@ -156,24 +155,32 @@ namespace TeamF
             }
         }
 
-        void ResetEnemies()
+        void SetAIDeathState()
         {
-            for (int i = 0; i < enemiesSpawned.Count; i++)
+            foreach (Enemy enemy in enemiesSpawned)
             {
-                StartCoroutine(ReturnEnemy(enemiesSpawned[i]));
+                enemy.AI_Enemy.CurrentState = enemy.Data.DeathAnimState;
             }
         }
 
-        IEnumerator ReturnEnemy(Enemy _enemy)
-        {
-            Animator animator = _enemy.GetComponentInChildren<Animator>();
-            animator.SetInteger("State", 0);
-            animator.SetBool("IsWalking", false);
-            yield return new WaitForSeconds(1f);
-            GameManager.I.PoolMng.ReturnObject(_enemy.Data.GraphicID, _enemy.Graphic);
-            enemiesSpawned.Remove(_enemy);
-            Destroy(_enemy.gameObject);
-        }
+        //void ResetEnemies()
+        //{
+        //    for (int i = 0; i < enemiesSpawned.Count; i++)
+        //    {
+        //        StartCoroutine(ReturnEnemy(enemiesSpawned[i]));
+        //    }
+        //}
+
+        //IEnumerator ReturnEnemy(Enemy _enemy)
+        //{
+        //    Animator animator = _enemy.GetComponentInChildren<Animator>();
+        //    animator.SetInteger("State", 0);
+        //    animator.SetBool("IsWalking", false);
+        //    yield return new WaitForSeconds(1f);
+        //    GameManager.I.PoolMng.ReturnObject(_enemy.Data.GraphicID, _enemy.Graphic);
+        //    enemiesSpawned.Remove(_enemy);
+        //    Destroy(_enemy.gameObject);
+        //}
         #endregion
 
         #region Spawner

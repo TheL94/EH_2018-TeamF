@@ -22,10 +22,14 @@ namespace TeamF.AI
         bool ResetAnimation(Enemy _enemy)
         {
             _enemy.transform.position = new Vector3(_enemy.transform.position.x, _enemy.transform.position.y - timer, _enemy.transform.position.z);
-            if (timer >= 2)
-                _enemy.GetComponentInChildren<Animator>().Play("Idle");
-            if (timer >= 5)
+            if (_enemy.Animator.GetInteger("State") != 0)
+            {
+                _enemy.Animator.SetInteger("State", 0);
+            }
+            if (timer >= _enemy.Animator.GetCurrentAnimatorStateInfo(0).length)
+            {
                 return true;
+            }
 
             return false;
         }

@@ -16,17 +16,18 @@ MonoBehaviour:
   ParalizedState: {fileID: 11400000, guid: c982e30750226cb489f58f21306a1d63, type: 2}
   DamageState: {fileID: 11400000, guid: bec3e8397edf7234ea6c1a97883a6b07, type: 2}
   SearchTargetState: {fileID: 11400000, guid: 1b2b4dcf3f3c0ca44972e37450f8576c, type: 2}
+  DeathAnimState: {fileID: 11400000, guid: bbe6bc1961c2d8e438ecbea91d7b016c, type: 2}
   StoppingDistance: 0.5
   AimApproximationAngle: 10
   ContainerPrefab: {fileID: 1267129680638450, guid: 25dfe3bec1371e14d87332e9234c5ef8,
     type: 2}
   GraphicID: Fire
   EnemyType: 2
-  Life: 30
-  Speed: 9
+  Life: 7
+  Speed: 12
   AimTime: 0.5
   EnemyValue: 1
-  MeleeDamage: 5
+  MeleeDamage: 2
   MeleeDamageRange: 3
   MeleeDamageRate: 1
   RangedDamage: 5
