@@ -171,7 +171,7 @@ namespace TeamF
             GameManager.I.PoolMng.Init();
 
             GameManager.I.GetComponent<ComboCounter>().Init(GameManager.I.ComboCounterTimer);
-            GameManager.I.EnemyMng = GameManager.I.GetComponent<EnemyManager>();
+            GameManager.I.EnemyMng = GameManager.I.GetComponentInChildren<EnemyManager>();
             GameManager.I.AmmoController = GameManager.I.GetComponent<AmmoCratesController>();
 
             GameManager.I.LevelMng = GameManager.I.GetComponent<LevelManager>();
@@ -257,11 +257,12 @@ namespace TeamF
 
         void EndRoundActions()
         {
-            GameManager.I.Player.Character.GetComponentInChildren<ParticlesController>().StopAllParticles();
+            GameManager.I.Player.Character.ReInit();
             GameManager.I.EnemyMng.EndGameplayActions();
             GameManager.I.CursorCtrl.SetCursor(false);
             GameManager.I.AmmoController.DeleteAllAmmoCrate();
             GameManager.I.LevelMng.ClearCombos();
+            GameManager.I.AudioMng.StopAllSound();
 
             if (GameManager.I.LevelMng.EndingStaus == LevelEndingStaus.Interrupted)
             {

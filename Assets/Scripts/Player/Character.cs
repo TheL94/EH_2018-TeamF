@@ -34,6 +34,7 @@ namespace TeamF
 
             FadeComponent = GetComponentInChildren<FadeToMe>();
             FadeComponent.Init();
+
             weaponController = GetComponentInChildren<WeaponController>();
             blinkCtrl = GetComponentInChildren<BlinkController>();
 
@@ -56,6 +57,14 @@ namespace TeamF
                 }
             }
             selectedAmmoIndex = 1;
+        }
+
+        public void ReInit()
+        {
+            GetComponentInChildren<ParticlesController>().StopAllParticles();
+            blinkCtrl.ResetEffects();
+
+            bulletDatasInstancies.Clear();
         }
         #endregion
 
@@ -239,7 +248,4 @@ namespace TeamF
             PickupWeapon(other.GetComponent<WeaponCrate>());
         }
     }
-
-    
-
 }
