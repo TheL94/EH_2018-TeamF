@@ -32,6 +32,8 @@ namespace TeamF
         public IDamageable Target { get; set; }
         public AI_Enemy AI_Enemy { get; private set; }
 
+        public GameObject Graphic { get; private set; }
+
         BlinkController blinkCtrl;
 
         public void Init(EnemyGenericData _data, string _id)
@@ -56,10 +58,10 @@ namespace TeamF
 
         void GetGraphic()
         {
-            GameObject graphic = GameManager.I.PoolMng.GetObject(Data.GraphicID);
-            graphic.transform.position = transform.position;
-            graphic.transform.rotation = transform.rotation;
-            graphic.transform.SetParent(transform);
+            Graphic = GameManager.I.PoolMng.GetObject(Data.GraphicID);
+            Graphic.transform.position = transform.position;
+            Graphic.transform.rotation = transform.rotation;
+            Graphic.transform.SetParent(transform);
         }
 
         #region IEnemyBehaviour
@@ -112,7 +114,7 @@ namespace TeamF
                 blinkCtrl.DamageBlink();
         }
 
-        public ElementalType LastHittingBulletType { get; private set; }
+        public ElementalType LastHittingBulletType { get; set; }
         #endregion
 
         #region IParalyzable

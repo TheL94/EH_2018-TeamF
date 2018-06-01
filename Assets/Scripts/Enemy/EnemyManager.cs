@@ -58,10 +58,11 @@ namespace TeamF
         /// </summary>
         public void EndGameplayActions()
         {
-            ToggleAllAIs(false);
+            //ToggleAllAIs(false);
+            SetAIDeathState();
             CanSpawn = false;
-            DeleteAllEnemies();
             spawnPoints.Clear();
+            //ResetEnemies();
         }
         #endregion
 
@@ -146,31 +147,38 @@ namespace TeamF
                 if (enemiesSpawned[i].ID == _idEnemy)
                 {
                     Enemy enemyToDestroy = enemiesSpawned[i];
-                    enemyToDestroy.gameObject.SetActive(false);
-                    GameManager.I.PoolMng.UpdatePool(enemyToDestroy.Data.GraphicID);
-
-                    enemiesSpawned.Remove(enemiesSpawned[i]);
-                    Destroy(enemyToDestroy.gameObject, 0.1f);
+                    GameManager.I.PoolMng.ReturnObject(enemyToDestroy.Data.GraphicID, enemyToDestroy.Graphic, false);
+                    enemiesSpawned.Remove(enemyToDestroy);
+                    Destroy(enemyToDestroy.gameObject);
                     return;
                 }
             }
         }
 
-        void DeleteAllEnemies()
+        void SetAIDeathState()
         {
-            //GameManager.I.PoolMng.ForcePoolReset();
-
-            for (int i = 0; i < enemiesSpawned.Count; i++)
+            foreach (Enemy enemy in enemiesSpawned)
             {
-                enemiesSpawned[i].gameObject.SetActive(false);
-                GameManager.I.PoolMng.UpdatePool(enemiesSpawned[i].Data.GraphicID);
-                Destroy(enemiesSpawned[i].gameObject, 0.1f);
+                enemy.LastHittingBulletType = ElementalType.None;
+                enemy.AI_Enemy.CurrentState = enemy.Data.DeathAnimState;
             }
-            enemiesSpawned.Clear();
         }
         #endregion
 
         #region Spawner
+        public bool IsFreeToGo
+        {
+            get
+            {
+                foreach (Enemy item in enemiesSpawned)
+                {
+                    if (item.AI_Enemy.IsActive)
+                        return false;
+                }
+                return true;
+            }
+        }
+
         public bool CanSpawn { get; set; }
         List<Transform> spawnPoints = new List<Transform>();
         List<Enemy> enemiesSpawned = new List<Enemy>();
@@ -286,7 +294,7 @@ namespace TeamF
             if (enemiesSpawned.Count >= DataInstance.MaxEnemiesInScene)
                 return null;
 
-            Enemy newEnemy = Instantiate(_enemyPrefab, _spawnPoint.position, Quaternion.identity, _spawnPoint).GetComponent<Enemy>();
+            Enemy newEnemy = Instantiate(_enemyPrefab, _spawnPoint.position, Quaternion.identity, transform).GetComponent<Enemy>();
             enemiesSpawned.Add(newEnemy);
 
             idCounter++;
@@ -327,6 +335,31 @@ namespace TeamF
                 spawnPoints.Add(spawn.transform);
             }
         }
+
+        void SetSpawnParticles(bool _active)
+        {
+            foreach (Transform spawn in spawnPoints)
+            {
+                foreach (ParticleSystem particle in spawn.GetComponentsInChildren<ParticleSystem>())
+                {
+                    if (particle != null)
+                    {
+                        if (_active)
+                            particle.Play();
+                        else
+                            particle.Stop();
+                    }
+                }
+            }
+        }
+
+        IEnumerator ActiveSpawnParticles()
+        {
+            SetSpawnParticles(true);
+            yield return new WaitForSeconds(2f);
+            SpawnHorde();
+            SetSpawnParticles(false);
+        }
         #endregion
 
         #region Test Scene
@@ -353,30 +386,5 @@ namespace TeamF
             }
         }
         #endregion
-
-        void SetSpawnParticles(bool _active)
-        {
-            foreach (Transform spawn in spawnPoints)
-            {
-                foreach (ParticleSystem particle in spawn.GetComponentsInChildren<ParticleSystem>())
-                {
-                    if (particle != null)
-                    {
-                        if (_active)
-                            particle.Play();
-                        else
-                            particle.Stop();
-                    }
-                }
-            }
-        }
-
-        IEnumerator ActiveSpawnParticles()
-        {
-            SetSpawnParticles(true);
-            yield return new WaitForSeconds(2f);
-            SpawnHorde();
-            SetSpawnParticles(false);
-        }
     }
 }

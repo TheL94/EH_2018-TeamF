@@ -7,10 +7,10 @@ namespace TeamF
 {
     public class UI_GameplayController : MonoBehaviour
     {
-        public Text FireAmmo;
-        public Text WaterAmmo;
-        public Text PoisonAmmo;
-        public Text ThunderAmmo;
+        public AmmoIndicator FireAmmo;
+        public AmmoIndicator WaterAmmo;
+        public AmmoIndicator PoisonAmmo;
+        public AmmoIndicator ThunderAmmo;
         public Text ComboCounterText;
 
 
@@ -38,27 +38,57 @@ namespace TeamF
             {
                 case ElementalType.Fire:
                     if (_ammoValues.Ammo < 0)
-                        FireAmmo.text = "\u221E"; // simbolo dell'infinito
+                        FireAmmo.SetAmmoCount("\u221E"); // simbolo dell'infinito
                     else
-                        FireAmmo.text = _ammoValues.Ammo.ToString();                
+                        FireAmmo.SetAmmoCount(_ammoValues.Ammo.ToString());                
                     break;
                 case ElementalType.Water:
                     if (_ammoValues.Ammo < 0)
-                        WaterAmmo.text = "\u221E"; // simbolo dell'infinito
+                        WaterAmmo.SetAmmoCount("\u221E"); // simbolo dell'infinito
                     else
-                        WaterAmmo.text = _ammoValues.Ammo.ToString();
+                        WaterAmmo.SetAmmoCount(_ammoValues.Ammo.ToString());
                     break;
                 case ElementalType.Poison:
                     if (_ammoValues.Ammo < 0)
-                        PoisonAmmo.text = "\u221E"; // simbolo dell'infinito
+                        PoisonAmmo.SetAmmoCount("\u221E"); // simbolo dell'infinito
                     else
-                        PoisonAmmo.text = _ammoValues.Ammo.ToString();
+                        PoisonAmmo.SetAmmoCount(_ammoValues.Ammo.ToString());
                     break;
                 case ElementalType.Thunder:
                     if (_ammoValues.Ammo < 0)
-                        ThunderAmmo.text = "\u221E"; // simbolo dell'infinito
+                        ThunderAmmo.SetAmmoCount("\u221E"); // simbolo dell'infinito
                     else
-                        ThunderAmmo.text = _ammoValues.Ammo.ToString();
+                        ThunderAmmo.SetAmmoCount(_ammoValues.Ammo.ToString());
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// Attiva l'immagine per le munizioni selezionate
+        /// </summary>
+        /// <param name="_type">Il tipo delle munizioni selezionate</param>
+        public void UpdateSelectedAmmo(ElementalAmmo _ammoType)                            //TODO: collegare la funzione ad un evento richiamato quando il character cambia munizione
+        {
+            FireAmmo.IsCurrentSelected(false);
+            WaterAmmo.IsCurrentSelected(false);
+            PoisonAmmo.IsCurrentSelected(false);
+            ThunderAmmo.IsCurrentSelected(false);
+
+            switch (_ammoType.AmmoType)
+            {
+                case ElementalType.Fire:
+                    FireAmmo.IsCurrentSelected(true);
+                    break;
+                case ElementalType.Water:
+                WaterAmmo.IsCurrentSelected(true);
+                    break;
+                case ElementalType.Poison:
+                PoisonAmmo.IsCurrentSelected(true);
+                    break;
+                case ElementalType.Thunder:
+                ThunderAmmo.IsCurrentSelected(true);
                     break;
                 default:
                     break;
