@@ -17,8 +17,13 @@ namespace TeamF
             switch (_levelStaus)
             {
                 case LevelEndingStaus.Won:
+
+                    if (GameManager.I.LevelMng.Level == GameManager.I.LevelMng.TotalLevels - 1)
+                        NextRoundButton.SetActive(false);
+                    else
+                        NextRoundButton.SetActive(true);
+
                     img.sprite = WinImage;
-                    NextRoundButton.SetActive(true);
                     break;
                 case LevelEndingStaus.Lost:
                     img.sprite = LoseImage;

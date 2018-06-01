@@ -18,6 +18,7 @@ namespace TeamF
             }
         }
         float roundPoints = 0;
+        public int TotalLevels { get { return SceneManager.sceneCountInBuildSettings; } }
 
         public void Init()
         {
@@ -69,7 +70,7 @@ namespace TeamF
 
         void LoadNewLevel(int _newLevel)
         {
-            if (_newLevel != _level && _newLevel != 0 && _newLevel < SceneManager.sceneCountInBuildSettings)
+            if (_newLevel != _level && _newLevel != 0 && _newLevel < TotalLevels)
             {
                 GameManager.I.UIMng.LoadingActions();
                 async = SceneManager.LoadSceneAsync(_newLevel, LoadSceneMode.Additive);
@@ -78,7 +79,7 @@ namespace TeamF
                     StartCoroutine(ActivateScene(_newLevel));
                 };
             }
-            else if (_newLevel == 0 || _newLevel >= SceneManager.sceneCountInBuildSettings)
+            else if (_newLevel == 0 || _newLevel >= TotalLevels)
             {
                 _level = 0;
                 GameManager.I.CurrentState = FlowState.MainMenu;
