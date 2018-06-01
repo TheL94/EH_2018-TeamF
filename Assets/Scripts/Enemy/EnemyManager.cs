@@ -147,7 +147,7 @@ namespace TeamF
                 if (enemiesSpawned[i].ID == _idEnemy)
                 {
                     Enemy enemyToDestroy = enemiesSpawned[i];
-                    GameManager.I.PoolMng.ReturnObject(enemyToDestroy.Data.GraphicID, enemyToDestroy.Graphic);
+                    GameManager.I.PoolMng.ReturnObject(enemyToDestroy.Data.GraphicID, enemyToDestroy.Graphic, false);
                     enemiesSpawned.Remove(enemyToDestroy);
                     Destroy(enemyToDestroy.gameObject);
                     return;
@@ -172,7 +172,7 @@ namespace TeamF
             {
                 foreach (Enemy item in enemiesSpawned)
                 {
-                    if (!item.AI_Enemy.IsActive)
+                    if (item.AI_Enemy.IsActive)
                         return false;
                 }
                 return true;
