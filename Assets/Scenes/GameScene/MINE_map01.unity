@@ -765,11 +765,15 @@ Prefab:
       objectReference: {fileID: 2100000, guid: f53514cbe49c5764d8dd5415ef7927b7, type: 2}
     - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 4294967295
+      value: 4294967263
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
       propertyPath: m_Name
       value: SM_crystal (29)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
@@ -904,6 +908,14 @@ Prefab:
     - target: {fileID: 400000, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.008
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
@@ -1174,11 +1186,15 @@ Prefab:
       objectReference: {fileID: 2100000, guid: f53514cbe49c5764d8dd5415ef7927b7, type: 2}
     - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 4294967295
+      value: 4294967263
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
       propertyPath: m_Name
       value: SM_crystal (26)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
@@ -2556,6 +2572,14 @@ Prefab:
       propertyPath: m_Name
       value: SM_Gem_box (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
   m_IsPrefabParent: 0
@@ -2808,11 +2832,15 @@ Prefab:
       objectReference: {fileID: 2100000, guid: f53514cbe49c5764d8dd5415ef7927b7, type: 2}
     - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 4294967295
+      value: 4294967263
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
       propertyPath: m_Name
       value: SM_crystal (23)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
@@ -3002,6 +3030,14 @@ Prefab:
       propertyPath: m_Name
       value: SM_Gem_box (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
   m_IsPrefabParent: 0
@@ -3184,6 +3220,14 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 12.245001
       objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
   m_IsPrefabParent: 0
@@ -3301,6 +3345,14 @@ Prefab:
     - target: {fileID: 400000, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.008
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
@@ -3991,11 +4043,15 @@ Prefab:
       objectReference: {fileID: 2100000, guid: f53514cbe49c5764d8dd5415ef7927b7, type: 2}
     - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 4294967295
+      value: 4294967263
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
       propertyPath: m_Name
       value: SM_crystal (21)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
@@ -4089,11 +4145,15 @@ Prefab:
       objectReference: {fileID: 2100000, guid: f53514cbe49c5764d8dd5415ef7927b7, type: 2}
     - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 4294967295
+      value: 4294967263
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
       propertyPath: m_Name
       value: SM_crystal (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
@@ -4338,6 +4398,14 @@ Prefab:
     - target: {fileID: 400000, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.008
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
@@ -6445,11 +6513,15 @@ Prefab:
       objectReference: {fileID: 2100000, guid: f53514cbe49c5764d8dd5415ef7927b7, type: 2}
     - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 4294967295
+      value: 4294967263
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
       propertyPath: m_Name
       value: SM_crystal (31)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
@@ -6627,6 +6699,14 @@ Prefab:
       propertyPath: m_Name
       value: SM_Gem_box (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
   m_IsPrefabParent: 0
@@ -6719,11 +6799,15 @@ Prefab:
       objectReference: {fileID: 2100000, guid: f53514cbe49c5764d8dd5415ef7927b7, type: 2}
     - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 4294967295
+      value: 4294967263
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
       propertyPath: m_Name
       value: SM_crystal (20)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
@@ -7719,6 +7803,14 @@ Prefab:
       propertyPath: m_Name
       value: SM_Gem_box (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
   m_IsPrefabParent: 0
@@ -8385,11 +8477,15 @@ Prefab:
       objectReference: {fileID: 2100000, guid: f53514cbe49c5764d8dd5415ef7927b7, type: 2}
     - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 4294967295
+      value: 4294967263
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
       propertyPath: m_Name
       value: SM_crystal (30)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
@@ -8627,6 +8723,14 @@ Prefab:
       propertyPath: m_LocalPosition.z
       value: -0.008
       objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
   m_IsPrefabParent: 0
@@ -8760,11 +8864,15 @@ Prefab:
       objectReference: {fileID: 2100000, guid: f53514cbe49c5764d8dd5415ef7927b7, type: 2}
     - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 4294967295
+      value: 4294967263
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
       propertyPath: m_Name
       value: SM_crystal (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
@@ -9151,6 +9259,14 @@ Prefab:
       propertyPath: m_LocalPosition.z
       value: -0.008
       objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
   m_IsPrefabParent: 0
@@ -9401,6 +9517,14 @@ Prefab:
       propertyPath: m_Name
       value: SM_Gem_box (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
   m_IsPrefabParent: 0
@@ -9597,6 +9721,14 @@ Prefab:
       propertyPath: m_LocalPosition.z
       value: -0.008
       objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
   m_IsPrefabParent: 0
@@ -9689,11 +9821,15 @@ Prefab:
       objectReference: {fileID: 2100000, guid: f53514cbe49c5764d8dd5415ef7927b7, type: 2}
     - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 4294967295
+      value: 4294967263
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
       propertyPath: m_Name
       value: SM_crystal (22)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
@@ -9853,6 +9989,14 @@ Prefab:
     - target: {fileID: 400000, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.008
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
@@ -10044,11 +10188,15 @@ Prefab:
       objectReference: {fileID: 2100000, guid: f53514cbe49c5764d8dd5415ef7927b7, type: 2}
     - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 4294967295
+      value: 4294967263
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
       propertyPath: m_Name
       value: SM_crystal (24)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
@@ -10220,11 +10368,15 @@ Prefab:
       objectReference: {fileID: 2100000, guid: f53514cbe49c5764d8dd5415ef7927b7, type: 2}
     - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 4294967295
+      value: 4294967263
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
       propertyPath: m_Name
       value: SM_crystal (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
@@ -11270,11 +11422,15 @@ Prefab:
       objectReference: {fileID: 2100000, guid: f53514cbe49c5764d8dd5415ef7927b7, type: 2}
     - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 4294967295
+      value: 4294967263
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
       propertyPath: m_Name
       value: SM_crystal (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
@@ -11691,6 +11847,14 @@ Prefab:
     - target: {fileID: 100004, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
       propertyPath: m_Name
       value: SM_Gem_box (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
@@ -12256,11 +12420,15 @@ Prefab:
       objectReference: {fileID: 2100000, guid: f53514cbe49c5764d8dd5415ef7927b7, type: 2}
     - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 4294967295
+      value: 4294967263
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
       propertyPath: m_Name
       value: SM_crystal (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
@@ -12367,6 +12535,14 @@ Prefab:
     - target: {fileID: 100004, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
       propertyPath: m_Name
       value: SM_Gem_box (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
@@ -12522,11 +12698,15 @@ Prefab:
       objectReference: {fileID: 2100000, guid: f53514cbe49c5764d8dd5415ef7927b7, type: 2}
     - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 4294967295
+      value: 4294967263
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
       propertyPath: m_Name
       value: SM_crystal (28)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
@@ -13058,11 +13238,15 @@ Prefab:
       objectReference: {fileID: 2100000, guid: f53514cbe49c5764d8dd5415ef7927b7, type: 2}
     - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 4294967295
+      value: 4294967263
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
       propertyPath: m_Name
       value: SM_crystal (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
@@ -13935,11 +14119,15 @@ Prefab:
       objectReference: {fileID: 2100000, guid: f53514cbe49c5764d8dd5415ef7927b7, type: 2}
     - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 4294967295
+      value: 4294967263
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
       propertyPath: m_Name
       value: SM_crystal (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
@@ -14584,6 +14772,14 @@ Prefab:
       propertyPath: m_Name
       value: SM_Gem_box (24)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
   m_IsPrefabParent: 0
@@ -14816,11 +15012,15 @@ Prefab:
       objectReference: {fileID: 2100000, guid: f53514cbe49c5764d8dd5415ef7927b7, type: 2}
     - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 4294967295
+      value: 4294967263
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
       propertyPath: m_Name
       value: SM_crystal (32)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
@@ -15018,6 +15218,14 @@ Prefab:
     - target: {fileID: 100004, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
       propertyPath: m_Name
       value: SM_Gem_box (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
@@ -15428,11 +15636,15 @@ Prefab:
       objectReference: {fileID: 2100000, guid: f53514cbe49c5764d8dd5415ef7927b7, type: 2}
     - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 4294967295
+      value: 4294967263
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
       propertyPath: m_Name
       value: SM_crystal (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
@@ -15729,11 +15941,15 @@ Prefab:
       objectReference: {fileID: 2100000, guid: f53514cbe49c5764d8dd5415ef7927b7, type: 2}
     - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 4294967295
+      value: 4294967263
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
       propertyPath: m_Name
       value: SM_crystal (25)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
@@ -15840,6 +16056,14 @@ Prefab:
     - target: {fileID: 100004, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
       propertyPath: m_Name
       value: SM_Gem_box (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
@@ -16185,11 +16409,15 @@ Prefab:
       objectReference: {fileID: 2100000, guid: f53514cbe49c5764d8dd5415ef7927b7, type: 2}
     - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 4294967295
+      value: 4294967263
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
       propertyPath: m_Name
       value: SM_crystal (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
@@ -18676,6 +18904,14 @@ Prefab:
       propertyPath: m_LocalPosition.z
       value: -0.008
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
   m_IsPrefabParent: 0
@@ -19390,11 +19626,15 @@ Prefab:
       objectReference: {fileID: 2100000, guid: f53514cbe49c5764d8dd5415ef7927b7, type: 2}
     - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 4294967295
+      value: 4294967263
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
       propertyPath: m_Name
       value: SM_crystal (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
@@ -20496,6 +20736,14 @@ Prefab:
       propertyPath: m_Name
       value: SM_Gem_box (23)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
   m_IsPrefabParent: 0
@@ -20601,6 +20849,14 @@ Prefab:
     - target: {fileID: 100004, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
       propertyPath: m_Name
       value: SM_Gem_box (22)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
@@ -21282,11 +21538,15 @@ Prefab:
       objectReference: {fileID: 2100000, guid: f53514cbe49c5764d8dd5415ef7927b7, type: 2}
     - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 4294967295
+      value: 4294967263
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
       propertyPath: m_Name
       value: SM_crystal (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
@@ -22507,6 +22767,14 @@ Prefab:
       propertyPath: m_Name
       value: SM_Gem_box (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
   m_IsPrefabParent: 0
@@ -23005,11 +23273,15 @@ Prefab:
       objectReference: {fileID: 2100000, guid: f53514cbe49c5764d8dd5415ef7927b7, type: 2}
     - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 4294967295
+      value: 4294967263
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
       propertyPath: m_Name
       value: SM_crystal (27)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
@@ -23116,6 +23388,14 @@ Prefab:
     - target: {fileID: 100004, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
       propertyPath: m_Name
       value: SM_Gem_box (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
@@ -23469,6 +23749,14 @@ Prefab:
     - target: {fileID: 400000, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.008
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
@@ -24381,11 +24669,15 @@ Prefab:
       objectReference: {fileID: 2100000, guid: f53514cbe49c5764d8dd5415ef7927b7, type: 2}
     - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 4294967295
+      value: 4294967263
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
       propertyPath: m_Name
       value: SM_crystal (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
@@ -24569,6 +24861,14 @@ Prefab:
     - target: {fileID: 400000, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.008
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e9b3c545e2c10da45975ba9ff31b9918, type: 3}
@@ -25337,11 +25637,15 @@ Prefab:
       objectReference: {fileID: 2100000, guid: f53514cbe49c5764d8dd5415ef7927b7, type: 2}
     - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 4294967295
+      value: 4294967263
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
       propertyPath: m_Name
       value: SM_crystal (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
@@ -25566,11 +25870,15 @@ Prefab:
       objectReference: {fileID: 2100000, guid: f53514cbe49c5764d8dd5415ef7927b7, type: 2}
     - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 4294967295
+      value: 4294967263
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
       propertyPath: m_Name
       value: SM_crystal (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 672c6ccb06a73e041b8b586a2dbdf68a, type: 3}
