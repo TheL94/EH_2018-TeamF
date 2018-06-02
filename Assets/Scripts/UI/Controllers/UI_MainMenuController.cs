@@ -12,7 +12,11 @@ namespace TeamF
             GameManager.I.UIMng.CurrentMenu = this;
 
             if (!Debug.isDebugBuild)
-                (SelectableButtons[1] as SelectableButton).gameObject.SetActive(false);
+            {
+                SelectableButton testSceneButton = (SelectableButtons[2] as SelectableButton);
+                SelectableButtons.Remove(SelectableButtons[2]);
+                Destroy(testSceneButton.gameObject);
+            }
         }
 
         public override void Select()
@@ -24,12 +28,12 @@ namespace TeamF
                     GameManager.I.CurrentState = FlowState.ManageMap;
                     break;
                 case 1:
-                    //Scena test
-                    GameManager.I.CurrentState = FlowState.InitTestScene;                   
+                    //ExitGame
+                    GameManager.I.CurrentState = FlowState.QuitGame;
                     break;
                 case 2:
-                    //ExitGame;
-                    GameManager.I.CurrentState = FlowState.QuitGame;
+                    //Scena test
+                    GameManager.I.CurrentState = FlowState.InitTestScene;
                     break;
             }
             base.Select();

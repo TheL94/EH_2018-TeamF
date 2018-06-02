@@ -11,6 +11,7 @@ namespace TeamF
 
         public FlowState CurrentState { get { return flowMng.CurrentState; } set { flowMng.CurrentState = value; } }
 
+        [HideInInspector]
         public LevelManager LevelMng;
         [HideInInspector]
         public EnemyManager EnemyMng;

@@ -34,6 +34,7 @@ namespace TeamF
 
             FadeComponent = GetComponentInChildren<FadeToMe>();
             FadeComponent.Init();
+
             weaponController = GetComponentInChildren<WeaponController>();
             blinkCtrl = GetComponentInChildren<BlinkController>();
 
@@ -56,6 +57,14 @@ namespace TeamF
                 }
             }
             selectedAmmoIndex = 1;
+        }
+
+        public void ReInit()
+        {
+            GetComponentInChildren<ParticlesController>().StopAllParticles();
+            blinkCtrl.ResetEffects();
+
+            bulletDatasInstancies.Clear();
         }
         #endregion
 
@@ -173,6 +182,7 @@ namespace TeamF
                         BackPackRenderer.materials[1].SetColor("_EmissionColor", Color.white);
                         break;
                 }
+                OnSelectedAmmoChanged();
             }
         }
 
@@ -182,20 +192,25 @@ namespace TeamF
             set { bulletDatasInstancies[selectedAmmoIndex] = value; }
         }
 
-        
+        void OnSelectedAmmoChanged()
+        {
+            GameManager.I.UIMng.UI_GameplayCtrl.UpdateSelectedAmmo(SelectedAmmo.ElementalAmmo);
+        }
 
         public void SelectPreviousAmmo()
         {
-            selectedAmmoIndex++;
-            if (selectedAmmoIndex > Data.BulletDatas.Length - 1)
+            if (selectedAmmoIndex + 1 > Data.BulletDatas.Length - 1)
                 selectedAmmoIndex = 1;
+            else
+                selectedAmmoIndex++;
 
         }
         public void SelectNextAmmo()
         {
-            selectedAmmoIndex--;
-            if (selectedAmmoIndex < 1)
+            if (selectedAmmoIndex - 1 < 1)
                 selectedAmmoIndex = Data.BulletDatas.Length - 1;
+            else
+                selectedAmmoIndex--;
         }
         #endregion
 
@@ -233,7 +248,4 @@ namespace TeamF
             PickupWeapon(other.GetComponent<WeaponCrate>());
         }
     }
-
-    
-
 }

@@ -32,10 +32,13 @@ namespace TeamF
             ComboSources = allSources.Where(s => s.tag == "ComboAudioSource").ToList();
         }
 
-        public void StopAll()
+        public void StopAllSound()
         {
             foreach (AudioSource source in allSources)
+            {
                 source.Stop();
+                source.clip = null;
+            }
         }
 
         public void TogglePauseAll(bool _value)

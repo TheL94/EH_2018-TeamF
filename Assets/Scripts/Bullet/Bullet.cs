@@ -157,7 +157,7 @@ namespace TeamF
 
         protected virtual void OnTrigger(Collider other)
         {
-            Vector3 closetPoint = other.ClosestPoint(transform.position);
+            //Vector3 closetPoint = other.ClosestPoint(transform.position);
 
 
             IDamageable damageable = other.GetComponent<IDamageable>();

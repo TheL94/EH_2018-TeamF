@@ -16,14 +16,15 @@ MonoBehaviour:
   ParalizedState: {fileID: 11400000, guid: 5b3f30c12266ad94aa44762d704f9025, type: 2}
   DamageState: {fileID: 11400000, guid: 7e6c44d44741e2348a2205088f6374c6, type: 2}
   SearchTargetState: {fileID: 11400000, guid: 6c2b5113df18f08408d373c0e2e61a8f, type: 2}
+  DeathAnimState: {fileID: 11400000, guid: b87c58a7172d8764b8e9be842db512fe, type: 2}
   StoppingDistance: 0.5
   AimApproximationAngle: 10
   ContainerPrefab: {fileID: 1267129680638450, guid: 25dfe3bec1371e14d87332e9234c5ef8,
     type: 2}
   GraphicID: Poison
   EnemyType: 4
-  Life: 40
-  Speed: 7
+  Life: 7
+  Speed: 12
   AimTime: 0.5
   EnemyValue: 1
   MeleeDamage: 2
