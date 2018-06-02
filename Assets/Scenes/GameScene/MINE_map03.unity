@@ -114,7 +114,7 @@ NavMeshSettings:
     accuratePlacement: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: b046671accbb9b548a6030cda57c7cdd, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 69106e814549c5647b7944f3d70754f2, type: 2}
 --- !u!4 &1760857 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: b6bc5744a08f1e846a98fbd7c5fb1384, type: 3}
@@ -12508,7 +12508,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4437373412466230, guid: 75fbdda92cd1fb54aa48dd09dd985b91, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 48.2
+      value: 3.26
       objectReference: {fileID: 0}
     - target: {fileID: 4437373412466230, guid: 75fbdda92cd1fb54aa48dd09dd985b91, type: 2}
       propertyPath: m_LocalPosition.y
@@ -12516,7 +12516,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4437373412466230, guid: 75fbdda92cd1fb54aa48dd09dd985b91, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -70.8
+      value: -49.38
       objectReference: {fileID: 0}
     - target: {fileID: 4437373412466230, guid: 75fbdda92cd1fb54aa48dd09dd985b91, type: 2}
       propertyPath: m_LocalRotation.x
@@ -12541,7 +12541,7 @@ Prefab:
     - target: {fileID: 224401690739515180, guid: 75fbdda92cd1fb54aa48dd09dd985b91,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: -53.39
+      value: -10.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 75fbdda92cd1fb54aa48dd09dd985b91, type: 2}
