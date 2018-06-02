@@ -102,8 +102,8 @@ NavMeshSettings:
     agentTypeID: 0
     agentRadius: 0.8
     agentHeight: 1.7
-    agentSlope: 10
-    agentClimb: 0.4
+    agentSlope: 30
+    agentClimb: 1.7
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 0.5
