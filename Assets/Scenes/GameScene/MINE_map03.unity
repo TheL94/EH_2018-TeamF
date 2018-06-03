@@ -114,7 +114,7 @@ NavMeshSettings:
     accuratePlacement: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: b046671accbb9b548a6030cda57c7cdd, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 69106e814549c5647b7944f3d70754f2, type: 2}
 --- !u!4 &1760857 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: b6bc5744a08f1e846a98fbd7c5fb1384, type: 3}
@@ -380,15 +380,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: b6bc5744a08f1e846a98fbd7c5fb1384, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.0318127
+      value: 7.03
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b6bc5744a08f1e846a98fbd7c5fb1384, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 15.202293
+      value: 15.28
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b6bc5744a08f1e846a98fbd7c5fb1384, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 51.375893
+      value: 51.34
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b6bc5744a08f1e846a98fbd7c5fb1384, type: 3}
       propertyPath: m_LocalRotation.x
@@ -506,7 +506,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: cc7b6c886ce511245941e3997c1040c6, type: 3}
       propertyPath: m_NavMeshLayer
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: cc7b6c886ce511245941e3997c1040c6, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1401,7 +1401,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: c7e6a6390018bd549b93b9246992543f, type: 3}
       propertyPath: m_NavMeshLayer
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: c7e6a6390018bd549b93b9246992543f, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -2196,7 +2196,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: c7e6a6390018bd549b93b9246992543f, type: 3}
       propertyPath: m_NavMeshLayer
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c7e6a6390018bd549b93b9246992543f, type: 3}
@@ -4627,7 +4627,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: cc7b6c886ce511245941e3997c1040c6, type: 3}
       propertyPath: m_NavMeshLayer
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: cc7b6c886ce511245941e3997c1040c6, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -7746,15 +7746,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: 64d7ce3687118724eaac895c2c4eea7b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.115982
+      value: 7.21
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 64d7ce3687118724eaac895c2c4eea7b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 15.736594
+      value: 15.73
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 64d7ce3687118724eaac895c2c4eea7b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 53.177567
+      value: 53.15
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 64d7ce3687118724eaac895c2c4eea7b, type: 3}
       propertyPath: m_LocalRotation.x
@@ -7802,12 +7802,16 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 64d7ce3687118724eaac895c2c4eea7b, type: 3}
       propertyPath: m_NavMeshLayer
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 64d7ce3687118724eaac895c2c4eea7b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: d5f2fc3b0c837674fa1a75139686fabc, type: 2}
+    - target: {fileID: 100000, guid: 64d7ce3687118724eaac895c2c4eea7b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 64d7ce3687118724eaac895c2c4eea7b, type: 3}
   m_IsPrefabParent: 0
@@ -10062,7 +10066,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: cc7b6c886ce511245941e3997c1040c6, type: 3}
       propertyPath: m_NavMeshLayer
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: cc7b6c886ce511245941e3997c1040c6, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -12508,7 +12512,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4437373412466230, guid: 75fbdda92cd1fb54aa48dd09dd985b91, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 48.2
+      value: 3.26
       objectReference: {fileID: 0}
     - target: {fileID: 4437373412466230, guid: 75fbdda92cd1fb54aa48dd09dd985b91, type: 2}
       propertyPath: m_LocalPosition.y
@@ -12516,7 +12520,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4437373412466230, guid: 75fbdda92cd1fb54aa48dd09dd985b91, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -70.8
+      value: -49.38
       objectReference: {fileID: 0}
     - target: {fileID: 4437373412466230, guid: 75fbdda92cd1fb54aa48dd09dd985b91, type: 2}
       propertyPath: m_LocalRotation.x
@@ -12541,7 +12545,7 @@ Prefab:
     - target: {fileID: 224401690739515180, guid: 75fbdda92cd1fb54aa48dd09dd985b91,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: -53.39
+      value: -10.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 75fbdda92cd1fb54aa48dd09dd985b91, type: 2}
@@ -16236,7 +16240,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 3c947ce2382f6df469a75687387b2aad, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 4294967295
+      value: 4294967263
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3c947ce2382f6df469a75687387b2aad, type: 3}
       propertyPath: m_LocalScale.z
@@ -16244,7 +16248,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 3c947ce2382f6df469a75687387b2aad, type: 3}
       propertyPath: m_NavMeshLayer
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3c947ce2382f6df469a75687387b2aad, type: 3}
@@ -21388,7 +21392,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: cc7b6c886ce511245941e3997c1040c6, type: 3}
       propertyPath: m_NavMeshLayer
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc7b6c886ce511245941e3997c1040c6, type: 3}
@@ -23393,7 +23397,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: c7e6a6390018bd549b93b9246992543f, type: 3}
       propertyPath: m_NavMeshLayer
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: c7e6a6390018bd549b93b9246992543f, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -24100,7 +24104,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: c7e6a6390018bd549b93b9246992543f, type: 3}
       propertyPath: m_NavMeshLayer
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: c7e6a6390018bd549b93b9246992543f, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -29435,7 +29439,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: cc7b6c886ce511245941e3997c1040c6, type: 3}
       propertyPath: m_NavMeshLayer
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: cc7b6c886ce511245941e3997c1040c6, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -32070,15 +32074,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: a4d7fc1a4b35bd247af7469e680c544f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.9156523
+      value: 6.92
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a4d7fc1a4b35bd247af7469e680c544f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 15.023423
+      value: 15.05
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a4d7fc1a4b35bd247af7469e680c544f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 50.758553
+      value: 50.75
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a4d7fc1a4b35bd247af7469e680c544f, type: 3}
       propertyPath: m_LocalRotation.x
@@ -32131,6 +32135,10 @@ Prefab:
     - target: {fileID: 100000, guid: a4d7fc1a4b35bd247af7469e680c544f, type: 3}
       propertyPath: m_NavMeshLayer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: a4d7fc1a4b35bd247af7469e680c544f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a4d7fc1a4b35bd247af7469e680c544f, type: 3}
@@ -33363,7 +33371,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: c7e6a6390018bd549b93b9246992543f, type: 3}
       propertyPath: m_NavMeshLayer
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: c7e6a6390018bd549b93b9246992543f, type: 3}
       propertyPath: m_Materials.Array.data[0]

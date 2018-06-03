@@ -118,7 +118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ForestPostProcess: {fileID: 11400000, guid: 37cc8cbb876283643acc2facc8bd0213, type: 2}
   MinePostProcess: {fileID: 11400000, guid: 37cc8cbb876283643acc2facc8bd0213, type: 2}
-  CityPostProcess: {fileID: 0}
+  CityPostProcess: {fileID: 11400000, guid: 37cc8cbb876283643acc2facc8bd0213, type: 2}
 --- !u!124 &124907100471525920
 Behaviour:
   m_ObjectHideFlags: 1
