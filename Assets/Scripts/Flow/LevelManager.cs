@@ -62,10 +62,13 @@ namespace TeamF
                 yield return null;
 
             async = SceneManager.UnloadSceneAsync(_currentLevel);
-            async.completed += (async) =>
+            if(async != null)
             {
-                LoadNewLevel(_newLevel);
-            };
+                async.completed += (async) =>
+                {
+                    LoadNewLevel(_newLevel);
+                };
+            }
         }
 
         void LoadNewLevel(int _newLevel)

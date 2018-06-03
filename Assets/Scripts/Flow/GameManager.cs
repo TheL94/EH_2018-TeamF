@@ -58,7 +58,21 @@ namespace TeamF
             {
                 if (CurrentState == FlowState.TestGameplay)
                     CurrentState = FlowState.ExitTestScene;
-                else            
+                else if (CurrentState == FlowState.Gameplay)
+                    CurrentState = FlowState.Pause;
+                else if(CurrentState == FlowState.Pause)
+                    CurrentState = FlowState.Gameplay;
+            }
+        }
+
+        private void OnApplicationFocus(bool focus)
+        {
+            if (flowMng == null)
+                return;
+
+            if (CurrentState == FlowState.Gameplay)
+            {
+                if(!focus && !Debug.isDebugBuild)
                     CurrentState = FlowState.Pause;
             }
         }
