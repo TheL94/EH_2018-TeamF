@@ -26,7 +26,6 @@ namespace TeamF
         IEnumerator ObscuringCloudLifeTime(float _lifeTime)
         {
             yield return new WaitForSeconds(_lifeTime);
-            gameObject.SetActive(false);
             GameManager.I.PoolMng.UpdatePool(GraphicID);
             Destroy(gameObject);
         }

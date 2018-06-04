@@ -199,6 +199,7 @@ namespace TeamF
 
         void ManageMapActions()
         {
+            GameManager.I.UIMng.LoadingActions();
             GameManager.I.LevelMng.ReInit();
             GameManager.I.LevelMng.Level++;
         }
@@ -270,6 +271,9 @@ namespace TeamF
                 CurrentState = FlowState.MainMenu;
                 return;
             }
+
+            if (GameManager.I.LevelMng.EndingStaus == LevelEndingStaus.Lost)
+                GameManager.I.LevelMng.Level = 0;
 
             GameManager.I.UIMng.GameOverActions(GameManager.I.LevelMng.EndingStaus);
         }

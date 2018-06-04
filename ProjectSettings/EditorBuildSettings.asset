@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/GameScene/EmptyScene.unity
+    path: Assets/Scenes/GameScene/MainScene.unity
     guid: 8f969680ebe96b54d81fa965e99e68f7
   - enabled: 1
     path: Assets/Scenes/GameScene/forest_map01.unity
