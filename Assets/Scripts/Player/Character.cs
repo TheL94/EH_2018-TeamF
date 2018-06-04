@@ -63,7 +63,7 @@ namespace TeamF
         {
             GetComponentInChildren<ParticlesController>().StopAllParticles();
             blinkCtrl.ResetEffects();
-            GetComponent<EffectController>().StopAllEffects();
+            GetComponentInChildren<EffectController>().StopAllEffects();
 
             bulletDatasInstancies.Clear();
         }

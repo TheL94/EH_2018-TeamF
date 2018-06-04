@@ -2801,6 +2801,9 @@ MonoBehaviour:
   - 40
   - 45
   - 50
+  - 55
+  - 60
+  - 65
   ComboCounterTimer: 10
 --- !u!114 &114344852107688236
 MonoBehaviour:
