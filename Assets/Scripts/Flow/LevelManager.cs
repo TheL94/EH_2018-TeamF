@@ -149,6 +149,6 @@ namespace TeamF
         #endregion
     }
 
-    public enum LevelEndingStaus { NotEnded = 0, Won, Lost, Interrupted}
+    public enum LevelEndingStaus { NotEnded = 0, Won, Lost, Interrupted }
 }
 
