@@ -23,13 +23,13 @@ MonoBehaviour:
     type: 2}
   GraphicID: Fire
   EnemyType: 2
-  Life: 7
-  Speed: 12
+  Life: 15
+  Speed: 15
   AimTime: 0.5
   EnemyValue: 1
   MeleeDamage: 2
   MeleeDamageRange: 3
-  MeleeDamageRate: 1
+  MeleeDamageRate: 7
   RangedDamage: 5
   RangedDamageRange: 8
   RangedDamageRate: 1
