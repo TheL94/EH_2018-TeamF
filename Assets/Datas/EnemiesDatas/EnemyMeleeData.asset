@@ -23,11 +23,11 @@ MonoBehaviour:
     type: 2}
   GraphicID: Melee
   EnemyType: 0
-  Life: 7
-  Speed: 12
+  Life: 1
+  Speed: 15
   AimTime: 0.5
   EnemyValue: 1
-  MeleeDamage: 2
+  MeleeDamage: 2.5
   MeleeDamageRange: 3
   MeleeDamageRate: 1
   RangedDamage: -1
