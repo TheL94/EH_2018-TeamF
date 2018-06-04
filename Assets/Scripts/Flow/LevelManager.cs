@@ -42,7 +42,7 @@ namespace TeamF
         public int Level { get { return _level; } set { OnLevelChange(value); } }
 
         void OnLevelChange(int _newLevel)
-        {
+        {           
             UnloadLevel(Level, _newLevel);
         }
 
@@ -75,7 +75,6 @@ namespace TeamF
         {
             if (_newLevel != _level && _newLevel != 0 && _newLevel < TotalLevels)
             {
-                GameManager.I.UIMng.LoadingActions();
                 async = SceneManager.LoadSceneAsync(_newLevel, LoadSceneMode.Additive);
                 async.completed += (async) =>
                 {
