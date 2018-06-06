@@ -47,7 +47,7 @@ namespace TeamF
             {
                 if (SaveScoreOnGameLost)
                 {
-                    totalScore += currentLevelScore; // TODO : da togliere a seconda di cosa scrivono nel documento
+                    totalScore += currentLevelScore;
                     WriteBestScore();
                 }
 
