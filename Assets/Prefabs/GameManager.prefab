@@ -512,11 +512,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4608509917988704}
   - component: {fileID: 114100090815372252}
+  - component: {fileID: 114446551119343818}
   - component: {fileID: 114731148670223682}
-  - component: {fileID: 114344852107688236}
   - component: {fileID: 114973790194786270}
   - component: {fileID: 114623504874752562}
-  - component: {fileID: 114446551119343818}
+  - component: {fileID: 114344852107688236}
+  - component: {fileID: 114515062777634220}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2794,6 +2795,8 @@ MonoBehaviour:
   AudioMng: {fileID: 0}
   CursorCtrl: {fileID: 0}
   PPCtrl: {fileID: 0}
+  ComboCounter: {fileID: 0}
+  ScoreCounter: {fileID: 0}
   KillsToWinPerLevel:
   - 25
   - 30
@@ -2828,6 +2831,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Combos: []
+--- !u!114 &114515062777634220
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1893466740750056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09f3d722352f8544b9d02036061e0303, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SaveScoreOnGameLost: 1
+  ScoreList:
+  - Type: 0
+    Value: 100
+  - Type: 1
+    Value: 150
+  - Type: 2
+    Value: 1000
+  - Type: 3
+    Value: 1000
+  - Type: 4
+    Value: 1000
+  - Type: 5
+    Value: 1000
+  - Type: 6
+    Value: 50
+  - Type: 7
+    Value: 50
+  - Type: 8
+    Value: -1000
 --- !u!114 &114591551452663604
 MonoBehaviour:
   m_ObjectHideFlags: 1

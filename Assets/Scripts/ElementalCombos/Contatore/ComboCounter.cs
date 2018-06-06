@@ -6,7 +6,17 @@ namespace TeamF
 {
     public class ComboCounter : MonoBehaviour
     {
-        int counter;
+        int _count;
+        public int Count
+        {
+            get { return _count; }
+            set
+            {
+                _count = value;
+                if (OnCounterChanged != null)
+                    OnCounterChanged(Count);
+            }
+        }
         bool isActive;
         float timer;
         float startTimer;
@@ -15,6 +25,12 @@ namespace TeamF
         {
             OnComboCreation += ActivateCount;
             startTimer = _comboTimer;
+        }
+
+        public void Clear()
+        {
+            Count = 0;
+            isActive = false; 
         }
 
         private void Update()
@@ -26,9 +42,7 @@ namespace TeamF
             if (timer <= 0)
             {
                 isActive = false;
-                counter = 0;
-                if (OnCounterChanged != null)
-                    OnCounterChanged(counter);
+                Count = 0;
             }
         }
         
@@ -36,11 +50,9 @@ namespace TeamF
         {
             if (!isActive)
                 isActive = true;
-            counter++;
+            Count++;
             timer = startTimer;
-            if (OnCounterChanged != null)
-                OnCounterChanged(counter);
-        }
+        } 
 
         #region UI CounterEvent
         public delegate void ComboCounterUIEvent(int _count);

@@ -139,6 +139,7 @@ namespace TeamF
             EndingStaus = LevelEndingStaus.NotEnded;
         }
 
+        [HideInInspector]
         public List<ElementalComboBase> Combos = new List<ElementalComboBase>();
         public void ClearCombos() 
         {

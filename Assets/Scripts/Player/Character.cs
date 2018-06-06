@@ -104,6 +104,9 @@ namespace TeamF
             Life -= _damage;
             GameManager.I.AudioMng.PlaySound(Clips.CharacterDamage);
 
+            if (ScoreCounter.OnScoreAction != null)
+                ScoreCounter.OnScoreAction(ScoreType.PlayerDamage);
+
             if (blinkCtrl != null)
                 blinkCtrl.DamageBlink();
 
