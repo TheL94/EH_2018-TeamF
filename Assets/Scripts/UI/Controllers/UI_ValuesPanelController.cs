@@ -70,7 +70,7 @@ namespace TeamF
         void SetEnemiesValue()
         {
             EnemyGenericDataForTestScene.Life = float.Parse(Enemy_Life.text);
-            EnemyGenericDataForTestScene.MeleeDamage = int.Parse(Enemy_Damage.text);
+            EnemyGenericDataForTestScene.MeleeDamage = float.Parse(Enemy_Damage.text);
             EnemyGenericDataForTestScene.Speed = float.Parse(Enemy_Speed.text);
             EnemyGenericDataForTestScene.MeleeDamageRange = float.Parse(Enemy_AttackRange.text);
         }
