@@ -26,8 +26,9 @@ namespace TeamF
             player = _player;
             Data = _data;
 
+            MovementSpeed = Data.MovementSpeed;
             movement = GetComponent<Movement>();
-            movement.Init(MovementSpeed, Data.RotationSpeed, Data.DashValues);
+            movement.Init(this, Data.DashValues);
 
             Life = Data.Life;
             IsParalyzed = false;
@@ -66,6 +67,7 @@ namespace TeamF
             GetComponentInChildren<EffectController>().StopAllEffects();
 
             bulletDatasInstancies.Clear();
+            MovementSpeed = Data.MovementSpeed;
         }
         #endregion
 
@@ -120,14 +122,11 @@ namespace TeamF
         #region IGetSlower
         public bool IsSlowed { get; set; }
 
+        float _movementSpeed;
         public float MovementSpeed
         {
-            get { return Data.MovementSpeed; }
-            set
-            {
-                Data.MovementSpeed = value;
-                movement.MovementSpeed = Data.MovementSpeed;
-            }
+            get { return _movementSpeed; }
+            set { _movementSpeed = value;}
         }
         #endregion
 

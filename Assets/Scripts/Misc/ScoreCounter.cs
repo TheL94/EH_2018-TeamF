@@ -85,8 +85,6 @@ namespace TeamF
 
                 if (_type == ScoreType.PlayerDamage)
                     ComboMultiplier = 0;
-
-                Debug.Log(currentLevelScore + " / " + totalScore);
             }
         }
 
