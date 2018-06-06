@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Unity_Framework.ControllerInput;
 
 namespace TeamF
 {
@@ -15,7 +14,6 @@ namespace TeamF
         public void Init()
         {
             Character = FindObjectOfType<Character>();
-            controllerInput = new ControllerInput(0);
         }
 
         #region Character
@@ -43,11 +41,9 @@ namespace TeamF
         #endregion
 
         #region Input
-        ControllerInput controllerInput;
 
         void CheckInput()
         {
-            //InputStatus status = controllerInput.GetPlayerInputStatus();
             if (Character.IsParalyzed)
                 return;
             else
