@@ -1795,6 +1795,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224401732918509220}
   - component: {fileID: 114962860953796614}
+  - component: {fileID: 114307150230926774}
   m_Layer: 5
   m_Name: MachineGunOverhating
   m_TagString: Untagged
@@ -2383,7 +2384,7 @@ MonoBehaviour:
   ComboCounterText: {fileID: 114979038229854874}
   KillPointsSlider: {fileID: 114383959314720178}
   LifeSlider: {fileID: 114562974683518742}
-  MachineGunOverhatingSlider: {fileID: 114962860953796614}
+  MachineGunOverhatingCtrl: {fileID: 114307150230926774}
 --- !u!114 &114049622701840590
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3498,6 +3499,22 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114307150230926774
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1884936886767750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0e07630853cee448a1e0053cfd93d23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Slider: {fileID: 0}
+  SliderImage: {fileID: 114981813411629764}
+  Images:
+  - {fileID: 21300000, guid: d779654e5b43cbc4db1edf38d68e1e0f, type: 3}
+  - {fileID: 21300000, guid: 941263092515e7946b642cb2cedb84bb, type: 3}
 --- !u!114 &114313848214628082
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4521,7 +4538,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 224830315726413792}
   m_HandleRect: {fileID: 0}
-  m_Direction: 2
+  m_Direction: 0
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
@@ -6152,7 +6169,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: d39adcc64c7d0214ea96174549134d87, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d779654e5b43cbc4db1edf38d68e1e0f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7311,10 +7328,10 @@ RectTransform:
   m_Father: {fileID: 224688561503299804}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.009347417, y: 0.012526097}
-  m_AnchorMax: {x: 0.21200001, y: 0.36800003}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.009347417, y: 0.008}
+  m_AnchorMax: {x: 0.20558065, y: 0.23353215}
+  m_AnchoredPosition: {x: -0.8200073, y: 0.61001587}
+  m_SizeDelta: {x: -1.6399999, y: -2.7799988}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224317039626730854
 RectTransform:
@@ -7370,8 +7387,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1, y: 0}
-  m_SizeDelta: {x: -2, y: 0}
+  m_AnchoredPosition: {x: 0, y: 1}
+  m_SizeDelta: {x: 0, y: -2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224338290880898742
 RectTransform:
@@ -7636,8 +7653,8 @@ RectTransform:
   m_Father: {fileID: 224868694573961584}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.10484488, y: 0.04484668}
-  m_AnchorMax: {x: 0.21227802, y: 0.06313009}
+  m_AnchorMin: {x: 0.084290326, y: 0.04484668}
+  m_AnchorMax: {x: 0.20070969, y: 0.083761476}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -7810,8 +7827,8 @@ RectTransform:
   m_Father: {fileID: 224688561503299804}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.022000002, y: 0.17813502}
-  m_AnchorMax: {x: 0.07042601, y: 0.33900002}
+  m_AnchorMin: {x: 0.09545161, y: 0.09341285}
+  m_AnchorMax: {x: 0.20174193, y: 0.20158716}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -8015,8 +8032,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1, y: 0}
-  m_SizeDelta: {x: -2, y: 0}
+  m_AnchoredPosition: {x: 0, y: 1}
+  m_SizeDelta: {x: 0, y: -2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224519999551494332
 RectTransform:
@@ -8069,7 +8086,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 10}
   m_AnchorMin: {x: 0.30250135, y: 0.43428832}
   m_AnchorMax: {x: 0.70850134, y: 0.822865}
-  m_AnchoredPosition: {x: -0.23000002, y: 0.19000006}
+  m_AnchoredPosition: {x: -0.22999954, y: 0.19000053}
   m_SizeDelta: {x: -0.49, y: 0.28999996}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224542322823449652

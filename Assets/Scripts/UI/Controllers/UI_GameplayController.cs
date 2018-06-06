@@ -16,7 +16,7 @@ namespace TeamF
 
         public Slider KillPointsSlider;
         public Slider LifeSlider;
-        public Slider MachineGunOverhatingSlider;
+        public MachineGunSliderController MachineGunOverhatingCtrl;
 
         private void OnEnable()
         {
@@ -115,7 +115,7 @@ namespace TeamF
 
         void UpdateOverheatingSlider(float _value, float _totalOverheating)
         {
-            MachineGunOverhatingSlider.value = _value / _totalOverheating;
+            MachineGunOverhatingCtrl.UpdateSlider(_value, _totalOverheating);
         }
 
         private void OnDisable()
