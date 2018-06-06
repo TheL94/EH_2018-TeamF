@@ -270,6 +270,10 @@ namespace TeamF
             GameManager.I.LevelMng.ClearCombos();
             GameManager.I.AudioMng.StopAllSound();
 
+            GameManager.I.ScoreCounter.Clear();
+            GameManager.I.ComboCounter.Clear();
+            GameManager.I.ScoreCounter.EndRoundAction(GameManager.I.LevelMng.EndingStaus);
+
             if (GameManager.I.LevelMng.EndingStaus == LevelEndingStaus.Interrupted)
             {
                 GameManager.I.LevelMng.Level = 0;
@@ -277,11 +281,7 @@ namespace TeamF
                 return;
             }
 
-            GameManager.I.ScoreCounter.Clear();
-            GameManager.I.ComboCounter.Clear();
-            GameManager.I.ScoreCounter.EndRoundAction(GameManager.I.LevelMng.EndingStaus);
-
-            if (GameManager.I.LevelMng.EndingStaus == LevelEndingStaus.Lost)
+            if (GameManager.I.LevelMng.EndingStaus != LevelEndingStaus.Won)
                 GameManager.I.LevelMng.Level = 0;
 
             GameManager.I.UIMng.GameOverActions(GameManager.I.LevelMng.EndingStaus);
