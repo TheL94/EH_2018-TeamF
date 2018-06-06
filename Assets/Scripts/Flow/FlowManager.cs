@@ -170,7 +170,6 @@ namespace TeamF
             GameManager.I.PoolMng = GameManager.I.GetComponentInChildren<PoolManager>();
             GameManager.I.PoolMng.Init();
 
-            GameManager.I.GetComponent<ComboCounter>().Init(GameManager.I.ComboCounterTimer);
             GameManager.I.EnemyMng = GameManager.I.GetComponentInChildren<EnemyManager>();
             GameManager.I.AmmoController = GameManager.I.GetComponent<AmmoCratesController>();
 
@@ -185,6 +184,9 @@ namespace TeamF
 
             GameManager.I.CursorCtrl = GameManager.I.GetComponentInChildren<CursorController>();
             GameManager.I.PPCtrl = Camera.main.GetComponentInChildren<PostProcessController>();
+
+            GameManager.I.ComboCounter = GameManager.I.GetComponent<ComboCounter>();           
+            GameManager.I.ScoreCounter = GameManager.I.GetComponent<ScoreCounter>();
 
             CurrentState = FlowState.MainMenu;
         }
@@ -223,6 +225,9 @@ namespace TeamF
                 GameManager.I.PPCtrl.SetPostProcess(PostProcessController.MapType.Mine);
             else if (GameManager.I.LevelMng.Level <= 9)
                 GameManager.I.PPCtrl.SetPostProcess(PostProcessController.MapType.City);
+
+            GameManager.I.ComboCounter.Init(GameManager.I.ComboCounterTimer);
+            GameManager.I.ScoreCounter.Init();
 
             CurrentState = FlowState.Gameplay;
         }
@@ -265,6 +270,10 @@ namespace TeamF
             GameManager.I.LevelMng.ClearCombos();
             GameManager.I.AudioMng.StopAllSound();
 
+            GameManager.I.ScoreCounter.Clear();
+            GameManager.I.ComboCounter.Clear();
+            GameManager.I.ScoreCounter.EndRoundAction(GameManager.I.LevelMng.EndingStaus);
+
             if (GameManager.I.LevelMng.EndingStaus == LevelEndingStaus.Interrupted)
             {
                 GameManager.I.LevelMng.Level = 0;
@@ -272,7 +281,7 @@ namespace TeamF
                 return;
             }
 
-            if (GameManager.I.LevelMng.EndingStaus == LevelEndingStaus.Lost)
+            if (GameManager.I.LevelMng.EndingStaus != LevelEndingStaus.Won)
                 GameManager.I.LevelMng.Level = 0;
 
             GameManager.I.UIMng.GameOverActions(GameManager.I.LevelMng.EndingStaus);

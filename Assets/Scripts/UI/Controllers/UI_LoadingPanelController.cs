@@ -9,15 +9,40 @@ namespace TeamF
     {
         public Text LoadingText;
 
+        public float RepeatTime;
+        float timer;
+
+        string previusText;
+        string currentText = "Loading";
+
+        private void Start()
+        {
+            LoadingText.text = currentText;
+        }
+
         void Update()
         {
-            if (GameManager.I.LevelMng.LoadindProgress != -1f)
+            timer += Time.deltaTime;
+            if(timer >= RepeatTime)
             {
-                float value = GameManager.I.LevelMng.LoadindProgress * 100;
-                LoadingText.text = value.ToString() + " %";
+                LoadingText.text = AnimatedLoading();
+                timer = 0;
             }
+        }
+
+        string AnimatedLoading()
+        {
+            previusText = currentText;
+            if (previusText.Contains("..."))
+                currentText = "Loading";
+            else if (previusText.Contains(".."))
+                currentText = "Loading...";
+            else if (previusText.Contains("."))
+                currentText = "Loading..";
             else
-                LoadingText.text = "0 %";
+                currentText = "Loading.";
+
+            return currentText;
         }
     }
 }

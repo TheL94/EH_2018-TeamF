@@ -22,6 +22,8 @@ namespace TeamF
             }
 
             (target as MonoBehaviour).GetComponentInChildren<BlinkController>().SlowedBlink(elementalData.TimeOfEffect);
+
+            this.AddScore(_target);
         }
 
         public void DoStopEffect()

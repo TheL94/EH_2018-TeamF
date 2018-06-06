@@ -19,4 +19,18 @@ namespace TeamF
         bool DoUpdate();
         void DoStopEffect();
     }
+
+    public static class IElementalEffectBehaviourExtension
+    {
+        /// <summary>
+        /// Instanzia il prefab della combo elementale e lancia l'evento per in counter delle combo elementali.
+        /// </summary>
+        /// <param name="_folderPath">Il percorso all'interno della cartella resources del prefab della combo elementale</param>
+        public static void AddScore(this IElementalEffectBehaviour _EffectBehaviour, IEffectable _target)
+        {
+            if (_target.GetType().IsAssignableFrom(typeof(Enemy)))
+                if (ScoreCounter.OnScoreAction != null)
+                    ScoreCounter.OnScoreAction(ScoreType.EnemyComboEffet);
+        }
+    }   
 }

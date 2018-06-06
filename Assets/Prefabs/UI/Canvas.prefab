@@ -4560,6 +4560,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LoadingText: {fileID: 114046857036791950}
+  RepeatTime: 0.5
 --- !u!114 &114573070476229000
 MonoBehaviour:
   m_ObjectHideFlags: 1
