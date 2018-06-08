@@ -12,6 +12,7 @@ namespace TeamF
         public int BestScore { get { return PlayerPrefs.GetInt(prefsID); } private set { PlayerPrefs.SetInt(prefsID, value); } }
         const string prefsID = "PlayerBestScore";
 
+        public int LastPartialScore { get; private set; }
         public int CurrentLevelScore { get; private set; }
         public int TotalScore { get; private set; }
 
@@ -41,8 +42,6 @@ namespace TeamF
             {
                 TotalScore += CurrentLevelScore;
                 WriteBestScore();
-
-                CurrentLevelScore = 0;
             }
             else if (_levelEnding == LevelEndingStaus.Lost)
             {
@@ -52,14 +51,16 @@ namespace TeamF
                     WriteBestScore();
                 }
 
-                CurrentLevelScore = 0;
                 TotalScore = 0;
             }
             else
             {
-                CurrentLevelScore = 0;
                 TotalScore = 0;
             }
+
+            LastPartialScore = CurrentLevelScore;
+            CurrentLevelScore = 0;
+
         }
 
         void WriteBestScore()
