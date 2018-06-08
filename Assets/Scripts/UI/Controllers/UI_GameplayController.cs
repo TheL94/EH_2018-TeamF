@@ -12,7 +12,7 @@ namespace TeamF
         public AmmoIndicator PoisonAmmo;
         public AmmoIndicator ThunderAmmo;
         public Text ComboCounterText;
-
+        public Text ScoreText;
 
         public Slider KillPointsSlider;
         public Slider LifeSlider;
@@ -26,6 +26,13 @@ namespace TeamF
             Events_UIController.OnOverheatingChanged += UpdateOverheatingSlider;
 
             ComboCounter.OnCounterChanged += UpdateComboCounter;
+            ScoreCounter.OnScoreChange += UpdateScore;
+        }
+
+        public void Init()
+        {
+            UpdateScore(0);
+            UpdateComboCounter(0);
         }
 
         /// <summary>
@@ -118,6 +125,11 @@ namespace TeamF
             MachineGunOverhatingCtrl.UpdateSlider(_value, _totalOverheating);
         }
 
+        void UpdateScore(int _score)
+        {
+            ScoreText.text = "Score: " + _score;
+        }
+
         private void OnDisable()
         {
             Events_UIController.OnAmmoChanged -= UpdateAmmo;
@@ -125,6 +137,8 @@ namespace TeamF
             Events_UIController.OnLifeChanged -= UpdateLifeSlider;
             ComboCounter.OnCounterChanged -= UpdateComboCounter;
             Events_UIController.OnOverheatingChanged -= UpdateOverheatingSlider;
+            ScoreCounter.OnScoreChange -= UpdateScore;
+
         }
     }
 }
