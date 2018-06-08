@@ -12,9 +12,10 @@ namespace TeamF
         public int BestScore { get { return PlayerPrefs.GetInt(prefsID); } private set { PlayerPrefs.SetInt(prefsID, value); } }
         const string prefsID = "PlayerBestScore";
 
+        public int CurrentLevelScore { get; private set; }
+        public int TotalScore { get; private set; }
+
         int ComboMultiplier { get { return GameManager.I.ComboCounter.Count; } set { GameManager.I.ComboCounter.Count = value; } }
-        int currentLevelScore;
-        int totalScore;       
 
         #region Event
         public delegate void ScoreCountEvent(ScoreType _type);
@@ -38,33 +39,33 @@ namespace TeamF
         {
             if (_levelEnding == LevelEndingStaus.Won)
             {
-                totalScore += currentLevelScore;
+                TotalScore += CurrentLevelScore;
                 WriteBestScore();
 
-                currentLevelScore = 0;
+                CurrentLevelScore = 0;
             }
             else if (_levelEnding == LevelEndingStaus.Lost)
             {
                 if (SaveScoreOnGameLost)
                 {
-                    totalScore += currentLevelScore;
+                    TotalScore += CurrentLevelScore;
                     WriteBestScore();
                 }
 
-                currentLevelScore = 0;
-                totalScore = 0;
+                CurrentLevelScore = 0;
+                TotalScore = 0;
             }
             else
             {
-                currentLevelScore = 0;
-                totalScore = 0;
+                CurrentLevelScore = 0;
+                TotalScore = 0;
             }
         }
 
         void WriteBestScore()
         {
-            if (totalScore > BestScore)
-                BestScore = totalScore;
+            if (TotalScore > BestScore)
+                BestScore = TotalScore;
         }
 
         void AddScore(ScoreType _type)
@@ -73,15 +74,15 @@ namespace TeamF
             if (scoreValue != null)
             {
                 if (ComboMultiplier != 0)
-                    currentLevelScore += scoreValue.Value * ComboMultiplier;
+                    CurrentLevelScore += scoreValue.Value * ComboMultiplier;
                 else
-                    currentLevelScore += scoreValue.Value;
+                    CurrentLevelScore += scoreValue.Value;
 
-                if (currentLevelScore < 0)
-                    currentLevelScore = 0;
+                if (CurrentLevelScore < 0)
+                    CurrentLevelScore = 0;
 
                 if (OnScoreChange != null)
-                    OnScoreChange(currentLevelScore);
+                    OnScoreChange(CurrentLevelScore);
 
                 if (_type == ScoreType.PlayerDamage)
                     ComboMultiplier = 0;
