@@ -43,10 +43,13 @@ namespace TeamF
             }
         }
 
-        public void TogglePauseAll(bool _value)
+        public void TogglePauseAll(bool _value, bool _toggleMusic)
         {
             foreach (AudioSource source in allSources)
             {
+                if (!_toggleMusic && source.tag == "MusicAudioSource")
+                    continue;
+
                 if (_value)
                     source.Pause();
                 else
