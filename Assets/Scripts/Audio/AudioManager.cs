@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using DG.Tweening;
 
 namespace TeamF
 {
     public class AudioManager : MonoBehaviour
     {
+        public float FadeTime;
         public List<ClipData> Clips = new List<ClipData>();
 
         List<AudioSource> allSources;
@@ -55,30 +57,43 @@ namespace TeamF
         public void PlaySound(Clips _clip)
         {
             ClipData clipToPlay = GetClip(_clip);
-            AudioSource availableSource = GetAvailableSurce((int)_clip);
+            AudioSource availableSource = GetAvailableSource((int)_clip);
 
-            if(clipToPlay != null && availableSource != null)
+            if(clipToPlay != null && availableSource != null && clipToPlay.Clip != null)
             {
-                availableSource.clip = clipToPlay.Clip;
-                availableSource.volume = clipToPlay.Volume;
-                availableSource.Play();
+                if (!availableSource.isPlaying)
+                    ChangeClip(availableSource, clipToPlay);
+                else
+                    availableSource.DOFade(0f, FadeTime).OnComplete(() => { ChangeClip(availableSource, clipToPlay); });
             }
         }
 
-        AudioSource GetAvailableSurce(int _clipNumber)
+        void ChangeClip(AudioSource _source, ClipData _data)
+        {
+            _source.clip = _data.Clip;
+            _source.volume = _data.Volume;
+            _source.Play();
+        }
+
+        AudioSource GetAvailableSource(int _clipNumber)
         {
             List<AudioSource> sources = null;
 
             if(_clipNumber == 0 || _clipNumber == 4) // Music
-                sources = new List<AudioSource>() { MusicSource };
+                return MusicSource;
+
             else if (_clipNumber >= 1 && _clipNumber < 4) // Menù
                 sources = GenricSources;
+
             else if (_clipNumber >= 5 && _clipNumber < 8) // Ambience
                 sources = new List<AudioSource>() { AmbienceSources };
+
             else if (_clipNumber >= 8 && _clipNumber < 13) // Character
                 sources = CharacterSources;
+
             else if (_clipNumber >= 13 && _clipNumber < 16) // Enemys
                 sources = EnemySources;
+
             else if (_clipNumber >= 16 && _clipNumber < 23) // Combos
                 sources = ComboSources;
 

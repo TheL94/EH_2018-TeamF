@@ -2912,6 +2912,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd810b4f7195c1b40bc6a1b21f4f049d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FadeTime: 1
   Clips:
   - ID: 8
     Clip: {fileID: 8300000, guid: 449bd0d5227fc844aab582f2f78e5578, type: 3}
@@ -2964,23 +2965,20 @@ MonoBehaviour:
   - ID: 6
     Clip: {fileID: 8300000, guid: 8b0af8a235a848b4a86005b0aba1f24a, type: 3}
     Volume: 0.8
-  - ID: 16
-    Clip: {fileID: 8300000, guid: 4883e5e4714b3f3409d7fa473b84ee5a, type: 3}
+  - ID: 7
+    Clip: {fileID: 0}
     Volume: 0.8
   - ID: 16
     Clip: {fileID: 8300000, guid: 4883e5e4714b3f3409d7fa473b84ee5a, type: 3}
     Volume: 0.8
-  - ID: 16
-    Clip: {fileID: 8300000, guid: 22189befe8af68d4d9d2cbcf180864ee, type: 3}
-    Volume: 0.8
-  - ID: 16
+  - ID: 17
     Clip: {fileID: 8300000, guid: 4370b0f0115c612419f7337a598f98e5, type: 3}
     Volume: 0.8
-  - ID: 16
+  - ID: 14
     Clip: {fileID: 8300000, guid: 667d279dc0eca4142ac44fc5a12d0dfd, type: 3}
     Volume: 0.8
-  - ID: 16
-    Clip: {fileID: 8300000, guid: 667d279dc0eca4142ac44fc5a12d0dfd, type: 3}
+  - ID: 0
+    Clip: {fileID: 8300000, guid: 5d7655826a61ecd49b06834def5fddfe, type: 3}
     Volume: 0.8
 --- !u!114 &114912716172776326
 MonoBehaviour:
