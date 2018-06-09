@@ -2967,6 +2967,21 @@ MonoBehaviour:
   - ID: 16
     Clip: {fileID: 8300000, guid: 4883e5e4714b3f3409d7fa473b84ee5a, type: 3}
     Volume: 0.8
+  - ID: 16
+    Clip: {fileID: 8300000, guid: 4883e5e4714b3f3409d7fa473b84ee5a, type: 3}
+    Volume: 0.8
+  - ID: 16
+    Clip: {fileID: 8300000, guid: 22189befe8af68d4d9d2cbcf180864ee, type: 3}
+    Volume: 0.8
+  - ID: 16
+    Clip: {fileID: 8300000, guid: 4370b0f0115c612419f7337a598f98e5, type: 3}
+    Volume: 0.8
+  - ID: 16
+    Clip: {fileID: 8300000, guid: 667d279dc0eca4142ac44fc5a12d0dfd, type: 3}
+    Volume: 0.8
+  - ID: 16
+    Clip: {fileID: 8300000, guid: 667d279dc0eca4142ac44fc5a12d0dfd, type: 3}
+    Volume: 0.8
 --- !u!114 &114912716172776326
 MonoBehaviour:
   m_ObjectHideFlags: 1
