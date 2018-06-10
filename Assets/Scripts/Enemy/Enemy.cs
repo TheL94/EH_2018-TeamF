@@ -108,6 +108,9 @@ namespace TeamF
 
             GameManager.I.AudioMng.PlaySound(Clips.EnemyDamage);
 
+            if (ScoreCounter.OnScoreAction != null)
+                ScoreCounter.OnScoreAction(ScoreType.EnemyDamage);
+
             AI_Enemy.CurrentState = Data.DamageState;
 
             if (blinkCtrl != null)

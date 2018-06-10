@@ -16,7 +16,33 @@ namespace TeamF.AI
         bool CheckLife(Enemy _enemy)
         {
             if (_enemy.Life <= 0)
+            {
+                if (ScoreCounter.OnScoreAction != null)
+                {
+                    switch (_enemy.Data.EnemyType)
+                    {
+                        case EnemyType.Melee:
+                            ScoreCounter.OnScoreAction(ScoreType.EnemyMeleeKill);
+                            break;
+                        case EnemyType.Ranged:
+                            ScoreCounter.OnScoreAction(ScoreType.EnemyRangedKill);
+                            break;
+                        case EnemyType.Fire:
+                            ScoreCounter.OnScoreAction(ScoreType.EnemyFireKill);
+                            break;
+                        case EnemyType.Water:
+                            ScoreCounter.OnScoreAction(ScoreType.EnemyWaterKill);
+                            break;
+                        case EnemyType.Poison:
+                            ScoreCounter.OnScoreAction(ScoreType.EnemyPoisonKill);
+                            break;
+                        case EnemyType.Thunder:
+                            ScoreCounter.OnScoreAction(ScoreType.EnemyThunderKill);
+                            break;
+                    }                
+                }
                 return false;
+            }
 
             return true;
         }

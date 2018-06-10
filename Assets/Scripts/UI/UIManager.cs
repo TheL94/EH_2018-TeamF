@@ -17,6 +17,8 @@ namespace TeamF
         [HideInInspector]
         public MenuBase CurrentMenu;
 
+        bool isGamePaused;
+
         public void MainMenuActions()
         {
             UI_ValuesPanelCtrl.gameObject.SetActive(false);
@@ -25,6 +27,7 @@ namespace TeamF
             UI_LoadingPanelController.gameObject.SetActive(false);
             UI_PauseController.gameObject.SetActive(false);
             UI_MainMenuCtrl.Init();
+            isGamePaused = false;
         }
 
         ///TODO: qualcuno deve richiamare questa funzione passando i valori già settati dei dati, in modo che vengano scritti nei campi presenti
@@ -46,6 +49,12 @@ namespace TeamF
             UI_GameOverCtrl.gameObject.SetActive(false);
             UI_PauseController.gameObject.SetActive(false);
             UI_LoadingPanelController.gameObject.SetActive(false);
+
+            if (!isGamePaused)
+            {
+                UI_GameplayCtrl.Init();
+                isGamePaused = false;
+            }
         }
 
         public void PauseActions()
@@ -56,6 +65,7 @@ namespace TeamF
             UI_LoadingPanelController.gameObject.SetActive(false);
             UI_PauseController.gameObject.SetActive(true);
             UI_PauseController.Init();
+            isGamePaused = true;
         }
 
         public void GameOverActions(LevelEndingStaus _levelStatus)

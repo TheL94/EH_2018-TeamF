@@ -30,6 +30,10 @@ namespace TeamF
         public CursorController CursorCtrl;
         [HideInInspector]
         public PostProcessController PPCtrl;
+        [HideInInspector]
+        public ComboCounter ComboCounter;
+        [HideInInspector]
+        public ScoreCounter ScoreCounter;
 
         public List<float> KillsToWinPerLevel = new List<float>();
         public float ComboCounterTimer;

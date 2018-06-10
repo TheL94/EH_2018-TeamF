@@ -17,6 +17,8 @@ namespace TeamF
             startMultiplyer = target.DamagePercentage;
             target.DamagePercentage = _data.EffectValue;
             (target as MonoBehaviour).GetComponentInChildren<ParticlesController>().ActivateParticles(ParticlesController.ParticleType.IncreaseDamage);
+
+            this.AddScore(_target);
         }
 
         public void DoStopEffect()

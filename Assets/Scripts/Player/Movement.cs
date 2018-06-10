@@ -6,9 +6,10 @@ namespace TeamF
 {
     public class Movement : MonoBehaviour
     {
-        public float MovementSpeed { get; set; }
-        float RotationSpeed;
+        public float MovementSpeed { get { return character.MovementSpeed; } }
+        public float RotationSpeed { get { return character.Data.RotationSpeed; } }
 
+        Character character;
         Rigidbody playerRigidbody;
         ParticlesController particle;
 
@@ -26,17 +27,15 @@ namespace TeamF
         #endregion
 
 
-        public void Init(float _movementSpeed, float _rotationSpeed, DashStruct _dashData)
+        public void Init(Character _character, DashStruct _dashData)
         {
+            character = _character;
             cam = Camera.main.transform;
             anim = GetComponentInChildren<Animator>();
             playerRigidbody = GetComponent<Rigidbody>();
             particle = GetComponentInChildren<ParticlesController>();
             dashData = _dashData;
             chargeCount = dashData.ChargeCount;
-            MovementSpeed = _movementSpeed;
-            RotationSpeed = _rotationSpeed;
-
         }
 
         public void Move(Vector3 _position)
