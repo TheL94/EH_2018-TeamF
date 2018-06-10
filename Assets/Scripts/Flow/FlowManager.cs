@@ -246,23 +246,20 @@ namespace TeamF
 
         void PauseActions(bool _isGamePaused)
         {
+            GameManager.I.EnemyMng.CanSpawn = !_isGamePaused;
             GameManager.I.EnemyMng.ToggleAllAIs(!_isGamePaused);
             GameManager.I.AudioMng.TogglePauseAll(_isGamePaused, false);
+            GameManager.I.CursorCtrl.SetCursor(!_isGamePaused);
 
             if (_isGamePaused)
-            {
-                GameManager.I.CursorCtrl.SetCursor(false);
                 GameManager.I.UIMng.PauseActions();
-            }
             else
-            {
-                GameManager.I.CursorCtrl.SetCursor(true);
                 GameManager.I.UIMng.GameplayActions();
-            }
         }
 
         void EndRoundActions()
         {
+            GameManager.I.EnemyMng.ToggleAllAIs(true);
             GameManager.I.Player.Character.ReInit();
             GameManager.I.EnemyMng.EndGameplayActions();
             GameManager.I.CursorCtrl.SetCursor(false);
@@ -276,8 +273,8 @@ namespace TeamF
 
             if (GameManager.I.LevelMng.EndingStaus == LevelEndingStaus.Interrupted)
             {
+                GameManager.I.UIMng.LoadingActions();
                 GameManager.I.LevelMng.Level = 0;
-                CurrentState = FlowState.MainMenu;
                 return;
             }
 

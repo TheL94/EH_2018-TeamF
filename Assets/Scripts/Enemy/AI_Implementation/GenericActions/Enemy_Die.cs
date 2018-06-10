@@ -16,10 +16,10 @@ namespace TeamF.AI
 
         void Die(Enemy _enemy)
         {
-            _enemy.AI_Enemy.IsActive = false;
-
             if (Enemy.EnemyDeath != null)
                 Enemy.EnemyDeath(_enemy);
+
+            _enemy.AI_Enemy.IsActive = false;
         }
     }
 }

@@ -49,9 +49,7 @@ namespace TeamF
         void UnloadLevel(int _currentLevel, int _newLevel)
         {
             if (_currentLevel > 0)
-            {
                 StartCoroutine(DectivateScene(_currentLevel, _newLevel));
-            }
             else
                 LoadNewLevel(_newLevel);
         }
