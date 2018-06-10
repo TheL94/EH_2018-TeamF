@@ -16,6 +16,8 @@ namespace TeamF
             elementalData = _data;
             timer = elementalData.TimeOfEffect;
             (target as MonoBehaviour).GetComponentInChildren<BlinkController>().PoisonedBlink(elementalData.TimeOfEffect);
+
+            this.AddScore(_target);
         }
 
         public bool DoUpdate()

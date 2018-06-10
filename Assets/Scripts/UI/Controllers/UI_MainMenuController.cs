@@ -1,15 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace TeamF
 {
     public class UI_MainMenuController : MenuBase
     {
+        public Text BestScore;
+
         public override void Init()
         {
             base.Init();
             GameManager.I.UIMng.CurrentMenu = this;
+
+            BestScore.text = "Best Score: " + GameManager.I.ScoreCounter.BestScore;
 
             if (!Debug.isDebugBuild)
             {

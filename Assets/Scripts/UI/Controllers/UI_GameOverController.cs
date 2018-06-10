@@ -11,6 +11,9 @@ namespace TeamF
         public Sprite WinImage;
         public Sprite LoseImage;
 
+        public Text PartialScore;
+        public Text TotalScore;
+
         public void Init(LevelEndingStaus _levelStaus)
         {
             Image img = GetComponent<Image>();
@@ -33,6 +36,9 @@ namespace TeamF
 
             GameManager.I.UIMng.CurrentMenu = this;
             base.Init();
+
+            PartialScore.text = GameManager.I.ScoreCounter.LastPartialScore.ToString();
+            TotalScore.text = GameManager.I.ScoreCounter.TotalScore.ToString();
         }
 
         public override void Select()

@@ -7,10 +7,15 @@ namespace TeamF
 {
     public class UI_PauseController : MenuBase
     {
+        public Text PartialScore;
+        public Text TotalScore;
+
         public override void Init()
         {
             GameManager.I.UIMng.CurrentMenu = this;
             base.Init();
+            PartialScore.text = GameManager.I.ScoreCounter.CurrentLevelScore.ToString();
+            TotalScore.text = GameManager.I.ScoreCounter.TotalScore.ToString();
         }
 
         public override void Select()

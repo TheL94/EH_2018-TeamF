@@ -18,7 +18,7 @@ namespace TeamF.AI
         {
             _enemy.GetComponent<Collider>().enabled = false;
 
-            if(GameManager.I.CurrentState != FlowState.EndRound)
+            if(GameManager.I.CurrentState == FlowState.Gameplay)
                 GameManager.I.AudioMng.PlaySound(Clips.EnemyDeath);
 
             _enemy.GetComponentInChildren<ParticlesController>().StopAllParticles();
@@ -26,9 +26,7 @@ namespace TeamF.AI
 
             EffectController effect = _enemy.GetComponent<EffectController>();
             if (effect != null)
-            {
                 effect.StopAllEffects();
-            }
 
             if (Enemy.UpdateKill != null)
                 Enemy.UpdateKill(_enemy);

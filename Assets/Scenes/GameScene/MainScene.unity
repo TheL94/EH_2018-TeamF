@@ -152,6 +152,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4904682115301764, guid: 147fcc9a9e9101345a30dc035775ffa9, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4610678333779276, guid: 147fcc9a9e9101345a30dc035775ffa9, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 147fcc9a9e9101345a30dc035775ffa9, type: 2}
   m_IsPrefabParent: 0
@@ -222,7 +230,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1950903103
+--- !u!1001 &868974263
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -260,16 +268,6 @@ Prefab:
     - target: {fileID: 4608509917988704, guid: 024de7879b837ef4a834cdd88112491f, type: 2}
       propertyPath: m_RootOrder
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114909744740301554, guid: 024de7879b837ef4a834cdd88112491f,
-        type: 2}
-      propertyPath: Clips.Array.data[22].Clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 5d7655826a61ecd49b06834def5fddfe, type: 3}
-    - target: {fileID: 114909744740301554, guid: 024de7879b837ef4a834cdd88112491f,
-        type: 2}
-      propertyPath: Clips.Array.data[18].ID
-      value: 16
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 024de7879b837ef4a834cdd88112491f, type: 2}
