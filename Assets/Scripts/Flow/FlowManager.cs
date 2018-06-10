@@ -265,7 +265,9 @@ namespace TeamF
 
         void EndRoundActions()
         {
+            Time.timeScale = 1;
             GameManager.I.EnemyMng.ToggleAllAIs(true);
+
             GameManager.I.Player.Character.ReInit();
             GameManager.I.EnemyMng.EndGameplayActions();
             GameManager.I.CursorCtrl.SetCursor(false);
