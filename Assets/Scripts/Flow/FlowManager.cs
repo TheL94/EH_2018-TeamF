@@ -252,9 +252,15 @@ namespace TeamF
             GameManager.I.CursorCtrl.SetCursor(!_isGamePaused);
 
             if (_isGamePaused)
+            {
+                Time.timeScale = 0;
                 GameManager.I.UIMng.PauseActions();
+            }
             else
+            {
+                Time.timeScale = 1;
                 GameManager.I.UIMng.GameplayActions();
+            }
         }
 
         void EndRoundActions()
