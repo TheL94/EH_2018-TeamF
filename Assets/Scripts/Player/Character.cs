@@ -126,10 +126,7 @@ namespace TeamF
         public float MovementSpeed
         {
             get { return _movementSpeed; }
-            set {
-                _movementSpeed = value;
-                Debug.Log(_movementSpeed);
-            }
+            set { _movementSpeed = value; }
         }
         #endregion
 
@@ -243,19 +240,9 @@ namespace TeamF
             }
         }
 
-        void PickupWeapon(WeaponCrate _crate)
-        {
-            if(_crate != null)
-            {
-                GameManager.I.AudioMng.PlaySound(Clips.CharacterPickUp);
-                weaponController.SetCurrentWeapon(_crate.WeaponType);
-            }
-        }
-
         private void OnTriggerEnter(Collider other)
         {
             PickupAmmo(other.GetComponent<AmmoCrate>());
-            PickupWeapon(other.GetComponent<WeaponCrate>());
         }
     }
 }
