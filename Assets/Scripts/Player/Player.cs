@@ -73,21 +73,21 @@ namespace TeamF
                 if (Input.GetKeyDown(KeyCode.Space))
                     Character.movement.Dash(finalDirection);
 
-                if (Input.GetAxis("Mouse ScrollWheel") < 0f || Input.GetKeyDown(KeyCode.E))
+                if (Input.GetAxis("Mouse ScrollWheel") > 0f || Input.GetKeyDown(KeyCode.E))
                 {
                     Character.SelectPreviousAmmo();
                 }
-                else if (Input.GetAxis("Mouse ScrollWheel") > 0f || Input.GetKeyDown(KeyCode.Q))
+                else if (Input.GetAxis("Mouse ScrollWheel") < 0f || Input.GetKeyDown(KeyCode.Q))
                 {
                     Character.SelectNextAmmo();
                 }
 
                 Character.movement.Move(finalDirection);
 
-                if (Input.GetMouseButton(0))
+                if (Input.GetMouseButton(1))
                     Character.DefaultShot();
 
-                if (Input.GetMouseButton(1))
+                if (Input.GetMouseButton(0))
                     Character.ElementalShot();
 
                 Character.movement.Turn();

@@ -227,7 +227,11 @@ namespace TeamF
                     if (_crate.Type == Data.BulletDatas[i].ElementalAmmo.AmmoType)
                     {
                         //Aggiungi le munizioni a questo tipo;
-                        bulletDatasInstancies[i].ElementalAmmo.Ammo += _crate.Ammo;
+                        if ((bulletDatasInstancies[i].ElementalAmmo.Ammo + _crate.Ammo) > bulletDatasInstancies[i].TotalAmmo)
+                            bulletDatasInstancies[i].ElementalAmmo.Ammo = bulletDatasInstancies[i].TotalAmmo;
+                        else
+                            bulletDatasInstancies[i].ElementalAmmo.Ammo += _crate.Ammo;
+
                         Events_UIController.AmmoChange(bulletDatasInstancies[i].ElementalAmmo);
                         _crate.CrateCollected();
                         return;
