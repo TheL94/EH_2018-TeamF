@@ -126,7 +126,10 @@ namespace TeamF
         public float MovementSpeed
         {
             get { return _movementSpeed; }
-            set { _movementSpeed = value;}
+            set {
+                _movementSpeed = value;
+                Debug.Log(_movementSpeed);
+            }
         }
         #endregion
 

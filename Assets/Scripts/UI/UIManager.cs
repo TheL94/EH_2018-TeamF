@@ -13,6 +13,7 @@ namespace TeamF
         public UI_ValuesPanelController UI_ValuesPanelCtrl;
         public UI_PauseController UI_PauseController;
         public UI_LoadingPanelController UI_LoadingPanelController;
+        public UI_CreditsController UI_CreditsController;
 
         [HideInInspector]
         public MenuBase CurrentMenu;
@@ -24,10 +25,18 @@ namespace TeamF
             UI_ValuesPanelCtrl.gameObject.SetActive(false);
             UI_MainMenuCtrl.gameObject.SetActive(true);
             UI_GameOverCtrl.gameObject.SetActive(false);
+            UI_CreditsController.gameObject.SetActive(false);
             UI_LoadingPanelController.gameObject.SetActive(false);
             UI_PauseController.gameObject.SetActive(false);
             UI_MainMenuCtrl.Init();
             isGamePaused = false;
+        }
+
+        public void CreditsActions()
+        {
+            UI_MainMenuCtrl.gameObject.SetActive(false);
+            UI_CreditsController.gameObject.SetActive(true);
+            UI_CreditsController.Init();
         }
 
         ///TODO: qualcuno deve richiamare questa funzione passando i valori già settati dei dati, in modo che vengano scritti nei campi presenti
@@ -37,6 +46,8 @@ namespace TeamF
             UI_MainMenuCtrl.gameObject.SetActive(false);
             UI_GameOverCtrl.gameObject.SetActive(false);
             UI_ValuesPanelCtrl.gameObject.SetActive(true);
+            UI_CreditsController.gameObject.SetActive(false);
+
             UI_LoadingPanelController.gameObject.SetActive(false);
             UI_PauseController.gameObject.SetActive(false);
             UI_ValuesPanelCtrl.Init(_characterData, _enemyData);
@@ -49,6 +60,8 @@ namespace TeamF
             UI_GameOverCtrl.gameObject.SetActive(false);
             UI_PauseController.gameObject.SetActive(false);
             UI_LoadingPanelController.gameObject.SetActive(false);
+            UI_CreditsController.gameObject.SetActive(false);
+
 
             if (!isGamePaused)
             {
@@ -64,6 +77,8 @@ namespace TeamF
             UI_GameOverCtrl.gameObject.SetActive(false);
             UI_LoadingPanelController.gameObject.SetActive(false);
             UI_PauseController.gameObject.SetActive(true);
+            UI_CreditsController.gameObject.SetActive(false);
+
             UI_PauseController.Init();
             isGamePaused = true;
         }
@@ -75,6 +90,8 @@ namespace TeamF
             UI_LoadingPanelController.gameObject.SetActive(false);
             UI_PauseController.gameObject.SetActive(false);
             UI_GameOverCtrl.gameObject.SetActive(true);
+            UI_CreditsController.gameObject.SetActive(false);
+
             UI_GameOverCtrl.Init(_levelStatus);
         }
 
@@ -84,6 +101,8 @@ namespace TeamF
             UI_MainMenuCtrl.gameObject.SetActive(false);
             UI_GameOverCtrl.gameObject.SetActive(false);
             UI_PauseController.gameObject.SetActive(false);
+            UI_CreditsController.gameObject.SetActive(false);
+
             UI_LoadingPanelController.gameObject.SetActive(true);
         }
     }
