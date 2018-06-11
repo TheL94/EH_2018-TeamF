@@ -50,10 +50,10 @@ namespace TeamF
                     if (SelectableButtons.Count > 1)
                         GameManager.I.CurrentState = FlowState.ManageMap;
                     else
-                        GameManager.I.CurrentState = FlowState.MainMenu;
+                        GameManager.I.LevelMng.Level = 0; // Main Menù
                     break;
                 case 1:
-                    GameManager.I.CurrentState = FlowState.MainMenu;
+                    GameManager.I.LevelMng.Level = 0; // Main Menù
                     break;
             }
             base.Select();
