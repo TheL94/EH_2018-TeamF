@@ -361,6 +361,7 @@ namespace TeamF
         #endregion
 
         #region Test Scene
+        [HideInInspector]
         public bool IgnoreTarget;
 
         public void SpawnEnemyForTestScene()
