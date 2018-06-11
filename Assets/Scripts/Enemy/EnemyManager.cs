@@ -58,11 +58,9 @@ namespace TeamF
         /// </summary>
         public void EndGameplayActions()
         {
-            //ToggleAllAIs(false);
             SetAIDeathState();
             CanSpawn = false;
             spawnPoints.Clear();
-            //ResetEnemies();
         }
         #endregion
 

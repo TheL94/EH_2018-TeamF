@@ -159,7 +159,6 @@ namespace TeamF
         {
             //Vector3 closetPoint = other.ClosestPoint(transform.position);
 
-
             IDamageable damageable = other.GetComponent<IDamageable>();
             if (damageable == null)
             {
@@ -170,7 +169,6 @@ namespace TeamF
 
             if ((damageable as IShooter) == owner)
                 return;
-
 
             if (owner.GetType() == typeof(Enemy))
             {
@@ -207,8 +205,6 @@ namespace TeamF
                 //DropFragParticle(closetPoint);
                 return;
             }
-
-
         }
 
         void DropFragParticle(Vector3 _position)

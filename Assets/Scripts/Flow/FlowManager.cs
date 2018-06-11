@@ -170,7 +170,6 @@ namespace TeamF
             GameManager.I.PoolMng = GameManager.I.GetComponentInChildren<PoolManager>();
             GameManager.I.PoolMng.Init();
 
-            GameManager.I.GetComponent<ComboCounter>().Init(GameManager.I.ComboCounterTimer);
             GameManager.I.EnemyMng = GameManager.I.GetComponentInChildren<EnemyManager>();
             GameManager.I.AmmoController = GameManager.I.GetComponent<AmmoCratesController>();
 
@@ -185,6 +184,9 @@ namespace TeamF
 
             GameManager.I.CursorCtrl = GameManager.I.GetComponentInChildren<CursorController>();
             GameManager.I.PPCtrl = Camera.main.GetComponentInChildren<PostProcessController>();
+
+            GameManager.I.ComboCounter = GameManager.I.GetComponent<ComboCounter>();           
+            GameManager.I.ScoreCounter = GameManager.I.GetComponent<ScoreCounter>();
 
             CurrentState = FlowState.MainMenu;
         }
@@ -224,6 +226,9 @@ namespace TeamF
             else if (GameManager.I.LevelMng.Level <= 9)
                 GameManager.I.PPCtrl.SetPostProcess(PostProcessController.MapType.City);
 
+            GameManager.I.ComboCounter.Init(GameManager.I.ComboCounterTimer);
+            GameManager.I.ScoreCounter.Init();
+
             CurrentState = FlowState.Gameplay;
         }
 
@@ -241,23 +246,28 @@ namespace TeamF
 
         void PauseActions(bool _isGamePaused)
         {
+            GameManager.I.EnemyMng.CanSpawn = !_isGamePaused;
             GameManager.I.EnemyMng.ToggleAllAIs(!_isGamePaused);
-            GameManager.I.AudioMng.TogglePauseAll(_isGamePaused);
+            GameManager.I.AudioMng.TogglePauseAll(_isGamePaused, false);
+            GameManager.I.CursorCtrl.SetCursor(!_isGamePaused);
 
             if (_isGamePaused)
             {
-                GameManager.I.CursorCtrl.SetCursor(false);
+                Time.timeScale = 0;
                 GameManager.I.UIMng.PauseActions();
             }
             else
             {
-                GameManager.I.CursorCtrl.SetCursor(true);
+                Time.timeScale = 1;
                 GameManager.I.UIMng.GameplayActions();
             }
         }
 
         void EndRoundActions()
         {
+            Time.timeScale = 1;
+            GameManager.I.EnemyMng.ToggleAllAIs(true);
+
             GameManager.I.Player.Character.ReInit();
             GameManager.I.EnemyMng.EndGameplayActions();
             GameManager.I.CursorCtrl.SetCursor(false);
@@ -265,14 +275,18 @@ namespace TeamF
             GameManager.I.LevelMng.ClearCombos();
             GameManager.I.AudioMng.StopAllSound();
 
+            GameManager.I.ScoreCounter.Clear();
+            GameManager.I.ComboCounter.Clear();
+            GameManager.I.ScoreCounter.EndRoundAction(GameManager.I.LevelMng.EndingStaus);
+
             if (GameManager.I.LevelMng.EndingStaus == LevelEndingStaus.Interrupted)
             {
+                GameManager.I.UIMng.LoadingActions();
                 GameManager.I.LevelMng.Level = 0;
-                CurrentState = FlowState.MainMenu;
                 return;
             }
 
-            if (GameManager.I.LevelMng.EndingStaus == LevelEndingStaus.Lost)
+            if (GameManager.I.LevelMng.EndingStaus != LevelEndingStaus.Won)
                 GameManager.I.LevelMng.Level = 0;
 
             GameManager.I.UIMng.GameOverActions(GameManager.I.LevelMng.EndingStaus);

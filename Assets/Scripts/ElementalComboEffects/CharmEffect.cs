@@ -18,6 +18,8 @@ namespace TeamF
                 (target as ICharmable).IsCharmed = true;
                 (target as MonoBehaviour).GetComponentInChildren<ParticlesController>().ActivateParticles(ParticlesController.ParticleType.Confusion);
             }
+
+            this.AddScore(_target);
         }
 
         public void DoStopEffect()
