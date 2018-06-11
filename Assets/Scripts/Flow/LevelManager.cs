@@ -42,7 +42,8 @@ namespace TeamF
         public int Level { get { return _level; } set { OnLevelChange(value); } }
 
         void OnLevelChange(int _newLevel)
-        {           
+        {
+            GameManager.I.UIMng.LoadingActions();
             UnloadLevel(Level, _newLevel);
         }
 

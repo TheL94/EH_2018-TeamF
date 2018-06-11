@@ -225,7 +225,7 @@ namespace TeamF
                 yield return new WaitForEndOfFrame();
 
             particle.gameObject.SetActive(false);
-            GameManager.I.PoolMng.UpdatePool(FragGraphicID);
+            GameManager.I.PoolMng.ReturnObject(FragGraphicID, _obj);
             Destroy(gameObject, 0.1f);
         }
     }

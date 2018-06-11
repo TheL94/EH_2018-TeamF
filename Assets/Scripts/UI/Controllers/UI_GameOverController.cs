@@ -13,6 +13,7 @@ namespace TeamF
 
         public Text PartialScore;
         public Text TotalScore;
+        public Text BestScore;
 
         public void Init(LevelEndingStaus _levelStaus)
         {
@@ -39,6 +40,7 @@ namespace TeamF
 
             PartialScore.text = GameManager.I.ScoreCounter.LastPartialScore.ToString();
             TotalScore.text = GameManager.I.ScoreCounter.TotalScore.ToString();
+            BestScore.text = GameManager.I.ScoreCounter.BestScore.ToString();
         }
 
         public override void Select()
@@ -50,10 +52,10 @@ namespace TeamF
                     if (SelectableButtons.Count > 1)
                         GameManager.I.CurrentState = FlowState.ManageMap;
                     else
-                        GameManager.I.CurrentState = FlowState.MainMenu;
+                        GameManager.I.LevelMng.Level = 0; // Main Menù
                     break;
                 case 1:
-                    GameManager.I.CurrentState = FlowState.MainMenu;
+                    GameManager.I.LevelMng.Level = 0; // Main Menù
                     break;
             }
             base.Select();

@@ -8,6 +8,8 @@ namespace TeamF
     {
         [Header("Ammo")]
         public ElementalAmmo ElementalAmmo;
+        public int TotalAmmo;
+
         [Header("")]
         public GameObject BulletContainerPrefab;
         public GameObject BulletGraphicPrefab;
