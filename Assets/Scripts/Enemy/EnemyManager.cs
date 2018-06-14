@@ -10,6 +10,7 @@ namespace TeamF
         public EnemyManagerData Data;
         public EnemyManagerData DataInstance { get; set; }
 
+
         private void OnEnable()
         {
             Enemy.EnemyDeath += OnEnemyDeath;
@@ -45,6 +46,9 @@ namespace TeamF
         public void Init(EnemyManagerData _dataInstance, bool _isTestScene = false)
         {
             DataInstance = _dataInstance;
+
+            spawnNumber = 0;
+            currentLevelSpawn = 0;
 
             if (!_isTestScene)
             {
@@ -164,6 +168,7 @@ namespace TeamF
         #endregion
 
         #region Spawner
+
         public bool IsFreeToGo
         {
             get
@@ -176,12 +181,44 @@ namespace TeamF
                 return true;
             }
         }
-
         public bool CanSpawn { get; set; }
+
         List<Transform> spawnPoints = new List<Transform>();
         List<Enemy> enemiesSpawned = new List<Enemy>();
         int idCounter;
         float spawnTime;
+
+        int _currentLevelSpawn;
+        int currentLevelSpawn {
+            get { return _currentLevelSpawn; }
+            set
+            {
+                if (value < DataInstance.IncreaseQuantity.Count)
+                {
+                    if(value > 0)
+                        DataInstance.MaxEnemiesInScene = DataInstance.MaxEnemiesInScene + DataInstance.IncreaseQuantity[_currentLevelSpawn];
+
+                    _currentLevelSpawn = value;
+                }
+            }
+        }
+
+        int _spawnNumber;
+        int spawnNumber
+        {
+            get { return _spawnNumber; }
+            set
+            {
+                if(value >= Data.AfterHowSpawnIncrease)
+                {
+                    currentLevelSpawn++;
+                    _spawnNumber = 0;
+                }
+                else
+                    _spawnNumber = value;
+            }
+        }
+
 
         /// <summary>
         /// Chiama lo spawn della prima ordaMO
@@ -211,7 +248,7 @@ namespace TeamF
 
                 if (!DataInstance.BlockSpawnElemental)
                 {
-                    int elementalsEnemies = Random.Range(DataInstance.MinElementalsEnemies, DataInstance.MaxElementalsEnemies + 1);
+                    int elementalsEnemies = (Random.Range(DataInstance.MinElementalsEnemies, DataInstance.MaxElementalsEnemies + 1) + GetEnemyQuantity());
 
                     for (int j = 0; j < elementalsEnemies; j++)
                     {
@@ -227,7 +264,7 @@ namespace TeamF
 
                 if (!DataInstance.BlockSpawnRanged)
                 {
-                    int rangedEnemies = Random.Range(DataInstance.MinRangedEnemies, DataInstance.MaxRangedEnemies + 1);
+                    int rangedEnemies = (Random.Range(DataInstance.MinRangedEnemies, DataInstance.MaxRangedEnemies + 1) + GetEnemyQuantity());
 
                     for (int j = 0; j < rangedEnemies; j++)
                     {
@@ -243,7 +280,7 @@ namespace TeamF
 
                 if (!DataInstance.BlockSpawnNormal)
                 {
-                    int hordeNumber = Random.Range(DataInstance.MinNormalEnemies, DataInstance.MaxNormalEnemies + 1);
+                    int hordeNumber = (Random.Range(DataInstance.MinNormalEnemies, DataInstance.MaxNormalEnemies + 1) + GetEnemyQuantity());
 
                     for (int j = 0; j < hordeNumber; j++)
                     {
@@ -256,7 +293,9 @@ namespace TeamF
                         }
                     }
                 }
+
             }
+            spawnNumber++;
         }
 
         /// <summary>
@@ -279,6 +318,14 @@ namespace TeamF
             }
 
             return spawnIndexToExclude;
+        }
+
+        int GetEnemyQuantity()
+        {
+            if(currentLevelSpawn != 0)
+                return DataInstance.IncreaseQuantity[currentLevelSpawn];
+
+            return 0;
         }
 
         /// <summary>
