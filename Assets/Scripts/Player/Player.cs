@@ -43,6 +43,11 @@ namespace TeamF
             GameManager.I.AudioMng.PlaySound(Clips.CharacterDeath);
             GameManager.I.LevelMng.CheckGameStatus();
         }
+
+        public void ResetAnimations()
+        {
+            Character.StopWalkAnimation();
+        }
         #endregion
 
         #region Input
