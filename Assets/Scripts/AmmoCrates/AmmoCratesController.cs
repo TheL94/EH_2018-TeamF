@@ -16,7 +16,8 @@ namespace TeamF
         public void Init()
         {
             GetAmmoSpawners();
-            CreateAmmoCrate();
+            if (ammoSpawnPoints.Count > 0)
+                CreateAmmoCrate(); 
         }
 
         /// <summary>
@@ -119,9 +120,14 @@ namespace TeamF
             if (ammoSpawnPoints.Count > 0)
                 ammoSpawnPoints.Clear();
 
-            foreach (GameObject spawn in GameObject.FindGameObjectsWithTag("AmmoSpawn"))
+            GameObject[] _spawnInScene = GameObject.FindGameObjectsWithTag("AmmoSpawn");
+
+            if (_spawnInScene.Length > 0)
             {
-                ammoSpawnPoints.Add(spawn.transform);
+                foreach (GameObject spawn in _spawnInScene)
+                {
+                    ammoSpawnPoints.Add(spawn.transform);
+                } 
             }
         }
     }

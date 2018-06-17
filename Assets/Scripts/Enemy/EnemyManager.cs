@@ -53,7 +53,8 @@ namespace TeamF
             if (!_isTestScene)
             {
                 GetSpawnInScene();
-                StartCoroutine(FirstSpawn());
+                if (spawnPoints.Count > 0)
+                    StartCoroutine(FirstSpawn()); 
             }
         }
 
@@ -375,9 +376,15 @@ namespace TeamF
         {
             if (spawnPoints.Count > 0)
                 spawnPoints.Clear();
-            foreach (GameObject spawn in GameObject.FindGameObjectsWithTag("EnemySpawn"))
+
+            GameObject[] _spawnInScene = GameObject.FindGameObjectsWithTag("EnemySpawn");
+
+            if (_spawnInScene.Length > 0)
             {
-                spawnPoints.Add(spawn.transform);
+                foreach (GameObject spawn in _spawnInScene)
+                {
+                    spawnPoints.Add(spawn.transform);
+                } 
             }
         }
 
