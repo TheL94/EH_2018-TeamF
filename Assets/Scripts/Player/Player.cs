@@ -31,7 +31,11 @@ namespace TeamF
         /// <param name="_isTestScene">Se true, il character deve essere inizializzato per la scena di test, altrimenti per una scena di gioco normale</param>
         public void InitCharacter(bool _isTestScene = false)
         {
-            Vector3 playerSpawn = GameObject.FindGameObjectWithTag("PlayerSpawn").transform.position;
+            GameObject spawnPoint = GameObject.FindGameObjectWithTag("PlayerSpawn");
+            if (spawnPoint == null)
+                return;
+
+            Vector3 playerSpawn = spawnPoint.transform.position;
             Character.transform.position = playerSpawn;
 
             if(!_isTestScene)
@@ -42,6 +46,11 @@ namespace TeamF
         {
             GameManager.I.AudioMng.PlaySound(Clips.CharacterDeath);
             GameManager.I.LevelMng.CheckGameStatus();
+        }
+
+        public void ResetAnimations()
+        {
+            Character.StopWalkAnimation();
         }
         #endregion
 

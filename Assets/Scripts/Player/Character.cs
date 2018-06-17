@@ -69,6 +69,13 @@ namespace TeamF
             bulletDatasInstancies.Clear();
             MovementSpeed = Data.MovementSpeed;
         }
+
+        public void StopWalkAnimation()
+        {
+            Animator anim = GetComponentInChildren<Animator>();
+            anim.SetFloat("Forward", 0f);
+            anim.SetFloat("Turn", 0f);
+        }
         #endregion
 
         #region IDamageable

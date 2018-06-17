@@ -117,7 +117,7 @@ namespace TeamF
             if (roundPoints == PointsToWin)
             {
                 EndingStaus = LevelEndingStaus.Won;
-                GameManager.I.CurrentState = FlowState.EndRound;
+                GameManager.I.CurrentState = FlowState.PreEndRound;
                 Events_LevelController.OnKillPointChanged -= UpdateRoundPoints;
 
                 return;
@@ -126,7 +126,7 @@ namespace TeamF
             if(GameManager.I.Player.Character.Life <= 0)
             {
                 EndingStaus = LevelEndingStaus.Lost;
-                GameManager.I.CurrentState = FlowState.EndRound;
+                GameManager.I.CurrentState = FlowState.PreEndRound;
                 return;
             }
         }

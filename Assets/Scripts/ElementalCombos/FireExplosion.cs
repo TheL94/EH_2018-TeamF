@@ -17,7 +17,7 @@ namespace TeamF
         protected override void OnEnterCollider(Collider other)
         {
             IDamageable damageable = other.GetComponent<IDamageable>();
-            if(damageable != null && !damageable.GetType().IsAssignableFrom(typeof(Player)))
+            if(damageable != null && other.GetComponent<Character>() == null)
             {
                 damageable.TakeDamage(Damage, ElementalType.Fire);
             }
