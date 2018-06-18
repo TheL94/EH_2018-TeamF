@@ -17,7 +17,7 @@ namespace TeamF
         {
             IEffectable _target = other.GetComponent<IEffectable>();
             EffectController _effect = other.GetComponent<EffectController>();
-            if (_effect != null && _target != null)
+            if (_effect != null && _target != null && !_target.GetType().IsAssignableFrom(typeof(Player)))
             {
                 _effect.InitEffect(new CharmEffect(), _target, EffectData, true);
             }

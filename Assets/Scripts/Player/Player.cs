@@ -6,7 +6,12 @@ namespace TeamF
 {
     public class Player : MonoBehaviour
     {
-        void Update()
+        void FixedUpdate()
+        {
+            CheckMovementInput();
+        }
+
+        private void Update()
         {
             CheckInput();
         }
@@ -46,12 +51,43 @@ namespace TeamF
         {
             if (Character.IsParalyzed)
                 return;
-            else
-                CheckKeyboardInput();
+
+            if (GameManager.I.CurrentState == FlowState.Gameplay || GameManager.I.CurrentState == FlowState.TestGameplay)
+            {
+                if (Character.Life <= 0)
+                    return;
+
+                if (Input.GetAxis("Mouse ScrollWheel") > 0f || Input.GetKeyDown(KeyCode.E))
+                {
+                    Character.SelectPreviousAmmo();
+                }
+                else if (Input.GetAxis("Mouse ScrollWheel") < 0f || Input.GetKeyDown(KeyCode.Q))
+                {
+                    Character.SelectNextAmmo();
+                }
+
+                if (Input.GetMouseButton(1))
+                    Character.DefaultShot();
+
+                if (Input.GetMouseButton(0))
+                    Character.ElementalShot();
+            }
+            if (GameManager.I.CurrentState == FlowState.MainMenu || GameManager.I.CurrentState == FlowState.Pause || GameManager.I.CurrentState == FlowState.EndRound)
+            {
+                if (Input.GetKeyDown(KeyCode.UpArrow))
+                    GameManager.I.UIMng.CurrentMenu.GoUpInMenu();
+                if (Input.GetKeyDown(KeyCode.DownArrow))
+                    GameManager.I.UIMng.CurrentMenu.GoDownInMenu();
+                if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
+                    GameManager.I.UIMng.CurrentMenu.Select();
+            }
         }
 
-        void CheckKeyboardInput()
+        void CheckMovementInput()
         {
+            if (Character.IsParalyzed)
+                return;
+
             if (GameManager.I.CurrentState == FlowState.Gameplay || GameManager.I.CurrentState == FlowState.TestGameplay)
             {
                 if (Character.Life <= 0)
@@ -73,33 +109,9 @@ namespace TeamF
                 if (Input.GetKeyDown(KeyCode.Space))
                     Character.movement.Dash(finalDirection);
 
-                if (Input.GetAxis("Mouse ScrollWheel") < 0f || Input.GetKeyDown(KeyCode.E))
-                {
-                    Character.SelectPreviousAmmo();
-                }
-                else if (Input.GetAxis("Mouse ScrollWheel") > 0f || Input.GetKeyDown(KeyCode.Q))
-                {
-                    Character.SelectNextAmmo();
-                }
-
                 Character.movement.Move(finalDirection);
 
-                if (Input.GetMouseButton(0))
-                    Character.DefaultShot();
-
-                if (Input.GetMouseButton(1))
-                    Character.ElementalShot();
-
                 Character.movement.Turn();
-            }
-            if (GameManager.I.CurrentState == FlowState.MainMenu  || GameManager.I.CurrentState == FlowState.Pause || GameManager.I.CurrentState == FlowState.EndRound)
-            {
-                if (Input.GetKeyDown(KeyCode.UpArrow))
-                    GameManager.I.UIMng.CurrentMenu.GoUpInMenu();
-                if (Input.GetKeyDown(KeyCode.DownArrow))
-                    GameManager.I.UIMng.CurrentMenu.GoDownInMenu();
-                if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
-                    GameManager.I.UIMng.CurrentMenu.Select();
             }
         }
         #endregion

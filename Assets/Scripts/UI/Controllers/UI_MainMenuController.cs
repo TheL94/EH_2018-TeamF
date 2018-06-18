@@ -18,8 +18,8 @@ namespace TeamF
 
             if (!Debug.isDebugBuild)
             {
-                SelectableButton testSceneButton = (SelectableButtons[2] as SelectableButton);
-                SelectableButtons.Remove(SelectableButtons[2]);
+                SelectableButton testSceneButton = (SelectableButtons[3] as SelectableButton);
+                SelectableButtons.Remove(SelectableButtons[3]);
                 Destroy(testSceneButton.gameObject);
             }
         }
@@ -33,10 +33,14 @@ namespace TeamF
                     GameManager.I.CurrentState = FlowState.ManageMap;
                     break;
                 case 1:
-                    //ExitGame
-                    GameManager.I.CurrentState = FlowState.QuitGame;
+                    //Pannello Crediti
+                    GameManager.I.UIMng.CreditsActions();
                     break;
                 case 2:
+                    //Exit Game
+                    GameManager.I.CurrentState = FlowState.QuitGame;
+                    break;
+                case 3:
                     //Scena test
                     GameManager.I.CurrentState = FlowState.InitTestScene;
                     break;

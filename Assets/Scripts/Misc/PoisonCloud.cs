@@ -7,27 +7,41 @@ namespace TeamF
     public class PoisonCloud : MonoBehaviour
     {
         public string GraphicID;
+        GameObject graphicObj;
+
+        private void Update()
+        {
+            if(GameManager.I.CurrentState == FlowState.EndRound)
+            {
+                StopAllCoroutines();
+                Clear();
+            }
+        }
 
         public void Init(float _lifeTime)
         {
-            GameObject obj = null;
             if (GraphicID != null || GraphicID != string.Empty)
-                obj = GameManager.I.PoolMng.GetObject(GraphicID);
+                graphicObj = GameManager.I.PoolMng.GetObject(GraphicID);
 
-            if (obj != null)
+            if (graphicObj != null)
             {
-                obj.transform.position = transform.position;
-                obj.transform.SetParent(transform);
+                graphicObj.transform.position = transform.position;
+                graphicObj.transform.SetParent(transform);
             }
 
             StartCoroutine(ObscuringCloudLifeTime(_lifeTime));
         }
 
+        void Clear()
+        {
+            GameManager.I.PoolMng.ReturnObject(GraphicID, graphicObj);
+            Destroy(gameObject);
+        }
+
         IEnumerator ObscuringCloudLifeTime(float _lifeTime)
         {
             yield return new WaitForSeconds(_lifeTime);
-            GameManager.I.PoolMng.UpdatePool(GraphicID);
-            Destroy(gameObject);
+            Clear();
         }
     }
 }
