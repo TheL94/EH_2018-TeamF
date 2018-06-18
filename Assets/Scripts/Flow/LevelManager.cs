@@ -102,15 +102,6 @@ namespace TeamF
         #endregion
 
         #region API
-        public void UpdateRoundPoints(float _killedEnemyValue)
-        {
-            roundPoints += _killedEnemyValue;
-            if (roundPoints >= PointsToWin)
-                roundPoints = PointsToWin;
-            Events_UIController.KillPointsChanged(roundPoints, PointsToWin);
-
-            CheckGameStatus();
-        }
 
         public void CheckGameStatus()
         {
@@ -127,6 +118,7 @@ namespace TeamF
             {
                 EndingStaus = LevelEndingStaus.Lost;
                 GameManager.I.CurrentState = FlowState.PreEndRound;
+                Events_LevelController.OnKillPointChanged -= UpdateRoundPoints;
                 return;
             }
         }
@@ -146,6 +138,17 @@ namespace TeamF
                 Combos[i].EndEffect();
         }
         #endregion
+
+        void UpdateRoundPoints(float _killedEnemyValue)
+        {
+            roundPoints += _killedEnemyValue;
+            if (roundPoints >= PointsToWin)
+                roundPoints = PointsToWin;
+            Events_UIController.KillPointsChanged(roundPoints, PointsToWin);
+
+            CheckGameStatus();
+        }
+
     }
 
     public enum LevelEndingStaus { NotEnded = 0, Won, Lost, Interrupted }

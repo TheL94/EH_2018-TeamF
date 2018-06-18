@@ -278,7 +278,13 @@ namespace TeamF
         {
             //GameManager.I.EnemyMng.ToggleAllAIs(true);
             GameManager.I.Player.Character.ReInit();
+
+            
             GameManager.I.EnemyMng.EndGameplayActions();
+
+            if (GameManager.I.LevelMng.EndingStaus == LevelEndingStaus.Lost)
+                GameManager.I.Player.DeadCharacter();
+
             GameManager.I.CursorCtrl.SetCursor(false);
             GameManager.I.LevelMng.ClearCombos();
             GameManager.I.Player.ResetAnimations();
@@ -309,8 +315,8 @@ namespace TeamF
                 return;
             }
 
-            if (GameManager.I.LevelMng.EndingStaus != LevelEndingStaus.Won)
-                GameManager.I.LevelMng.Level = 0;
+            //if (GameManager.I.LevelMng.EndingStaus != LevelEndingStaus.Won)
+            //    GameManager.I.LevelMng.Level = 0;
 
             GameManager.I.UIMng.GameOverActions(GameManager.I.LevelMng.EndingStaus);
         }

@@ -52,6 +52,11 @@ namespace TeamF
         {
             Character.StopWalkAnimation();
         }
+
+        public void DeadCharacter()
+        {
+            Character.GetComponentInChildren<Animator>().SetTrigger("IsDead");
+        }
         #endregion
 
         #region Input

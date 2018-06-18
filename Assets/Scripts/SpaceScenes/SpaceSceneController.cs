@@ -16,9 +16,16 @@ namespace TeamF
             EndSpanceAnimation += UpdateAnimationsCount;
         }
 
+        private void Start()
+        {
+            GameManager.I.UIMng.UI_GameplayCtrl.gameObject.SetActive(false);          
+        }
+
         void UpdateAnimationsCount()
         {
             endedAnimations++;
+            GameManager.I.UIMng.UI_GameplayCtrl.gameObject.SetActive(true);
+
             if (endedAnimations == 2)
                 GameManager.I.CurrentState = FlowState.ManageMap;
         }
