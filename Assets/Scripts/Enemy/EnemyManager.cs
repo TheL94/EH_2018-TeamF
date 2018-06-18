@@ -63,9 +63,10 @@ namespace TeamF
         /// </summary>
         public void EndGameplayActions()
         {
-            SetAIDeathState();
             CanSpawn = false;
             spawnPoints.Clear();
+            if(GameManager.I.LevelMng.EndingStaus == LevelEndingStaus.Won)
+                SetAIDeathState();
         }
         #endregion
 

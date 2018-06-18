@@ -61,6 +61,7 @@ namespace TeamF
             UI_PauseController.gameObject.SetActive(false);
             UI_LoadingPanelController.gameObject.SetActive(false);
             UI_CreditsController.gameObject.SetActive(false);
+            UI_GameplayCtrl.gameObject.SetActive(true);
 
 
             if (!isGamePaused)
