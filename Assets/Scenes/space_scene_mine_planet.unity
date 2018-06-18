@@ -9391,7 +9391,7 @@ GameObject:
   - component: {fileID: 1939839537}
   - component: {fileID: 1939839536}
   m_Layer: 0
-  m_Name: SpaceManager
+  m_Name: SpaceSceneController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
