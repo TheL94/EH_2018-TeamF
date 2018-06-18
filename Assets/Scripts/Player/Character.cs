@@ -231,7 +231,7 @@ namespace TeamF
                 GameManager.I.AudioMng.PlaySound(Clips.CharacterPickUp);
                 for (int i = 0; i < Data.BulletDatas.Length; i++)
                 {
-                    if (_crate.Type == Data.BulletDatas[i].ElementalAmmo.AmmoType)
+                    if (_crate != null && _crate.Type == Data.BulletDatas[i].ElementalAmmo.AmmoType)
                     {
                         //Aggiungi le munizioni a questo tipo;
                         if ((bulletDatasInstancies[i].ElementalAmmo.Ammo + _crate.Ammo) > bulletDatasInstancies[i].TotalAmmo)
