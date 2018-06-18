@@ -48,7 +48,7 @@ namespace TeamF
                     break;
 
                 case FlowState.ManageMap:
-                    if (_oldState == FlowState.MainMenu || _oldState == FlowState.EndRound)
+                    if (_oldState == FlowState.MainMenu || _oldState == FlowState.EndRound || _oldState == FlowState.Gameplay)
                     {
                         _currentState = _newState;
                         ManageMapActions();
@@ -98,8 +98,19 @@ namespace TeamF
                     }
                     break;
 
+                case FlowState.PreEndRound:
+                    if (_oldState == FlowState.Gameplay)
+                    {
+                        _currentState = _newState;
+                        PreRoundEndActions();
+                    }
+                    else
+                    {
+                        Debug.LogWarning("Passaggio di stato non permesso da : " + _oldState + " a : " + _newState);
+                    }
+                    break;
                 case FlowState.EndRound:
-                    if (_oldState == FlowState.Gameplay || _oldState == FlowState.Pause)
+                    if (_oldState == FlowState.PreEndRound || _oldState == FlowState.Pause)
                     {
                         _currentState = _newState;
                         EndRoundActions();
@@ -263,16 +274,34 @@ namespace TeamF
             }
         }
 
+        void PreRoundEndActions()
+        {
+            //GameManager.I.EnemyMng.ToggleAllAIs(true);
+            GameManager.I.Player.Character.ReInit();
+
+            
+            GameManager.I.EnemyMng.EndGameplayActions();
+
+            if (GameManager.I.LevelMng.EndingStaus == LevelEndingStaus.Lost)
+                GameManager.I.Player.DeadCharacter();
+
+            GameManager.I.CursorCtrl.SetCursor(false);
+            GameManager.I.LevelMng.ClearCombos();
+            GameManager.I.Player.ResetAnimations();
+
+            GameManager.I.StartEndPreRoundCoroutine();
+        }
+
         void EndRoundActions()
         {
             Time.timeScale = 1;
             GameManager.I.EnemyMng.ToggleAllAIs(true);
 
-            GameManager.I.Player.Character.ReInit();
-            GameManager.I.EnemyMng.EndGameplayActions();
-            GameManager.I.CursorCtrl.SetCursor(false);
+            //GameManager.I.Player.Character.ReInit();
+           // GameManager.I.EnemyMng.EndGameplayActions();
+            //GameManager.I.CursorCtrl.SetCursor(false);
             GameManager.I.AmmoController.DeleteAllAmmoCrate();
-            GameManager.I.LevelMng.ClearCombos();
+            //GameManager.I.LevelMng.ClearCombos();
             GameManager.I.AudioMng.StopAllSound();
 
             GameManager.I.ScoreCounter.Clear();
@@ -286,8 +315,8 @@ namespace TeamF
                 return;
             }
 
-            if (GameManager.I.LevelMng.EndingStaus != LevelEndingStaus.Won)
-                GameManager.I.LevelMng.Level = 0;
+            //if (GameManager.I.LevelMng.EndingStaus != LevelEndingStaus.Won)
+            //    GameManager.I.LevelMng.Level = 0;
 
             GameManager.I.UIMng.GameOverActions(GameManager.I.LevelMng.EndingStaus);
         }
@@ -360,6 +389,7 @@ namespace TeamF
         InitGameplayElements,
         Gameplay,
         Pause,
+        PreEndRound,
         EndRound,
         QuitGame,
 

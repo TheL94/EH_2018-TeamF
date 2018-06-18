@@ -15,8 +15,9 @@ namespace TeamF
 
         protected override void OnEnterCollider(Collider other)
         {
+            Enemy _enemy = other.GetComponent<Enemy>();
             EffectController effect = other.GetComponent<EffectController>();
-            if(effect != null)
+            if(effect != null && _enemy != null)
                 effect.InitEffect(new ParalyzeEffect(), other.GetComponent<IEffectable>(), EffectData, true);
         }
     }

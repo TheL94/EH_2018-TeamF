@@ -69,6 +69,13 @@ namespace TeamF
             bulletDatasInstancies.Clear();
             MovementSpeed = Data.MovementSpeed;
         }
+
+        public void StopWalkAnimation()
+        {
+            Animator anim = GetComponentInChildren<Animator>();
+            anim.SetFloat("Forward", 0f);
+            anim.SetFloat("Turn", 0f);
+        }
         #endregion
 
         #region IDamageable
@@ -126,7 +133,7 @@ namespace TeamF
         public float MovementSpeed
         {
             get { return _movementSpeed; }
-            set { _movementSpeed = value;}
+            set { _movementSpeed = value; }
         }
         #endregion
 
@@ -227,7 +234,11 @@ namespace TeamF
                     if (_crate.Type == Data.BulletDatas[i].ElementalAmmo.AmmoType)
                     {
                         //Aggiungi le munizioni a questo tipo;
-                        bulletDatasInstancies[i].ElementalAmmo.Ammo += _crate.Ammo;
+                        if ((bulletDatasInstancies[i].ElementalAmmo.Ammo + _crate.Ammo) > bulletDatasInstancies[i].TotalAmmo)
+                            bulletDatasInstancies[i].ElementalAmmo.Ammo = bulletDatasInstancies[i].TotalAmmo;
+                        else
+                            bulletDatasInstancies[i].ElementalAmmo.Ammo += _crate.Ammo;
+
                         Events_UIController.AmmoChange(bulletDatasInstancies[i].ElementalAmmo);
                         _crate.CrateCollected();
                         return;
@@ -236,19 +247,9 @@ namespace TeamF
             }
         }
 
-        void PickupWeapon(WeaponCrate _crate)
-        {
-            if(_crate != null)
-            {
-                GameManager.I.AudioMng.PlaySound(Clips.CharacterPickUp);
-                weaponController.SetCurrentWeapon(_crate.WeaponType);
-            }
-        }
-
         private void OnTriggerEnter(Collider other)
         {
             PickupAmmo(other.GetComponent<AmmoCrate>());
-            PickupWeapon(other.GetComponent<WeaponCrate>());
         }
     }
 }

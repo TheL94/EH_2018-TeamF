@@ -69,6 +69,17 @@ namespace TeamF
             }
         }
 
+        public void StartEndPreRoundCoroutine()
+        {
+            StartCoroutine(PreRoundEndTimer());
+        }
+        
+        IEnumerator PreRoundEndTimer()
+        {
+            yield return new WaitForSeconds(5);
+            CurrentState = FlowState.EndRound;
+        }
+
         private void OnApplicationFocus(bool focus)
         {
             if (flowMng == null)
