@@ -67,6 +67,32 @@ ModelImporter:
     100118: tube7
     100120: tube8
     100122: tube9
+    100124: ctrl_chest
+    100126: ctrl_fingers
+    100128: ctrl_fingers_open
+    100130: ctrl_hbubble1
+    100132: ctrl_hbubble2
+    100134: ctrl_hbubble3
+    100136: ctrl_head
+    100138: ctrl_helmet
+    100140: ctrl_pelvis
+    100142: ctrl_shoulder
+    100144: ctrl_tank_bottom
+    100146: ctrl_tank_top
+    100148: ctrl_tbubble1
+    100150: ctrl_tbubble2
+    100152: ctrl_tbubble3
+    100154: ctrl_tube_base
+    100156: L_ctrl_hand
+    100158: L_ctrl_leg
+    100160: loc_L_elbow
+    100162: loc_L_knee
+    100164: loc_R_elbow
+    100166: loc_R_knee
+    100168: nurbsCircle2
+    100170: R_ctrl_hand
+    100172: R_ctrl_hand1
+    100174: R_ctrl_leg
     400000: abdomen
     400002: body
     400004: chest
@@ -129,6 +155,32 @@ ModelImporter:
     400118: tube7
     400120: tube8
     400122: tube9
+    400124: ctrl_chest
+    400126: ctrl_fingers
+    400128: ctrl_fingers_open
+    400130: ctrl_hbubble1
+    400132: ctrl_hbubble2
+    400134: ctrl_hbubble3
+    400136: ctrl_head
+    400138: ctrl_helmet
+    400140: ctrl_pelvis
+    400142: ctrl_shoulder
+    400144: ctrl_tank_bottom
+    400146: ctrl_tank_top
+    400148: ctrl_tbubble1
+    400150: ctrl_tbubble2
+    400152: ctrl_tbubble3
+    400154: ctrl_tube_base
+    400156: L_ctrl_hand
+    400158: L_ctrl_leg
+    400160: loc_L_elbow
+    400162: loc_L_knee
+    400164: loc_R_elbow
+    400166: loc_R_knee
+    400168: nurbsCircle2
+    400170: R_ctrl_hand
+    400172: R_ctrl_hand1
+    400174: R_ctrl_leg
     2100000: lambert8
     2100002: lambert9
     4300000: R_arm
