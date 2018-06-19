@@ -41,7 +41,8 @@ namespace TeamF
                     SelectableButtons[i].IsSelected = false;
             }
 
-            SelectableButtons[0].IsSelected = true;
+            CurrentIndexSelected = 0;
+            SelectableButtons[CurrentIndexSelected].IsSelected = true;
         }
 
         /// <summary>
@@ -95,20 +96,16 @@ namespace TeamF
             GameManager.I.AudioMng.PlaySound(Clips.MenuMovement);
         }
 
-        public virtual void GoLeftInMenu()
-        {
-            throw new System.NotImplementedException();
-        }
+        public virtual void GoLeftInMenu() { }
 
-        public virtual void GoRightInMenu()
-        {
-            throw new System.NotImplementedException();
-        }
+        public virtual void GoRightInMenu() { }
 
         public virtual void Select()
         {
             GameManager.I.AudioMng.PlaySound(Clips.MenuConfirm);
         }
+
+        public virtual void GoBack() { }
         #endregion
     }
 }

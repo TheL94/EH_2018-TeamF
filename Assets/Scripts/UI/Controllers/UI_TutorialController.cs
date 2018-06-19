@@ -37,26 +37,37 @@ namespace TeamF
 
         public override void Select()
         {
-            switch (CurrentIndexSelected)
-            {
-                case 0:
-                    // Go next image
-                    CurrentImg++;
-                    break;
-                case 1:
-                    // Go prev image
-                    CurrentImg--;
-                    break;
-                case 2:
-                    // Exit
-                    GameManager.I.UIMng.MainMenuActions();
-                    break;
-            }
+            // Exit
+            GameManager.I.UIMng.MainMenuActions();
         }
 
         void ChangeImage(int _indexImg)
         {
             img.sprite = TutorialImages[_indexImg];
+        }
+
+        public override void GoDownInMenu()
+        {
+            // per inibire la possibilità di spostare selectable
+        }
+        public override void GoUpInMenu()
+        {
+            // per inibire la possibilità di spostare selectable
+        }
+
+        public override void GoLeftInMenu()
+        {
+            CurrentImg--;
+        }
+
+        public override void GoRightInMenu()
+        {
+            CurrentImg++;
+        }
+
+        public override void GoBack()
+        {
+            GameManager.I.UIMng.MainMenuActions();
         }
     }
 }
