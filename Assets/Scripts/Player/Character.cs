@@ -207,6 +207,11 @@ namespace TeamF
             GameManager.I.UIMng.UI_GameplayCtrl.UpdateSelectedAmmo(SelectedAmmo.ElementalAmmo);
         }
 
+        public void SelectSpecificAmmo(int _index)
+        {
+            selectedAmmoIndex = _index;
+        }
+
         public void SelectPreviousAmmo()
         {
             if (selectedAmmoIndex + 1 > Data.BulletDatas.Length - 1)

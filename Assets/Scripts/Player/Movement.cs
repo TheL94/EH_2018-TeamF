@@ -58,17 +58,12 @@ namespace TeamF
             playerRigidbody.MovePosition(transform.position + position);
         }
 
-        public void Turn()
+        public void Turn(Quaternion? _rotation)
         {
-            Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit floorHit;
-
-            if (Physics.Raycast(mouseRay, out floorHit, float.PositiveInfinity, 1 << LayerMask.NameToLayer("MouseRaycast")))
+            if (_rotation != null)
             {
-                Vector3 playerToMouse = floorHit.point - transform.position;
-                playerToMouse.y = 0;
-                Quaternion newRotatation = Quaternion.LookRotation(playerToMouse, transform.up);
-                playerRigidbody.MoveRotation(newRotatation);
+                Quaternion rotation = (Quaternion)_rotation;
+                playerRigidbody.MoveRotation(rotation); 
             }
         }
 
