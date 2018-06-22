@@ -114,7 +114,7 @@ namespace TeamF
             GameManager.I.AudioMng.PlaySound(Clips.CharacterDamage);
 
             if (ScoreCounter.OnScoreAction != null)
-                ScoreCounter.OnScoreAction(ScoreType.PlayerDamage);
+                ScoreCounter.OnScoreAction(ScoreType.PlayerDamage, transform.position);
 
             if (blinkCtrl != null)
                 blinkCtrl.DamageBlink();

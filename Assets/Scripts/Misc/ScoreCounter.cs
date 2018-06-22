@@ -18,8 +18,10 @@ namespace TeamF
 
         int ComboMultiplier { get { return GameManager.I.ComboCounter.Count; } set { GameManager.I.ComboCounter.Count = value; } }
 
+        HPScript scoreIndicator;
+
         #region Event
-        public delegate void ScoreCountEvent(ScoreType _type);
+        public delegate void ScoreCountEvent(ScoreType _type, Vector3 _position);
         public static ScoreCountEvent OnScoreAction;
 
         public delegate void ScoreShowEvent(int _value);
@@ -29,6 +31,7 @@ namespace TeamF
         public void Init()
         {
             OnScoreAction += AddScore;
+            scoreIndicator = GetComponent<HPScript>();
         }
 
         public void Clear()
@@ -69,7 +72,7 @@ namespace TeamF
                 BestScore = TotalScore;
         }
 
-        void AddScore(ScoreType _type)
+        void AddScore(ScoreType _type, Vector3 _position)
         {
             int? scoreValue = GetScoreValue(_type);
             if (scoreValue != null)
@@ -84,6 +87,8 @@ namespace TeamF
 
                 if (OnScoreChange != null)
                     OnScoreChange(CurrentLevelScore);
+
+                scoreIndicator.ChangeHP(_position + new Vector3(0, 5, 0), Color.white, scoreValue.ToString());
 
                 if (_type == ScoreType.PlayerDamage)
                     ComboMultiplier = 0;

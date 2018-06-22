@@ -30,7 +30,7 @@ namespace TeamF
         {
             if (_target.GetType().IsAssignableFrom(typeof(Enemy)))
                 if (ScoreCounter.OnScoreAction != null)
-                    ScoreCounter.OnScoreAction(ScoreType.EnemyComboEffet);
+                    ScoreCounter.OnScoreAction(ScoreType.EnemyComboEffet, _target.Position);
         }
     }   
 }

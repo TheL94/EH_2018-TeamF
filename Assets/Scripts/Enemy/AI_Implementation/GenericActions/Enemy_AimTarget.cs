@@ -15,14 +15,22 @@ namespace TeamF.AI
         
         bool AimTarget(Enemy _enemy)
         {
-            Quaternion rotationToReach = Quaternion.LookRotation(_enemy.Target.Position - _enemy.transform.position, Vector3.up);
-            float Angle = Vector3.SignedAngle(_enemy.transform.forward, (_enemy.Target.Position - _enemy.transform.position), Vector3.up);
+            try
+            {
+                Quaternion rotationToReach = Quaternion.LookRotation(_enemy.Target.Position - _enemy.transform.position, Vector3.up);
+                float Angle = Vector3.SignedAngle(_enemy.transform.forward, (_enemy.Target.Position - _enemy.transform.position), Vector3.up);
                 _enemy.transform.rotation = Quaternion.Slerp(_enemy.transform.rotation, rotationToReach, _enemy.Data.AimTime);
 
-            if (Angle > -_enemy.Data.AimApproximationAngle && Angle < _enemy.Data.AimApproximationAngle)
-                return true;
-            else
-                return false;
+                if (Angle > -_enemy.Data.AimApproximationAngle && Angle < _enemy.Data.AimApproximationAngle)
+                    return true;
+                else
+                    return false;
+            }
+            catch (System.NullReferenceException)
+            {
+                _enemy.AI_Enemy.CurrentState = _enemy.Data.SearchTargetState;
+                throw;
+            }
         }
     }
 }

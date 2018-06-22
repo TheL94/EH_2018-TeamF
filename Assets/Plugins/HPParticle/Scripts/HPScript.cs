@@ -5,9 +5,6 @@ using System.Collections;
 
 public class HPScript : MonoBehaviour {
 
-	//the current HP of the character/gameobject
-	public float HP; 
-
 	//the HP Particle
 	public GameObject HPParticle;
 
@@ -15,17 +12,10 @@ public class HPScript : MonoBehaviour {
 	public Vector3 DefaultForce = new Vector3(0f,1f,0f);
 	public float DefaultForceScatter = 0.5f;
 
-	//Change the HP without an effect
-	public void ChangeHP(float Delta)
-	{
-		HP = HP + Delta;
-	}
 
 	//Change the HP and Instantiates an HP Particle with a Custom Force and Color
 	public void ChangeHP(float Delta,Vector3 Position, Vector3 Force, float ForceScatter, Color ThisColor)
 	{
-		HP = HP + Delta;
-
 		GameObject NewHPP = Instantiate(HPParticle,Position,gameObject.transform.rotation) as GameObject;
 		NewHPP.GetComponent<AlwaysFace>().Target = GameObject.Find("Main Camera").gameObject;
 
@@ -48,8 +38,6 @@ public class HPScript : MonoBehaviour {
 	//Change the HP and Instantiates an HP Particle with a Custom Force
 	public void ChangeHP(float Delta,Vector3 Position, Vector3 Force, float ForceScatter)
 	{
-		HP = HP + Delta;
-		
 		GameObject NewHPP = Instantiate(HPParticle,Position,gameObject.transform.rotation) as GameObject;
 		NewHPP.GetComponent<AlwaysFace>().Target = GameObject.Find("Main Camera").gameObject;
 		
@@ -72,8 +60,6 @@ public class HPScript : MonoBehaviour {
 	//Change the HP and Instantiates an HP Particle with a Custom Color
 	public void ChangeHP(float Delta,Vector3 Position, Color ThisColor)
 	{
-		HP = HP + Delta;
-		
 		GameObject NewHPP = Instantiate(HPParticle,Position,gameObject.transform.rotation) as GameObject;
 		NewHPP.GetComponent<AlwaysFace>().Target = GameObject.Find("Main Camera").gameObject;
 		
@@ -96,8 +82,6 @@ public class HPScript : MonoBehaviour {
 	//Change the HP and Instantiates an HP Particle with default force and color
 	public void ChangeHP(float Delta,Vector3 Position)
 	{
-		HP = HP + Delta;
-		
 		GameObject NewHPP = Instantiate(HPParticle,Position,gameObject.transform.rotation) as GameObject;
 		NewHPP.GetComponent<AlwaysFace>().Target = GameObject.Find("Main Camera").gameObject;
 		
@@ -121,8 +105,6 @@ public class HPScript : MonoBehaviour {
 	//Change the HP and Instantiates an HP Particle with Custom Text
 	public void ChangeHP(float Delta,Vector3 Position, string text)
 	{
-		HP = HP + Delta;
-		
 		GameObject NewHPP = Instantiate(HPParticle,Position,gameObject.transform.rotation) as GameObject;
 		NewHPP.GetComponent<AlwaysFace>().Target = GameObject.Find("Main Camera").gameObject;
 		
@@ -145,8 +127,6 @@ public class HPScript : MonoBehaviour {
 	//Change the HP and Instantiates an HP Particle with Custom Text and Force,
 	public void ChangeHP(float Delta,Vector3 Position, Vector3 Force, float ForceScatter, string text)
 	{
-		HP = HP + Delta;
-		
 		GameObject NewHPP = Instantiate(HPParticle,Position,gameObject.transform.rotation) as GameObject;
 		NewHPP.GetComponent<AlwaysFace>().Target = GameObject.Find("Main Camera").gameObject;
 		
@@ -169,7 +149,6 @@ public class HPScript : MonoBehaviour {
 	//Change the HP and Instantiates an HP Particle with Custom Text, Force and Color
 	public void ChangeHP(float Delta,Vector3 Position, Vector3 Force, float ForceScatter, Color ThisColor, string text)
 	{
-		HP = HP + Delta;
 		
 		GameObject NewHPP = Instantiate(HPParticle,Position,gameObject.transform.rotation) as GameObject;
 		NewHPP.GetComponent<AlwaysFace>().Target = GameObject.Find("Main Camera").gameObject;
