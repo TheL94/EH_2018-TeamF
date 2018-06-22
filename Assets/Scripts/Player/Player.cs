@@ -68,7 +68,8 @@ namespace TeamF
 
         #region Input
 
-        bool canPress = true;
+        bool canPressVertical = true;
+        bool canPressHorizontal = true;
 
         void CheckInput()
         {
@@ -131,69 +132,107 @@ namespace TeamF
             {
                 #region Joystick
 
-                    if (canPress)
-                    {
-                        if (Input.GetAxisRaw("Vertical") >= .8f)
+                    #region Vertical Inpnut
+                        if (canPressVertical)
                         {
-                            canPress = false;
-                            GameManager.I.UIMng.CurrentMenu.GoUpInMenu();
+                            if (Input.GetAxisRaw("Vertical") >= .8f)
+                            {
+                                canPressVertical = false;
+                                GameManager.I.UIMng.CurrentMenu.GoUpInMenu();
+                            }
+
+                            if (Input.GetAxisRaw("Vertical") <= -.8f)
+                            {
+                                canPressVertical = false;
+                                GameManager.I.UIMng.CurrentMenu.GoDownInMenu();
+                            }
+
+                        
+
                         }
-
-                        if (Input.GetAxisRaw("Vertical") <= -.8f)
-                        {
-                            canPress = false;
-                            GameManager.I.UIMng.CurrentMenu.GoDownInMenu();
-                        }
-
-                        //if (Input.GetAxisRaw("Horizontal") == -1)
-                        //{
-                        //    canPress = false;
-                        //    GameManager.I.UIMng.CurrentMenu.GoLeftInMenu();
-                        //}
-
-                        //if (Input.GetAxisRaw("Horizontal") == 1)
-                        //{
-                        //    canPress = false;
-                        //    GameManager.I.UIMng.CurrentMenu.GoRightInMenu();
-                        //}
-
-                    }
-                    else
+                        else
                     {
                         if (controllerConnected)
                         {
                             if (Input.GetAxisRaw("Vertical") <= .5f && Input.GetAxisRaw("Vertical") >= -.5f)
-                                canPress = true;
+                                canPressVertical = true;
                         }
                         else
                         {
                             if (Input.GetAxisRaw("Vertical") == 0)
-                                canPress = true;
+                                canPressVertical = true;
                         }
                     }
+                    #endregion
 
+                    #region Horizontal Input
+                        if (canPressHorizontal)
+                        {
+                            if (controllerConnected)
+                            {
+                                if (Input.GetAxisRaw("Horizontal") >= .8f)
+                                {
+                                    canPressHorizontal = false;
+                                    GameManager.I.UIMng.CurrentMenu.GoLeftInMenu();
+                                }
+
+                                if (Input.GetAxisRaw("Horizontal") <= -.8f)
+                                {
+                                    canPressHorizontal = false;
+                                    GameManager.I.UIMng.CurrentMenu.GoRightInMenu(); 
+                                }
+                            }
+                            else
+                            {
+                                if (Input.GetAxisRaw("Horizontal") == -1f)
+                                {
+                                    canPressHorizontal = false;
+                                    GameManager.I.UIMng.CurrentMenu.GoLeftInMenu();
+                                }
+
+                                if (Input.GetAxisRaw("Horizontal") == 1f)
+                                {
+                                    canPressHorizontal = false;
+                                    GameManager.I.UIMng.CurrentMenu.GoRightInMenu();
+                                }
+                            }
+                        }
+                        else
+                        {
+                            if (controllerConnected)
+                            {
+                                if (Input.GetAxisRaw("Horizontal") <= .5f && Input.GetAxisRaw("Horizontal") >= -.5f)
+                                    canPressHorizontal= true;
+                            }
+                            else
+                            {
+                                if (Input.GetAxisRaw("Horizontal") == 0)
+                                    canPressHorizontal = true;
+                            }
+                        }
+                    #endregion
                 #endregion
 
                 #region KeyBoard
-                    //if (canPress)
-                    //{
-                    //    if (Input.GetAxisRaw("Vertical") == 1)
-                    //    {
-                    //        canPress = false;
-                    //        GameManager.I.UIMng.CurrentMenu.GoUpInMenu();
-                    //    }
-                    //    if (Input.GetAxisRaw("Vertical") == -1)
-                    //    {
-                    //        canPress = false;
-                    //        GameManager.I.UIMng.CurrentMenu.GoDownInMenu(); 
-                    //    }
-                    //}
-                    //else
-                    //{
-                    //    if (Input.GetAxisRaw("Vertical") == 0)
-                    //        canPress = true;
-                    //}
-                
+                //if (canPress)
+                //{
+                //    if (Input.GetAxisRaw("Vertical") == 1)
+                //    {
+                //        canPress = false;
+                //        GameManager.I.UIMng.CurrentMenu.GoUpInMenu();
+                //    }
+                //    if (Input.GetAxisRaw("Vertical") == -1)
+                //    {
+                //        canPress = false;
+                //        GameManager.I.UIMng.CurrentMenu.GoDownInMenu(); 
+                //    }
+                //}
+                //else
+                //{
+                //    if (Input.GetAxisRaw("Vertical") == 0)
+                //        canPress = true;
+                //}
+
                 #endregion
 
                 if (Input.GetButtonDown("Submit"))
