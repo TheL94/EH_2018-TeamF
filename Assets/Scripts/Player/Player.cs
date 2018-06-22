@@ -83,7 +83,7 @@ namespace TeamF
 
                 #region Joystick
 
-                if (Input.GetJoystickNames().Length > 0)
+                if (controllerConnected)
                 {
                     if (Input.GetButtonDown("A_Button"))
                         Character.SelectSpecificAmmo(3);
