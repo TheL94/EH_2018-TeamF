@@ -14,11 +14,12 @@ namespace TeamF
         private void OnEnable()
         {
             EndSpanceAnimation += UpdateAnimationsCount;
+            GameManager.I.IsPlayingSequnce = true;
         }
 
         private void Start()
         {
-            GameManager.I.UIMng.UI_GameplayCtrl.gameObject.SetActive(false);          
+            GameManager.I.UIMng.UI_GameplayCtrl.gameObject.SetActive(false);
         }
 
         void UpdateAnimationsCount()
@@ -33,6 +34,7 @@ namespace TeamF
         private void OnDisable()
         {
             EndSpanceAnimation -= UpdateAnimationsCount;
+            GameManager.I.IsPlayingSequnce = false;
         }
     }
 }

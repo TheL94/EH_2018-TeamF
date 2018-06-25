@@ -10,6 +10,7 @@ namespace TeamF
         public static GameManager I;
 
         public FlowState CurrentState { get { return flowMng.CurrentState; } set { flowMng.CurrentState = value; } }
+        public bool IsPlayingSequnce = false;
 
         [HideInInspector]
         public LevelManager LevelMng;
@@ -58,7 +59,7 @@ namespace TeamF
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (Input.GetKeyDown(KeyCode.Escape) && !IsPlayingSequnce)
             {
                 if (CurrentState == FlowState.TestGameplay)
                     CurrentState = FlowState.ExitTestScene;

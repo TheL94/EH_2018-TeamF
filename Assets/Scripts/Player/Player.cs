@@ -6,17 +6,18 @@ namespace TeamF
 {
     public class Player : MonoBehaviour
     {
-
         bool controllerConnected;
 
         void FixedUpdate()
         {
-            CheckMovementInput();
+            if (!GameManager.I.IsPlayingSequnce)
+                CheckMovementInput();
         }
 
         private void Update()
         {
-            CheckInput();
+            if(!GameManager.I.IsPlayingSequnce)
+                CheckInput();
         }
 
         public void Init()
