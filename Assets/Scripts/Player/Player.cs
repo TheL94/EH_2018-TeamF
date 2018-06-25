@@ -71,7 +71,6 @@ namespace TeamF
         #endregion
 
         #region Input
-
         bool canPressVertical = true;
         bool canPressHorizontal = true;
 
@@ -316,22 +315,20 @@ namespace TeamF
                     QuaterniontToReturn = Quaternion.LookRotation(playerDirection, transform.up);
                 }
             }
-
             else
             {
                 Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit floorHit;
 
-                if (Physics.Raycast(mouseRay, out floorHit, float.PositiveInfinity, 1 << LayerMask.NameToLayer("MouseRaycast")))
+                if (Physics.Raycast(mouseRay, out floorHit, 100f, 1 << LayerMask.NameToLayer("MouseRaycast")))
                 {
                     Vector3 playerToMouse = floorHit.point - Character.transform.position;
                     playerToMouse.y = 0;
-                    QuaterniontToReturn = Quaternion.LookRotation(playerToMouse, transform.up);
+                    QuaterniontToReturn = Quaternion.LookRotation(playerToMouse, Character.transform.up);
                 }
             }
             return QuaterniontToReturn;
         }
-
         #endregion
     }
 }

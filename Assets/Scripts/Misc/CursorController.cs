@@ -11,8 +11,11 @@ namespace TeamF
 
         public void SetCursor(bool _isGameplay)
         {
-            if(_isGameplay)
-                Cursor.SetCursor(GameplayCursorTexture, Vector2.zero, CursorMode.Auto);
+            if (_isGameplay)
+            {
+                Vector3 cursorHotspot = new Vector2(GameplayCursorTexture.width / 2, GameplayCursorTexture.height / 2);
+                Cursor.SetCursor(GameplayCursorTexture, cursorHotspot, CursorMode.Auto);
+            }
             else
                 Cursor.SetCursor(MenuCursorTexture, Vector2.zero, CursorMode.Auto);
         }

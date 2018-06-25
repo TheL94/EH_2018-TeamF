@@ -62,7 +62,7 @@ namespace TeamF
         {
             if (_rotation != null)
             {
-                Quaternion rotation = (Quaternion)_rotation;
+                Quaternion rotation = _rotation.Value;
                 playerRigidbody.MoveRotation(rotation); 
             }
         }
