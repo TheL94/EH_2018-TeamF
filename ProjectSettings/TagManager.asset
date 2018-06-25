@@ -19,6 +19,7 @@ TagManager:
   - ComboAudioSource
   - MusicAudioSource
   - AmbienceAudioSource
+  - MouseRaycast
   layers:
   - Default
   - TransparentFX
