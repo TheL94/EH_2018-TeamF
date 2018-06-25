@@ -12,7 +12,6 @@ TagManager:
   - EnemySpawn
   - AmmoSpawn
   - PlayerSpawn
-  - Lava
   - ColliderToIgnore
   - GenericAudioSource
   - CharacterAudioSource
