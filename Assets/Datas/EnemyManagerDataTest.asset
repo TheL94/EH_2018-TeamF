@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartDelayTime: 10
   DelayHordes: 15
-  MaxEnemiesInScene: 15
+  MaxEnemiesInScene: 0
   IncreaseQuantity: 020000000400000006000000
   AfterHowSpawnIncrease: 2
   EnemiesData:
@@ -23,10 +23,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5a6fea14b75e31644a1ea7dad9334747, type: 2}
   - {fileID: 11400000, guid: 9958afa15145434468c81853f9347c5a, type: 2}
   - {fileID: 11400000, guid: 9958afa15145434468c81853f9347c5a, type: 2}
-  BlockSpawnNormal: 0
+  BlockSpawnNormal: 1
   MaxNormalEnemies: 5
   MinNormalEnemies: 3
-  BlockSpawnElemental: 0
+  BlockSpawnElemental: 1
   MaxElementalsEnemies: 5
   MinElementalsEnemies: 3
   BlockSpawnRanged: 1
