@@ -18,8 +18,8 @@ namespace TeamF
 
             if (!Debug.isDebugBuild)
             {
-                SelectableButton testSceneButton = (SelectableButtons[3] as SelectableButton);
-                SelectableButtons.Remove(SelectableButtons[3]);
+                SelectableButton testSceneButton = (SelectableButtons[SelectableButtons.Count - 1] as SelectableButton);
+                SelectableButtons.Remove(SelectableButtons[SelectableButtons.Count - 1]);
                 Destroy(testSceneButton.gameObject);
             }
         }
