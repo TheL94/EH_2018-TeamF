@@ -105,6 +105,9 @@ namespace TeamF
 
         public void CheckGameStatus()
         {
+            if (GameManager.I.CurrentState != FlowState.Gameplay)
+                return;
+
             if (roundPoints == PointsToWin)
             {
                 EndingStaus = LevelEndingStaus.Won;
