@@ -57,19 +57,6 @@ namespace TeamF
             CurrentState = FlowState.SetupGame;
         }
 
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Escape) && !IsPlayingSequnce)
-            {
-                if (CurrentState == FlowState.TestGameplay)
-                    CurrentState = FlowState.ExitTestScene;
-                else if (CurrentState == FlowState.Gameplay)
-                    CurrentState = FlowState.Pause;
-                else if(CurrentState == FlowState.Pause)
-                    CurrentState = FlowState.Gameplay;
-            }
-        }
-
         public void StartEndPreRoundCoroutine()
         {
             StartCoroutine(PreRoundEndTimer());
