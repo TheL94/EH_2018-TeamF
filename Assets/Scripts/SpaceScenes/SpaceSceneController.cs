@@ -9,16 +9,21 @@ namespace TeamF
         public delegate void OnEndAnimation();
         public static OnEndAnimation EndSpanceAnimation;
 
+        Vector3 characterStartPosition;
         int endedAnimations;
 
         private void OnEnable()
         {
             EndSpanceAnimation += UpdateAnimationsCount;
+            GameManager.I.IsPlayingSequnce = true;
+            characterStartPosition = GameManager.I.Player.Character.transform.position;
+            GameManager.I.Player.Character.transform.position = new Vector3(1000, 1000, 1000);
+            Cursor.visible = false;
         }
 
         private void Start()
         {
-            GameManager.I.UIMng.UI_GameplayCtrl.gameObject.SetActive(false);          
+            GameManager.I.UIMng.UI_GameplayCtrl.gameObject.SetActive(false);
         }
 
         void UpdateAnimationsCount()
@@ -33,6 +38,9 @@ namespace TeamF
         private void OnDisable()
         {
             EndSpanceAnimation -= UpdateAnimationsCount;
+            GameManager.I.IsPlayingSequnce = false;
+            GameManager.I.Player.Character.transform.position = characterStartPosition;
+            Cursor.visible = true;
         }
     }
 }

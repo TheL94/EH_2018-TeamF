@@ -197,7 +197,7 @@ namespace TeamF
             GameManager.I.PPCtrl = Camera.main.GetComponentInChildren<PostProcessController>();
 
             GameManager.I.ComboCounter = GameManager.I.GetComponent<ComboCounter>();           
-            GameManager.I.ScoreCounter = GameManager.I.GetComponent<ScoreCounter>();
+            GameManager.I.ScoreCounter = GameManager.I.GetComponentInChildren<ScoreCounter>();
 
             CurrentState = FlowState.MainMenu;
         }

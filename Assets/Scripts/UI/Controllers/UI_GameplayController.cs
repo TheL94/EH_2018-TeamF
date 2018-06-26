@@ -11,7 +11,7 @@ namespace TeamF
         public AmmoIndicator WaterAmmo;
         public AmmoIndicator PoisonAmmo;
         public AmmoIndicator ThunderAmmo;
-        public Text ComboCounterText;
+        public UI_ComboCounterController ComboCounterCtrl;
         public Text ScoreText;
 
         public Slider KillPointsSlider;
@@ -114,10 +114,7 @@ namespace TeamF
 
         void UpdateComboCounter(int _counter)
         {
-            if (_counter == 0)
-                ComboCounterText.text = string.Empty;
-            else
-                ComboCounterText.text = "+" + _counter.ToString();
+            ComboCounterCtrl.UpdateCounter(_counter);
         }
 
         void UpdateOverheatingSlider(float _value, float _totalOverheating)
