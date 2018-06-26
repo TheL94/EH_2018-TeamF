@@ -12,18 +12,14 @@ TagManager:
   - EnemySpawn
   - AmmoSpawn
   - PlayerSpawn
-  - Lava
   - ColliderToIgnore
-  - CharacterAudioSurce
-  - EnemyAudioSurce
-  - GenericAudioSurce
-  - ComboAudioSurce
   - GenericAudioSource
   - CharacterAudioSource
   - EnemyAudioSource
   - ComboAudioSource
   - MusicAudioSource
   - AmbienceAudioSource
+  - MouseRaycast
   layers:
   - Default
   - TransparentFX

@@ -114,7 +114,7 @@ namespace TeamF
             GameManager.I.AudioMng.PlaySound(Clips.CharacterDamage);
 
             if (ScoreCounter.OnScoreAction != null)
-                ScoreCounter.OnScoreAction(ScoreType.PlayerDamage);
+                ScoreCounter.OnScoreAction(ScoreType.PlayerDamage, transform.position);
 
             if (blinkCtrl != null)
                 blinkCtrl.DamageBlink();
@@ -207,6 +207,11 @@ namespace TeamF
             GameManager.I.UIMng.UI_GameplayCtrl.UpdateSelectedAmmo(SelectedAmmo.ElementalAmmo);
         }
 
+        public void SelectSpecificAmmo(int _index)
+        {
+            selectedAmmoIndex = _index;
+        }
+
         public void SelectPreviousAmmo()
         {
             if (selectedAmmoIndex + 1 > Data.BulletDatas.Length - 1)
@@ -231,7 +236,7 @@ namespace TeamF
                 GameManager.I.AudioMng.PlaySound(Clips.CharacterPickUp);
                 for (int i = 0; i < Data.BulletDatas.Length; i++)
                 {
-                    if (_crate.Type == Data.BulletDatas[i].ElementalAmmo.AmmoType)
+                    if (_crate != null && _crate.Type == Data.BulletDatas[i].ElementalAmmo.AmmoType)
                     {
                         //Aggiungi le munizioni a questo tipo;
                         if ((bulletDatasInstancies[i].ElementalAmmo.Ammo + _crate.Ammo) > bulletDatasInstancies[i].TotalAmmo)

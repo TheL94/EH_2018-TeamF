@@ -145,7 +145,7 @@ namespace TeamF
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.tag == "ComboElement" || other.tag == "ColliderToIgnore")
+            if (other.tag == "ComboElement" || other.tag == "ColliderToIgnore" || other.tag == "MouseRaycast")
                 return;
             OnTrigger(other);
         }

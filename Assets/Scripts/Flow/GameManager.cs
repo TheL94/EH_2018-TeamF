@@ -10,6 +10,7 @@ namespace TeamF
         public static GameManager I;
 
         public FlowState CurrentState { get { return flowMng.CurrentState; } set { flowMng.CurrentState = value; } }
+        public bool IsPlayingSequnce = false;
 
         [HideInInspector]
         public LevelManager LevelMng;
@@ -54,19 +55,6 @@ namespace TeamF
             // NELLO START NON CI INFILARE NIENTE ! USA LO STATO DI SETUP GAME.
             flowMng = new FlowManager();
             CurrentState = FlowState.SetupGame;
-        }
-
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                if (CurrentState == FlowState.TestGameplay)
-                    CurrentState = FlowState.ExitTestScene;
-                else if (CurrentState == FlowState.Gameplay)
-                    CurrentState = FlowState.Pause;
-                else if(CurrentState == FlowState.Pause)
-                    CurrentState = FlowState.Gameplay;
-            }
         }
 
         public void StartEndPreRoundCoroutine()

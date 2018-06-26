@@ -22,22 +22,22 @@ namespace TeamF.AI
                     switch (_enemy.Data.EnemyType)
                     {
                         case EnemyType.Melee:
-                            ScoreCounter.OnScoreAction(ScoreType.EnemyMeleeKill);
+                            ScoreCounter.OnScoreAction(ScoreType.EnemyMeleeKill, _enemy.transform.position);
                             break;
                         case EnemyType.Ranged:
-                            ScoreCounter.OnScoreAction(ScoreType.EnemyRangedKill);
+                            ScoreCounter.OnScoreAction(ScoreType.EnemyRangedKill, _enemy.transform.position);
                             break;
                         case EnemyType.Fire:
-                            ScoreCounter.OnScoreAction(ScoreType.EnemyFireKill);
+                            ScoreCounter.OnScoreAction(ScoreType.EnemyFireKill, _enemy.transform.position);
                             break;
                         case EnemyType.Water:
-                            ScoreCounter.OnScoreAction(ScoreType.EnemyWaterKill);
+                            ScoreCounter.OnScoreAction(ScoreType.EnemyWaterKill, _enemy.transform.position);
                             break;
                         case EnemyType.Poison:
-                            ScoreCounter.OnScoreAction(ScoreType.EnemyPoisonKill);
+                            ScoreCounter.OnScoreAction(ScoreType.EnemyPoisonKill, _enemy.transform.position);
                             break;
                         case EnemyType.Thunder:
-                            ScoreCounter.OnScoreAction(ScoreType.EnemyThunderKill);
+                            ScoreCounter.OnScoreAction(ScoreType.EnemyThunderKill, _enemy.transform.position);
                             break;
                     }                
                 }
