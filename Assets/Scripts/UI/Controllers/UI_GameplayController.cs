@@ -17,6 +17,7 @@ namespace TeamF
         public Slider KillPointsSlider;
         public Slider LifeSlider;
         public MachineGunSliderController MachineGunOverhatingCtrl;
+        public KillPointsSliderController KillPointsSliderCtrl;
 
         private void OnEnable()
         {
@@ -104,6 +105,7 @@ namespace TeamF
 
         void UpdareKillPoints(float _points, float _pointsToWin)
         {
+            KillPointsSliderCtrl.Blink();
             KillPointsSlider.value = _points / _pointsToWin;
         }
 
@@ -135,7 +137,6 @@ namespace TeamF
             ComboCounter.OnCounterChanged -= UpdateComboCounter;
             Events_UIController.OnOverheatingChanged -= UpdateOverheatingSlider;
             ScoreCounter.OnScoreChange -= UpdateScore;
-
         }
     }
 }
