@@ -12,7 +12,7 @@ namespace TeamF
         public Image SliderImage;
         public List<Sprite> Images;
 
-        Coroutine routine;
+        int coroutineCount;
 
         private void Start()
         {
@@ -21,31 +21,26 @@ namespace TeamF
 
         public void Blink()
         {
-            //if (routine != null)
-            //    StopAllCoroutines();
+            if (coroutineCount > 0)
+            {
+                StopAllCoroutines();
+                ChangeSliderImage(0);
+                coroutineCount--;
+            }
 
-            //routine = StartCoroutine(BlinkRoutine());
+            StartCoroutine(BlinkRoutine());
         }
 
         IEnumerator BlinkRoutine()
         {
-            ChangeSliderImage();
+            coroutineCount++;
+            ChangeSliderImage(1);
             yield return new WaitForSeconds(.1f);
-            ChangeSliderImage();
-            routine = null;
+            ChangeSliderImage(0);
+            coroutineCount--;
         }
 
         int selectedImage = 0;
-        void ChangeSliderImage()
-        {
-            if (selectedImage == 0)
-                selectedImage++;
-            else
-                selectedImage = 0;
-
-            SliderImage.sprite = Images[selectedImage];
-        }
-
         void ChangeSliderImage(int _imageToLoad)
         {
             selectedImage = _imageToLoad;
