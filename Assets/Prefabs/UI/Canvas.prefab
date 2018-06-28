@@ -2177,7 +2177,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224401732918509220}
   - component: {fileID: 114962860953796614}
-  - component: {fileID: 114307150230926774}
+  - component: {fileID: 114601454374196702}
   m_Layer: 5
   m_Name: MachineGunOverhating
   m_TagString: Untagged
@@ -2829,7 +2829,7 @@ MonoBehaviour:
   ScoreText: {fileID: 114985444818795234}
   KillPointsSlider: {fileID: 114383959314720178}
   LifeSlider: {fileID: 114562974683518742}
-  MachineGunOverhatingCtrl: {fileID: 114307150230926774}
+  MachineGunOverhatingCtrl: {fileID: 114601454374196702}
   KillPointsSliderCtrl: {fileID: 114837469238732998}
 --- !u!114 &114049622701840590
 MonoBehaviour:
@@ -4126,22 +4126,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114307150230926774
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1884936886767750}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0e07630853cee448a1e0053cfd93d23, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Slider: {fileID: 0}
-  SliderImage: {fileID: 114981813411629764}
-  Images:
-  - {fileID: 21300000, guid: d779654e5b43cbc4db1edf38d68e1e0f, type: 3}
-  - {fileID: 21300000, guid: 941263092515e7946b642cb2cedb84bb, type: 3}
 --- !u!114 &114313848214628082
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5613,6 +5597,22 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114601454374196702
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1884936886767750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4494b79c9805c154ebb315cab9d6c477, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Slider: {fileID: 0}
+  SliderImage: {fileID: 114981813411629764}
+  Images:
+  - {fileID: 21300000, guid: d779654e5b43cbc4db1edf38d68e1e0f, type: 3}
+  - {fileID: 21300000, guid: 941263092515e7946b642cb2cedb84bb, type: 3}
 --- !u!114 &114636968749154262
 MonoBehaviour:
   m_ObjectHideFlags: 1

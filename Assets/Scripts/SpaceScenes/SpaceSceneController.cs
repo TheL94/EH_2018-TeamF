@@ -29,7 +29,6 @@ namespace TeamF
         void UpdateAnimationsCount()
         {
             endedAnimations++;
-            GameManager.I.UIMng.UI_GameplayCtrl.gameObject.SetActive(true);
 
             if (endedAnimations == 2)
                 GameManager.I.CurrentState = FlowState.ManageMap;
@@ -37,6 +36,7 @@ namespace TeamF
 
         private void OnDisable()
         {
+            GameManager.I.UIMng.UI_GameplayCtrl.gameObject.SetActive(true);
             EndSpanceAnimation -= UpdateAnimationsCount;
             GameManager.I.IsPlayingSequnce = false;
             GameManager.I.Player.Character.transform.position = characterStartPosition;
