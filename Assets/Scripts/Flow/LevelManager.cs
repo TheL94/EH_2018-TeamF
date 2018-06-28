@@ -9,19 +9,13 @@ namespace TeamF
     {
         public LevelEndingStaus EndingStaus { get; set; }
 
-        float PointsToWin {
-            get {
-                if(Level > 0)
-                    return GameManager.I.KillsToWinPerLevel[Level - 1];
-                else
-                    return GameManager.I.KillsToWinPerLevel[0];
-            }
-        }
+        float PointsToWin;
         float roundPoints = 0;
         public int TotalLevels { get { return SceneManager.sceneCountInBuildSettings; } }
 
-        public void Init()
+        public void Init(float _pointsToWin)
         {
+            PointsToWin = _pointsToWin;
             Events_LevelController.OnKillPointChanged += UpdateRoundPoints;
         }
 
@@ -108,7 +102,7 @@ namespace TeamF
             if (GameManager.I.CurrentState != FlowState.Gameplay)
                 return;
 
-            if (roundPoints == PointsToWin)
+            if (roundPoints >= PointsToWin)
             {
                 EndingStaus = LevelEndingStaus.Won;
                 GameManager.I.CurrentState = FlowState.PreEndRound;

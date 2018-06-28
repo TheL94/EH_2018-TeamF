@@ -219,7 +219,7 @@ namespace TeamF
 
         void InitGameplayElementsActions()
         {
-            GameManager.I.LevelMng.Init();
+            GameManager.I.LevelMng.Init(GameManager.I.LevelMng.Level - 1);
 
             if (GameManager.I.Player != null)
                 GameManager.I.Player.InitCharacter();
