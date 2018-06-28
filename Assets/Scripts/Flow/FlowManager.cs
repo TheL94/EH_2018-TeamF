@@ -276,14 +276,17 @@ namespace TeamF
 
         void PreRoundEndActions()
         {
-            //GameManager.I.EnemyMng.ToggleAllAIs(true);
             GameManager.I.Player.Character.ReInit();
-
-            
+       
             GameManager.I.EnemyMng.EndGameplayActions();
 
             if (GameManager.I.LevelMng.EndingStaus == LevelEndingStaus.Lost)
+            {
                 GameManager.I.Player.DeadCharacter();
+                GameManager.I.AudioMng.PlaySound(Clips.GameLost);
+            }
+            else if (GameManager.I.LevelMng.EndingStaus == LevelEndingStaus.Won)
+                GameManager.I.AudioMng.PlaySound(Clips.GameWon);
 
             GameManager.I.CursorCtrl.SetCursor(false);
             GameManager.I.LevelMng.ClearCombos();
@@ -296,12 +299,7 @@ namespace TeamF
         {
             Time.timeScale = 1;
             GameManager.I.EnemyMng.ToggleAllAIs(true);
-
-            //GameManager.I.Player.Character.ReInit();
-           // GameManager.I.EnemyMng.EndGameplayActions();
-            //GameManager.I.CursorCtrl.SetCursor(false);
             GameManager.I.AmmoController.DeleteAllAmmoCrate();
-            //GameManager.I.LevelMng.ClearCombos();
             GameManager.I.AudioMng.StopAllSound();
 
             GameManager.I.ScoreCounter.Clear();
@@ -314,9 +312,6 @@ namespace TeamF
                 GameManager.I.LevelMng.Level = 0;
                 return;
             }
-
-            //if (GameManager.I.LevelMng.EndingStaus != LevelEndingStaus.Won)
-            //    GameManager.I.LevelMng.Level = 0;
 
             GameManager.I.UIMng.GameOverActions(GameManager.I.LevelMng.EndingStaus);
         }
