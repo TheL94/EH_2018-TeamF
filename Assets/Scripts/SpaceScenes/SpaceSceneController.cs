@@ -31,16 +31,18 @@ namespace TeamF
             endedAnimations++;
 
             if (endedAnimations == 2)
+            {
+                GameManager.I.UIMng.UI_GameplayCtrl.gameObject.SetActive(true);
+                GameManager.I.IsPlayingSequnce = false;
+                GameManager.I.Player.Character.transform.position = characterStartPosition;
+                Cursor.visible = true;
                 GameManager.I.CurrentState = FlowState.ManageMap;
+            }
         }
 
         private void OnDisable()
         {
-            GameManager.I.UIMng.UI_GameplayCtrl.gameObject.SetActive(true);
             EndSpanceAnimation -= UpdateAnimationsCount;
-            GameManager.I.IsPlayingSequnce = false;
-            GameManager.I.Player.Character.transform.position = characterStartPosition;
-            Cursor.visible = true;
         }
     }
 }
