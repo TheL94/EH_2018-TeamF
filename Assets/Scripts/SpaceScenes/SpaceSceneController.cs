@@ -17,7 +17,7 @@ namespace TeamF
             EndSpanceAnimation += UpdateAnimationsCount;
             GameManager.I.IsPlayingSequnce = true;
             characterStartPosition = GameManager.I.Player.Character.transform.position;
-            GameManager.I.Player.Character.transform.position = new Vector3(1000, 1000, 1000);
+            GameManager.I.Player.Character.transform.position = new Vector3(0, 100, 0);
             Cursor.visible = false;
         }
 
