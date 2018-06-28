@@ -8,8 +8,8 @@ namespace TeamF
     public class UI_GameplayController : MonoBehaviour
     {
         public AmmoIndicator FireAmmo;
-        public AmmoIndicator WaterAmmo;
         public AmmoIndicator PoisonAmmo;
+        public AmmoIndicator WaterAmmo;
         public AmmoIndicator ThunderAmmo;
         public UI_ComboCounterController ComboCounterCtrl;
         public Text ScoreText;
