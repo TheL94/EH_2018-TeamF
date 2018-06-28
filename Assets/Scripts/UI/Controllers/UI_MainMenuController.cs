@@ -16,7 +16,7 @@ namespace TeamF
 
             BestScore.text = "Best Score: " + GameManager.I.ScoreCounter.BestScore;
 
-            if (!Debug.isDebugBuild)
+            if (!Debug.isDebugBuild && SelectableButtons.Count > 4)
             {
                 SelectableButton testSceneButton = (SelectableButtons[SelectableButtons.Count - 1] as SelectableButton);
                 SelectableButtons.Remove(SelectableButtons[SelectableButtons.Count - 1]);
