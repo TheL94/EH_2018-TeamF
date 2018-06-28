@@ -88,13 +88,13 @@ namespace TeamF
                 if (controllerConnected)
                 {
                     if (Input.GetButtonDown("A_Button"))
-                        Character.SelectSpecificAmmo(3);
+                        Character.SelectSpecificAmmo(2);
 
                     if (Input.GetButtonDown("B_Button"))
                         Character.SelectSpecificAmmo(1);
 
                     if (Input.GetButtonDown("X_Button"))
-                        Character.SelectSpecificAmmo(2);
+                        Character.SelectSpecificAmmo(3);
 
                     if (Input.GetButtonDown("Y_Button"))
                         Character.SelectSpecificAmmo(4);

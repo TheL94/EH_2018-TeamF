@@ -176,12 +176,12 @@ namespace TeamF
                         BackPackRenderer.materials[1].SetColor("_EmissionColor", Color.red);
                         break;
                     case 2:
-                        BackPackLight.color = Color.blue;
-                        BackPackRenderer.materials[1].SetColor("_EmissionColor", Color.blue);
+                        BackPackLight.color = Color.green;
+                        BackPackRenderer.materials[1].SetColor("_EmissionColor", Color.green);                   
                         break;
                     case 3:
-                        BackPackLight.color = Color.green;
-                        BackPackRenderer.materials[1].SetColor("_EmissionColor", Color.green);
+                        BackPackLight.color = Color.blue;
+                        BackPackRenderer.materials[1].SetColor("_EmissionColor", Color.blue);
                         break;
                     case 4:
                         BackPackLight.color = Color.yellow;
