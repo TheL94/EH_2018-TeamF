@@ -8,12 +8,15 @@ namespace TeamF
     public class UI_GameOverController : MenuBase
     {
         public GameObject NextRoundButton;
+        public GameObject MainMenuButton;
         public Sprite WinImage;
         public Sprite LoseImage;
 
         public Text PartialScore;
         public Text TotalScore;
         public Text BestScore;
+
+        private int _levelStatusInt; // 0 = won, 1 = fail
 
         public void Init(LevelEndingStaus _levelStaus)
         {
@@ -23,15 +26,23 @@ namespace TeamF
                 case LevelEndingStaus.Won:
 
                     if (GameManager.I.LevelMng.Level == GameManager.I.LevelMng.TotalLevels - 1)
+                    {
                         NextRoundButton.SetActive(false);
+                        MainMenuButton.SetActive(true);
+                    }
                     else
+                    {
                         NextRoundButton.SetActive(true);
-
+                        MainMenuButton.SetActive(false);
+                    }
                     img.sprite = WinImage;
+                    _levelStatusInt = 0;
                     break;
                 case LevelEndingStaus.Lost:
                     img.sprite = LoseImage;
                     NextRoundButton.SetActive(false);
+                    MainMenuButton.SetActive(true);
+                    _levelStatusInt = 1;
                     break;
             }
 
@@ -48,11 +59,20 @@ namespace TeamF
             switch (CurrentIndexSelected)
             {
                 case 0:
-                    // cambio stato in enter gameplay (*** il livellodeve essere già caricato ***)
-                    if (SelectableButtons.Count > 1)
+                    if (_levelStatusInt == 0)
+                    {
                         GameManager.I.CurrentState = FlowState.ManageMap;
-                    else
+                    }
+                    else if (_levelStatusInt == 1)
+                    {
                         GameManager.I.LevelMng.Level = 0; // Main Menù
+                    }
+                    
+                    // cambio stato in enter gameplay (*** il livellodeve essere già caricato ***)
+                    //if (SelectableButtons.Count > 1)
+                        //GameManager.I.CurrentState = FlowState.ManageMap;
+                    //else
+                      //  GameManager.I.LevelMng.Level = 0; // Main Menù
                     break;
                 case 1:
                     GameManager.I.LevelMng.Level = 0; // Main Menù
