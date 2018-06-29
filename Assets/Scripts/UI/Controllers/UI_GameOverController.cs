@@ -24,7 +24,7 @@ namespace TeamF
             switch (_levelStaus)
             {
                 case LevelEndingStaus.Won:
-                    if (GameManager.I.LevelMng.Level == GameManager.I.LevelMng.TotalLevels - 1)
+                    if (GameManager.I.LevelMng.MapIndex == GameManager.I.LevelMng.TotalMaps - 1)
                     {
                         NextRoundButton.SetActive(false);
                         MainMenuButton.SetActive(true);
@@ -61,7 +61,7 @@ namespace TeamF
                     if (levelEndingStaus == LevelEndingStaus.Won)
                         GameManager.I.CurrentState = FlowState.ManageMap; // Next map
                     else if (levelEndingStaus == LevelEndingStaus.Lost)
-                        GameManager.I.LevelMng.Level = 0; // Main Menù
+                        GameManager.I.LevelMng.MapIndex = 0; // Main Menù
                     break;
             }
             base.Select();

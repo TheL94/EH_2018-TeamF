@@ -106,14 +106,14 @@ namespace TeamF
         /// <param name="_type">Tipo del nemico che attacca, per triggherare azioni particolari del player a seconda del tipo di nemico</param>
         public void TakeDamage(float _damage, ElementalType _type = ElementalType.None)
         {
-            if (isInvincible || Life <= 0)
+            if (isInvincible || Life <= 0 || GameManager.I.CurrentState != FlowState.Gameplay)
                 return;
 
             _damage = (_damage * DamagePercentage) / 100;
             Life -= _damage;
             GameManager.I.AudioMng.PlaySound(Clips.CharacterDamage);
 
-            if (ScoreCounter.OnScoreAction != null && GameManager.I.CurrentState == FlowState.Gameplay)
+            if (ScoreCounter.OnScoreAction != null)
                 ScoreCounter.OnScoreAction(ScoreType.PlayerDamage, transform.position);
 
             if (blinkCtrl != null)

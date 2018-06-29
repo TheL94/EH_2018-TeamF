@@ -205,7 +205,7 @@ namespace TeamF
         void MainMenuActions()
         {
             GameManager.I.CursorCtrl.SetCursor(false);
-            GameManager.I.LevelMng.Level = 0;
+            GameManager.I.LevelMng.MapIndex = 0;
             GameManager.I.UIMng.MainMenuActions();
             GameManager.I.AudioMng.PlaySound(Clips.MenuMusic);
         }
@@ -214,7 +214,7 @@ namespace TeamF
         {
             GameManager.I.UIMng.LoadingActions();
             GameManager.I.LevelMng.ReInit();
-            GameManager.I.LevelMng.Level++;
+            GameManager.I.LevelMng.MapIndex++;
         }
 
         void InitGameplayElementsActions()
@@ -231,11 +231,11 @@ namespace TeamF
 
             GameManager.I.CursorCtrl.SetCursor(true);
 
-            if (GameManager.I.LevelMng.Level <= 3)
+            if (GameManager.I.LevelMng.MapIndex <= 4)
                 GameManager.I.PPCtrl.SetPostProcess(PostProcessController.MapType.Forest);
-            else if (GameManager.I.LevelMng.Level <= 6)
+            else if (GameManager.I.LevelMng.MapIndex <= 8)
                 GameManager.I.PPCtrl.SetPostProcess(PostProcessController.MapType.Mine);
-            else if (GameManager.I.LevelMng.Level <= 9)
+            else if (GameManager.I.LevelMng.MapIndex <= 12)
                 GameManager.I.PPCtrl.SetPostProcess(PostProcessController.MapType.City);
 
             GameManager.I.ComboCounter.Init(GameManager.I.ComboCounterTimer);
@@ -248,11 +248,11 @@ namespace TeamF
         {
             GameManager.I.AudioMng.PlaySound(Clips.GameplayMusic);
 
-            if (GameManager.I.LevelMng.Level <= 3)
+            if (GameManager.I.LevelMng.MapIndex <= 4)
                 GameManager.I.AudioMng.PlaySound(Clips.ForestAmbience);
-            else if (GameManager.I.LevelMng.Level <= 6)
+            else if (GameManager.I.LevelMng.MapIndex <= 8)
                 GameManager.I.AudioMng.PlaySound(Clips.MineAmbience);
-            else if (GameManager.I.LevelMng.Level <= 9)
+            else if (GameManager.I.LevelMng.MapIndex <= 12)
                 GameManager.I.AudioMng.PlaySound(Clips.CityAmbience);
         }
 
@@ -310,7 +310,7 @@ namespace TeamF
             if (GameManager.I.LevelMng.EndingStaus == LevelEndingStaus.Interrupted)
             {
                 GameManager.I.UIMng.LoadingActions();
-                GameManager.I.LevelMng.Level = 0;
+                GameManager.I.LevelMng.MapIndex = 0;
                 return;
             }
 
@@ -359,11 +359,11 @@ namespace TeamF
 
             GameManager.I.AudioMng.PlaySound(Clips.GameplayMusic);
 
-            if (GameManager.I.LevelMng.Level <= 3)
+            if (GameManager.I.LevelMng.MapIndex <= 4)
                 GameManager.I.AudioMng.PlaySound(Clips.ForestAmbience);
-            else if (GameManager.I.LevelMng.Level <= 6)
+            else if (GameManager.I.LevelMng.MapIndex <= 8)
                 GameManager.I.AudioMng.PlaySound(Clips.MineAmbience);
-            else if (GameManager.I.LevelMng.Level <= 9)
+            else if (GameManager.I.LevelMng.MapIndex <= 12)
                 GameManager.I.AudioMng.PlaySound(Clips.CityAmbience);
         }
 
@@ -371,7 +371,7 @@ namespace TeamF
         {
             GameManager.I.CursorCtrl.SetCursor(false);
             GameManager.I.EnemyMng.EndGameplayActions();
-            GameManager.I.LevelMng.Level = 0;
+            GameManager.I.LevelMng.MapIndex = 0;
         }
         #endregion
     }
