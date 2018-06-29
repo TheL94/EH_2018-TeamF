@@ -15,6 +15,7 @@ namespace TeamF
         public UI_LoadingPanelController UI_LoadingPanelController;
         public UI_CreditsController UI_CreditsController;
         public UI_TutorialController UI_TutorialCtrl;
+        public UI_LoreController UI_LoreCtrl;
 
         [HideInInspector]
         public MenuBase CurrentMenu;
@@ -30,6 +31,7 @@ namespace TeamF
             UI_LoadingPanelController.gameObject.SetActive(false);
             UI_PauseController.gameObject.SetActive(false);
             UI_TutorialCtrl.gameObject.SetActive(false);
+            UI_LoreCtrl.gameObject.SetActive(false);
             UI_MainMenuCtrl.Init();
             isGamePaused = false;
         }
@@ -48,8 +50,19 @@ namespace TeamF
             UI_TutorialCtrl.gameObject.SetActive(true);
             UI_MainMenuCtrl.gameObject.SetActive(false);
             UI_CreditsController.gameObject.SetActive(false);
+            UI_LoreCtrl.gameObject.SetActive(false);
 
             UI_TutorialCtrl.Init();
+        }
+
+        public void LoreActions()
+        {
+            UI_LoreCtrl.gameObject.SetActive(true);
+            UI_MainMenuCtrl.gameObject.SetActive(false);
+            UI_CreditsController.gameObject.SetActive(false);
+            UI_TutorialCtrl.gameObject.SetActive(false);
+
+            UI_LoreCtrl.Init();
         }
 
         ///TODO: qualcuno deve richiamare questa funzione passando i valori già settati dei dati, in modo che vengano scritti nei campi presenti

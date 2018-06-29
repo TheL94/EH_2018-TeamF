@@ -16,7 +16,7 @@ namespace TeamF
         public Text TotalScore;
         public Text BestScore;
 
-        private int _levelStatusInt; // 0 = won, 1 = fail
+        LevelEndingStaus levelEndingStaus;
 
         public void Init(LevelEndingStaus _levelStaus)
         {
@@ -24,7 +24,6 @@ namespace TeamF
             switch (_levelStaus)
             {
                 case LevelEndingStaus.Won:
-
                     if (GameManager.I.LevelMng.Level == GameManager.I.LevelMng.TotalLevels - 1)
                     {
                         NextRoundButton.SetActive(false);
@@ -36,13 +35,13 @@ namespace TeamF
                         MainMenuButton.SetActive(false);
                     }
                     img.sprite = WinImage;
-                    _levelStatusInt = 0;
+                    levelEndingStaus = _levelStaus;
                     break;
                 case LevelEndingStaus.Lost:
                     img.sprite = LoseImage;
                     NextRoundButton.SetActive(false);
                     MainMenuButton.SetActive(true);
-                    _levelStatusInt = 1;
+                    levelEndingStaus = _levelStaus;
                     break;
             }
 
@@ -59,23 +58,10 @@ namespace TeamF
             switch (CurrentIndexSelected)
             {
                 case 0:
-                    if (_levelStatusInt == 0)
-                    {
-                        GameManager.I.CurrentState = FlowState.ManageMap;
-                    }
-                    else if (_levelStatusInt == 1)
-                    {
+                    if (levelEndingStaus == LevelEndingStaus.Won)
+                        GameManager.I.CurrentState = FlowState.ManageMap; // Next map
+                    else if (levelEndingStaus == LevelEndingStaus.Lost)
                         GameManager.I.LevelMng.Level = 0; // Main Menù
-                    }
-                    
-                    // cambio stato in enter gameplay (*** il livellodeve essere già caricato ***)
-                    //if (SelectableButtons.Count > 1)
-                        //GameManager.I.CurrentState = FlowState.ManageMap;
-                    //else
-                      //  GameManager.I.LevelMng.Level = 0; // Main Menù
-                    break;
-                case 1:
-                    GameManager.I.LevelMng.Level = 0; // Main Menù
                     break;
             }
             base.Select();

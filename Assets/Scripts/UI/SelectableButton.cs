@@ -40,7 +40,6 @@ namespace TeamF
                 img.sprite = ButtonOn;
             else
                 img.sprite = ButtonOff;
-
         }
 
         public void OnPointerClick(PointerEventData eventData)
