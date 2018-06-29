@@ -2950,7 +2950,7 @@ MonoBehaviour:
   KillPointsSlider: {fileID: 114383959314720178}
   LifeSlider: {fileID: 114562974683518742}
   MachineGunOverhatingCtrl: {fileID: 114601454374196702}
-  KillPointsSliderCtrl: {fileID: 0}
+  KillPointsSliderCtrl: {fileID: 114837469238732998}
 --- !u!114 &114049622701840590
 MonoBehaviour:
   m_ObjectHideFlags: 1

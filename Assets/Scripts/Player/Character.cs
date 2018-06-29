@@ -113,7 +113,7 @@ namespace TeamF
             Life -= _damage;
             GameManager.I.AudioMng.PlaySound(Clips.CharacterDamage);
 
-            if (ScoreCounter.OnScoreAction != null)
+            if (ScoreCounter.OnScoreAction != null && GameManager.I.CurrentState == FlowState.Gameplay)
                 ScoreCounter.OnScoreAction(ScoreType.PlayerDamage, transform.position);
 
             if (blinkCtrl != null)

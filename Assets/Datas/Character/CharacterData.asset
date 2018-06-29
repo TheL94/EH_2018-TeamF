@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b284af11ef85af4fa12080c49889673, type: 3}
   m_Name: CharacterData
   m_EditorClassIdentifier: 
-  Life: 2.5e+12
+  Life: 25
   BulletDatas:
   - {fileID: 11400000, guid: 6d8215c998413094ebba4d5ee9c79cd1, type: 2}
   - {fileID: 11400000, guid: 40ab1dcbc04f55949a227859170e9890, type: 2}
