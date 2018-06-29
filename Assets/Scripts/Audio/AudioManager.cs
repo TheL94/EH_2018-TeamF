@@ -100,6 +100,9 @@ namespace TeamF
             else if (_clipNumber >= 16 && _clipNumber < 23) // Combos
                 sources = ComboSources;
 
+            else if (_clipNumber >= 23 && _clipNumber < 25) // Game lost and game won
+                sources = ComboSources;
+
             if (sources != null || sources.Count > 0)
             {
                 foreach (AudioSource source in sources)
@@ -159,7 +162,10 @@ namespace TeamF
         ComboIncreaseDamage,
         ComboParalyzingCloud,
         ComboSlowingCloud,
-        PoisonCloud
+        PoisonCloud,
+
+        GameWon,
+        GameLost
     }
 }
 

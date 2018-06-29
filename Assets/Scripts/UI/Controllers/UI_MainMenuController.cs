@@ -16,7 +16,7 @@ namespace TeamF
 
             BestScore.text = "Best Score: " + GameManager.I.ScoreCounter.BestScore;
 
-            if (!Debug.isDebugBuild)
+            if (!Debug.isDebugBuild && SelectableButtons.Count > 5)
             {
                 SelectableButton testSceneButton = (SelectableButtons[SelectableButtons.Count - 1] as SelectableButton);
                 SelectableButtons.Remove(SelectableButtons[SelectableButtons.Count - 1]);
@@ -41,13 +41,16 @@ namespace TeamF
                     GameManager.I.UIMng.TutorialActions();
                     break;
                 case 3:
+                    //Lore
+                    GameManager.I.UIMng.LoreActions();
+                    break;
+                case 4:
                     //Exit game
                     GameManager.I.CurrentState = FlowState.QuitGame;
                     break;
-                case 4:
+                case 5:
                     //Scena di test
                     GameManager.I.CurrentState = FlowState.InitTestScene;
-
                     break;
             }
             base.Select();

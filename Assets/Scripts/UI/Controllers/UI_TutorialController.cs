@@ -37,8 +37,21 @@ namespace TeamF
 
         public override void Select()
         {
-            // Exit
-            GameManager.I.UIMng.MainMenuActions();
+            switch (CurrentIndexSelected)
+            {
+                case 0:
+                    // go next
+                    CurrentImg++;
+                    break;
+                case 1:
+                    // go previous
+                    CurrentImg--;
+                    break;
+                case 2:
+                    // Exit
+                    GameManager.I.UIMng.MainMenuActions();
+                    break;
+            }
         }
 
         void ChangeImage(int _indexImg)
@@ -57,17 +70,12 @@ namespace TeamF
 
         public override void GoLeftInMenu()
         {
-            CurrentImg--;
+            // per inibire la possibilità di spostare selectable
         }
 
         public override void GoRightInMenu()
         {
-            CurrentImg++;
-        }
-
-        public override void GoBack()
-        {
-            GameManager.I.UIMng.MainMenuActions();
+            // per inibire la possibilità di spostare selectable
         }
     }
 }

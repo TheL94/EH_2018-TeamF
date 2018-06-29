@@ -106,7 +106,7 @@ namespace TeamF
         /// <param name="_type">Tipo del nemico che attacca, per triggherare azioni particolari del player a seconda del tipo di nemico</param>
         public void TakeDamage(float _damage, ElementalType _type = ElementalType.None)
         {
-            if (isInvincible || Life <= 0)
+            if (isInvincible || Life <= 0 || GameManager.I.CurrentState != FlowState.Gameplay)
                 return;
 
             _damage = (_damage * DamagePercentage) / 100;
@@ -176,12 +176,12 @@ namespace TeamF
                         BackPackRenderer.materials[1].SetColor("_EmissionColor", Color.red);
                         break;
                     case 2:
-                        BackPackLight.color = Color.blue;
-                        BackPackRenderer.materials[1].SetColor("_EmissionColor", Color.blue);
+                        BackPackLight.color = Color.green;
+                        BackPackRenderer.materials[1].SetColor("_EmissionColor", Color.green);                   
                         break;
                     case 3:
-                        BackPackLight.color = Color.green;
-                        BackPackRenderer.materials[1].SetColor("_EmissionColor", Color.green);
+                        BackPackLight.color = Color.blue;
+                        BackPackRenderer.materials[1].SetColor("_EmissionColor", Color.blue);
                         break;
                     case 4:
                         BackPackLight.color = Color.yellow;
