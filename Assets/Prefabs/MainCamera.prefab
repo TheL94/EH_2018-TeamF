@@ -37,13 +37,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1036095856573256}
-  m_LocalRotation: {x: 0.345118, y: -0.0000060100833, z: 0.000016344613, w: 0.93855935}
-  m_LocalPosition: {x: 0.43, y: 23.508354, z: -26.03}
+  m_LocalRotation: {x: 0.345118, y: 0, z: 0, w: 0.93855935}
+  m_LocalPosition: {x: 0.43, y: 22.36, z: -26.03}
   m_LocalScale: {x: 1, y: 1.0710603, z: 1.0710609}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 40.378002, y: 0, z: 0.002}
+  m_LocalEulerAnglesHint: {x: 40.378002, y: 0, z: 0}
 --- !u!20 &20842325846531872
 Camera:
   m_ObjectHideFlags: 1
@@ -116,9 +116,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca431069d09c94f43a98d250030a2288, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ForestPostProcess: {fileID: 11400000, guid: 37cc8cbb876283643acc2facc8bd0213, type: 2}
+  ForestPostProcess: {fileID: 11400000, guid: 305e52eb0ac71f94a9da7e6495688576, type: 2}
   MinePostProcess: {fileID: 11400000, guid: 37cc8cbb876283643acc2facc8bd0213, type: 2}
-  CityPostProcess: {fileID: 11400000, guid: 37cc8cbb876283643acc2facc8bd0213, type: 2}
+  CityPostProcess: {fileID: 11400000, guid: 4bf36d669ea3e3447a4c586807fa9e8e, type: 2}
 --- !u!124 &124907100471525920
 Behaviour:
   m_ObjectHideFlags: 1

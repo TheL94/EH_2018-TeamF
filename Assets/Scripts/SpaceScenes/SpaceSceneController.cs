@@ -15,9 +15,9 @@ namespace TeamF
         private void OnEnable()
         {
             EndSpanceAnimation += UpdateAnimationsCount;
-            GameManager.I.IsPlayingSequnce = true;
+            GameManager.I.IsPlayingCutScene = true;
             characterStartPosition = GameManager.I.Player.Character.transform.position;
-            GameManager.I.Player.Character.transform.position = new Vector3(1000, 1000, 1000);
+            GameManager.I.Player.Character.transform.position = new Vector3(0, 100, 0);
             Cursor.visible = false;
         }
 
@@ -29,18 +29,20 @@ namespace TeamF
         void UpdateAnimationsCount()
         {
             endedAnimations++;
-            GameManager.I.UIMng.UI_GameplayCtrl.gameObject.SetActive(true);
 
             if (endedAnimations == 2)
+            {
+                GameManager.I.UIMng.UI_GameplayCtrl.gameObject.SetActive(true);
+                GameManager.I.IsPlayingCutScene = false;
+                GameManager.I.Player.Character.transform.position = characterStartPosition;
+                Cursor.visible = true;
                 GameManager.I.CurrentState = FlowState.ManageMap;
+            }
         }
 
         private void OnDisable()
         {
             EndSpanceAnimation -= UpdateAnimationsCount;
-            GameManager.I.IsPlayingSequnce = false;
-            GameManager.I.Player.Character.transform.position = characterStartPosition;
-            Cursor.visible = true;
         }
     }
 }

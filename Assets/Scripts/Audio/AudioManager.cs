@@ -62,7 +62,7 @@ namespace TeamF
             ClipData clipToPlay = GetClip(_clip);
             AudioSource availableSource = GetAvailableSource((int)_clip);
 
-            if(clipToPlay != null && availableSource != null && clipToPlay.Clip != null)
+            if(clipToPlay != null && availableSource != null && clipToPlay.Clip != null && availableSource.clip != clipToPlay.Clip)
             {
                 if (!availableSource.isPlaying)
                     ChangeClip(availableSource, clipToPlay);
@@ -98,6 +98,9 @@ namespace TeamF
                 sources = EnemySources;
 
             else if (_clipNumber >= 16 && _clipNumber < 23) // Combos
+                sources = ComboSources;
+
+            else if (_clipNumber >= 23 && _clipNumber < 25) // Game lost and game won
                 sources = ComboSources;
 
             if (sources != null || sources.Count > 0)
@@ -159,7 +162,10 @@ namespace TeamF
         ComboIncreaseDamage,
         ComboParalyzingCloud,
         ComboSlowingCloud,
-        PoisonCloud
+        PoisonCloud,
+
+        GameWon,
+        GameLost
     }
 }
 

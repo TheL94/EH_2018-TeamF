@@ -9,42 +9,47 @@ namespace TeamF
     {
         public LevelEndingStaus EndingStaus { get; set; }
 
-        float PointsToWin {
-            get {
-                if(Level > 0)
-                    return GameManager.I.KillsToWinPerLevel[Level - 1];
-                else
-                    return GameManager.I.KillsToWinPerLevel[0];
+        float PointsToWin;
+        float roundPoints = 0;
+
+        public int Level
+        {
+            get
+            {
+                int levelIndex = 0;
+                if (MapIndex == 1)
+                    levelIndex = 0;
+                else if (MapIndex > 1 && MapIndex < 5)
+                    levelIndex = MapIndex - 1;
+                else if (MapIndex == 5)
+                    levelIndex = 0;
+                else if (MapIndex > 5 && MapIndex < 9)
+                    levelIndex = MapIndex - 2;
+                else if (MapIndex == 9)
+                    levelIndex = 0;
+                else if (MapIndex > 9 && MapIndex < 13)
+                    levelIndex = MapIndex - 3;
+                return levelIndex;
             }
         }
-        float roundPoints = 0;
-        public int TotalLevels { get { return SceneManager.sceneCountInBuildSettings; } }
 
-        public void Init()
+        public void Init(float _pointsToWin)
         {
+            PointsToWin = _pointsToWin;
             Events_LevelController.OnKillPointChanged += UpdateRoundPoints;
         }
 
         #region Scene Management
         AsyncOperation async;
-        public float LoadindProgress
-        {
-            get
-            {
-                if (async != null)
-                    return async.progress;
-                else
-                    return -1f;
-            }
-        }
 
-        int _level  = 0;
-        public int Level { get { return _level; } set { OnLevelChange(value); } }
+        public int TotalMaps { get { return SceneManager.sceneCountInBuildSettings; } }
+        int _mapIndex  = 0;
+        public int MapIndex { get { return _mapIndex; } set { OnLevelChange(value); } }
 
         void OnLevelChange(int _newLevel)
         {
             GameManager.I.UIMng.LoadingActions();
-            UnloadLevel(Level, _newLevel);
+            UnloadLevel(MapIndex, _newLevel);
         }
 
         void UnloadLevel(int _currentLevel, int _newLevel)
@@ -72,7 +77,7 @@ namespace TeamF
 
         void LoadNewLevel(int _newLevel)
         {
-            if (_newLevel != _level && _newLevel != 0 && _newLevel < TotalLevels)
+            if (_newLevel != _mapIndex && _newLevel != 0 && _newLevel < TotalMaps)
             {
                 async = SceneManager.LoadSceneAsync(_newLevel, LoadSceneMode.Additive);
                 async.completed += (async) =>
@@ -80,9 +85,9 @@ namespace TeamF
                     StartCoroutine(ActivateScene(_newLevel));
                 };
             }
-            else if (_newLevel == 0 || _newLevel >= TotalLevels)
+            else if (_newLevel == 0 || _newLevel >= TotalMaps)
             {
-                _level = 0;
+                _mapIndex = 0;
                 GameManager.I.CurrentState = FlowState.MainMenu;
             }
         }
@@ -92,7 +97,7 @@ namespace TeamF
             while (!GameManager.I.PoolMng.IsFreeToGo)
                 yield return null;
 
-            _level = _newLevel;
+            _mapIndex = _newLevel;
             async.allowSceneActivation = true;
             if (GameManager.I.CurrentState == FlowState.ManageMap)
                 GameManager.I.CurrentState = FlowState.InitGameplayElements;
@@ -108,7 +113,7 @@ namespace TeamF
             if (GameManager.I.CurrentState != FlowState.Gameplay)
                 return;
 
-            if (roundPoints == PointsToWin)
+            if (roundPoints >= PointsToWin)
             {
                 EndingStaus = LevelEndingStaus.Won;
                 GameManager.I.CurrentState = FlowState.PreEndRound;
@@ -151,7 +156,6 @@ namespace TeamF
 
             CheckGameStatus();
         }
-
     }
 
     public enum LevelEndingStaus { NotEnded = 0, Won, Lost, Interrupted }

@@ -10,7 +10,7 @@ namespace TeamF
         public static GameManager I;
 
         public FlowState CurrentState { get { return flowMng.CurrentState; } set { flowMng.CurrentState = value; } }
-        public bool IsPlayingSequnce = false;
+        public bool IsPlayingCutScene = false;
 
         [HideInInspector]
         public LevelManager LevelMng;

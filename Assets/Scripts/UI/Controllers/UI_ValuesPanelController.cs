@@ -82,7 +82,7 @@ namespace TeamF
                 case 0:
                     SetCharacterValues();
                     SetEnemiesValue();
-                    GameManager.I.LevelMng.Level = int.Parse(SceneToLoad.text);
+                    GameManager.I.LevelMng.MapIndex = int.Parse(SceneToLoad.text);
                     break;
             }
             base.Select();
