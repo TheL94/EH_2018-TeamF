@@ -18,10 +18,14 @@ namespace TeamF
             switch (CurrentIndexSelected)
             {
                 case 0:
-                    GameManager.I.UIMng.MainMenuActions();
+                    GoBack();
                     break;
             }
         }
 
+        public override void GoBack()
+        {
+            GameManager.I.UIMng.MainMenuActions();
+        }
     }
 }
