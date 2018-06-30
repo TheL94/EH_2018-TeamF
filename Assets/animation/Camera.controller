@@ -21,13 +21,13 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
---- !u!1102 &1102876714900825178
+--- !u!1102 &1102741485128420424
 AnimatorState:
   serializedVersion: 5
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: animation_forest_map01_cam
+  m_Name: animation_mine_map01_cam 1
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -40,7 +40,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 7037b1e4a9cf7504ea5c3d4ec0cb2bd7, type: 2}
+  m_Motion: {fileID: 7400000, guid: 9b72afb9b86dee3468211cef8bcb43ad, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -55,8 +55,8 @@ AnimatorStateMachine:
   m_Name: Base Layer
   m_ChildStates:
   - serializedVersion: 1
-    m_State: {fileID: 1102876714900825178}
-    m_Position: {x: 276, y: 12, z: 0}
+    m_State: {fileID: 1102741485128420424}
+    m_Position: {x: 264, y: 84, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -66,4 +66,4 @@ AnimatorStateMachine:
   m_EntryPosition: {x: 50, y: 120, z: 0}
   m_ExitPosition: {x: 516, y: 60, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
-  m_DefaultState: {fileID: 1102876714900825178}
+  m_DefaultState: {fileID: 1102741485128420424}
