@@ -7,7 +7,7 @@ namespace TeamF
 {
     public class UI_TutorialController : MenuBase
     {
-        Image img;
+        Image tutorialImage;
         public List<Sprite> TutorialImages = new List<Sprite>();
 
         private int _currentImg;
@@ -23,16 +23,16 @@ namespace TeamF
                 else
                     _currentImg = value;
 
-                ChangeImage(_currentImg);
+                tutorialImage.sprite = TutorialImages[_currentImg];
             }
         }
-
 
         public override void Init()
         {
             base.Init();
-            img = GetComponent<Image>();
+            tutorialImage = GetComponent<Image>();
             GameManager.I.UIMng.CurrentMenu = this;
+            CurrentImg = 0;
         }
 
         public override void Select()
@@ -41,22 +41,16 @@ namespace TeamF
             {
                 case 0:
                     // go next
-                    CurrentImg++;
+                    GoRightInMenu();
                     break;
                 case 1:
                     // go previous
-                    CurrentImg--;
+                    GoLeftInMenu();
                     break;
                 case 2:
-                    // Exit
-                    GameManager.I.UIMng.MainMenuActions();
+                    GoBack();
                     break;
             }
-        }
-
-        void ChangeImage(int _indexImg)
-        {
-            img.sprite = TutorialImages[_indexImg];
         }
 
         public override void GoDownInMenu()
@@ -70,12 +64,18 @@ namespace TeamF
 
         public override void GoLeftInMenu()
         {
-            // per inibire la possibilità di spostare selectable
+            CurrentImg--;
         }
 
         public override void GoRightInMenu()
         {
-            // per inibire la possibilità di spostare selectable
+            CurrentImg++;
+        }
+
+        public override void GoBack()
+        {
+            // Exit
+            GameManager.I.UIMng.MainMenuActions();
         }
     }
 }
