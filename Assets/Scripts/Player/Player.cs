@@ -10,13 +10,13 @@ namespace TeamF
 
         void FixedUpdate()
         {
-            if (!GameManager.I.IsPlayingSequnce)
+            if (!GameManager.I.IsPlayingCutScene)
                 CheckMovementInput();
         }
 
         private void Update()
         {
-            if (!GameManager.I.IsPlayingSequnce)
+            if (!GameManager.I.IsPlayingCutScene)
             {
                 CheckInput();
                 CheckPause();

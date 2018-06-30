@@ -62,7 +62,7 @@ namespace TeamF
             ClipData clipToPlay = GetClip(_clip);
             AudioSource availableSource = GetAvailableSource((int)_clip);
 
-            if(clipToPlay != null && availableSource != null && clipToPlay.Clip != null)
+            if(clipToPlay != null && availableSource != null && clipToPlay.Clip != null && availableSource.clip != clipToPlay.Clip)
             {
                 if (!availableSource.isPlaying)
                     ChangeClip(availableSource, clipToPlay);

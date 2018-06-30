@@ -29,7 +29,6 @@ namespace TeamF
                     levelIndex = 0;
                 else if (MapIndex > 9 && MapIndex < 13)
                     levelIndex = MapIndex - 3;
-                Debug.Log(levelIndex);
                 return levelIndex;
             }
         }
