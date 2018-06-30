@@ -23,7 +23,7 @@ namespace TeamF
                 else
                     _currentImg = value;
 
-                ChangeImage(_currentImg);
+                LoreImage.sprite = LoreImages[_currentImg];
             }
         }
 
@@ -31,6 +31,7 @@ namespace TeamF
         {
             base.Init();
             GameManager.I.UIMng.CurrentMenu = this;
+            CurrentImg = 0;
         }
 
         public override void Select()
@@ -39,22 +40,16 @@ namespace TeamF
             {
                 case 0:
                     // go next
-                    CurrentImg++;
+                    GoRightInMenu();
                     break;
                 case 1:
                     // go previous
-                    CurrentImg--;
+                    GoLeftInMenu();
                     break;
                 case 2:
-                    // Exit
-                    GameManager.I.UIMng.MainMenuActions();
+                    GoBack();
                     break;
             }       
-        }
-
-        void ChangeImage(int _indexImg)
-        {
-            LoreImage.sprite = LoreImages[_indexImg];
         }
 
         public override void GoDownInMenu()
@@ -68,12 +63,18 @@ namespace TeamF
 
         public override void GoLeftInMenu()
         {
-            // per inibire la possibilità di spostare selectable
+            CurrentImg--;
         }
 
         public override void GoRightInMenu()
         {
-            // per inibire la possibilità di spostare selectable
+            CurrentImg++;
+        }
+
+        public override void GoBack()
+        {
+            // Exit
+            GameManager.I.UIMng.MainMenuActions();
         }
     }
 }

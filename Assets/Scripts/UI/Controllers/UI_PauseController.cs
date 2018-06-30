@@ -23,7 +23,7 @@ namespace TeamF
             switch (CurrentIndexSelected)
             {
                 case 0:
-                    GameManager.I.CurrentState = FlowState.Gameplay;
+                    GoBack();
                     break;
                 case 1:
                     GameManager.I.LevelMng.EndingStaus = LevelEndingStaus.Interrupted;
@@ -34,6 +34,11 @@ namespace TeamF
                     break;
             }
             base.Select();
+        }
+
+        public override void GoBack()
+        {
+            GameManager.I.CurrentState = FlowState.Gameplay;
         }
     }
 }

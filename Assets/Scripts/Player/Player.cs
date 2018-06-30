@@ -166,13 +166,13 @@ namespace TeamF
                 {
                     if (controllerConnected)
                     {
-                        if (Input.GetAxisRaw("Horizontal") >= .8f)
+                        if (Input.GetAxisRaw("Horizontal") <= -.8f)
                         {
                             canPressHorizontal = false;
                             GameManager.I.UIMng.CurrentMenu.GoLeftInMenu();
                         }
 
-                        if (Input.GetAxisRaw("Horizontal") <= -.8f)
+                        if (Input.GetAxisRaw("Horizontal") >= .8f)
                         {
                             canPressHorizontal = false;
                             GameManager.I.UIMng.CurrentMenu.GoRightInMenu();
@@ -207,6 +207,9 @@ namespace TeamF
                     }
                 }
                 #endregion
+
+                if (Input.GetButtonDown("B_Button"))
+                    GameManager.I.UIMng.CurrentMenu.GoBack();
                 #endregion
 
                 #region KeyBoard
