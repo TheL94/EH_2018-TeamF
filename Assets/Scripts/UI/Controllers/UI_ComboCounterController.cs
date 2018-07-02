@@ -28,7 +28,7 @@ namespace TeamF
                 else if (_counter > 6)
                     ComboImage.sprite = Images[2];
 
-                ComboCounterText.text = "+" + _counter.ToString();
+                ComboCounterText.text = "x" + _counter.ToString();
             }
         }
     }
