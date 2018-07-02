@@ -26,10 +26,10 @@ namespace TeamF.AI
                 else
                     return false;
             }
-            catch (System.NullReferenceException)
+            catch (MissingReferenceException)
             {
                 _enemy.AI_Enemy.CurrentState = _enemy.Data.SearchTargetState;
-                throw;
+                return false;
             }
         }
     }

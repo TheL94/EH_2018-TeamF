@@ -42,6 +42,11 @@ namespace TeamF
         {
             GameManager.I.LevelMng.Combos.Add(this);
 
+            if (ComboCounter.OnComboCreation != null)
+                ComboCounter.OnComboCreation();
+
+            Debug.Log(GameManager.I.LevelMng.Combos.Count);
+
             if (GraphicID != null || GraphicID != string.Empty)
                 graphic = GameManager.I.PoolMng.GetObject(GraphicID);
 

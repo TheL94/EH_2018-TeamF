@@ -19,8 +19,6 @@ namespace TeamF
         public static void InstantiateElementalCombo(this IEnemyBehaviour _enemyBehaviour, string _folderPath, Vector3 _position)
         {
             GameObject.Instantiate(Resources.Load(_folderPath), _position, Quaternion.identity);
-            if (ComboCounter.OnComboCreation != null)
-                ComboCounter.OnComboCreation();
         }
     }
 }
