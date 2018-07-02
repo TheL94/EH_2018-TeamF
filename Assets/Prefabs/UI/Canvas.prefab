@@ -5574,7 +5574,7 @@ MonoBehaviour:
   NextRoundButton: {fileID: 1450079050981888}
   MainMenuButton: {fileID: 1813198686969790}
   WinImage: {fileID: 21300000, guid: 37487c830a80e8948bb789f1ff9f5b31, type: 3}
-  LoseImage: {fileID: 21300000, guid: f34f2b42aa7d15c4fad1a4679cfb4120, type: 3}
+  LoseImage: {fileID: 21300000, guid: a6eaa586428e306478bb97f66f7df33f, type: 3}
   PartialScore: {fileID: 114078564140217532}
   TotalScore: {fileID: 114499336532397024}
   BestScore: {fileID: 114348094507162542}
