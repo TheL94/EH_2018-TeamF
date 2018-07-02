@@ -13,12 +13,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ElementalAmmo:
     AmmoType: 4
-    Damage: 1.5
+    Damage: 1
     Ammo: -1
     Data:
       EffectValue: 0
-      TimeOfEffect: 1
+      TimeOfEffect: 0.5
       TimeFraction: 0.5
+  TotalAmmo: 0
   BulletContainerPrefab: {fileID: 1096078678018924, guid: aed0c6b0c1afa4a4ca5d68d6e3bccfab,
     type: 2}
   BulletGraphicPrefab: {fileID: 0}

@@ -22,6 +22,5 @@ namespace TeamF
                 _effect.InitEffect(new CharmEffect(), _target, EffectData, true);
             }
         }
-
     }
 }
