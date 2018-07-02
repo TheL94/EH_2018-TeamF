@@ -3026,10 +3026,10 @@ MonoBehaviour:
     Clip: {fileID: 8300000, guid: 5d7655826a61ecd49b06834def5fddfe, type: 3}
     Volume: 1
   - ID: 23
-    Clip: {fileID: 0}
+    Clip: {fileID: 8300000, guid: 246855b2f319d7249be748f87b67be73, type: 3}
     Volume: 1
   - ID: 24
-    Clip: {fileID: 0}
+    Clip: {fileID: 8300000, guid: 701668ebd1c366642995e0dcd8c3ad1b, type: 3}
     Volume: 1
 --- !u!114 &114912716172776326
 MonoBehaviour:
