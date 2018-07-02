@@ -48,7 +48,7 @@ namespace TeamF
                     break;
 
                 case FlowState.ManageMap:
-                    if (_oldState == FlowState.MainMenu || _oldState == FlowState.EndRound || _oldState == FlowState.Gameplay)
+                    if (_oldState == FlowState.MainMenu || _oldState == FlowState.EndRound || _oldState == FlowState.Gameplay || _oldState == FlowState.InitGameplayElements)
                     {
                         _currentState = _newState;
                         ManageMapActions();

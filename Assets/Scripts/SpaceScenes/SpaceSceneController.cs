@@ -17,6 +17,12 @@ namespace TeamF
             EndSpanceAnimation += UpdateAnimationsCount;
         }
 
+        private void Update()
+        {
+            if (GameManager.I.UIMng.UI_GameplayCtrl.gameObject.activeInHierarchy)
+                GameManager.I.UIMng.UI_GameplayCtrl.gameObject.SetActive(false);
+        }
+
         private void Start()
         {
             GameManager.I.UIMng.UI_GameplayCtrl.gameObject.SetActive(false);
@@ -32,7 +38,6 @@ namespace TeamF
 
             if (endedAnimations == 2)
             {
-                //GameManager.I.UIMng.UI_GameplayCtrl.gameObject.SetActive(true);
                 GameManager.I.IsPlayingCutScene = false;
                 GameManager.I.Player.Character.transform.position = characterStartPosition;
                 Cursor.visible = true;
