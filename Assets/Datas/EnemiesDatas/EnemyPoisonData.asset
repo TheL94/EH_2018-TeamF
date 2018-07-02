@@ -24,7 +24,7 @@ MonoBehaviour:
   GraphicID: Poison
   EnemyType: 4
   Life: 30
-  Speed: 15
+  Speed: 10
   AimTime: 0.5
   EnemyValue: 1
   MeleeDamage: 2

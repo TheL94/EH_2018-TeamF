@@ -2849,7 +2849,7 @@ MonoBehaviour:
   - 40
   - 45
   - 50
-  - 60
+  - 40
   - 65
   - 70
   ComboCounterTimer: 10
@@ -3081,4 +3081,4 @@ MonoBehaviour:
   AmmoCratePrefab: {fileID: 1124228256075524, guid: 467d5f63c301fc841a4c9d62e2cf3c3f,
     type: 2}
   TimeToSpawnCrate: 20
-  AmmoPerCrate: 25
+  AmmoPerCrate: 30
