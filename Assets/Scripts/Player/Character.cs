@@ -68,6 +68,9 @@ namespace TeamF
 
             bulletDatasInstancies.Clear();
             MovementSpeed = Data.MovementSpeed;
+
+            Life = Data.Life;
+            Events_UIController.LifeChanged(Life, Data.Life);
         }
 
         public void StopWalkAnimation()

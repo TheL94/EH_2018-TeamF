@@ -213,6 +213,10 @@ namespace TeamF
         void ManageMapActions()
         {
             GameManager.I.UIMng.LoadingActions();
+
+            if (GameManager.I.LevelMng.EndingStaus == LevelEndingStaus.Lost)
+                GameManager.I.ScoreCounter.ResetCounter();
+
             GameManager.I.LevelMng.ReInit();
             GameManager.I.LevelMng.MapIndex++;
         }
@@ -277,7 +281,6 @@ namespace TeamF
 
         void PreRoundEndActions()
         {
-            GameManager.I.Player.Character.ReInit();
        
             GameManager.I.EnemyMng.EndGameplayActions();
 
@@ -314,6 +317,7 @@ namespace TeamF
                 return;
             }
 
+            GameManager.I.Player.Character.ReInit();
             GameManager.I.UIMng.GameOverActions(GameManager.I.LevelMng.EndingStaus);
         }
 

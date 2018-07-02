@@ -52,7 +52,12 @@ namespace TeamF
                 isActive = true;
             Count++;
             timer = startTimer;
-        } 
+        }
+
+        private void OnDisable()
+        {
+            OnComboCreation -= ActivateCount;
+        }
 
         #region UI CounterEvent
         public delegate void ComboCounterUIEvent(int _count);

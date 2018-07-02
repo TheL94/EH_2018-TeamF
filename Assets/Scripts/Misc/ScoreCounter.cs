@@ -39,6 +39,13 @@ namespace TeamF
             OnScoreAction -= AddScore;
         }
 
+        public void ResetCounter()
+        {
+            CurrentLevelScore = 0;
+            if (OnScoreChange != null)
+                OnScoreChange(CurrentLevelScore);
+        }
+
         public void EndRoundAction(LevelEndingStaus _levelEnding)
         {
             if (_levelEnding == LevelEndingStaus.Won)
