@@ -303,7 +303,9 @@ namespace TeamF
                 else if (GameManager.I.CurrentState == FlowState.Gameplay)
                     GameManager.I.CurrentState = FlowState.Pause;
                 else if (GameManager.I.CurrentState == FlowState.Pause)
-                    GameManager.I.CurrentState = FlowState.Gameplay;           
+                    GameManager.I.CurrentState = FlowState.Gameplay;
+                else if (GameManager.I.CurrentState == FlowState.MainMenu)
+                    GameManager.I.UIMng.CurrentMenu.GoBack();
             }
         }
 

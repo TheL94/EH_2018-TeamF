@@ -33,16 +33,16 @@ namespace TeamF
                     GameManager.I.CurrentState = FlowState.ManageMap;
                     break;
                 case 1:
-                    //Pannello Crediti
-                    GameManager.I.UIMng.CreditsActions();
+                    //Lore
+                    GameManager.I.UIMng.LoreActions();
                     break;
                 case 2:
                     //Tutorial
                     GameManager.I.UIMng.TutorialActions();
                     break;
                 case 3:
-                    //Lore
-                    GameManager.I.UIMng.LoreActions();
+                    //Pannello Crediti
+                    GameManager.I.UIMng.CreditsActions();
                     break;
                 case 4:
                     //Exit game
