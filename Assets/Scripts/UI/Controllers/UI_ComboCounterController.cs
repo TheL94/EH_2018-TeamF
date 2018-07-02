@@ -11,6 +11,9 @@ namespace TeamF
         public Image ComboImage;
         public List<Sprite> Images;
 
+        public int OrangeText = 3;
+        public int RedText = 6;
+
         public void UpdateCounter(int _counter)
         {
             if (_counter == 0)
@@ -23,9 +26,9 @@ namespace TeamF
             {
                 ComboImage.enabled = true;
 
-                if(_counter > 3 && _counter < 6)
+                if(_counter > OrangeText && _counter < RedText)
                     ComboImage.sprite = Images[1];
-                else if (_counter > 6)
+                else if (_counter > RedText)
                     ComboImage.sprite = Images[2];
 
                 ComboCounterText.text = "x" + _counter.ToString();

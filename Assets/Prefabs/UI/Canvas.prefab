@@ -5741,6 +5741,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 018676287f3280f41afef31232805d17, type: 3}
   - {fileID: 21300000, guid: 0a293683984d10d419666c84b09007ab, type: 3}
   - {fileID: 21300000, guid: a7e98438a759cf54d8245499cda158d0, type: 3}
+  OrangeText: 10
+  RedText: 20
 --- !u!114 &114565444240201314
 MonoBehaviour:
   m_ObjectHideFlags: 1
