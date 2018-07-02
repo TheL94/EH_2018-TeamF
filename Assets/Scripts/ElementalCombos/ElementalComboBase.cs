@@ -15,7 +15,22 @@ namespace TeamF
         void Start()
         {
             timer = Timer;
-            DoInit();
+
+            GameManager.I.LevelMng.Combos.Add(this);
+
+            if (ComboCounter.OnComboCreation != null)
+                ComboCounter.OnComboCreation();
+
+            if (GraphicID != null || GraphicID != string.Empty)
+                graphic = GameManager.I.PoolMng.GetObject(GraphicID);
+
+            if (graphic != null)
+            {
+                graphic.transform.position = transform.position;
+                graphic.transform.SetParent(transform);
+            }
+
+            OnInit();
         }
 
         void Update()
@@ -36,22 +51,6 @@ namespace TeamF
         private void OnTriggerExit(Collider other)
         {
             OnExitCollider(other);
-        }
-
-        private void DoInit()
-        {
-            GameManager.I.LevelMng.Combos.Add(this);
-
-            if (GraphicID != null || GraphicID != string.Empty)
-                graphic = GameManager.I.PoolMng.GetObject(GraphicID);
-
-            if (graphic != null)
-            {
-                graphic.transform.position = transform.position;
-                graphic.transform.SetParent(transform);
-            }
-
-            OnInit();
         }
 
         public void EndEffect()

@@ -21,7 +21,7 @@ namespace TeamF
 
         bool isInvincible;
         #region API
-        public void Init(Player _player, CharacterData _data,  bool _isTestScene = false)
+        public void Init(Player _player, CharacterData _data, bool _isTestScene = false)
         {
             player = _player;
             Data = _data;
@@ -40,10 +40,8 @@ namespace TeamF
             blinkCtrl = GetComponentInChildren<BlinkController>();
 
             if (bulletDatasInstancies.Count == 0)
-            {
-                foreach (BulletData item in Data.BulletDatas)
-                    bulletDatasInstancies.Add(Instantiate(item)); 
-            }
+                for (int i = 0; i < Data.BulletDatas.Length; i++)
+                    bulletDatasInstancies.Add(Instantiate(Data.BulletDatas[i]));
 
             weaponController.Init(bulletDatasInstancies, this);
 
@@ -53,9 +51,7 @@ namespace TeamF
             {
                 isInvincible = _isTestScene;
                 for (int i = 0; i < bulletDatasInstancies.Count; i++)
-                {
                     bulletDatasInstancies[i].ElementalAmmo.Ammo = -1;
-                }
             }
             selectedAmmoIndex = 1;
         }
@@ -68,6 +64,10 @@ namespace TeamF
 
             bulletDatasInstancies.Clear();
             MovementSpeed = Data.MovementSpeed;
+
+            Life = Data.Life;
+            Events_UIController.LifeChanged(Life, Data.Life);
+
         }
 
         public void StopWalkAnimation()
@@ -156,7 +156,7 @@ namespace TeamF
         /// Chiama la funzione di sparo nell'arma e sovrascrive la struttura appena passata
         /// </summary>
         public void ElementalShot()
-        {           
+        {
             weaponController.Shot(SelectedAmmo);
         }
         #endregion
@@ -177,7 +177,7 @@ namespace TeamF
                         break;
                     case 2:
                         BackPackLight.color = Color.green;
-                        BackPackRenderer.materials[1].SetColor("_EmissionColor", Color.green);                   
+                        BackPackRenderer.materials[1].SetColor("_EmissionColor", Color.green);
                         break;
                     case 3:
                         BackPackLight.color = Color.blue;

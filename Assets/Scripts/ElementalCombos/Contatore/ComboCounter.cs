@@ -21,16 +21,24 @@ namespace TeamF
         float timer;
         float startTimer;
 
+        bool isInitialized = false;
+
         public void Init(float _comboTimer)
         {
-            OnComboCreation += ActivateCount;
+            if (!isInitialized)
+            {
+                OnComboCreation += ActivateCount;
+                isInitialized = true;
+            }
             startTimer = _comboTimer;
         }
 
         public void Clear()
         {
             Count = 0;
-            isActive = false; 
+            isActive = false;
+            isInitialized = false;
+            OnComboCreation -= ActivateCount;
         }
 
         private void Update()
@@ -45,14 +53,14 @@ namespace TeamF
                 Count = 0;
             }
         }
-        
+
         void ActivateCount()
         {
             if (!isActive)
                 isActive = true;
             Count++;
             timer = startTimer;
-        } 
+        }
 
         #region UI CounterEvent
         public delegate void ComboCounterUIEvent(int _count);

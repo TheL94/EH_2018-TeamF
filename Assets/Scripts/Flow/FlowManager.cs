@@ -48,7 +48,7 @@ namespace TeamF
                     break;
 
                 case FlowState.ManageMap:
-                    if (_oldState == FlowState.MainMenu || _oldState == FlowState.EndRound || _oldState == FlowState.Gameplay)
+                    if (_oldState == FlowState.MainMenu || _oldState == FlowState.EndRound || _oldState == FlowState.Gameplay || _oldState == FlowState.InitGameplayElements)
                     {
                         _currentState = _newState;
                         ManageMapActions();
@@ -213,6 +213,10 @@ namespace TeamF
         void ManageMapActions()
         {
             GameManager.I.UIMng.LoadingActions();
+
+            if (GameManager.I.LevelMng.EndingStaus == LevelEndingStaus.Lost)
+                GameManager.I.ScoreCounter.ResetCounter();
+
             GameManager.I.LevelMng.ReInit();
             GameManager.I.LevelMng.MapIndex++;
         }
@@ -277,7 +281,6 @@ namespace TeamF
 
         void PreRoundEndActions()
         {
-            GameManager.I.Player.Character.ReInit();
        
             GameManager.I.EnemyMng.EndGameplayActions();
 
@@ -314,6 +317,7 @@ namespace TeamF
                 return;
             }
 
+            GameManager.I.Player.Character.ReInit();
             GameManager.I.UIMng.GameOverActions(GameManager.I.LevelMng.EndingStaus);
         }
 
