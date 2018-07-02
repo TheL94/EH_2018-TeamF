@@ -213,6 +213,8 @@ namespace TeamF
         void ManageMapActions()
         {
             GameManager.I.UIMng.LoadingActions();
+            if (GameManager.I.LevelMng.EndingStaus == LevelEndingStaus.Lost)
+                GameManager.I.ScoreCounter.ResetCounter();
             GameManager.I.LevelMng.ReInit();
             GameManager.I.LevelMng.MapIndex++;
         }
