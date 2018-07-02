@@ -16,7 +16,9 @@ namespace TeamF.AI
 
         void ShutDown(Enemy _enemy)
         {
-            _enemy.GetComponent<Collider>().enabled = false;
+            Collider collider = _enemy.GetComponent<Collider>();
+            if (collider != null)
+                collider.enabled = false;         
 
             if(GameManager.I.CurrentState == FlowState.Gameplay)
                 GameManager.I.AudioMng.PlaySound(Clips.EnemyDeath);
