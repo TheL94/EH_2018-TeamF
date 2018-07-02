@@ -99,7 +99,6 @@ namespace TeamF
                     if (Input.GetButtonDown("Y_Button"))
                         Character.SelectSpecificAmmo(4);
 
-
                     if (Input.GetAxisRaw("Triggers") == 1)
                         Character.ElementalShot();
 
@@ -272,15 +271,16 @@ namespace TeamF
                 #region KeyBoard
                 else
                 {
-                    if (Input.GetKey(KeyCode.W))
+                    if (Input.GetAxisRaw("Vertical") == -1f)
+                        finalDirection += -transform.forward;
+
+                    if (Input.GetAxisRaw("Vertical") == 1f)
                         finalDirection += transform.forward;
 
-                    if (Input.GetKey(KeyCode.S))
-                        finalDirection += -transform.forward;
-                    if (Input.GetKey(KeyCode.A))
+                    if (Input.GetAxisRaw("Horizontal") == -1f)
                         finalDirection += -transform.right;
 
-                    if (Input.GetKey(KeyCode.D))
+                    if (Input.GetAxisRaw("Horizontal") == 1f)
                         finalDirection += transform.right;
                 }
                 #endregion

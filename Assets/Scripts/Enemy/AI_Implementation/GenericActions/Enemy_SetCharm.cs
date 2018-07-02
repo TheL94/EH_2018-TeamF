@@ -15,7 +15,7 @@ namespace TeamF.AI
 
         bool SetCharm(Enemy _enemy)
         {
-            _enemy.Target = null;
+            _enemy.Target = GameManager.I.EnemyMng.GetTarget(_enemy);
             return true;
         }
     }
