@@ -3018,7 +3018,7 @@ MonoBehaviour:
     Volume: 1
   - ID: 17
     Clip: {fileID: 8300000, guid: 4370b0f0115c612419f7337a598f98e5, type: 3}
-    Volume: 1
+    Volume: 0.201
   - ID: 14
     Clip: {fileID: 8300000, guid: 667d279dc0eca4142ac44fc5a12d0dfd, type: 3}
     Volume: 0.5
@@ -3081,4 +3081,4 @@ MonoBehaviour:
   AmmoCratePrefab: {fileID: 1124228256075524, guid: 467d5f63c301fc841a4c9d62e2cf3c3f,
     type: 2}
   TimeToSpawnCrate: 20
-  AmmoPerCrate: 50
+  AmmoPerCrate: 25
